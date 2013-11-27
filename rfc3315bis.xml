@@ -583,20 +583,39 @@
       <t>The following diagram illustrates the format of DHCP messages sent
       between clients and servers:</t>
 
-      <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
-      1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-      msg-type | transaction-id |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | | .
-      options . . (variable) . | |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+      <figure align="center" anchor="Fig1"
+              title="DHCP message formats">
+        <preamble/>
 
-      <t>msg-type Identifies the DHCP message type; the available message
-      types are listed in section 5.3.</t>
+        <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |    msg-type   |               transaction-id                  |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                                                               |
+   .                            options                            .
+   .                           (variable)                          .
+   |                                                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+        </artwork>
 
-      <t>transaction-id The transaction ID for this message exchange.</t>
-
-      <t>options Options carried in this message; options are described in
-      section 22.</t>
+        <postamble/>
+      </figure>
+      <t>
+        <list hangIndent="12" style="hanging">
+          <t hangText="msg-type">Identifies the DHCP message type; the
+            available message types are listed in
+            section 5.3.
+          </t>
+          <t hangText="transaction-id">The transaction ID for this message exchange.</t>
+          <t hangText="options">Options carried in this message; options are
+            described in section 22.
+          </t>
+        </list>
+      </t>
     </section>
 
     <!-- ends: "6 from line 786-->
