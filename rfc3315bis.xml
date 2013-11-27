@@ -28,8 +28,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="info" docName="draft-ietf-xml2rfc-template-05"
-     ipr="trust200902">
+<rfc category="std" docName="draft-ietf-dhcwg-rfc3315bis" ipr="trust200902">
   <front>
     <title abbrev="Unknown(short)">Unknown</title>
 
@@ -60,7 +59,7 @@
       </address>
     </author>
 
-    <date day="1" month="January" year="1900"/>
+    <date day="27" month="November" year="2013"/>
   </front>
 
   <middle>
