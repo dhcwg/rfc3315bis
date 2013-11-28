@@ -5,10 +5,10 @@ Person              Timezone
 Andrew              UT + 1h
 Bernie              UT - 5H (US EST)
 Marcin              UT + 1h
-Michael
+Michael             UT - 5H (US EST)
 Sheng               UT + 8H (CST)
 Ted                 UT - 5H (US EST)
 Tomek               UT + 1H
 
-
+Looks like we have a 13 hour spread. So, 08:00 EST, 14:00 (UT + 1H), and 21:00 CST (+/- an hour) looks to work about best. 
 
