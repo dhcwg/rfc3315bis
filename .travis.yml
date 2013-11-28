@@ -4,3 +4,5 @@ python:
 before_install:
   - "sudo apt-get install python-pip"
   - "sudo pip install xml2rfc"
+
+script: "make"
