@@ -7,7 +7,6 @@
   docName="RFC3633">
 
   <front>
-    <workgroup>DHC Working Group</workgroup>
     <title>IPv6 Prefix Options for DHCPv6</title>
     <author initials="O" surname="Troan" fullname="Ole Troan">
       <organization>Cisco Systems</organization>
@@ -39,6 +38,8 @@
     </author>
 
     <date year="2003" month="October"></date>
+
+    <workgroup>DHC Working Group</workgroup>
 
     <abstract>
       <t>The Prefix Delegation options provide a mechanism for
@@ -109,7 +110,7 @@
       target="RFC2460" pageno="false">RFC2460</xref> and RFC3315. In
       addition, this document uses the following terms:</t>
 
-      <list style="hanging" hangIndent='20'>
+      <t><list style="hanging" hangIndent='20'>
 
 	<t hangText="requesting router:">The router that acts as a
         DHCP client and is requesting prefix(es) to be assigned.</t>
@@ -122,7 +123,7 @@
         router.  Each IA_PD has an associated IAID. A requesting
         router may have more than one IA_PD assigned to it; for
         example, one for each of its interfaces.</t>
-      </list>
+      </list></t>
     </section>
 
     <section title="Requirements">
@@ -161,7 +162,7 @@
       links within the subscriber's network.</t>
 
       <section title="Example network architecture">
-
+        
 	<figure anchor="figure1" title="">
 	  <preamble>
 	  <xref target="figure1" pageno="false"/> illustrates a network
@@ -197,8 +198,8 @@
  +----------+ +----------+     +----------+ +----------+ /
 	</artwork>
 	  <postamble>
-      <t><xref target="figure1" pageno="false"/>: An example of prefix
-      delegation.</t>
+      <xref target="figure1" pageno="false"/>: An example of prefix
+      delegation.
       </postamble>
       </figure>
 
@@ -348,8 +349,9 @@
  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 	  </artwork>
+      </figure>
 
-	<postamble>
+           <t>
 	    <list style="hanging" hangIndent='18'>
 	    <t hangText="option-code:">OPTION_IA_PD (TBD)</t>
 
@@ -377,8 +379,7 @@
             IA_PD.</t>
 
 	  </list>
-	  </postamble>
-      </figure>
+           </t>
 
       <t>The IA_PD-options field encapsulates those options that are
       specific to this IA_PD. For example, all of the IA_PD Prefix
@@ -465,6 +466,10 @@
 	  </artwork>
 
 	<postamble>
+	  </postamble>
+      </figure>
+
+      <t>
 	    <list style="hanging" hangIndent='18'>
 	    <t hangText="option-code:">OPTION_IAPREFIX (TBD)</t>
 
@@ -489,8 +494,7 @@
 	    this prefix</t>
 
 	  </list>
-	  </postamble>
-      </figure>
+      </t>
 
       <t>In a message sent by a requesting router to a delegating
       router, the values in the fields can be used to indicate the
@@ -626,12 +630,14 @@
 	binding for the requesting router. Examples of times when a
 	requesting router may ask for such verification include:</t>
 
-	<list style="symbols">
+	<t>
+        <list style="symbols">
 	  <t>The requesting router reboots.</t>
 	  <t>The requesting router's upstream link flaps.</t>
 	  <t>The requesting router is physically disconnected from a
 	  wired connection.</t>
 	</list>
+        </t>
 
 	<t>If such verification is needed the requesting router MUST
         initiate a Rebind/Reply message exchange as described in the
@@ -719,7 +725,7 @@
 	<t>Behaviour in the case where the delegating router cannot
 	find a binding for the requesting router's IA_PD:</t>
 
-	<list style="hanging" hangIndent='20'>
+	<t><list style="hanging" hangIndent='20'>
 	  <t hangText="Renew message:">If the delegating router cannot
 	  find a binding for the requesting router's IA_PD the
 	  delegating router returns the IA_PD containing no prefixes
@@ -740,6 +746,7 @@
 	  determine if the prefix is not appropriate for the link, the
 	  Rebind message is discarded.</t>
 	</list>
+        </t>
 
 	<t>A delegating router may mark any prefix(es) in IA_PD Prefix
 	options in a Release message from a requesting router as
@@ -821,20 +828,24 @@
 
       <t>IANA is requested to assign option codes to:</t>
 
+      <t>
       <list style="hanging" hangIndent='20'>
 	<t hangText="OPTION_IA_PD"></t>
 	<t hangText="OPTION_IAPREFIX"></t>
       </list>
+      </t>
 
       <t>from the option-code space as defined in section "DHCPv6
       Options" of RFC 3315.</t>
 
       <t>IANA is requested to assign a status code:</t>
 
+      <t>
       <list style="hanging" hangIndent='20'>
 	<t hangText="NoPrefixAvail:">Delegating router has no
 	prefixes available to assign to the IAPD(s)</t>
       </list>
+      </t>
 
       <t>from the status-code space as defined in section "Status
       Codes" of RFC 3315.</t>
