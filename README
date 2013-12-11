@@ -4,10 +4,19 @@
 This is a repository that for storing notes, comments and hopefully a
 draft text of replacement for RFC3315, which is commonly referred to
 as RFC3315bis or just 3315bis. This is NOT an official IETF repository,
-but rather a personal scratchpad of people, who are potentially interested
+but rather a personal scratchpad for people, who are potentially interested
 in pariticipating in this behavior. If you are interested in joining
-this effort, please ask on DHC mailing list:
-http://www.ietf.org/mail-archive/web/dhcwg/current/maillist.html
+this effort, please ask on DHCPv6bis mailing list:
+
+https://www.ietf.org/mailman/listinfo/dhcpv6bis
+
+We have an issue tracker here: http://tools.ietf.org/group/dhcpv6bis/
+
+This work is being done as part of the DHC working group. We plan to
+discuss details to the dhcpv6bis list, but we will occasionally discuss
+or report progress on DHC mailing list here:
+
+https://www.ietf.org/mailman/listinfo/dhcwg
 
 Note Well
 
