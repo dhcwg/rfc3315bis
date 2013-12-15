@@ -794,10 +794,10 @@
       </section>
     </section>
 
-    <section title="Relay agent behaviour">
+    <section title="Relay agent behavior">
       <t>A relay agent forwards messages containing Prefix Delegation
-      options in the same way as described in section "Relay
-      Behaviour" of RFC 3315.</t>
+      options in the same way as described in section 20, "Relay
+      Agent Behavior" of RFC 3315.</t>
 
       <t>If a delegating router communicates with a requesting router
       through a relay agent, the delegating router may need a protocol
