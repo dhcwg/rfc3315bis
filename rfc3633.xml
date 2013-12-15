@@ -207,7 +207,7 @@
       </postamble>
       </figure>
 
-	<t>In this example the delegating router is configured with a
+	<t>In this example, the delegating router is configured with a
         set of prefixes to be used for assignment to customers at the
         time of each customer's first connection to the ISP
         service. The prefix delegation process begins when the
@@ -215,7 +215,7 @@
         DHCP. The DHCP messages from the requesting router are
         received by the delegating router in the aggregation
         device. When the delegating router receives the request, it
-        selects an available prefi or prefixes for delegation to the
+        selects an available prefix or prefixes for delegation to the
         requesting router. The delegating router then returns the
         prefix or prefixes to the requesting router.</t>
 
