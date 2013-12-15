@@ -359,7 +359,7 @@
 
            <t>
 	    <list style="hanging" hangIndent='18'>
-	    <t hangText="option-code:">OPTION_IA_PD (TBD)</t>
+	    <t hangText="option-code:">OPTION_IA_PD (25)</t>
 
 	    <t hangText="option-length:">12 + length of IA_PD-options
 	    field.</t>
@@ -477,7 +477,7 @@
 
       <t>
 	    <list style="hanging" hangIndent='18'>
-	    <t hangText="option-code:">OPTION_IAPREFIX (TBD)</t>
+	    <t hangText="option-code:">OPTION_IAPREFIX (26)</t>
 
 	    <t hangText="option-length:">25 + length of
 	    IAprefix-options field</t>
