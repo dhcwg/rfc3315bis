@@ -302,7 +302,9 @@
       the requesting router includes the prefix in an IA_PD option
       sent in a Renew message to the delegating router. The delegating
       router responds by returning the prefix with updated lifetimes
-      to the requesting router.</t>
+      to the requesting router.
+      <vspace blankLines='100' />
+      </t>
     </section>
 
     <section title="Interface Selection">
