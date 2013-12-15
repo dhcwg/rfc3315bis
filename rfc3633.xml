@@ -513,8 +513,8 @@
       <t>In a message sent by a delegating router the preferred and
       valid lifetimes should be set to the values of
       AdvPreferredLifetime and AdvValidLifetime as specified in
-      section "Router Configuration Variables" of <xref
-      target="RFC2461" pageno="false">RFC2461</xref>, unless
+      section 6.2.1, "Router Configuration Variables" of <xref
+      target="RFC2461" pageno="false">RFC 2461</xref>, unless
       administratively configured.</t>
 
       <t>A requesting router discards any prefixes for which the
