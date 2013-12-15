@@ -769,19 +769,24 @@
       <t>This section describes prefix delegation in Reconfigure
       message exchanges.</t>
 
-      <section anchor="sipd-server" title="Delegating Router behaviour">
+      <section anchor="sipd-server" title="Delegating Router behavior">
 	<t>The delegating router initiates a configuration message
-	exchange with a requesting router, as described in the section
+	exchange with a requesting router, as described in section 19,
 	"DHCP Server-Initiated Configuration Exchange" of RFC
+        3315, by sending a Reconfigure message (acting as a DHCP server)
+        to the requesting router, as described in 
+        section 19.1, "Server Behavior" of RFC
 	3315. The delegating router specifies the IA_PD option in the
 	Option Request option to cause the requesting router to
 	include an IA_PD option to obtain new information about
 	delegated prefix(es).</t>
       </section>
 
-      <section anchor="sipd-client" title="Requesting Router behaviour">
-	<t>The requesting router responds to a Reconfigure message
-	received from a delegating router as described in RFC 3315. The
+      <section anchor="sipd-client" title="Requesting Router behavior">
+	<t>The requesting router responds to a Reconfigure message,
+        acting as a DHCP client,
+	received from a delegating router as described in section
+        19.4, "Client Behavior" of RFC 3315. The
 	requesting router MUST include the IA_PD Prefix option(s) (in
 	an IA_PD option) for prefix(es) that have been delegated to
 	the requesting router by the delegating router from which the
