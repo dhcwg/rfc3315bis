@@ -837,19 +837,19 @@
 
     <section title="IANA Considerations">
 
-      <t>IANA is requested to assign option codes to:</t>
+      <t>IANA has assigned option codes to:</t>
 
       <t>
       <list style="hanging" hangIndent='20'>
-	<t hangText="OPTION_IA_PD"></t>
-	<t hangText="OPTION_IAPREFIX"></t>
+	<t hangText="OPTION_IA_PD (25)"></t>
+	<t hangText="OPTION_IAPREFIX (26)"></t>
       </list>
       </t>
 
-      <t>from the option-code space as defined in section "DHCPv6
+      <t>from the option-code space as defined in section 24.3, "DHCP
       Options" of RFC 3315.</t>
 
-      <t>IANA is requested to assign a status code:</t>
+      <t>IANA has assigned status code 6 to:</t>
 
       <t>
       <list style="hanging" hangIndent='20'>
@@ -858,7 +858,7 @@
       </list>
       </t>
 
-      <t>from the status-code space as defined in section "Status
+      <t>from the status-code space as defined in section 24.4, "Status
       Codes" of RFC 3315.</t>
     </section>
 
