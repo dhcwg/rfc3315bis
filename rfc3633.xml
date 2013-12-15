@@ -590,7 +590,7 @@
 	router.</t>
 
 	<t>The delegating router sends an Advertise message to the
-	requesting router in the same way as described in section
+	requesting router in the same way as described in section,
 	"Creation and transmission of Advertise messages" of RFC
 	3315. The delegating router MUST include an IA_PD option,
 	identifying any prefix(es) that the delegating router will
