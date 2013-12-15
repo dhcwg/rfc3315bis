@@ -263,7 +263,7 @@
       IAID in non-volatile storage or by using an algorithm that will
       consistently produce the same IAID as long as the configuration
       of the requesting router has not changed. If the requesting
-      router uses only one IAID, it can use a well-known value, e.g
+      router uses only one IAID, it can use a well-known value, e.g.,
       zero.</t>
 
       <t>The configuration information in an IA_PD consists of one or
