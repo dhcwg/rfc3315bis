@@ -806,7 +806,7 @@
     </section>
 
     <section title="Security Considerations">
-      <t>Security considerations in DHCP are described in the section
+      <t>Security considerations in DHCP are described in section 23,
       "Security Considerations" of RFC 3315.</t>
 
       <t>A rogue delegating router can issue bogus prefixes to a
@@ -819,7 +819,7 @@
 
       <t>To guard against attacks through prefix delegation,
       requesting routers and delegating routers SHOULD use DHCP
-      authentication as described in section "Authentication of DHCP
+      authentication as described in section 21, "Authentication of DHCP
       messages" of RFC 3315. For point to point links,
       where one trusts that there is no man in the middle, or one
       trusts layer two authentication, DHCP authentication or IPsec
