@@ -612,14 +612,14 @@
     <section anchor="cipd"
 	     title="Requesting router initiated prefix delegation">
       <t>A requesting router uses the same message exchanges as
-      described in section "DHCP Client-Initiated Configuration
+      described in section 18, "DHCP Client-Initiated Configuration
       Exchange" of RFC 3315 to obtain or update
       prefix(es) from a delegating router. The requesting router and
       the delegating router use the IA_PD Prefix option to exchange
       information about prefix(es) in much the same way IA Address
       options are used for assigned addresses.</t>
 
-      <section anchor="cipd-client" title="Requesting router behaviour">
+      <section anchor="cipd-client" title="Requesting router behavior">
 	<t>The requesting router uses a Request message to populate
         IA_PDs with prefixes. The requesting router includes one or
         more IA_PD options in the Request message. The delegating
@@ -646,11 +646,11 @@
         </t>
 
 	<t>If such verification is needed the requesting router MUST
-        initiate a Rebind/Reply message exchange as described in the
-        section "Creation and Transmission of Rebind Messages" of RFC
+        initiate a Rebind/Reply message exchange as described in 
+        section 18.1.4, "Creation and Transmission of Rebind Messages" of RFC
         3315, with the exception that the retransmission parameters
-        should be set as for the Confirm message, described in the
-        section "Creation and Transmission of Confirm Messages" of RFC
+        should be set as for the Confirm message, described in 
+        section 18.1.2, "Creation and Transmission of Confirm Messages" of RFC
         3315. The requesting router includes any IA_PDs, along with
         prefixes associated with those IA_PDs in its Rebind
         message.</t>
@@ -698,15 +698,15 @@
 	option.</t>
 
 	<t>Handling of Status Codes options in received Reply messages
-	is described in "Receipt of Reply Messages" of RFC 3315. The
+	is described in section 18.1.8, "Receipt of Reply Messages" of RFC 3315. The
 	NoPrefixAvail Status Code is handled in the same manner as the
 	NoAddrsAvail Status Code.</t>
       </section>
 
-      <section anchor="cipd-server" title="Delegating Router behaviour">
+      <section anchor="cipd-server" title="Delegating Router behavior">
 	<t>When a delegating router receives a Request message from a
 	requesting router that contains an IA_PD option, and the
-	delegating router is authorised to delegate prefix(es) to the
+	delegating router is authorized to delegate prefix(es) to the
 	requesting router, the delegating router selects the
 	prefix(es) to be delegated to the requesting router.
 
@@ -728,7 +728,7 @@
 	returns the prefix to the requesting router with lifetimes of
 	0.</t>
 
-	<t>Behaviour in the case where the delegating router cannot
+	<t>The delegating router behaves as follows when it cannot
 	find a binding for the requesting router's IA_PD:</t>
 
 	<t><list style="hanging" hangIndent='20'>
@@ -757,7 +757,7 @@
 	<t>A delegating router may mark any prefix(es) in IA_PD Prefix
 	options in a Release message from a requesting router as
 	"available", dependent on the mechanism used to acquire the
-	prefix, e.g in the case of a dynamic pool.</t>
+	prefix, e.g., in the case of a dynamic pool.</t>
 
 	<t>The delegating router MUST include an IA_PD Prefix option
 	or options (in an IA_PD option) in Reply messages sent to a
