@@ -91,7 +91,9 @@
       IP addresses or other configuration information to hosts, and
       that no mechanism is currently available to communicate
       delegated prefixes to a DHCP server that serves such a function.
-      This may be an item of future work, should usage warrant.</t>
+      This may be an item of future work, should usage warrant.
+      <vspace blankLines='100' />
+      </t>
 
     </section>
 
