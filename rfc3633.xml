@@ -109,7 +109,7 @@
 
     <section title="Terminology">
       <t>This document uses the terminology defined in <xref
-      target="RFC2460" pageno="false">RFC2460</xref> and RFC3315. In
+      target="RFC2460" pageno="false">RFC 2460</xref> and RFC 3315. In
       addition, this document uses the following terms:</t>
 
       <t><list style="hanging" hangIndent='20'>
@@ -120,8 +120,8 @@
 	<t hangText="delegating router:">The router that acts as a
         DHCP server, and is responding to the prefix request.</t>
 
-	<t hangText="Identity Association for Prefix Delegation
-        (IA_PD):">A collection of prefixes assigned to the requesting
+	<t hangText="Identity Association for Prefix Delegation (IA_PD):">
+        A collection of prefixes assigned to the requesting
         router.  Each IA_PD has an associated IAID. A requesting
         router may have more than one IA_PD assigned to it; for
         example, one for each of its interfaces.</t>
