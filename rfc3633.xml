@@ -57,10 +57,11 @@
   <middle>
 
     <section title="Introduction">
-      <t>This document describes new options for DHCP that provide a
+      <t>This document describes new options for Dynamic Host Configuration 
+      Protocol (DHCP) that provide a
       mechanism for the delegation of <xref target="RFC2460">IPv6
       prefixes</xref>. Through these options, a delegating router can
-      delegate prefixes to authorised requesting routers.</t>
+      delegate prefixes to authorized requesting routers.</t>
 
       <t>The prefix delegation mechanism described in this document is
       intended for simple delegation of prefixes from a delegating
@@ -70,9 +71,9 @@
       attached, and the delegating router does not require other
       information aside from the identity of the requesting router to
       choose a prefix for delegation. For example, these options would
-      be used by a service provider to assign a prefix to a CPE device
-      acting as a router between the subscriber's internal network and
-      the service provider's core network.</t>
+      be used by a service provider to assign a prefix to a Customer 
+      Premise Equipment (CPE) device acting as a router between the 
+      subscriber's internal network and the service provider's core network.</t>
 
       <t>Many applications expect stable addresses. Even though this
       mechanism makes automatic renumbering easier, it is expected
