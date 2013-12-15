@@ -539,22 +539,22 @@
 
     <section anchor="server-solicit" title="Delegating Router Solicitation">
       <t>The requesting router locates and selects a delegating router
-      in the same way as described in section "DHCP Server
+      in the same way as described in section 17, "DHCP Server
       Solicitation" of RFC 3315. The details of the
       solicitation process are described in this section.</t>
 
       <section anchor="server-solicit-client"
-	       title="Requesting router behaviour">
+	       title="Requesting router behavior">
 
 	<t>The requesting router creates and transmits a Solicit
-	message as described in sections "Creation of Solicit
-	Messages" and "Transmission of Solicit Messages" of RFC
+	message as described in sections 17.1.1, "Creation of Solicit
+	Messages" and 17.1.2, "Transmission of Solicit Messages" of RFC
 	3315. The requesting router creates an IA_PD and assigns it an
 	IAID. The requesting router MUST include the IA_PD option in
 	the Solicit message.</t>
 
 	<t>The requesting router processes any received Advertise
-	messages as described in section "Receipt of Advertise
+	messages as described in section 17.1.3, "Receipt of Advertise
 	Messages" of RFC 3315. The requesting router MAY choose to
 	consider the presence of advertised prefixes in its decision
 	about which delegating router to respond to.</t>
@@ -566,10 +566,10 @@
       </section>
 
       <section anchor="server-solicit-server"
-	       title="Delegating router behaviour">
-	<t>The delegating router processes Solicit messages from
-	requesting routers in the same way as described in section
-	"Receipt of Solicit messages" of RFC 3315. If the
+	       title="Delegating router behavior">
+	<t>The delegating router sends an Advertise message to the
+	requesting router in the same way as described in section 17.2.2,
+	"Creation and transmission of Advertise messages" of RFC 3315. If the
 	message contains an IA_PD option and the delegating router is
 	configured to delegate prefix(es) to the requesting router,
 	the delegating router selects the prefix(es) to be delegated
