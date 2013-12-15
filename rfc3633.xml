@@ -310,7 +310,7 @@
     <section title="Interface Selection">
       <t>Delegated prefixes are not associated with a particular
       interface in the same way as addresses are for address
-      assignment, and the rules described in the section "Client
+      assignment, and the rules described in section 16, "Client
       Source Address and Interface Selection" of RFC 3315 do not
       apply.</t>
 
