@@ -266,52 +266,55 @@
         target="RFC2373"/>, and IPv6 Stateless Address Autoconfiguration <xref
         target="RFC2462"/> is included below.</t>
 
-        <t>address An IP layer identifier for an interface or a set of
-        interfaces.</t>
+        <t>
+        <list hangIndent="26" style="hanging">
+          <t hangText="address">An IP layer identifier for an interface or a set of
+          interfaces.</t>
+          <t hangText="host">Any node that is not a router.</t>
 
-        <t>host Any node that is not a router.</t>
+          <t hangText="IP"> Internet Protocol Version 6 (IPv6). The terms IPv4 and IPv6 are
+          used only in contexts where it is necessary to avoid ambiguity.</t>
 
-        <t>IP Internet Protocol Version 6 (IPv6). The terms IPv4 and IPv6 are
-        used only in contexts where it is necessary to avoid ambiguity.</t>
+          <t hangText="interface"> A node's attachment to a link.</t>
 
-        <t>interface A node's attachment to a link.</t>
+          <t hangText="link"> A communication facility or medium over which nodes can
+          communicate at the link layer, i.e., the layer immediately below IP.
+          Examples are Ethernet (simple or bridged); Token Ring; PPP links,
+          X.25, Frame Relay, or ATM networks; and Internet (or higher) layer
+          "tunnels", such as tunnels over IPv4 or IPv6 itself.</t>
 
-        <t>link A communication facility or medium over which nodes can
-        communicate at the link layer, i.e., the layer immediately below IP.
-        Examples are Ethernet (simple or bridged); Token Ring; PPP links,
-        X.25, Frame Relay, or ATM networks; and Internet (or higher) layer
-        "tunnels", such as tunnels over IPv4 or IPv6 itself.</t>
+          <t hangText="link-layer identifier"> A link-layer identifier for an interface.
+          Examples include IEEE 802 addresses for Ethernet or Token Ring network
+          interfaces, and E.164 addresses for ISDN links.</t>
 
-        <t>link-layer identifier A link-layer identifier for an interface.
-        Examples include IEEE 802 addresses for Ethernet or Token Ring network
-        interfaces, and E.164 addresses for ISDN links.</t>
+          <t hangText="link-local address"> An IPv6 address having a link-only scope,
+          indicated by having the prefix (FE80::/10), that can be used to reach
+          neighboring nodes attached to the same link. Every interface has a
+          link-local address.</t>
 
-        <t>link-local address An IPv6 address having a link-only scope,
-        indicated by having the prefix (FE80::/10), that can be used to reach
-        neighboring nodes attached to the same link. Every interface has a
-        link-local address.</t>
+          <t hangText="multicast address"> An identifier for a set of interfaces (typically
+          belonging to different nodes). A packet sent to a multicast address is
+          delivered to all interfaces identified by that address.</t>
 
-        <t>multicast address An identifier for a set of interfaces (typically
-        belonging to different nodes). A packet sent to a multicast address is
-        delivered to all interfaces identified by that address.</t>
+          <t hangText="neighbor"> A node attached to the same link.</t>
 
-        <t>neighbor A node attached to the same link.</t>
+          <t hangText="node"> A device that implements IP.</t>
 
-        <t>node A device that implements IP.</t>
+          <t hangText="packet"> An IP header plus payload.</t>
 
-        <t>packet An IP header plus payload.</t>
+          <t hangText="prefix"> The initial bits of an address, or a set of IP addresses
+          that share the same initial bits.</t>
 
-        <t>prefix The initial bits of an address, or a set of IP addresses
-        that share the same initial bits.</t>
+          <t hangText="prefix length"> The number of bits in a prefix.</t>
 
-        <t>prefix length The number of bits in a prefix.</t>
+          <t hangText="router"> A node that forwards IP packets not explicitly addressed to
+          itself.</t>
 
-        <t>router A node that forwards IP packets not explicitly addressed to
-        itself.</t>
-
-        <t>unicast address An identifier for a single interface. A packet sent
-        to a unicast address is delivered to the interface identified by that
-        address.</t>
+          <t hangText="unicast address"> An identifier for a single interface. A packet sent
+          to a unicast address is delivered to the interface identified by that
+          address.</t>
+        </list>
+        </t>
       </section>
 
       <!-- ends: "4.1 from line 408-->
@@ -321,83 +324,89 @@
 
         <t>Terminology specific to DHCP can be found below.</t>
 
-        <t>appropriate to the link An address is "appropriate to the link"
-        when the address is consistent with the DHCP server's knowledge of the
-        network topology, prefix assignment and address assignment
-        policies.</t>
+        <t>
+          <list hangIndent="26" style="hanging">
+            <t hangText="appropriate to the link"> An address is "appropriate to the link"
+            when the address is consistent with the DHCP server's knowledge of the
+            network topology, prefix assignment and address assignment
+            policies.</t>
 
-        <t>binding A binding (or, client binding) is a group of server data
-        records containing the information the server has about the addresses
-        in an IA or configuration information explicitly assigned to the
-        client. Configuration information that has been returned to a client
-        through a policy - for example, the information returned to all
-        clients on the same link - does not require a binding. A binding
-        containing information about an IA is indexed by the tuple &lt;DUID,
-        IA-type, IAID&gt; (where IA-type is the type of address in the IA; for
-        example, temporary). A binding containing configuration information
-        for a client is indexed by &lt;DUID&gt;. configuration parameter An
-        element of the configuration information set on the server and
-        delivered to the client using DHCP. Such parameters may be used to
-        carry information to be used by a node to configure its network
-        subsystem and enable communication on a link or internetwork, for
-        example.</t>
+            <t hangText="binding"> A binding (or, client binding) is a group of server data
+            records containing the information the server has about the addresses
+            in an IA or configuration information explicitly assigned to the
+            client. Configuration information that has been returned to a client
+            through a policy - for example, the information returned to all
+            clients on the same link - does not require a binding. A binding
+            containing information about an IA is indexed by the tuple &lt;DUID,
+            IA-type, IAID&gt; (where IA-type is the type of address in the IA; for
+            example, temporary). A binding containing configuration information
+            for a client is indexed by &lt;DUID&gt;. </t>
 
-        <t>DHCP Dynamic Host Configuration Protocol for IPv6. The terms DHCPv4
-        and DHCPv6 are used only in contexts where it is necessary to avoid
-        ambiguity.</t>
+            <t hangText="configuration parameter"> An
+            element of the configuration information set on the server and
+            delivered to the client using DHCP. Such parameters may be used to
+            carry information to be used by a node to configure its network
+            subsystem and enable communication on a link or internetwork, for
+            example.</t>
 
-        <t>DHCP client (or client) A node that initiates requests on a link to
-        obtain configuration parameters from one or more DHCP servers.</t>
+            <t hangText="DHCP">Dynamic Host Configuration Protocol for IPv6. The terms DHCPv4
+            and DHCPv6 are used only in contexts where it is necessary to avoid
+            ambiguity.</t>
 
-        <t>DHCP domain A set of links managed by DHCP and operated by a single
-        administrative entity.</t>
+            <t hangText="DHCP client (or client)"> A node that initiates requests on a link to
+            obtain configuration parameters from one or more DHCP servers.</t>
 
-        <t>DHCP realm A name used to identify the DHCP administrative domain
-        from which a DHCP authentication key was selected.</t>
+            <t hangText="DHCP domain"> A set of links managed by DHCP and operated by a single
+            administrative entity.</t>
 
-        <t>DHCP relay agent (or relay agent) A node that acts as an
-        intermediary to deliver DHCP messages between clients and servers, and
-        is on the same link as the client.</t>
+            <t hangText="DHCP realm"> A name used to identify the DHCP administrative domain
+            from which a DHCP authentication key was selected.</t>
 
-        <t>DHCP server (or server) A node that responds to requests from
-        clients, and may or may not be on the same link as the client(s).</t>
+            <t hangText="DHCP relay agent (or relay agent)"> A node that acts as an
+            intermediary to deliver DHCP messages between clients and servers, and
+            is on the same link as the client.</t>
 
-        <t>DUID A DHCP Unique IDentifier for a DHCP participant; each DHCP
-        client and server has exactly one DUID. See section 9 for details of
-        the ways in which a DUID may be constructed.</t>
+            <t hangText=">DHCP server (or server)"> A node that responds to requests from
+            clients, and may or may not be on the same link as the client(s).</t>
 
-        <t>Identity association (IA) A collection of addresses assigned to a
-        client. Each IA has an associated IAID. A client may have more than
-        one IA assigned to it; for example, one for each of its interfaces.
-        Each IA holds one type of address; for example, an identity
-        association for temporary addresses (IA_TA) holds temporary addresses
-        (see "identity association for temporary addresses"). Throughout this
-        document, "IA" is used to refer to an identity association without
-        identifying the type of addresses in the IA.</t>
+            <t hangText="DUID"> A DHCP Unique IDentifier for a DHCP participant; each DHCP
+            client and server has exactly one DUID. See section 9 for details of
+            the ways in which a DUID may be constructed.</t>
 
-        <t>Identity association identifier (IAID) An identifier for an IA,
-        chosen by the client. Each IA has an IAID, which is chosen to be
-        unique among all IAIDs for IAs belonging to that client.</t>
+            <t hangText="Identity association (IA)"> A collection of addresses assigned to a
+            client. Each IA has an associated IAID. A client may have more than
+            one IA assigned to it; for example, one for each of its interfaces.
+            Each IA holds one type of address; for example, an identity
+            association for temporary addresses (IA_TA) holds temporary addresses
+            (see "identity association for temporary addresses"). Throughout this
+            document, "IA" is used to refer to an identity association without
+            identifying the type of addresses in the IA.</t>
 
-        <t>Identity association for non-temporary addresses (IA_NA) An IA that
-        carries assigned addresses that are not temporary addresses (see
-        "identity association for temporary addresses")</t>
+            <t hangText="Identity association identifier (IAID)"> An identifier for an IA,
+            chosen by the client. Each IA has an IAID, which is chosen to be
+            unique among all IAIDs for IAs belonging to that client.</t>
 
-        <t>Identity association for temporary addresses (IA_TA) An IA that
-        carries temporary addresses (see RFC 3041 <xref
-        target="RFC3041"/>).</t>
+            <t hangText="Identity association for non-temporary addresses (IA_NA)"> An IA that
+            carries assigned addresses that are not temporary addresses (see
+            "identity association for temporary addresses")</t>
 
-        <t>message A unit of data carried as the payload of a UDP datagram,
-        exchanged among DHCP servers, relay agents and clients.</t>
+            <t hangText="Identity association for temporary addresses (IA_TA)"> An IA that
+            carries temporary addresses (see RFC 3041 <xref
+            target="RFC3041"/>).</t>
 
-        <t>Reconfigure key A key supplied to a client by a server used to
-        provide security for Reconfigure messages.</t>
+            <t hangText="message"> A unit of data carried as the payload of a UDP datagram,
+            exchanged among DHCP servers, relay agents and clients.</t>
 
-        <t>relaying A DHCP relay agent relays DHCP messages between DHCP
-        participants.</t>
+            <t hangText="Reconfigure key"> A key supplied to a client by a server used to
+            provide security for Reconfigure messages.</t>
 
-        <t>transaction ID An opaque value used to match responses with replies
-        initiated either by a client or server.</t>
+            <t hangText="relaying"> A DHCP relay agent relays DHCP messages between DHCP
+            participants.</t>
+
+            <t hangText="transaction ID"> An opaque value used to match responses with replies
+            initiated either by a client or server.</t>
+          </list>
+        </t>
       </section>
 
       <!-- ends: "4.2 from line 478-->
@@ -416,18 +425,22 @@
 
         <t>DHCP makes use of the following multicast addresses:</t>
 
-        <t>All_DHCP_Relay_Agents_and_Servers (FF02::1:2) A link-scoped
-        multicast address used by a client to communicate with neighboring
-        (i.e., on-link) relay agents and servers. All servers and relay agents
-        are members of this multicast group.</t>
+        <t>
+          <list hangIndent="16" style="hanging">
+            <t hangText="All_DHCP_Relay_Agents_and_Servers (FF02::1:2)"> A link-scoped
+            multicast address used by a client to communicate with neighboring
+            (i.e., on-link) relay agents and servers. All servers and relay agents
+            are members of this multicast group.</t>
 
-        <t>All_DHCP_Servers (FF05::1:3) A site-scoped multicast address used
-        by a relay agent to communicate with servers, either because the relay
-        agent wants to send messages to all servers or because it does not
-        know the unicast addresses of the servers. Note that in order for a
-        relay agent to use this address, it must have an address of sufficient
-        scope to be reachable by the servers. All servers within the site are
-        members of this multicast group.</t>
+            <t hangText="All_DHCP_Servers (FF05::1:3)"> A site-scoped multicast address used
+            by a relay agent to communicate with servers, either because the relay
+            agent wants to send messages to all servers or because it does not
+            know the unicast addresses of the servers. Note that in order for a
+            relay agent to use this address, it must have an address of sufficient
+            scope to be reachable by the servers. All servers within the site are
+            members of this multicast group.</t>
+          </list>
+        </t>
       </section>
 
       <!-- ends: "5.1 from line 603-->
@@ -449,72 +462,77 @@
         listed here are reserved for future use. The numeric encoding for each
         message type is shown in parentheses.</t>
 
-        <t>SOLICIT (1) A client sends a Solicit message to locate servers.</t>
+        <t>
+          <list hangIndent="16" style="hanging">
+            <t hangText="SOLICIT (1)"> A client sends a Solicit message to locate servers.</t>
+            <t hangText="ADVERTISE (2)"> A server sends an Advertise message to indicate that
+            it is available for DHCP service, in response to a Solicit message
+            received from a client.</t>
 
-        <t>ADVERTISE (2) A server sends an Advertise message to indicate that
-        it is available for DHCP service, in response to a Solicit message
-        received from a client.</t>
+            <t hangText="REQUEST (3)"> A client sends a Request message to request
+            configuration parameters, including IP addresses, from a specific
+            server.</t>
 
-        <t>REQUEST (3) A client sends a Request message to request
-        configuration parameters, including IP addresses, from a specific
-        server.</t>
+            <t hangText="CONFIRM (4)"> A client sends a Confirm message to any available
+            server to determine whether the addresses it was assigned are still
+            appropriate to the link to which the client is connected.</t>
 
-        <t>CONFIRM (4) A client sends a Confirm message to any available
-        server to determine whether the addresses it was assigned are still
-        appropriate to the link to which the client is connected.</t>
+            <t hangText="RENEW (5)"> A client sends a Renew message to the server that
+            originally provided the client's addresses and configuration
+            parameters to extend the lifetimes on the addresses assigned to the
+            client and to update other configuration parameters.</t>
 
-        <t>RENEW (5) A client sends a Renew message to the server that
-        originally provided the client's addresses and configuration
-        parameters to extend the lifetimes on the addresses assigned to the
-        client and to update other configuration parameters.</t>
+            <t hangText="REBIND (6)"> A client sends a Rebind message to any available server
+            to extend the lifetimes on the addresses assigned to the client and to
+            update other configuration parameters; this message is sent after a
+            client receives no response to a Renew message.</t>
 
-        <t>REBIND (6) A client sends a Rebind message to any available server
-        to extend the lifetimes on the addresses assigned to the client and to
-        update other configuration parameters; this message is sent after a
-        client receives no response to a Renew message.</t>
+            <t hangText="REPLY (7)"> A server sends a Reply message containing assigned
+            addresses and configuration parameters in response to a Solicit,
+            Request, Renew, Rebind message received from a client. A server sends
+            a Reply message containing configuration parameters in response to an
+            Information-request message. A server sends a Reply message in
+            response to a Confirm message confirming or denying that the addresses
+            assigned to the client are appropriate to the link to which the client
+            is connected. A server sends a Reply message to acknowledge receipt of
+            a Release or Decline message.</t>
 
-        <t>REPLY (7) A server sends a Reply message containing assigned
-        addresses and configuration parameters in response to a Solicit,
-        Request, Renew, Rebind message received from a client. A server sends
-        a Reply message containing configuration parameters in response to an
-        Information-request message. A server sends a Reply message in
-        response to a Confirm message confirming or denying that the addresses
-        assigned to the client are appropriate to the link to which the client
-        is connected. A server sends a Reply message to acknowledge receipt of
-        a Release or Decline message.</t>
+            <t hangText="RELEASE (8)"> A client sends a Release message to the server that
+            assigned addresses to the client to indicate that the client will no
+            longer use one or more of the assigned addresses.</t>
 
-        <t>RELEASE (8) A client sends a Release message to the server that
-        assigned addresses to the client to indicate that the client will no
-        longer use one or more of the assigned addresses.</t>
+            <t hangText="DECLINE (9)"> A client sends a Decline message to a server to
+            indicate that the client has determined that one or more addresses
+            assigned by the server are already in use on the link to which the
+            client is connected.</t>
 
-        <t>DECLINE (9) A client sends a Decline message to a server to
-        indicate that the client has determined that one or more addresses
-        assigned by the server are already in use on the link to which the
-        client is connected.</t>
+            <t hangText="RECONFIGURE (10)"> A server sends a Reconfigure message to a client
+            to inform the client that the server has new or updated configuration
+            parameters, and that the client is to initiate a Renew/Reply or
+            Information-request/Reply transaction with the server in order to
+            receive the updated information. </t>
 
-        <t>RECONFIGURE (10) A server sends a Reconfigure message to a client
-        to inform the client that the server has new or updated configuration
-        parameters, and that the client is to initiate a Renew/Reply or
-        Information-request/Reply transaction with the server in order to
-        receive the updated information. INFORMATION-REQUEST (11) A client
-        sends an Information-request message to a server to request
-        configuration parameters without the assignment of any IP addresses to
-        the client.</t>
+            <t hangText="INFORMATION-REQUEST (11)"> A client
+            sends an Information-request message to a server to request
+            configuration parameters without the assignment of any IP addresses to
+            the client.</t>
 
-        <t>RELAY-FORW (12) A relay agent sends a Relay-forward message to
-        relay messages to servers, either directly or through another relay
-        agent. The received message, either a client message or a
-        Relay-forward message from another relay agent, is encapsulated in an
-        option in the Relay-forward message.</t>
+            <t hangText="RELAY-FORW (12)"> A relay agent sends a Relay-forward message to
+            relay messages to servers, either directly or through another relay
+            agent. The received message, either a client message or a
+            Relay-forward message from another relay agent, is encapsulated in an
+            option in the Relay-forward message.</t>
 
-        <t>RELAY-REPL (13) A server sends a Relay-reply message to a relay
-        agent containing a message that the relay agent delivers to a client.
-        The Relay-reply message may be relayed by other relay agents for
-        delivery to the destination relay agent.</t>
+            <t hangText="RELAY-REPL (13)"> A server sends a Relay-reply message to a relay
+            agent containing a message that the relay agent delivers to a client.
+            The Relay-reply message may be relayed by other relay agents for
+            delivery to the destination relay agent.</t>
 
-        <t>The server encapsulates the client message as an option in the
-        Relay-reply message, which the relay agent extracts and relays to the
-        client.</t>
+            <t>The server encapsulates the client message as an option in the
+            Relay-reply message, which the relay agent extracts and relays to the
+            client.</t>
+          </list>
+        </t>
       </section>
 
       <!-- ends: "5.3 from line 634-->
@@ -670,7 +688,7 @@
 
         <postamble/>
       </figure>
-      
+
       <t>The following sections describe the use of the Relay Agent message
       header.</t>
 
@@ -901,7 +919,7 @@
 
           <postamble/>
         </figure>
-      
+
         <t>The source of the identifier is left up to the vendor defining it,
         but each identifier part of each DUID-EN MUST be unique to the device
         that is using it, and MUST be assigned to the device at the time it is
@@ -929,7 +947,7 @@
 
           <postamble/>
         </figure>
-      
+
         <t>This example includes the two-octet type of 2, the Enterprise
         Number (9), followed by eight octets of identifier data
         (0x0CC084D303000912).</t>
@@ -972,7 +990,7 @@
 
           <postamble/>
         </figure>
-      
+
         <t>The choice of network interface can be completely arbitrary, as
         long as that interface provides a unique link-layer address and is
         permanently attached to the device on which the DUID-LL is being
@@ -1674,20 +1692,20 @@
           not receive such a Reply message and does receive a valid Advertise
           message, the client processes the Advertise message as described in
           section 17.1.3.</t>
-          
+
           <t>If the client subsequently receives a valid Reply
           message that includes a Rapid Commit option, it either:</t>
-          
+
           <t><list style="empty">
             <t>processes the Reply message as described in section 18.1.8, and
             discards any Reply messages received in response to the Request
             message, or</t>
-  
+
             <t>processes any Reply messages received in response to the Request
             message and discards the Reply message that includes the Rapid
             Commit option.</t>
           </list></t>
-          
+
         </section>
 
         <!-- ends: "17.1.4 from line 1790-->
@@ -1736,7 +1754,7 @@
           includes its server identifier in a Server Identifier option and
           copies the Client Identifier from the Solicit message into the
           Advertise message.</t>
-          
+
           <t>The server MAY add a Preference option to carry
           the preference value for the Advertise message. The server
           implementation SHOULD allow the setting of a server preference value
@@ -2048,7 +2066,7 @@
           <t>MRC 0</t>
 
           <t>MRD Remaining time until T2</t>
-          
+
           <t>The message exchange is terminated
           when time T2 is reached (see section 18.1.4), at which time the
           client begins a Rebind message exchange.</t>
@@ -2307,7 +2325,7 @@
           of the message and sends subsequent messages to the server through
           the interface on which the message was received using multicast. The
           client resends the original message using multicast.</t>
-          
+
           <t>When the client
           receives a NotOnLink status from the server in response to a Confirm
           message, the client performs DHCP server solicitation, as described
@@ -2412,7 +2430,7 @@
           from the client, the server MUST include the IA in the Reply message
           with no addresses in the IA and a Status Code option in the IA
           containing status code NoAddrsAvail.</t>
-          
+
           <t>For any IAs to which the server
           can assign addresses, the server includes the IA with addresses and
           other configuration parameters, and records the IA as a new client
@@ -2568,7 +2586,7 @@
           server's DUID in the Reply message. If the client included a Client
           Identification option in the Information-request message, the server
           copies that option to the Reply message.</t>
-          
+
           <t>The server includes options
           containing configuration information to be returned to the client as
           described in section 18.2.</t>
@@ -2627,7 +2645,7 @@
           containing a Status Code option with the value UseMulticast, a
           Server Identifier option containing the server's DUID, the Client
           Identifier option from the client message, and no other options.</t>
-          
+
           <t>Upon the receipt of a valid Decline message, the server examines the
           IAs and the addresses in the IAs for validity. If the IAs in the
           message are in a binding for the client, and the addresses in the
@@ -2799,7 +2817,7 @@
         <t>The server generates and sends a Reply message to the client as
         described in sections 18.2.5 and 18.2.8, including options for
         configuration parameters.</t>
-        
+
         <t>The server MAY include options containing
         new values for other configuration parameters in the Reply message,
         even if those parameters were not requested in the Information-request
@@ -2838,7 +2856,7 @@
             necessary); the client ignores any additional Reconfigure messages
             until the exchange is complete. Subsequent Reconfigure messages
             cause the client to initiate a new exchange.</t>
-  
+
             <t>How does this mechanism work in the face of duplicated or
             retransmitted Reconfigure messages? Duplicate messages will be
             ignored because the client will begin the exchange after the receipt
@@ -2848,7 +2866,7 @@
             retransmission of Reconfigure messages to the client once the server
             receives the Renew or Information-request message from the
             client.</t>
-  
+
             <t>It might be possible for a duplicate or retransmitted Reconfigure
             to be sufficiently delayed (and delivered out of order) to arrive at
             the client after the exchange (initiated by the original
@@ -2926,7 +2944,7 @@
       multicast address, or other addresses selected by the network
       administrator. If the relay agent has not been explicitly configured, it
       MUST use the All_DHCP_Servers multicast address as the default.</t>
-      
+
       <t>If the
       relay agent relays messages to the All_DHCP_Servers multicast address or
       other multicast addresses, it sets the Hop Limit field to 32.</t>
@@ -3254,7 +3272,7 @@
             <t>Algorithm 1 specifies the use of HMAC-MD5. Use of a different
             technique, such as HMAC-SHA, will be specified as a separate
             protocol.</t>
-  
+
             <t>The DHCP realm used to identify authentication keys is chosen to
             be unique among administrative domains. Use of the DHCP realm allows
             DHCP administrators to avoid conflict in the use of key identifiers,
@@ -3659,16 +3677,16 @@
 
           <artwork align="left">
           <![CDATA[
-       0                   1                   2                   3
-       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      |        OPTION_CLIENTID        |          option-len           |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      .                                                               .
-      .                              DUID                             .
-      .                        (variable length)                      .
-      .                                                               .
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   0                   1                   2                   3
+   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  |        OPTION_CLIENTID        |          option-len           |
+  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  .                                                               .
+  .                              DUID                             .
+  .                        (variable length)                      .
+  .                                                               .
+  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
             ]]>
           </artwork>
 
@@ -3989,7 +4007,7 @@
         lifetime fields for the preferred and valid lifetimes. The values in
         the preferred and valid lifetimes are the number of seconds remaining
         in each lifetime.</t>
-        
+
         <t>A client discards any addresses for which the
         preferred lifetime is greater than the valid lifetime. A server
         ignores the lifetimes set by the client if the preferred lifetime is
@@ -4841,7 +4859,7 @@
       DHCP messages to be important. DHCP is not used to exchange
       authentication or configuration information that must be kept secret
       from other networks nodes.</t>
-      
+
       <t>DHCP authentication provides for
       authentication of the identity of DHCP clients and servers, and for the
       integrity of messages delivered between DHCP clients and servers. DHCP
@@ -5305,7 +5323,7 @@
 
       &RFC2136;
 
-      <!-- Vixie, P., Ed., Thomson, S., Rekhter, Y. and J. Bound, "DynamicUpdates in the Domain Name System (DNS UPDATE)", RFC 2136, April 
+      <!-- Vixie, P., Ed., Thomson, S., Rekhter, Y. and J. Bound, "DynamicUpdates in the Domain Name System (DNS UPDATE)", RFC 2136, April
 
 1997. -->
 
@@ -5356,7 +5374,7 @@
 
       &RFC2434;
 
-      <!-- Narten, T. and H. Alvestrand, "Guidelines for Writing an IANAConsiderations Section in RFCs", BCP 26, RFC 2434, October 1998. 
+      <!-- Narten, T. and H. Alvestrand, "Guidelines for Writing an IANAConsiderations Section in RFCs", BCP 26, RFC 2434, October 1998.
 
 -->
 
@@ -5378,7 +5396,7 @@
 
       &RFC0826;
 
-      <!-- Plummer, D.C., "Ethernet Address Resolution Protocol:  Orconverting network protocol addresses to 48.bit Ethernet addressfor 
+      <!-- Plummer, D.C., "Ethernet Address Resolution Protocol:  Orconverting network protocol addresses to 48.bit Ethernet addressfor
 
 transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 

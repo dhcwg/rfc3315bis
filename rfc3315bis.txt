@@ -69,43 +69,43 @@ Table of Contents
    4.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   9
      4.1.  IPv6 Terminology  . . . . . . . . . . . . . . . . . . . .   9
      4.2.  DHCP Terminology  . . . . . . . . . . . . . . . . . . . .  10
-   5.  DHCP Constants  . . . . . . . . . . . . . . . . . . . . . . .  11
-     5.1.  Multicast Addresses . . . . . . . . . . . . . . . . . . .  11
-     5.2.  UDP Ports . . . . . . . . . . . . . . . . . . . . . . . .  12
-     5.3.  DHCP Message Types  . . . . . . . . . . . . . . . . . . .  12
-     5.4.  Status Codes  . . . . . . . . . . . . . . . . . . . . . .  14
-     5.5.  Transmission and Retransmission Parameters  . . . . . . .  14
-   6.  Client/Server Message Formats . . . . . . . . . . . . . . . .  14
-   7.  Relay Agent/Server Message Formats  . . . . . . . . . . . . .  15
-     7.1.  Relay-forward Message . . . . . . . . . . . . . . . . . .  16
+   5.  DHCP Constants  . . . . . . . . . . . . . . . . . . . . . . .  12
+     5.1.  Multicast Addresses . . . . . . . . . . . . . . . . . . .  12
+     5.2.  UDP Ports . . . . . . . . . . . . . . . . . . . . . . . .  13
+     5.3.  DHCP Message Types  . . . . . . . . . . . . . . . . . . .  13
+     5.4.  Status Codes  . . . . . . . . . . . . . . . . . . . . . .  15
+     5.5.  Transmission and Retransmission Parameters  . . . . . . .  15
+   6.  Client/Server Message Formats . . . . . . . . . . . . . . . .  15
+   7.  Relay Agent/Server Message Formats  . . . . . . . . . . . . .  16
+     7.1.  Relay-forward Message . . . . . . . . . . . . . . . . . .  17
      7.2.  Relay-reply Message . . . . . . . . . . . . . . . . . . .  17
-   8.  Representation and Use of Domain Names  . . . . . . . . . . .  17
-   9.  DHCP Unique Identifier (DUID) . . . . . . . . . . . . . . . .  17
-     9.1.  DUID Contents . . . . . . . . . . . . . . . . . . . . . .  18
-     9.2.  DUID Based on Link-layer Address Plus Time [DUID-LLT] . .  18
+   8.  Representation and Use of Domain Names  . . . . . . . . . . .  18
+   9.  DHCP Unique Identifier (DUID) . . . . . . . . . . . . . . . .  18
+     9.1.  DUID Contents . . . . . . . . . . . . . . . . . . . . . .  19
+     9.2.  DUID Based on Link-layer Address Plus Time [DUID-LLT] . .  19
      9.3.  DUID Assigned by Vendor Based on Enterprise Number [DUID-
            EN] . . . . . . . . . . . . . . . . . . . . . . . . . . .  20
      9.4.  DUID Based on Link-layer Address [DUID-LL]  . . . . . . .  21
-   10. Identity Association  . . . . . . . . . . . . . . . . . . . .  21
-   11. Selecting Addresses for Assignment to an IA . . . . . . . . .  22
-   12. Management of Temporary Addresses . . . . . . . . . . . . . .  23
-   13. Transmission of Messages by a Client  . . . . . . . . . . . .  23
-   14. Reliability of Client Initiated Message Exchanges . . . . . .  24
-   15. Message Validation  . . . . . . . . . . . . . . . . . . . . .  25
-     15.1.  Use of Transaction IDs . . . . . . . . . . . . . . . . .  26
-     15.2.  Solicit Message  . . . . . . . . . . . . . . . . . . . .  26
-     15.3.  Advertise Message  . . . . . . . . . . . . . . . . . . .  26
-     15.4.  Request Message  . . . . . . . . . . . . . . . . . . . .  27
-     15.5.  Confirm Message  . . . . . . . . . . . . . . . . . . . .  27
-     15.6.  Renew Message  . . . . . . . . . . . . . . . . . . . . .  27
-     15.7.  Rebind Message . . . . . . . . . . . . . . . . . . . . .  27
+   10. Identity Association  . . . . . . . . . . . . . . . . . . . .  22
+   11. Selecting Addresses for Assignment to an IA . . . . . . . . .  23
+   12. Management of Temporary Addresses . . . . . . . . . . . . . .  24
+   13. Transmission of Messages by a Client  . . . . . . . . . . . .  24
+   14. Reliability of Client Initiated Message Exchanges . . . . . .  25
+   15. Message Validation  . . . . . . . . . . . . . . . . . . . . .  26
+     15.1.  Use of Transaction IDs . . . . . . . . . . . . . . . . .  27
+     15.2.  Solicit Message  . . . . . . . . . . . . . . . . . . . .  27
+     15.3.  Advertise Message  . . . . . . . . . . . . . . . . . . .  27
+     15.4.  Request Message  . . . . . . . . . . . . . . . . . . . .  28
+     15.5.  Confirm Message  . . . . . . . . . . . . . . . . . . . .  28
+     15.6.  Renew Message  . . . . . . . . . . . . . . . . . . . . .  28
+     15.7.  Rebind Message . . . . . . . . . . . . . . . . . . . . .  28
      15.8.  Decline Messages . . . . . . . . . . . . . . . . . . . .  28
-     15.9.  Release Message  . . . . . . . . . . . . . . . . . . . .  28
-     15.10. Reply Message  . . . . . . . . . . . . . . . . . . . . .  28
-     15.11. Reconfigure Message  . . . . . . . . . . . . . . . . . .  29
-     15.12. Information-request Message  . . . . . . . . . . . . . .  29
-     15.13. Relay-forward Message  . . . . . . . . . . . . . . . . .  29
-     15.14. Relay-reply Message  . . . . . . . . . . . . . . . . . .  29
+     15.9.  Release Message  . . . . . . . . . . . . . . . . . . . .  29
+     15.10. Reply Message  . . . . . . . . . . . . . . . . . . . . .  29
+     15.11. Reconfigure Message  . . . . . . . . . . . . . . . . . .  30
+     15.12. Information-request Message  . . . . . . . . . . . . . .  30
+     15.13. Relay-forward Message  . . . . . . . . . . . . . . . . .  30
+     15.14. Relay-reply Message  . . . . . . . . . . . . . . . . . .  30
 
 
 
@@ -114,54 +114,54 @@ Unknown                   Expires May 31, 2014                  [Page 2]
 Internet-Draft               Unknown(short)                November 2013
 
 
-   16. Client Source Address and Interface Selection . . . . . . . .  30
-   17. DHCP Server Solicitation  . . . . . . . . . . . . . . . . . .  30
-     17.1.  Client Behavior  . . . . . . . . . . . . . . . . . . . .  30
-       17.1.1.  Creation of Solicit Messages . . . . . . . . . . . .  30
-       17.1.2.  Transmission of Solicit Messages . . . . . . . . . .  31
-       17.1.3.  Receipt of Advertise Messages  . . . . . . . . . . .  32
-       17.1.4.  Receipt of Reply Message . . . . . . . . . . . . . .  33
-     17.2.  Server Behavior  . . . . . . . . . . . . . . . . . . . .  34
-       17.2.1.  Receipt of Solicit Messages  . . . . . . . . . . . .  34
-       17.2.2.  Creation and Transmission of Advertise Messages  . .  34
-       17.2.3.  Creation and Transmission of Reply Messages  . . . .  35
-   18. DHCP Client-Initiated Configuration Exchange  . . . . . . . .  36
-     18.1.  Client Behavior  . . . . . . . . . . . . . . . . . . . .  36
-       18.1.1.  Creation and Transmission of Request Messages  . . .  37
-       18.1.2.  Creation and Transmission of Confirm Messages  . . .  38
-       18.1.3.  Creation and Transmission of Renew Messages  . . . .  39
-       18.1.4.  Creation and Transmission of Rebind Messages . . . .  40
+   16. Client Source Address and Interface Selection . . . . . . . .  31
+   17. DHCP Server Solicitation  . . . . . . . . . . . . . . . . . .  31
+     17.1.  Client Behavior  . . . . . . . . . . . . . . . . . . . .  31
+       17.1.1.  Creation of Solicit Messages . . . . . . . . . . . .  32
+       17.1.2.  Transmission of Solicit Messages . . . . . . . . . .  32
+       17.1.3.  Receipt of Advertise Messages  . . . . . . . . . . .  34
+       17.1.4.  Receipt of Reply Message . . . . . . . . . . . . . .  34
+     17.2.  Server Behavior  . . . . . . . . . . . . . . . . . . . .  35
+       17.2.1.  Receipt of Solicit Messages  . . . . . . . . . . . .  35
+       17.2.2.  Creation and Transmission of Advertise Messages  . .  35
+       17.2.3.  Creation and Transmission of Reply Messages  . . . .  36
+   18. DHCP Client-Initiated Configuration Exchange  . . . . . . . .  37
+     18.1.  Client Behavior  . . . . . . . . . . . . . . . . . . . .  37
+       18.1.1.  Creation and Transmission of Request Messages  . . .  38
+       18.1.2.  Creation and Transmission of Confirm Messages  . . .  39
+       18.1.3.  Creation and Transmission of Renew Messages  . . . .  40
+       18.1.4.  Creation and Transmission of Rebind Messages . . . .  41
        18.1.5.  Creation and Transmission of Information-request
-                Messages . . . . . . . . . . . . . . . . . . . . . .  41
-       18.1.6.  Creation and Transmission of Release Messages  . . .  42
-       18.1.7.  Creation and Transmission of Decline Messages  . . .  43
-       18.1.8.  Receipt of Reply Messages  . . . . . . . . . . . . .  44
-     18.2.  Server Behavior  . . . . . . . . . . . . . . . . . . . .  46
-       18.2.1.  Receipt of Request Messages  . . . . . . . . . . . .  46
-       18.2.2.  Receipt of Confirm Messages  . . . . . . . . . . . .  48
-       18.2.3.  Receipt of Renew Messages  . . . . . . . . . . . . .  48
-       18.2.4.  Receipt of Rebind Messages . . . . . . . . . . . . .  49
-       18.2.5.  Receipt of Information-request Messages  . . . . . .  50
-       18.2.6.  Receipt of Release Messages  . . . . . . . . . . . .  50
-       18.2.7.  Receipt of Decline Messages  . . . . . . . . . . . .  51
-       18.2.8.  Transmission of Reply Messages . . . . . . . . . . .  52
-   19. DHCP Server-Initiated Configuration Exchange  . . . . . . . .  52
-     19.1.  Server Behavior  . . . . . . . . . . . . . . . . . . . .  52
-       19.1.1.  Creation and Transmission of Reconfigure Messages  .  52
-       19.1.2.  Time Out and Retransmission of Reconfigure Messages   53
-     19.2.  Receipt of Renew Messages  . . . . . . . . . . . . . . .  54
-     19.3.  Receipt of Information-request Messages  . . . . . . . .  54
-     19.4.  Client Behavior  . . . . . . . . . . . . . . . . . . . .  54
-       19.4.1.  Receipt of Reconfigure Messages  . . . . . . . . . .  54
-       19.4.2.  Creation and Transmission of Renew Messages  . . . .  55
+                Messages . . . . . . . . . . . . . . . . . . . . . .  42
+       18.1.6.  Creation and Transmission of Release Messages  . . .  43
+       18.1.7.  Creation and Transmission of Decline Messages  . . .  44
+       18.1.8.  Receipt of Reply Messages  . . . . . . . . . . . . .  45
+     18.2.  Server Behavior  . . . . . . . . . . . . . . . . . . . .  47
+       18.2.1.  Receipt of Request Messages  . . . . . . . . . . . .  47
+       18.2.2.  Receipt of Confirm Messages  . . . . . . . . . . . .  49
+       18.2.3.  Receipt of Renew Messages  . . . . . . . . . . . . .  49
+       18.2.4.  Receipt of Rebind Messages . . . . . . . . . . . . .  50
+       18.2.5.  Receipt of Information-request Messages  . . . . . .  51
+       18.2.6.  Receipt of Release Messages  . . . . . . . . . . . .  51
+       18.2.7.  Receipt of Decline Messages  . . . . . . . . . . . .  52
+       18.2.8.  Transmission of Reply Messages . . . . . . . . . . .  53
+   19. DHCP Server-Initiated Configuration Exchange  . . . . . . . .  53
+     19.1.  Server Behavior  . . . . . . . . . . . . . . . . . . . .  53
+       19.1.1.  Creation and Transmission of Reconfigure Messages  .  53
+       19.1.2.  Time Out and Retransmission of Reconfigure Messages   54
+     19.2.  Receipt of Renew Messages  . . . . . . . . . . . . . . .  55
+     19.3.  Receipt of Information-request Messages  . . . . . . . .  55
+     19.4.  Client Behavior  . . . . . . . . . . . . . . . . . . . .  55
+       19.4.1.  Receipt of Reconfigure Messages  . . . . . . . . . .  55
+       19.4.2.  Creation and Transmission of Renew Messages  . . . .  56
        19.4.3.  Creation and Transmission of Information-request
-                Messages . . . . . . . . . . . . . . . . . . . . . .  55
+                Messages . . . . . . . . . . . . . . . . . . . . . .  56
        19.4.4.  Time Out and Retransmission of Renew or Information-
-                request  . . . . . . . . . . . . . . . . . . . . . .  55
-       19.4.5.  Receipt of Reply Messages  . . . . . . . . . . . . .  56
-   20. Relay Agent Behavior  . . . . . . . . . . . . . . . . . . . .  56
-     20.1.  Relaying a Client Message or a Relay-forward Message . .  56
-       20.1.1.  Relaying a Message from a Client . . . . . . . . . .  56
+                request  . . . . . . . . . . . . . . . . . . . . . .  56
+       19.4.5.  Receipt of Reply Messages  . . . . . . . . . . . . .  57
+   20. Relay Agent Behavior  . . . . . . . . . . . . . . . . . . . .  57
+     20.1.  Relaying a Client Message or a Relay-forward Message . .  57
+       20.1.1.  Relaying a Message from a Client . . . . . . . . . .  57
 
 
 
@@ -170,45 +170,45 @@ Unknown                   Expires May 31, 2014                  [Page 3]
 Internet-Draft               Unknown(short)                November 2013
 
 
-       20.1.2.  Relaying a Message from a Relay Agent  . . . . . . .  57
-     20.2.  Relaying a Relay-reply Message . . . . . . . . . . . . .  57
-     20.3.  Construction of Relay-reply Messages . . . . . . . . . .  58
-   21. Authentication of DHCP Messages . . . . . . . . . . . . . . .  58
+       20.1.2.  Relaying a Message from a Relay Agent  . . . . . . .  58
+     20.2.  Relaying a Relay-reply Message . . . . . . . . . . . . .  58
+     20.3.  Construction of Relay-reply Messages . . . . . . . . . .  59
+   21. Authentication of DHCP Messages . . . . . . . . . . . . . . .  59
      21.1.  Security of Messages Sent Between Servers and Relay
-            Agents . . . . . . . . . . . . . . . . . . . . . . . . .  59
-     21.2.  Summary of DHCP Authentication . . . . . . . . . . . . .  60
-     21.3.  Replay Detection . . . . . . . . . . . . . . . . . . . .  60
-     21.4.  Delayed Authentication Protocol  . . . . . . . . . . . .  61
+            Agents . . . . . . . . . . . . . . . . . . . . . . . . .  60
+     21.2.  Summary of DHCP Authentication . . . . . . . . . . . . .  61
+     21.3.  Replay Detection . . . . . . . . . . . . . . . . . . . .  61
+     21.4.  Delayed Authentication Protocol  . . . . . . . . . . . .  62
        21.4.1.  Use of the Authentication Option in the Delayed
-                Authentication Protocol  . . . . . . . . . . . . . .  61
+                Authentication Protocol  . . . . . . . . . . . . . .  62
        21.4.2.  Message Validation . . . . . . . . . . . . . . . . .  63
-       21.4.3.  Key Utilization  . . . . . . . . . . . . . . . . . .  63
+       21.4.3.  Key Utilization  . . . . . . . . . . . . . . . . . .  64
        21.4.4.  Client Considerations for Delayed Authentication
-                Protocol . . . . . . . . . . . . . . . . . . . . . .  63
-         21.4.4.1.  Sending Solicit Messages . . . . . . . . . . . .  63
-         21.4.4.2.  Receiving Advertise Messages . . . . . . . . . .  63
+                Protocol . . . . . . . . . . . . . . . . . . . . . .  64
+         21.4.4.1.  Sending Solicit Messages . . . . . . . . . . . .  64
+         21.4.4.2.  Receiving Advertise Messages . . . . . . . . . .  64
          21.4.4.3.  Sending Request, Confirm, Renew, Rebind, Decline
-                    or Release . . . . . . . . . . . . . . . . . . .  64
-         21.4.4.4.  Sending Information-request Messages . . . . . .  64
-         21.4.4.5.  Receiving Reply Messages . . . . . . . . . . . .  64
-         21.4.4.6.  Receiving Reconfigure Messages . . . . . . . . .  65
+                    or Release . . . . . . . . . . . . . . . . . . .  65
+         21.4.4.4.  Sending Information-request Messages . . . . . .  65
+         21.4.4.5.  Receiving Reply Messages . . . . . . . . . . . .  65
+         21.4.4.6.  Receiving Reconfigure Messages . . . . . . . . .  66
        21.4.5.  Server Considerations for Delayed Authentication
-                Protocol . . . . . . . . . . . . . . . . . . . . . .  65
+                Protocol . . . . . . . . . . . . . . . . . . . . . .  66
          21.4.5.1.  Receiving Solicit Messages and Sending Advertise
-                    Messages . . . . . . . . . . . . . . . . . . . .  65
+                    Messages . . . . . . . . . . . . . . . . . . . .  66
          21.4.5.2.  Receiving Request, Confirm, Renew, Rebind or
-                    Release Messages and Sending Reply Messages  . .  65
+                    Release Messages and Sending Reply Messages  . .  66
      21.5.  Reconfigure Key Authentication Protocol  . . . . . . . .  66
        21.5.1.  Use of the Authentication Option in the Reconfigure
-                Key  . . . . . . . . . . . . . . . . . . . . . . . .  66
-       21.5.2.  Server considerations for Reconfigure Key protocol .  67
-       21.5.3.  Client considerations for Reconfigure Key protocol .  67
+                Key  . . . . . . . . . . . . . . . . . . . . . . . .  67
+       21.5.2.  Server considerations for Reconfigure Key protocol .  68
+       21.5.3.  Client considerations for Reconfigure Key protocol .  68
    22. DHCP Options  . . . . . . . . . . . . . . . . . . . . . . . .  68
-     22.1.  Format of DHCP Options . . . . . . . . . . . . . . . . .  68
+     22.1.  Format of DHCP Options . . . . . . . . . . . . . . . . .  69
      22.2.  Client Identifier Option . . . . . . . . . . . . . . . .  69
-     22.3.  Server Identifier Option . . . . . . . . . . . . . . . .  69
-     22.4.  Identity Association for Non-temporary Addresses Option   70
-     22.5.  Identity Association for Temporary Addresses Option  . .  72
+     22.3.  Server Identifier Option . . . . . . . . . . . . . . . .  70
+     22.4.  Identity Association for Non-temporary Addresses Option   71
+     22.5.  Identity Association for Temporary Addresses Option  . .  73
      22.6.  IA Address Option  . . . . . . . . . . . . . . . . . . .  74
      22.7.  Option Request Option  . . . . . . . . . . . . . . . . .  76
      22.8.  Preference Option  . . . . . . . . . . . . . . . . . . .  77
@@ -461,43 +461,43 @@ Internet-Draft               Unknown(short)                November 2013
    Protocol [RFC2460], IPv6 Addressing Architecture [RFC2373], and IPv6
    Stateless Address Autoconfiguration [RFC2462] is included below.
 
-   address An IP layer identifier for an interface or a set of
-   interfaces.
+   address                   An IP layer identifier for an interface or
+                             a set of interfaces.
 
-   host Any node that is not a router.
+   host                      Any node that is not a router.
 
-   IP Internet Protocol Version 6 (IPv6).  The terms IPv4 and IPv6 are
-   used only in contexts where it is necessary to avoid ambiguity.
+   IP                        Internet Protocol Version 6 (IPv6).  The
+                             terms IPv4 and IPv6 are used only in
+                             contexts where it is necessary to avoid
+                             ambiguity.
 
-   interface A node's attachment to a link.
+   interface                 A node's attachment to a link.
 
-   link A communication facility or medium over which nodes can
-   communicate at the link layer, i.e., the layer immediately below IP.
-   Examples are Ethernet (simple or bridged); Token Ring; PPP links,
-   X.25, Frame Relay, or ATM networks; and Internet (or higher) layer
-   "tunnels", such as tunnels over IPv4 or IPv6 itself.
+   link                      A communication facility or medium over
+                             which nodes can communicate at the link
+                             layer, i.e., the layer immediately below
+                             IP.  Examples are Ethernet (simple or
+                             bridged); Token Ring; PPP links, X.25,
+                             Frame Relay, or ATM networks; and Internet
+                             (or higher) layer "tunnels", such as
+                             tunnels over IPv4 or IPv6 itself.
 
-   link-layer identifier A link-layer identifier for an interface.
-   Examples include IEEE 802 addresses for Ethernet or Token Ring
-   network interfaces, and E.164 addresses for ISDN links.
+   link-layer identifier     A link-layer identifier for an interface.
+                             Examples include IEEE 802 addresses for
+                             Ethernet or Token Ring network interfaces,
+                             and E.164 addresses for ISDN links.
 
-   link-local address An IPv6 address having a link-only scope,
-   indicated by having the prefix (FE80::/10), that can be used to reach
-   neighboring nodes attached to the same link.  Every interface has a
-   link-local address.
+   link-local address        An IPv6 address having a link-only scope,
+                             indicated by having the prefix (FE80::/10),
+                             that can be used to reach neighboring nodes
+                             attached to the same link.  Every interface
+                             has a link-local address.
 
-   multicast address An identifier for a set of interfaces (typically
-   belonging to different nodes).  A packet sent to a multicast address
-   is delivered to all interfaces identified by that address.
-
-   neighbor A node attached to the same link.
-
-   node A device that implements IP.
-
-   packet An IP header plus payload.
-
-   prefix The initial bits of an address, or a set of IP addresses that
-   share the same initial bits.
+   multicast address         An identifier for a set of interfaces
+                             (typically belonging to different nodes).
+                             A packet sent to a multicast address is
+                             delivered to all interfaces identified by
+                             that address.
 
 
 
@@ -506,54 +506,54 @@ Unknown                   Expires May 31, 2014                  [Page 9]
 Internet-Draft               Unknown(short)                November 2013
 
 
-   prefix length The number of bits in a prefix.
+   neighbor                  A node attached to the same link.
 
-   router A node that forwards IP packets not explicitly addressed to
-   itself.
+   node                      A device that implements IP.
 
-   unicast address An identifier for a single interface.  A packet sent
-   to a unicast address is delivered to the interface identified by that
-   address.
+   packet                    An IP header plus payload.
+
+   prefix                    The initial bits of an address, or a set of
+                             IP addresses that share the same initial
+                             bits.
+
+   prefix length             The number of bits in a prefix.
+
+   router                    A node that forwards IP packets not
+                             explicitly addressed to itself.
+
+   unicast address           An identifier for a single interface.  A
+                             packet sent to a unicast address is
+                             delivered to the interface identified by
+                             that address.
 
 4.2.  DHCP Terminology
 
    Terminology specific to DHCP can be found below.
 
-   appropriate to the link An address is "appropriate to the link" when
-   the address is consistent with the DHCP server's knowledge of the
-   network topology, prefix assignment and address assignment policies.
+   appropriate to the link   An address is "appropriate to the link"
+                             when the address is consistent with the
+                             DHCP server's knowledge of the network
+                             topology, prefix assignment and address
+                             assignment policies.
 
-   binding A binding (or, client binding) is a group of server data
-   records containing the information the server has about the addresses
-   in an IA or configuration information explicitly assigned to the
-   client.  Configuration information that has been returned to a client
-   through a policy - for example, the information returned to all
-   clients on the same link - does not require a binding.  A binding
-   containing information about an IA is indexed by the tuple <DUID, IA-
-   type, IAID> (where IA-type is the type of address in the IA; for
-   example, temporary).  A binding containing configuration information
-   for a client is indexed by <DUID>. configuration parameter An element
-   of the configuration information set on the server and delivered to
-   the client using DHCP.  Such parameters may be used to carry
-   information to be used by a node to configure its network subsystem
-   and enable communication on a link or internetwork, for example.
+   binding                   A binding (or, client binding) is a group
+                             of server data records containing the
+                             information the server has about the
+                             addresses in an IA or configuration
+                             information explicitly assigned to the
+                             client.  Configuration information that has
+                             been returned to a client through a policy
+                             - for example, the information returned to
+                             all clients on the same link - does not
+                             require a binding.  A binding containing
+                             information about an IA is indexed by the
+                             tuple <DUID, IA-type, IAID> (where IA-type
+                             is the type of address in the IA; for
+                             example, temporary).  A binding containing
+                             configuration information for a client is
+                             indexed by <DUID>.
 
-   DHCP Dynamic Host Configuration Protocol for IPv6.  The terms DHCPv4
-   and DHCPv6 are used only in contexts where it is necessary to avoid
-   ambiguity.
 
-   DHCP client (or client) A node that initiates requests on a link to
-   obtain configuration parameters from one or more DHCP servers.
-
-   DHCP domain A set of links managed by DHCP and operated by a single
-   administrative entity.
-
-   DHCP realm A name used to identify the DHCP administrative domain
-   from which a DHCP authentication key was selected.
-
-   DHCP relay agent (or relay agent) A node that acts as an intermediary
-   to deliver DHCP messages between clients and servers, and is on the
-   same link as the client.
 
 
 
@@ -562,44 +562,95 @@ Unknown                   Expires May 31, 2014                 [Page 10]
 Internet-Draft               Unknown(short)                November 2013
 
 
-   DHCP server (or server) A node that responds to requests from
-   clients, and may or may not be on the same link as the client(s).
+   configuration parameter   An element of the configuration information
+                             set on the server and delivered to the
+                             client using DHCP.  Such parameters may be
+                             used to carry information to be used by a
+                             node to configure its network subsystem and
+                             enable communication on a link or
+                             internetwork, for example.
 
-   DUID A DHCP Unique IDentifier for a DHCP participant; each DHCP
-   client and server has exactly one DUID.  See section 9 for details of
-   the ways in which a DUID may be constructed.
+   DHCP                      Dynamic Host Configuration Protocol for
+                             IPv6.  The terms DHCPv4 and DHCPv6 are used
+                             only in contexts where it is necessary to
+                             avoid ambiguity.
+
+   DHCP client (or client)   A node that initiates requests on a link to
+                             obtain configuration parameters from one or
+                             more DHCP servers.
+
+   DHCP domain               A set of links managed by DHCP and operated
+                             by a single administrative entity.
+
+   DHCP realm                A name used to identify the DHCP
+                             administrative domain from which a DHCP
+                             authentication key was selected.
+
+   DHCP relay agent (or relay agent)  A node that acts as an
+                             intermediary to deliver DHCP messages
+                             between clients and servers, and is on the
+                             same link as the client.
+
+   >DHCP server (or server)  A node that responds to requests from
+                             clients, and may or may not be on the same
+                             link as the client(s).
+
+   DUID                      A DHCP Unique IDentifier for a DHCP
+                             participant; each DHCP client and server
+                             has exactly one DUID.  See section 9 for
+                             details of the ways in which a DUID may be
+                             constructed.
 
    Identity association (IA) A collection of addresses assigned to a
-   client.  Each IA has an associated IAID.  A client may have more than
-   one IA assigned to it; for example, one for each of its interfaces.
-   Each IA holds one type of address; for example, an identity
-   association for temporary addresses (IA_TA) holds temporary addresses
-   (see "identity association for temporary addresses").  Throughout
-   this document, "IA" is used to refer to an identity association
-   without identifying the type of addresses in the IA.
+                             client.  Each IA has an associated IAID.  A
+                             client may have more than one IA assigned
+                             to it; for example, one for each of its
+                             interfaces.  Each IA holds one type of
+                             address; for example, an identity
+                             association for temporary addresses (IA_TA)
+                             holds temporary addresses (see "identity
+                             association for temporary addresses").
 
-   Identity association identifier (IAID) An identifier for an IA,
-   chosen by the client.  Each IA has an IAID, which is chosen to be
-   unique among all IAIDs for IAs belonging to that client.
 
-   Identity association for non-temporary addresses (IA_NA) An IA that
-   carries assigned addresses that are not temporary addresses (see
-   "identity association for temporary addresses")
 
-   Identity association for temporary addresses (IA_TA) An IA that
-   carries temporary addresses (see RFC 3041 [RFC3041]).
+Unknown                   Expires May 31, 2014                 [Page 11]
+
+Internet-Draft               Unknown(short)                November 2013
 
-   message A unit of data carried as the payload of a UDP datagram,
-   exchanged among DHCP servers, relay agents and clients.
 
-   Reconfigure key A key supplied to a client by a server used to
-   provide security for Reconfigure messages.
+                             Throughout this document, "IA" is used to
+                             refer to an identity association without
+                             identifying the type of addresses in the
+                             IA.
 
-   relaying A DHCP relay agent relays DHCP messages between DHCP
-   participants.
+   Identity association identifier (IAID)  An identifier for an IA,
+                             chosen by the client.  Each IA has an IAID,
+                             which is chosen to be unique among all
+                             IAIDs for IAs belonging to that client.
 
-   transaction ID An opaque value used to match responses with replies
-   initiated either by a client or server.
+   Identity association for non-temporary addresses (IA_NA)  An IA that
+                             carries assigned addresses that are not
+                             temporary addresses (see "identity
+                             association for temporary addresses")
+
+   Identity association for temporary addresses (IA_TA)  An IA that
+                             carries temporary addresses (see RFC 3041
+                             [RFC3041]).
+
+   message                   A unit of data carried as the payload of a
+                             UDP datagram, exchanged among DHCP servers,
+                             relay agents and clients.
+
+   Reconfigure key           A key supplied to a client by a server used
+                             to provide security for Reconfigure
+                             messages.
+
+   relaying                  A DHCP relay agent relays DHCP messages
+                             between DHCP participants.
+
+   transaction ID            An opaque value used to match responses
+                             with replies initiated either by a client
+                             or server.
 
 5.  DHCP Constants
 
@@ -610,26 +661,28 @@ Internet-Draft               Unknown(short)                November 2013
 
    DHCP makes use of the following multicast addresses:
 
+   All_DHCP_Relay_Agents_and_Servers (FF02::1:2)  A link-scoped
+                   multicast address used by a client to communicate
+                   with neighboring (i.e., on-link) relay agents and
+                   servers.  All servers and relay agents are members of
+                   this multicast group.
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 11]
+Unknown                   Expires May 31, 2014                 [Page 12]
 
 Internet-Draft               Unknown(short)                November 2013
 
 
-   All_DHCP_Relay_Agents_and_Servers (FF02::1:2) A link-scoped multicast
-   address used by a client to communicate with neighboring (i.e., on-
-   link) relay agents and servers.  All servers and relay agents are
-   members of this multicast group.
-
-   All_DHCP_Servers (FF05::1:3) A site-scoped multicast address used by
-   a relay agent to communicate with servers, either because the relay
-   agent wants to send messages to all servers or because it does not
-   know the unicast addresses of the servers.  Note that in order for a
-   relay agent to use this address, it must have an address of
-   sufficient scope to be reachable by the servers.  All servers within
-   the site are members of this multicast group.
+   All_DHCP_Servers (FF05::1:3)  A site-scoped multicast address used by
+                   a relay agent to communicate with servers, either
+                   because the relay agent wants to send messages to all
+                   servers or because it does not know the unicast
+                   addresses of the servers.  Note that in order for a
+                   relay agent to use this address, it must have an
+                   address of sufficient scope to be reachable by the
+                   servers.  All servers within the site are members of
+                   this multicast group.
 
 5.2.  UDP Ports
 
@@ -643,85 +696,32 @@ Internet-Draft               Unknown(short)                November 2013
    listed here are reserved for future use.  The numeric encoding for
    each message type is shown in parentheses.
 
-   SOLICIT (1) A client sends a Solicit message to locate servers.
+   SOLICIT (1)     A client sends a Solicit message to locate servers.
 
-   ADVERTISE (2) A server sends an Advertise message to indicate that it
-   is available for DHCP service, in response to a Solicit message
-   received from a client.
+   ADVERTISE (2)   A server sends an Advertise message to indicate that
+                   it is available for DHCP service, in response to a
+                   Solicit message received from a client.
 
-   REQUEST (3) A client sends a Request message to request configuration
-   parameters, including IP addresses, from a specific server.
+   REQUEST (3)     A client sends a Request message to request
+                   configuration parameters, including IP addresses,
+                   from a specific server.
 
-   CONFIRM (4) A client sends a Confirm message to any available server
-   to determine whether the addresses it was assigned are still
-   appropriate to the link to which the client is connected.
+   CONFIRM (4)     A client sends a Confirm message to any available
+                   server to determine whether the addresses it was
+                   assigned are still appropriate to the link to which
+                   the client is connected.
 
-   RENEW (5) A client sends a Renew message to the server that
-   originally provided the client's addresses and configuration
-   parameters to extend the lifetimes on the addresses assigned to the
-   client and to update other configuration parameters.
+   RENEW (5)       A client sends a Renew message to the server that
+                   originally provided the client's addresses and
+                   configuration parameters to extend the lifetimes on
+                   the addresses assigned to the client and to update
+                   other configuration parameters.
 
-   REBIND (6) A client sends a Rebind message to any available server to
-   extend the lifetimes on the addresses assigned to the client and to
-   update other configuration parameters; this message is sent after a
-   client receives no response to a Renew message.
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 12]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
-   REPLY (7) A server sends a Reply message containing assigned
-   addresses and configuration parameters in response to a Solicit,
-   Request, Renew, Rebind message received from a client.  A server
-   sends a Reply message containing configuration parameters in response
-   to an Information-request message.  A server sends a Reply message in
-   response to a Confirm message confirming or denying that the
-   addresses assigned to the client are appropriate to the link to which
-   the client is connected.  A server sends a Reply message to
-   acknowledge receipt of a Release or Decline message.
-
-   RELEASE (8) A client sends a Release message to the server that
-   assigned addresses to the client to indicate that the client will no
-   longer use one or more of the assigned addresses.
-
-   DECLINE (9) A client sends a Decline message to a server to indicate
-   that the client has determined that one or more addresses assigned by
-   the server are already in use on the link to which the client is
-   connected.
-
-   RECONFIGURE (10) A server sends a Reconfigure message to a client to
-   inform the client that the server has new or updated configuration
-   parameters, and that the client is to initiate a Renew/Reply or
-   Information-request/Reply transaction with the server in order to
-   receive the updated information.  INFORMATION-REQUEST (11) A client
-   sends an Information-request message to a server to request
-   configuration parameters without the assignment of any IP addresses
-   to the client.
-
-   RELAY-FORW (12) A relay agent sends a Relay-forward message to relay
-   messages to servers, either directly or through another relay agent.
-   The received message, either a client message or a Relay-forward
-   message from another relay agent, is encapsulated in an option in the
-   Relay-forward message.
-
-   RELAY-REPL (13) A server sends a Relay-reply message to a relay agent
-   containing a message that the relay agent delivers to a client.  The
-   Relay-reply message may be relayed by other relay agents for delivery
-   to the destination relay agent.
-
-   The server encapsulates the client message as an option in the Relay-
-   reply message, which the relay agent extracts and relays to the
-   client.
-
-
-
-
-
-
+   REBIND (6)      A client sends a Rebind message to any available
+                   server to extend the lifetimes on the addresses
+                   assigned to the client and to update other
+                   configuration parameters; this message is sent after
+                   a client receives no response to a Renew message.
 
 
 
@@ -729,6 +729,66 @@ Unknown                   Expires May 31, 2014                 [Page 13]
 
 Internet-Draft               Unknown(short)                November 2013
 
+
+   REPLY (7)       A server sends a Reply message containing assigned
+                   addresses and configuration parameters in response to
+                   a Solicit, Request, Renew, Rebind message received
+                   from a client.  A server sends a Reply message
+                   containing configuration parameters in response to an
+                   Information-request message.  A server sends a Reply
+                   message in response to a Confirm message confirming
+                   or denying that the addresses assigned to the client
+                   are appropriate to the link to which the client is
+                   connected.  A server sends a Reply message to
+                   acknowledge receipt of a Release or Decline message.
+
+   RELEASE (8)     A client sends a Release message to the server that
+                   assigned addresses to the client to indicate that the
+                   client will no longer use one or more of the assigned
+                   addresses.
+
+   DECLINE (9)     A client sends a Decline message to a server to
+                   indicate that the client has determined that one or
+                   more addresses assigned by the server are already in
+                   use on the link to which the client is connected.
+
+   RECONFIGURE (10)  A server sends a Reconfigure message to a client to
+                   inform the client that the server has new or updated
+                   configuration parameters, and that the client is to
+                   initiate a Renew/Reply or Information-request/Reply
+                   transaction with the server in order to receive the
+                   updated information.
+
+   INFORMATION-REQUEST (11)  A client sends an Information-request
+                   message to a server to request configuration
+                   parameters without the assignment of any IP addresses
+                   to the client.
+
+   RELAY-FORW (12) A relay agent sends a Relay-forward message to relay
+                   messages to servers, either directly or through
+                   another relay agent.  The received message, either a
+                   client message or a Relay-forward message from
+                   another relay agent, is encapsulated in an option in
+                   the Relay-forward message.
+
+   RELAY-REPL (13) A server sends a Relay-reply message to a relay agent
+                   containing a message that the relay agent delivers to
+                   a client.  The Relay-reply message may be relayed by
+                   other relay agents for delivery to the destination
+                   relay agent.
+
+
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 14]
+
+Internet-Draft               Unknown(short)                November 2013
+
+
+                   The server encapsulates the client message as an
+                   option in the Relay-reply message, which the relay
+                   agent extracts and relays to the client.
 
 5.4.  Status Codes
 
@@ -775,16 +835,16 @@ Internet-Draft               Unknown(short)                November 2013
    All values in the message header and in options are in network byte
    order.
 
-   Options are stored serially in the options field, with no padding
-   between the options.  Options are byte-aligned but are not aligned in
-   any other way such as on 2 or 4 byte boundaries.
 
 
-
-Unknown                   Expires May 31, 2014                 [Page 14]
+Unknown                   Expires May 31, 2014                 [Page 15]
 
 Internet-Draft               Unknown(short)                November 2013
 
+
+   Options are stored serially in the options field, with no padding
+   between the options.  Options are byte-aligned but are not aligned in
+   any other way such as on 2 or 4 byte boundaries.
 
    The following diagram illustrates the format of DHCP messages sent
    between clients and servers:
@@ -827,24 +887,17 @@ Internet-Draft               Unknown(short)                November 2013
    There are two relay agent messages, which share the following format:
 
 
+       0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
 
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 15]
+Unknown                   Expires May 31, 2014                 [Page 16]
 
 Internet-Draft               Unknown(short)                November 2013
 
 
-       0                   1                   2                   3
-       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |    msg-type   |   hop-count   |                               |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               |
       |                                                               |
@@ -890,15 +943,16 @@ Internet-Draft               Unknown(short)                November 2013
                22.10); MAY include other options added by the relay
                agent.
 
+7.2.  Relay-reply Message
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 16]
+
+
+Unknown                   Expires May 31, 2014                 [Page 17]
 
 Internet-Draft               Unknown(short)                November 2013
 
-
-7.2.  Relay-reply Message
 
    The following table defines the use of message fields in a Relay-
    reply message.
@@ -945,18 +999,17 @@ Internet-Draft               Unknown(short)                November 2013
    example, a device's DUID should not change as a result of a change in
    the device's network hardware.
 
+   The motivation for having more than one type of DUID is that the DUID
+   must be globally unique, and must also be easy to generate.  The sort
+   of globally-unique identifier that is easy to generate for any given
 
 
 
-
-Unknown                   Expires May 31, 2014                 [Page 17]
+Unknown                   Expires May 31, 2014                 [Page 18]
 
 Internet-Draft               Unknown(short)                November 2013
 
 
-   The motivation for having more than one type of DUID is that the DUID
-   must be globally unique, and must also be easy to generate.  The sort
-   of globally-unique identifier that is easy to generate for any given
    device can differ quite widely.  Also, some devices may not contain
    any persistent storage.  Retaining a generated DUID in such a device
    is not possible, so the DUID scheme must accommodate such devices.
@@ -994,22 +1047,6 @@ Internet-Draft               Unknown(short)                November 2013
    The following diagram illustrates the format of a DUID-LLT:
 
 
-
-
-
-
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 18]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1021,6 +1058,12 @@ Internet-Draft               Unknown(short)                November 2013
       .             link-layer address (variable length)              .
       .                                                               .
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 19]
+
+Internet-Draft               Unknown(short)                November 2013
 
 
                          Figure 3: DUID-LLT format
@@ -1059,13 +1102,6 @@ Internet-Draft               Unknown(short)                November 2013
    provide an administrative interface that replaces the existing DUID
    with a newly-generated DUID-LLT.
 
-
-
-Unknown                   Expires May 31, 2014                 [Page 19]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
 9.3.  DUID Assigned by Vendor Based on Enterprise Number [DUID-EN]
 
    This form of DUID is assigned by the vendor to the device.  It
@@ -1078,6 +1114,14 @@ Internet-Draft               Unknown(short)                November 2013
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 20]
+
+Internet-Draft               Unknown(short)                November 2013
+
+
       |               2               |       enterprise-number       |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |   enterprise-number (contd)   |                               |
@@ -1102,11 +1146,11 @@ Internet-Draft               Unknown(short)                November 2013
    An example DUID of this type might look like this:
 
 
-      +---+---+---+---+---+---+---+---+
-      | 0 | 2 | 0 | 0 | 0 |  9| 12|192|
-      +---+---+---+---+---+---+---+---+
-      |132|221| 3 | 0 | 9 | 18|
-      +---+---+---+---+---+---+
+                      +---+---+---+---+---+---+---+---+
+                      | 0 | 2 | 0 | 0 | 0 |  9| 12|192|
+                      +---+---+---+---+---+---+---+---+
+                      |132|221| 3 | 0 | 9 | 18|
+                      +---+---+---+---+---+---+
 
 
                          Figure 5: DUID-EN example
@@ -1114,13 +1158,6 @@ Internet-Draft               Unknown(short)                November 2013
    This example includes the two-octet type of 2, the Enterprise Number
    (9), followed by eight octets of identifier data
    (0x0CC084D303000912).
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 20]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
 9.4.  DUID Based on Link-layer Address [DUID-LL]
 
@@ -1133,6 +1170,14 @@ Internet-Draft               Unknown(short)                November 2013
    valid hardware type assigned by the IANA, as described in RFC 826
    [RFC0826].  The hardware type is stored in network byte order.  The
    link-layer address is stored in canonical form, as described in RFC
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 21]
+
+Internet-Draft               Unknown(short)                November 2013
+
+
    2464 [RFC2464].  The following diagram illustrates the format of a
    DUID-LL:
 
@@ -1171,13 +1216,6 @@ Internet-Draft               Unknown(short)                November 2013
    addresses.  Each IA consists of an IAID and associated configuration
    information.
 
-
-
-Unknown                   Expires May 31, 2014                 [Page 21]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    A client must associate at least one distinct IA with each of its
    network interfaces for which it is to request the assignment of IPv6
    addresses from a DHCP server.  The client uses the IAs assigned to an
@@ -1188,6 +1226,14 @@ Internet-Draft               Unknown(short)                November 2013
    among the IAIDs on the client.  The IAID is chosen by the client.
    For any given use of an IA by the client, the IAID for that IA MUST
    be consistent across restarts of the DHCP client.  The client may
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 22]
+
+Internet-Draft               Unknown(short)                November 2013
+
+
    maintain consistency either by storing the IAID in non-volatile
    storage or by using an algorithm that will consistently produce the
    same IAID as long as the configuration of the client has not changed.
@@ -1225,15 +1271,6 @@ Internet-Draft               Unknown(short)                November 2013
    interface, identified by the link-address field in the message from
    the relay agent, is attached.
 
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 22]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    * If the server receives the message directly from the client and the
    source address in the IP datagram in which the message was received
    is not a link-local address, then the client is on the link
@@ -1245,6 +1282,13 @@ Internet-Draft               Unknown(short)                November 2013
    - The DUID supplied by the client.
 
    - Other information in options supplied by the client.
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 23]
+
+Internet-Draft               Unknown(short)                November 2013
+
 
    - Other information in options supplied by the relay agent.
 
@@ -1281,15 +1325,6 @@ Internet-Draft               Unknown(short)                November 2013
 
 13.  Transmission of Messages by a Client
 
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 23]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    Unless otherwise specified in this document, or in a document that
    describes how IPv6 is carried over a specific type of link (for link
    types that do not support multicast), a client sends DHCP messages to
@@ -1301,6 +1336,15 @@ Internet-Draft               Unknown(short)                November 2013
    (all servers will receive this message but only the indicated server
    will respond).  All servers are indicated by not supplying this
    option.
+
+
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 24]
+
+Internet-Draft               Unknown(short)                November 2013
+
 
    A client may send some messages directly to a server using unicast,
    as described in section 22.12.
@@ -1339,13 +1383,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    RAND Randomization factor
 
-
-
-Unknown                   Expires May 31, 2014                 [Page 24]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    With each message transmission or retransmission, the client sets RT
    according to the rules given below.  If RT expires before the message
    exchange terminates, the client recomputes RT and retransmits the
@@ -1355,6 +1392,15 @@ Internet-Draft               Unknown(short)                November 2013
    (RAND), which is a random number chosen with a uniform distribution
    between -0.1 and +0.1.  The randomization factor is included to
    minimize synchronization of messages transmitted by DHCP clients.
+
+
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 25]
+
+Internet-Draft               Unknown(short)                November 2013
+
 
    The algorithm for choosing a random number does not need to be
    cryptographically sound.  The algorithm SHOULD produce a different
@@ -1373,8 +1419,9 @@ Internet-Draft               Unknown(short)                November 2013
    randomization added by the use of RAND).  If MRT has a value of 0,
    there is no upper limit on the value of RT.  Otherwise:
 
-         if (RT > MRT)
-            RT = MRT + RAND*MRT
+      if (RT > MRT)
+         RT = MRT + RAND*MRT
+
 
    MRC specifies an upper bound on the number of times a client may
    retransmit a message.  Unless MRC is zero, the message exchange fails
@@ -1394,14 +1441,6 @@ Internet-Draft               Unknown(short)                November 2013
 
 15.  Message Validation
 
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 25]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    Clients and servers SHOULD discard any messages that contain options
    that are not allowed to appear in the received message.  For example,
    an IA option is not allowed to appear in an Information-request
@@ -1410,6 +1449,14 @@ Internet-Draft               Unknown(short)                November 2013
 
    A server MUST discard any Solicit, Confirm, Rebind or Information-
    request messages it receives with a unicast destination address.
+
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 26]
+
+Internet-Draft               Unknown(short)                November 2013
+
 
    Message validation based on DHCP authentication is discussed in
    section 21.4.2.
@@ -1449,15 +1496,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    - the message does not include a Client Identifier option.
 
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 26]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    - the contents of the Client Identifier option does not match the
    client's DUID.
 
@@ -1466,6 +1504,15 @@ Internet-Draft               Unknown(short)                November 2013
 
    Servers and relay agents MUST discard any received Advertise
    messages.
+
+
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 27]
+
+Internet-Draft               Unknown(short)                November 2013
+
 
 15.4.  Request Message
 
@@ -1507,13 +1554,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    Clients MUST discard any received Rebind messages.
 
-
-
-Unknown                   Expires May 31, 2014                 [Page 27]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    Servers MUST discard any received Rebind messages that do not include
    a Client Identifier option or that do include a Server Identifier
    option.
@@ -1521,6 +1561,14 @@ Internet-Draft               Unknown(short)                November 2013
 15.8.  Decline Messages
 
    Clients MUST discard any received Decline messages.
+
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 28]
+
+Internet-Draft               Unknown(short)                November 2013
+
 
    Servers MUST discard any received Decline message that meets any of
    the following conditions:
@@ -1563,14 +1611,20 @@ Internet-Draft               Unknown(short)                November 2013
    option in the original message, the Reply message MUST NOT include a
    Client Identifier option.
 
+   Servers and relay agents MUST discard any received Reply messages.
 
 
-Unknown                   Expires May 31, 2014                 [Page 28]
+
+
+
+
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 29]
 
 Internet-Draft               Unknown(short)                November 2013
 
-
-   Servers and relay agents MUST discard any received Reply messages.
 
 15.11.  Reconfigure Message
 
@@ -1618,15 +1672,15 @@ Internet-Draft               Unknown(short)                November 2013
 
 15.14.  Relay-reply Message
 
+   Clients and servers MUST discard any received Relay-reply messages.
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 29]
+
+Unknown                   Expires May 31, 2014                 [Page 30]
 
 Internet-Draft               Unknown(short)                November 2013
 
-
-   Clients and servers MUST discard any received Relay-reply messages.
 
 16.  Client Source Address and Interface Selection
 
@@ -1671,16 +1725,20 @@ Internet-Draft               Unknown(short)                November 2013
    to assign addresses or return other configuration parameters on the
    link to which the client is attached.
 
-17.1.1.  Creation of Solicit Messages
 
 
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 30]
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 31]
 
 Internet-Draft               Unknown(short)                November 2013
 
+
+17.1.1.  Creation of Solicit Messages
 
    The client sets the "msg-type" field to SOLICIT.  The client
    generates a transaction ID and inserts this value in the
@@ -1728,15 +1786,15 @@ Internet-Draft               Unknown(short)                November 2013
 
    MRT SOL_MAX_RT
 
-   MRC 0
 
 
 
-
-Unknown                   Expires May 31, 2014                 [Page 31]
+Unknown                   Expires May 31, 2014                 [Page 32]
 
 Internet-Draft               Unknown(short)                November 2013
 
+
+   MRC 0
 
    MRD 0
 
@@ -1783,16 +1841,16 @@ Internet-Draft               Unknown(short)                November 2013
    external event, such as user input, system restart, or when the
    client is attached to a new link.
 
-17.1.3.  Receipt of Advertise Messages
 
 
 
 
-
-Unknown                   Expires May 31, 2014                 [Page 32]
+Unknown                   Expires May 31, 2014                 [Page 33]
 
 Internet-Draft               Unknown(short)                November 2013
 
+
+17.1.3.  Receipt of Advertise Messages
 
    The client MUST ignore any Advertise message that includes a Status
    Code option containing the value NoAddrsAvail, with the exception
@@ -1843,9 +1901,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-
-
-Unknown                   Expires May 31, 2014                 [Page 33]
+Unknown                   Expires May 31, 2014                 [Page 34]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -1901,7 +1957,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 34]
+Unknown                   Expires May 31, 2014                 [Page 35]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -1957,7 +2013,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 35]
+Unknown                   Expires May 31, 2014                 [Page 36]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2013,7 +2069,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 36]
+Unknown                   Expires May 31, 2014                 [Page 37]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2069,7 +2125,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 37]
+Unknown                   Expires May 31, 2014                 [Page 38]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2125,7 +2181,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 38]
+Unknown                   Expires May 31, 2014                 [Page 39]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2181,7 +2237,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 39]
+Unknown                   Expires May 31, 2014                 [Page 40]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2237,7 +2293,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 40]
+Unknown                   Expires May 31, 2014                 [Page 41]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2293,7 +2349,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 41]
+Unknown                   Expires May 31, 2014                 [Page 42]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2349,7 +2405,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 42]
+Unknown                   Expires May 31, 2014                 [Page 43]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2405,7 +2461,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 43]
+Unknown                   Expires May 31, 2014                 [Page 44]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2461,7 +2517,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 44]
+Unknown                   Expires May 31, 2014                 [Page 45]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2517,7 +2573,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 45]
+Unknown                   Expires May 31, 2014                 [Page 46]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2573,7 +2629,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 46]
+Unknown                   Expires May 31, 2014                 [Page 47]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2629,7 +2685,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 47]
+Unknown                   Expires May 31, 2014                 [Page 48]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2685,7 +2741,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 48]
+Unknown                   Expires May 31, 2014                 [Page 49]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2741,7 +2797,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 49]
+Unknown                   Expires May 31, 2014                 [Page 50]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2797,7 +2853,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 50]
+Unknown                   Expires May 31, 2014                 [Page 51]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2853,7 +2909,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 51]
+Unknown                   Expires May 31, 2014                 [Page 52]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2909,7 +2965,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 52]
+Unknown                   Expires May 31, 2014                 [Page 53]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -2965,7 +3021,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 53]
+Unknown                   Expires May 31, 2014                 [Page 54]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -3021,7 +3077,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 54]
+Unknown                   Expires May 31, 2014                 [Page 55]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -3077,7 +3133,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 55]
+Unknown                   Expires May 31, 2014                 [Page 56]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -3133,7 +3189,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 56]
+Unknown                   Expires May 31, 2014                 [Page 57]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -3189,7 +3245,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 57]
+Unknown                   Expires May 31, 2014                 [Page 58]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -3245,7 +3301,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 58]
+Unknown                   Expires May 31, 2014                 [Page 59]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -3301,7 +3357,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 59]
+Unknown                   Expires May 31, 2014                 [Page 60]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -3357,7 +3413,7 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 60]
+Unknown                   Expires May 31, 2014                 [Page 61]
 
 Internet-Draft               Unknown(short)                November 2013
 
@@ -3401,23 +3457,6 @@ Internet-Draft               Unknown(short)                November 2013
    The format of the Authentication information is:
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 61]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -3427,6 +3466,14 @@ Internet-Draft               Unknown(short)                November 2013
       .                                                               .
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                            key ID                             |
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 62]
+
+Internet-Draft               Unknown(short)                November 2013
+
+
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                                                               |
       |                           HMAC-MD5                            |
@@ -3465,15 +3512,6 @@ Internet-Draft               Unknown(short)                November 2013
       identifiers, and allows a host using DHCP to use authenticated
       DHCP while roaming among DHCP administrative domains.
 
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 62]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
 21.4.2.  Message Validation
 
    Any DHCP message that includes more than one authentication option
@@ -3484,6 +3522,14 @@ Internet-Draft               Unknown(short)                November 2013
    replay detection method specified by the RDM field.  Next, the
    receiver computes the MAC as described in [RFC2104].  The entire DHCP
    message (setting the MAC field of the authentication option to 0) is
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 63]
+
+Internet-Draft               Unknown(short)                November 2013
+
+
    used as input to the HMAC-MD5 computation function.  If the MAC
    computed by the receiver does not match the MAC contained in the
    authentication option, the receiver MUST discard the DHCP message.
@@ -3520,16 +3566,6 @@ Internet-Draft               Unknown(short)                November 2013
 
 21.4.4.2.  Receiving Advertise Messages
 
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 63]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    The client validates any Advertise messages containing an
    Authentication option specifying the delayed authentication protocol
    using the validation test described in section 21.4.2.
@@ -3542,6 +3578,14 @@ Internet-Draft               Unknown(short)                November 2013
 
    The decision to set local policy to accept unauthenticated messages
    should be made with care.  Accepting an unauthenticated Advertise
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 64]
+
+Internet-Draft               Unknown(short)                November 2013
+
+
    message can make the client vulnerable to spoofing and other attacks.
    If local users are not explicitly informed that the client has
    accepted an unauthenticated Advertise message, the users may
@@ -3578,14 +3622,6 @@ Internet-Draft               Unknown(short)                November 2013
 
 21.4.4.5.  Receiving Reply Messages
 
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 64]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    If the client authenticated the Advertise it accepted, the client
    MUST validate the associated Reply message from the server.  The
    client MUST discard the Reply if the message fails to pass the
@@ -3596,6 +3632,15 @@ Internet-Draft               Unknown(short)                November 2013
    If the client accepted an Advertise message that did not include
    authentication information or did not pass the validation test, the
    client MAY accept an unauthenticated Reply message from the server.
+
+
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 65]
+
+Internet-Draft               Unknown(short)                November 2013
+
 
 21.4.4.6.  Receiving Reconfigure Messages
 
@@ -3633,15 +3678,6 @@ Internet-Draft               Unknown(short)                November 2013
    include authentication information generated using the key identified
    in the received message, as specified in section 21.4.
 
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 65]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
 21.5.  Reconfigure Key Authentication Protocol
 
    The Reconfigure key authentication protocol provides protection
@@ -3652,6 +3688,15 @@ Internet-Draft               Unknown(short)                November 2013
    authenticating subsequent Reconfigure messages from that server.  The
    server then includes an HMAC computed from the Reconfigure Key in
    subsequent Reconfigure messages.
+
+
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 66]
+
+Internet-Draft               Unknown(short)                November 2013
+
 
    Both the Reconfigure Key sent from the server to the client and the
    HMAC in subsequent Reconfigure messages are carried as the
@@ -3681,23 +3726,6 @@ Internet-Draft               Unknown(short)                November 2013
    Authentication Protocol is:
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 66]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -3717,6 +3745,14 @@ Internet-Draft               Unknown(short)                November 2013
    1 Reconfigure Key value (used in Reply message).
 
    2 HMAC-MD5 digest of the message (used in Reconfigure message).
+
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 67]
+
+Internet-Draft               Unknown(short)                November 2013
+
 
    Value Data as defined by field.
 
@@ -3746,14 +3782,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    The client will receive a Reconfigure Key from the server in the
    initial Reply message from the server.  The client records the
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 67]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    Reconfigure Key for use in authenticating subsequent Reconfigure
    messages.
 
@@ -3773,6 +3801,14 @@ Internet-Draft               Unknown(short)                November 2013
    This document describes the DHCP options defined as part of the base
    DHCP specification.  Other options may be defined in the future in
    separate documents.
+
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 68]
+
+Internet-Draft               Unknown(short)                November 2013
+
 
    Unless otherwise noted, each option may appear only in the options
    area of a DHCP message and may appear only once.  If an option does
@@ -3803,13 +3839,6 @@ Internet-Draft               Unknown(short)                November 2013
    option-len An unsigned integer giving the length of the option-data
    field in this option in octets.
 
-
-
-Unknown                   Expires May 31, 2014                 [Page 68]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    option-data The data for the option; the format of this data depends
    on the definition of the option.
 
@@ -3825,16 +3854,24 @@ Internet-Draft               Unknown(short)                November 2013
    the Client Identifier option is:
 
 
-        0                   1                   2                   3
-        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-       |        OPTION_CLIENTID        |          option-len           |
-       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-       .                                                               .
-       .                              DUID                             .
-       .                        (variable length)                      .
-       .                                                               .
-       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |        OPTION_CLIENTID        |          option-len           |
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 69]
+
+Internet-Draft               Unknown(short)                November 2013
+
+
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      .                                                               .
+      .                              DUID                             .
+      .                        (variable length)                      .
+      .                                                               .
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
                 Figure 10: Client Identifier Option Format
@@ -3850,20 +3887,6 @@ Internet-Draft               Unknown(short)                November 2013
    The Server Identifier option is used to carry a DUID (see section 9)
    identifying a server between a client and a server.  The format of
    the Server Identifier option is:
-
-
-
-
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 69]
-
-Internet-Draft               Unknown(short)                November 2013
 
 
        0                   1                   2                   3
@@ -3886,29 +3909,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    DUID The DUID for the server.
 
-22.4.  Identity Association for Non-temporary Addresses Option
-
-   The Identity Association for Non-temporary Addresses option (IA_NA
-   option) is used to carry an IA_NA, the parameters associated with the
-   IA_NA, and the non-temporary addresses associated with the IA_NA.
-
-   Addresses appearing in an IA_NA option are not temporary addresses
-   (see section 22.5).
-
-   The format of the IA_NA option is:
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3920,6 +3920,18 @@ Internet-Draft               Unknown(short)                November 2013
 Unknown                   Expires May 31, 2014                 [Page 70]
 
 Internet-Draft               Unknown(short)                November 2013
+
+
+22.4.  Identity Association for Non-temporary Addresses Option
+
+   The Identity Association for Non-temporary Addresses option (IA_NA
+   option) is used to carry an IA_NA, the parameters associated with the
+   IA_NA, and the non-temporary addresses associated with the IA_NA.
+
+   Addresses appearing in an IA_NA option are not temporary addresses
+   (see section 22.5).
+
+   The format of the IA_NA option is:
 
 
        0                   1                   2                   3
@@ -3958,6 +3970,14 @@ Internet-Draft               Unknown(short)                November 2013
 
    T2 The time at which the client contacts any available server to
    extend the lifetimes of the addresses assigned to the IA_NA; T2 is a
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 71]
+
+Internet-Draft               Unknown(short)                November 2013
+
+
    time duration relative to the current time expressed in units of
    seconds.
 
@@ -3970,13 +3990,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    An IA_NA option may only appear in the options area of a DHCP
    message.  A DHCP message may contain multiple IA_NA options.
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 71]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    The status of any operations involving this IA_NA is indicated in a
    Status Code option in the IA_NA-options field.
@@ -4013,6 +4026,14 @@ Internet-Draft               Unknown(short)                November 2013
 
    If a client receives an IA_NA with T1 greater than T2, and both T1
    and T2 are greater than 0, the client discards the IA_NA option and
+
+
+
+Unknown                   Expires May 31, 2014                 [Page 72]
+
+Internet-Draft               Unknown(short)                November 2013
+
+
    processes the remainder of the message as though the server had not
    included the invalid IA_NA option.
 
@@ -4026,14 +4047,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    The Identity Association for the Temporary Addresses (IA_TA) option
    is used to carry an IA_TA, the parameters associated with the IA_TA
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 72]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    and the addresses associated with the IA_TA.  All of the addresses in
    this option are used by the client as temporary addresses, as defined
    in RFC 3041 [RFC3041].  The format of the IA_TA option is:
@@ -4070,6 +4083,13 @@ Internet-Draft               Unknown(short)                November 2013
    the addresses associated with this IA_TA are in the IA_TA-options
    field.
 
+
+
+Unknown                   Expires May 31, 2014                 [Page 73]
+
+Internet-Draft               Unknown(short)                November 2013
+
+
    Each IA_TA carries one "set" of temporary addresses; that is, at most
    one address from each prefix assigned to the link to which the client
    is attached.
@@ -4079,16 +4099,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    The status of any operations involving this IA_TA is indicated in a
    Status Code option in the IA_TA-options field.
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 73]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    Note that an IA has no explicit "lifetime" or "lease length" of its
    own.  When the valid lifetimes of all of the addresses in an IA_TA
@@ -4127,16 +4137,6 @@ Internet-Draft               Unknown(short)                November 2013
    address.
 
    The format of the IA Address option is:
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -4524,11 +4524,11 @@ Internet-Draft               Unknown(short)                November 2013
    option is:
 
 
-
-
-
-
-
+       0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |      OPTION_RAPID_COMMIT      |               0               |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
 
@@ -4536,13 +4536,6 @@ Internet-Draft               Unknown(short)                November 2013
 Unknown                   Expires May 31, 2014                 [Page 81]
 
 Internet-Draft               Unknown(short)                November 2013
-
-
-       0                   1                   2                   3
-       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      |      OPTION_RAPID_COMMIT      |               0               |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
                    Figure 22: Rapid Commit Option Format
@@ -4580,6 +4573,13 @@ Internet-Draft               Unknown(short)                November 2013
    category of user or applications it represents.
 
    The format of the User Class option is:
+
+
+
+
+
+
+
 
 
 
@@ -4808,8 +4808,8 @@ Internet-Draft               Unknown(short)                November 2013
    The format of the Interface ID option is:
 
 
-
-
+       0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 
 
 
@@ -4818,8 +4818,6 @@ Unknown                   Expires May 31, 2014                 [Page 86]
 Internet-Draft               Unknown(short)                November 2013
 
 
-       0                   1                   2                   3
-       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |      OPTION_INTERFACE_ID      |         option-len            |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4857,6 +4855,8 @@ Internet-Draft               Unknown(short)                November 2013
    message to indicate to the client whether the client responds with a
    Renew message or an Information-request message.  The format of this
    option is:
+
+
 
 
 
