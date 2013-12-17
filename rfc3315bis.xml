@@ -576,15 +576,17 @@
       fixed format header and a variable format area for options.</t>
 
       <t>All values in the message header and in options are in network byte
-      order. Options are stored serially in the options field, with no padding
+      order.</t>
+
+      <t>Options are stored serially in the options field, with no padding
       between the options. Options are byte-aligned but are not aligned in any
       other way such as on 2 or 4 byte boundaries.</t>
 
       <t>The following diagram illustrates the format of DHCP messages sent
       between clients and servers:</t>
 
-      <figure align="center" anchor="Fig1"
-              title="DHCP message formats">
+      <figure align="center" anchor="FigClientServerMsg"
+              title="Client/Server message format">
         <preamble/>
 
         <artwork align="left">
@@ -636,16 +638,39 @@
       <t>There are two relay agent messages, which share the following
       format:</t>
 
-      <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
-      1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-      msg-type | hop-count | | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | | | |
-      link-address | | | | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-| | | |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | | | | peer-address | | | |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-| | | |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | . . . options (variable number and
-      length) .... . | |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+      <figure align="center" anchor="FigRelayServerMsg"
+              title="Relay Agent/Server message format">
+        <preamble/>
 
+        <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |    msg-type   |   hop-count   |                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               |
+   |                                                               |
+   |                         link-address                          |
+   |                                                               |
+   |                               +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-|
+   |                               |                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               |
+   |                                                               |
+   |                         peer-address                          |
+   |                                                               |
+   |                               +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-|
+   |                               |                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               |
+   .                                                               .
+   .            options (variable number and length)   ....        .
+   |                                                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+        </artwork>
+
+        <postamble/>
+      </figure>
+      
       <t>The following sections describe the use of the Relay Agent message
       header.</t>
 
@@ -655,19 +680,23 @@
         <t>The following table defines the use of message fields in a
         Relay-forward message.</t>
 
-        <t>msg-type RELAY-FORW</t>
+        <t>
+          <list hangIndent="12" style="hanging">
+            <t hangText="msg-type">RELAY-FORW</t>
 
-        <t>hop-count Number of relay agents that have relayed this
-        message.</t>
+            <t hangText="hop-count">Number of relay agents that have relayed this
+            message.</t>
 
-        <t>link-address A global or site-local address that will be used by
-        the server to identify the link on which the client is located.</t>
+           <t hangText="link-address">A global or site-local address that will be used by
+           the server to identify the link on which the client is located.</t>
 
-        <t>peer-address The address of the client or relay agent from which
-        the message to be relayed was received.</t>
+           <t hangText="peer-address">The address of the client or relay agent from which
+           the message to be relayed was received.</t>
 
-        <t>options MUST include a "Relay Message option" (see section 22.10);
-        MAY include other options added by the relay agent.</t>
+           <t hangText="options">MUST include a "Relay Message option" (see section 22.10);
+           MAY include other options added by the relay agent.</t>
+         </list>
+         </t>
       </section>
 
       <!-- ends: "7.1 from line 868-->
@@ -678,16 +707,20 @@
         <t>The following table defines the use of message fields in a
         Relay-reply message.</t>
 
-        <t>msg-type RELAY-REPL</t>
+        <t>
+          <list hangIndent="12" style="hanging">
+            <t hangText="msg-type">RELAY-REPL</t>
 
-        <t>hop-count Copied from the Relay-forward message</t>
+            <t hangText="hop-count">Copied from the Relay-forward message</t>
 
-        <t>link-address Copied from the Relay-forward message</t>
+            <t hangText="link-address">Copied from the Relay-forward message</t>
 
-        <t>peer-address Copied from the Relay-forward message</t>
+            <t hangText="peer-address">Copied from the Relay-forward message</t>
 
-        <t>options MUST include a "Relay Message option"; see section 22.10;
-        MAY include other options</t>
+            <t hangText="options">MUST include a "Relay Message option"; see section 22.10;
+            MAY include other options</t>
+          </list>
+        </t>
       </section>
 
       <!-- ends: "7.2 from line 892-->
@@ -746,8 +779,13 @@
         including the type code). The following types are currently
         defined:</t>
 
-        <t>1 Link-layer address plus time 2 Vendor-assigned unique ID based on
-        Enterprise Number 3 Link-layer address</t>
+        <t>
+          <list hangIndent="12" style="hanging">
+            <t hangText="1">Link-layer address plus time</t>
+            <t hangText="2">Vendor-assigned unique ID based on Enterprise Number</t>
+            <t hangText="3">Link-layer address</t>
+          </list>
+        </t>
 
         <t>Formats for the variable field of the DUID for each of the above
         types are shown below.</t>
@@ -772,14 +810,28 @@
 
         <t>The following diagram illustrates the format of a DUID-LLT:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | 1 | hardware type (16 bits) |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        time (32 bits) |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ . .
-        . link-layer address (variable length) . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigDUIDLLT"
+              title="DUID-LLT format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |               1               |    hardware type (16 bits)    |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                        time (32 bits)                         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   .                                                               .
+   .             link-layer address (variable length)              .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>The choice of network interface can be completely arbitrary, as
         long as that interface provides a globally unique link-layer address
@@ -827,14 +879,29 @@
         identifier assigned by the vendor. The following diagram summarizes
         the structure of a DUID-EN:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | 2 | enterprise-number |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        enterprise-number (contd) | | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | .
-        identifier . . (variable length) . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigDUIDEN"
+              title="DUID-EN format">
+          <preamble/>
 
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |               2               |       enterprise-number       |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |   enterprise-number (contd)   |                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               |
+   .                           identifier                          .
+   .                       (variable length)                       .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
+      
         <t>The source of the identifier is left up to the vendor defining it,
         but each identifier part of each DUID-EN MUST be unique to the device
         that is using it, and MUST be assigned to the device at the time it is
@@ -846,10 +913,23 @@
 
         <t>An example DUID of this type might look like this:</t>
 
-        <t>+---+---+---+---+---+---+---+---+ | 0 | 2 | 0 | 0 | 0 | 9| 12|192|
-        +---+---+---+---+---+---+---+---+ |132|221| 3 | 0 | 9 | 18|
-        +---+---+---+---+---+---+</t>
+        <figure align="center" anchor="FigDUIDENExample"
+              title="DUID-EN example">
+          <preamble/>
 
+          <artwork align="left">
+          <![CDATA[
+   +---+---+---+---+---+---+---+---+
+   | 0 | 2 | 0 | 0 | 0 |  9| 12|192|
+   +---+---+---+---+---+---+---+---+
+   |132|221| 3 | 0 | 9 | 18|
+   +---+---+---+---+---+---+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
+      
         <t>This example includes the two-octet type of 2, the Enterprise
         Number (9), followed by eight octets of identifier data
         (0x0CC084D303000912).</t>
@@ -872,13 +952,27 @@
         RFC 2464 <xref target="RFC2464"/>. The following diagram illustrates
         the format of a DUID-LL:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | 3 | hardware type (16 bits) |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ . .
-        . link-layer address (variable length) . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigDUIDLL"
+              title="DUID-LL format">
+          <preamble/>
 
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |               3               |    hardware type (16 bits)    |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   .                                                               .
+   .             link-layer address (variable length)              .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
+      
         <t>The choice of network interface can be completely arbitrary, as
         long as that interface provides a unique link-layer address and is
         permanently attached to the device on which the DUID-LL is being
@@ -1092,7 +1186,12 @@
       randomization added by the use of RAND). If MRT has a value of 0, there
       is no upper limit on the value of RT. Otherwise:</t>
 
-      <t>if (RT &gt; MRT) RT = MRT + RAND*MRT</t>
+      <figure>
+      <artwork>
+      if (RT &gt; MRT)
+         RT = MRT + RAND*MRT
+      </artwork>
+      </figure>
 
       <t>MRC specifies an upper bound on the number of times a client may
       retransmit a message. Unless MRC is zero, the message exchange fails
@@ -1574,16 +1673,21 @@
           it processes the message as described in section 18.1.8. If it does
           not receive such a Reply message and does receive a valid Advertise
           message, the client processes the Advertise message as described in
-          section 17.1.3. If the client subsequently receives a valid Reply
+          section 17.1.3.</t>
+          
+          <t>If the client subsequently receives a valid Reply
           message that includes a Rapid Commit option, it either:</t>
-
-          <t>processes the Reply message as described in section 18.1.8, and
-          discards any Reply messages received in response to the Request
-          message, or</t>
-
-          <t>processes any Reply messages received in response to the Request
-          message and discards the Reply message that includes the Rapid
-          Commit option.</t>
+          
+          <t><list style="empty">
+            <t>processes the Reply message as described in section 18.1.8, and
+            discards any Reply messages received in response to the Request
+            message, or</t>
+  
+            <t>processes any Reply messages received in response to the Request
+            message and discards the Reply message that includes the Rapid
+            Commit option.</t>
+          </list></t>
+          
         </section>
 
         <!-- ends: "17.1.4 from line 1790-->
@@ -1614,19 +1718,14 @@
           <t>If the client has included a Rapid Commit option in the Solicit
           message and the server has been configured to respond with committed
           address assignments and other resources, the server responds to the
-          Solicit with a Reply message as described in section</t>
+          Solicit with a Reply message as described in section 17.2.3.
+          Otherwise, the server ignores the Rapid Commit option and
+          processes the remainder of the message as if no Rapid Commit
+          option were present.</t>
+
         </section>
 
         <!-- ends: "17.2.1 from line 1823-->
-
-        <section title=" Otherwise, the server ignores the Rapid Commit option and">
-          <!-- 17.2.3, line 1839-->
-
-          <t>processes the remainder of the message as if no Rapid Commit
-          option were present.</t>
-        </section>
-
-        <!-- ends: "17.2.3 from line 1839-->
 
         <section title="Creation and Transmission of Advertise Messages">
           <!-- 17.2.2, line 1844-->
@@ -1636,7 +1735,9 @@
           received from the client to the Advertise message. The server
           includes its server identifier in a Server Identifier option and
           copies the Client Identifier from the Solicit message into the
-          Advertise message. The server MAY add a Preference option to carry
+          Advertise message.</t>
+          
+          <t>The server MAY add a Preference option to carry
           the preference value for the Advertise message. The server
           implementation SHOULD allow the setting of a server preference value
           by the administrator. The server preference value MUST default to
@@ -1701,18 +1802,20 @@
 
           <t>DISCUSSION:</t>
 
-          <t>When using the Solicit-Reply message exchange, the server commits
-          the assignment of any addresses before sending the Reply message.
-          The client can assume it has been assigned the addresses in the
-          Reply message and does not need to send a Request message for those
-          addresses.</t>
+          <t><list style="empty">
+            <t>When using the Solicit-Reply message exchange, the server commits
+            the assignment of any addresses before sending the Reply message.
+            The client can assume it has been assigned the addresses in the
+            Reply message and does not need to send a Request message for those
+            addresses.</t>
 
-          <t>Typically, servers that are configured to use the Solicit-Reply
-          message exchange will be deployed so that only one server will
-          respond to a Solicit message. If more than one server responds, the
-          client will only use the addresses from one of the servers, while
-          the addresses from the other servers will be committed to the client
-          but not used by the client.</t>
+            <t>Typically, servers that are configured to use the Solicit-Reply
+            message exchange will be deployed so that only one server will
+            respond to a Solicit message. If more than one server responds, the
+            client will only use the addresses from one of the servers, while
+            the addresses from the other servers will be committed to the client
+            but not used by the client.</t>
+          </list></t>
 
           <t>The server includes a Rapid Commit option in the Reply message to
           indicate that the Reply is in response to a Solicit message.</t>
@@ -1760,13 +1863,15 @@
 
         <t>DISCUSSION:</t>
 
-        <t>Use of unicast may avoid delays due to the relaying of messages by
-        relay agents, as well as avoid overhead and duplicate responses by
-        servers due to the delivery of client messages to multiple servers.
-        Requiring the client to relay all DHCP messages through a relay agent
-        enables the inclusion of relay agent options in all messages sent by
-        the client. The server should enable the use of unicast only when
-        relay agent options will not be used.</t>
+        <t><list style="empty">
+          <t>Use of unicast may avoid delays due to the relaying of messages by
+          relay agents, as well as avoid overhead and duplicate responses by
+          servers due to the delivery of client messages to multiple servers.
+          Requiring the client to relay all DHCP messages through a relay agent
+          enables the inclusion of relay agent options in all messages sent by
+          the client. The server should enable the use of unicast only when
+          relay agent options will not be used.</t>
+        </list></t>
 
         <section title="Creation and Transmission of Request Messages">
           <!-- 18.1.1, line 1981-->
@@ -1942,7 +2047,9 @@
 
           <t>MRC 0</t>
 
-          <t>MRD Remaining time until T2 The message exchange is terminated
+          <t>MRD Remaining time until T2</t>
+          
+          <t>The message exchange is terminated
           when time T2 is reached (see section 18.1.4), at which time the
           client begins a Rebind message exchange.</t>
         </section>
@@ -2199,7 +2306,9 @@
           option with the value UseMulticast, the client records the receipt
           of the message and sends subsequent messages to the server through
           the interface on which the message was received using multicast. The
-          client resends the original message using multicast. When the client
+          client resends the original message using multicast.</t>
+          
+          <t>When the client
           receives a NotOnLink status from the server in response to a Confirm
           message, the client performs DHCP server solicitation, as described
           in section 17, and client-initiated configuration as described in
@@ -2302,7 +2411,9 @@
           <t>If the server cannot assign any addresses to an IA in the message
           from the client, the server MUST include the IA in the Reply message
           with no addresses in the IA and a Status Code option in the IA
-          containing status code NoAddrsAvail. For any IAs to which the server
+          containing status code NoAddrsAvail.</t>
+          
+          <t>For any IAs to which the server
           can assign addresses, the server includes the IA with addresses and
           other configuration parameters, and records the IA as a new client
           binding.</t>
@@ -2456,7 +2567,9 @@
           <t>The server MUST include a Server Identifier option containing the
           server's DUID in the Reply message. If the client included a Client
           Identification option in the Information-request message, the server
-          copies that option to the Reply message. The server includes options
+          copies that option to the Reply message.</t>
+          
+          <t>The server includes options
           containing configuration information to be returned to the client as
           described in section 18.2.</t>
 
@@ -2513,8 +2626,9 @@
           discards the Decline message and responds with a Reply message
           containing a Status Code option with the value UseMulticast, a
           Server Identifier option containing the server's DUID, the Client
-          Identifier option from the client message, and no other options.
-          Upon the receipt of a valid Decline message, the server examines the
+          Identifier option from the client message, and no other options.</t>
+          
+          <t>Upon the receipt of a valid Decline message, the server examines the
           IAs and the addresses in the IAs for validity. If the IAs in the
           message are in a binding for the client, and the addresses in the
           IAs have been assigned by the server to those IAs, the server
@@ -2684,7 +2798,9 @@
 
         <t>The server generates and sends a Reply message to the client as
         described in sections 18.2.5 and 18.2.8, including options for
-        configuration parameters. The server MAY include options containing
+        configuration parameters.</t>
+        
+        <t>The server MAY include options containing
         new values for other configuration parameters in the Reply message,
         even if those parameters were not requested in the Information-request
         message from the client.</t>
@@ -2714,32 +2830,34 @@
 
           <t>DISCUSSION:</t>
 
-          <t>The Reconfigure message acts as a trigger that signals the client
-          to complete a successful message exchange. Once the client has
-          received a Reconfigure, the client proceeds with the message
-          exchange (retransmitting the Renew or Information-request message if
-          necessary); the client ignores any additional Reconfigure messages
-          until the exchange is complete. Subsequent Reconfigure messages
-          cause the client to initiate a new exchange.</t>
-
-          <t>How does this mechanism work in the face of duplicated or
-          retransmitted Reconfigure messages? Duplicate messages will be
-          ignored because the client will begin the exchange after the receipt
-          of the first Reconfigure. Retransmitted messages will either trigger
-          the exchange (if the first Reconfigure was not received by the
-          client) or will be ignored. The server can discontinue
-          retransmission of Reconfigure messages to the client once the server
-          receives the Renew or Information-request message from the
-          client.</t>
-
-          <t>It might be possible for a duplicate or retransmitted Reconfigure
-          to be sufficiently delayed (and delivered out of order) to arrive at
-          the client after the exchange (initiated by the original
-          Reconfigure) has been completed. In this case, the client would
-          initiate a redundant exchange. The likelihood of delayed and out of
-          order delivery is small enough to be ignored. The consequence of the
-          redundant exchange is inefficiency rather than incorrect
-          operation.</t>
+          <t><list style="empty">
+            <t>The Reconfigure message acts as a trigger that signals the client
+            to complete a successful message exchange. Once the client has
+            received a Reconfigure, the client proceeds with the message
+            exchange (retransmitting the Renew or Information-request message if
+            necessary); the client ignores any additional Reconfigure messages
+            until the exchange is complete. Subsequent Reconfigure messages
+            cause the client to initiate a new exchange.</t>
+  
+            <t>How does this mechanism work in the face of duplicated or
+            retransmitted Reconfigure messages? Duplicate messages will be
+            ignored because the client will begin the exchange after the receipt
+            of the first Reconfigure. Retransmitted messages will either trigger
+            the exchange (if the first Reconfigure was not received by the
+            client) or will be ignored. The server can discontinue
+            retransmission of Reconfigure messages to the client once the server
+            receives the Renew or Information-request message from the
+            client.</t>
+  
+            <t>It might be possible for a duplicate or retransmitted Reconfigure
+            to be sufficiently delayed (and delivered out of order) to arrive at
+            the client after the exchange (initiated by the original
+            Reconfigure) has been completed. In this case, the client would
+            initiate a redundant exchange. The likelihood of delayed and out of
+            order delivery is small enough to be ignored. The consequence of the
+            redundant exchange is inefficiency rather than incorrect
+            operation.</t>
+          </list></t>
         </section>
 
         <!-- ends: "19.4.1 from line 2871-->
@@ -2807,7 +2925,9 @@
       addresses, which MAY include unicast addresses, the All_DHCP_Servers
       multicast address, or other addresses selected by the network
       administrator. If the relay agent has not been explicitly configured, it
-      MUST use the All_DHCP_Servers multicast address as the default. If the
+      MUST use the All_DHCP_Servers multicast address as the default.</t>
+      
+      <t>If the
       relay agent relays messages to the All_DHCP_Servers multicast address or
       other multicast addresses, it sets the Hop Limit field to 32.</t>
 
@@ -3059,9 +3179,8 @@
         <t>If the protocol field is 2, the message is using the "delayed
         authentication" mechanism. In delayed authentication, the client
         requests authentication in its Solicit message, and the server replies
-        with an Advertise message that includes authentication</t>
-
-        <t>information. This authentication information contains a nonce value
+        with an Advertise message that includes authentication
+        information. This authentication information contains a nonce value
         generated by the source as a message authentication code (MAC) to
         provide message authentication and entity authentication.</t>
 
@@ -3069,10 +3188,8 @@
         target="RFC2104"/> using the MD5 hash <xref target="RFC1321"/> is
         defined here.</t>
 
-        <section title="Use of the Authentication Option in the Delayed Authentication">
+        <section title="Use of the Authentication Option in the Delayed Authentication Protocol">
           <!-- 21.4.1, line 3226-->
-
-          <t>Protocol</t>
 
           <t>In a Solicit message, the client fills in the protocol, algorithm
           and RDM fields in the Authentication option with the client's
@@ -3087,15 +3204,32 @@
 
           <t>The format of the Authentication information is:</t>
 
-          <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8
-          9 0 1
-          +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-          DHCP realm | | (variable length) | . . . .
-          +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-          key ID |
-          +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-          | | HMAC-MD5 | | (128 bits) | | |
-          +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+          <figure align="center" anchor="FigAuthInfo"
+                  title="Authentication information format">
+            <preamble/>
+
+            <artwork align="left">
+            <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                          DHCP realm                           |
+   |                      (variable length)                        |
+   .                                                               .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                            key ID                             |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                                                               |
+   |                           HMAC-MD5                            |
+   |                          (128 bits)                           |
+   |                                                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+              ]]>
+            </artwork>
+
+            <postamble/>
+          </figure>
 
           <t>DHCP realm The DHCP realm that identifies the key used to
           generate the HMAC-MD5 value.</t>
@@ -3116,15 +3250,17 @@
 
           <t>DISCUSSION:</t>
 
-          <t>Algorithm 1 specifies the use of HMAC-MD5. Use of a different
-          technique, such as HMAC-SHA, will be specified as a separate
-          protocol.</t>
-
-          <t>The DHCP realm used to identify authentication keys is chosen to
-          be unique among administrative domains. Use of the DHCP realm allows
-          DHCP administrators to avoid conflict in the use of key identifiers,
-          and allows a host using DHCP to use authenticated DHCP while roaming
-          among DHCP administrative domains.</t>
+          <t><list style="empty">
+            <t>Algorithm 1 specifies the use of HMAC-MD5. Use of a different
+            technique, such as HMAC-SHA, will be specified as a separate
+            protocol.</t>
+  
+            <t>The DHCP realm used to identify authentication keys is chosen to
+            be unique among administrative domains. Use of the DHCP realm allows
+            DHCP administrators to avoid conflict in the use of key identifiers,
+            and allows a host using DHCP to use authenticated DHCP while roaming
+            among DHCP administrative domains.</t>
+          </list></t>
         </section>
 
         <!-- ends: "21.4.1 from line 3226-->
@@ -3303,15 +3439,13 @@
 
           <!-- ends: "21.4.5.1 from line 3422-->
 
-          <section title="Receiving Request, Confirm, Renew, Rebind or Release Messages">
+          <section title="Receiving Request, Confirm, Renew, Rebind or Release Messages and Sending Reply Messages">
             <!-- 21.4.5.2, line 3431-->
-
-            <t>and Sending Reply Messages</t>
 
             <t>The server uses the key identified in the message and validates
             the message as specified in section 21.4.2. If the message fails
             to pass the validation test or the server does not know the key
-            identified by the \'key ID' field, the server MUST discard the
+            identified by the 'key ID' field, the server MUST discard the
             message and MAY choose to log the validation failure.</t>
 
             <t>If the message passes the validation test, the server responds
@@ -3369,12 +3503,27 @@
           <t>The format of the Authentication information for the Reconfigure
           Key Authentication Protocol is:</t>
 
-          <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8
-          9 0 1
-          +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-          Type | Value (128 bits) | +-+-+-+-+-+-+-+-+ | . . . . .
-          +-+-+-+-+-+-+-+-+ | |
-          +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+          <figure align="center" anchor="FigRKAPAuthInfo"
+              title="RKAP Authentication Information">
+            <preamble/>
+
+            <artwork align="left">
+            <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |     Type      |                 Value (128 bits)              |
+   +-+-+-+-+-+-+-+-+                                               |
+   .                                                               .
+   .                                                               .
+   .                                               +-+-+-+-+-+-+-+-+
+   |                                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+            </artwork>
+
+            <postamble/>
+          </figure>
 
           <t>Type Type of data in Value field carried in this option:</t>
 
@@ -3460,12 +3609,25 @@
 
         <t>The format of DHCP options is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | option-code | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        option-data | | (option-len octets) |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOptions"
+              title="Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          option-code          |           option-len          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                          option-data                          |
+   |                      (option-len octets)                      |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+          ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code An unsigned integer identifying the specific option
         type carried in this option.</t>
@@ -3491,12 +3653,27 @@
         9) identifying a client between a client and a server. The format of
         the Client Identifier option is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_CLIENTID | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ . .
-        . DUID . . (variable length) . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption1"
+              title="Client Identifier Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+       0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |        OPTION_CLIENTID        |          option-len           |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      .                                                               .
+      .                              DUID                             .
+      .                        (variable length)                      .
+      .                                                               .
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_CLIENTID (1).</t>
 
@@ -3514,12 +3691,27 @@
         9) identifying a server between a client and a server. The format of
         the Server Identifier option is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_SERVERID | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ . .
-        . DUID . . (variable length) . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption2"
+              title="Server Identifier Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |        OPTION_SERVERID        |          option-len           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   .                                                               .
+   .                              DUID                             .
+   .                        (variable length)                      .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_SERVERID (2).</t>
 
@@ -3542,16 +3734,32 @@
 
         <t>The format of the IA_NA option is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_IA_NA | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        IAID (4 octets) |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | T1
-        | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        T2 | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | | . IA_NA-options . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption3"
+              title="Identity Association for Non-temporary Addresses Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          OPTION_IA_NA         |          option-len           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                        IAID (4 octets)                        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              T1                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              T2                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                                                               |
+   .                         IA_NA-options                         .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_IA_NA (3).</t>
 
@@ -3639,14 +3847,28 @@
         in RFC 3041 <xref target="RFC3041"/>. The format of the IA_TA option
         is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_IA_TA | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        IAID (4 octets) |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | |
-        . IA_TA-options . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption4"
+              title="Identity Association for Temporary Addresses Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          OPTION_IA_TA         |          option-len           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                        IAID (4 octets)                        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                                                               |
+   .                         IA_TA-options                         .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_IA_TA (4).</t>
 
@@ -3715,18 +3937,35 @@
 
         <t>The format of the IA Address option is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_IAADDR | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | |
-        | IPv6 address | | | | |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        preferred-lifetime |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        valid-lifetime |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ . .
-        . IAaddr-options . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption5"
+              title="IA Address Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          OPTION_IAADDR        |          option-len           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                                                               |
+   |                         IPv6 address                          |
+   |                                                               |
+   |                                                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                      preferred-lifetime                       |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                        valid-lifetime                         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   .                                                               .
+   .                        IAaddr-options                         .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_IAADDR (5).</t>
 
@@ -3749,7 +3988,9 @@
         client, the client MUST use the values in the preferred and valid
         lifetime fields for the preferred and valid lifetimes. The values in
         the preferred and valid lifetimes are the number of seconds remaining
-        in each lifetime. A client discards any addresses for which the
+        in each lifetime.</t>
+        
+        <t>A client discards any addresses for which the
         preferred lifetime is greater than the valid lifetime. A server
         ignores the lifetimes set by the client if the preferred lifetime is
         greater than the valid lifetime and ignores the values for T1 and T2
@@ -3777,14 +4018,26 @@
         a message between a client and a server. The format of the Option
         Request option is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_ORO | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        requested-option-code-1 | requested-option-code-2 |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        ... |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption6"
+              title="Option Request Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |           OPTION_ORO          |           option-len          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |    requested-option-code-1    |    requested-option-code-2    |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_ORO (6).</t>
 
@@ -3811,11 +4064,24 @@
 
         <t>The format of the Preference option is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_PREFERENCE | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        pref-value | +-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption7"
+              title="Preference Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |       OPTION_PREFERENCE       |          option-len           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  pref-value   |
+   +-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_PREFERENCE (7).</t>
 
@@ -3834,11 +4100,24 @@
       <section title="Elapsed Time Option">
         <!-- 22.9, line 3974-->
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_ELAPSED_TIME | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        elapsed-time | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption8"
+              title="Elapsed Time Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      OPTION_ELAPSED_TIME      |           option-len          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          elapsed-time         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_ELAPSED_TIME (8).</t>
 
@@ -3873,12 +4152,27 @@
 
         <t>The format of the Relay Message option is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_RELAY_MSG | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | |
-        . DHCP-relay-message . . . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption9"
+              title="Relay Message Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |        OPTION_RELAY_MSG       |           option-len          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                                                               |
+   .                       DHCP-relay-message                      .
+   .                                                               .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_RELAY_MSG (9)</t>
 
@@ -3901,16 +4195,31 @@
         the Authentication option is described in section 21. The format of
         the Authentication option is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_AUTH | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        protocol | algorithm | RDM | |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | | | | replay
-        detection (64 bits) +-+-+-+-+-+-+-+-+ | | auth-info |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | . authentication
-        information . . (variable length) .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption11"
+              title="Authentication Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          OPTION_AUTH          |          option-len           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |   protocol    |   algorithm   |      RDM      |               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+               |
+   |                                                               |
+   |          replay detection (64 bits)           +-+-+-+-+-+-+-+-+
+   |                                               |   auth-info   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+               |
+   .                   authentication information                  .
+   .                       (variable length)                       .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_AUTH (11)</t>
 
@@ -3940,12 +4249,27 @@
         that it is allowed to unicast messages to the server. The format of
         the Server Unicast option is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_UNICAST | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | |
-        | server-address | | | | |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption12"
+              title="Server Unicast Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          OPTION_UNICAST       |        option-len             |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                                                               |
+   |                       server-address                          |
+   |                                                               |
+   |                                                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_UNICAST (12).</t>
 
@@ -3981,13 +4305,28 @@
         or option in which it appears. The format of the Status Code option
         is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_STATUS_CODE | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        status-code | | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | . . .
-        status-message . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption13"
+              title="Status Code Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |       OPTION_STATUS_CODE      |         option-len            |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          status-code          |                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               |
+   .                                                               .
+   .                        status-message                         .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_STATUS_CODE (13).</t>
 
@@ -4014,10 +4353,22 @@
         message exchange for address assignment. The format of the Rapid
         Commit option is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_RAPID_COMMIT | 0 |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption14"
+              title="Rapid Commit Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      OPTION_RAPID_COMMIT      |               0               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_RAPID_COMMIT (14).</t>
 
@@ -4033,18 +4384,20 @@
 
         <t>DISCUSSION:</t>
 
-        <t>Each server that responds with a Reply to a Solicit that includes a
-        Rapid Commit option will commit the assigned addresses in the Reply
-        message to the client, and will not receive any confirmation that the
-        client has received the Reply message. Therefore, if more than one
-        server responds to a Solicit that includes a Rapid Commit option, some
-        servers will commit addresses that are not actually used by the
-        client.</t>
+	<t><list style="empty">
+          <t>Each server that responds with a Reply to a Solicit that includes a
+          Rapid Commit option will commit the assigned addresses in the Reply
+          message to the client, and will not receive any confirmation that the
+          client has received the Reply message. Therefore, if more than one
+          server responds to a Solicit that includes a Rapid Commit option, some
+          servers will commit addresses that are not actually used by the
+          client.</t>
 
-        <t>The problem of unused addresses can be minimized, for example, by
-        designing the DHCP service so that only one server responds to the
-        Solicit or by using relatively short lifetimes for assigned
-        addresses.</t>
+          <t>The problem of unused addresses can be minimized, for example, by
+          designing the DHCP service so that only one server responds to the
+          Solicit or by using relatively short lifetimes for assigned
+          addresses.</t>
+	</list></t>
       </section>
 
       <!-- ends: "22.14 from line 4172-->
@@ -4057,12 +4410,26 @@
 
         <t>The format of the User Class option is:</t>
 
-        <t>0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        OPTION_USER_CLASS | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ . .
-        . user-class-data . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption15"
+              title="User Class Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |       OPTION_USER_CLASS       |          option-len           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   .                                                               .
+   .                          user-class-data                      .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_USER_CLASS (15).</t>
 
@@ -4084,9 +4451,20 @@
         instances of user class data. Each instance of the user class data is
         formatted as follows:</t>
 
-        <t>+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+ |
-        user-class-len | opaque-data |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption15Data"
+              title="User Class Data Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
+   |        user-class-len         |          opaque-data          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>The user-class-len is two octets long and specifies the length of
         the opaque user class data in network byte order.</t>
@@ -4113,14 +4491,28 @@
         one or more opaque fields that identify details of the hardware
         configuration. The format of the Vendor Class option is:</t>
 
-        <t>0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        OPTION_VENDOR_CLASS | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        enterprise-number |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ . .
-        . vendor-class-data . . . . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption16"
+              title="Vendor Class Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      OPTION_VENDOR_CLASS      |           option-len          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                       enterprise-number                       |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   .                                                               .
+   .                       vendor-class-data                       .
+   .                             . . .                             .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_VENDOR_CLASS (16).</t>
 
@@ -4140,9 +4532,20 @@
 
         <t>Each instance of the vendor-class-data is formatted as follows:</t>
 
-        <t>+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+ |
-        vendor-class-len | opaque-data |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption16Data"
+              title="Vendor Class Data Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
+   |       vendor-class-len        |          opaque-data          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>The vendor-class-len is two octets long and specifies the length of
         the opaque vendor class data in network byte order.</t>
@@ -4158,21 +4561,37 @@
 
         <t>The format of the Vendor-specific Information option is:</t>
 
-        <t>0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        OPTION_VENDOR_OPTS | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        enterprise-number |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ . .
-        . option-data . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption17"
+              title="Vendor-specific Information Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      OPTION_VENDOR_OPTS       |           option-len          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                       enterprise-number                       |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   .                                                               .
+   .                          option-data                          .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_VENDOR_OPTS (17)</t>
 
         <t>option-len 4 + length of option-data field</t>
 
         <t>enterprise-number The vendor's registered Enterprise Number as
-        registered with IANA <xref target="UNKNOWN6"/>. option-data An opaque
+        registered with IANA <xref target="UNKNOWN6"/>.</t>
+
+        <t>option-data An opaque
         object of option-len octets, interpreted by vendor-specific code on
         the clients and servers</t>
 
@@ -4189,12 +4608,26 @@
         in the enterprise-number field and are not managed by IANA. Each of
         the encapsulated options is formatted as follows:</t>
 
-        <t>0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        opt-code | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ . .
-        . option-data . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption17Data"
+              title="Vendor-specific Options Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          opt-code             |             option-len        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   .                                                               .
+   .                          option-data                          .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>opt-code The code for the encapsulated option.</t>
 
@@ -4222,12 +4655,26 @@
 
         <t>The format of the Interface ID option is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_INTERFACE_ID | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ . .
-        . interface-id . . .
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption18"
+              title="Interface-ID Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      OPTION_INTERFACE_ID      |         option-len            |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   .                                                               .
+   .                         interface-id                          .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_INTERFACE_ID (18).</t>
 
@@ -4262,11 +4709,24 @@
         Renew message or an Information-request message. The format of this
         option is:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_RECONF_MSG | option-len |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-        msg-type | +-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption19"
+              title="Reconfigure Message Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      OPTION_RECONF_MSG        |         option-len            |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |    msg-type   |
+   +-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_RECONF_MSG (19).</t>
 
@@ -4293,10 +4753,22 @@
         server messages, respectively. The following figure gives the format
         of the Reconfigure Accept option:</t>
 
-        <t>0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
-        0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-        | OPTION_RECONF_ACCEPT | 0 |
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</t>
+        <figure align="center" anchor="FigOption20"
+              title="Reconfigure Accept Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |     OPTION_RECONF_ACCEPT      |               0               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
 
         <t>option-code OPTION_RECONF_ACCEPT (20).</t>
 
@@ -4368,7 +4840,9 @@
       <t>This threat model does not consider the privacy of the contents of
       DHCP messages to be important. DHCP is not used to exchange
       authentication or configuration information that must be kept secret
-      from other networks nodes. DHCP authentication provides for
+      from other networks nodes.</t>
+      
+      <t>DHCP authentication provides for
       authentication of the identity of DHCP clients and servers, and for the
       integrity of messages delivered between DHCP clients and servers. DHCP
       authentication does not provide any privacy for the contents of DHCP
@@ -4831,7 +5305,9 @@
 
       &RFC2136;
 
-      <!-- Vixie, P., Ed., Thomson, S., Rekhter, Y. and J. Bound, "DynamicUpdates in the Domain Name System (DNS UPDATE)", RFC 2136, April 1997. -->
+      <!-- Vixie, P., Ed., Thomson, S., Rekhter, Y. and J. Bound, "DynamicUpdates in the Domain Name System (DNS UPDATE)", RFC 2136, April 
+
+1997. -->
 
       &RFC2119;
 
@@ -4880,7 +5356,9 @@
 
       &RFC2434;
 
-      <!-- Narten, T. and H. Alvestrand, "Guidelines for Writing an IANAConsiderations Section in RFCs", BCP 26, RFC 2434, October 1998. -->
+      <!-- Narten, T. and H. Alvestrand, "Guidelines for Writing an IANAConsiderations Section in RFCs", BCP 26, RFC 2434, October 1998. 
+
+-->
 
       &RFC1035;
 
@@ -4900,7 +5378,9 @@
 
       &RFC0826;
 
-      <!-- Plummer, D.C., "Ethernet Address Resolution Protocol:  Orconverting network protocol addresses to 48.bit Ethernet addressfor transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
+      <!-- Plummer, D.C., "Ethernet Address Resolution Protocol:  Orconverting network protocol addresses to 48.bit Ethernet addressfor 
+
+transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
       &RFC2462;
 
