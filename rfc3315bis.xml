@@ -1628,7 +1628,7 @@
         <t hangText="-"> The message includes a Server Identifier option and the DUID in
         the option does not match the server's DUID.</t>
 
-        <t hangText="-">- The message includes an IA option.</t>
+        <t hangText="-"> The message includes an IA option.</t>
 
         </list></t>
       </section>
