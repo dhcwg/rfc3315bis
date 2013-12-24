@@ -4,8 +4,8 @@
 
 Network Working Group                                    X. Unknown, Ed.
 Internet-Draft                                             Not converted
-Intended status: Standards Track                       November 27, 2013
-Expires: May 31, 2014
+Intended status: Standards Track                       December 23, 2013
+Expires: June 26, 2014
 
 
                                 Unknown
@@ -26,7 +26,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 31, 2014.
+   This Internet-Draft will expire on June 26, 2014.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Unknown                   Expires May 31, 2014                  [Page 1]
+Unknown                   Expires June 26, 2014                 [Page 1]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
 Table of Contents
@@ -66,7 +66,7 @@ Table of Contents
      1.3.  Client-server Exchanges Involving Four Messages . . . . .   7
    2.  Requirements  . . . . . . . . . . . . . . . . . . . . . . . .   7
    3.  Background  . . . . . . . . . . . . . . . . . . . . . . . . .   8
-   4.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   9
+   4.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   8
      4.1.  IPv6 Terminology  . . . . . . . . . . . . . . . . . . . .   9
      4.2.  DHCP Terminology  . . . . . . . . . . . . . . . . . . . .  10
    5.  DHCP Constants  . . . . . . . . . . . . . . . . . . . . . . .  12
@@ -75,122 +75,124 @@ Table of Contents
      5.3.  DHCP Message Types  . . . . . . . . . . . . . . . . . . .  13
      5.4.  Status Codes  . . . . . . . . . . . . . . . . . . . . . .  15
      5.5.  Transmission and Retransmission Parameters  . . . . . . .  15
-   6.  Client/Server Message Formats . . . . . . . . . . . . . . . .  15
-   7.  Relay Agent/Server Message Formats  . . . . . . . . . . . . .  16
+     5.6.  Representation of time values and "Infinity" as a time
+           value . . . . . . . . . . . . . . . . . . . . . . . . . .  16
+   6.  Client/Server Message Formats . . . . . . . . . . . . . . . .  16
+   7.  Relay Agent/Server Message Formats  . . . . . . . . . . . . .  17
      7.1.  Relay-forward Message . . . . . . . . . . . . . . . . . .  17
-     7.2.  Relay-reply Message . . . . . . . . . . . . . . . . . . .  17
+     7.2.  Relay-reply Message . . . . . . . . . . . . . . . . . . .  18
    8.  Representation and Use of Domain Names  . . . . . . . . . . .  18
    9.  DHCP Unique Identifier (DUID) . . . . . . . . . . . . . . . .  18
      9.1.  DUID Contents . . . . . . . . . . . . . . . . . . . . . .  19
      9.2.  DUID Based on Link-layer Address Plus Time [DUID-LLT] . .  19
      9.3.  DUID Assigned by Vendor Based on Enterprise Number [DUID-
-           EN] . . . . . . . . . . . . . . . . . . . . . . . . . . .  20
-     9.4.  DUID Based on Link-layer Address [DUID-LL]  . . . . . . .  21
-   10. Identity Association  . . . . . . . . . . . . . . . . . . . .  22
+           EN] . . . . . . . . . . . . . . . . . . . . . . . . . . .  21
+     9.4.  DUID Based on Link-layer Address [DUID-LL]  . . . . . . .  22
+   10. Identity Association  . . . . . . . . . . . . . . . . . . . .  23
    11. Selecting Addresses for Assignment to an IA . . . . . . . . .  23
    12. Management of Temporary Addresses . . . . . . . . . . . . . .  24
-   13. Transmission of Messages by a Client  . . . . . . . . . . . .  24
+   13. Transmission of Messages by a Client  . . . . . . . . . . . .  25
    14. Reliability of Client Initiated Message Exchanges . . . . . .  25
-   15. Message Validation  . . . . . . . . . . . . . . . . . . . . .  26
+   15. Message Validation  . . . . . . . . . . . . . . . . . . . . .  27
      15.1.  Use of Transaction IDs . . . . . . . . . . . . . . . . .  27
-     15.2.  Solicit Message  . . . . . . . . . . . . . . . . . . . .  27
-     15.3.  Advertise Message  . . . . . . . . . . . . . . . . . . .  27
+     15.2.  Solicit Message  . . . . . . . . . . . . . . . . . . . .  28
+     15.3.  Advertise Message  . . . . . . . . . . . . . . . . . . .  28
      15.4.  Request Message  . . . . . . . . . . . . . . . . . . . .  28
      15.5.  Confirm Message  . . . . . . . . . . . . . . . . . . . .  28
-     15.6.  Renew Message  . . . . . . . . . . . . . . . . . . . . .  28
-     15.7.  Rebind Message . . . . . . . . . . . . . . . . . . . . .  28
-     15.8.  Decline Messages . . . . . . . . . . . . . . . . . . . .  28
+     15.6.  Renew Message  . . . . . . . . . . . . . . . . . . . . .  29
+     15.7.  Rebind Message . . . . . . . . . . . . . . . . . . . . .  29
+     15.8.  Decline Messages . . . . . . . . . . . . . . . . . . . .  29
      15.9.  Release Message  . . . . . . . . . . . . . . . . . . . .  29
-     15.10. Reply Message  . . . . . . . . . . . . . . . . . . . . .  29
+     15.10. Reply Message  . . . . . . . . . . . . . . . . . . . . .  30
      15.11. Reconfigure Message  . . . . . . . . . . . . . . . . . .  30
-     15.12. Information-request Message  . . . . . . . . . . . . . .  30
-     15.13. Relay-forward Message  . . . . . . . . . . . . . . . . .  30
-     15.14. Relay-reply Message  . . . . . . . . . . . . . . . . . .  30
+     15.12. Information-request Message  . . . . . . . . . . . . . .  31
 
 
 
-Unknown                   Expires May 31, 2014                  [Page 2]
+Unknown                   Expires June 26, 2014                 [Page 2]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
+     15.13. Relay-forward Message  . . . . . . . . . . . . . . . . .  31
+     15.14. Relay-reply Message  . . . . . . . . . . . . . . . . . .  31
    16. Client Source Address and Interface Selection . . . . . . . .  31
    17. DHCP Server Solicitation  . . . . . . . . . . . . . . . . . .  31
-     17.1.  Client Behavior  . . . . . . . . . . . . . . . . . . . .  31
+     17.1.  Client Behavior  . . . . . . . . . . . . . . . . . . . .  32
        17.1.1.  Creation of Solicit Messages . . . . . . . . . . . .  32
-       17.1.2.  Transmission of Solicit Messages . . . . . . . . . .  32
+       17.1.2.  Transmission of Solicit Messages . . . . . . . . . .  33
        17.1.3.  Receipt of Advertise Messages  . . . . . . . . . . .  34
-       17.1.4.  Receipt of Reply Message . . . . . . . . . . . . . .  34
+       17.1.4.  Receipt of Reply Message . . . . . . . . . . . . . .  35
      17.2.  Server Behavior  . . . . . . . . . . . . . . . . . . . .  35
        17.2.1.  Receipt of Solicit Messages  . . . . . . . . . . . .  35
-       17.2.2.  Creation and Transmission of Advertise Messages  . .  35
-       17.2.3.  Creation and Transmission of Reply Messages  . . . .  36
-   18. DHCP Client-Initiated Configuration Exchange  . . . . . . . .  37
-     18.1.  Client Behavior  . . . . . . . . . . . . . . . . . . . .  37
+       17.2.2.  Creation and Transmission of Advertise Messages  . .  36
+       17.2.3.  Creation and Transmission of Reply Messages  . . . .  37
+   18. DHCP Client-Initiated Configuration Exchange  . . . . . . . .  38
+     18.1.  Client Behavior  . . . . . . . . . . . . . . . . . . . .  38
        18.1.1.  Creation and Transmission of Request Messages  . . .  38
        18.1.2.  Creation and Transmission of Confirm Messages  . . .  39
        18.1.3.  Creation and Transmission of Renew Messages  . . . .  40
-       18.1.4.  Creation and Transmission of Rebind Messages . . . .  41
+       18.1.4.  Creation and Transmission of Rebind Messages . . . .  42
        18.1.5.  Creation and Transmission of Information-request
-                Messages . . . . . . . . . . . . . . . . . . . . . .  42
+                Messages . . . . . . . . . . . . . . . . . . . . . .  43
        18.1.6.  Creation and Transmission of Release Messages  . . .  43
-       18.1.7.  Creation and Transmission of Decline Messages  . . .  44
+       18.1.7.  Creation and Transmission of Decline Messages  . . .  45
        18.1.8.  Receipt of Reply Messages  . . . . . . . . . . . . .  45
      18.2.  Server Behavior  . . . . . . . . . . . . . . . . . . . .  47
-       18.2.1.  Receipt of Request Messages  . . . . . . . . . . . .  47
+       18.2.1.  Receipt of Request Messages  . . . . . . . . . . . .  48
        18.2.2.  Receipt of Confirm Messages  . . . . . . . . . . . .  49
        18.2.3.  Receipt of Renew Messages  . . . . . . . . . . . . .  49
        18.2.4.  Receipt of Rebind Messages . . . . . . . . . . . . .  50
        18.2.5.  Receipt of Information-request Messages  . . . . . .  51
-       18.2.6.  Receipt of Release Messages  . . . . . . . . . . . .  51
+       18.2.6.  Receipt of Release Messages  . . . . . . . . . . . .  52
        18.2.7.  Receipt of Decline Messages  . . . . . . . . . . . .  52
        18.2.8.  Transmission of Reply Messages . . . . . . . . . . .  53
    19. DHCP Server-Initiated Configuration Exchange  . . . . . . . .  53
-     19.1.  Server Behavior  . . . . . . . . . . . . . . . . . . . .  53
-       19.1.1.  Creation and Transmission of Reconfigure Messages  .  53
-       19.1.2.  Time Out and Retransmission of Reconfigure Messages   54
+     19.1.  Server Behavior  . . . . . . . . . . . . . . . . . . . .  54
+       19.1.1.  Creation and Transmission of Reconfigure Messages  .  54
+       19.1.2.  Time Out and Retransmission of Reconfigure Messages   55
      19.2.  Receipt of Renew Messages  . . . . . . . . . . . . . . .  55
      19.3.  Receipt of Information-request Messages  . . . . . . . .  55
-     19.4.  Client Behavior  . . . . . . . . . . . . . . . . . . . .  55
-       19.4.1.  Receipt of Reconfigure Messages  . . . . . . . . . .  55
-       19.4.2.  Creation and Transmission of Renew Messages  . . . .  56
+     19.4.  Client Behavior  . . . . . . . . . . . . . . . . . . . .  56
+       19.4.1.  Receipt of Reconfigure Messages  . . . . . . . . . .  56
+       19.4.2.  Creation and Transmission of Renew Messages  . . . .  57
        19.4.3.  Creation and Transmission of Information-request
-                Messages . . . . . . . . . . . . . . . . . . . . . .  56
+                Messages . . . . . . . . . . . . . . . . . . . . . .  57
        19.4.4.  Time Out and Retransmission of Renew or Information-
-                request  . . . . . . . . . . . . . . . . . . . . . .  56
+                request  . . . . . . . . . . . . . . . . . . . . . .  57
        19.4.5.  Receipt of Reply Messages  . . . . . . . . . . . . .  57
    20. Relay Agent Behavior  . . . . . . . . . . . . . . . . . . . .  57
-     20.1.  Relaying a Client Message or a Relay-forward Message . .  57
-       20.1.1.  Relaying a Message from a Client . . . . . . . . . .  57
 
 
 
-Unknown                   Expires May 31, 2014                  [Page 3]
+Unknown                   Expires June 26, 2014                 [Page 3]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
+     20.1.  Relaying a Client Message or a Relay-forward Message . .  58
+       20.1.1.  Relaying a Message from a Client . . . . . . . . . .  58
        20.1.2.  Relaying a Message from a Relay Agent  . . . . . . .  58
-     20.2.  Relaying a Relay-reply Message . . . . . . . . . . . . .  58
+     20.2.  Relaying a Relay-reply Message . . . . . . . . . . . . .  59
      20.3.  Construction of Relay-reply Messages . . . . . . . . . .  59
-   21. Authentication of DHCP Messages . . . . . . . . . . . . . . .  59
+   21. Authentication of DHCP Messages . . . . . . . . . . . . . . .  60
      21.1.  Security of Messages Sent Between Servers and Relay
             Agents . . . . . . . . . . . . . . . . . . . . . . . . .  60
      21.2.  Summary of DHCP Authentication . . . . . . . . . . . . .  61
-     21.3.  Replay Detection . . . . . . . . . . . . . . . . . . . .  61
+     21.3.  Replay Detection . . . . . . . . . . . . . . . . . . . .  62
      21.4.  Delayed Authentication Protocol  . . . . . . . . . . . .  62
        21.4.1.  Use of the Authentication Option in the Delayed
                 Authentication Protocol  . . . . . . . . . . . . . .  62
-       21.4.2.  Message Validation . . . . . . . . . . . . . . . . .  63
+       21.4.2.  Message Validation . . . . . . . . . . . . . . . . .  64
        21.4.3.  Key Utilization  . . . . . . . . . . . . . . . . . .  64
        21.4.4.  Client Considerations for Delayed Authentication
                 Protocol . . . . . . . . . . . . . . . . . . . . . .  64
          21.4.4.1.  Sending Solicit Messages . . . . . . . . . . . .  64
-         21.4.4.2.  Receiving Advertise Messages . . . . . . . . . .  64
+         21.4.4.2.  Receiving Advertise Messages . . . . . . . . . .  65
          21.4.4.3.  Sending Request, Confirm, Renew, Rebind, Decline
-                    or Release . . . . . . . . . . . . . . . . . . .  65
+                    or Release Messages  . . . . . . . . . . . . . .  65
          21.4.4.4.  Sending Information-request Messages . . . . . .  65
-         21.4.4.5.  Receiving Reply Messages . . . . . . . . . . . .  65
+         21.4.4.5.  Receiving Reply Messages . . . . . . . . . . . .  66
          21.4.4.6.  Receiving Reconfigure Messages . . . . . . . . .  66
        21.4.5.  Server Considerations for Delayed Authentication
                 Protocol . . . . . . . . . . . . . . . . . . . . . .  66
@@ -198,52 +200,51 @@ Internet-Draft               Unknown(short)                November 2013
                     Messages . . . . . . . . . . . . . . . . . . . .  66
          21.4.5.2.  Receiving Request, Confirm, Renew, Rebind or
                     Release Messages and Sending Reply Messages  . .  66
-     21.5.  Reconfigure Key Authentication Protocol  . . . . . . . .  66
+     21.5.  Reconfigure Key Authentication Protocol  . . . . . . . .  67
        21.5.1.  Use of the Authentication Option in the Reconfigure
-                Key  . . . . . . . . . . . . . . . . . . . . . . . .  67
+                Key Authentication Protocol  . . . . . . . . . . . .  67
        21.5.2.  Server considerations for Reconfigure Key protocol .  68
-       21.5.3.  Client considerations for Reconfigure Key protocol .  68
-   22. DHCP Options  . . . . . . . . . . . . . . . . . . . . . . . .  68
+       21.5.3.  Client considerations for Reconfigure Key protocol .  69
+   22. DHCP Options  . . . . . . . . . . . . . . . . . . . . . . . .  69
      22.1.  Format of DHCP Options . . . . . . . . . . . . . . . . .  69
-     22.2.  Client Identifier Option . . . . . . . . . . . . . . . .  69
+     22.2.  Client Identifier Option . . . . . . . . . . . . . . . .  70
      22.3.  Server Identifier Option . . . . . . . . . . . . . . . .  70
      22.4.  Identity Association for Non-temporary Addresses Option   71
-     22.5.  Identity Association for Temporary Addresses Option  . .  73
-     22.6.  IA Address Option  . . . . . . . . . . . . . . . . . . .  74
-     22.7.  Option Request Option  . . . . . . . . . . . . . . . . .  76
-     22.8.  Preference Option  . . . . . . . . . . . . . . . . . . .  77
-     22.9.  Elapsed Time Option  . . . . . . . . . . . . . . . . . .  77
-     22.10. Relay Message Option . . . . . . . . . . . . . . . . . .  78
-     22.11. Authentication Option  . . . . . . . . . . . . . . . . .  79
-     22.12. Server Unicast Option  . . . . . . . . . . . . . . . . .  80
-     22.13. Status Code Option . . . . . . . . . . . . . . . . . . .  80
-     22.14. Rapid Commit Option  . . . . . . . . . . . . . . . . . .  81
+     22.5.  Identity Association for Temporary Addresses Option  . .  74
+     22.6.  IA Address Option  . . . . . . . . . . . . . . . . . . .  75
+     22.7.  Option Request Option  . . . . . . . . . . . . . . . . .  77
+     22.8.  Preference Option  . . . . . . . . . . . . . . . . . . .  78
+     22.9.  Elapsed Time Option  . . . . . . . . . . . . . . . . . .  78
+     22.10. Relay Message Option . . . . . . . . . . . . . . . . . .  79
+     22.11. Authentication Option  . . . . . . . . . . . . . . . . .  80
+     22.12. Server Unicast Option  . . . . . . . . . . . . . . . . .  81
 
 
 
-Unknown                   Expires May 31, 2014                  [Page 4]
+Unknown                   Expires June 26, 2014                 [Page 4]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
-     22.15. User Class Option  . . . . . . . . . . . . . . . . . . .  82
-     22.16. Vendor Class Option  . . . . . . . . . . . . . . . . . .  84
-     22.17. Vendor-specific Information Option . . . . . . . . . . .  85
-     22.18. Interface-Id Option  . . . . . . . . . . . . . . . . . .  86
-     22.19. Reconfigure Message Option . . . . . . . . . . . . . . .  87
-     22.20. Reconfigure Accept Option  . . . . . . . . . . . . . . .  88
-   23. Security Considerations . . . . . . . . . . . . . . . . . . .  88
-   24. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  91
-     24.1.  Multicast Addresses  . . . . . . . . . . . . . . . . . .  91
-     24.2.  DHCP Message Types . . . . . . . . . . . . . . . . . . .  92
-     24.3.  DHCP Options . . . . . . . . . . . . . . . . . . . . . .  92
-     24.4.  Status Codes . . . . . . . . . . . . . . . . . . . . . .  93
-     24.5.  DUID . . . . . . . . . . . . . . . . . . . . . . . . . .  93
-   25. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  94
-   26. References  . . . . . . . . . . . . . . . . . . . . . . . . .  94
-     26.1.  Normative References . . . . . . . . . . . . . . . . . .  94
-     26.2.  Informative References . . . . . . . . . . . . . . . . .  95
-   27. Normative References  . . . . . . . . . . . . . . . . . . . .  98
+     22.13. Status Code Option . . . . . . . . . . . . . . . . . . .  82
+     22.14. Rapid Commit Option  . . . . . . . . . . . . . . . . . .  82
+     22.15. User Class Option  . . . . . . . . . . . . . . . . . . .  83
+     22.16. Vendor Class Option  . . . . . . . . . . . . . . . . . .  85
+     22.17. Vendor-specific Information Option . . . . . . . . . . .  86
+     22.18. Interface-Id Option  . . . . . . . . . . . . . . . . . .  87
+     22.19. Reconfigure Message Option . . . . . . . . . . . . . . .  88
+     22.20. Reconfigure Accept Option  . . . . . . . . . . . . . . .  89
+   23. Security Considerations . . . . . . . . . . . . . . . . . . .  90
+   24. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  92
+     24.1.  Multicast Addresses  . . . . . . . . . . . . . . . . . .  93
+     24.2.  DHCP Message Types . . . . . . . . . . . . . . . . . . .  93
+     24.3.  DHCP Options . . . . . . . . . . . . . . . . . . . . . .  93
+     24.4.  Status Codes . . . . . . . . . . . . . . . . . . . . . .  94
+     24.5.  DUID . . . . . . . . . . . . . . . . . . . . . . . . . .  95
+   25. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  95
+   26. Appearance of Options in Message Types  . . . . . . . . . . .  96
+   27. Appearance of Options in the Options Field of DHCP Options  .  97
+   28. Normative References  . . . . . . . . . . . . . . . . . . . .  97
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  99
 
 1.  Introduction and Overview
@@ -276,10 +277,9 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-
-Unknown                   Expires May 31, 2014                  [Page 5]
+Unknown                   Expires June 26, 2014                 [Page 5]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
 1.1.  Protocols and Addressing
@@ -308,7 +308,7 @@ Internet-Draft               Unknown(short)                November 2013
 
    When a DHCP client does not need to have a DHCP server assign it IP
    addresses, the client can obtain configuration information such as a
-   list of available DNS servers [UNKNOWN20] or NTP servers [UNKNOWN21]
+   list of available DNS servers [RFC3646] or NTP servers [RFC4075]
    through a single message and reply exchanged with a DHCP server.  To
    obtain configuration information the client first sends an
    Information-Request message to the All_DHCP_Relay_Agents_and_Servers
@@ -318,25 +318,6 @@ Internet-Draft               Unknown(short)                November 2013
    This message exchange assumes that the client requires only
    configuration information and does not require the assignment of any
    IPv6 addresses.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                  [Page 6]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    When a server has IPv6 addresses and other configuration information
    committed to a client, the client and server may be able to complete
@@ -348,6 +329,15 @@ Internet-Draft               Unknown(short)                November 2013
    accept an immediate Reply message from the server.  The server that
    is willing to commit the assignment of addresses to the client
    immediately responds with a Reply message.  The configuration
+
+
+
+
+Unknown                   Expires June 26, 2014                 [Page 6]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    information and the addresses in the Reply message are then
    immediately available for use by the client.
 
@@ -386,19 +376,23 @@ Internet-Draft               Unknown(short)                November 2013
    This document also makes use of internal conceptual variables to
    describe protocol behavior and external variables that an
    implementation must allow system administrators to change.  The
-
-
-
-Unknown                   Expires May 31, 2014                  [Page 7]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    specific variable names, how their values change, and how their
    settings influence protocol behavior are provided to demonstrate
    protocol behavior.  An implementation is not required to have them in
    the exact form described here, so long as its external behavior is
    consistent with that described in this document.
+
+
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                 [Page 7]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
 3.  Background
 
@@ -442,18 +436,19 @@ Internet-Draft               Unknown(short)                November 2013
    not only support autoconfiguration, but also autoregistration in
    IPv6.
 
-
-
-
-Unknown                   Expires May 31, 2014                  [Page 8]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
 4.  Terminology
 
    This sections defines terminology specific to IPv6 and DHCP used in
    this document.
+
+
+
+
+
+Unknown                   Expires June 26, 2014                 [Page 8]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
 4.1.  IPv6 Terminology
 
@@ -499,16 +494,17 @@ Internet-Draft               Unknown(short)                November 2013
                              delivered to all interfaces identified by
                              that address.
 
-
-
-Unknown                   Expires May 31, 2014                  [Page 9]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    neighbor                  A node attached to the same link.
 
    node                      A device that implements IP.
+
+
+
+
+Unknown                   Expires June 26, 2014                 [Page 9]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
    packet                    An IP header plus payload.
 
@@ -553,20 +549,19 @@ Internet-Draft               Unknown(short)                November 2013
                              configuration information for a client is
                              indexed by <DUID>.
 
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 10]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    configuration parameter   An element of the configuration information
                              set on the server and delivered to the
                              client using DHCP.  Such parameters may be
                              used to carry information to be used by a
                              node to configure its network subsystem and
+
+
+
+Unknown                   Expires June 26, 2014                [Page 10]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
                              enable communication on a link or
                              internetwork, for example.
 
@@ -610,18 +605,18 @@ Internet-Draft               Unknown(short)                November 2013
                              association for temporary addresses (IA_TA)
                              holds temporary addresses (see "identity
                              association for temporary addresses").
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 11]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
                              Throughout this document, "IA" is used to
                              refer to an identity association without
                              identifying the type of addresses in the
                              IA.
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 11]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
    Identity association identifier (IAID)  An identifier for an IA,
                              chosen by the client.  Each IA has an IAID,
@@ -667,17 +662,18 @@ Internet-Draft               Unknown(short)                November 2013
                    servers.  All servers and relay agents are members of
                    this multicast group.
 
-
-
-Unknown                   Expires May 31, 2014                 [Page 12]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    All_DHCP_Servers (FF05::1:3)  A site-scoped multicast address used by
                    a relay agent to communicate with servers, either
                    because the relay agent wants to send messages to all
                    servers or because it does not know the unicast
+
+
+
+Unknown                   Expires June 26, 2014                [Page 12]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
                    addresses of the servers.  Note that in order for a
                    relay agent to use this address, it must have an
                    address of sufficient scope to be reachable by the
@@ -723,16 +719,17 @@ Internet-Draft               Unknown(short)                November 2013
                    configuration parameters; this message is sent after
                    a client receives no response to a Renew message.
 
-
-
-Unknown                   Expires May 31, 2014                 [Page 13]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    REPLY (7)       A server sends a Reply message containing assigned
                    addresses and configuration parameters in response to
                    a Solicit, Request, Renew, Rebind message received
+
+
+
+Unknown                   Expires June 26, 2014                [Page 13]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
                    from a client.  A server sends a Reply message
                    containing configuration parameters in response to an
                    Information-request message.  A server sends a Reply
@@ -777,18 +774,17 @@ Internet-Draft               Unknown(short)                November 2013
                    other relay agents for delivery to the destination
                    relay agent.
 
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 14]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
                    The server encapsulates the client message as an
                    option in the Relay-reply message, which the relay
                    agent extracts and relays to the client.
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 14]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
 5.4.  Status Codes
 
@@ -803,29 +799,54 @@ Internet-Draft               Unknown(short)                November 2013
    This section presents a table of values used to describe the message
    transmission behavior of clients and servers.
 
-   Parameter Default Description -------------------------------------
-   SOL_MAX_DELAY 1 sec Max delay of first Solicit SOL_TIMEOUT 1 sec
-   Initial Solicit timeout SOL_MAX_RT 120 secs Max Solicit timeout value
-   REQ_TIMEOUT 1 sec Initial Request timeout REQ_MAX_RT 30 secs Max
-   Request timeout value REQ_MAX_RC 10 Max Request retry attempts
-   CNF_MAX_DELAY 1 sec Max delay of first Confirm CNF_TIMEOUT 1 sec
-   Initial Confirm timeout CNF_MAX_RT 4 secs Max Confirm timeout
-   CNF_MAX_RD 10 secs Max Confirm duration REN_TIMEOUT 10 secs Initial
-   Renew timeout REN_MAX_RT 600 secs Max Renew timeout value REB_TIMEOUT
-   10 secs Initial Rebind timeout REB_MAX_RT 600 secs Max Rebind timeout
-   value INF_MAX_DELAY 1 sec Max delay of first Information-request
-   INF_TIMEOUT 1 sec Initial Information-request timeout INF_MAX_RT 120
-   secs Max Information-request timeout value REL_TIMEOUT 1 sec Initial
-   Release timeout REL_MAX_RC 5 MAX Release attempts DEC_TIMEOUT 1 sec
-   Initial Decline timeout DEC_MAX_RC 5 Max Decline attempts REC_TIMEOUT
-   2 secs Initial Reconfigure timeout REC_MAX_RC 8 Max Reconfigure
-   attempts HOP_COUNT_LIMIT 32 Max hop count in a Relay-forward message
+   +-----------------+----------+--------------------------------------+
+   | Parameter       | Default  | Description                          |
+   +-----------------+----------+--------------------------------------+
+   | SOL_MAX_DELAY   | 1 sec    | Max delay of first Solicit           |
+   | SOL_TIMEOUT     | 1 sec    | Initial Solicit timeout              |
+   | SOL_MAX_RT      | 120 secs | Max Solicit timeout value            |
+   | REQ_TIMEOUT     | 1 sec    | Initial Request timeout              |
+   | REQ_MAX_RT      | 30 secs  | Max Request timeout value            |
+   | REQ_MAX_RC      | 10       | Max Request retry attempts           |
+   | CNF_MAX_DELAY   | 1 sec    | Max delay of first Confirm           |
+   | CNF_TIMEOUT     | 1 sec    | Initial Confirm timeout              |
+   | CNF_MAX_RT      | 4 secs   | Max Confirm timeout                  |
+   | CNF_MAX_RD      | 10 secs  | Max Confirm duration                 |
+   | REN_TIMEOUT     | 10 secs  | Initial Renew timeout                |
+   | REN_MAX_RT      | 600 secs | Max Renew timeout value              |
+   | REB_TIMEOUT     | 10 secs  | Initial Rebind timeout               |
+   | REB_MAX_RT      | 600 secs | Max Rebind timeout value             |
+   | INF_MAX_DELAY   | 1 sec    | Max delay of first Information-      |
+   |                 |          | request                              |
+   | INF_TIMEOUT     | 1 sec    | Initial Information-request timeout  |
+   | INF_MAX_RT      | 120 secs | Max Information-request timeout      |
+   |                 |          | value                                |
+   | REL_TIMEOUT     | 1 sec    | Initial Release timeout              |
+   | REL_MAX_RC      | 5        | MAX Release attempts                 |
+   | DEC_TIMEOUT     | 1 sec    | Initial Decline timeout              |
+   | DEC_MAX_RC      | 5        | Max Decline attempts                 |
+   | REC_TIMEOUT     | 2 secs   | Initial Reconfigure timeout          |
+   | REC_MAX_RC      | 8        | Max Reconfigure attempts             |
+   | HOP_COUNT_LIMIT | 32       | Max hop count in a Relay-forward     |
+   |                 |          | message                              |
+   +-----------------+----------+--------------------------------------+
 
-   5.6 Representation of time values and "Infinity" as a time value
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 15]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
+5.6.  Representation of time values and "Infinity" as a time value
 
    All time values for lifetimes, T1 and T2 are unsigned integers.  The
    value 0xffffffff is taken to mean "infinity" when used as a lifetime
-   (as in RFC2461 [RFC2462]) or a value for T1 or T2.
+   (as in [RFC2461]) or a value for T1 or T2.
 
 6.  Client/Server Message Formats
 
@@ -834,13 +855,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    All values in the message header and in options are in network byte
    order.
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 15]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    Options are stored serially in the options field, with no padding
    between the options.  Options are byte-aligned but are not aligned in
@@ -872,6 +886,18 @@ Internet-Draft               Unknown(short)                November 2013
    options     Options carried in this message; options are described in
                section 22.
 
+
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 16]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
 7.  Relay Agent/Server Message Formats
 
    Relay agents exchange messages with servers to relay messages between
@@ -890,14 +916,6 @@ Internet-Draft               Unknown(short)                November 2013
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 16]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
       |    msg-type   |   hop-count   |                               |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               |
       |                                                               |
@@ -928,6 +946,14 @@ Internet-Draft               Unknown(short)                November 2013
    The following table defines the use of message fields in a Relay-
    forward message.
 
+
+
+
+Unknown                   Expires June 26, 2014                [Page 17]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    msg-type    RELAY-FORW
 
    hop-count   Number of relay agents that have relayed this message.
@@ -944,15 +970,6 @@ Internet-Draft               Unknown(short)                November 2013
                agent.
 
 7.2.  Relay-reply Message
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 17]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    The following table defines the use of message fields in a Relay-
    reply message.
@@ -985,6 +1002,14 @@ Internet-Draft               Unknown(short)                November 2013
    See sections 22.2 and 22.3 for the representation of a DUID in a DHCP
    message.
 
+
+
+
+Unknown                   Expires June 26, 2014                [Page 18]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    Clients and servers MUST treat DUIDs as opaque values and MUST only
    compare DUIDs for equality.  Clients and servers MUST NOT in any
    other way interpret DUIDs.  Clients and servers MUST NOT restrict
@@ -1002,14 +1027,6 @@ Internet-Draft               Unknown(short)                November 2013
    The motivation for having more than one type of DUID is that the DUID
    must be globally unique, and must also be easy to generate.  The sort
    of globally-unique identifier that is easy to generate for any given
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 18]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    device can differ quite widely.  Also, some devices may not contain
    any persistent storage.  Retaining a generated DUID in such a device
    is not possible, so the DUID scheme must accommodate such devices.
@@ -1021,11 +1038,13 @@ Internet-Draft               Unknown(short)                November 2013
    actual identifier.  A DUID can be no more than 128 octets long (not
    including the type code).  The following types are currently defined:
 
-   1           Link-layer address plus time
-
-   2           Vendor-assigned unique ID based on Enterprise Number
-
-   3           Link-layer address
+      +------+------------------------------------------------------+
+      | Type | Description                                          |
+      +------+------------------------------------------------------+
+      | 1    | Link-layer address plus time                         |
+      | 2    | Vendor-assigned unique ID based on Enterprise Number |
+      | 3    | Link-layer address                                   |
+      +------+------------------------------------------------------+
 
    Formats for the variable field of the DUID for each of the above
    types are shown below.
@@ -1039,6 +1058,14 @@ Internet-Draft               Unknown(short)                November 2013
    DUID is generated.  The time value is the time that the DUID is
    generated represented in seconds since midnight (UTC), January 1,
    2000, modulo 2^32.  The hardware type MUST be a valid hardware type
+
+
+
+Unknown                   Expires June 26, 2014                [Page 19]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    assigned by the IANA as described in RFC 826 [RFC0826].  Both the
    time and the hardware type are stored in network byte order.  The
    link-layer address is stored in canonical form, as described in RFC
@@ -1058,12 +1085,6 @@ Internet-Draft               Unknown(short)                November 2013
       .             link-layer address (variable length)              .
       .                                                               .
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 19]
-
-Internet-Draft               Unknown(short)                November 2013
 
 
                          Figure 3: DUID-LLT format
@@ -1093,6 +1114,14 @@ Internet-Draft               Unknown(short)                November 2013
 
    This method of DUID generation is recommended for all general purpose
    computing devices such as desktop computers and laptop computers, and
+
+
+
+Unknown                   Expires June 26, 2014                [Page 20]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    also for devices such as printers, routers, and so on, that contain
    some form of writable non-volatile storage.
 
@@ -1106,7 +1135,7 @@ Internet-Draft               Unknown(short)                November 2013
 
    This form of DUID is assigned by the vendor to the device.  It
    consists of the vendor's registered Private Enterprise Number as
-   maintained by IANA [UNKNOWN6] followed by a unique identifier
+   maintained by IANA [IANA-PEN] followed by a unique identifier
    assigned by the vendor.  The following diagram summarizes the
    structure of a DUID-EN:
 
@@ -1114,14 +1143,6 @@ Internet-Draft               Unknown(short)                November 2013
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 20]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
       |               2               |       enterprise-number       |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |   enterprise-number (contd)   |                               |
@@ -1140,17 +1161,28 @@ Internet-Draft               Unknown(short)                November 2013
    is manufactured and stored in some form of non-volatile storage.  The
    generated DUID SHOULD be recorded in non-erasable storage.  The
    enterprise-number is the vendor's registered Private Enterprise
-   Number as maintained by IANA [UNKNOWN6].  The enterprise-number is
+   Number as maintained by IANA [IANA-PEN].  The enterprise-number is
    stored as an unsigned 32 bit number.
 
    An example DUID of this type might look like this:
 
 
-                      +---+---+---+---+---+---+---+---+
-                      | 0 | 2 | 0 | 0 | 0 |  9| 12|192|
-                      +---+---+---+---+---+---+---+---+
-                      |132|221| 3 | 0 | 9 | 18|
-                      +---+---+---+---+---+---+
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 21]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
+      +---+---+---+---+---+---+---+---+
+      | 0 | 2 | 0 | 0 | 0 |  9| 12|192|
+      +---+---+---+---+---+---+---+---+
+      |132|221| 3 | 0 | 9 | 18|
+      +---+---+---+---+---+---+
 
 
                          Figure 5: DUID-EN example
@@ -1170,14 +1202,6 @@ Internet-Draft               Unknown(short)                November 2013
    valid hardware type assigned by the IANA, as described in RFC 826
    [RFC0826].  The hardware type is stored in network byte order.  The
    link-layer address is stored in canonical form, as described in RFC
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 21]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    2464 [RFC2464].  The following diagram illustrates the format of a
    DUID-LL:
 
@@ -1201,6 +1225,14 @@ Internet-Draft               Unknown(short)                November 2013
    generated.  The same DUID-LL SHOULD be used in configuring all
    network interfaces connected to the device, regardless of which
    interface's link-layer address was used to generate the DUID.
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 22]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
    DUID-LL is recommended for devices that have a permanently-connected
    network interface with a link-layer address, and do not have
@@ -1226,14 +1258,6 @@ Internet-Draft               Unknown(short)                November 2013
    among the IAIDs on the client.  The IAID is chosen by the client.
    For any given use of an IA by the client, the IAID for that IA MUST
    be consistent across restarts of the DHCP client.  The client may
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 22]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    maintain consistency either by storing the IAID in non-volatile
    storage or by using an algorithm that will consistently produce the
    same IAID as long as the configuration of the client has not changed.
@@ -1258,39 +1282,42 @@ Internet-Draft               Unknown(short)                November 2013
    and the specific information the server determines about the client
    from some combination of the following sources:
 
-   - The link to which the client is attached.  The server determines
-   the link as follows:
-
-   * If the server receives the message directly from the client and the
-   source address in the IP datagram in which the message was received
-   is a link-local address, then the client is on the same link to which
-   the interface over which the message was received is attached.
-
-   * If the server receives the message from a forwarding relay agent,
-   then the client is on the same link as the one to which the
-   interface, identified by the link-address field in the message from
-   the relay agent, is attached.
-
-   * If the server receives the message directly from the client and the
-   source address in the IP datagram in which the message was received
-   is not a link-local address, then the client is on the link
-   identified by the source address in the IP datagram (note that this
-   situation can occur only if the server has enabled the use of unicast
-   message delivery by the client and the client has sent a message for
-   which unicast delivery is allowed).
-
-   - The DUID supplied by the client.
-
-   - Other information in options supplied by the client.
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 23]
+Unknown                   Expires June 26, 2014                [Page 23]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
-   - Other information in options supplied by the relay agent.
+   -  The link to which the client is attached.  The server determines
+      the link as follows:
+
+      *  If the server receives the message directly from the client and
+         the source address in the IP datagram in which the message was
+         received is a link-local address, then the client is on the
+         same link to which the interface over which the message was
+         received is attached.
+
+      *  If the server receives the message from a forwarding relay
+         agent, then the client is on the same link as the one to which
+         the interface, identified by the link-address field in the
+         message from the relay agent, is attached.
+
+      *  If the server receives the message directly from the client and
+         the source address in the IP datagram in which the message was
+         received is not a link-local address, then the client is on the
+         link identified by the source address in the IP datagram (note
+         that this situation can occur only if the server has enabled
+         the use of unicast message delivery by the client and the
+         client has sent a message for which unicast delivery is
+         allowed).
+
+   -  The DUID supplied by the client.
+
+   -  Other information in options supplied by the client.
+
+   -  Other information in options supplied by the relay agent.
 
    Any address assigned by a server that is based on an EUI-64
    identifier MUST include an interface identifier with the "u"
@@ -1310,6 +1337,14 @@ Internet-Draft               Unknown(short)                November 2013
    addresses.  DHCPv6 says nothing about details of temporary addresses
    like lifetimes, how clients use temporary addresses, rules for
    generating successive temporary addresses, etc.
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 24]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
    Clients ask for temporary addresses and servers assign them.
    Temporary addresses are carried in the Identity Association for
@@ -1337,15 +1372,6 @@ Internet-Draft               Unknown(short)                November 2013
    will respond).  All servers are indicated by not supplying this
    option.
 
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 24]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    A client may send some messages directly to a server using unicast,
    as described in section 22.12.
 
@@ -1368,20 +1394,28 @@ Internet-Draft               Unknown(short)                November 2013
    server or servers, or when the message exchange is considered to have
    failed according to the retransmission mechanism described below.
 
+
+
+
+Unknown                   Expires June 26, 2014                [Page 25]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    The client retransmission behavior is controlled and described by the
    following variables:
 
-   RT Retransmission timeout
+      RT      Retransmission timeout
 
-   IRT Initial retransmission time
+      IRT     Initial retransmission time
 
-   MRC Maximum retransmission count
+      MRC     Maximum retransmission count
 
-   MRT Maximum retransmission time
+      MRT     Maximum retransmission time
 
-   MRD Maximum retransmission duration
+      MRD     Maximum retransmission duration
 
-   RAND Randomization factor
+      RAND    Randomization factor
 
    With each message transmission or retransmission, the client sets RT
    according to the rules given below.  If RT expires before the message
@@ -1393,27 +1427,18 @@ Internet-Draft               Unknown(short)                November 2013
    between -0.1 and +0.1.  The randomization factor is included to
    minimize synchronization of messages transmitted by DHCP clients.
 
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 25]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    The algorithm for choosing a random number does not need to be
    cryptographically sound.  The algorithm SHOULD produce a different
    sequence of random numbers from each invocation of the DHCP client.
 
    RT for the first message transmission is based on IRT:
 
-   RT = IRT + RAND*IRT
+      RT = IRT + RAND*IRT
 
    RT for each subsequent message transmission is based on the previous
    value of RT:
 
-   RT = 2*RTprev + RAND*RTprev
+      RT = 2*RTprev + RAND*RTprev
 
    MRT specifies an upper bound on the value of RT (disregarding the
    randomization added by the use of RAND).  If MRT has a value of 0,
@@ -1422,10 +1447,16 @@ Internet-Draft               Unknown(short)                November 2013
       if (RT > MRT)
          RT = MRT + RAND*MRT
 
-
    MRC specifies an upper bound on the number of times a client may
    retransmit a message.  Unless MRC is zero, the message exchange fails
    once the client has transmitted the message MRC times.
+
+
+
+Unknown                   Expires June 26, 2014                [Page 26]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
    MRD specifies an upper bound on the length of time a client may
    retransmit a message.  Unless MRD is zero, the message exchange fails
@@ -1450,14 +1481,6 @@ Internet-Draft               Unknown(short)                November 2013
    A server MUST discard any Solicit, Confirm, Rebind or Information-
    request messages it receives with a unicast destination address.
 
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 26]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    Message validation based on DHCP authentication is discussed in
    section 21.4.2.
 
@@ -1479,6 +1502,18 @@ Internet-Draft               Unknown(short)                November 2013
    attacks from off-path intruders.  A client MUST leave the transaction
    ID unchanged in retransmissions of a message.
 
+
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 27]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
 15.2.  Solicit Message
 
    Clients MUST discard any received Solicit messages.
@@ -1492,27 +1527,18 @@ Internet-Draft               Unknown(short)                November 2013
    Clients MUST discard any received Advertise messages that meet any of
    the following conditions:
 
-   - the message does not include a Server Identifier option.
+   -  the message does not include a Server Identifier option.
 
-   - the message does not include a Client Identifier option.
+   -  the message does not include a Client Identifier option.
 
-   - the contents of the Client Identifier option does not match the
-   client's DUID.
+   -  the contents of the Client Identifier option does not match the
+      client's DUID.
 
-   - the "transaction-id" field value does not match the value the
-   client used in its Solicit message.
+   -  the "transaction-id" field value does not match the value the
+      client used in its Solicit message.
 
    Servers and relay agents MUST discard any received Advertise
    messages.
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 27]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
 15.4.  Request Message
 
@@ -1521,12 +1547,12 @@ Internet-Draft               Unknown(short)                November 2013
    Servers MUST discard any received Request message that meet any of
    the following conditions:
 
-   - the message does not include a Server Identifier option.
+   -  the message does not include a Server Identifier option.
 
-   - the contents of the Server Identifier option do not match the
-   server's DUID.
+   -  the contents of the Server Identifier option do not match the
+      server's DUID.
 
-   - the message does not include a Client Identifier option.
+   -  the message does not include a Client Identifier option.
 
 15.5.  Confirm Message
 
@@ -1536,6 +1562,14 @@ Internet-Draft               Unknown(short)                November 2013
    include a Client Identifier option or that do include a Server
    Identifier option.
 
+
+
+
+Unknown                   Expires June 26, 2014                [Page 28]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
 15.6.  Renew Message
 
    Clients MUST discard any received Renew messages.
@@ -1543,12 +1577,12 @@ Internet-Draft               Unknown(short)                November 2013
    Servers MUST discard any received Renew message that meets any of the
    following conditions:
 
-   - the message does not include a Server Identifier option.
+   -  the message does not include a Server Identifier option.
 
-   - the contents of the Server Identifier option does not match the
-   server's identifier.
+   -  the contents of the Server Identifier option does not match the
+      server's identifier.
 
-   - the message does not include a Client Identifier option.
+   -  the message does not include a Client Identifier option.
 
 15.7.  Rebind Message
 
@@ -1562,23 +1596,15 @@ Internet-Draft               Unknown(short)                November 2013
 
    Clients MUST discard any received Decline messages.
 
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 28]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    Servers MUST discard any received Decline message that meets any of
    the following conditions:
 
-   - the message does not include a Server Identifier option.
+   -  the message does not include a Server Identifier option.
 
-   - the contents of the Server Identifier option does not match the
-   server's identifier.
+   -  the contents of the Server Identifier option does not match the
+      server's identifier.
 
-   - the message does not include a Client Identifier option.
+   -  the message does not include a Client Identifier option.
 
 15.9.  Release Message
 
@@ -1587,22 +1613,30 @@ Internet-Draft               Unknown(short)                November 2013
    Servers MUST discard any received Release message that meets any of
    the following conditions:
 
-   - the message does not include a Server Identifier option.
+   -  the message does not include a Server Identifier option.
 
-   - the contents of the Server Identifier option does not match the
-   server's identifier.
+   -  the contents of the Server Identifier option does not match the
+      server's identifier.
 
-   - the message does not include a Client Identifier option.
+
+
+
+Unknown                   Expires June 26, 2014                [Page 29]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
+   -  the message does not include a Client Identifier option.
 
 15.10.  Reply Message
 
    Clients MUST discard any received Reply message that meets any of the
    following conditions:
 
-   - the message does not include a Server Identifier option.
+   -  the message does not include a Server Identifier option.
 
-   - the "transaction-id" field in the message does not match the value
-   used in the original message.
+   -  the "transaction-id" field in the message does not match the value
+      used in the original message.
 
    If the client included a Client Identifier option in the original
    message, the Reply message MUST include a Client Identifier option
@@ -1613,19 +1647,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    Servers and relay agents MUST discard any received Reply messages.
 
-
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 29]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
 15.11.  Reconfigure Message
 
    Servers and relay agents MUST discard any received Reconfigure
@@ -1634,25 +1655,32 @@ Internet-Draft               Unknown(short)                November 2013
    Clients MUST discard any Reconfigure messages that meets any of the
    following conditions:
 
-   - the message was not unicast to the client.
+   -  the message was not unicast to the client.
 
-   - the message does not include a Server Identifier option.
+   -  the message does not include a Server Identifier option.
 
-   - the message does not include a Client Identifier option that
-   contains the client's DUID.
+   -  the message does not include a Client Identifier option that
+      contains the client's DUID.
 
-   - the message does not contain a Reconfigure Message option and the
-   msg-type must be a valid value.
+   -  the message does not contain a Reconfigure Message option and the
+      msg-type must be a valid value.
 
-   - the message includes any IA options and the msg-type in the
-   Reconfigure Message option is INFORMATION-REQUEST.
+   -  the message includes any IA options and the msg-type in the
+      Reconfigure Message option is INFORMATION-REQUEST.
 
-   - the message does not include DHCP authentication:
+   -  the message does not include DHCP authentication:
 
-   * the message does not contain an authentication option.
+      *  the message does not contain an authentication option.
 
-   * the message does not pass the authentication validation performed
-   by the client.
+      *  the message does not pass the authentication validation
+         performed by the client.
+
+
+
+Unknown                   Expires June 26, 2014                [Page 30]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
 15.12.  Information-request Message
 
@@ -1661,10 +1689,10 @@ Internet-Draft               Unknown(short)                November 2013
    Servers MUST discard any received Information-request message that
    meets any of the following conditions:
 
-   - The message includes a Server Identifier option and the DUID in the
-   option does not match the server's DUID.
+   -  The message includes a Server Identifier option and the DUID in
+      the option does not match the server's DUID.
 
-   - The message includes an IA option.
+   -  - The message includes an IA option.
 
 15.13.  Relay-forward Message
 
@@ -1673,14 +1701,6 @@ Internet-Draft               Unknown(short)                November 2013
 15.14.  Relay-reply Message
 
    Clients and servers MUST discard any received Relay-reply messages.
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 30]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
 16.  Client Source Address and Interface Selection
 
@@ -1710,6 +1730,14 @@ Internet-Draft               Unknown(short)                November 2013
    server assign IPv6 addresses to the IA.  The client first creates an
    IA and assigns it an IAID.  The client then transmits a Solicit
    message containing an IA option describing the IA.  Servers that can
+
+
+
+Unknown                   Expires June 26, 2014                [Page 31]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    assign addresses to the IA respond to the client with an Advertise
    message.  The client then initiates a configuration exchange as
    described in section 18.
@@ -1724,19 +1752,6 @@ Internet-Draft               Unknown(short)                November 2013
    A client uses the Solicit message to discover DHCP servers configured
    to assign addresses or return other configuration parameters on the
    link to which the client is attached.
-
-
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 31]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
 17.1.1.  Creation of Solicit Messages
 
@@ -1768,6 +1783,17 @@ Internet-Draft               Unknown(short)                November 2013
    if the client is willing to accept Reconfigure messages from the
    server.
 
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 32]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
 17.1.2.  Transmission of Solicit Messages
 
    The first Solicit message from the client on the interface MUST be
@@ -1782,21 +1808,13 @@ Internet-Draft               Unknown(short)                November 2013
    The client transmits the message according to section 14, using the
    following parameters:
 
-   IRT SOL_TIMEOUT
+      IRT     SOL_TIMEOUT
 
-   MRT SOL_MAX_RT
+      MRT     SOL_MAX_RT
 
+      MRC     0
 
-
-
-Unknown                   Expires May 31, 2014                 [Page 32]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
-   MRC 0
-
-   MRD 0
+      MRD     0
 
    If the client has included a Rapid Commit option in its Solicit
    message, the client terminates the waiting process as soon as a Reply
@@ -1823,6 +1841,15 @@ Internet-Draft               Unknown(short)                November 2013
    include a Preference option with a preference value of 255, the
    client continues to wait until the first RT elapses.  If the first RT
    elapses and the client has received an Advertise message, the client
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 33]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    SHOULD continue with a client-initiated message exchange by sending a
    Request message.
 
@@ -1841,15 +1868,6 @@ Internet-Draft               Unknown(short)                November 2013
    external event, such as user input, system restart, or when the
    client is attached to a new link.
 
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 33]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
 17.1.3.  Receipt of Advertise Messages
 
    The client MUST ignore any Advertise message that includes a Status
@@ -1861,23 +1879,32 @@ Internet-Draft               Unknown(short)                November 2013
    selects one or more Advertise messages based upon the following
    criteria.
 
-   - Those Advertise messages with the highest server preference value
-   are preferred over all other Advertise messages.
+   -  Those Advertise messages with the highest server preference value
+      are preferred over all other Advertise messages.
 
-   - Within a group of Advertise messages with the same server
-   preference value, a client MAY select those servers whose Advertise
-   messages advertise information of interest to the client.  For
-   example, the client may choose a server that returned an
-   advertisement with configuration options of interest to the client.
+   -  Within a group of Advertise messages with the same server
+      preference value, a client MAY select those servers whose
+      Advertise messages advertise information of interest to the
+      client.  For example, the client may choose a server that returned
+      an advertisement with configuration options of interest to the
+      client.
 
-   - The client MAY choose a less-preferred server if that server has a
-   better set of advertised parameters, such as the available addresses
-   advertised in IAs.
+   -  The client MAY choose a less-preferred server if that server has a
+      better set of advertised parameters, such as the available
+      addresses advertised in IAs.
 
    Once a client has selected Advertise message(s), the client will
    typically store information about each server, such as server
    preference value, addresses advertised, when the advertisement was
    received, and so on.
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 34]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
    If the client needs to select an alternate server in the case that a
    chosen server does not respond, the client chooses the next server
@@ -1897,14 +1924,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    If the client subsequently receives a valid Reply message that
    includes a Rapid Commit option, it either:
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 34]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
       processes the Reply message as described in section 18.1.8, and
       discards any Reply messages received in response to the Request
@@ -1935,6 +1954,14 @@ Internet-Draft               Unknown(short)                November 2013
    If the client has included a Rapid Commit option in the Solicit
    message and the server has been configured to respond with committed
    address assignments and other resources, the server responds to the
+
+
+
+Unknown                   Expires June 26, 2014                [Page 35]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    Solicit with a Reply message as described in section 17.2.3.
    Otherwise, the server ignores the Rapid Commit option and processes
    the remainder of the message as if no Rapid Commit option were
@@ -1954,13 +1981,6 @@ Internet-Draft               Unknown(short)                November 2013
    the setting of a server preference value by the administrator.  The
    server preference value MUST default to zero unless otherwise
    configured by the server administrator.
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 35]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    The server includes a Reconfigure Accept option if the server wants
    to require that the client accept Reconfigure messages.
@@ -1989,6 +2009,15 @@ Internet-Draft               Unknown(short)                November 2013
    subsequent Request from the client, the server MUST send an Advertise
    message to the client that includes only a Status Code option with
    code NoAddrsAvail and a status message for the user, a Server
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 36]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    Identifier option with the server's DUID, and a Client Identifier
    option with the client's DUID.
 
@@ -2008,15 +2037,6 @@ Internet-Draft               Unknown(short)                November 2013
    message was received.
 
 17.2.3.  Creation and Transmission of Reply Messages
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 36]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    The server MUST commit the assignment of any addresses or other
    configuration information message before sending a Reply message to a
@@ -2047,6 +2067,13 @@ Internet-Draft               Unknown(short)                November 2013
    Request message, as described in section 18.2.1.  The server
    transmits the Reply message as described in section 18.2.8.
 
+
+
+Unknown                   Expires June 26, 2014                [Page 37]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
 18.  DHCP Client-Initiated Configuration Exchange
 
    A client initiates a message exchange with a server or servers to
@@ -2064,15 +2091,6 @@ Internet-Draft               Unknown(short)                November 2013
    validate addresses when it may have moved to a new link.  It uses
    Information-Request messages when it needs configuration information
    but no addresses.
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 37]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    If the client has a source address of sufficient scope that can be
    used by the server as a return address, and the client has received a
@@ -2104,6 +2122,14 @@ Internet-Draft               Unknown(short)                November 2013
    The client places the identifier of the destination server in a
    Server Identifier option.
 
+
+
+
+Unknown                   Expires June 26, 2014                [Page 38]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    The client MUST include a Client Identifier option to identify itself
    to the server.  The client adds any other appropriate options,
    including one or more IA options (if the client is requesting that
@@ -2121,31 +2147,24 @@ Internet-Draft               Unknown(short)                November 2013
    The client transmits the message according to section 14, using the
    following parameters:
 
-   IRT REQ_TIMEOUT
+      IRT     REQ_TIMEOUT
 
+      MRT     REQ_MAX_RT
 
+      MRC     REQ_MAX_RC
 
-Unknown                   Expires May 31, 2014                 [Page 38]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
-   MRT REQ_MAX_RT
-
-   MRC REQ_MAX_RC
-
-   MRD 0
+      MRD     0
 
    If the message exchange fails, the client takes an action based on
    the client's local policy.  Examples of actions the client might take
    include:
 
-   - Select another server from a list of servers known to the client;
-   for example, servers that responded with an Advertise message.
+   -  Select another server from a list of servers known to the client;
+      for example, servers that responded with an Advertise message.
 
-   - Initiate the server discovery process described in section 17.
+   -  Initiate the server discovery process described in section 17.
 
-   - Terminate the configuration process and report failure.
+   -  Terminate the configuration process and report failure.
 
 18.1.2.  Creation and Transmission of Confirm Messages
 
@@ -2154,13 +2173,20 @@ Internet-Draft               Unknown(short)                November 2013
    appropriate for the link to which the client is attached.  Examples
    of times when a client may have moved to a new link include:
 
-   o The client reboots.
+   o  The client reboots.
 
-   o The client is physically connected to a wired connection.
+   o  The client is physically connected to a wired connection.
 
-   o The client returns from sleep mode.
+   o  The client returns from sleep mode.
 
-   o The client using a wireless technology changes access points.
+
+
+Unknown                   Expires June 26, 2014                [Page 39]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
+   o  The client using a wireless technology changes access points.
 
    In any situation when a client may have moved to a new link, the
    client MUST initiate a Confirm/Reply message exchange.  The client
@@ -2178,14 +2204,6 @@ Internet-Draft               Unknown(short)                November 2013
    The client MUST include a Client Identifier option to identify itself
    to the server.  The client includes IA options for all of the IAs
    assigned to the interface for which the Confirm message is being
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 39]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    sent.  The IA options include all of the addresses the client
    currently has associated with those IAs.  The client SHOULD set the
    T1 and T2 fields in any IA_NA options, and the preferred-lifetime and
@@ -2197,13 +2215,13 @@ Internet-Draft               Unknown(short)                November 2013
    client transmits the message according to section 14, using the
    following parameters:
 
-   IRT CNF_TIMEOUT
+      IRT     CNF_TIMEOUT
 
-   MRT CNF_MAX_RT
+      MRT     CNF_MAX_RT
 
-   MRC 0
+      MRC     0
 
-   MRD CNF_MAX_RD
+      MRD     CNF_MAX_RD
 
    If the client receives no responses before the message transmission
    process terminates, as described in section 14, the client SHOULD
@@ -2216,6 +2234,14 @@ Internet-Draft               Unknown(short)                November 2013
    To extend the valid and preferred lifetimes for the addresses
    associated with an IA, the client sends a Renew message to the server
    from which the client obtained the addresses in the IA containing an
+
+
+
+Unknown                   Expires June 26, 2014                [Page 40]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    IA option for the IA.  The client includes IA Address options in the
    IA option for the addresses associated with the IA.  The server
    determines new lifetimes for the addresses in the IA according to the
@@ -2232,15 +2258,6 @@ Internet-Draft               Unknown(short)                November 2013
    exchange to extend the lifetimes on any addresses in the IA.  The
    client includes an IA option with all addresses currently assigned to
    the IA in its Renew message.
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 40]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    If T1 or T2 is set to 0 by the server (for an IA_NA) or there are no
    T1 or T2 times (for an IA_TA), the client may send a Renew or Rebind
@@ -2267,13 +2284,21 @@ Internet-Draft               Unknown(short)                November 2013
    The client transmits the message according to section 14, using the
    following parameters:
 
-   IRT REN_TIMEOUT
+      IRT     REN_TIMEOUT
 
-   MRT REN_MAX_RT
+      MRT     REN_MAX_RT
 
-   MRC 0
+      MRC     0
 
-   MRD Remaining time until T2
+
+
+
+Unknown                   Expires June 26, 2014                [Page 41]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
+      MRD     Remaining time until T2
 
    The message exchange is terminated when time T2 is reached (see
    section 18.1.4), at which time the client begins a Rebind message
@@ -2291,13 +2316,6 @@ Internet-Draft               Unknown(short)                November 2013
    a transaction ID and inserts this value in the "transaction-id"
    field.
 
-
-
-Unknown                   Expires May 31, 2014                 [Page 41]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    The client MUST include a Client Identifier option to identify itself
    to the server.  The client adds any appropriate options, including
    one or more IA options.  The client MUST include the list of
@@ -2312,26 +2330,37 @@ Internet-Draft               Unknown(short)                November 2013
    The client transmits the message according to section 14, using the
    following parameters:
 
-   IRT REB_TIMEOUT
+      IRT     REB_TIMEOUT
 
-   MRT REB_MAX_RT
+      MRT     REB_MAX_RT
 
-   MRC 0
+      MRC     0
 
-   MRD Remaining time until valid lifetimes of all addresses have
-   expired
+      MRD     Remaining time until valid lifetimes of all addresses have
+              expired
 
    The message exchange is terminated when the valid lifetimes of all
    the addresses assigned to the IA expire (see section 10), at which
    time the client has several alternative actions to choose from; for
    example:
 
-   - The client may choose to use a Solicit message to locate a new DHCP
-   server and send a Request for the expired IA to the new server.
 
-   - The client may have other addresses in other IAs, so the client may
-   choose to discard the expired IA and use the addresses in the other
-   IAs.
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 42]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
+   -  The client may choose to use a Solicit message to locate a new
+      DHCP server and send a Request for the expired IA to the new
+      server.
+
+   -  The client may have other addresses in other IAs, so the client
+      may choose to discard the expired IA and use the addresses in the
+      other IAs.
 
 18.1.5.  Creation and Transmission of Information-request Messages
 
@@ -2346,14 +2375,6 @@ Internet-Draft               Unknown(short)                November 2013
    itself to the server.  If the client does not include a Client
    Identifier option, the server will not be able to return any client-
    specific options to the client, or the server may choose not to
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 42]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    respond to the message at all.  The client MUST include a Client
    Identifier option if the Information-Request message will be
    authenticated.
@@ -2368,18 +2389,26 @@ Internet-Draft               Unknown(short)                November 2013
    INF_MAX_DELAY.  The client transmits the message according to section
    14, using the following parameters:
 
-   IRT INF_TIMEOUT
+      IRT     INF_TIMEOUT
 
-   MRT INF_MAX_RT
+      MRT     INF_MAX_RT
 
-   MRC 0
+      MRC     0
 
-   MRD 0
+      MRD     0
 
 18.1.6.  Creation and Transmission of Release Messages
 
    To release one or more addresses, a client sends a Release message to
    the server.
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 43]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
    The client sets the "msg-type" field to RELEASE.  The client
    generates a transaction ID and places this value in the "transaction-
@@ -2402,14 +2431,6 @@ Internet-Draft               Unknown(short)                November 2013
    Because Release messages may be lost, the client should retransmit
    the Release if no Reply is received.  However, there are scenarios
    where the client may not wish to wait for the normal retransmission
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 43]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    timeout before giving up (e.g., on power down).  Implementations
    SHOULD retransmit one or more times, but MAY choose to terminate the
    retransmission procedure early.
@@ -2417,13 +2438,13 @@ Internet-Draft               Unknown(short)                November 2013
    The client transmits the message according to section 14, using the
    following parameters:
 
-   IRT REL_TIMEOUT
+      IRT     REL_TIMEOUT
 
-   MRT 0
+      MRT     0
 
-   MRC REL_MAX_RC
+      MRC     REL_MAX_RC
 
-   MRD 0
+      MRD     0
 
    The client MUST stop using all of the addresses being released as
    soon as the client begins the Release message exchange process.  If
@@ -2436,6 +2457,14 @@ Internet-Draft               Unknown(short)                November 2013
    Note that if the client fails to release the addresses, each address
    assigned to the IA will be reclaimed by the server when the valid
    lifetime of that address expires.
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 44]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
 18.1.7.  Creation and Transmission of Decline Messages
 
@@ -2457,15 +2486,6 @@ Internet-Draft               Unknown(short)                November 2013
    IAs the client wishes to continue to use should not be in added to
    the IAs.
 
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 44]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    The client MUST NOT use any of the addresses it is declining as the
    source address in the Decline message or in any subsequently
    transmitted message.
@@ -2473,13 +2493,13 @@ Internet-Draft               Unknown(short)                November 2013
    The client transmits the message according to section 14, using the
    following parameters:
 
-   IRT DEC_TIMEOUT
+      IRT     DEC_TIMEOUT
 
-   MRT 0
+      MRT     0
 
-   MRC DEC_MAX_RC
+      MRC     DEC_MAX_RC
 
-   MRD 0
+      MRD     0
 
    If addresses are declined but the Reply from a DHCP server is lost,
    the client will retransmit the Decline message, and the server may
@@ -2493,6 +2513,15 @@ Internet-Draft               Unknown(short)                November 2013
    (with a Rapid Commit option), Request, Confirm, Renew, Rebind or
    Information-request message, the client extracts the configuration
    information contained in the Reply.  The client MAY choose to report
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 45]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    any status code or message from the status code option in the Reply
    message.
 
@@ -2507,27 +2536,20 @@ Internet-Draft               Unknown(short)                November 2013
    the information it has recorded about IAs from the IA options
    contained in the Reply message:
 
-   - Record T1 and T2 times.
+   -  Record T1 and T2 times.
 
-   - Add any new addresses in the IA option to the IA as recorded by the
-   client.
+   -  Add any new addresses in the IA option to the IA as recorded by
+      the client.
 
-   - Update lifetimes for any addresses in the IA option that the client
-   already has recorded in the IA.
+   -  Update lifetimes for any addresses in the IA option that the
+      client already has recorded in the IA.
 
+   -  Discard any addresses from the IA, as recorded by the client, that
+      have a valid lifetime of 0 in the IA Address option.
 
-
-Unknown                   Expires May 31, 2014                 [Page 45]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
-   - Discard any addresses from the IA, as recorded by the client, that
-   have a valid lifetime of 0 in the IA Address option.
-
-   - Leave unchanged any information about addresses the client has
-   recorded in the IA but that were not included in the IA from the
-   server.
+   -  Leave unchanged any information about addresses the client has
+      recorded in the IA but that were not included in the IA from the
+      server.
 
    Management of the specific configuration information is detailed in
    the definition of each option in section 22.
@@ -2548,6 +2570,14 @@ Internet-Draft               Unknown(short)                November 2013
 
    When the client receives a NotOnLink status from the server in
    response to a Confirm message, the client performs DHCP server
+
+
+
+Unknown                   Expires June 26, 2014                [Page 46]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    solicitation, as described in section 17, and client-initiated
    configuration as described in section 18.  If the client receives any
    Reply messages that do not indicate a NotOnLink status, the client
@@ -2569,26 +2599,17 @@ Internet-Draft               Unknown(short)                November 2013
    the DHCP server discovery process) or use the Information-request
    message to obtain other configuration information only.
 
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 46]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    When the client receives a Reply message in response to a Renew or
    Rebind message, the client examines each IA independently.  For each
    IA in the original Renew or Rebind message, the client:
 
-   - sends a Request message if the IA contained a Status Code option
-   with the NoBinding status (and does not send any additional Renew/
-   Rebind messages)
+   -  sends a Request message if the IA contained a Status Code option
+      with the NoBinding status (and does not send any additional Renew/
+      Rebind messages)
 
-   - sends a Renew/Rebind if the IA is not in the Reply message
+   -  sends a Renew/Rebind if the IA is not in the Reply message
 
-   - otherwise accepts the information in the IA
+   -  otherwise accepts the information in the IA
 
    When the client receives a valid Reply message in response to a
    Release message, the client considers the Release event completed,
@@ -2603,6 +2624,15 @@ Internet-Draft               Unknown(short)                November 2013
    For this discussion, the Server is assumed to have been configured in
    an implementation specific manner with configuration of interest to
    clients.
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 47]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
    In most instances, the server will send a Reply in response to a
    client message.  This Reply message MUST always contain the Server
@@ -2620,19 +2650,6 @@ Internet-Draft               Unknown(short)                November 2013
    options to the client if it has been configured to do so.
 
 18.2.1.  Receipt of Request Messages
-
-
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 47]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    When the server receives a Request message via unicast from a client
    to which the server has not sent a unicast option, the server
@@ -2664,6 +2681,15 @@ Internet-Draft               Unknown(short)                November 2013
    with no addresses in the IA and a Status Code option in the IA
    containing status code NoAddrsAvail.
 
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 48]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    For any IAs to which the server can assign addresses, the server
    includes the IA with addresses and other configuration parameters,
    and records the IA as a new client binding.
@@ -2680,15 +2706,6 @@ Internet-Draft               Unknown(short)                November 2013
    the IA with the client, the client has resent a Request message for
    which it did not receive a Reply message.  The server either resends
    a previously cached Reply message or sends a new Reply message.
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 48]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
 18.2.2.  Receipt of Confirm Messages
 
@@ -2721,6 +2738,14 @@ Internet-Draft               Unknown(short)                November 2013
    When the server receives a Renew message via unicast from a client to
    which the server has not sent a unicast option, the server discards
    the Renew message and responds with a Reply message containing a
+
+
+
+Unknown                   Expires June 26, 2014                [Page 49]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    Status Code option with the value UseMulticast, a Server Identifier
    option containing the server's DUID, the Client Identifier option
    from the client message, and no other options.
@@ -2737,14 +2762,6 @@ Internet-Draft               Unknown(short)                November 2013
    If the server finds that any of the addresses are not appropriate for
    the link to which the client is attached, the server returns the
    address to the client with lifetimes of 0.
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 49]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    If the server finds the addresses in the IA for the client then the
    server sends back the IA to the client with new lifetimes and T1/T2
@@ -2777,6 +2794,14 @@ Internet-Draft               Unknown(short)                November 2013
    Reply message to the client containing the client's IA, with the
    lifetimes for the addresses in the IA set to zero.  This Reply
    constitutes an explicit notification to the client that the addresses
+
+
+
+Unknown                   Expires June 26, 2014                [Page 50]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    in the IA are no longer valid.  In this situation, if the server does
    not send a Reply message it silently discards the Rebind message.
 
@@ -2791,16 +2816,6 @@ Internet-Draft               Unknown(short)                November 2013
    The server constructs a Reply message by setting the "msg-type" field
    to REPLY, and copying the transaction ID from the Rebind message into
    the transaction-id field.
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 50]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    The server MUST include a Server Identifier option containing the
    server's DUID and the Client Identifier option from the Rebind
@@ -2834,6 +2849,15 @@ Internet-Draft               Unknown(short)                November 2013
    include a Client Identifier option, the server SHOULD respond with a
    Reply message containing any configuration parameters that are not
    determined by the client's identity.  If the server chooses not to
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 51]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    respond, the client may continue to retransmit the Information-
    request message indefinitely.
 
@@ -2850,14 +2874,6 @@ Internet-Draft               Unknown(short)                November 2013
    IAs and the addresses in the IAs for validity.  If the IAs in the
    message are in a binding for the client, and the addresses in the IAs
    have been assigned by the server to those IAs, the server deletes the
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 51]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    addresses from the IAs and makes the addresses available for
    assignment to other clients.  The server ignores addresses not
    assigned to the IA, although it may choose to log an error.
@@ -2889,6 +2905,15 @@ Internet-Draft               Unknown(short)                November 2013
    message are in a binding for the client, and the addresses in the IAs
    have been assigned by the server to those IAs, the server deletes the
    addresses from the IAs.  The server ignores addresses not assigned to
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 52]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    the IA (though it may choose to log an error if it finds such an
    address).
 
@@ -2906,14 +2931,6 @@ Internet-Draft               Unknown(short)                November 2013
    Client Identifier option with the client's DUID.  For each IA in the
    Decline message for which the server has no binding information, the
    server adds an IA option using the IAID from the Release message and
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 52]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    includes a Status Code option with the value NoBinding in the IA
    option.  No other options are included in the IA option.
 
@@ -2944,6 +2961,15 @@ Internet-Draft               Unknown(short)                November 2013
    addition of new services such as printing, and availability of new
    software.
 
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 53]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
 19.1.  Server Behavior
 
    A server sends a Reconfigure message to cause a client to initiate
@@ -2962,14 +2988,6 @@ Internet-Draft               Unknown(short)                November 2013
    added.  In particular, the server specifies the IA option in the
    Option Request option if the server wants the client to obtain new
    address information.  If the server identifies the IA option in the
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 53]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    Option Request option, the server MUST include an IA option that
    contains no other sub-options to identify each IA that is to be
    reconfigured on the client.
@@ -3000,6 +3018,14 @@ Internet-Draft               Unknown(short)                November 2013
 
    To reconfigure more than one client, the server unicasts a separate
    message to each client.  The server may initiate the reconfiguration
+
+
+
+Unknown                   Expires June 26, 2014                [Page 54]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    of multiple clients concurrently; for example, a server may send a
    Reconfigure message to additional clients while previous
    reconfiguration message exchanges are still in progress.
@@ -3018,13 +3044,6 @@ Internet-Draft               Unknown(short)                November 2013
    again.  The server continues this process until REC_MAX_RC
    unsuccessful attempts have been made, at which point the server
    SHOULD abort the reconfigure process for that client.
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 54]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    Default and initial values for REC_TIMEOUT and REC_MAX_RC are
    documented in section 5.5.
@@ -3051,6 +3070,18 @@ Internet-Draft               Unknown(short)                November 2013
    parameters were not requested in the Information-request message from
    the client.
 
+
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 55]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
 19.4.  Client Behavior
 
    A client receives Reconfigure messages sent to the UDP port 546 on
@@ -3074,14 +3105,6 @@ Internet-Draft               Unknown(short)                November 2013
       The Reconfigure message acts as a trigger that signals the client
       to complete a successful message exchange.  Once the client has
       received a Reconfigure, the client proceeds with the message
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 55]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
       exchange (retransmitting the Renew or Information-request message
       if necessary); the client ignores any additional Reconfigure
       messages until the exchange is complete.  Subsequent Reconfigure
@@ -3105,6 +3128,15 @@ Internet-Draft               Unknown(short)                November 2013
       of order delivery is small enough to be ignored.  The consequence
       of the redundant exchange is inefficiency rather than incorrect
       operation.
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 56]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
 19.4.2.  Creation and Transmission of Renew Messages
 
@@ -3130,14 +3162,6 @@ Internet-Draft               Unknown(short)                November 2013
    does with Renew or Information-request messages generated as part of
    a client-initiated configuration exchange.  See sections 18.1.3 and
    18.1.5 for details.  If the client does not receive a response from
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 56]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    the server by the end of the retransmission process, the client
    ignores and discards the Reconfigure message.
 
@@ -3160,6 +3184,15 @@ Internet-Draft               Unknown(short)                November 2013
    If the relay agent relays messages to the All_DHCP_Servers multicast
    address or other multicast addresses, it sets the Hop Limit field to
    32.
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 57]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
 20.1.  Relaying a Client Message or a Relay-forward Message
 
@@ -3186,14 +3219,6 @@ Internet-Draft               Unknown(short)                November 2013
    If the relay agent cannot use the address in the link-address field
    to identify the interface through which the response to the client
    will be relayed, the relay agent MUST include an Interface-id option
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 57]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    (see section 22.18) in the Relay-forward message.  The server will
    include the Interface-id option in its Relay-reply message.  The
    relay agent fills in the link-address field as described in the
@@ -3217,6 +3242,14 @@ Internet-Draft               Unknown(short)                November 2013
    the relay agent is running belongs to only one site), the relay agent
    sets the link-address field to 0; otherwise the relay agent sets the
    link-address field to a global or site-local address assigned to the
+
+
+
+Unknown                   Expires June 26, 2014                [Page 58]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    interface on which the message was received, or includes an
    Interface-ID option to identify the interface on which the message
    was received.
@@ -3236,19 +3269,6 @@ Internet-Draft               Unknown(short)                November 2013
    identified by the Interface-id option.  Otherwise, if the link-
    address field is not set to zero, the relay agent relays the message
    on the link identified by the link-address field.
-
-
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 58]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
 20.3.  Construction of Relay-reply Messages
 
@@ -3278,6 +3298,14 @@ Internet-Draft               Unknown(short)                November 2013
    link-address: address from link to which C is attached peer-address:
    C Relay Message option: <response from server>
 
+
+
+
+Unknown                   Expires June 26, 2014                [Page 59]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    When sending a Reconfigure message to a client through a relay agent,
    the server creates a Relay-reply message that includes a Relay
    Message option containing the Reconfigure message for the next relay
@@ -3289,22 +3317,6 @@ Internet-Draft               Unknown(short)                November 2013
    interaction with the client or through some external mechanism.
 
 21.  Authentication of DHCP Messages
-
-
-
-
-
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 59]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    Some network administrators may wish to provide authentication of the
    source and contents of DHCP messages.  For example, clients may be
@@ -3341,6 +3353,15 @@ Internet-Draft               Unknown(short)                November 2013
    DHCP messages must also be configured with a list of the relay agents
    to which messages will be returned.  The selectors for the relay
    agents and servers will be the pairs of addresses defining relay
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 60]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    agents and servers that exchange DHCP messages on the DHCPv6 UDP
    ports 546 and 547.
 
@@ -3348,19 +3369,6 @@ Internet-Draft               Unknown(short)                November 2013
    information in DHCP messages is not generally considered
    confidential, so encryption need not be used (i.e., NULL encryption
    can be used).
-
-
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 60]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    Key management Because the relay agents and servers are used within
    an organization, public key schemes are not necessary.  Because the
@@ -3402,21 +3410,20 @@ Internet-Draft               Unknown(short)                November 2013
    specific protocol used to generate the authentication information
    carried in the option.  The algorithm field identifies a specific
    algorithm within the authentication protocol; for example, the
+
+
+
+Unknown                   Expires June 26, 2014                [Page 61]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    algorithm field specifies the hash algorithm used to generate the
    message authentication code (MAC) in the authentication option.  The
    replay detection method (RDM) field specifies the type of replay
    detection used in the replay detection field.
 
 21.3.  Replay Detection
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 61]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    The Replay Detection Method (RDM) field determines the type of replay
    detection used in the Replay Detection field.
@@ -3457,6 +3464,16 @@ Internet-Draft               Unknown(short)                November 2013
    The format of the Authentication information is:
 
 
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 62]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -3466,14 +3483,6 @@ Internet-Draft               Unknown(short)                November 2013
       .                                                               .
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                            key ID                             |
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 62]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                                                               |
       |                           HMAC-MD5                            |
@@ -3512,6 +3521,15 @@ Internet-Draft               Unknown(short)                November 2013
       identifiers, and allows a host using DHCP to use authenticated
       DHCP while roaming among DHCP administrative domains.
 
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 63]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
 21.4.2.  Message Validation
 
    Any DHCP message that includes more than one authentication option
@@ -3522,14 +3540,6 @@ Internet-Draft               Unknown(short)                November 2013
    replay detection method specified by the RDM field.  Next, the
    receiver computes the MAC as described in [RFC2104].  The entire DHCP
    message (setting the MAC field of the authentication option to 0) is
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 63]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    used as input to the HMAC-MD5 computation function.  If the MAC
    computed by the receiver does not match the MAC contained in the
    authentication option, the receiver MUST discard the DHCP message.
@@ -3564,6 +3574,18 @@ Internet-Draft               Unknown(short)                November 2013
    does not include any replay detection or authentication information
    in the Authentication option.
 
+
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 64]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
 21.4.4.2.  Receiving Advertise Messages
 
    The client validates any Advertise messages containing an
@@ -3578,14 +3600,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    The decision to set local policy to accept unauthenticated messages
    should be made with care.  Accepting an unauthenticated Advertise
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 64]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    message can make the client vulnerable to spoofing and other attacks.
    If local users are not explicitly informed that the client has
    accepted an unauthenticated Advertise message, the users may
@@ -3604,8 +3618,7 @@ Internet-Draft               Unknown(short)                November 2013
    client SHOULD inform any local users and SHOULD log the event.
 
 21.4.4.3.  Sending Request, Confirm, Renew, Rebind, Decline or Release
-
-   Messages
+           Messages
 
    If the client authenticated the Advertise message through which the
    client selected the server, the client MUST generate authentication
@@ -3620,6 +3633,15 @@ Internet-Draft               Unknown(short)                November 2013
    exchange (see section 21.4.5.1), the client MUST use the same key to
    generate the authentication information throughout the session.
 
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 65]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
 21.4.4.5.  Receiving Reply Messages
 
    If the client authenticated the Advertise it accepted, the client
@@ -3632,15 +3654,6 @@ Internet-Draft               Unknown(short)                November 2013
    If the client accepted an Advertise message that did not include
    authentication information or did not pass the validation test, the
    client MAY accept an unauthenticated Reply message from the server.
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 65]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
 21.4.4.6.  Receiving Reconfigure Messages
 
@@ -3678,6 +3691,13 @@ Internet-Draft               Unknown(short)                November 2013
    include authentication information generated using the key identified
    in the received message, as specified in section 21.4.
 
+
+
+Unknown                   Expires June 26, 2014                [Page 66]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
 21.5.  Reconfigure Key Authentication Protocol
 
    The Reconfigure key authentication protocol provides protection
@@ -3688,15 +3708,6 @@ Internet-Draft               Unknown(short)                November 2013
    authenticating subsequent Reconfigure messages from that server.  The
    server then includes an HMAC computed from the Reconfigure Key in
    subsequent Reconfigure messages.
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 66]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    Both the Reconfigure Key sent from the server to the client and the
    HMAC in subsequent Reconfigure messages are carried as the
@@ -3710,8 +3721,7 @@ Internet-Draft               Unknown(short)                November 2013
    messages.
 
 21.5.1.  Use of the Authentication Option in the Reconfigure Key
-
-   Authentication Protocol
+         Authentication Protocol
 
    The following fields are set in an Authentication option for the
    Reconfigure Key Authentication Protocol:
@@ -3724,6 +3734,24 @@ Internet-Draft               Unknown(short)                November 2013
 
    The format of the Authentication information for the Reconfigure Key
    Authentication Protocol is:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 67]
+
+Internet-Draft               Unknown(short)                December 2013
 
 
        0                   1                   2                   3
@@ -3745,14 +3773,6 @@ Internet-Draft               Unknown(short)                November 2013
    1 Reconfigure Key value (used in Reply message).
 
    2 HMAC-MD5 digest of the message (used in Reconfigure message).
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 67]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    Value Data as defined by field.
 
@@ -3778,6 +3798,18 @@ Internet-Draft               Unknown(short)                November 2013
    Authentication option included in the Reconfigure message sent to the
    client.
 
+
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 68]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
 21.5.3.  Client considerations for Reconfigure Key protocol
 
    The client will receive a Reconfigure Key from the server in the
@@ -3802,14 +3834,6 @@ Internet-Draft               Unknown(short)                November 2013
    DHCP specification.  Other options may be defined in the future in
    separate documents.
 
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 68]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    Unless otherwise noted, each option may appear only in the options
    area of a DHCP message and may appear only once.  If an option does
    appear multiple times, each instance is considered separate and the
@@ -3833,6 +3857,15 @@ Internet-Draft               Unknown(short)                November 2013
 
                           Figure 9: Option Format
 
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 69]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    option-code An unsigned integer identifying the specific option type
    carried in this option.
 
@@ -3854,24 +3887,16 @@ Internet-Draft               Unknown(short)                November 2013
    the Client Identifier option is:
 
 
-       0                   1                   2                   3
-       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      |        OPTION_CLIENTID        |          option-len           |
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 69]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      .                                                               .
-      .                              DUID                             .
-      .                        (variable length)                      .
-      .                                                               .
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      0                   1                   2                   3
+      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |        OPTION_CLIENTID        |          option-len           |
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     .                                                               .
+     .                              DUID                             .
+     .                        (variable length)                      .
+     .                                                               .
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
                 Figure 10: Client Identifier Option Format
@@ -3887,6 +3912,14 @@ Internet-Draft               Unknown(short)                November 2013
    The Server Identifier option is used to carry a DUID (see section 9)
    identifying a server between a client and a server.  The format of
    the Server Identifier option is:
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 70]
+
+Internet-Draft               Unknown(short)                December 2013
 
 
        0                   1                   2                   3
@@ -3909,19 +3942,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    DUID The DUID for the server.
 
-
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 70]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
 22.4.  Identity Association for Non-temporary Addresses Option
 
    The Identity Association for Non-temporary Addresses option (IA_NA
@@ -3932,6 +3952,30 @@ Internet-Draft               Unknown(short)                November 2013
    (see section 22.5).
 
    The format of the IA_NA option is:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 71]
+
+Internet-Draft               Unknown(short)                December 2013
 
 
        0                   1                   2                   3
@@ -3970,14 +4014,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    T2 The time at which the client contacts any available server to
    extend the lifetimes of the addresses assigned to the IA_NA; T2 is a
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 71]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    time duration relative to the current time expressed in units of
    seconds.
 
@@ -3990,6 +4026,13 @@ Internet-Draft               Unknown(short)                November 2013
 
    An IA_NA option may only appear in the options area of a DHCP
    message.  A DHCP message may contain multiple IA_NA options.
+
+
+
+Unknown                   Expires June 26, 2014                [Page 72]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
    The status of any operations involving this IA_NA is indicated in a
    Status Code option in the IA_NA-options field.
@@ -4026,14 +4069,6 @@ Internet-Draft               Unknown(short)                November 2013
 
    If a client receives an IA_NA with T1 greater than T2, and both T1
    and T2 are greater than 0, the client discards the IA_NA option and
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 72]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    processes the remainder of the message as though the server had not
    included the invalid IA_NA option.
 
@@ -4042,6 +4077,18 @@ Internet-Draft               Unknown(short)                November 2013
    in an IA with T1 set to 0xffffffff.  A client will never attempt to
    use a Rebind message to locate a different server to extend the
    lifetimes of any addresses in an IA with T2 set to 0xffffffff.
+
+
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 73]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
 22.5.  Identity Association for Temporary Addresses Option
 
@@ -4083,19 +4130,21 @@ Internet-Draft               Unknown(short)                November 2013
    the addresses associated with this IA_TA are in the IA_TA-options
    field.
 
-
-
-Unknown                   Expires May 31, 2014                 [Page 73]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    Each IA_TA carries one "set" of temporary addresses; that is, at most
    one address from each prefix assigned to the link to which the client
    is attached.
 
    An IA_TA option may only appear in the options area of a DHCP
    message.  A DHCP message may contain multiple IA_TA options.
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 74]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
    The status of any operations involving this IA_TA is indicated in a
    Status Code option in the IA_TA-options field.
@@ -4141,9 +4190,16 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 74]
+
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 75]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
        0                   1                   2                   3
@@ -4197,9 +4253,9 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 75]
+Unknown                   Expires June 26, 2014                [Page 76]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
    lifetime and ignores the values for T1 and T2 set by the client if
@@ -4253,9 +4309,9 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 76]
+Unknown                   Expires June 26, 2014                [Page 77]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
 22.8.  Preference Option
@@ -4309,9 +4365,9 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 77]
+Unknown                   Expires June 26, 2014                [Page 78]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
    elapsed-time The amount of time since the client began its current
@@ -4358,21 +4414,18 @@ Internet-Draft               Unknown(short)                November 2013
 
    option-len Length of DHCP-relay-message
 
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 78]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    DHCP-relay-message In a Relay-forward message, the received message,
    relayed verbatim to the next relay agent or server; in a Relay-reply
    message, the message to be copied and relayed to the relay agent or
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 79]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    client whose address is in the peer-address field of the Relay-reply
    message
 
@@ -4421,9 +4474,12 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 79]
+
+
+
+Unknown                   Expires June 26, 2014                [Page 80]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
 22.12.  Server Unicast Option
@@ -4472,15 +4528,17 @@ Internet-Draft               Unknown(short)                November 2013
    Details about when the client may send messages to the server using
    unicast are in section 18.
 
-22.13.  Status Code Option
 
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 80]
+
+Unknown                   Expires June 26, 2014                [Page 81]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
+
+22.13.  Status Code Option
 
    This option returns a status indication related to the DHCP message
    or option in which it appears.  The format of the Status Code option
@@ -4524,18 +4582,23 @@ Internet-Draft               Unknown(short)                November 2013
    option is:
 
 
+
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 82]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |      OPTION_RAPID_COMMIT      |               0               |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 81]
-
-Internet-Draft               Unknown(short)                November 2013
 
 
                    Figure 22: Rapid Commit Option Format
@@ -4582,16 +4645,9 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 82]
+Unknown                   Expires June 26, 2014                [Page 83]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
        0                   1                   2                   3
@@ -4645,9 +4701,9 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 83]
+Unknown                   Expires June 26, 2014                [Page 84]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
    information for a client and ignore any other user classes.  In
@@ -4685,7 +4741,7 @@ Internet-Draft               Unknown(short)                November 2013
    option-len 4 + length of vendor class data field.
 
    enterprise-number The vendor's registered Enterprise Number as
-   registered with IANA [UNKNOWN6].
+   registered with IANA [IANA-PEN].
 
    vendor-class-data The hardware configuration of the host on which the
    client is running.
@@ -4701,9 +4757,9 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 84]
+Unknown                   Expires June 26, 2014                [Page 85]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
@@ -4744,7 +4800,7 @@ Internet-Draft               Unknown(short)                November 2013
    option-len 4 + length of option-data field
 
    enterprise-number The vendor's registered Enterprise Number as
-   registered with IANA [UNKNOWN6].
+   registered with IANA [IANA-PEN].
 
    option-data An opaque object of option-len octets, interpreted by
    vendor-specific code on the clients and servers
@@ -4757,9 +4813,9 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 85]
+Unknown                   Expires June 26, 2014                [Page 86]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
    information will still configure the host device's IPv6 stack to be
@@ -4808,16 +4864,18 @@ Internet-Draft               Unknown(short)                November 2013
    The format of the Interface ID option is:
 
 
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 87]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 86]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |      OPTION_INTERFACE_ID      |         option-len            |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4867,11 +4925,9 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-
-
-Unknown                   Expires May 31, 2014                 [Page 87]
+Unknown                   Expires June 26, 2014                [Page 88]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
        0                   1                   2                   3
@@ -4919,16 +4975,18 @@ Internet-Draft               Unknown(short)                November 2013
 
    option-len 0.
 
-23.  Security Considerations
 
 
 
 
 
-Unknown                   Expires May 31, 2014                 [Page 88]
+
+Unknown                   Expires June 26, 2014                [Page 89]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
+
+23.  Security Considerations
 
    The threat to DHCP is inherently an insider threat (assuming a
    properly configured network where DHCPv6 ports are blocked on the
@@ -4975,17 +5033,18 @@ Internet-Draft               Unknown(short)                November 2013
    theft of service, or to circumvent auditing for any number of
    nefarious purposes.
 
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 90]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    The threat common to both the client and the server is the resource
    "denial of service" (DoS) attack.  These attacks typically involve
    the exhaustion of available addresses, or the exhaustion of CPU or
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 89]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    network bandwidth, and are present anytime there is a shared
    resource.
 
@@ -5031,17 +5090,17 @@ Internet-Draft               Unknown(short)                November 2013
    Communication between a server and a relay agent, and communication
    between relay agents, can be secured through the use of IPSec, as
    described in section 21.1.  The use of manual configuration and
+
+
+
+Unknown                   Expires June 26, 2014                [Page 91]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    installation of static keys are acceptable in this instance because
    relay agents and the server will belong to the same administrative
    domain and the relay agents will require other specific configuration
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 90]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    (for example, configuration of the DHCP server address) as well as
    the IPSec configuration.
 
@@ -5050,13 +5109,13 @@ Internet-Draft               Unknown(short)                November 2013
    This document defines several new name spaces associated with DHCPv6
    and DHCPv6 options:
 
-   - Message types
+   -  Message types
 
-   - Status codes
+   -  Status codes
 
-   - DUID
+   -  DUID
 
-   - Option codes
+   -  Option codes
 
    IANA has established a registry of values for each of these name
    spaces, which are described in the remainder of this section.  These
@@ -5083,104 +5142,107 @@ Internet-Draft               Unknown(short)                November 2013
    define whether the new mechanisms are used with DHCPv4, DHCPv6 or
    both.
 
+
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 92]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
 24.1.  Multicast Addresses
 
    Section 5.1 defines the following multicast addresses, which have
    been assigned by IANA for use by DHCPv6:
 
-   All_DHCP_Relay_Agents_and_Servers address: FF02::1:2
+      All_DHCP_Relay_Agents_and_Servers address:   FF02::1:2
 
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 91]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
-   All_DHCP_Servers address: FF05::1:3
+      All_DHCP_Servers address:                    FF05::1:3
 
 24.2.  DHCP Message Types
 
    IANA has recorded the following message types (defined in section
    5.3).  IANA will maintain the registry of DHCP message types.
 
-   SOLICIT 1
+      SOLICIT               1
 
-   ADVERTISE 2
+      ADVERTISE             2
 
-   REQUEST 3
+      REQUEST               3
 
-   CONFIRM 4
+      CONFIRM               4
 
-   RENEW 5
+      RENEW                 5
 
-   REBIND 6
+      REBIND                6
 
-   REPLY 7
+      REPLY                 7
 
-   RELEASE 8
+      RELEASE               8
 
-   DECLINE 9
+      DECLINE               9
 
-   RECONFIGURE 10
+      RECONFIGURE           10
 
-   INFORMATION-REQUEST 11
+      INFORMATION-REQUEST   11
 
-   RELAY-FORW 12
+      RELAY-FORW            12
 
-   RELAY-REPL 13
+      RELAY-REPL            13
 
 24.3.  DHCP Options
 
    IANA has recorded the following option-codes (as defined in section
    22).  IANA will maintain the registry of DHCP option codes.
 
-   OPTION_CLIENTID 1
+      OPTION_CLIENTID       1
 
-   OPTION_SERVERID 2
-
-   OPTION_IA_NA 3
-
-   OPTION_IA_TA 4
-
-   OPTION_IAADDR 5
+      OPTION_SERVERID       2
 
 
 
-
-Unknown                   Expires May 31, 2014                 [Page 92]
+Unknown                   Expires June 26, 2014                [Page 93]
 
-Internet-Draft               Unknown(short)                November 2013
+Internet-Draft               Unknown(short)                December 2013
 
 
-   OPTION_ORO 6
+      OPTION_IA_NA          3
 
-   OPTION_PREFERENCE 7
+      OPTION_IA_TA          4
 
-   OPTION_ELAPSED_TIME 8
+      OPTION_IAADDR         5
 
-   OPTION_RELAY_MSG 9
+      OPTION_ORO            6
 
-   OPTION_AUTH 11
+      OPTION_PREFERENCE     7
 
-   OPTION_UNICAST 12
+      OPTION_ELAPSED_TIME   8
 
-   OPTION_STATUS_CODE 13
+      OPTION_RELAY_MSG      9
 
-   OPTION_RAPID_COMMIT 14
+      OPTION_AUTH           11
 
-   OPTION_USER_CLASS 15
+      OPTION_UNICAST        12
 
-   OPTION_VENDOR_CLASS 16
+      OPTION_STATUS_CODE    13
 
-   OPTION_VENDOR_OPTS 17
+      OPTION_RAPID_COMMIT   14
 
-   OPTION_INTERFACE_ID 18
+      OPTION_USER_CLASS     15
 
-   OPTION_RECONF_MSG 19
+      OPTION_VENDOR_CLASS   16
 
-   OPTION_RECONF_ACCEPT 20
+      OPTION_VENDOR_OPTS    17
+
+      OPTION_INTERFACE_ID   18
+
+      OPTION_RECONF_MSG     19
+
+      OPTION_RECONF_ACCEPT  20
 
 24.4.  Status Codes
 
@@ -5188,37 +5250,53 @@ Internet-Draft               Unknown(short)                November 2013
    IANA will manage the definition of additional status codes in the
    future.
 
-   Name Code Description ---------- ---- ----------- Success 0 Success.
-   UnspecFail 1 Failure, reason unspecified; this status code is sent by
-   either a client or a server to indicate a failure not explicitly
-   specified in this document.  NoAddrsAvail 2 Server has no addresses
-   available to assign to the IA(s).  NoBinding 3 Client record
-   (binding) unavailable.  NotOnLink 4 The prefix for the address is not
-   appropriate for the link to which the client is attached.
-   UseMulticast 5 Sent by a server to a client to force the client to
-   send messages to the server. using the
-   All_DHCP_Relay_Agents_and_Servers address.
+
+
+
+
+
+
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 94]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
+   +--------------+------+---------------------------------------------+
+   | Name         | Code | Description                                 |
+   +--------------+------+---------------------------------------------+
+   | Success      |    0 | Success.                                    |
+   | UnspecFail   |    1 | Failure, reason unspecified; this status    |
+   |              |      | code is sent by either a client or a server |
+   |              |      | to indicate a failure not explicitly        |
+   |              |      | specified in this document.                 |
+   | NoAddrsAvail |    2 | Server has no addresses available to assign |
+   |              |      | to the IA(s).                               |
+   | NoBinding    |    3 | Client record (binding) unavailable.        |
+   | NotOnLink    |    4 | The prefix for the address is not           |
+   |              |      | appropriate for the link to which the       |
+   |              |      | client is attached.                         |
+   | UseMulticast |    5 | Sent by a server to a client to force the   |
+   |              |      | client to send messages to the server using |
+   |              |      | the All_DHCP_Relay_Agents_and_Servers       |
+   |              |      | address.                                    |
+   +--------------+------+---------------------------------------------+
 
 24.5.  DUID
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 93]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    IANA has recorded the following DUID types (as defined in section
    9.1).  IANA will manage the definition of additional DUID types in
    the future.
 
-   DUID-LLT 1
+      DUID-LLT              1
 
-   DUID-EN 2
+      DUID-EN               2
 
-   DUID-LL 3
+      DUID-LL               3
 
 25.  Acknowledgments
 
@@ -5236,217 +5314,105 @@ Internet-Draft               Unknown(short)                November 2013
    the time to discuss the more complex parts of the IPv6
    specifications.
 
+
+
+
+Unknown                   Expires June 26, 2014                [Page 95]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    And, thanks to Steve Deering for pointing out at IETF 51 in London
    that the DHCPv6 specification has the highest revision number of any
    Internet Draft.
 
-26.  References
-
-26.1.  Normative References
-
-   [RFC2119] Bradner, S., "Key words for use in RFCs to Indicate
-   Requirement Levels", BCP 14, RFC 2119, March 1997.
-
-   [RFC2464] Crawford, M., "Transmission of IPv6 Packets over Ethernet
-   Networks", RFC 2464, December 1998.
-
-   [RFC2460] Deering, S. and R. Hinden, "Internet Protocol, Version 6
-   (IPv6) Specification", RFC 2460, December 1998.
-
-   [RFC3118] Droms, R., Ed. and W. Arbaugh, Ed., "Authentication for
-   DHCP Messages", RFC 3118, June 2001.
-
-   [RFC2373] Hinden, R. and S. Deering, "IP Version 6 Addressing
-   Architecture", RFC 2373, July 1998.
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 94]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
-   [UNKNOWN6] IANA.  Private Enterprise Numbers.  http://www.iana.org/
-   assignments/enterprise-numbers.html.
-
-   [RFC2401] Kent, S. and R. Atkinson, "Security Architecture for the
-   Internet Protocol", RFC 2401, November 1998.
-
-   [RFC2104] Krawczyk, H., Bellare, M. and R. Canetti, "HMAC: Keyed-
-   Hashing for Message Authentication", RFC 2104, February 1997.
-
-   [RFC1305] Mills, D., "Network Time Protocol (Version 3)
-   Specification, Implementation", RFC 1305, March 1992.
-
-   [RFC1035] Mockapetris, P., "Domain names - implementation and
-   specification", RFC 1035, November 1987.
-
-   [RFC2434] Narten, T. and H. Alvestrand, "Guidelines for Writing an
-   IANA Considerations Section in RFCs", BCP 26, RFC 2434, October 1998.
-
-   [RFC3041] Narten, T. and R. Draves, "Privacy Extensions for Stateless
-   Address Autoconfiguration in IPv6", RFC 3041, January 2001.
-
-   [RFC2461] Narten, T., Nordmark, E. and W. Simpson, "Neighbor
-   Discovery for IP Version 6 (IPv6)", RFC 2461, December 1998.
-
-   [RFC0826] Plummer, D.C., "Ethernet Address Resolution Protocol: Or
-   converting network protocol addresses to 48.bit Ethernet address for
-   transmission on Ethernet hardware", STD 37, RFC 826, November 1982.
-
-   [RFC0768] Postel, J., "User Datagram Protocol", STD 6, RFC 768,
-   August 1980.
-
-   [RFC1321] Rivest, R., "The MD5 Message-Digest Algorithm", RFC 1321,
-   April 1992.
-
-   [RFC2462] Thomson, S. and T. Narten, "IPv6 Stateless Address
-   Autoconfiguration", RFC 2462, December 1998.
-
-26.2.  Informative References
-
-   [RFC2132] Alexander, S. and R. Droms, "DHCP Options and BOOTP Vendor
-   Extensions", RFC 2132, March 1997.
-
-   [RFC2131] Droms, R., "Dynamic Host Configuration Protocol", RFC 2131,
-   March 1997.
-
-   [UNKNOWN20] R. Droms, Ed.  DNS Configuration options for DHCPv6.
-   April 2002.  Work in Progress.
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 95]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
-   [UNKNOWN21] A. K. Vijayabhaskar.  Time Configuration Options for
-   DHCPv6.  May 2002.  Work in Progress.
-
-   [RFC2136] Vixie, P., Ed., Thomson, S., Rekhter, Y.  and J. Bound,
-   "Dynamic Updates in the Domain Name System (DNS UPDATE)", RFC 2136,
-   April 1997.
-
-   A. Appearance of Options in Message Types
+26.  Appearance of Options in Message Types
 
    The following table indicates with a "*" the options are allowed in
    each DHCP message type:
 
-   Client Server IA_NA Option Pref Time Relay Auth.  Server ID ID IA_TA
-   Request Msg. Unica.  Solicit * * * * * Advert. * * * * * Request * *
-   * * * * Confirm * * * * * Renew * * * * * * Rebind * * * * * Decline
-   * * * * * * Release * * * * * * Reply * * * * * * Reconf. * * * *
-   Inform.  * (see note) * * * R-forw. * * R-repl. * *
+           Client Server IA_NA  Option Pref  Time Relay Auth. Server
+             ID     ID   IA_TA  Request            Msg.       Unica.
+   Solicit   *             *      *           *           *
+   Advert.   *      *      *            *                 *
+   Request   *      *      *      *           *           *
+   Confirm   *             *      *           *           *
+   Renew     *      *      *      *           *           *
+   Rebind    *             *      *           *           *
+   Decline   *      *      *      *           *           *
+   Release   *      *      *      *           *           *
+   Reply     *      *      *            *                 *     *
+   Reconf.   *      *             *                       *
+   Inform.   * (see note)         *           *           *
+   R-forw.                                          *     *
+   R-repl.                                          *     *
 
    NOTE:
 
    Only included in Information-Request messages that are sent in
    response to a Reconfigure (see section 19.4.3).
 
-   Status Rap. User Vendor Vendor Inter.  Recon.  Recon.  Code Comm.
-   Class Class Spec.  ID Msg. Accept Solicit * * * * * Advert. * * * * *
-   Request * * * * Confirm * * * Renew * * * * Rebind * * * * Decline *
-   * * Release * * * Reply * * * * * * Reconf. * Inform. * * * * R-forw.
-   * * * * R-repl. * * * *
+            Status  Rap. User  Vendor Vendor Inter. Recon. Recon.
+             Code  Comm. Class Class  Spec.    ID    Msg.  Accept
+   Solicit           *     *     *      *                    *
+   Advert.    *            *     *      *                    *
+   Request                 *     *      *                    *
+   Confirm                 *     *      *
+   Renew                   *     *      *                    *
+   Rebind                  *     *      *                    *
+   Decline                 *     *      *
+   Release                 *     *      *
+   Reply      *      *     *     *      *                    *
+   Reconf.                                            *
+   Inform.                 *     *      *                    *
+   R-forw.                 *     *      *      *
+   R-repl.                 *     *      *      *
 
-   B. Appearance of Options in the Options Field of DHCP Options
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 96]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
+27.  Appearance of Options in the Options Field of DHCP Options
 
    The following table indicates with a "*" where options can appear in
    the options field of other options:
 
-   Option IA_NA/ IAADDR Relay Relay Field IA_TA Forw.  Reply Client ID *
-   Server ID * IA_NA/IA_TA * IAADDR * ORO * Preference * Elapsed Time *
-   Relay Message * * Authentic. * Server Uni. * Status Code * * * Rapid
-   Comm. * User Class * Vendor Class * Vendor Info. * Interf.  ID * *
-   Reconf.  MSG. * Reconf.  Accept *
+                Option  IA_NA/ IAADDR Relay  Relay
+                Field   IA_TA         Forw.  Reply
+   Client ID      *
+   Server ID      *
+   IA_NA/IA_TA    *
+   IAADDR                 *
+   ORO            *
+   Preference     *
+   Elapsed Time   *
+   Relay Message                        *      *
+   Authentic.     *
+   Server Uni.    *
+   Status Code    *       *       *
+   Rapid Comm.    *
+   User Class     *
+   Vendor Class   *
+   Vendor Info.   *
+   Interf. ID                           *      *
+   Reconf. MSG.   *
+   Reconf. Accept *
 
    Note: "Relay Forw" / "Relay Reply" options appear in the options
    field of the message but may only appear in these messages.
 
-   Chair's Address
+28.  Normative References
 
-   The working group can be contacted via the current chair:
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 96]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
-   Ralph Droms Cisco Systems 1414 Massachusetts Avenue Boxborough, MA
-   01719
-
-   Phone: (978) 936-1674 EMail: rdroms@cisco.com Authors' Addresses
-
-   Jim Bound Hewlett Packard Corporation ZK3-3/W20 110 Spit Brook Road
-   Nashua, NH 03062-2698 USA
-
-   Phone: +1 603 884 0062 EMail: Jim.Bound@hp.com
-
-   Bernie Volz 116 Hawkins Pond Road Center Harbor, NH 03226-3103 USA
-
-   Phone: +1-508-259-3734 EMail: volz@metrocast.net
-
-   Ted Lemon Nominum, Inc. 950 Charter Street Redwood City, CA 94043 USA
-
-   EMail: Ted.Lemon@nominum.com
-
-   Charles E. Perkins Communications Systems Lab Nokia Research Center
-   313 Fairchild Drive Mountain View, California 94043 USA
-
-   Phone: +1-650 625-2986 EMail: charles.perkins@nokia.com
-
-   Mike Carney Sun Microsystems, Inc 17 Network Circle Menlo Park, CA
-   94025 USA
-
-   Phone: +1-650-786-4171 EMail: michael.carney@sun.com
-
-   Full Copyright Statement Copyright (C) The Internet Society (2003).
-   All Rights Reserved.
-
-   This document and translations of it may be copied and furnished to
-   others, and derivative works that comment on or otherwise explain it
-   or assist in its implementation may be prepared, copied, published
-   and distributed, in whole or in part, without restriction of any
-   kind, provided that the above copyright notice and this paragraph are
-   included on all such copies and derivative works.  However, this
-   document itself may not be modified in any way, such as by removing
-   the copyright notice or references to the Internet Society or other
-   Internet organizations, except as needed for the purpose of
-   developing Internet standards in which case the procedures for
-   copyrights defined in the Internet Standards process must be
-   followed, or as required to translate it into languages other than
-   English.
-
-   The limited permissions granted above are perpetual and will not be
-   revoked by the Internet Society or its successors or assigns.
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 97]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
-   This document and the information contained herein is provided on an
-   "AS IS" basis and THE INTERNET SOCIETY AND THE INTERNET ENGINEERING
-   TASK FORCE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING
-   BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION
-   HEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
-   MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
-
-   Acknowledgement
-
-   Funding for the RFC Editor function is currently provided by the
-   Internet Society.
-
-27.  Normative References
+   [IANA-PEN]
+              IANA, "Private Enterprise Numbers registry
+              http://www.iana.org/assignments/enterprise-numbers.html",
+              .
 
    [RFC0768]  Postel, J., "User Datagram Protocol", STD 6, RFC 768,
               August 1980.
@@ -5458,6 +5424,15 @@ Internet-Draft               Unknown(short)                November 2013
 
    [RFC1035]  Mockapetris, P., "Domain names - implementation and
               specification", STD 13, RFC 1035, November 1987.
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 97]
+
+Internet-Draft               Unknown(short)                December 2013
+
 
    [RFC1305]  Mills, D., "Network Time Protocol (Version 3)
               Specification, Implementation", RFC 1305, March 1992.
@@ -5482,14 +5457,6 @@ Internet-Draft               Unknown(short)                November 2013
               "Dynamic Updates in the Domain Name System (DNS UPDATE)",
               RFC 2136, April 1997.
 
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 98]
-
-Internet-Draft               Unknown(short)                November 2013
-
-
    [RFC2373]  Hinden, R. and S. Deering, "IP Version 6 Addressing
               Architecture", RFC 2373, July 1998.
 
@@ -5513,6 +5480,16 @@ Internet-Draft               Unknown(short)                November 2013
    [RFC2464]  Crawford, M., "Transmission of IPv6 Packets over Ethernet
               Networks", RFC 2464, December 1998.
 
+
+
+
+
+
+Unknown                   Expires June 26, 2014                [Page 98]
+
+Internet-Draft               Unknown(short)                December 2013
+
+
    [RFC3041]  Narten, T. and R. Draves, "Privacy Extensions for
               Stateless Address Autoconfiguration in IPv6", RFC 3041,
               January 2001.
@@ -5520,31 +5497,14 @@ Internet-Draft               Unknown(short)                November 2013
    [RFC3118]  Droms, R. and W. Arbaugh, "Authentication for DHCP
               Messages", RFC 3118, June 2001.
 
-   [UNKNOWN20]
-              ?, "R. Droms, Ed. DNS Configuration options for DHCPv6.
-              April 2002. Work inProgress.", 1900.
+   [RFC3646]  Droms, R., "DNS Configuration options for Dynamic Host
+              Configuration Protocol for IPv6 (DHCPv6)", RFC 3646,
+              December 2003.
 
-   [UNKNOWN21]
-              ?, "A. K. Vijayabhaskar. Time Configuration Options
-              forDHCPv6.  May 2002. Work in Progress.", 1900.
-
-   [UNKNOWN6]
-              ?, "IANA. Private Enterprise Numbers.http://www.iana.org/
-              assignments/enterprise-numbers.html.", 1900.
+   [RFC4075]  Kalusivalingam, V., "Simple Network Time Protocol (SNTP)
+              Configuration Option for DHCPv6", RFC 4075, May 2005.
 
 Author's Address
-
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                 [Page 99]
-
-Internet-Draft               Unknown(short)                November 2013
-
 
    Unknown Person (editor)
    Not converted
@@ -5581,20 +5541,4 @@ Internet-Draft               Unknown(short)                November 2013
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Unknown                   Expires May 31, 2014                [Page 100]
+Unknown                   Expires June 26, 2014                [Page 99]
