@@ -19,6 +19,8 @@
 <!ENTITY RFC1321 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1321.xml">
 <!ENTITY RFC2131 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2131.xml">
 <!ENTITY RFC2132 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2132.xml">
+<!ENTITY RFC3646 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3646.xml">
+<!ENTITY RFC4075 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4075.xml">
 ]>
 <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
 <?rfc strict="yes" ?>
@@ -59,7 +61,7 @@
       </address>
     </author>
 
-    <date day="27" month="November" year="2013"/>
+    <date day="23" month="December" year="2013"/>
   </front>
 
   <middle>
@@ -124,8 +126,8 @@
 
         <t>When a DHCP client does not need to have a DHCP server assign it IP
         addresses, the client can obtain configuration information such as a
-        list of available DNS servers <xref target="UNKNOWN20"/> or NTP
-        servers <xref target="UNKNOWN21"/> through a single message and reply
+        list of available DNS servers <xref target="RFC3646"/> or NTP
+        servers <xref target="RFC4075"/> through a single message and reply
         exchanged with a DHCP server. To obtain configuration information the
         client first sends an Information-Request message to the
         All_DHCP_Relay_Agents_and_Servers multicast address. Servers respond
@@ -270,6 +272,7 @@
         <list hangIndent="26" style="hanging">
           <t hangText="address">An IP layer identifier for an interface or a set of
           interfaces.</t>
+
           <t hangText="host">Any node that is not a router.</t>
 
           <t hangText="IP"> Internet Protocol Version 6 (IPv6). The terms IPv4 and IPv6 are
@@ -366,7 +369,7 @@
             intermediary to deliver DHCP messages between clients and servers, and
             is on the same link as the client.</t>
 
-            <t hangText=">DHCP server (or server)"> A node that responds to requests from
+            <t hangText="DHCP server (or server)"> A node that responds to requests from
             clients, and may or may not be on the same link as the client(s).</t>
 
             <t hangText="DUID"> A DHCP Unique IDentifier for a DHCP participant; each DHCP
@@ -555,34 +558,124 @@
         <t>This section presents a table of values used to describe the
         message transmission behavior of clients and servers.</t>
 
-        <t>Parameter Default Description -------------------------------------
-        SOL_MAX_DELAY 1 sec Max delay of first Solicit SOL_TIMEOUT 1 sec
-        Initial Solicit timeout SOL_MAX_RT 120 secs Max Solicit timeout value
-        REQ_TIMEOUT 1 sec Initial Request timeout REQ_MAX_RT 30 secs Max
-        Request timeout value REQ_MAX_RC 10 Max Request retry attempts
-        CNF_MAX_DELAY 1 sec Max delay of first Confirm CNF_TIMEOUT 1 sec
-        Initial Confirm timeout CNF_MAX_RT 4 secs Max Confirm timeout
-        CNF_MAX_RD 10 secs Max Confirm duration REN_TIMEOUT 10 secs Initial
-        Renew timeout REN_MAX_RT 600 secs Max Renew timeout value REB_TIMEOUT
-        10 secs Initial Rebind timeout REB_MAX_RT 600 secs Max Rebind timeout
-        value INF_MAX_DELAY 1 sec Max delay of first Information-request
-        INF_TIMEOUT 1 sec Initial Information-request timeout INF_MAX_RT 120
-        secs Max Information-request timeout value REL_TIMEOUT 1 sec Initial
-        Release timeout REL_MAX_RC 5 MAX Release attempts DEC_TIMEOUT 1 sec
-        Initial Decline timeout DEC_MAX_RC 5 Max Decline attempts REC_TIMEOUT
-        2 secs Initial Reconfigure timeout REC_MAX_RC 8 Max Reconfigure
-        attempts HOP_COUNT_LIMIT 32 Max hop count in a Relay-forward
-        message</t>
+	<texttable>
 
-        <t>5.6 Representation of time values and "Infinity" as a time
-        value</t>
+	  <ttcol>Parameter</ttcol>
+	  <ttcol>Default</ttcol>
+	  <ttcol>Description</ttcol>
 
-        <t>All time values for lifetimes, T1 and T2 are unsigned integers. The
-        value 0xffffffff is taken to mean "infinity" when used as a lifetime
-        (as in RFC2461 <xref target="RFC2462"/>) or a value for T1 or T2.</t>
+          <c>SOL_MAX_DELAY</c>
+	  <c>1 sec</c>
+	  <c>Max delay of first Solicit</c>
+
+	  <c>SOL_TIMEOUT</c>
+	  <c>1 sec</c>
+	  <c>Initial Solicit timeout</c>
+
+	  <c>SOL_MAX_RT</c>
+	  <c>120 secs</c>
+	  <c>Max Solicit timeout value</c>
+
+	  <c>REQ_TIMEOUT</c>
+	  <c>1 sec</c>
+	  <c>Initial Request timeout</c>
+	
+	  <c>REQ_MAX_RT</c>
+	  <c>30 secs</c>
+	  <c>Max Request timeout value</c>
+	
+	  <c>REQ_MAX_RC</c>
+	  <c>10</c>
+	  <c>Max Request retry attempts</c>
+
+	  <c>CNF_MAX_DELAY</c>
+	  <c>1 sec</c>
+	  <c>Max delay of first Confirm</c>
+
+	  <c>CNF_TIMEOUT</c>
+	  <c>1 sec</c>
+	  <c>Initial Confirm timeout</c>
+
+	  <c>CNF_MAX_RT</c>
+	  <c>4 secs</c>
+	  <c>Max Confirm timeout</c>
+
+	  <c>CNF_MAX_RD</c>
+	  <c>10 secs</c>
+	  <c>Max Confirm duration</c>
+
+	  <c>REN_TIMEOUT</c>
+	  <c>10 secs</c>
+	  <c>Initial Renew timeout</c>
+
+	  <c>REN_MAX_RT</c>
+	  <c>600 secs</c>
+	  <c>Max Renew timeout value</c>
+
+	  <c>REB_TIMEOUT</c>
+	  <c>10 secs</c>
+	  <c>Initial Rebind timeout</c>
+
+	  <c>REB_MAX_RT</c>
+	  <c>600 secs</c>
+	  <c>Max Rebind timeout value</c>
+
+	  <c>INF_MAX_DELAY</c>
+	  <c>1 sec</c>
+	  <c>Max delay of first Information-request</c>
+
+	  <c>INF_TIMEOUT</c>
+	  <c>1 sec</c>
+	  <c>Initial Information-request timeout</c>
+
+	  <c>INF_MAX_RT</c>
+	  <c>120 secs</c>
+	  <c>Max Information-request timeout value</c>
+
+	  <c>REL_TIMEOUT</c>
+	  <c>1 sec</c>
+	  <c>Initial Release timeout</c>
+
+	  <c>REL_MAX_RC</c>
+	  <c>5</c>
+	  <c>MAX Release attempts</c>
+
+	  <c>DEC_TIMEOUT</c>
+	  <c>1 sec</c>
+	  <c>Initial Decline timeout</c>
+
+	  <c>DEC_MAX_RC</c>
+	  <c>5</c>
+	  <c>Max Decline attempts</c>
+
+	  <c>REC_TIMEOUT</c>
+	  <c>2 secs</c>
+	  <c>Initial Reconfigure timeout</c>
+
+	  <c>REC_MAX_RC</c>
+	  <c>8</c>
+	  <c>Max Reconfigure attempts</c>
+
+	  <c>HOP_COUNT_LIMIT</c>
+	  <c>32</c>
+	  <c>Max hop count in a Relay-forward message</c>
+
+	</texttable>
+
       </section>
 
       <!-- ends: "5.5 from line 743-->
+
+      <section title='Representation of time values and "Infinity" as a time value'>
+
+        <t>All time values for lifetimes, T1 and T2 are unsigned integers. The
+        value 0xffffffff is taken to mean "infinity" when used as a lifetime
+        (as in <xref target="RFC2461"/>) or a value for T1 or T2.</t>
+
+      </section>
+
+      <!-- ends: "5.6 -->
+
     </section>
 
     <!-- ends: "5 from line 597-->
@@ -797,6 +890,22 @@
         including the type code). The following types are currently
         defined:</t>
 
+	<texttable>
+	  <ttcol>Type</ttcol><ttcol>Description</ttcol>
+          <c>1</c><c>Link-layer address plus time</c>
+          <c>2</c><c>Vendor-assigned unique ID based on Enterprise Number</c>
+          <c>3</c><c>Link-layer address</c>
+	</texttable>
+
+<!-- Alternative, but multiple spaces are ignored
+        <t>
+        1    Link-layer address plus time<vspace blankLines='0'/>
+        2    Vendor-assigned unique ID based on Enterprise Number<vspace blankLines='0'/>
+        3    Link-layer address
+        </t>
+-->
+
+<!-- Altnerative, but results in blank lines between entries
         <t>
           <list hangIndent="12" style="hanging">
             <t hangText="1">Link-layer address plus time</t>
@@ -804,6 +913,7 @@
             <t hangText="3">Link-layer address</t>
           </list>
         </t>
+-->
 
         <t>Formats for the variable field of the DUID for each of the above
         types are shown below.</t>
@@ -893,7 +1003,7 @@
 
         <t>This form of DUID is assigned by the vendor to the device. It
         consists of the vendor's registered Private Enterprise Number as
-        maintained by IANA <xref target="UNKNOWN6"/> followed by a unique
+        maintained by IANA <xref target="IANA-PEN"/> followed by a unique
         identifier assigned by the vendor. The following diagram summarizes
         the structure of a DUID-EN:</t>
 
@@ -926,7 +1036,7 @@
         manufactured and stored in some form of non-volatile storage. The
         generated DUID SHOULD be recorded in non-erasable storage. The
         enterprise-number is the vendor's registered Private Enterprise Number
-        as maintained by IANA <xref target="UNKNOWN6"/>. The enterprise-number
+        as maintained by IANA <xref target="IANA-PEN"/>. The enterprise-number
         is stored as an unsigned 32 bit number.</t>
 
         <t>An example DUID of this type might look like this:</t>
@@ -1055,22 +1165,26 @@
       <t>A server selects addresses to be assigned to an IA according to the
       address assignment policies determined by the server administrator and
       the specific information the server determines about the client from
-      some combination of the following sources:</t>
+      some combination of the following sources:
 
-      <t>- The link to which the client is attached. The server determines the
-      link as follows:</t>
+      <list hangIndent="3" style="hanging">
 
-      <t>* If the server receives the message directly from the client and the
+      <t hangText="-"> The link to which the client is attached. The server determines the
+      link as follows:
+
+      <list hangIndent="3" style="hanging">
+
+      <t hangText="*"> If the server receives the message directly from the client and the
       source address in the IP datagram in which the message was received is a
       link-local address, then the client is on the same link to which the
       interface over which the message was received is attached.</t>
 
-      <t>* If the server receives the message from a forwarding relay agent,
+      <t hangText="*"> If the server receives the message from a forwarding relay agent,
       then the client is on the same link as the one to which the interface,
       identified by the link-address field in the message from the relay
       agent, is attached.</t>
 
-      <t>* If the server receives the message directly from the client and the
+      <t hangText="*"> If the server receives the message directly from the client and the
       source address in the IP datagram in which the message was received is
       not a link-local address, then the client is on the link identified by
       the source address in the IP datagram (note that this situation can
@@ -1078,11 +1192,15 @@
       by the client and the client has sent a message for which unicast
       delivery is allowed).</t>
 
-      <t>- The DUID supplied by the client.</t>
+      </list></t>
 
-      <t>- Other information in options supplied by the client.</t>
+      <t hangText="-"> The DUID supplied by the client.</t>
 
-      <t>- Other information in options supplied by the relay agent.</t>
+      <t hangText="-"> Other information in options supplied by the client.</t>
+
+      <t hangText="-"> Other information in options supplied by the relay agent.</t>
+
+      </list></t>
 
       <t>Any address assigned by a server that is based on an EUI-64
       identifier MUST include an interface identifier with the "u"
@@ -1163,19 +1281,23 @@
       failed according to the retransmission mechanism described below.</t>
 
       <t>The client retransmission behavior is controlled and described by the
-      following variables:</t>
+      following variables:
 
-      <t>RT Retransmission timeout</t>
+      <list hangIndent="11" style="hanging">
 
-      <t>IRT Initial retransmission time</t>
+      <t hangText="   RT"> Retransmission timeout</t>
 
-      <t>MRC Maximum retransmission count</t>
+      <t hangText="   IRT"> Initial retransmission time</t>
 
-      <t>MRT Maximum retransmission time</t>
+      <t hangText="   MRC"> Maximum retransmission count</t>
 
-      <t>MRD Maximum retransmission duration</t>
+      <t hangText="   MRT"> Maximum retransmission time</t>
 
-      <t>RAND Randomization factor</t>
+      <t hangText="   MRD"> Maximum retransmission duration</t>
+
+      <t hangText="   RAND"> Randomization factor</t>
+
+      </list></t>
 
       <t>With each message transmission or retransmission, the client sets RT
       according to the rules given below. If RT expires before the message
@@ -1193,12 +1315,20 @@
 
       <t>RT for the first message transmission is based on IRT:</t>
 
-      <t>RT = IRT + RAND*IRT</t>
+      <figure>
+      <artwork>
+   RT = IRT + RAND*IRT
+      </artwork>
+      </figure>
 
       <t>RT for each subsequent message transmission is based on the previous
       value of RT:</t>
 
-      <t>RT = 2*RTprev + RAND*RTprev</t>
+      <figure>
+      <artwork>
+   RT = 2*RTprev + RAND*RTprev
+      </artwork>
+      </figure>
 
       <t>MRT specifies an upper bound on the value of RT (disregarding the
       randomization added by the use of RAND). If MRT has a value of 0, there
@@ -1206,8 +1336,8 @@
 
       <figure>
       <artwork>
-      if (RT &gt; MRT)
-         RT = MRT + RAND*MRT
+   if (RT &gt; MRT)
+      RT = MRT + RAND*MRT
       </artwork>
       </figure>
 
@@ -1284,17 +1414,21 @@
         <!-- 15.3, line 1391-->
 
         <t>Clients MUST discard any received Advertise messages that meet any
-        of the following conditions:</t>
+        of the following conditions:
 
-        <t>- the message does not include a Server Identifier option.</t>
+        <list hangIndent="3" style="hanging">
 
-        <t>- the message does not include a Client Identifier option.</t>
+        <t hangText="-"> the message does not include a Server Identifier option.</t>
 
-        <t>- the contents of the Client Identifier option does not match the
+        <t hangText="-"> the message does not include a Client Identifier option.</t>
+
+        <t hangText="-"> the contents of the Client Identifier option does not match the
         client's DUID.</t>
 
-        <t>- the "transaction-id" field value does not match the value the
+        <t hangText="-"> the "transaction-id" field value does not match the value the
         client used in its Solicit message.</t>
+
+	</list></t>
 
         <t>Servers and relay agents MUST discard any received Advertise
         messages.</t>
@@ -1308,14 +1442,18 @@
         <t>Clients MUST discard any received Request messages.</t>
 
         <t>Servers MUST discard any received Request message that meet any of
-        the following conditions:</t>
+        the following conditions:
 
-        <t>- the message does not include a Server Identifier option.</t>
+        <list hangIndent="3" style="hanging">
 
-        <t>- the contents of the Server Identifier option do not match the
+        <t hangText="-"> the message does not include a Server Identifier option.</t>
+
+        <t hangText="-"> the contents of the Server Identifier option do not match the
         server's DUID.</t>
 
-        <t>- the message does not include a Client Identifier option.</t>
+        <t hangText="-"> the message does not include a Client Identifier option.</t>
+
+	</list></t>
       </section>
 
       <!-- ends: "15.4 from line 1416-->
@@ -1338,14 +1476,18 @@
         <t>Clients MUST discard any received Renew messages.</t>
 
         <t>Servers MUST discard any received Renew message that meets any of
-        the following conditions:</t>
+        the following conditions:
 
-        <t>- the message does not include a Server Identifier option.</t>
+        <list hangIndent="3" style="hanging">
 
-        <t>- the contents of the Server Identifier option does not match the
+        <t hangText="-"> the message does not include a Server Identifier option.</t>
+
+        <t hangText="-"> the contents of the Server Identifier option does not match the
         server's identifier.</t>
 
-        <t>- the message does not include a Client Identifier option.</t>
+        <t hangText="-"> the message does not include a Client Identifier option.</t>
+
+	</list></t>
       </section>
 
       <!-- ends: "15.6 from line 1445-->
@@ -1368,14 +1510,18 @@
         <t>Clients MUST discard any received Decline messages.</t>
 
         <t>Servers MUST discard any received Decline message that meets any of
-        the following conditions:</t>
+        the following conditions:
 
-        <t>- the message does not include a Server Identifier option.</t>
+        <list hangIndent="3" style="hanging">
 
-        <t>- the contents of the Server Identifier option does not match the
+        <t hangText="-"> the message does not include a Server Identifier option.</t>
+
+        <t hangText="-"> the contents of the Server Identifier option does not match the
         server's identifier.</t>
 
-        <t>- the message does not include a Client Identifier option.</t>
+        <t hangText="-"> the message does not include a Client Identifier option.</t>
+
+	</list></t>
       </section>
 
       <!-- ends: "15.8 from line 1474-->
@@ -1386,14 +1532,18 @@
         <t>Clients MUST discard any received Release messages.</t>
 
         <t>Servers MUST discard any received Release message that meets any of
-        the following conditions:</t>
+        the following conditions:
 
-        <t>- the message does not include a Server Identifier option.</t>
+        <list hangIndent="3" style="hanging">
 
-        <t>- the contents of the Server Identifier option does not match the
+        <t hangText="-"> the message does not include a Server Identifier option.</t>
+
+        <t hangText="-"> the contents of the Server Identifier option does not match the
         server's identifier.</t>
 
-        <t>- the message does not include a Client Identifier option.</t>
+        <t hangText="-"> the message does not include a Client Identifier option.</t>
+
+	</list></t>
       </section>
 
       <!-- ends: "15.9 from line 1494-->
@@ -1402,12 +1552,16 @@
         <!-- 15.10, line 1514-->
 
         <t>Clients MUST discard any received Reply message that meets any of
-        the following conditions:</t>
+        the following conditions:
 
-        <t>- the message does not include a Server Identifier option.</t>
+        <list hangIndent="3" style="hanging">
 
-        <t>- the "transaction-id" field in the message does not match the
+        <t hangText="-"> the message does not include a Server Identifier option.</t>
+
+        <t hangText="-"> the "transaction-id" field in the message does not match the
         value used in the original message.</t>
+
+	</list></t>
 
         <t>If the client included a Client Identifier option in the original
         message, the Reply message MUST include a Client Identifier option and
@@ -1429,27 +1583,34 @@
         messages.</t>
 
         <t>Clients MUST discard any Reconfigure messages that meets any of the
-        following conditions:</t>
+        following conditions:
 
-        <t>- the message was not unicast to the client.</t>
+        <list hangIndent="3" style="hanging">
 
-        <t>- the message does not include a Server Identifier option.</t>
+        <t hangText="-"> the message was not unicast to the client.</t>
 
-        <t>- the message does not include a Client Identifier option that
+        <t hangText="-"> the message does not include a Server Identifier option.</t>
+
+        <t hangText="-"> the message does not include a Client Identifier option that
         contains the client's DUID.</t>
 
-        <t>- the message does not contain a Reconfigure Message option and the
+        <t hangText="-"> the message does not contain a Reconfigure Message option and the
         msg-type must be a valid value.</t>
 
-        <t>- the message includes any IA options and the msg-type in the
+        <t hangText="-"> the message includes any IA options and the msg-type in the
         Reconfigure Message option is INFORMATION-REQUEST.</t>
 
-        <t>- the message does not include DHCP authentication:</t>
+        <t hangText="-"> the message does not include DHCP authentication:
 
-        <t>* the message does not contain an authentication option.</t>
+          <list hangIndent="3" style="hanging">
 
-        <t>* the message does not pass the authentication validation performed
-        by the client.</t>
+          <t hangText="*"> the message does not contain an authentication option.</t>
+
+          <t hangText="*"> the message does not pass the authentication validation performed
+          by the client.</t>
+
+	</list></t>
+	</list></t>
       </section>
 
       <!-- ends: "15.11 from line 1538-->
@@ -1460,12 +1621,16 @@
         <t>Clients MUST discard any received Information-request messages.</t>
 
         <t>Servers MUST discard any received Information-request message that
-        meets any of the following conditions:</t>
+        meets any of the following conditions:
 
-        <t>- The message includes a Server Identifier option and the DUID in
+        <list hangIndent="3" style="hanging">
+
+        <t hangText="-"> The message includes a Server Identifier option and the DUID in
         the option does not match the server's DUID.</t>
 
-        <t>- The message includes an IA option.</t>
+        <t hangText="-">- The message includes an IA option.</t>
+
+        </list></t>
       </section>
 
       <!-- ends: "15.12 from line 1578-->
@@ -1586,15 +1751,19 @@
           the same time (for example, after a power outage).</t>
 
           <t>The client transmits the message according to section 14, using
-          the following parameters:</t>
+          the following parameters:
 
-          <t>IRT SOL_TIMEOUT</t>
+          <list hangIndent="11" style="hanging">
 
-          <t>MRT SOL_MAX_RT</t>
+          <t hangText="   IRT"> SOL_TIMEOUT</t>
 
-          <t>MRC 0</t>
+          <t hangText="   MRT"> SOL_MAX_RT</t>
 
-          <t>MRD 0</t>
+          <t hangText="   MRC"> 0</t>
+
+          <t hangText="   MRD"> 0</t>
+
+          </list></t>
 
           <t>If the client has included a Rapid Commit option in its Solicit
           message, the client terminates the waiting process as soon as a
@@ -1652,21 +1821,25 @@
 
           <t>Upon receipt of one or more valid Advertise messages, the client
           selects one or more Advertise messages based upon the following
-          criteria.</t>
+          criteria.
 
-          <t>- Those Advertise messages with the highest server preference
+          <list hangIndent="3" style="hanging">
+
+          <t hangText="-"> Those Advertise messages with the highest server preference
           value are preferred over all other Advertise messages.</t>
 
-          <t>- Within a group of Advertise messages with the same server
+          <t hangText="-"> Within a group of Advertise messages with the same server
           preference value, a client MAY select those servers whose Advertise
           messages advertise information of interest to the client. For
           example, the client may choose a server that returned an
           advertisement with configuration options of interest to the
           client.</t>
 
-          <t>- The client MAY choose a less-preferred server if that server
+          <t hangText="-"> The client MAY choose a less-preferred server if that server
           has a better set of advertised parameters, such as the available
           addresses advertised in IAs.</t>
+
+          </list></t>
 
           <t>Once a client has selected Advertise message(s), the client will
           typically store information about each server, such as server
@@ -1922,28 +2095,34 @@
           Reconfigure messages from the server.</t>
 
           <t>The client transmits the message according to section 14, using
-          the following parameters:</t>
+          the following parameters:
 
-          <t>IRT REQ_TIMEOUT</t>
+          <list hangIndent="11" style="hanging">
 
-          <t>MRT REQ_MAX_RT</t>
+          <t hangText="   IRT"> REQ_TIMEOUT</t>
 
-          <t>MRC REQ_MAX_RC</t>
+          <t hangText="   MRT"> REQ_MAX_RT</t>
 
-          <t>MRD 0</t>
+          <t hangText="   MRC"> REQ_MAX_RC</t>
+
+          <t hangText="   MRD"> 0</t>
+
+          </list></t>
 
           <t>If the message exchange fails, the client takes an action based
           on the client's local policy. Examples of actions the client might
-          take include:</t>
-
-          <t>- Select another server from a list of servers known to the
+          take include:
+          
+          <list hangIndent="3" style="hanging">
+          <t hangText="-"> Select another server from a list of servers known to the
           client; for example, servers that responded with an Advertise
           message.</t>
 
-          <t>- Initiate the server discovery process described in section
+          <t hangText="-"> Initiate the server discovery process described in section
           17.</t>
 
-          <t>- Terminate the configuration process and report failure.</t>
+          <t hangText="-"> Terminate the configuration process and report failure.</t>
+          </list></t>
         </section>
 
         <!-- ends: "18.1.1 from line 1981-->
@@ -1955,16 +2134,19 @@
           the addresses assigned to the interfaces on that link may no longer
           be appropriate for the link to which the client is attached.
           Examples of times when a client may have moved to a new link
-          include:</t>
+          include:
 
-          <t>o The client reboots.</t>
+          <list hangIndent="3" style="hanging">
+          <t hangText="o"> The client reboots.</t>
 
-          <t>o The client is physically connected to a wired connection.</t>
+          <t hangText="o"> The client is physically connected to a wired connection.</t>
 
-          <t>o The client returns from sleep mode.</t>
+          <t hangText="o"> The client returns from sleep mode.</t>
 
-          <t>o The client using a wireless technology changes access
+          <t hangText="o"> The client using a wireless technology changes access
           points.</t>
+            
+          </list></t>
 
           <t>In any situation when a client may have moved to a new link, the
           client MUST initiate a Confirm/Reply message exchange. The client
@@ -1991,15 +2173,19 @@
           <t>The first Confirm message from the client on the interface MUST
           be delayed by a random amount of time between 0 and CNF_MAX_DELAY.
           The client transmits the message according to section 14, using the
-          following parameters:</t>
+          following parameters:
 
-          <t>IRT CNF_TIMEOUT</t>
+          <list hangIndent="11" style="hanging">
 
-          <t>MRT CNF_MAX_RT</t>
+          <t hangText="   IRT"> CNF_TIMEOUT</t>
 
-          <t>MRC 0</t>
+          <t hangText="   MRT"> CNF_MAX_RT</t>
 
-          <t>MRD CNF_MAX_RD</t>
+          <t hangText="   MRC"> 0</t>
+
+          <t hangText="   MRD"> CNF_MAX_RD</t>
+
+          </list></t>
 
           <t>If the client receives no responses before the message
           transmission process terminates, as described in section 14, the
@@ -2057,15 +2243,19 @@
           returned.</t>
 
           <t>The client transmits the message according to section 14, using
-          the following parameters:</t>
+          the following parameters:
 
-          <t>IRT REN_TIMEOUT</t>
+          <list hangIndent="11" style="hanging">
 
-          <t>MRT REN_MAX_RT</t>
+          <t hangText="   IRT"> REN_TIMEOUT</t>
 
-          <t>MRC 0</t>
+          <t hangText="   MRT"> REN_MAX_RT</t>
 
-          <t>MRD Remaining time until T2</t>
+          <t hangText="   MRC"> 0</t>
+
+          <t hangText="   MRD"> Remaining time until T2</t>
+
+          </list></t>
 
           <t>The message exchange is terminated
           when time T2 is reached (see section 18.1.4), at which time the
@@ -2100,29 +2290,36 @@
           returned.</t>
 
           <t>The client transmits the message according to section 14, using
-          the following parameters:</t>
+          the following parameters:
 
-          <t>IRT REB_TIMEOUT</t>
+          <list hangIndent="11" style="hanging">
 
-          <t>MRT REB_MAX_RT</t>
+          <t hangText="   IRT"> REB_TIMEOUT</t>
 
-          <t>MRC 0</t>
+          <t hangText="   MRT"> REB_MAX_RT</t>
 
-          <t>MRD Remaining time until valid lifetimes of all addresses have
+          <t hangText="   MRC"> 0</t>
+
+          <t hangText="   MRD"> Remaining time until valid lifetimes of all addresses have
           expired</t>
+
+          </list></t>
 
           <t>The message exchange is terminated when the valid lifetimes of
           all the addresses assigned to the IA expire (see section 10), at
           which time the client has several alternative actions to choose
-          from; for example:</t>
+          from; for example:
 
-          <t>- The client may choose to use a Solicit message to locate a new
+          <list hangIndent="3" style="hanging">
+
+          <t hangText="-"> The client may choose to use a Solicit message to locate a new
           DHCP server and send a Request for the expired IA to the new
           server.</t>
 
-          <t>- The client may have other addresses in other IAs, so the client
+          <t hangText="-"> The client may have other addresses in other IAs, so the client
           may choose to discard the expired IA and use the addresses in the
           other IAs.</t>
+          </list></t>
         </section>
 
         <!-- ends: "18.1.4 from line 2160-->
@@ -2155,15 +2352,19 @@
           <t>The first Information-request message from the client on the
           interface MUST be delayed by a random amount of time between 0 and
           INF_MAX_DELAY. The client transmits the message according to section
-          14, using the following parameters:</t>
+          14, using the following parameters:
 
-          <t>IRT INF_TIMEOUT</t>
+          <list hangIndent="11" style="hanging">
 
-          <t>MRT INF_MAX_RT</t>
+          <t hangText="   IRT"> INF_TIMEOUT</t>
 
-          <t>MRC 0</t>
+          <t hangText="   MRT"> INF_MAX_RT</t>
 
-          <t>MRD 0</t>
+          <t hangText="   MRC"> 0</t>
+
+          <t hangText="   MRD"> 0</t>
+
+          </list></t>
         </section>
 
         <!-- ends: "18.1.5 from line 2215-->
@@ -2200,15 +2401,19 @@
           to terminate the retransmission procedure early.</t>
 
           <t>The client transmits the message according to section 14, using
-          the following parameters:</t>
+          the following parameters:
 
-          <t>IRT REL_TIMEOUT</t>
+          <list hangIndent="11" style="hanging">
 
-          <t>MRT 0</t>
+          <t hangText="   IRT"> REL_TIMEOUT</t>
 
-          <t>MRC REL_MAX_RC</t>
+          <t hangText="   MRT"> 0</t>
 
-          <t>MRD 0</t>
+          <t hangText="   MRC"> REL_MAX_RC</t>
+
+          <t hangText="   MRD"> 0</t>
+
+          </list></t>
 
           <t>The client MUST stop using all of the addresses being released as
           soon as the client begins the Release message exchange process. If
@@ -2252,15 +2457,19 @@
           transmitted message.</t>
 
           <t>The client transmits the message according to section 14, using
-          the following parameters:</t>
+          the following parameters:
 
-          <t>IRT DEC_TIMEOUT</t>
+          <list hangIndent="11" style="hanging">
 
-          <t>MRT 0</t>
+          <t hangText="   IRT"> DEC_TIMEOUT</t>
 
-          <t>MRC DEC_MAX_RC</t>
+          <t hangText="   MRT"> 0</t>
 
-          <t>MRD 0</t>
+          <t hangText="   MRC"> DEC_MAX_RC</t>
+
+          <t hangText="   MRD"> 0</t>
+
+          </list></t>
 
           <t>If addresses are declined but the Reply from a DHCP server is
           lost, the client will retransmit the Decline message, and the server
@@ -2292,22 +2501,26 @@
           <t>If the Reply was received in response to a Solicit (with a Rapid
           Commit option), Request, Renew or Rebind message, the client updates
           the information it has recorded about IAs from the IA options
-          contained in the Reply message:</t>
+          contained in the Reply message:
 
-          <t>- Record T1 and T2 times.</t>
+          <list hangIndent="3" style="hanging">
 
-          <t>- Add any new addresses in the IA option to the IA as recorded by
+          <t hangText="-"> Record T1 and T2 times.</t>
+
+          <t hangText="-"> Add any new addresses in the IA option to the IA as recorded by
           the client.</t>
 
-          <t>- Update lifetimes for any addresses in the IA option that the
+          <t hangText="-"> Update lifetimes for any addresses in the IA option that the
           client already has recorded in the IA.</t>
 
-          <t>- Discard any addresses from the IA, as recorded by the client,
+          <t hangText="-"> Discard any addresses from the IA, as recorded by the client,
           that have a valid lifetime of 0 in the IA Address option.</t>
 
-          <t>- Leave unchanged any information about addresses the client has
+          <t hangText="-"> Leave unchanged any information about addresses the client has
           recorded in the IA but that were not included in the IA from the
           server.</t>
+
+          </list></t>
 
           <t>Management of the specific configuration information is detailed
           in the definition of each option in section 22.</t>
@@ -2351,15 +2564,19 @@
 
           <t>When the client receives a Reply message in response to a Renew
           or Rebind message, the client examines each IA independently. For
-          each IA in the original Renew or Rebind message, the client:</t>
+          each IA in the original Renew or Rebind message, the client:
 
-          <t>- sends a Request message if the IA contained a Status Code
+          <list hangIndent="3" style="hanging">
+
+          <t hangText="-"> sends a Request message if the IA contained a Status Code
           option with the NoBinding status (and does not send any additional
           Renew/Rebind messages)</t>
 
-          <t>- sends a Renew/Rebind if the IA is not in the Reply message</t>
+          <t hangText="-"> sends a Renew/Rebind if the IA is not in the Reply message</t>
 
-          <t>- otherwise accepts the information in the IA</t>
+          <t hangText="-"> otherwise accepts the information in the IA</t>
+
+          </list></t>
 
           <t>When the client receives a valid Reply message in response to a
           Release message, the client considers the Release event completed,
@@ -3378,10 +3595,8 @@
 
           <!-- ends: "21.4.4.2 from line 3342-->
 
-          <section title="Sending Request, Confirm, Renew, Rebind, Decline or Release">
+          <section title="Sending Request, Confirm, Renew, Rebind, Decline or Release Messages">
             <!-- 21.4.4.3, line 3374-->
-
-            <t>Messages</t>
 
             <t>If the client authenticated the Advertise message through which
             the client selected the server, the client MUST generate
@@ -3504,10 +3719,8 @@
         protocol and the client and server have negotiated to use Reconfigure
         messages.</t>
 
-        <section title="Use of the Authentication Option in the Reconfigure Key">
+        <section title="Use of the Authentication Option in the Reconfigure Key Authentication Protocol">
           <!-- 21.5.1, line 3470-->
-
-          <t>Authentication Protocol</t>
 
           <t>The following fields are set in an Authentication option for the
           Reconfigure Key Authentication Protocol:</t>
@@ -4537,7 +4750,7 @@
         <t>option-len 4 + length of vendor class data field.</t>
 
         <t>enterprise-number The vendor's registered Enterprise Number as
-        registered with IANA <xref target="UNKNOWN6"/>.</t>
+        registered with IANA <xref target="IANA-PEN"/>.</t>
 
         <t>vendor-class-data The hardware configuration of the host on which
         the client is running.</t>
@@ -4607,7 +4820,7 @@
         <t>option-len 4 + length of option-data field</t>
 
         <t>enterprise-number The vendor's registered Enterprise Number as
-        registered with IANA <xref target="UNKNOWN6"/>.</t>
+        registered with IANA <xref target="IANA-PEN"/>.</t>
 
         <t>option-data An opaque
         object of option-len octets, interpreted by vendor-specific code on
@@ -4906,15 +5119,19 @@
       <!-- 24, line 4595-->
 
       <t>This document defines several new name spaces associated with DHCPv6
-      and DHCPv6 options:</t>
+      and DHCPv6 options:
 
-      <t>- Message types</t>
+      <list hangIndent="3" style="hanging">
 
-      <t>- Status codes</t>
+      <t hangText="-"> Message types</t>
 
-      <t>- DUID</t>
+      <t hangText="-"> Status codes</t>
 
-      <t>- Option codes</t>
+      <t hangText="-"> DUID</t>
+
+      <t hangText="-"> Option codes</t>
+
+      </list></t>
 
       <t>IANA has established a registry of values for each of these name
       spaces, which are described in the remainder of this section. These name
@@ -4944,11 +5161,14 @@
         <!-- 24.1, line 4634-->
 
         <t>Section 5.1 defines the following multicast addresses, which have
-        been assigned by IANA for use by DHCPv6:</t>
+        been assigned by IANA for use by DHCPv6:
 
-        <t>All_DHCP_Relay_Agents_and_Servers address: FF02::1:2</t>
+        <list hangIndent="48" style="hanging">
 
-        <t>All_DHCP_Servers address: FF05::1:3</t>
+        <t hangText="   All_DHCP_Relay_Agents_and_Servers address:"> FF02::1:2</t>
+
+        <t hangText="   All_DHCP_Servers address:"> FF05::1:3</t>
+        </list></t>
       </section>
 
       <!-- ends: "24.1 from line 4634-->
@@ -4957,33 +5177,35 @@
         <!-- 24.2, line 4644-->
 
         <t>IANA has recorded the following message types (defined in section
-        5.3). IANA will maintain the registry of DHCP message types.</t>
+        5.3). IANA will maintain the registry of DHCP message types.
 
-        <t>SOLICIT 1</t>
+        <list hangIndent="25" style="hanging">
+          <t hangText="   SOLICIT">1</t>
 
-        <t>ADVERTISE 2</t>
+          <t hangText="   ADVERTISE">2</t>
 
-        <t>REQUEST 3</t>
+          <t hangText="   REQUEST">3</t>
 
-        <t>CONFIRM 4</t>
+          <t hangText="   CONFIRM">4</t>
 
-        <t>RENEW 5</t>
+          <t hangText="   RENEW">5</t>
 
-        <t>REBIND 6</t>
+          <t hangText="   REBIND">6</t>
 
-        <t>REPLY 7</t>
+          <t hangText="   REPLY">7</t>
 
-        <t>RELEASE 8</t>
+          <t hangText="   RELEASE">8</t>
 
-        <t>DECLINE 9</t>
+          <t hangText="   DECLINE">9</t>
 
-        <t>RECONFIGURE 10</t>
+          <t hangText="   RECONFIGURE">10</t>
 
-        <t>INFORMATION-REQUEST 11</t>
+          <t hangText="   INFORMATION-REQUEST">11</t>
 
-        <t>RELAY-FORW 12</t>
+          <t hangText="   RELAY-FORW">12</t>
 
-        <t>RELAY-REPL 13</t>
+          <t hangText="   RELAY-REPL">13</t>
+        </list></t>
       </section>
 
       <!-- ends: "24.2 from line 4644-->
@@ -4992,45 +5214,48 @@
         <!-- 24.3, line 4678-->
 
         <t>IANA has recorded the following option-codes (as defined in section
-        22). IANA will maintain the registry of DHCP option codes.</t>
+        22). IANA will maintain the registry of DHCP option codes.
 
-        <t>OPTION_CLIENTID 1</t>
+        <list hangIndent="25" style="hanging">
 
-        <t>OPTION_SERVERID 2</t>
+            <t hangText="   OPTION_CLIENTID">1</t>
 
-        <t>OPTION_IA_NA 3</t>
+            <t hangText="   OPTION_SERVERID">2</t>
 
-        <t>OPTION_IA_TA 4</t>
+            <t hangText="   OPTION_IA_NA">3</t>
 
-        <t>OPTION_IAADDR 5</t>
+            <t hangText="   OPTION_IA_TA">4</t>
 
-        <t>OPTION_ORO 6</t>
+            <t hangText="   OPTION_IAADDR">5</t>
 
-        <t>OPTION_PREFERENCE 7</t>
+            <t hangText="   OPTION_ORO">6</t>
 
-        <t>OPTION_ELAPSED_TIME 8</t>
+            <t hangText="   OPTION_PREFERENCE">7</t>
 
-        <t>OPTION_RELAY_MSG 9</t>
+            <t hangText="   OPTION_ELAPSED_TIME">8</t>
 
-        <t>OPTION_AUTH 11</t>
+            <t hangText="   OPTION_RELAY_MSG">9</t>
 
-        <t>OPTION_UNICAST 12</t>
+            <t hangText="   OPTION_AUTH">11</t>
 
-        <t>OPTION_STATUS_CODE 13</t>
+            <t hangText="   OPTION_UNICAST">12</t>
 
-        <t>OPTION_RAPID_COMMIT 14</t>
+            <t hangText="   OPTION_STATUS_CODE">13</t>
 
-        <t>OPTION_USER_CLASS 15</t>
+            <t hangText="   OPTION_RAPID_COMMIT">14</t>
 
-        <t>OPTION_VENDOR_CLASS 16</t>
+            <t hangText="   OPTION_USER_CLASS">15</t>
+ 
+            <t hangText="   OPTION_VENDOR_CLASS">16</t>
 
-        <t>OPTION_VENDOR_OPTS 17</t>
+            <t hangText="   OPTION_VENDOR_OPTS">17</t>
 
-        <t>OPTION_INTERFACE_ID 18</t>
+            <t hangText="   OPTION_INTERFACE_ID">18</t>
 
-        <t>OPTION_RECONF_MSG 19</t>
+            <t hangText="   OPTION_RECONF_MSG">19</t>
 
-        <t>OPTION_RECONF_ACCEPT 20</t>
+            <t hangText="   OPTION_RECONF_ACCEPT">20</t>
+        </list></t>
       </section>
 
       <!-- ends: "24.3 from line 4678-->
@@ -5041,16 +5266,32 @@
         <t>IANA has recorded the status codes defined in the following table.
         IANA will manage the definition of additional status codes in the
         future.</t>
+          
+	<texttable>
 
-        <t>Name Code Description ---------- ---- ----------- Success 0
-        Success. UnspecFail 1 Failure, reason unspecified; this status code is
-        sent by either a client or a server to indicate a failure not
-        explicitly specified in this document. NoAddrsAvail 2 Server has no
-        addresses available to assign to the IA(s). NoBinding 3 Client record
-        (binding) unavailable. NotOnLink 4 The prefix for the address is not
-        appropriate for the link to which the client is attached. UseMulticast
-        5 Sent by a server to a client to force the client to send messages to
-        the server. using the All_DHCP_Relay_Agents_and_Servers address.</t>
+	  <ttcol>Name</ttcol>
+	  <ttcol align="right">Code</ttcol>
+	  <ttcol>Description</ttcol>
+
+          <c>Success</c><c>0</c><c>Success.</c>
+
+          <c>UnspecFail</c><c>1</c><c>Failure, reason unspecified; this
+          status code is sent by either a client or a server to indicate
+          a failure not explicitly specified in this document.</c>
+          
+          <c>NoAddrsAvail</c><c>2</c><c>Server has no addresses available
+          to assign to the IA(s).</c>
+
+          <c>NoBinding</c><c>3</c><c>Client record (binding) unavailable.</c>
+
+          <c>NotOnLink</c><c>4</c><c>The prefix for the address is not
+          appropriate for the link to which the client is attached.</c>
+
+          <c>UseMulticast</c><c>5</c><c>Sent by a server to a client to
+          force the client to send messages to the server using the
+          All_DHCP_Relay_Agents_and_Servers address.</c>
+
+	</texttable>
       </section>
 
       <!-- ends: "24.4 from line 4724-->
@@ -5060,13 +5301,16 @@
 
         <t>IANA has recorded the following DUID types (as defined in section
         9.1). IANA will manage the definition of additional DUID types in the
-        future.</t>
+        future.
 
-        <t>DUID-LLT 1</t>
+        <list hangIndent="25" style="hanging">
 
-        <t>DUID-EN 2</t>
+            <t hangText="   DUID-LLT">1</t>
 
-        <t>DUID-LL 3</t>
+            <t hangText="   DUID-EN">2</t>
+
+            <t hangText="   DUID-LL">3</t>
+        </list></t>
       </section>
 
       <!-- ends: "24.5 from line 4750-->
@@ -5098,228 +5342,104 @@
 
     <!-- ends: "25 from line 4764-->
 
-    <section title="References">
-      <!-- 26, line 4785-->
-
-      <section title="Normative References">
-        <!-- 26.1, line 4788-->
-
-        <t><xref target="RFC2119"/> Bradner, S., "Key words for use in RFCs to
-        Indicate Requirement Levels", BCP 14, RFC 2119, March 1997.</t>
-
-        <t><xref target="RFC2464"/> Crawford, M., "Transmission of IPv6
-        Packets over Ethernet Networks", RFC 2464, December 1998.</t>
-
-        <t><xref target="RFC2460"/> Deering, S. and R. Hinden, "Internet
-        Protocol, Version 6 (IPv6) Specification", RFC 2460, December
-        1998.</t>
-
-        <t><xref target="RFC3118"/> Droms, R., Ed. and W. Arbaugh, Ed.,
-        "Authentication for DHCP Messages", RFC 3118, June 2001.</t>
-
-        <t><xref target="RFC2373"/> Hinden, R. and S. Deering, "IP Version 6
-        Addressing Architecture", RFC 2373, July 1998.</t>
-
-        <t><xref target="UNKNOWN6"/> IANA. Private Enterprise Numbers.
-        http://www.iana.org/assignments/enterprise-numbers.html.</t>
-
-        <t><xref target="RFC2401"/> Kent, S. and R. Atkinson, "Security
-        Architecture for the Internet Protocol", RFC 2401, November 1998.</t>
-
-        <t><xref target="RFC2104"/> Krawczyk, H., Bellare, M. and R. Canetti,
-        "HMAC: Keyed-Hashing for Message Authentication", RFC 2104, February
-        1997.</t>
-
-        <t><xref target="RFC1305"/> Mills, D., "Network Time Protocol (Version
-        3) Specification, Implementation", RFC 1305, March 1992.</t>
-
-        <t><xref target="RFC1035"/> Mockapetris, P., "Domain names -
-        implementation and specification", RFC 1035, November 1987.</t>
-
-        <t><xref target="RFC2434"/> Narten, T. and H. Alvestrand, "Guidelines
-        for Writing an IANA Considerations Section in RFCs", BCP 26, RFC 2434,
-        October 1998.</t>
-
-        <t><xref target="RFC3041"/> Narten, T. and R. Draves, "Privacy
-        Extensions for Stateless Address Autoconfiguration in IPv6", RFC 3041,
-        January 2001.</t>
-
-        <t><xref target="RFC2461"/> Narten, T., Nordmark, E. and W. Simpson,
-        "Neighbor Discovery for IP Version 6 (IPv6)", RFC 2461, December
-        1998.</t>
-
-        <t><xref target="RFC0826"/> Plummer, D.C., "Ethernet Address
-        Resolution Protocol: Or converting network protocol addresses to
-        48.bit Ethernet address for transmission on Ethernet hardware", STD
-        37, RFC 826, November 1982.</t>
-
-        <t><xref target="RFC0768"/> Postel, J., "User Datagram Protocol", STD
-        6, RFC 768, August 1980.</t>
-
-        <t><xref target="RFC1321"/> Rivest, R., "The MD5 Message-Digest
-        Algorithm", RFC 1321, April 1992.</t>
-
-        <t><xref target="RFC2462"/> Thomson, S. and T. Narten, "IPv6 Stateless
-        Address Autoconfiguration", RFC 2462, December 1998.</t>
-      </section>
-
-      <!-- ends: "26.1 from line 4788-->
-
-      <section title="Informative References">
-        <!-- 26.2, line 4861-->
-
-        <t><xref target="RFC2132"/> Alexander, S. and R. Droms, "DHCP Options
-        and BOOTP Vendor Extensions", RFC 2132, March 1997.</t>
-
-        <t><xref target="RFC2131"/> Droms, R., "Dynamic Host Configuration
-        Protocol", RFC 2131, March 1997.</t>
-
-        <t><xref target="UNKNOWN20"/> R. Droms, Ed. DNS Configuration options
-        for DHCPv6. April 2002. Work in Progress.</t>
-
-        <t><xref target="UNKNOWN21"/> A. K. Vijayabhaskar. Time Configuration
-        Options for DHCPv6. May 2002. Work in Progress.</t>
-
-        <t><xref target="RFC2136"/> Vixie, P., Ed., Thomson, S., Rekhter, Y.
-        and J. Bound, "Dynamic Updates in the Domain Name System (DNS
-        UPDATE)", RFC 2136, April 1997.</t>
-
-        <t>A. Appearance of Options in Message Types</t>
+      
+<!-- ** This should be an appendix tag but that does not yet seem to work! -->
+        <section title="Appearance of Options in Message Types">
 
         <t>The following table indicates with a "*" the options are allowed in
         each DHCP message type:</t>
 
-        <t>Client Server IA_NA Option Pref Time Relay Auth. Server ID ID IA_TA
-        Request Msg. Unica. Solicit * * * * * Advert. * * * * * Request * * *
-        * * * Confirm * * * * * Renew * * * * * * Rebind * * * * * Decline * *
-        * * * * Release * * * * * * Reply * * * * * * Reconf. * * * * Inform.
-        * (see note) * * * R-forw. * * R-repl. * *</t>
+<figure>
+<artwork>
+        Client Server IA_NA  Option Pref  Time Relay Auth. Server
+          ID     ID   IA_TA  Request            Msg.       Unica.
+Solicit   *             *      *           *           *
+Advert.   *      *      *            *                 *
+Request   *      *      *      *           *           *
+Confirm   *             *      *           *           *
+Renew     *      *      *      *           *           *
+Rebind    *             *      *           *           *
+Decline   *      *      *      *           *           *
+Release   *      *      *      *           *           *
+Reply     *      *      *            *                 *     *
+Reconf.   *      *             *                       *
+Inform.   * (see note)         *           *           *
+R-forw.                                          *     *
+R-repl.                                          *     *
+</artwork>
+</figure>
 
-        <t>NOTE:</t>
+          <t>NOTE:</t>
 
         <t>Only included in Information-Request messages that are sent in
         response to a Reconfigure (see section 19.4.3).</t>
 
-        <t>Status Rap. User Vendor Vendor Inter. Recon. Recon. Code Comm.
-        Class Class Spec. ID Msg. Accept Solicit * * * * * Advert. * * * * *
-        Request * * * * Confirm * * * Renew * * * * Rebind * * * * Decline * *
-        * Release * * * Reply * * * * * * Reconf. * Inform. * * * * R-forw. *
-        * * * R-repl. * * * *</t>
+<figure>
+<artwork>
+         Status  Rap. User  Vendor Vendor Inter. Recon. Recon.
+          Code  Comm. Class Class  Spec.    ID    Msg.  Accept
+Solicit           *     *     *      *                    *
+Advert.    *            *     *      *                    *
+Request                 *     *      *                    *
+Confirm                 *     *      *
+Renew                   *     *      *                    *
+Rebind                  *     *      *                    *
+Decline                 *     *      *
+Release                 *     *      *
+Reply      *      *     *     *      *                    *
+Reconf.                                            *
+Inform.                 *     *      *                    *
+R-forw.                 *     *      *      *
+R-repl.                 *     *      *      *
+</artwork>
+</figure>
 
-        <t>B. Appearance of Options in the Options Field of DHCP Options</t>
+        </section>
+
+<!-- ** This should be an appendix tag but that does not yet seem to work! -->
+        <section title="Appearance of Options in the Options Field of DHCP Options">
 
         <t>The following table indicates with a "*" where options can appear
         in the options field of other options:</t>
 
-        <t>Option IA_NA/ IAADDR Relay Relay Field IA_TA Forw. Reply Client ID
-        * Server ID * IA_NA/IA_TA * IAADDR * ORO * Preference * Elapsed Time *
-        Relay Message * * Authentic. * Server Uni. * Status Code * * * Rapid
-        Comm. * User Class * Vendor Class * Vendor Info. * Interf. ID * *
-        Reconf. MSG. * Reconf. Accept *</t>
-
+<figure>
+<artwork>
+             Option  IA_NA/ IAADDR Relay  Relay
+             Field   IA_TA         Forw.  Reply
+Client ID      *
+Server ID      *
+IA_NA/IA_TA    *
+IAADDR                 *
+ORO            *
+Preference     *
+Elapsed Time   *
+Relay Message                        *      *
+Authentic.     *
+Server Uni.    *
+Status Code    *       *       *
+Rapid Comm.    *
+User Class     *
+Vendor Class   *
+Vendor Info.   *
+Interf. ID                           *      *
+Reconf. MSG.   *
+Reconf. Accept *
+</artwork>
+</figure>
+          
         <t>Note: "Relay Forw" / "Relay Reply" options appear in the options
         field of the message but may only appear in these messages.</t>
+    
+        </section>
 
-        <t>Chair's Address</t>
-
-        <t>The working group can be contacted via the current chair:</t>
-
-        <t>Ralph Droms Cisco Systems 1414 Massachusetts Avenue Boxborough, MA
-        01719</t>
-
-        <t>Phone: (978) 936-1674 EMail: rdroms@cisco.com Authors'
-        Addresses</t>
-
-        <t>Jim Bound Hewlett Packard Corporation ZK3-3/W20 110 Spit Brook Road
-        Nashua, NH 03062-2698 USA</t>
-
-        <t>Phone: +1 603 884 0062 EMail: Jim.Bound@hp.com</t>
-
-        <t>Bernie Volz 116 Hawkins Pond Road Center Harbor, NH 03226-3103
-        USA</t>
-
-        <t>Phone: +1-508-259-3734 EMail: volz@metrocast.net</t>
-
-        <t>Ted Lemon Nominum, Inc. 950 Charter Street Redwood City, CA 94043
-        USA</t>
-
-        <t>EMail: Ted.Lemon@nominum.com</t>
-
-        <t>Charles E. Perkins Communications Systems Lab Nokia Research Center
-        313 Fairchild Drive Mountain View, California 94043 USA</t>
-
-        <t>Phone: +1-650 625-2986 EMail: charles.perkins@nokia.com</t>
-
-        <t>Mike Carney Sun Microsystems, Inc 17 Network Circle Menlo Park, CA
-        94025 USA</t>
-
-        <t>Phone: +1-650-786-4171 EMail: michael.carney@sun.com</t>
-
-        <t>Full Copyright Statement Copyright (C) The Internet Society (2003).
-        All Rights Reserved.</t>
-
-        <t>This document and translations of it may be copied and furnished to
-        others, and derivative works that comment on or otherwise explain it
-        or assist in its implementation may be prepared, copied, published and
-        distributed, in whole or in part, without restriction of any kind,
-        provided that the above copyright notice and this paragraph are
-        included on all such copies and derivative works. However, this
-        document itself may not be modified in any way, such as by removing
-        the copyright notice or references to the Internet Society or other
-        Internet organizations, except as needed for the purpose of developing
-        Internet standards in which case the procedures for copyrights defined
-        in the Internet Standards process must be followed, or as required to
-        translate it into languages other than English.</t>
-
-        <t>The limited permissions granted above are perpetual and will not be
-        revoked by the Internet Society or its successors or assigns.</t>
-
-        <t>This document and the information contained herein is provided on
-        an "AS IS" basis and THE INTERNET SOCIETY AND THE INTERNET ENGINEERING
-        TASK FORCE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT
-        NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN
-        WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
-        MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.</t>
-
-        <t>Acknowledgement</t>
-
-        <t>Funding for the RFC Editor function is currently provided by the
-        Internet Society.</t>
-      </section>
-
-      <!-- ends: "26.2 from line 4861-->
-    </section>
-
-    <!-- ends: "26 from line 4785-->
   </middle>
 
   <back>
     <references title="Normative References">
-      <reference anchor="UNKNOWN20">
-        <front>
-          <title>R. Droms, Ed. DNS Configuration options for DHCPv6. April
-          2002. Work inProgress.</title>
-
-          <author>
-            <organization>?</organization>
-          </author>
-
-          <date year="1900"/>
-        </front>
-      </reference>
-
-      <reference anchor="UNKNOWN21">
-        <front>
-          <title>A. K. Vijayabhaskar. Time Configuration Options forDHCPv6.
-          May 2002. Work in Progress.</title>
-
-          <author>
-            <organization>?</organization>
-          </author>
-
-          <date year="1900"/>
-        </front>
-      </reference>
+        
+      &RFC3646;
+        
+      &RFC4075;
 
       &RFC2136;
 
@@ -5351,17 +5471,18 @@
 
       <!--  Kent, S. and R. Atkinson, "Security Architecture for the InternetProtocol", RFC 2401, November 1998. -->
 
-      <reference anchor="UNKNOWN6">
+      <reference anchor="IANA-PEN">
         <front>
-          <title>IANA. Private Enterprise
-          Numbers.http://www.iana.org/assignments/enterprise-numbers.html.</title>
-
+          <title>Private Enterprise Numbers registry
+          http://www.iana.org/assignments/enterprise-numbers.html
+          </title>
+            
           <author>
-            <organization>?</organization>
+            <organization>IANA</organization>
           </author>
 
-          <date year="1900"/>
-        </front>
+          <date/>
+        </front>   
       </reference>
 
       &RFC1305;
