@@ -4,12 +4,12 @@
 
 Network Working Group                                    X. Unknown, Ed.
 Internet-Draft                                             Not converted
-Intended status: Standards Track                       December 23, 2013
-Expires: June 26, 2014
+Intended status: Standards Track                         January 1, 2014
+Expires: July 5, 2014
 
 
-                                Unknown
-                      draft-ietf-dhcwg-rfc3315bis
+       Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis
+                       draft-dhcwg-dhc-rfc3315bis
 
 Status of This Memo
 
@@ -26,11 +26,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 26, 2014.
+   This Internet-Draft will expire on July 5, 2014.
 
 Copyright Notice
 
-   Copyright (c) 2013 IETF Trust and the persons identified as the
+   Copyright (c) 2014 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Unknown                   Expires June 26, 2014                 [Page 1]
+Unknown                   Expires July 5, 2014                  [Page 1]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 Table of Contents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Unknown                   Expires June 26, 2014                 [Page 2]
+Unknown                   Expires July 5, 2014                  [Page 2]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
      15.13. Relay-forward Message  . . . . . . . . . . . . . . . . .  31
@@ -165,9 +165,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                 [Page 3]
+Unknown                   Expires July 5, 2014                  [Page 3]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
      20.1.  Relaying a Client Message or a Relay-forward Message . .  58
@@ -178,38 +178,38 @@ Internet-Draft               Unknown(short)                December 2013
    21. Authentication of DHCP Messages . . . . . . . . . . . . . . .  60
      21.1.  Security of Messages Sent Between Servers and Relay
             Agents . . . . . . . . . . . . . . . . . . . . . . . . .  60
-     21.2.  Summary of DHCP Authentication . . . . . . . . . . . . .  61
+     21.2.  Summary of DHCP Authentication . . . . . . . . . . . . .  62
      21.3.  Replay Detection . . . . . . . . . . . . . . . . . . . .  62
      21.4.  Delayed Authentication Protocol  . . . . . . . . . . . .  62
        21.4.1.  Use of the Authentication Option in the Delayed
-                Authentication Protocol  . . . . . . . . . . . . . .  62
+                Authentication Protocol  . . . . . . . . . . . . . .  63
        21.4.2.  Message Validation . . . . . . . . . . . . . . . . .  64
        21.4.3.  Key Utilization  . . . . . . . . . . . . . . . . . .  64
        21.4.4.  Client Considerations for Delayed Authentication
-                Protocol . . . . . . . . . . . . . . . . . . . . . .  64
-         21.4.4.1.  Sending Solicit Messages . . . . . . . . . . . .  64
+                Protocol . . . . . . . . . . . . . . . . . . . . . .  65
+         21.4.4.1.  Sending Solicit Messages . . . . . . . . . . . .  65
          21.4.4.2.  Receiving Advertise Messages . . . . . . . . . .  65
          21.4.4.3.  Sending Request, Confirm, Renew, Rebind, Decline
-                    or Release Messages  . . . . . . . . . . . . . .  65
-         21.4.4.4.  Sending Information-request Messages . . . . . .  65
+                    or Release Messages  . . . . . . . . . . . . . .  66
+         21.4.4.4.  Sending Information-request Messages . . . . . .  66
          21.4.4.5.  Receiving Reply Messages . . . . . . . . . . . .  66
          21.4.4.6.  Receiving Reconfigure Messages . . . . . . . . .  66
        21.4.5.  Server Considerations for Delayed Authentication
                 Protocol . . . . . . . . . . . . . . . . . . . . . .  66
          21.4.5.1.  Receiving Solicit Messages and Sending Advertise
-                    Messages . . . . . . . . . . . . . . . . . . . .  66
+                    Messages . . . . . . . . . . . . . . . . . . . .  67
          21.4.5.2.  Receiving Request, Confirm, Renew, Rebind or
-                    Release Messages and Sending Reply Messages  . .  66
+                    Release Messages and Sending Reply Messages  . .  67
      21.5.  Reconfigure Key Authentication Protocol  . . . . . . . .  67
        21.5.1.  Use of the Authentication Option in the Reconfigure
-                Key Authentication Protocol  . . . . . . . . . . . .  67
+                Key Authentication Protocol  . . . . . . . . . . . .  68
        21.5.2.  Server considerations for Reconfigure Key protocol .  68
        21.5.3.  Client considerations for Reconfigure Key protocol .  69
    22. DHCP Options  . . . . . . . . . . . . . . . . . . . . . . . .  69
-     22.1.  Format of DHCP Options . . . . . . . . . . . . . . . . .  69
+     22.1.  Format of DHCP Options . . . . . . . . . . . . . . . . .  70
      22.2.  Client Identifier Option . . . . . . . . . . . . . . . .  70
-     22.3.  Server Identifier Option . . . . . . . . . . . . . . . .  70
-     22.4.  Identity Association for Non-temporary Addresses Option   71
+     22.3.  Server Identifier Option . . . . . . . . . . . . . . . .  71
+     22.4.  Identity Association for Non-temporary Addresses Option   72
      22.5.  Identity Association for Temporary Addresses Option  . .  74
      22.6.  IA Address Option  . . . . . . . . . . . . . . . . . . .  75
      22.7.  Option Request Option  . . . . . . . . . . . . . . . . .  77
@@ -221,31 +221,31 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                 [Page 4]
+Unknown                   Expires July 5, 2014                  [Page 4]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
      22.13. Status Code Option . . . . . . . . . . . . . . . . . . .  82
-     22.14. Rapid Commit Option  . . . . . . . . . . . . . . . . . .  82
-     22.15. User Class Option  . . . . . . . . . . . . . . . . . . .  83
+     22.14. Rapid Commit Option  . . . . . . . . . . . . . . . . . .  83
+     22.15. User Class Option  . . . . . . . . . . . . . . . . . . .  84
      22.16. Vendor Class Option  . . . . . . . . . . . . . . . . . .  85
-     22.17. Vendor-specific Information Option . . . . . . . . . . .  86
-     22.18. Interface-Id Option  . . . . . . . . . . . . . . . . . .  87
-     22.19. Reconfigure Message Option . . . . . . . . . . . . . . .  88
-     22.20. Reconfigure Accept Option  . . . . . . . . . . . . . . .  89
-   23. Security Considerations . . . . . . . . . . . . . . . . . . .  90
-   24. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  92
-     24.1.  Multicast Addresses  . . . . . . . . . . . . . . . . . .  93
-     24.2.  DHCP Message Types . . . . . . . . . . . . . . . . . . .  93
-     24.3.  DHCP Options . . . . . . . . . . . . . . . . . . . . . .  93
-     24.4.  Status Codes . . . . . . . . . . . . . . . . . . . . . .  94
-     24.5.  DUID . . . . . . . . . . . . . . . . . . . . . . . . . .  95
-   25. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  95
-   26. Appearance of Options in Message Types  . . . . . . . . . . .  96
-   27. Appearance of Options in the Options Field of DHCP Options  .  97
-   28. Normative References  . . . . . . . . . . . . . . . . . . . .  97
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  99
+     22.17. Vendor-specific Information Option . . . . . . . . . . .  87
+     22.18. Interface-Id Option  . . . . . . . . . . . . . . . . . .  88
+     22.19. Reconfigure Message Option . . . . . . . . . . . . . . .  89
+     22.20. Reconfigure Accept Option  . . . . . . . . . . . . . . .  90
+   23. Security Considerations . . . . . . . . . . . . . . . . . . .  91
+   24. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  93
+     24.1.  Multicast Addresses  . . . . . . . . . . . . . . . . . .  94
+     24.2.  DHCP Message Types . . . . . . . . . . . . . . . . . . .  94
+     24.3.  DHCP Options . . . . . . . . . . . . . . . . . . . . . .  94
+     24.4.  Status Codes . . . . . . . . . . . . . . . . . . . . . .  95
+     24.5.  DUID . . . . . . . . . . . . . . . . . . . . . . . . . .  96
+   25. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  96
+   26. Appearance of Options in Message Types  . . . . . . . . . . .  97
+   27. Appearance of Options in the Options Field of DHCP Options  .  98
+   28. Normative References  . . . . . . . . . . . . . . . . . . . .  98
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . . 100
 
 1.  Introduction and Overview
 
@@ -277,9 +277,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                 [Page 5]
+Unknown                   Expires July 5, 2014                  [Page 5]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 1.1.  Protocols and Addressing
@@ -333,9 +333,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                 [Page 6]
+Unknown                   Expires July 5, 2014                  [Page 6]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    information and the addresses in the Reply message are then
@@ -389,9 +389,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                 [Page 7]
+Unknown                   Expires July 5, 2014                  [Page 7]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 3.  Background
@@ -445,9 +445,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                 [Page 8]
+Unknown                   Expires July 5, 2014                  [Page 8]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 4.1.  IPv6 Terminology
@@ -501,9 +501,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                 [Page 9]
+Unknown                   Expires July 5, 2014                  [Page 9]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    packet                    An IP header plus payload.
@@ -557,9 +557,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 10]
+Unknown                   Expires July 5, 2014                 [Page 10]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
                              enable communication on a link or
@@ -586,7 +586,7 @@ Internet-Draft               Unknown(short)                December 2013
                              between clients and servers, and is on the
                              same link as the client.
 
-   >DHCP server (or server)  A node that responds to requests from
+   DHCP server (or server)   A node that responds to requests from
                              clients, and may or may not be on the same
                              link as the client(s).
 
@@ -613,9 +613,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 11]
+Unknown                   Expires July 5, 2014                 [Page 11]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    Identity association identifier (IAID)  An identifier for an IA,
@@ -629,7 +629,7 @@ Internet-Draft               Unknown(short)                December 2013
                              association for temporary addresses")
 
    Identity association for temporary addresses (IA_TA)  An IA that
-                             carries temporary addresses (see RFC 3041
+                             carries temporary addresses (see RFC
                              [RFC3041]).
 
    message                   A unit of data carried as the payload of a
@@ -669,9 +669,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 12]
+Unknown                   Expires July 5, 2014                 [Page 12]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
                    addresses of the servers.  Note that in order for a
@@ -725,9 +725,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 13]
+Unknown                   Expires July 5, 2014                 [Page 13]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
                    from a client.  A server sends a Reply message
@@ -781,9 +781,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 14]
+Unknown                   Expires July 5, 2014                 [Page 14]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 5.4.  Status Codes
@@ -837,9 +837,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 15]
+Unknown                   Expires July 5, 2014                 [Page 15]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 5.6.  Representation of time values and "Infinity" as a time value
@@ -878,24 +878,24 @@ Internet-Draft               Unknown(short)                December 2013
 
                   Figure 1: Client/Server message format
 
-   msg-type    Identifies the DHCP message type; the available message
-               types are listed in section 5.3.
+      msg-type             Identifies the DHCP message type; the
+                           available message types are listed in section
+                           5.3.
 
-   transaction-id  The transaction ID for this message exchange.
+      transaction-id       The transaction ID for this message exchange.
 
-   options     Options carried in this message; options are described in
-               section 22.
-
-
-
+      options              Options carried in this message; options are
+                           described in section 22.
 
 
 
 
 
-Unknown                   Expires June 26, 2014                [Page 16]
+
+
+Unknown                   Expires July 5, 2014                 [Page 16]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 7.  Relay Agent/Server Message Formats
@@ -949,49 +949,50 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 17]
+Unknown                   Expires July 5, 2014                 [Page 17]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
-   msg-type    RELAY-FORW
+      msg-type             RELAY-FORW
 
-   hop-count   Number of relay agents that have relayed this message.
+      hop-count            Number of relay agents that have relayed this
+                           message.
 
-   link-address  A global or site-local address that will be used by the
-               server to identify the link on which the client is
-               located.
+      link-address         A global or site-local address that will be
+                           used by the server to identify the link on
+                           which the client is located.
 
-   peer-address  The address of the client or relay agent from which the
-               message to be relayed was received.
+      peer-address         The address of the client or relay agent from
+                           which the message to be relayed was received.
 
-   options     MUST include a "Relay Message option" (see section
-               22.10); MAY include other options added by the relay
-               agent.
+      options              MUST include a "Relay Message option" (see
+                           section 22.10); MAY include other options
+                           added by the relay agent.
 
 7.2.  Relay-reply Message
 
    The following table defines the use of message fields in a Relay-
    reply message.
 
-   msg-type    RELAY-REPL
+      msg-type             RELAY-REPL
 
-   hop-count   Copied from the Relay-forward message
+      hop-count            Copied from the Relay-forward message
 
-   link-address  Copied from the Relay-forward message
+      link-address         Copied from the Relay-forward message
 
-   peer-address  Copied from the Relay-forward message
+      peer-address         Copied from the Relay-forward message
 
-   options     MUST include a "Relay Message option"; see section 22.10;
-               MAY include other options
+      options              MUST include a "Relay Message option"; see
+                           section 22.10; MAY include other options
 
 8.  Representation and Use of Domain Names
 
    So that domain names may be encoded uniformly, a domain name or a
    list of domain names is encoded using the technique described in
-   section 3.1 of RFC 1035 [RFC1035].  A domain name, or list of domain
-   names, in DHCP MUST NOT be stored in compressed form, as described in
-   section 4.1.4 of RFC 1035.
+   section 3.1 of [RFC1035].  A domain name, or list of domain names, in
+   DHCP MUST NOT be stored in compressed form, as described in section
+   4.1.4 of RFC 1035.
 
 9.  DHCP Unique Identifier (DUID)
 
@@ -1004,10 +1005,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-
-Unknown                   Expires June 26, 2014                [Page 18]
+Unknown                   Expires July 5, 2014                 [Page 18]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    Clients and servers MUST treat DUIDs as opaque values and MUST only
@@ -1061,15 +1061,14 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 19]
+Unknown                   Expires July 5, 2014                 [Page 19]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
-   assigned by the IANA as described in RFC 826 [RFC0826].  Both the
-   time and the hardware type are stored in network byte order.  The
-   link-layer address is stored in canonical form, as described in RFC
-   2464 [RFC2464].
+   assigned by the IANA as described in [RFC0826].  Both the time and
+   the hardware type are stored in network byte order.  The link-layer
+   address is stored in canonical form, as described in [RFC2464].
 
    The following diagram illustrates the format of a DUID-LLT:
 
@@ -1117,9 +1116,10 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 20]
+
+Unknown                   Expires July 5, 2014                 [Page 20]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    also for devices such as printers, routers, and so on, that contain
@@ -1173,9 +1173,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 21]
+Unknown                   Expires July 5, 2014                 [Page 21]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
       +---+---+---+---+---+---+---+---+
@@ -1199,11 +1199,10 @@ Internet-Draft               Unknown(short)                December 2013
    the client or server device.  For example, a host that has a network
    interface implemented in a chip that is unlikely to be removed and
    used elsewhere could use a DUID-LL.  The hardware type MUST be a
-   valid hardware type assigned by the IANA, as described in RFC 826
-   [RFC0826].  The hardware type is stored in network byte order.  The
-   link-layer address is stored in canonical form, as described in RFC
-   2464 [RFC2464].  The following diagram illustrates the format of a
-   DUID-LL:
+   valid hardware type assigned by the IANA, as described in [RFC0826].
+   The hardware type is stored in network byte order.  The link-layer
+   address is stored in canonical form, as described in [RFC2464].  The
+   following diagram illustrates the format of a DUID-LL:
 
 
        0                   1                   2                   3
@@ -1229,9 +1228,10 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 22]
+
+Unknown                   Expires July 5, 2014                 [Page 22]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    DUID-LL is recommended for devices that have a permanently-connected
@@ -1270,10 +1270,9 @@ Internet-Draft               Unknown(short)                December 2013
    22.4 for the representation of an IA in a DHCP message.
 
    Each address in an IA has a preferred lifetime and a valid lifetime,
-   as defined in RFC 2462 [RFC2462].  The lifetimes are transmitted from
-   the DHCP server to the client in the IA option.  The lifetimes apply
-   to the use of IPv6 addresses, as described in section 5.5.4 of RFC
-   2462.
+   as defined in [RFC2462].  The lifetimes are transmitted from the DHCP
+   server to the client in the IA option.  The lifetimes apply to the
+   use of IPv6 addresses, as described in section 5.5.4 of RFC 2462.
 
 11.  Selecting Addresses for Assignment to an IA
 
@@ -1285,9 +1284,10 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 23]
+
+Unknown                   Expires July 5, 2014                 [Page 23]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    -  The link to which the client is attached.  The server determines
@@ -1322,8 +1322,8 @@ Internet-Draft               Unknown(short)                December 2013
    Any address assigned by a server that is based on an EUI-64
    identifier MUST include an interface identifier with the "u"
    (universal/local) and "g" (individual/group) bits of the interface
-   identifier set appropriately, as indicated in section 2.5.1 of RFC
-   2373 [RFC2373].
+   identifier set appropriately, as indicated in section 2.5.1 of
+   [RFC2373].
 
    A server MUST NOT assign an address that is otherwise reserved for
    some other purpose.  For example, a server MUST NOT assign reserved
@@ -1341,9 +1341,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 24]
+Unknown                   Expires July 5, 2014                 [Page 24]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    Clients ask for temporary addresses and servers assign them.
@@ -1397,9 +1397,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 25]
+Unknown                   Expires July 5, 2014                 [Page 25]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    The client retransmission behavior is controlled and described by the
@@ -1453,9 +1453,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 26]
+Unknown                   Expires July 5, 2014                 [Page 26]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    MRD specifies an upper bound on the length of time a client may
@@ -1509,9 +1509,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 27]
+Unknown                   Expires July 5, 2014                 [Page 27]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 15.2.  Solicit Message
@@ -1565,9 +1565,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 28]
+Unknown                   Expires July 5, 2014                 [Page 28]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 15.6.  Renew Message
@@ -1621,9 +1621,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 29]
+Unknown                   Expires July 5, 2014                 [Page 29]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    -  the message does not include a Client Identifier option.
@@ -1677,9 +1677,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 30]
+Unknown                   Expires July 5, 2014                 [Page 30]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 15.12.  Information-request Message
@@ -1692,7 +1692,7 @@ Internet-Draft               Unknown(short)                December 2013
    -  The message includes a Server Identifier option and the DUID in
       the option does not match the server's DUID.
 
-   -  - The message includes an IA option.
+   -  The message includes an IA option.
 
 15.13.  Relay-forward Message
 
@@ -1733,9 +1733,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 31]
+Unknown                   Expires July 5, 2014                 [Page 31]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    assign addresses to the IA respond to the client with an Advertise
@@ -1789,9 +1789,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 32]
+Unknown                   Expires July 5, 2014                 [Page 32]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 17.1.2.  Transmission of Solicit Messages
@@ -1845,9 +1845,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 33]
+Unknown                   Expires July 5, 2014                 [Page 33]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    SHOULD continue with a client-initiated message exchange by sending a
@@ -1901,9 +1901,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 34]
+Unknown                   Expires July 5, 2014                 [Page 34]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    If the client needs to select an alternate server in the case that a
@@ -1957,9 +1957,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 35]
+Unknown                   Expires July 5, 2014                 [Page 35]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    Solicit with a Reply message as described in section 17.2.3.
@@ -2013,9 +2013,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 36]
+Unknown                   Expires July 5, 2014                 [Page 36]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    Identifier option with the server's DUID, and a Client Identifier
@@ -2069,9 +2069,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 37]
+Unknown                   Expires July 5, 2014                 [Page 37]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 18.  DHCP Client-Initiated Configuration Exchange
@@ -2125,9 +2125,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 38]
+Unknown                   Expires July 5, 2014                 [Page 38]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    The client MUST include a Client Identifier option to identify itself
@@ -2181,9 +2181,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 39]
+Unknown                   Expires July 5, 2014                 [Page 39]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    o  The client using a wireless technology changes access points.
@@ -2237,9 +2237,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 40]
+Unknown                   Expires July 5, 2014                 [Page 40]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    IA option for the IA.  The client includes IA Address options in the
@@ -2293,9 +2293,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 41]
+Unknown                   Expires July 5, 2014                 [Page 41]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
       MRD     Remaining time until T2
@@ -2349,9 +2349,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 42]
+Unknown                   Expires July 5, 2014                 [Page 42]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    -  The client may choose to use a Solicit message to locate a new
@@ -2405,9 +2405,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 43]
+Unknown                   Expires July 5, 2014                 [Page 43]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    The client sets the "msg-type" field to RELEASE.  The client
@@ -2461,9 +2461,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 44]
+Unknown                   Expires July 5, 2014                 [Page 44]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 18.1.7.  Creation and Transmission of Decline Messages
@@ -2517,9 +2517,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 45]
+Unknown                   Expires July 5, 2014                 [Page 45]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    any status code or message from the status code option in the Reply
@@ -2573,9 +2573,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 46]
+Unknown                   Expires July 5, 2014                 [Page 46]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    solicitation, as described in section 17, and client-initiated
@@ -2629,9 +2629,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 47]
+Unknown                   Expires July 5, 2014                 [Page 47]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    In most instances, the server will send a Reply in response to a
@@ -2685,9 +2685,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 48]
+Unknown                   Expires July 5, 2014                 [Page 48]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    For any IAs to which the server can assign addresses, the server
@@ -2741,9 +2741,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 49]
+Unknown                   Expires July 5, 2014                 [Page 49]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    Status Code option with the value UseMulticast, a Server Identifier
@@ -2797,9 +2797,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 50]
+Unknown                   Expires July 5, 2014                 [Page 50]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    in the IA are no longer valid.  In this situation, if the server does
@@ -2853,9 +2853,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 51]
+Unknown                   Expires July 5, 2014                 [Page 51]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    respond, the client may continue to retransmit the Information-
@@ -2909,9 +2909,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 52]
+Unknown                   Expires July 5, 2014                 [Page 52]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    the IA (though it may choose to log an error if it finds such an
@@ -2965,9 +2965,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 53]
+Unknown                   Expires July 5, 2014                 [Page 53]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 19.1.  Server Behavior
@@ -3021,9 +3021,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 54]
+Unknown                   Expires July 5, 2014                 [Page 54]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    of multiple clients concurrently; for example, a server may send a
@@ -3077,9 +3077,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 55]
+Unknown                   Expires July 5, 2014                 [Page 55]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 19.4.  Client Behavior
@@ -3133,9 +3133,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 56]
+Unknown                   Expires July 5, 2014                 [Page 56]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 19.4.2.  Creation and Transmission of Renew Messages
@@ -3189,9 +3189,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 57]
+Unknown                   Expires July 5, 2014                 [Page 57]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 20.1.  Relaying a Client Message or a Relay-forward Message
@@ -3245,9 +3245,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 58]
+Unknown                   Expires July 5, 2014                 [Page 58]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    interface on which the message was received, or includes an
@@ -3293,18 +3293,32 @@ Internet-Draft               Unknown(short)                December 2013
    agent A to relay agent B and then to the server, the server would
    send the following Relay-Reply message to relay agent B:
 
-   msg-type: RELAY-REPLY hop-count: 1 link-address: 0 peer-address: A
-   Relay Message option, containing: msg-type: RELAY-REPLY hop-count: 0
-   link-address: address from link to which C is attached peer-address:
-   C Relay Message option: <response from server>
 
 
 
 
-Unknown                   Expires June 26, 2014                [Page 59]
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 59]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
+
+      msg-type:       RELAY-REPLY
+      hop-count:      1
+      link-address:   0
+      peer-address:   A
+      Relay Message option, containing:
+        msg-type:     RELAY-REPLY
+        hop-count:    0
+        link-address: address from link to which C is attached
+        peer-address: C
+        Relay Message option: <response from server>
+
+
+                       Figure 7: Relay-reply Example
 
    When sending a Reconfigure message to a client through a relay agent,
    the server creates a Relay-reply message that includes a Relay
@@ -3340,6 +3354,14 @@ Internet-Draft               Unknown(short)                December 2013
    messages from client C will be relayed by relay agent A to relay
    agent B and then to the server, relay agents A and B must be
    configured to use IPSec for the messages they exchange, and relay
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 60]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
    agent B and the server must be configured to use IPSec for the
    messages they exchange.
 
@@ -3347,48 +3369,59 @@ Internet-Draft               Unknown(short)                December 2013
    relay agent to relay agent communication use IPsec under the
    following conditions:
 
-   Selectors Relay agents are manually configured with the addresses of
-   the relay agent or server to which DHCP messages are to be forwarded.
-   Each relay agent and server that will be using IPsec for securing
-   DHCP messages must also be configured with a list of the relay agents
-   to which messages will be returned.  The selectors for the relay
-   agents and servers will be the pairs of addresses defining relay
+      Selectors            Relay agents are manually configured with the
+                           addresses of the relay agent or server to
+                           which DHCP messages are to be forwarded.
+                           Each relay agent and server that will be
+                           using IPsec for securing DHCP messages must
+                           also be configured with a list of the relay
+                           agents to which messages will be returned.
+                           The selectors for the relay agents and
+                           servers will be the pairs of addresses
+                           defining relay agents and servers that
+                           exchange DHCP messages on the DHCPv6 UDP
+                           ports 546 and 547.
+
+      Mode                 Relay agents and servers use transport mode
+                           and ESP.  The information in DHCP messages is
+                           not generally considered confidential, so
+                           encryption need not be used (i.e., NULL
+                           encryption can be used).
+
+      Key management       Because the relay agents and servers are used
+                           within an organization, public key schemes
+                           are not necessary.  Because the relay agents
+                           and servers must be manually configured,
+                           manually configured key management may
+                           suffice, but does not provide defense against
+                           replayed messages.  Accordingly, IKE with
+                           preshared secrets SHOULD be supported.  IKE
+                           with public keys MAY be supported.
+
+      Security policy      DHCP messages between relay agents and
+                           servers should only be accepted from DHCP
+                           peers as identified in the local
+                           configuration.
+
+      Authentication       Shared keys, indexed to the source IP address
+                           of the received DHCP message, are adequate in
+                           this application.
+
+      Availability         Appropriate IPsec implementations are likely
+                           to be available for servers and for relay
+                           agents in more featureful devices used in
 
 
 
-
-Unknown                   Expires June 26, 2014                [Page 60]
+Unknown                   Expires July 5, 2014                 [Page 61]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
-   agents and servers that exchange DHCP messages on the DHCPv6 UDP
-   ports 546 and 547.
-
-   Mode Relay agents and servers use transport mode and ESP.  The
-   information in DHCP messages is not generally considered
-   confidential, so encryption need not be used (i.e., NULL encryption
-   can be used).
-
-   Key management Because the relay agents and servers are used within
-   an organization, public key schemes are not necessary.  Because the
-   relay agents and servers must be manually configured, manually
-   configured key management may suffice, but does not provide defense
-   against replayed messages.  Accordingly, IKE with preshared secrets
-   SHOULD be supported.  IKE with public keys MAY be supported.
-
-   Security policy DHCP messages between relay agents and servers should
-   only be accepted from DHCP peers as identified in the local
-   configuration.
-
-   Authentication Shared keys, indexed to the source IP address of the
-   received DHCP message, are adequate in this application.
-
-   Availability Appropriate IPsec implementations are likely to be
-   available for servers and for relay agents in more featureful devices
-   used in enterprise and core ISP networks.  IPsec is less likely to be
-   available for relay agents in low end devices primarily used in the
-   home or small office markets.
+                           enterprise and core ISP networks.  IPsec is
+                           less likely to be available for relay agents
+                           in low end devices primarily used in the home
+                           or small office markets.
 
 21.2.  Summary of DHCP Authentication
 
@@ -3410,14 +3443,6 @@ Internet-Draft               Unknown(short)                December 2013
    specific protocol used to generate the authentication information
    carried in the option.  The algorithm field identifies a specific
    algorithm within the authentication protocol; for example, the
-
-
-
-Unknown                   Expires June 26, 2014                [Page 61]
-
-Internet-Draft               Unknown(short)                December 2013
-
-
    algorithm field specifies the hash algorithm used to generate the
    message authentication code (MAC) in the authentication option.  The
    replay detection method (RDM) field specifies the type of replay
@@ -3441,6 +3466,14 @@ Internet-Draft               Unknown(short)                December 2013
    requests authentication in its Solicit message, and the server
    replies with an Advertise message that includes authentication
    information.  This authentication information contains a nonce value
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 62]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
    generated by the source as a message authentication code (MAC) to
    provide message authentication and entity authentication.
 
@@ -3464,16 +3497,6 @@ Internet-Draft               Unknown(short)                December 2013
    The format of the Authentication information is:
 
 
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 62]
-
-Internet-Draft               Unknown(short)                December 2013
-
-
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -3491,17 +3514,26 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                Figure 7: Authentication information format
+                Figure 8: Authentication information format
 
-   DHCP realm The DHCP realm that identifies the key used to generate
-   the HMAC-MD5 value.
+      DHCP realm           The DHCP realm that identifies the key used
+                           to generate the HMAC-MD5 value.
 
-   key ID The key identifier that identified the key used to generate
-   the HMAC-MD5 value.
+      key ID               The key identifier that identified the key
+                           used to generate the HMAC-MD5 value.
 
-   HMAC-MD5 The message authentication code generated by applying MD5 to
-   the DHCP message using the key identified by the DHCP realm, client
-   DUID, and key ID.
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 63]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
+      HMAC-MD5             The message authentication code generated by
+                           applying MD5 to the DHCP message using the
+                           key identified by the DHCP realm, client
+                           DUID, and key ID.
 
    The sender computes the MAC using the HMAC generation algorithm
    [RFC2104] and the MD5 hash function [RFC1321].  The entire DHCP
@@ -3520,15 +3552,6 @@ Internet-Draft               Unknown(short)                December 2013
       allows DHCP administrators to avoid conflict in the use of key
       identifiers, and allows a host using DHCP to use authenticated
       DHCP while roaming among DHCP administrative domains.
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 63]
-
-Internet-Draft               Unknown(short)                December 2013
-
 
 21.4.2.  Message Validation
 
@@ -3554,6 +3577,15 @@ Internet-Draft               Unknown(short)                December 2013
    Mechanisms for key distribution and lifetime specification are beyond
    the scope of this document.
 
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 64]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
    The client and server use one of the client's keys to authenticate
    DHCP messages during a session (until the next Solicit message sent
    by the client).
@@ -3573,18 +3605,6 @@ Internet-Draft               Unknown(short)                December 2013
    protocol, algorithm and RDM as described in section 21.4.  The client
    does not include any replay detection or authentication information
    in the Authentication option.
-
-
-
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 64]
-
-Internet-Draft               Unknown(short)                December 2013
-
 
 21.4.4.2.  Receiving Advertise Messages
 
@@ -3614,6 +3634,14 @@ Internet-Draft               Unknown(short)                December 2013
    differentiate between Advertise messages with no authentication
    information and Advertise messages that do not pass the validation
    test; for example, a client might accept the former and discard the
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 65]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
    latter.  If a client does accept an unauthenticated message, the
    client SHOULD inform any local users and SHOULD log the event.
 
@@ -3632,15 +3660,6 @@ Internet-Draft               Unknown(short)                December 2013
    If the server has selected a key for the client in a previous message
    exchange (see section 21.4.5.1), the client MUST use the same key to
    generate the authentication information throughout the session.
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 65]
-
-Internet-Draft               Unknown(short)                December 2013
-
 
 21.4.4.5.  Receiving Reply Messages
 
@@ -3669,6 +3688,16 @@ Internet-Draft               Unknown(short)                December 2013
    Advertise message and uses the key to validate subsequent messages
    between the client and the server.
 
+
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 66]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
 21.4.5.1.  Receiving Solicit Messages and Sending Advertise Messages
 
    The server selects a key for the client and includes authentication
@@ -3690,13 +3719,6 @@ Internet-Draft               Unknown(short)                December 2013
    specific message as described in section 18.2.  The server MUST
    include authentication information generated using the key identified
    in the received message, as specified in section 21.4.
-
-
-
-Unknown                   Expires June 26, 2014                [Page 66]
-
-Internet-Draft               Unknown(short)                December 2013
-
 
 21.5.  Reconfigure Key Authentication Protocol
 
@@ -3720,38 +3742,32 @@ Internet-Draft               Unknown(short)                December 2013
    protocol and the client and server have negotiated to use Reconfigure
    messages.
 
+
+
+
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 67]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
 21.5.1.  Use of the Authentication Option in the Reconfigure Key
          Authentication Protocol
 
    The following fields are set in an Authentication option for the
    Reconfigure Key Authentication Protocol:
 
-   protocol 3
+      protocol   3
 
-   algorithm 1
+      algorithm  1
 
-   RDM 0
+      RDM        0
 
    The format of the Authentication information for the Reconfigure Key
    Authentication Protocol is:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 67]
-
-Internet-Draft               Unknown(short)                December 2013
 
 
        0                   1                   2                   3
@@ -3766,15 +3782,18 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                 Figure 8: RKAP Authentication Information
+                 Figure 9: RKAP Authentication Information
 
-   Type Type of data in Value field carried in this option:
+      Type             Type of data in Value field carried in this
+                       option:
 
-   1 Reconfigure Key value (used in Reply message).
+                          1    Reconfigure Key value (used in Reply
+                               message).
 
-   2 HMAC-MD5 digest of the message (used in Reconfigure message).
+                          2    HMAC-MD5 digest of the message (used in
+                               Reconfigure message).
 
-   Value Data as defined by field.
+      Value            Data as defined by field.
 
 21.5.2.  Server considerations for Reconfigure Key protocol
 
@@ -3782,6 +3801,14 @@ Internet-Draft               Unknown(short)                December 2013
    Reply, Solicit/Reply or Information-request/Reply message exchange.
    The server records the Reconfigure Key and transmits that key to the
    client in an Authentication option in the Reply message.
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 68]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
 
    The Reconfigure Key is 128 bits long, and MUST be a cryptographically
    strong random or pseudo-random number that cannot easily be
@@ -3797,18 +3824,6 @@ Internet-Draft               Unknown(short)                December 2013
    includes the HMAC-MD5 in the authentication information field in an
    Authentication option included in the Reconfigure message sent to the
    client.
-
-
-
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 68]
-
-Internet-Draft               Unknown(short)                December 2013
-
 
 21.5.3.  Client considerations for Reconfigure Key protocol
 
@@ -3840,6 +3855,17 @@ Internet-Draft               Unknown(short)                December 2013
    data areas of the options MUST NOT be concatenated or otherwise
    combined.
 
+
+
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 69]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
 22.1.  Format of DHCP Options
 
    The format of DHCP options is:
@@ -3855,25 +3881,16 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                          Figure 9: Option Format
+                         Figure 10: Option Format
 
+      option-code          An unsigned integer identifying the specific
+                           option type carried in this option.
 
+      option-len           An unsigned integer giving the length of the
+                           option-data field in this option in octets.
 
-
-
-Unknown                   Expires June 26, 2014                [Page 69]
-
-Internet-Draft               Unknown(short)                December 2013
-
-
-   option-code An unsigned integer identifying the specific option type
-   carried in this option.
-
-   option-len An unsigned integer giving the length of the option-data
-   field in this option in octets.
-
-   option-data The data for the option; the format of this data depends
-   on the definition of the option.
+      option-data          The data for the option; the format of this
+                           data depends on the definition of the option.
 
    DHCPv6 options are scoped by using encapsulation.  Some options apply
    generally to the client, some are specific to an IA, and some are
@@ -3885,6 +3902,24 @@ Internet-Draft               Unknown(short)                December 2013
    The Client Identifier option is used to carry a DUID (see section 9)
    identifying a client between a client and a server.  The format of
    the Client Identifier option is:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 70]
+
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
       0                   1                   2                   3
@@ -3899,27 +3934,19 @@ Internet-Draft               Unknown(short)                December 2013
      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                Figure 10: Client Identifier Option Format
+                Figure 11: Client Identifier Option Format
 
-   option-code OPTION_CLIENTID (1).
+      option-code          OPTION_CLIENTID (1).
 
-   option-len Length of DUID in octets.
+      option-len           Length of DUID in octets.
 
-   DUID The DUID for the client.
+      DUID                 The DUID for the client.
 
 22.3.  Server Identifier Option
 
    The Server Identifier option is used to carry a DUID (see section 9)
    identifying a server between a client and a server.  The format of
    the Server Identifier option is:
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 70]
-
-Internet-Draft               Unknown(short)                December 2013
 
 
        0                   1                   2                   3
@@ -3934,13 +3961,22 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                Figure 11: Server Identifier Option Format
+                Figure 12: Server Identifier Option Format
 
-   option-code OPTION_SERVERID (2).
+      option-code          OPTION_SERVERID (2).
 
-   option-len Length of DUID in octets.
+      option-len           Length of DUID in octets.
 
-   DUID The DUID for the server.
+      DUID                 The DUID for the server.
+
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 71]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
 
 22.4.  Identity Association for Non-temporary Addresses Option
 
@@ -3952,30 +3988,6 @@ Internet-Draft               Unknown(short)                December 2013
    (see section 22.5).
 
    The format of the IA_NA option is:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 71]
-
-Internet-Draft               Unknown(short)                December 2013
 
 
        0                   1                   2                   3
@@ -3995,29 +4007,40 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-    Figure 12: Identity Association for Non-temporary Addresses Option
+    Figure 13: Identity Association for Non-temporary Addresses Option
                                   Format
 
-   option-code OPTION_IA_NA (3).
+      option-code          OPTION_IA_NA (3).
 
-   option-len 12 + length of IA_NA-options field.
+      option-len           12 + length of IA_NA-options field.
 
-   IAID The unique identifier for this IA_NA; the IAID must be unique
-   among the identifiers for all of this client's IA_NAs.  The number
-   space for IA_NA IAIDs is separate from the number space for IA_TA
-   IAIDs.
+      IAID                 The unique identifier for this IA_NA; the
+                           IAID must be unique among the identifiers for
+                           all of this client's IA_NAs.  The number
+                           space for IA_NA IAIDs is separate from the
+                           number space for IA_TA IAIDs.
 
-   T1 The time at which the client contacts the server from which the
-   addresses in the IA_NA were obtained to extend the lifetimes of the
-   addresses assigned to the IA_NA; T1 is a time duration relative to
-   the current time expressed in units of seconds.
+      T1                   The time at which the client contacts the
+                           server from which the addresses in the IA_NA
+                           were obtained to extend the lifetimes of the
+                           addresses assigned to the IA_NA; T1 is a time
+                           duration relative to the current time
+                           expressed in units of seconds.
 
-   T2 The time at which the client contacts any available server to
-   extend the lifetimes of the addresses assigned to the IA_NA; T2 is a
-   time duration relative to the current time expressed in units of
-   seconds.
 
-   IA_NA-options Options associated with this IA_NA.
+
+Unknown                   Expires July 5, 2014                 [Page 72]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
+      T2                   The time at which the client contacts any
+                           available server to extend the lifetimes of
+                           the addresses assigned to the IA_NA; T2 is a
+                           time duration relative to the current time
+                           expressed in units of seconds.
+
+      IA_NA-options        Options associated with this IA_NA.
 
    The IA_NA-options field encapsulates those options that are specific
    to this IA_NA.  For example, all of the IA Address Options carrying
@@ -4026,13 +4049,6 @@ Internet-Draft               Unknown(short)                December 2013
 
    An IA_NA option may only appear in the options area of a DHCP
    message.  A DHCP message may contain multiple IA_NA options.
-
-
-
-Unknown                   Expires June 26, 2014                [Page 72]
-
-Internet-Draft               Unknown(short)                December 2013
-
 
    The status of any operations involving this IA_NA is indicated in a
    Status Code option in the IA_NA-options field.
@@ -4067,6 +4083,13 @@ Internet-Draft               Unknown(short)                December 2013
    T1 and T2 and processes the IA_NA as though the client had set T1 and
    T2 to 0.
 
+
+
+Unknown                   Expires July 5, 2014                 [Page 73]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
    If a client receives an IA_NA with T1 greater than T2, and both T1
    and T2 are greater than 0, the client discards the IA_NA option and
    processes the remainder of the message as though the server had not
@@ -4078,25 +4101,13 @@ Internet-Draft               Unknown(short)                December 2013
    use a Rebind message to locate a different server to extend the
    lifetimes of any addresses in an IA with T2 set to 0xffffffff.
 
-
-
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 73]
-
-Internet-Draft               Unknown(short)                December 2013
-
-
 22.5.  Identity Association for Temporary Addresses Option
 
    The Identity Association for the Temporary Addresses (IA_TA) option
    is used to carry an IA_TA, the parameters associated with the IA_TA
    and the addresses associated with the IA_TA.  All of the addresses in
    this option are used by the client as temporary addresses, as defined
-   in RFC 3041 [RFC3041].  The format of the IA_TA option is:
+   in [RFC3041].  The format of the IA_TA option is:
 
 
        0                   1                   2                   3
@@ -4112,18 +4123,28 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-   Figure 13: Identity Association for Temporary Addresses Option Format
+   Figure 14: Identity Association for Temporary Addresses Option Format
 
-   option-code OPTION_IA_TA (4).
+      option-code          OPTION_IA_TA (4).
 
-   option-len 4 + length of IA_TA-options field.
+      option-len           4 + length of IA_TA-options field.
 
-   IAID The unique identifier for this IA_TA; the IAID must be unique
-   among the identifiers for all of this client's IA_TAs.  The number
-   space for IA_TA IAIDs is separate from the number space for IA_NA
-   IAIDs.
+      IAID                 The unique identifier for this IA_TA; the
+                           IAID must be unique among the identifiers for
+                           all of this client's IA_TAs.  The number
+                           space for IA_TA IAIDs is separate from the
+                           number space for IA_NA IAIDs.
 
-   IA_TA-options Options associated with this IA_TA.
+      IA_TA-options        Options associated with this IA_TA.
+
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 74]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
 
    The IA_TA-Options field encapsulates those options that are specific
    to this IA_TA.  For example, all of the IA Address Options carrying
@@ -4136,15 +4157,6 @@ Internet-Draft               Unknown(short)                December 2013
 
    An IA_TA option may only appear in the options area of a DHCP
    message.  A DHCP message may contain multiple IA_TA options.
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 74]
-
-Internet-Draft               Unknown(short)                December 2013
-
 
    The status of any operations involving this IA_TA is indicated in a
    Status Code option in the IA_TA-options field.
@@ -4182,24 +4194,18 @@ Internet-Draft               Unknown(short)                December 2013
    The IA Address option is used to specify IPv6 addresses associated
    with an IA_NA or an IA_TA.  The IA Address option must be
    encapsulated in the Options field of an IA_NA or IA_TA option.  The
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 75]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
    Options field encapsulates those options that are specific to this
    address.
 
    The format of the IA Address option is:
-
-
-
-
-
-
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 75]
-
-Internet-Draft               Unknown(short)                December 2013
 
 
        0                   1                   2                   3
@@ -4222,21 +4228,21 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                    Figure 14: IA Address Option Format
+                    Figure 15: IA Address Option Format
 
-   option-code OPTION_IAADDR (5).
+      option-code          OPTION_IAADDR (5).
 
-   option-len 24 + length of IAaddr-options field.
+      option-len           24 + length of IAaddr-options field.
 
-   IPv6 address An IPv6 address.
+      IPv6 address         An IPv6 address.
 
-   preferred-lifetime The preferred lifetime for the IPv6 address in the
-   option, expressed in units of seconds.
+      preferred-lifetime   The preferred lifetime for the IPv6 address
+                           in the option, expressed in units of seconds.
 
-   valid-lifetime The valid lifetime for the IPv6 address in the option,
-   expressed in units of seconds.
+      valid-lifetime       The valid lifetime for the IPv6 address in
+                           the option, expressed in units of seconds.
 
-   IAaddr-options Options associated with this address.
+      IAaddr-options       Options associated with this address.
 
    In a message sent by a client to a server, values in the preferred
    and valid lifetime fields indicate the client's preference for those
@@ -4244,20 +4250,20 @@ Internet-Draft               Unknown(short)                December 2013
    preferred and valid lifetimes.  In a message sent by a server to a
    client, the client MUST use the values in the preferred and valid
    lifetime fields for the preferred and valid lifetimes.  The values in
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 76]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
    the preferred and valid lifetimes are the number of seconds remaining
    in each lifetime.
 
    A client discards any addresses for which the preferred lifetime is
    greater than the valid lifetime.  A server ignores the lifetimes set
    by the client if the preferred lifetime is greater than the valid
-
-
-
-Unknown                   Expires June 26, 2014                [Page 76]
-
-Internet-Draft               Unknown(short)                December 2013
-
-
    lifetime and ignores the values for T1 and T2 set by the client if
    those values are greater than the preferred lifetime.
 
@@ -4290,14 +4296,23 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                  Figure 15: Option Request Option Format
+                  Figure 16: Option Request Option Format
 
-   option-code OPTION_ORO (6).
+      option-code          OPTION_ORO (6).
 
-   option-len 2 * number of requested options.
+      option-len           2 * number of requested options.
 
-   requested-option-code-n The option code for an option requested by
-   the client.
+      requested-option-code-n  The option code for an option requested
+                           by the client.
+
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 77]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
 
    A client MAY include an Option Request option in a Solicit, Request,
    Renew, Rebind, Confirm or Information-request message to inform the
@@ -4305,14 +4320,6 @@ Internet-Draft               Unknown(short)                December 2013
    client.  A server MAY include an Option Request option in a
    Reconfigure option to indicate which options the client should
    request from the server.
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 77]
-
-Internet-Draft               Unknown(short)                December 2013
-
 
 22.8.  Preference Option
 
@@ -4331,13 +4338,14 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+
 
 
-                    Figure 16: Preference Option Format
+                    Figure 17: Preference Option Format
 
-   option-code OPTION_PREFERENCE (7).
+      option-code          OPTION_PREFERENCE (7).
 
-   option-len 1.
+      option-len           1.
 
-   pref-value The preference value for the server in this message.
+      pref-value           The preference value for the server in this
+                           message.
 
    A server MAY include a Preference option in an Advertise message to
    control the selection of a server by the client.  See section 17.1.3
@@ -4345,6 +4353,21 @@ Internet-Draft               Unknown(short)                December 2013
    interpretation of Preference option data value.
 
 22.9.  Elapsed Time Option
+
+
+
+
+
+
+
+
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 78]
+
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
        0                   1                   2                   3
@@ -4356,23 +4379,16 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                   Figure 17: Elapsed Time Option Format
+                   Figure 18: Elapsed Time Option Format
 
-   option-code OPTION_ELAPSED_TIME (8).
+      option-code          OPTION_ELAPSED_TIME (8).
 
-   option-len 2.
+      option-len           2.
 
-
-
-
-Unknown                   Expires June 26, 2014                [Page 78]
-
-Internet-Draft               Unknown(short)                December 2013
-
-
-   elapsed-time The amount of time since the client began its current
-   DHCP transaction.  This time is expressed in hundredths of a second
-   (10^-2 seconds).
+      elapsed-time         The amount of time since the client began its
+                           current DHCP transaction.  This time is
+                           expressed in hundredths of a second (10^-2
+                           seconds).
 
    A client MUST include an Elapsed Time option in messages to indicate
    how long the client has been trying to complete a DHCP message
@@ -4396,6 +4412,20 @@ Internet-Draft               Unknown(short)                December 2013
    The format of the Relay Message option is:
 
 
+
+
+
+
+
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 79]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4408,26 +4438,18 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                  Figure 18: Relay Message Option Format
+                  Figure 19: Relay Message Option Format
 
-   option-code OPTION_RELAY_MSG (9)
+      option-code          OPTION_RELAY_MSG (9)
 
-   option-len Length of DHCP-relay-message
+      option-len           Length of DHCP-relay-message
 
-   DHCP-relay-message In a Relay-forward message, the received message,
-   relayed verbatim to the next relay agent or server; in a Relay-reply
-   message, the message to be copied and relayed to the relay agent or
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 79]
-
-Internet-Draft               Unknown(short)                December 2013
-
-
-   client whose address is in the peer-address field of the Relay-reply
-   message
+      DHCP-relay-message   In a Relay-forward message, the received
+                           message, relayed verbatim to the next relay
+                           agent or server; in a Relay-reply message,
+                           the message to be copied and relayed to the
+                           relay agent or client whose address is in the
+                           peer-address field of the Relay-reply message
 
 22.11.  Authentication Option
 
@@ -4435,6 +4457,29 @@ Internet-Draft               Unknown(short)                December 2013
    authenticate the identity and contents of DHCP messages.  The use of
    the Authentication option is described in section 21.  The format of
    the Authentication option is:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 80]
+
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
        0                   1                   2                   3
@@ -4453,40 +4498,44 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                  Figure 19: Authentication Option Format
+                  Figure 20: Authentication Option Format
 
-   option-code OPTION_AUTH (11)
+      option-code          OPTION_AUTH (11)
 
-   option-len 11 + length of authentication information field
+      option-len           11 + length of authentication information
+                           field
 
-   protocol The authentication protocol used in this authentication
-   option
+      protocol             The authentication protocol used in this
+                           authentication option
 
-   algorithm The algorithm used in the authentication protocol
+      algorithm            The algorithm used in the authentication
+                           protocol
 
-   RDM The replay detection method used in this authentication option
+      RDM                  The replay detection method used in this
+                           authentication option
 
-   Replay detection The replay detection information for the RDM
+      Replay detection     The replay detection information for the RDM
 
-   authentication information The authentication information, as
-   specified by the protocol and algorithm used in this authentication
-   option
-
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 80]
-
-Internet-Draft               Unknown(short)                December 2013
-
+      authentication information  The authentication information, as
+                           specified by the protocol and algorithm used
+                           in this authentication option
 
 22.12.  Server Unicast Option
 
    The server sends this option to a client to indicate to the client
    that it is allowed to unicast messages to the server.  The format of
    the Server Unicast option is:
+
+
+
+
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 81]
+
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
        0                   1                   2                   3
@@ -4501,14 +4550,14 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                  Figure 20: Server Unicast Option Format
+                  Figure 21: Server Unicast Option Format
 
-   option-code OPTION_UNICAST (12).
+      option-code          OPTION_UNICAST (12).
 
-   option-len 16.
+      option-len           16.
 
-   server-address The IP address to which the client should send
-   messages delivered using unicast.
+      server-address       The IP address to which the client should
+                           send messages delivered using unicast.
 
    The server specifies the IPv6 address to which the client is to send
    unicast messages in the server-address field.  When a client receives
@@ -4528,21 +4577,21 @@ Internet-Draft               Unknown(short)                December 2013
    Details about when the client may send messages to the server using
    unicast are in section 18.
 
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 81]
-
-Internet-Draft               Unknown(short)                December 2013
-
-
 22.13.  Status Code Option
 
    This option returns a status indication related to the DHCP message
    or option in which it appears.  The format of the Status Code option
    is:
+
+
+
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 82]
+
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
        0                   1                   2                   3
@@ -4558,17 +4607,19 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                   Figure 21: Status Code Option Format
+                   Figure 22: Status Code Option Format
 
-   option-code OPTION_STATUS_CODE (13).
+      option-code          OPTION_STATUS_CODE (13).
 
-   option-len 2 + length of status-message.
+      option-len           2 + length of status-message.
 
-   status-code The numeric code for the status encoded in this option.
-   The status codes are defined in section 24.4.
+      status-code          The numeric code for the status encoded in
+                           this option.  The status codes are defined in
+                           section 24.4.
 
-   status-message A UTF-8 encoded text string suitable for display to an
-   end user, which MUST NOT be null-terminated.
+      status-message       A UTF-8 encoded text string suitable for
+                           display to an end user, which MUST NOT be
+                           null-terminated.
 
    A Status Code option may appear in the options field of a DHCP
    message and/or in the options field of another option.  If the Status
@@ -4582,18 +4633,6 @@ Internet-Draft               Unknown(short)                December 2013
    option is:
 
 
-
-
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 82]
-
-Internet-Draft               Unknown(short)                December 2013
-
-
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4601,11 +4640,19 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                   Figure 22: Rapid Commit Option Format
+                   Figure 23: Rapid Commit Option Format
 
-   option-code OPTION_RAPID_COMMIT (14).
 
-   option-len 0.
+
+
+Unknown                   Expires July 5, 2014                 [Page 83]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
+      option-code          OPTION_RAPID_COMMIT (14).
+
+      option-len           0.
 
    A client MAY include this option in a Solicit message if the client
    is prepared to perform the Solicit-Reply message exchange described
@@ -4638,18 +4685,6 @@ Internet-Draft               Unknown(short)                December 2013
    The format of the User Class option is:
 
 
-
-
-
-
-
-
-
-Unknown                   Expires June 26, 2014                [Page 83]
-
-Internet-Draft               Unknown(short)                December 2013
-
-
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4661,13 +4696,21 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                    Figure 23: User Class Option Format
+                    Figure 24: User Class Option Format
 
-   option-code OPTION_USER_CLASS (15).
 
-   option-len Length of user class data field.
 
-   user-class-data The user classes carried by the client.
+
+Unknown                   Expires July 5, 2014                 [Page 84]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
+      option-code          OPTION_USER_CLASS (15).
+
+      option-len           Length of user class data field.
+
+      user-class-data      The user classes carried by the client.
 
    The information contained in the data area of this option is
    contained in one or more opaque fields that represent the user class
@@ -4689,7 +4732,7 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
 
 
-                     Figure 24: User Class Data Format
+                     Figure 25: User Class Data Format
 
    The user-class-len is two octets long and specifies the length of the
    opaque user class data in network byte order.
@@ -4698,14 +4741,6 @@ Internet-Draft               Unknown(short)                December 2013
    to its configuration to select the appropriate configuration
    information for the client.  A server may use only those user classes
    that it is configured to interpret in selecting configuration
-
-
-
-Unknown                   Expires June 26, 2014                [Page 84]
-
-Internet-Draft               Unknown(short)                December 2013
-
-
    information for a client and ignore any other user classes.  In
    response to a message containing a User Class option, a server
    includes a User Class option containing those classes that were
@@ -4721,6 +4756,12 @@ Internet-Draft               Unknown(short)                December 2013
    configuration.  The format of the Vendor Class option is:
 
 
+
+Unknown                   Expires July 5, 2014                 [Page 85]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
+
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4734,17 +4775,17 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                   Figure 25: Vendor Class Option Format
+                   Figure 26: Vendor Class Option Format
 
-   option-code OPTION_VENDOR_CLASS (16).
+      option-code          OPTION_VENDOR_CLASS (16).
 
-   option-len 4 + length of vendor class data field.
+      option-len           4 + length of vendor class data field.
 
-   enterprise-number The vendor's registered Enterprise Number as
-   registered with IANA [IANA-PEN].
+      enterprise-number    The vendor's registered Enterprise Number as
+                           registered with IANA [IANA-PEN].
 
-   vendor-class-data The hardware configuration of the host on which the
-   client is running.
+      vendor-class-data    The hardware configuration of the host on
+                           which the client is running.
 
    The vendor-class-data is composed of a series of separate items, each
    of which describes some characteristic of the client's hardware
@@ -4755,22 +4796,27 @@ Internet-Draft               Unknown(short)                December 2013
    Each instance of the vendor-class-data is formatted as follows:
 
 
-
-
-Unknown                   Expires June 26, 2014                [Page 85]
-
-Internet-Draft               Unknown(short)                December 2013
-
-
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
       |       vendor-class-len        |          opaque-data          |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
 
 
-                    Figure 26: Vendor Class Data Format
+                    Figure 27: Vendor Class Data Format
 
    The vendor-class-len is two octets long and specifies the length of
    the opaque vendor class data in network byte order.
+
+
+
+
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 86]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
 
 22.17.  Vendor-specific Information Option
 
@@ -4793,31 +4839,24 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-           Figure 27: Vendor-specific Information Option Format
+           Figure 28: Vendor-specific Information Option Format
 
-   option-code OPTION_VENDOR_OPTS (17)
+      option-code          OPTION_VENDOR_OPTS (17)
 
-   option-len 4 + length of option-data field
+      option-len           4 + length of option-data field
 
-   enterprise-number The vendor's registered Enterprise Number as
-   registered with IANA [IANA-PEN].
+      enterprise-number    The vendor's registered Enterprise Number as
+                           registered with IANA [IANA-PEN].
 
-   option-data An opaque object of option-len octets, interpreted by
-   vendor-specific code on the clients and servers
+      option-data          An opaque object of option-len octets,
+                           interpreted by vendor-specific code on the
+                           clients and servers
 
    The definition of the information carried in this option is vendor
    specific.  The vendor is indicated in the enterprise-number field.
    Use of vendor-specific information allows enhanced operation,
    utilizing additional features in a vendor's DHCP implementation.  A
    DHCP client that does not receive requested vendor-specific
-
-
-
-Unknown                   Expires June 26, 2014                [Page 86]
-
-Internet-Draft               Unknown(short)                December 2013
-
-
    information will still configure the host device's IPv6 stack to be
    functional.
 
@@ -4826,6 +4865,13 @@ Internet-Draft               Unknown(short)                December 2013
    options field.  The option codes are defined by the vendor identified
    in the enterprise-number field and are not managed by IANA.  Each of
    the encapsulated options is formatted as follows:
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 87]
+
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
        0                   1                   2                   3
@@ -4839,14 +4885,15 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                 Figure 28: Vendor-specific Options Format
+                 Figure 29: Vendor-specific Options Format
 
-   opt-code The code for the encapsulated option.
+      opt-code             The code for the encapsulated option.
 
-   option-len An unsigned integer giving the length of the option-data
-   field in this encapsulated option in octets.
+      option-len           An unsigned integer giving the length of the
+                           option-data field in this encapsulated option
+                           in octets.
 
-   option-data The data area for the encapsulated option.
+      option-data          The data area for the encapsulated option.
 
    Multiple instances of the Vendor-specific Information option may
    appear in a DHCP message.  Each instance of the option is interpreted
@@ -4869,9 +4916,18 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 87]
+
+
+
+
+
+
+
+
+
+Unknown                   Expires July 5, 2014                 [Page 88]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
        0                   1                   2                   3
@@ -4885,14 +4941,15 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                   Figure 29: Interface-ID Option Format
+                   Figure 30: Interface-ID Option Format
 
-   option-code OPTION_INTERFACE_ID (18).
+      option-code          OPTION_INTERFACE_ID (18).
 
-   option-len Length of interface-id field.
+      option-len           Length of interface-id field.
 
-   interface-id An opaque value of arbitrary length generated by the
-   relay agent to identify one of the relay agent's interfaces.
+      interface-id         An opaque value of arbitrary length generated
+                           by the relay agent to identify one of the
+                           relay agent's interfaces.
 
    The server MUST copy the Interface-Id option from the Relay-Forward
    message into the Relay-Reply message the server sends to the relay
@@ -4924,10 +4981,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-
-Unknown                   Expires June 26, 2014                [Page 88]
+Unknown                   Expires July 5, 2014                 [Page 89]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
        0                   1                   2                   3
@@ -4939,13 +4995,14 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+
 
 
-               Figure 30: Reconfigure Message Option Format
+               Figure 31: Reconfigure Message Option Format
 
-   option-code OPTION_RECONF_MSG (19).
+      option-code          OPTION_RECONF_MSG (19).
 
-   option-len 1.
+      option-len           1.
 
-   msg-type 5 for Renew message, 11 for Information-request message.
+      msg-type             5 for Renew message, 11 for Information-
+                           request message.
 
    The Reconfigure Message option can only appear in a Reconfigure
    message.
@@ -4969,21 +5026,20 @@ Internet-Draft               Unknown(short)                December 2013
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-                Figure 31: Reconfigure Accept Option Format
+                Figure 32: Reconfigure Accept Option Format
 
-   option-code OPTION_RECONF_ACCEPT (20).
+      option-code          OPTION_RECONF_ACCEPT (20).
 
-   option-len 0.
-
-
+      option-len           0.
 
 
 
 
 
-Unknown                   Expires June 26, 2014                [Page 89]
+
+Unknown                   Expires July 5, 2014                 [Page 90]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 23.  Security Considerations
@@ -5037,9 +5093,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 90]
+Unknown                   Expires July 5, 2014                 [Page 91]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    The threat common to both the client and the server is the resource
@@ -5093,9 +5149,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 91]
+Unknown                   Expires July 5, 2014                 [Page 92]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    installation of static keys are acceptable in this instance because
@@ -5129,12 +5185,12 @@ Internet-Draft               Unknown(short)                December 2013
    specification for the associated option, published as an Internet
    Draft, has received expert review by a designated expert [RFC2434].
    The final assignment of DHCP option codes is through Standards
-   Action, as defined in RFC 2434 [RFC2434].
+   Action, as defined in [RFC2434].
 
    This document also references three name spaces in section 21 that
    are associated with the Authentication Option (section 22.11).  These
    name spaces are defined by the authentication mechanism for DHCPv4 in
-   RFC 3118 [RFC3118].
+   [RFC3118].
 
    The authentication name spaces currently registered by IANA will
    apply to both DHCPv6 and DHCPv4.  In the future, specifications that
@@ -5149,9 +5205,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 92]
+Unknown                   Expires July 5, 2014                 [Page 93]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 24.1.  Multicast Addresses
@@ -5205,9 +5261,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 93]
+Unknown                   Expires July 5, 2014                 [Page 94]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
       OPTION_IA_NA          3
@@ -5261,9 +5317,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 94]
+Unknown                   Expires July 5, 2014                 [Page 95]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    +--------------+------+---------------------------------------------+
@@ -5317,9 +5373,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 95]
+Unknown                   Expires July 5, 2014                 [Page 96]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    And, thanks to Steve Deering for pointing out at IETF 51 in London
@@ -5373,9 +5429,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 96]
+Unknown                   Expires July 5, 2014                 [Page 97]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
 27.  Appearance of Options in the Options Field of DHCP Options
@@ -5429,9 +5485,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 97]
+Unknown                   Expires July 5, 2014                 [Page 98]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    [RFC1305]  Mills, D., "Network Time Protocol (Version 3)
@@ -5485,9 +5541,9 @@ Internet-Draft               Unknown(short)                December 2013
 
 
 
-Unknown                   Expires June 26, 2014                [Page 98]
+Unknown                   Expires July 5, 2014                 [Page 99]
 
-Internet-Draft               Unknown(short)                December 2013
+Internet-Draft                RFC 3315 bis                  January 2014
 
 
    [RFC3041]  Narten, T. and R. Draves, "Privacy Extensions for
@@ -5541,4 +5597,4 @@ Author's Address
 
 
 
-Unknown                   Expires June 26, 2014                [Page 99]
+Unknown                   Expires July 5, 2014                [Page 100]
