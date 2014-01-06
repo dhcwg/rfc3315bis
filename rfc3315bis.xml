@@ -34,34 +34,117 @@
   <front>
     <title abbrev="RFC 3315 bis">Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis</title>
 
-    <author fullname="Unknown Person" initials="X" role="editor"
-            surname="Unknown">
-      <organization>Not converted</organization>
-
+    <author fullname="Ralph Droms" initials="R" surname="Droms"
+            role="editor">
+      <organization abbrev="Cisco">Cisco Systems</organization>
       <address>
         <postal>
-          <street/>
-
-          <!-- Reorder these if your country does things differently -->
-
-          <city>Unknown</city>
-
-          <region/>
-
-          <code/>
-
-          <country>Unknown</country>
+          <street>1414 Massachusetts Avenue</street>
+          <city>Boxborough</city>
+	  <region>MA</region>
+          <code>01719</code>
+          <country>USA</country>
         </postal>
+	<phone>(978) 936-1674</phone>
+        <email>rdroms@cisco.com</email>
+      </address>
+    </author>
 
-        <phone>+1 234 5678 9012</phone>
+    <author fullname="Jim Bound" initials="J" surname="Bound">
+      <organization abbrev="Hewlett Packard">Hewlett Packard Corporation</organization>
+      <address>
+        <postal>
+          <street>ZK3-3/W20</street>
+	  <street>110 Spit Brook Road</street>
+          <city>Nashua</city>
+	  <region>NH</region>
+          <code>03062-2698</code>
+          <country>USA</country>
+        </postal>
+	<phone>+1 603 884 0062</phone>
+        <email>Jim.Bound@hp.com</email>
+      </address>
+    </author>
 
-        <email>someone@example.com</email>
+    <author fullname="Bernie Volz" initials="B" surname="Volz">
+      <organization abbrev="Ericsson"></organization>
+      <address>
+        <postal>
+          <street>116 Hawkins Pond Road</street>
+          <city>Center Harbor</city>
+	  <region>NH</region>
+          <code>03226-3103</code>
+          <country>USA</country>
+        </postal>
+	<phone>+1-508-259-3734</phone>
+        <email>volz@metrocast.net</email>
+      </address>
+    </author>
 
-        <!-- uri and facsimile elements may also be added -->
+    <author fullname="Ted Lemon" initials="T" surname="Lemon">
+      <organization abbrev="Nominum">Nominum, Inc.</organization>
+      <address>
+        <postal>
+          <street>950 Charter Street</street>
+          <city>Redwood City</city>
+	  <region>CA</region>
+          <code>94043</code>
+          <country>USA</country>
+        </postal>
+        <email>Ted.Lemon@nominum.com</email>
+      </address>
+    </author>
+
+    <author fullname="Charles E. Perkins" initials="C" surname="Perkins">
+      <organization abbrev="">Nokia Research Center</organization>
+      <address>
+        <postal>
+	  <street>Communications Systems Lab</street>
+          <street>313 Fairchild Drive</street>
+          <city>Mountain View</city>
+	  <region>CA</region>
+          <code>94043</code>
+          <country>USA</country>
+        </postal>
+	<phone>+1-650 625-2986</phone>
+        <email>charles.perkins@nokia.com</email>
+      </address>
+    </author>
+
+    <author fullname="Mike Carney" initials="M" surname="Carney">
+      <organization abbrev="Sun Microsystems">Sun Microsystems, Inc</organization>
+      <address>
+        <postal>
+          <street>17 Network Circle</street>
+          <city>Menlo Park</city>
+	  <region>CA</region>
+          <code>94025</code>
+          <country>USA</country>
+        </postal>
+	<phone>+1-650-786-4171</phone>
+        <email>michael.carney@sun.com</email>
       </address>
     </author>
 
     <date year="2014"/>
+
+    <!--  SECTION 0:  Abstract                      -->
+
+    <abstract>
+
+      <t>
+      The Dynamic Host Configuration Protocol for IPv6 (DHCP) enables DHCP
+      servers to pass configuration parameters such as IPv6 network
+      addresses to IPv6 nodes.  It offers the capability of automatic
+      allocation of reusable network addresses and additional configuration
+      flexibility.  This protocol is a stateful counterpart to "IPv6
+      Stateless Address Autoconfiguration" (RFC 2462), and can be used
+      separately or concurrently with the latter to obtain configuration
+      parameters.
+      </t>
+
+    </abstract>
+
   </front>
 
   <middle>
