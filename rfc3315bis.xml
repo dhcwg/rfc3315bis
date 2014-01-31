@@ -1134,7 +1134,7 @@
    +---+---+---+---+---+---+---+---+
    | 0 | 2 | 0 | 0 | 0 |  9| 12|192|
    +---+---+---+---+---+---+---+---+
-   |132|221| 3 | 0 | 9 | 18|
+   |132|211| 3 | 0 | 9 | 18|
    +---+---+---+---+---+---+
             ]]>
           </artwork>
@@ -1988,9 +1988,9 @@
           permitted to respond to the client, the server discards the Solicit
           message. For example, if the administrative policy for the server is
           that it may only respond to a client that is willing to accept a
-          Reconfigure message, if the client indicates with a Reconfigure
-          Accept option in the Solicit message that it will not accept a
-          Reconfigure message, the servers discard the Solicit message.</t>
+          Reconfigure message, if the client does not include a Reconfigure
+          Accept option (see section <xref target='RFC3315-22.20'/>) in the
+          Solicit message, the servers discard the Solicit message.</t>
 
           <t>If the client has included a Rapid Commit option in the Solicit
           message and the server has been configured to respond with committed
@@ -2044,12 +2044,14 @@
           addresses as hints about the addresses the client would like to
           receive.</t>
 
-          <t>If the server will not assign any addresses to any IAs in a
+          <t>If the server will not assign any addresses to any IA in a
           subsequent Request from the client, the server MUST send an
-          Advertise message to the client that includes only a Status Code
-          option with code NoAddrsAvail and a status message for the user, a
-          Server Identifier option with the server's DUID, and a Client
-          Identifier option with the client's DUID.</t>
+          Advertise message to the client that includes the IA containing a
+          Status Code option with status code NoAddrsAvail and a status message
+          for the user, a Server Identifier option with the server's DUID,
+          and a Client Identifier option with the client's DUID. The server
+          SHOULD include other stateful IA options (like IA_PD) and other
+          configuration options in the Advertise message.</t>
 
           <t>If the Solicit message was received directly by the server, the
           server unicasts the Advertise message directly to the client using
@@ -2970,7 +2972,7 @@
           Success, a Server Identifier option with the server's DUID, and a
           Client Identifier option with the client's DUID. For each IA in the
           Decline message for which the server has no binding information, the
-          server adds an IA option using the IAID from the Release message and
+          server adds an IA option using the IAID from the Decline message and
           includes a Status Code option with the value NoBinding in the IA
           option. No other options are included in the IA option.</t>
         </section>
@@ -3299,7 +3301,7 @@
           HOP_COUNT_LIMIT, the relay agent discards the received message.</t>
 
           <t>The relay agent copies the source address from the IP datagram in
-          which the message was received from the client into the peer-address
+          which the message was received from the relay agent into the peer-address
           field in the Relay-forward message and sets the hop-count field to
           the value of the hop-count field in the received message incremented
           by 1.</t>
@@ -4437,7 +4439,7 @@
         Request, Renew, Rebind, Confirm or Information-request message to
         inform the server about options the client wants the server to send to
         the client. A server MAY include an Option Request option in a
-        Reconfigure option to indicate which options the client should request
+        Reconfigure message to indicate which options the client should request
         from the server.</t>
       </section>
 
@@ -5016,9 +5018,8 @@
         <t hangText="   enterprise-number"> The vendor's registered Enterprise Number as
         registered with IANA <xref target="IANA-PEN"/>.</t>
 
-        <t hangText="   option-data"> An opaque
-        object of option-len octets, interpreted by vendor-specific code on
-        the clients and servers</t>
+        <t hangText="   option-data"> An opaque object, interpreted by
+        vendor-specific code on the clients and servers</t>
 
         </list></t>
 
@@ -5686,7 +5687,7 @@ Reconf. Accept *
       <reference anchor="IANA-PEN">
         <front>
           <title>Private Enterprise Numbers registry
-          http://www.iana.org/assignments/enterprise-numbers.html
+          http://www.iana.org/assignments/enterprise-numbers
           </title>
             
           <author>
