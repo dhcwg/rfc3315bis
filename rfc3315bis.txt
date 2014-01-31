@@ -5,7 +5,7 @@
 Network Working Group                                      R. Droms, Ed.
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                                J. Bound
-Expires: July 24, 2014                                   Hewlett Packard
+Expires: August 4, 2014                                  Hewlett Packard
                                                                  B. Volz
                                                                 Ericsson
                                                                 T. Lemon
@@ -14,7 +14,7 @@ Expires: July 24, 2014                                   Hewlett Packard
                                                    Nokia Research Center
                                                                M. Carney
                                                         Sun Microsystems
-                                                        January 20, 2014
+                                                        January 31, 2014
 
 
        Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis
@@ -46,14 +46,14 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 24, 2014.
+   This Internet-Draft will expire on August 4, 2014.
 
 
 
 
 
 
-Droms, et al.             Expires July 24, 2014                 [Page 1]
+Droms, et al.            Expires August 4, 2014                 [Page 1]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Droms, et al.             Expires July 24, 2014                 [Page 2]
+Droms, et al.            Expires August 4, 2014                 [Page 2]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -165,7 +165,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                 [Page 3]
+Droms, et al.            Expires August 4, 2014                 [Page 3]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -221,7 +221,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                 [Page 4]
+Droms, et al.            Expires August 4, 2014                 [Page 4]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -277,7 +277,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                 [Page 5]
+Droms, et al.            Expires August 4, 2014                 [Page 5]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -333,7 +333,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                 [Page 6]
+Droms, et al.            Expires August 4, 2014                 [Page 6]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -389,7 +389,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                 [Page 7]
+Droms, et al.            Expires August 4, 2014                 [Page 7]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -445,7 +445,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                 [Page 8]
+Droms, et al.            Expires August 4, 2014                 [Page 8]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -501,7 +501,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                 [Page 9]
+Droms, et al.            Expires August 4, 2014                 [Page 9]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -557,7 +557,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 10]
+Droms, et al.            Expires August 4, 2014                [Page 10]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -613,7 +613,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 11]
+Droms, et al.            Expires August 4, 2014                [Page 11]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -669,7 +669,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 12]
+Droms, et al.            Expires August 4, 2014                [Page 12]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -725,7 +725,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 13]
+Droms, et al.            Expires August 4, 2014                [Page 13]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -781,7 +781,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 14]
+Droms, et al.            Expires August 4, 2014                [Page 14]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -837,7 +837,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 15]
+Droms, et al.            Expires August 4, 2014                [Page 15]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -893,7 +893,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 16]
+Droms, et al.            Expires August 4, 2014                [Page 16]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -949,7 +949,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 17]
+Droms, et al.            Expires August 4, 2014                [Page 17]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1005,7 +1005,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 18]
+Droms, et al.            Expires August 4, 2014                [Page 18]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1061,7 +1061,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 19]
+Droms, et al.            Expires August 4, 2014                [Page 19]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1117,7 +1117,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 20]
+Droms, et al.            Expires August 4, 2014                [Page 20]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1173,7 +1173,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 21]
+Droms, et al.            Expires August 4, 2014                [Page 21]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1217,7 +1217,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
       +---+---+---+---+---+---+---+---+
       | 0 | 2 | 0 | 0 | 0 |  9| 12|192|
       +---+---+---+---+---+---+---+---+
-      |132|221| 3 | 0 | 9 | 18|
+      |132|211| 3 | 0 | 9 | 18|
       +---+---+---+---+---+---+
 
 
@@ -1229,7 +1229,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 22]
+Droms, et al.            Expires August 4, 2014                [Page 22]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1285,7 +1285,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 23]
+Droms, et al.            Expires August 4, 2014                [Page 23]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1341,7 +1341,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 24]
+Droms, et al.            Expires August 4, 2014                [Page 24]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1397,7 +1397,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 25]
+Droms, et al.            Expires August 4, 2014                [Page 25]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1453,7 +1453,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 26]
+Droms, et al.            Expires August 4, 2014                [Page 26]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1509,7 +1509,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 27]
+Droms, et al.            Expires August 4, 2014                [Page 27]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1565,7 +1565,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 28]
+Droms, et al.            Expires August 4, 2014                [Page 28]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1621,7 +1621,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 29]
+Droms, et al.            Expires August 4, 2014                [Page 29]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1677,7 +1677,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 30]
+Droms, et al.            Expires August 4, 2014                [Page 30]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1733,7 +1733,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 31]
+Droms, et al.            Expires August 4, 2014                [Page 31]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1789,7 +1789,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 32]
+Droms, et al.            Expires August 4, 2014                [Page 32]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1845,7 +1845,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 33]
+Droms, et al.            Expires August 4, 2014                [Page 33]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1901,7 +1901,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 34]
+Droms, et al.            Expires August 4, 2014                [Page 34]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1957,7 +1957,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 35]
+Droms, et al.            Expires August 4, 2014                [Page 35]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -1991,9 +1991,9 @@ Internet-Draft                RFC 3315 bis                  January 2014
    permitted to respond to the client, the server discards the Solicit
    message.  For example, if the administrative policy for the server is
    that it may only respond to a client that is willing to accept a
-   Reconfigure message, if the client indicates with a Reconfigure
-   Accept option in the Solicit message that it will not accept a
-   Reconfigure message, the servers discard the Solicit message.
+   Reconfigure message, if the client does not include a Reconfigure
+   Accept option (see section Section 22.20) in the Solicit message, the
+   servers discard the Solicit message.
 
    If the client has included a Rapid Commit option in the Solicit
    message and the server has been configured to respond with committed
@@ -2013,7 +2013,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 36]
+Droms, et al.            Expires August 4, 2014                [Page 36]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -2050,12 +2050,14 @@ Internet-Draft                RFC 3315 bis                  January 2014
    addresses as hints about the addresses the client would like to
    receive.
 
-   If the server will not assign any addresses to any IAs in a
-   subsequent Request from the client, the server MUST send an Advertise
-   message to the client that includes only a Status Code option with
-   code NoAddrsAvail and a status message for the user, a Server
+   If the server will not assign any addresses to any IA in a subsequent
+   Request from the client, the server MUST send an Advertise message to
+   the client that includes the IA containing a Status Code option with
+   status code NoAddrsAvail and a status message for the user, a Server
    Identifier option with the server's DUID, and a Client Identifier
-   option with the client's DUID.
+   option with the client's DUID.  The server SHOULD include other
+   stateful IA options (like IA_PD) and other configuration options in
+   the Advertise message.
 
    If the Solicit message was received directly by the server, the
    server unicasts the Advertise message directly to the client using
@@ -2063,17 +2065,18 @@ Internet-Draft                RFC 3315 bis                  January 2014
    the Solicit message was received.  The Advertise message MUST be
    unicast on the link from which the Solicit message was received.
 
-   If the Solicit message was received in a Relay-forward message, the
-   server constructs a Relay-reply message with the Advertise message in
-   the payload of a "relay-message" option.  If the Relay-forward
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 37]
+
+Droms, et al.            Expires August 4, 2014                [Page 37]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
 
+   If the Solicit message was received in a Relay-forward message, the
+   server constructs a Relay-reply message with the Advertise message in
+   the payload of a "relay-message" option.  If the Relay-forward
    messages included an Interface-id option, the server copies that
    option to the Relay-reply message.  The server unicasts the Relay-
    reply message directly to the relay agent using the address in the
@@ -2118,17 +2121,17 @@ Internet-Draft                RFC 3315 bis                  January 2014
    may initiate the configuration exchange as part of the operating
    system configuration process, when requested to do so by the
    application layer, when required by Stateless Address
-   Autoconfiguration or as required to extend the lifetime of an address
-   (Renew and Rebind messages).
 
 
 
 
-
-Droms, et al.             Expires July 24, 2014                [Page 38]
+Droms, et al.            Expires August 4, 2014                [Page 38]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
+
+   Autoconfiguration or as required to extend the lifetime of an address
+   (Renew and Rebind messages).
 
 18.1.  Client Behavior
 
@@ -2175,16 +2178,16 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
    The client MUST include an Option Request option (see Section 22.7)
    to indicate the options the client is interested in receiving.  The
-   client MAY include options with data values as hints to the server
-   about parameter values the client would like to have returned.
 
 
 
-
-Droms, et al.             Expires July 24, 2014                [Page 39]
+Droms, et al.            Expires August 4, 2014                [Page 39]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
+
+   client MAY include options with data values as hints to the server
+   about parameter values the client would like to have returned.
 
    The client includes a Reconfigure Accept option (see Section 22.20)
    indicating whether or not the client is willing to accept Reconfigure
@@ -2231,17 +2234,16 @@ Internet-Draft                RFC 3315 bis                  January 2014
    client MUST initiate a Confirm/Reply message exchange.  The client
    includes any IAs assigned to the interface that may have moved to a
    new link, along with the addresses associated with those IAs, in its
-   Confirm message.  Any responding servers will indicate whether those
-   addresses are appropriate for the link to which the client is
 
 
 
-
-Droms, et al.             Expires July 24, 2014                [Page 40]
+Droms, et al.            Expires August 4, 2014                [Page 40]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
 
+   Confirm message.  Any responding servers will indicate whether those
+   addresses are appropriate for the link to which the client is
    attached with the status in the Reply message it returns to the
    client.
 
@@ -2287,16 +2289,17 @@ Internet-Draft                RFC 3315 bis                  January 2014
    determines new lifetimes for the addresses in the IA according to the
    administrative configuration of the server.  The server may also add
    new addresses to the IA.  The server may remove addresses from the IA
-   by setting the preferred and valid lifetimes of those addresses to
-   zero.
 
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 41]
+Droms, et al.            Expires August 4, 2014                [Page 41]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
+
+   by setting the preferred and valid lifetimes of those addresses to
+   zero.
 
    The server controls the time at which the client contacts the server
    to extend the lifetimes on assigned addresses through the T1 and T2
@@ -2346,10 +2349,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-
-
-
-Droms, et al.             Expires July 24, 2014                [Page 42]
+Droms, et al.            Expires August 4, 2014                [Page 42]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -2405,7 +2405,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 43]
+Droms, et al.            Expires August 4, 2014                [Page 43]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -2461,7 +2461,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 44]
+Droms, et al.            Expires August 4, 2014                [Page 44]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -2517,7 +2517,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 45]
+Droms, et al.            Expires August 4, 2014                [Page 45]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -2573,7 +2573,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 46]
+Droms, et al.            Expires August 4, 2014                [Page 46]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -2629,7 +2629,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 47]
+Droms, et al.            Expires August 4, 2014                [Page 47]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -2685,7 +2685,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 48]
+Droms, et al.            Expires August 4, 2014                [Page 48]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -2741,7 +2741,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 49]
+Droms, et al.            Expires August 4, 2014                [Page 49]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -2797,7 +2797,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 50]
+Droms, et al.            Expires August 4, 2014                [Page 50]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -2853,7 +2853,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 51]
+Droms, et al.            Expires August 4, 2014                [Page 51]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -2909,7 +2909,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 52]
+Droms, et al.            Expires August 4, 2014                [Page 52]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -2965,7 +2965,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 53]
+Droms, et al.            Expires August 4, 2014                [Page 53]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -2978,7 +2978,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
    Success, a Server Identifier option with the server's DUID, and a
    Client Identifier option with the client's DUID.  For each IA in the
    Decline message for which the server has no binding information, the
-   server adds an IA option using the IAID from the Release message and
+   server adds an IA option using the IAID from the Decline message and
    includes a Status Code option with the value NoBinding in the IA
    option.  No other options are included in the IA option.
 
@@ -3021,7 +3021,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 54]
+Droms, et al.            Expires August 4, 2014                [Page 54]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3077,7 +3077,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 55]
+Droms, et al.            Expires August 4, 2014                [Page 55]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3133,7 +3133,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 56]
+Droms, et al.            Expires August 4, 2014                [Page 56]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3189,7 +3189,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 57]
+Droms, et al.            Expires August 4, 2014                [Page 57]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3245,7 +3245,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 58]
+Droms, et al.            Expires August 4, 2014                [Page 58]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3279,10 +3279,10 @@ Internet-Draft                RFC 3315 bis                  January 2014
    HOP_COUNT_LIMIT, the relay agent discards the received message.
 
    The relay agent copies the source address from the IP datagram in
-   which the message was received from the client into the peer-address
-   field in the Relay-forward message and sets the hop-count field to
-   the value of the hop-count field in the received message incremented
-   by 1.
+   which the message was received from the relay agent into the peer-
+   address field in the Relay-forward message and sets the hop-count
+   field to the value of the hop-count field in the received message
+   incremented by 1.
 
    If the source address from the IP datagram header of the received
    message is a global or site-local address (and the device on which
@@ -3301,7 +3301,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 59]
+Droms, et al.            Expires August 4, 2014                [Page 59]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3357,7 +3357,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 60]
+Droms, et al.            Expires August 4, 2014                [Page 60]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3413,7 +3413,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 61]
+Droms, et al.            Expires August 4, 2014                [Page 61]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3469,7 +3469,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 62]
+Droms, et al.            Expires August 4, 2014                [Page 62]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3525,7 +3525,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 63]
+Droms, et al.            Expires August 4, 2014                [Page 63]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3581,7 +3581,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 64]
+Droms, et al.            Expires August 4, 2014                [Page 64]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3637,7 +3637,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 65]
+Droms, et al.            Expires August 4, 2014                [Page 65]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3693,7 +3693,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 66]
+Droms, et al.            Expires August 4, 2014                [Page 66]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3749,7 +3749,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 67]
+Droms, et al.            Expires August 4, 2014                [Page 67]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3805,7 +3805,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 68]
+Droms, et al.            Expires August 4, 2014                [Page 68]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3861,7 +3861,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 69]
+Droms, et al.            Expires August 4, 2014                [Page 69]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3917,7 +3917,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 70]
+Droms, et al.            Expires August 4, 2014                [Page 70]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -3973,7 +3973,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 71]
+Droms, et al.            Expires August 4, 2014                [Page 71]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4029,7 +4029,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 72]
+Droms, et al.            Expires August 4, 2014                [Page 72]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4085,7 +4085,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 73]
+Droms, et al.            Expires August 4, 2014                [Page 73]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4141,7 +4141,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 74]
+Droms, et al.            Expires August 4, 2014                [Page 74]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4197,7 +4197,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 75]
+Droms, et al.            Expires August 4, 2014                [Page 75]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4253,7 +4253,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 76]
+Droms, et al.            Expires August 4, 2014                [Page 76]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4309,7 +4309,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 77]
+Droms, et al.            Expires August 4, 2014                [Page 77]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4359,13 +4359,13 @@ Internet-Draft                RFC 3315 bis                  January 2014
    Renew, Rebind, Confirm or Information-request message to inform the
    server about options the client wants the server to send to the
    client.  A server MAY include an Option Request option in a
-   Reconfigure option to indicate which options the client should
+   Reconfigure message to indicate which options the client should
    request from the server.
 
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 78]
+Droms, et al.            Expires August 4, 2014                [Page 78]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4421,7 +4421,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 79]
+Droms, et al.            Expires August 4, 2014                [Page 79]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4477,7 +4477,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 80]
+Droms, et al.            Expires August 4, 2014                [Page 80]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4533,7 +4533,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 81]
+Droms, et al.            Expires August 4, 2014                [Page 81]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4589,7 +4589,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 82]
+Droms, et al.            Expires August 4, 2014                [Page 82]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4645,7 +4645,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 83]
+Droms, et al.            Expires August 4, 2014                [Page 83]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4701,7 +4701,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 84]
+Droms, et al.            Expires August 4, 2014                [Page 84]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4757,7 +4757,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 85]
+Droms, et al.            Expires August 4, 2014                [Page 85]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4813,7 +4813,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 86]
+Droms, et al.            Expires August 4, 2014                [Page 86]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4858,23 +4858,22 @@ Internet-Draft                RFC 3315 bis                  January 2014
       enterprise-number    The vendor's registered Enterprise Number as
                            registered with IANA [IANA-PEN].
 
-      option-data          An opaque object of option-len octets,
-                           interpreted by vendor-specific code on the
-                           clients and servers
+      option-data          An opaque object, interpreted by vendor-
+                           specific code on the clients and servers
 
    The definition of the information carried in this option is vendor
    specific.  The vendor is indicated in the enterprise-number field.
    Use of vendor-specific information allows enhanced operation,
    utilizing additional features in a vendor's DHCP implementation.  A
+   DHCP client that does not receive requested vendor-specific
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 87]
+Droms, et al.            Expires August 4, 2014                [Page 87]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
 
-   DHCP client that does not receive requested vendor-specific
    information will still configure the host device's IPv6 stack to be
    functional.
 
@@ -4925,7 +4924,8 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 88]
+
+Droms, et al.            Expires August 4, 2014                [Page 88]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -4981,7 +4981,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 89]
+Droms, et al.            Expires August 4, 2014                [Page 89]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -5037,7 +5037,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 90]
+Droms, et al.            Expires August 4, 2014                [Page 90]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -5093,7 +5093,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 91]
+Droms, et al.            Expires August 4, 2014                [Page 91]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -5149,7 +5149,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 92]
+Droms, et al.            Expires August 4, 2014                [Page 92]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -5205,7 +5205,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 93]
+Droms, et al.            Expires August 4, 2014                [Page 93]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -5261,7 +5261,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 94]
+Droms, et al.            Expires August 4, 2014                [Page 94]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -5317,7 +5317,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 95]
+Droms, et al.            Expires August 4, 2014                [Page 95]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -5373,7 +5373,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 96]
+Droms, et al.            Expires August 4, 2014                [Page 96]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -5429,7 +5429,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014                [Page 97]
+Droms, et al.            Expires August 4, 2014                [Page 97]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -5467,8 +5467,7 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
    [IANA-PEN]
               IANA, "Private Enterprise Numbers registry
-              http://www.iana.org/assignments/enterprise-numbers.html",
-              .
+              http://www.iana.org/assignments/enterprise-numbers", .
 
    [RFC0768]  Postel, J., "User Datagram Protocol", STD 6, RFC 768,
               August 1980.
@@ -5481,17 +5480,15 @@ Internet-Draft                RFC 3315 bis                  January 2014
    [RFC1035]  Mockapetris, P., "Domain names - implementation and
               specification", STD 13, RFC 1035, November 1987.
 
+   [RFC1305]  Mills, D., "Network Time Protocol (Version 3)
+              Specification, Implementation", RFC 1305, March 1992.
 
 
 
-
-Droms, et al.             Expires July 24, 2014                [Page 98]
+Droms, et al.            Expires August 4, 2014                [Page 98]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
-
-   [RFC1305]  Mills, D., "Network Time Protocol (Version 3)
-              Specification, Implementation", RFC 1305, March 1992.
 
    [RFC1321]  Rivest, R., "The MD5 Message-Digest Algorithm", RFC 1321,
               April 1992.
@@ -5536,19 +5533,18 @@ Internet-Draft                RFC 3315 bis                  January 2014
    [RFC2464]  Crawford, M., "Transmission of IPv6 Packets over Ethernet
               Networks", RFC 2464, December 1998.
 
-
-
-
-
-
-Droms, et al.             Expires July 24, 2014                [Page 99]
-
-Internet-Draft                RFC 3315 bis                  January 2014
-
-
    [RFC3041]  Narten, T. and R. Draves, "Privacy Extensions for
               Stateless Address Autoconfiguration in IPv6", RFC 3041,
               January 2001.
+
+
+
+
+
+Droms, et al.            Expires August 4, 2014                [Page 99]
+
+Internet-Draft                RFC 3315 bis                  January 2014
+
 
    [RFC3118]  Droms, R. and W. Arbaugh, "Authentication for DHCP
               Messages", RFC 3118, June 2001.
@@ -5597,7 +5593,11 @@ Authors' Addresses
 
 
 
-Droms, et al.             Expires July 24, 2014               [Page 100]
+
+
+
+
+Droms, et al.            Expires August 4, 2014               [Page 100]
 
 Internet-Draft                RFC 3315 bis                  January 2014
 
@@ -5653,4 +5653,4 @@ Internet-Draft                RFC 3315 bis                  January 2014
 
 
 
-Droms, et al.             Expires July 24, 2014               [Page 101]
+Droms, et al.            Expires August 4, 2014               [Page 101]
