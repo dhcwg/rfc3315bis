@@ -30,54 +30,76 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="std" docName="draft-dhcwg-dhc-rfc3315bis-00" ipr="pre5378Trust200902">
+<rfc category="std" docName="draft-dhcwg-dhc-rfc3315bis-01" ipr="pre5378Trust200902"
+     obsoletes="3315,3633">
   <front>
     <title abbrev="RFC 3315 bis">Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis</title>
 
-    <author fullname="Ralph Droms" initials="R" surname="Droms"
-            role="editor">
-      <organization abbrev="Cisco">Cisco Systems</organization>
+    <author fullname="Andrew Yourtchenko" initials="A" surname="Yourtchenko">
+      <organization abbrev="Cisco">Cisco Systems, Inc.</organization>
       <address>
         <postal>
-          <street>1414 Massachusetts Avenue</street>
-          <city>Boxborough</city>
-	  <region>MA</region>
-          <code>01719</code>
-          <country>USA</country>
+	  <street>De Kleetlaan, 7</street>
+          <city>Diegem</city>
+          <code>B-1831</code>
+          <country>Belgium</country>
         </postal>
-	<phone>(978) 936-1674</phone>
-        <email>rdroms@cisco.com</email>
-      </address>
-    </author>
-
-    <author fullname="Jim Bound" initials="J" surname="Bound">
-      <organization abbrev="Hewlett Packard">Hewlett Packard Corporation</organization>
-      <address>
-        <postal>
-          <street>ZK3-3/W20</street>
-	  <street>110 Spit Brook Road</street>
-          <city>Nashua</city>
-	  <region>NH</region>
-          <code>03062-2698</code>
-          <country>USA</country>
-        </postal>
-	<phone>+1 603 884 0062</phone>
-        <email>Jim.Bound@hp.com</email>
+        <email>ayourtch@cisco.com</email>
       </address>
     </author>
 
     <author fullname="Bernie Volz" initials="B" surname="Volz">
-      <organization abbrev="Ericsson"></organization>
+      <organization abbrev="Cisco">Cisco Systems, Inc.</organization>
       <address>
         <postal>
-          <street>116 Hawkins Pond Road</street>
-          <city>Center Harbor</city>
-	  <region>NH</region>
-          <code>03226-3103</code>
+          <street>1414 Massachusetts Ave</street>
+          <city>Boxborough, MA  01719</city>
+          <region></region>
+          <code></code>
           <country>USA</country>
         </postal>
-	<phone>+1-508-259-3734</phone>
-        <email>volz@metrocast.net</email>
+        <email>volz@cisco.com</email>
+      </address>
+    </author>
+
+    <author fullname="Marcin Siodelski" initials="M" surname="Siodelski">
+      <organization abbrev="ISC">Internet Systems Consortium, Inc.</organization>
+      <address>
+        <postal>
+          <street>950 Charter St.</street>
+          <city>Redwood City</city>
+	  <region>CA</region>
+          <code>94063</code>
+          <country>USA</country>
+        </postal>
+        <email>msiodelski@gmail.com</email>
+      </address>
+    </author>
+
+    <author initials="M." surname="Richardson" fullname="Michael C. Richardson">
+      <organization abbrev="SSW">Sandelman Software Works</organization>
+      <address>
+        <postal>
+          <street>470 Dawson Avenue</street>
+          <city>Ottawa</city>
+          <region>ON</region>
+          <code>K1Z 5V7</code>
+          <country>CA</country>
+        </postal>
+        <email>mcr+ietf@sandelman.ca</email>
+        <uri>http://www.sandelman.ca/</uri>
+      </address>
+    </author>
+
+    <author fullname="Sheng Jiang" initials="S." surname="Jiang">
+      <organization abbrev="Huawei">Huawei Technologies Co., Ltd</organization>
+      <address>
+        <postal>
+          <street>Q14, Huawei Campus, No.156 Beiqing Road</street>
+          <city>Hai-Dian District, Beijing, 100095</city>
+          <country>P.R. China</country>
+        </postal>
+        <email>jiangsheng@huawei.com</email>
       </address>
     </author>
 
@@ -85,7 +107,7 @@
       <organization abbrev="Nominum">Nominum, Inc.</organization>
       <address>
         <postal>
-          <street>950 Charter Street</street>
+          <street>950 Charter St.</street>
           <city>Redwood City</city>
 	  <region>CA</region>
           <code>94043</code>
@@ -95,34 +117,18 @@
       </address>
     </author>
 
-    <author fullname="Charles E. Perkins" initials="C" surname="Perkins">
-      <organization abbrev="">Nokia Research Center</organization>
-      <address>
-        <postal>
-	  <street>Communications Systems Lab</street>
-          <street>313 Fairchild Drive</street>
-          <city>Mountain View</city>
-	  <region>CA</region>
-          <code>94043</code>
-          <country>USA</country>
-        </postal>
-	<phone>+1-650 625-2986</phone>
-        <email>charles.perkins@nokia.com</email>
-      </address>
-    </author>
+    <author fullname="Tomek Mrugalski" initials="T." role="editor" surname="Mrugalski">
+      <organization abbrev="ISC">Internet Systems Consortium, Inc.</organization>
 
-    <author fullname="Mike Carney" initials="M" surname="Carney">
-      <organization abbrev="Sun Microsystems">Sun Microsystems, Inc</organization>
       <address>
         <postal>
-          <street>17 Network Circle</street>
-          <city>Menlo Park</city>
-	  <region>CA</region>
-          <code>94025</code>
+          <street>950 Charter Street</street>
+          <city>Redwood City</city>
+          <region>CA</region>
+          <code>94063</code>
           <country>USA</country>
         </postal>
-	<phone>+1-650-786-4171</phone>
-        <email>michael.carney@sun.com</email>
+        <email>tomasz.mrugalski@gmail.com</email>
       </address>
     </author>
 
@@ -5533,6 +5539,12 @@
 
     <section title="Acknowledgments">
       <!-- 25, line 4764-->
+      <t>The following people are authors of the original RFC3315:
+      Ralph Droms, Jim Bound, Bernie Volz, Ted Lemon, Charles Perkins,
+      and Mike Carney. This document is merely a refinement of their
+      work and would not be possible without their original work</t>
+
+      <t>The following acknowledgements are from the original RFC3315:</t>
 
       <t>Thanks to the DHC Working Group and the members of the IETF for their
       time and input into the specification. In particular, thanks also for
@@ -5556,95 +5568,6 @@
     <!-- ends: "25 from line 4764-->
 
       
-<!-- ** This should be an appendix tag but that does not yet seem to work! -->
-        <section title="Appearance of Options in Message Types">
-
-        <t>The following table indicates with a "*" the options are allowed in
-        each DHCP message type:</t>
-
-<figure>
-<artwork>
-        Client Server IA_NA  Option Pref  Time Relay Auth. Server
-          ID     ID   IA_TA  Request            Msg.       Unica.
-Solicit   *             *      *           *           *
-Advert.   *      *      *            *                 *
-Request   *      *      *      *           *           *
-Confirm   *             *      *           *           *
-Renew     *      *      *      *           *           *
-Rebind    *             *      *           *           *
-Decline   *      *      *      *           *           *
-Release   *      *      *      *           *           *
-Reply     *      *      *            *                 *     *
-Reconf.   *      *             *                       *
-Inform.   * (see note)         *           *           *
-R-forw.                                          *     *
-R-repl.                                          *     *
-</artwork>
-</figure>
-
-          <t>NOTE:</t>
-
-        <t>Only included in Information-Request messages that are sent in
-        response to a Reconfigure (see <xref target='RFC3315-19.4.3'/>).</t>
-
-<figure>
-<artwork>
-         Status  Rap. User  Vendor Vendor Inter. Recon. Recon.
-          Code  Comm. Class Class  Spec.    ID    Msg.  Accept
-Solicit           *     *     *      *                    *
-Advert.    *            *     *      *                    *
-Request                 *     *      *                    *
-Confirm                 *     *      *
-Renew                   *     *      *                    *
-Rebind                  *     *      *                    *
-Decline                 *     *      *
-Release                 *     *      *
-Reply      *      *     *     *      *                    *
-Reconf.                                            *
-Inform.                 *     *      *                    *
-R-forw.                 *     *      *      *
-R-repl.                 *     *      *      *
-</artwork>
-</figure>
-
-        </section>
-
-<!-- ** This should be an appendix tag but that does not yet seem to work! -->
-        <section title="Appearance of Options in the Options Field of DHCP Options">
-
-        <t>The following table indicates with a "*" where options can appear
-        in the options field of other options:</t>
-
-<figure>
-<artwork>
-             Option  IA_NA/ IAADDR Relay  Relay
-             Field   IA_TA         Forw.  Reply
-Client ID      *
-Server ID      *
-IA_NA/IA_TA    *
-IAADDR                 *
-ORO            *
-Preference     *
-Elapsed Time   *
-Relay Message                        *      *
-Authentic.     *
-Server Uni.    *
-Status Code    *       *       *
-Rapid Comm.    *
-User Class     *
-Vendor Class   *
-Vendor Info.   *
-Interf. ID                           *      *
-Reconf. MSG.   *
-Reconf. Accept *
-</artwork>
-</figure>
-          
-        <t>Note: "Relay Forw" / "Relay Reply" options appear in the options
-        field of the message but may only appear in these messages.</t>
-    
-        </section>
-
   </middle>
 
   <back>
@@ -5750,6 +5673,116 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
       <!-- Alexander, S. and R. Droms, "DHCP Options and BOOTP VendorExtensions", RFC 2132, March 1997. -->
     </references>
+
+
+    <!-- Let's briefly document relevant changes against 3315 here -->
+    <section title="Changes since RFC3315">
+
+      <t>...
+      </t>
+
+    </section>
+
+    <!-- Let's briefly document relevant changes against 3633 here -->
+    <section title="Changes since RFC3633">
+
+      <t>...
+      </t>
+
+    </section>
+
+<!-- ** This should be an appendix tag but that does not yet seem to work! -->
+<!-- tomek: I managed to get it work. The trick was to move section from <middle>
+     to <back> -->
+
+        <section title="Appearance of Options in Message Types">
+
+        <t>The following table indicates with a "*" the options are allowed in
+        each DHCP message type:</t>
+
+<figure>
+<artwork>
+        Client Server IA_NA  Option Pref  Time Relay Auth. Server
+          ID     ID   IA_TA  Request            Msg.       Unica.
+Solicit   *             *      *           *           *
+Advert.   *      *      *            *                 *
+Request   *      *      *      *           *           *
+Confirm   *             *      *           *           *
+Renew     *      *      *      *           *           *
+Rebind    *             *      *           *           *
+Decline   *      *      *      *           *           *
+Release   *      *      *      *           *           *
+Reply     *      *      *            *                 *     *
+Reconf.   *      *             *                       *
+Inform.   * (see note)         *           *           *
+R-forw.                                          *     *
+R-repl.                                          *     *
+</artwork>
+</figure>
+
+          <t>NOTE:</t>
+
+        <t>Only included in Information-Request messages that are sent in
+        response to a Reconfigure (see section 19.4.3).</t>
+
+<figure>
+<artwork>
+         Status  Rap. User  Vendor Vendor Inter. Recon. Recon.
+          Code  Comm. Class Class  Spec.    ID    Msg.  Accept
+Solicit           *     *     *      *                    *
+Advert.    *            *     *      *                    *
+Request                 *     *      *                    *
+Confirm                 *     *      *
+Renew                   *     *      *                    *
+Rebind                  *     *      *                    *
+Decline                 *     *      *
+Release                 *     *      *
+Reply      *      *     *     *      *                    *
+Reconf.                                            *
+Inform.                 *     *      *                    *
+R-forw.                 *     *      *      *
+R-repl.                 *     *      *      *
+</artwork>
+</figure>
+
+        </section>
+
+<!-- ** This should be an appendix tag but that does not yet seem to work! -->
+        <section title="Appearance of Options in the Options Field of DHCP Options">
+
+        <t>The following table indicates with a "*" where options can appear
+        in the options field of other options:</t>
+
+<figure>
+<artwork>
+             Option  IA_NA/ IAADDR Relay  Relay
+             Field   IA_TA         Forw.  Reply
+Client ID      *
+Server ID      *
+IA_NA/IA_TA    *
+IAADDR                 *
+ORO            *
+Preference     *
+Elapsed Time   *
+Relay Message                        *      *
+Authentic.     *
+Server Uni.    *
+Status Code    *       *       *
+Rapid Comm.    *
+User Class     *
+Vendor Class   *
+Vendor Info.   *
+Interf. ID                           *      *
+Reconf. MSG.   *
+Reconf. Accept *
+</artwork>
+</figure>
+
+        <t>Note: "Relay Forw" / "Relay Reply" options appear in the options
+        field of the message but may only appear in these messages.</t>
+
+        </section>
+
   </back>
 </rfc>
 <!-- generated from file samples/rfc3315.nroff with nroff2xml 0.0.2 by Tomek Mrugalski -->
