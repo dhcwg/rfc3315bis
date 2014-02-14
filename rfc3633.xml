@@ -597,14 +597,16 @@
 	delegate to the requesting router.</t>
 
 	<t>If the delegating router will not assign any prefixes to
-        any IA_PDs in a subsequent Request from the requesting router,
+        an IA_PD in a subsequent Request from the requesting router,
         the delegating router MUST send an Advertise message to the
         requesting router that includes the IA_PD with no prefixes in
         the IA_PD and a Status Code option in the IA_PD containing
         status code NoPrefixAvail and a status message for the user, a
         Server Identifier option with the delegating router's DUID and
         a Client Identifier option with the requesting router's
-        DUID.</t>
+        DUID. The server SHOULD include other stateful IA options
+        (like IA_NA) and other configuration options in the Advertise
+        message.</t>
 
       </section>
     </section>

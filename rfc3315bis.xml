@@ -5693,7 +5693,11 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
     <!-- Let's briefly document relevant changes against 3633 here -->
     <section title="Changes since RFC3633">
 
-      <t>...
+      <t>
+        <list style="numbers">
+          <t>Incorporated RFC3633 errata id 2470</t>
+          <t>...</t>
+        </list>
       </t>
 
     </section>
