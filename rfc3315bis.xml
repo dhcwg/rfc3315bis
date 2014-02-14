@@ -5678,7 +5678,14 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
     <!-- Let's briefly document relevant changes against 3315 here -->
     <section title="Changes since RFC3315">
 
-      <t>...
+      <t>
+        <list style="numbers">
+
+          <t>Incorporated RFC3315 erratas (ids: 294, 2472, 1373, 2928, 1815, 3577,
+          2509, 295)</t>
+          <t>...</t>
+        </list>
+
       </t>
 
     </section>
