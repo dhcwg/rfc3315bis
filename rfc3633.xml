@@ -804,8 +804,9 @@
 
       <t>If a delegating router communicates with a requesting router
       through a relay agent, the delegating router may need a protocol
-      or other out-of-band communication to add routing information
-      for delegated prefixes into the provider edge router.</t>
+      or other out-of-band communication to configure routing information
+      for delegated prefixes on any router through which the requesting
+      router may forward traffic.</t>
     </section>
 
     <section title="Security Considerations">
