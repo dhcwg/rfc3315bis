@@ -559,8 +559,8 @@
 	consider the presence of advertised prefixes in its decision
 	about which delegating router to respond to.</t>
 
-	<t>The requesting router MUST ignore any Advertise message
-        that includes a Status Code option containing the value
+	<t>The requesting router MUST ignore any IA_PDs in an Advertise message
+        that include a Status Code option containing the value
         NoPrefixAvail, with the exception that the requesting router
         MAY display the associated status message to the user.</t>
       </section>
