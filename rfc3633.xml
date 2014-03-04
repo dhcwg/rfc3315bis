@@ -428,7 +428,7 @@
       <t>If a delegating router receives an IA_PD with T1 greater than
       T2, and both T1 and T2 are greater than 0, the delegating router
       ignores the invalid values of T1 and T2 and processes the IA_PD
-      as though the delegating router had set T1 and T2 to 0.</t>
+      as though the requesting router had set T1 and T2 to 0.</t>
 
       <t>If a requesting router receives an IA_PD with T1 greater than
       T2, and both T1 and T2 are greater than 0, the client discards
