@@ -5695,7 +5695,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
       <t>
         <list style="numbers">
-          <t>Incorporated RFC3633 errata id 2470</t>
+          <t>Incorporated RFC3633 erratas (ids: 248, 1880, 2468, 2469, 2470, 3736)</t>
           <t>...</t>
         </list>
       </t>
