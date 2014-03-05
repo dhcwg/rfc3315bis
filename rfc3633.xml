@@ -839,7 +839,7 @@
 
     </section>
 
-    <section title="IANA Considerations">
+    <section ported=true title="IANA Considerations">
 
       <t>IANA has assigned option codes to:</t>
 
@@ -866,8 +866,8 @@
       Codes" of RFC 3315.</t>
     </section>
 
-    <section title="Acknowledgements">
-      <t>Thanks for the input and review by (in alphabetical order)
+    <section ported=true title="Acknowledgements">
+      <t ported=true>Thanks for the input and review by (in alphabetical order)
       Steve Deering, Dave Forster, Brian Haberman, Tatuya Jinmei, Shin
       Miyakawa, Pekka Savola, Bernie Volz, Trevor Warwick and Toshi
       Yamasaki.</t>
@@ -878,7 +878,7 @@
 
   <back>
 
-    <references title="Normative References">
+    <references ported=true title="Normative References">
 
       <?rfc include="reference.RFC.2460" ?>
       <?rfc include="reference.RFC.3315" ?>
