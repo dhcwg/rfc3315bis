@@ -57,7 +57,7 @@
   <middle>
 
     <section title="Introduction">
-      <t>This document describes new options for Dynamic Host Configuration 
+      <t>This document describes new options for Dynamic Host Configuration
       Protocol (DHCP) that provide a
       mechanism for the delegation of <xref target="RFC2460">IPv6
       prefixes</xref>. Through these options, a delegating router can
@@ -71,8 +71,8 @@
       attached, and the delegating router does not require other
       information aside from the identity of the requesting router to
       choose a prefix for delegation. For example, these options would
-      be used by a service provider to assign a prefix to a Customer 
-      Premise Equipment (CPE) device acting as a router between the 
+      be used by a service provider to assign a prefix to a Customer
+      Premise Equipment (CPE) device acting as a router between the
       subscriber's internal network and the service provider's core network.</t>
 
       <t>Many applications expect stable addresses. Even though this
@@ -166,16 +166,16 @@
       links within the subscriber's network.</t>
 
       <section title="Example network architecture">
-        
+
 	<figure anchor="figure1" title="">
 	  <preamble>
 	  <xref target="figure1" pageno="false"/> illustrates a network
 	  architecture in which prefix delegation could be used.
         </preamble>
 	  <artwork xml:space="preserve" name="" type="">
-                  ______________________                 \   
-                 /                      \                 \ 
-                |    ISP core network    |                 \ 
+                  ______________________                 \
+                 /                      \                 \
+                |    ISP core network    |                 \
                  \__________ ___________/                   |
                             |                               |
                     +-------+-------+                       |
@@ -648,10 +648,10 @@
         </t>
 
 	<t>If such verification is needed the requesting router MUST
-        initiate a Rebind/Reply message exchange as described in 
+        initiate a Rebind/Reply message exchange as described in
         section 18.1.4, "Creation and Transmission of Rebind Messages" of RFC
         3315, with the exception that the retransmission parameters
-        should be set as for the Confirm message, described in 
+        should be set as for the Confirm message, described in
         section 18.1.2, "Creation and Transmission of Confirm Messages" of RFC
         3315. The requesting router includes any IA_PDs, along with
         prefixes associated with those IA_PDs in its Rebind
@@ -777,7 +777,7 @@
 	exchange with a requesting router, as described in section 19,
 	"DHCP Server-Initiated Configuration Exchange" of RFC
         3315, by sending a Reconfigure message (acting as a DHCP server)
-        to the requesting router, as described in 
+        to the requesting router, as described in
         section 19.1, "Server Behavior" of RFC
 	3315. The delegating router specifies the IA_PD option in the
 	Option Request option to cause the requesting router to
