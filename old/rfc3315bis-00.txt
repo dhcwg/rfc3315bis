@@ -26,7 +26,8 @@ Abstract
    The Dynamic Host Configuration Protocol for IPv6 (DHCP) enables DHCP
    servers to pass configuration parameters such as IPv6 network
    addresses to IPv6 nodes.  It offers the capability of automatic
-   allocation of reusable network addresses and additional configuration
+   allocation of reusable network addresses (including groups of
+   addresses arranged as a prefix) and additional configuration
    flexibility.  This protocol is a stateful counterpart to "IPv6
    Stateless Address Autoconfiguration" (RFC 2462), and can be used
    separately or concurrently with the latter to obtain configuration
@@ -48,7 +49,6 @@ Status of This Memo
    material or to cite them other than as "work in progress."
 
    This Internet-Draft will expire on September 06, 2014.
-
 
 
 
@@ -90,21 +90,21 @@ Table of Contents
    1.  Introduction and Overview . . . . . . . . . . . . . . . . . .   6
      1.1.  Protocols and Addressing  . . . . . . . . . . . . . . . .   6
      1.2.  Client-server Exchanges Involving Two Messages  . . . . .   7
-     1.3.  Client-server Exchanges Involving Four Messages . . . . .   7
+     1.3.  Client-server Exchanges Involving Four Messages . . . . .   8
    2.  Requirements  . . . . . . . . . . . . . . . . . . . . . . . .   8
    3.  Background  . . . . . . . . . . . . . . . . . . . . . . . . .   8
    4.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   9
      4.1.  IPv6 Terminology  . . . . . . . . . . . . . . . . . . . .   9
-     4.2.  DHCP Terminology  . . . . . . . . . . . . . . . . . . . .  10
+     4.2.  DHCP Terminology  . . . . . . . . . . . . . . . . . . . .  11
    5.  DHCP Constants  . . . . . . . . . . . . . . . . . . . . . . .  13
      5.1.  Multicast Addresses . . . . . . . . . . . . . . . . . . .  13
      5.2.  UDP Ports . . . . . . . . . . . . . . . . . . . . . . . .  13
-     5.3.  DHCP Message Types  . . . . . . . . . . . . . . . . . . .  13
+     5.3.  DHCP Message Types  . . . . . . . . . . . . . . . . . . .  14
      5.4.  Status Codes  . . . . . . . . . . . . . . . . . . . . . .  15
      5.5.  Transmission and Retransmission Parameters  . . . . . . .  15
      5.6.  Representation of time values and "Infinity" as a time
            value . . . . . . . . . . . . . . . . . . . . . . . . . .  16
-   6.  Client/Server Message Formats . . . . . . . . . . . . . . . .  16
+   6.  Client/Server Message Formats . . . . . . . . . . . . . . . .  17
    7.  Relay Agent/Server Message Formats  . . . . . . . . . . . . .  17
 
 
@@ -115,40 +115,40 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
 
      7.1.  Relay-forward Message . . . . . . . . . . . . . . . . . .  18
-     7.2.  Relay-reply Message . . . . . . . . . . . . . . . . . . .  18
+     7.2.  Relay-reply Message . . . . . . . . . . . . . . . . . . .  19
    8.  Representation and Use of Domain Names  . . . . . . . . . . .  19
    9.  DHCP Unique Identifier (DUID) . . . . . . . . . . . . . . . .  19
-     9.1.  DUID Contents . . . . . . . . . . . . . . . . . . . . . .  19
+     9.1.  DUID Contents . . . . . . . . . . . . . . . . . . . . . .  20
      9.2.  DUID Based on Link-layer Address Plus Time [DUID-LLT] . .  20
      9.3.  DUID Assigned by Vendor Based on Enterprise Number [DUID-
-           EN] . . . . . . . . . . . . . . . . . . . . . . . . . . .  21
-     9.4.  DUID Based on Link-layer Address [DUID-LL]  . . . . . . .  22
+           EN] . . . . . . . . . . . . . . . . . . . . . . . . . . .  22
+     9.4.  DUID Based on Link-layer Address [DUID-LL]  . . . . . . .  23
    10. Identity Association  . . . . . . . . . . . . . . . . . . . .  23
    11. Selecting Addresses for Assignment to an IA . . . . . . . . .  24
    12. Management of Temporary Addresses . . . . . . . . . . . . . .  25
    13. Transmission of Messages by a Client  . . . . . . . . . . . .  25
    14. Reliability of Client Initiated Message Exchanges . . . . . .  26
-   15. Message Validation  . . . . . . . . . . . . . . . . . . . . .  27
+   15. Message Validation  . . . . . . . . . . . . . . . . . . . . .  28
      15.1.  Use of Transaction IDs . . . . . . . . . . . . . . . . .  28
      15.2.  Solicit Message  . . . . . . . . . . . . . . . . . . . .  28
      15.3.  Advertise Message  . . . . . . . . . . . . . . . . . . .  28
-     15.4.  Request Message  . . . . . . . . . . . . . . . . . . . .  28
+     15.4.  Request Message  . . . . . . . . . . . . . . . . . . . .  29
      15.5.  Confirm Message  . . . . . . . . . . . . . . . . . . . .  29
      15.6.  Renew Message  . . . . . . . . . . . . . . . . . . . . .  29
      15.7.  Rebind Message . . . . . . . . . . . . . . . . . . . . .  29
-     15.8.  Decline Messages . . . . . . . . . . . . . . . . . . . .  29
+     15.8.  Decline Messages . . . . . . . . . . . . . . . . . . . .  30
      15.9.  Release Message  . . . . . . . . . . . . . . . . . . . .  30
      15.10. Reply Message  . . . . . . . . . . . . . . . . . . . . .  30
-     15.11. Reconfigure Message  . . . . . . . . . . . . . . . . . .  30
+     15.11. Reconfigure Message  . . . . . . . . . . . . . . . . . .  31
      15.12. Information-request Message  . . . . . . . . . . . . . .  31
      15.13. Relay-forward Message  . . . . . . . . . . . . . . . . .  31
      15.14. Relay-reply Message  . . . . . . . . . . . . . . . . . .  31
-   16. Client Source Address and Interface Selection . . . . . . . .  31
+   16. Client Source Address and Interface Selection . . . . . . . .  32
    17. DHCP Server Solicitation  . . . . . . . . . . . . . . . . . .  32
      17.1.  Client Behavior  . . . . . . . . . . . . . . . . . . . .  32
        17.1.1.  Creation of Solicit Messages . . . . . . . . . . . .  32
        17.1.2.  Transmission of Solicit Messages . . . . . . . . . .  33
-       17.1.3.  Receipt of Advertise Messages  . . . . . . . . . . .  35
+       17.1.3.  Receipt of Advertise Messages  . . . . . . . . . . .  34
        17.1.4.  Receipt of Reply Message . . . . . . . . . . . . . .  35
      17.2.  Server Behavior  . . . . . . . . . . . . . . . . . . . .  36
        17.2.1.  Receipt of Solicit Messages  . . . . . . . . . . . .  36
@@ -295,6 +295,14 @@ Internet-Draft                RFC 3315 bis                    March 2014
    DHCP can be extended through the definition of new options to carry
    configuration information not specified in this document.
 
+   DHCP also provides a mechanism for automated delegation of IPv6
+   prefixes using DHCP.  This mechanism is intended for delegating a
+   long-lived prefix from a delegating router (a DHCP server) to a
+   requesting router (that may in turn be a DHCP server on another
+   link), across an administrative boundary, where the delegating router
+   does not require knowledge about the topology of the links in the
+   network to which the prefixes will be assigned.
+
    DHCP is the "stateful address autoconfiguration protocol" and the
    "stateful autoconfiguration protocol" referred to in "IPv6 Stateless
    Address Autoconfiguration" [RFC2462].
@@ -319,6 +327,17 @@ Internet-Draft                RFC 3315 bis                    March 2014
    client uses a link-local address or addresses determined through
    other mechanisms for transmitting and receiving DHCP messages.
 
+
+
+
+
+
+
+Yourtchenko, et al.    Expires September 06, 2014               [Page 6]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
    DHCP servers receive messages from clients using a reserved, link-
    scoped multicast address.  A DHCP client transmits most messages to
    this reserved multicast address, so that the client need not be
@@ -330,13 +349,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
    the relay agent is transparent to the client and the discussion of
    message exchanges in the remainder of this section will omit the
    description of message relaying by relay agents.
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014               [Page 6]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
 
    Once the client has determined the address of a server, it may under
    some circumstances send messages directly to the server using
@@ -374,6 +386,14 @@ Internet-Draft                RFC 3315 bis                    March 2014
    valid lifetimes specified by the server.  To request an extension of
    the lifetimes assigned to an address, the client sends a Renew
    message to the server.  The server sends a Reply message to the
+
+
+
+Yourtchenko, et al.    Expires September 06, 2014               [Page 7]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
    client with the new lifetimes, allowing the client to continue to use
    the address without interruption.
 
@@ -386,14 +406,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
    All_DHCP_Relay_Agents_and_Servers address to find available DHCP
    servers.  Any server that can meet the client's requirements responds
    with an Advertise message.  The client then chooses one of the
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014               [Page 7]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
-
    servers and sends a Request message to the server asking for
    confirmed assignment of addresses and other configuration
    information.  The server responds with a Reply message that contains
@@ -430,6 +442,14 @@ Internet-Draft                RFC 3315 bis                    March 2014
    upon the IPv6 work to provide both robust stateful autoconfiguration
    and autoregistration of DNS Host Names.
 
+
+
+
+Yourtchenko, et al.    Expires September 06, 2014               [Page 8]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
    The IPv6 Addressing Architecture specification [RFC2373] defines the
    address scope that can be used in an IPv6 implementation, and the
    various configuration architecture guidelines for network designers
@@ -442,14 +462,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
    IPv6 Stateless Address Autoconfiguration [RFC2462] specifies
    procedures by which a node may autoconfigure addresses based on
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014               [Page 8]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
-
    router advertisements [RFC2461], and the use of a valid lifetime to
    support renumbering of addresses on the Internet.  In addition, the
    protocol interaction by which a node begins stateless or stateful
@@ -485,6 +497,15 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
    host                      Any node that is not a router.
 
+
+
+
+
+Yourtchenko, et al.    Expires September 06, 2014               [Page 9]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
    IP                        Internet Protocol Version 6 (IPv6).  The
                              terms IPv4 and IPv6 are used only in
                              contexts where it is necessary to avoid
@@ -498,14 +519,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
                              IP.  Examples are Ethernet (simple or
                              bridged); Token Ring; PPP links, X.25,
                              Frame Relay, or ATM networks; and Internet
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014               [Page 9]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
-
                              (or higher) layer "tunnels", such as
                              tunnels over IPv4 or IPv6 itself.
 
@@ -541,6 +554,14 @@ Internet-Draft                RFC 3315 bis                    March 2014
    router                    A node that forwards IP packets not
                              explicitly addressed to itself.
 
+
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 10]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
    unicast address           An identifier for a single interface.  A
                              packet sent to a unicast address is
                              delivered to the interface identified by
@@ -549,18 +570,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
 4.2.  DHCP Terminology
 
    Terminology specific to DHCP can be found below.
-
-
-
-
-
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 10]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
 
    appropriate to the link   An address is "appropriate to the link"
                              when the address is consistent with the
@@ -602,21 +611,19 @@ Internet-Draft                RFC 3315 bis                    March 2014
                              obtain configuration parameters from one or
                              more DHCP servers.
 
-   DHCP domain               A set of links managed by DHCP and operated
-                             by a single administrative entity.
-
-   DHCP realm                A name used to identify the DHCP
-                             administrative domain from which a DHCP
-                             authentication key was selected.
-
-
-
 
 
 Yourtchenko, et al.    Expires September 06, 2014              [Page 11]
 
 Internet-Draft                RFC 3315 bis                    March 2014
 
+
+   DHCP domain               A set of links managed by DHCP and operated
+                             by a single administrative entity.
+
+   DHCP realm                A name used to identify the DHCP
+                             administrative domain from which a DHCP
+                             authentication key was selected.
 
    DHCP relay agent (or relay agent)  A node that acts as an
                              intermediary to deliver DHCP messages
@@ -657,13 +664,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
                              temporary addresses (see "identity
                              association for temporary addresses")
 
-   Identity association for temporary addresses (IA_TA)  An IA that
-                             carries temporary addresses (see RFC
-                             [RFC3041]).
-
-   message                   A unit of data carried as the payload of a
-                             UDP datagram, exchanged among DHCP servers,
-                             relay agents and clients.
 
 
 
@@ -673,6 +673,14 @@ Yourtchenko, et al.    Expires September 06, 2014              [Page 12]
 
 Internet-Draft                RFC 3315 bis                    March 2014
 
+
+   Identity association for temporary addresses (IA_TA)  An IA that
+                             carries temporary addresses (see RFC
+                             [RFC3041]).
+
+   message                   A unit of data carried as the payload of a
+                             UDP datagram, exchanged among DHCP servers,
+                             relay agents and clients.
 
    Reconfigure key           A key supplied to a client by a server used
                              to provide security for Reconfigure
@@ -715,20 +723,19 @@ Internet-Draft                RFC 3315 bis                    March 2014
    Clients listen for DHCP messages on UDP port 546.  Servers and relay
    agents listen for DHCP messages on UDP port 547.
 
-5.3.  DHCP Message Types
-
-   DHCP defines the following message types.  More detail on these
-   message types can be found in Section 6 and Section 7.  Message types
-   not listed here are reserved for future use.  The numeric encoding
-   for each message type is shown in parentheses.
-
-
 
 
 Yourtchenko, et al.    Expires September 06, 2014              [Page 13]
 
 Internet-Draft                RFC 3315 bis                    March 2014
 
+
+5.3.  DHCP Message Types
+
+   DHCP defines the following message types.  More detail on these
+   message types can be found in Section 6 and Section 7.  Message types
+   not listed here are reserved for future use.  The numeric encoding
+   for each message type is shown in parentheses.
 
    SOLICIT (1)     A client sends a Solicit message to locate servers.
 
@@ -771,13 +778,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
    RELEASE (8)     A client sends a Release message to the server that
                    assigned addresses to the client to indicate that the
-                   client will no longer use one or more of the assigned
-                   addresses.
-
-   DECLINE (9)     A client sends a Decline message to a server to
-                   indicate that the client has determined that one or
-                   more addresses assigned by the server are already in
-                   use on the link to which the client is connected.
 
 
 
@@ -785,6 +785,14 @@ Yourtchenko, et al.    Expires September 06, 2014              [Page 14]
 
 Internet-Draft                RFC 3315 bis                    March 2014
 
+
+                   client will no longer use one or more of the assigned
+                   addresses.
+
+   DECLINE (9)     A client sends a Decline message to a server to
+                   indicate that the client has determined that one or
+                   more addresses assigned by the server are already in
+                   use on the link to which the client is connected.
 
    RECONFIGURE (10)  A server sends a Reconfigure message to a client to
                    inform the client that the server has new or updated
@@ -825,6 +833,15 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
 5.5.  Transmission and Retransmission Parameters
 
+
+
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 15]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
    This section presents a table of values used to describe the message
    transmission behavior of clients and servers.
 
@@ -834,14 +851,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
    | SOL_MAX_DELAY       | 1 sec     | Max delay of first Solicit      |
    | SOL_TIMEOUT         | 1 sec     | Initial Solicit timeout         |
    | SOL_MAX_RT          | 120 secs  | Max Solicit timeout value       |
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 15]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
-
    | REQ_TIMEOUT         | 1 sec     | Initial Request timeout         |
    | REQ_MAX_RT          | 30 secs   | Max Request timeout value       |
    | REQ_MAX_RC          | 10        | Max Request retry attempts      |
@@ -876,6 +885,19 @@ Internet-Draft                RFC 3315 bis                    March 2014
    value 0xffffffff is taken to mean "infinity" when used as a lifetime
    (as in [RFC2461]) or a value for T1 or T2.
 
+
+
+
+
+
+
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 16]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
 6.  Client/Server Message Formats
 
    All DHCP messages sent between clients and servers share an identical
@@ -890,12 +912,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
    The following diagram illustrates the format of DHCP messages sent
    between clients and servers:
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 16]
-
-Internet-Draft                RFC 3315 bis                    March 2014
 
 
        0                   1                   2                   3
@@ -929,6 +945,15 @@ Internet-Draft                RFC 3315 bis                    March 2014
    All values in the message header and in options are in network byte
    order.
 
+
+
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 17]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
    Options are stored serially in the options field, with no padding
    between the options.  Options are byte-aligned but are not aligned in
    any other way such as on 2 or 4 byte boundaries.
@@ -946,14 +971,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
       |                                                               |
       |                               +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-|
       |                               |                               |
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 17]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
-
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               |
       |                                                               |
       |                         peer-address                          |
@@ -986,6 +1003,13 @@ Internet-Draft                RFC 3315 bis                    March 2014
                            used by the server to identify the link on
                            which the client is located.
 
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 18]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
       peer-address         The address of the client or relay agent from
                            which the message to be relayed was received.
 
@@ -1001,14 +1025,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
       msg-type             RELAY-REPL
 
       hop-count            Copied from the Relay-forward message
-
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 18]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
 
       link-address         Copied from the Relay-forward message
 
@@ -1042,6 +1058,14 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
    The DUID is carried in an option because it may be variable length
    and because it is not required in all DHCP messages.  The DUID is
+
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 19]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
    designed to be unique across all DHCP clients and servers, and stable
    for any specific client or server - that is, the DUID used by a
    client or server SHOULD NOT change over time if at all possible; for
@@ -1056,15 +1080,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
    is not possible, so the DUID scheme must accommodate such devices.
 
 9.1.  DUID Contents
-
-
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 19]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
 
    A DUID consists of a two-octet type code represented in network byte
    order, followed by a variable number of octets that make up the
@@ -1099,6 +1114,14 @@ Internet-Draft                RFC 3315 bis                    March 2014
    The following diagram illustrates the format of a DUID-LLT:
 
 
+
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 20]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1113,14 +1136,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
 
                          Figure 3: DUID-LLT format
-
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 20]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
 
    The choice of network interface can be completely arbitrary, as long
    as that interface provides a globally unique link-layer address for
@@ -1156,6 +1171,13 @@ Internet-Draft                RFC 3315 bis                    March 2014
    provide an administrative interface that replaces the existing DUID
    with a newly-generated DUID-LLT.
 
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 21]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
 9.3.  DUID Assigned by Vendor Based on Enterprise Number [DUID-EN]
 
    This form of DUID is assigned by the vendor to the device.  It
@@ -1170,14 +1192,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |               2               |       enterprise-number       |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 21]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
-
       |   enterprise-number (contd)   |                               |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               |
       .                           identifier                          .
@@ -1213,6 +1227,13 @@ Internet-Draft                RFC 3315 bis                    March 2014
    (9), followed by eight octets of identifier data
    (0x0CC084D303000912).
 
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 22]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
 9.4.  DUID Based on Link-layer Address [DUID-LL]
 
    This type of DUID consists of two octets containing the DUID type 3,
@@ -1225,13 +1246,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
    The hardware type is stored in network byte order.  The link-layer
    address is stored in canonical form, as described in [RFC2464].  The
    following diagram illustrates the format of a DUID-LL:
-
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 22]
-
-Internet-Draft                RFC 3315 bis                    March 2014
 
 
        0                   1                   2                   3
@@ -1268,6 +1282,14 @@ Internet-Draft                RFC 3315 bis                    March 2014
    addresses.  Each IA consists of an IAID and associated configuration
    information.
 
+
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 23]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
    A client must associate at least one distinct IA with each of its
    network interfaces for which it is to request the assignment of IPv6
    addresses from a DHCP server.  The client uses the IAs assigned to an
@@ -1282,14 +1304,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
    storage or by using an algorithm that will consistently produce the
    same IAID as long as the configuration of the client has not changed.
    There may be no way for a client to maintain consistency of the IAIDs
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 23]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
-
    if it does not have non-volatile storage and the client's hardware
    configuration changes.
 
@@ -1323,6 +1337,15 @@ Internet-Draft                RFC 3315 bis                    March 2014
          the interface, identified by the link-address field in the
          message from the relay agent, is attached.
 
+
+
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 24]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
       *  If the server receives the message directly from the client and
          the source address in the IP datagram in which the message was
          received is not a link-local address, then the client is on the
@@ -1337,14 +1360,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
    -  Other information in options supplied by the client.
 
    -  Other information in options supplied by the relay agent.
-
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 24]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
 
    Any address assigned by a server that is based on an EUI-64
    identifier MUST include an interface identifier with the "u"
@@ -1379,6 +1394,14 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
 13.  Transmission of Messages by a Client
 
+
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 25]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
    Unless otherwise specified in this document, or in a document that
    describes how IPv6 is carried over a specific type of link (for link
    types that do not support multicast), a client sends DHCP messages to
@@ -1393,14 +1416,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
    A client may send some messages directly to a server using unicast,
    as described in Section 22.12.
-
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 25]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
 
 14.  Reliability of Client Initiated Message Exchanges
 
@@ -1436,6 +1451,13 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
       RAND    Randomization factor
 
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 26]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
    With each message transmission or retransmission, the client sets RT
    according to the rules given below.  If RT expires before the message
    exchange terminates, the client recomputes RT and retransmits the
@@ -1449,14 +1471,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
    The algorithm for choosing a random number does not need to be
    cryptographically sound.  The algorithm SHOULD produce a different
    sequence of random numbers from each invocation of the DHCP client.
-
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 26]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
 
    RT for the first message transmission is based on IRT:
 
@@ -1493,6 +1507,13 @@ Internet-Draft                RFC 3315 bis                    March 2014
    If both MRC and MRD are zero, the client continues to transmit the
    message until it receives a response.
 
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 27]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
 15.  Message Validation
 
    Clients and servers SHOULD discard any messages that contain options
@@ -1506,13 +1527,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
    Message validation based on DHCP authentication is discussed in
    Section 21.4.2.
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 27]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
 
    If a server receives a message that contains options it should not
    contain (such as an Information-request message with an IA option),
@@ -1549,6 +1563,13 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
    -  the message does not include a Client Identifier option.
 
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 28]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
    -  the contents of the Client Identifier option does not match the
       client's DUID.
 
@@ -1561,14 +1582,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
 15.4.  Request Message
 
    Clients MUST discard any received Request messages.
-
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 28]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
 
    Servers MUST discard any received Request message that meet any of
    the following conditions:
@@ -1606,6 +1619,13 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
    Clients MUST discard any received Rebind messages.
 
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 29]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
    Servers MUST discard any received Rebind messages that do not include
    a Client Identifier option or that do include a Server Identifier
    option.
@@ -1618,13 +1638,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
    the following conditions:
 
    -  the message does not include a Server Identifier option.
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 29]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
 
    -  the contents of the Server Identifier option does not match the
       server's identifier.
@@ -1662,6 +1675,13 @@ Internet-Draft                RFC 3315 bis                    March 2014
    option in the original message, the Reply message MUST NOT include a
    Client Identifier option.
 
+
+
+Yourtchenko, et al.    Expires September 06, 2014              [Page 30]
+
+Internet-Draft                RFC 3315 bis                    March 2014
+
+
    Servers and relay agents MUST discard any received Reply messages.
 
 15.11.  Reconfigure Message
@@ -1673,14 +1693,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
    following conditions:
 
    -  the message was not unicast to the client.
-
-
-
-
-Yourtchenko, et al.    Expires September 06, 2014              [Page 30]
-
-Internet-Draft                RFC 3315 bis                    March 2014
-
 
    -  the message does not include a Server Identifier option.
 
@@ -1718,18 +1730,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
 15.14.  Relay-reply Message
 
-   Clients and servers MUST discard any received Relay-reply messages.
-
-16.  Client Source Address and Interface Selection
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1737,6 +1737,10 @@ Yourtchenko, et al.    Expires September 06, 2014              [Page 31]
 
 Internet-Draft                RFC 3315 bis                    March 2014
 
+
+   Clients and servers MUST discard any received Relay-reply messages.
+
+16.  Client Source Address and Interface Selection
 
    When a client sends a DHCP message to the
    All_DHCP_Relay_Agents_and_Servers address, it SHOULD send the message
@@ -1781,10 +1785,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
 17.1.1.  Creation of Solicit Messages
 
-   The client sets the "msg-type" field to SOLICIT.  The client
-   generates a transaction ID and inserts this value in the
-   "transaction-id" field.
-
 
 
 
@@ -1793,6 +1793,10 @@ Yourtchenko, et al.    Expires September 06, 2014              [Page 32]
 
 Internet-Draft                RFC 3315 bis                    March 2014
 
+
+   The client sets the "msg-type" field to SOLICIT.  The client
+   generates a transaction ID and inserts this value in the
+   "transaction-id" field.
 
    The client MUST include a Client Identifier option to identify itself
    to the server.  The client includes IA options for any IAs to which
@@ -1838,10 +1842,6 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
       MRC     0
 
-      MRD     0
-
-
-
 
 
 
@@ -1849,6 +1849,8 @@ Yourtchenko, et al.    Expires September 06, 2014              [Page 33]
 
 Internet-Draft                RFC 3315 bis                    March 2014
 
+
+      MRD     0
 
    If the client has included a Rapid Commit option in its Solicit
    message, the client terminates the waiting process as soon as a Reply
@@ -1893,9 +1895,7 @@ Internet-Draft                RFC 3315 bis                    March 2014
    external event, such as user input, system restart, or when the
    client is attached to a new link.
 
-
-
-
+17.1.3.  Receipt of Advertise Messages
 
 
 
@@ -1905,8 +1905,6 @@ Yourtchenko, et al.    Expires September 06, 2014              [Page 34]
 
 Internet-Draft                RFC 3315 bis                    March 2014
 
-
-17.1.3.  Receipt of Advertise Messages
 
    The client MUST ignore any Advertise message that includes a Status
    Code option containing the value NoAddrsAvail, with the exception
@@ -1954,6 +1952,8 @@ Internet-Draft                RFC 3315 bis                    March 2014
 
    If the client subsequently receives a valid Reply message that
    includes a Rapid Commit option, it either:
+
+
 
 
 
