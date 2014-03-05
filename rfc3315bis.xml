@@ -669,11 +669,11 @@
 	  <c>REQ_TIMEOUT</c>
 	  <c>1 sec</c>
 	  <c>Initial Request timeout</c>
-	
+
 	  <c>REQ_MAX_RT</c>
 	  <c>30 secs</c>
 	  <c>Max Request timeout value</c>
-	
+
 	  <c>REQ_MAX_RC</c>
 	  <c>10</c>
 	  <c>Max Request retry attempts</c>
@@ -2206,7 +2206,7 @@
           <t>If the message exchange fails, the client takes an action based
           on the client's local policy. Examples of actions the client might
           take include:
-          
+
           <list hangIndent="3" style="hanging">
           <t hangText="-"> Select another server from a list of servers known to the
           client; for example, servers that responded with an Advertise
@@ -2239,7 +2239,7 @@
 
           <t hangText="o"> The client using a wireless technology changes access
           points.</t>
-            
+
           </list></t>
 
           <t>In any situation when a client may have moved to a new link, the
@@ -3441,7 +3441,7 @@
         or relay agent to relay agent communication use IPsec under the
         following conditions:
 
-        <list hangIndent="24" style="hanging"> 
+        <list hangIndent="24" style="hanging">
 
         <t hangText="   Selectors"> Relay agents are manually configured with the addresses
         of the relay agent or server to which DHCP messages are to be
@@ -3897,7 +3897,7 @@
           </t>
 
           <t hangText="   Value"> Data as defined by field.</t>
-              
+
           </list></t>
         </section>
 
@@ -5464,7 +5464,7 @@
             <t hangText="   OPTION_RAPID_COMMIT">14</t>
 
             <t hangText="   OPTION_USER_CLASS">15</t>
- 
+
             <t hangText="   OPTION_VENDOR_CLASS">16</t>
 
             <t hangText="   OPTION_VENDOR_OPTS">17</t>
@@ -5485,7 +5485,7 @@
         <t>IANA has recorded the status codes defined in the following table.
         IANA will manage the definition of additional status codes in the
         future.</t>
-          
+
 	<texttable>
 
 	  <ttcol>Name</ttcol>
@@ -5497,7 +5497,7 @@
           <c>UnspecFail</c><c>1</c><c>Failure, reason unspecified; this
           status code is sent by either a client or a server to indicate
           a failure not explicitly specified in this document.</c>
-          
+
           <c>NoAddrsAvail</c><c>2</c><c>Server has no addresses available
           to assign to the IA(s).</c>
 
@@ -5567,14 +5567,14 @@
 
     <!-- ends: "25 from line 4764-->
 
-      
+
   </middle>
 
   <back>
     <references title="Normative References">
-        
+
       &RFC3646;
-        
+
       &RFC4075;
 
       &RFC2136;
@@ -5612,13 +5612,13 @@
           <title>Private Enterprise Numbers registry
           http://www.iana.org/assignments/enterprise-numbers
           </title>
-            
+
           <author>
             <organization>IANA</organization>
           </author>
 
           <date/>
-        </front>   
+        </front>
       </reference>
 
       &RFC1305;
