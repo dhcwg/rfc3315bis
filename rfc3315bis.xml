@@ -142,7 +142,8 @@
       The Dynamic Host Configuration Protocol for IPv6 (DHCP) enables DHCP
       servers to pass configuration parameters such as IPv6 network
       addresses to IPv6 nodes.  It offers the capability of automatic
-      allocation of reusable network addresses and additional configuration
+      allocation of reusable network addresses (including groups of
+      addresses arranged as a prefix) and additional configuration
       flexibility.  This protocol is a stateful counterpart to "IPv6
       Stateless Address Autoconfiguration" (RFC 2462), and can be used
       separately or concurrently with the latter to obtain configuration
@@ -164,6 +165,14 @@
       and other configuration information, which are carried in options. DHCP
       can be extended through the definition of new options to carry
       configuration information not specified in this document.</t>
+
+      <t>DHCP also provides a mechanism for automated delegation of IPv6 prefixes using DHCP.
+      This mechanism is intended for delegating a long-lived prefix from a delegating
+      router (a DHCP server) to a requesting router (that may in turn be a DHCP
+      server on another link), across an administrative
+      boundary, where the delegating router does not require knowledge
+      about the topology of the links in the network to which the
+      prefixes will be assigned.</t>
 
       <t>DHCP is the "stateful address autoconfiguration protocol" and the
       "stateful autoconfiguration protocol" referred to in "IPv6 Stateless

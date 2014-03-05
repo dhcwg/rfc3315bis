@@ -43,7 +43,7 @@
     <workgroup>DHC Working Group</workgroup>
 
     <abstract>
-      <t>The Prefix Delegation options provide a mechanism for
+      <t ported=true>The Prefix Delegation options provide a mechanism for
       automated delegation of IPv6 prefixes using DHCP. This mechanism
       is intended for delegating a long-lived prefix from a delegating
       router to a requesting router, across an administrative
