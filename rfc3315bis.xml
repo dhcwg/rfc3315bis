@@ -21,6 +21,7 @@
 <!ENTITY RFC2132 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2132.xml">
 <!ENTITY RFC3646 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3646.xml">
 <!ENTITY RFC4075 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4075.xml">
+<!ENTITY RFC6355 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6355.xml">
 ]>
 <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
 <?rfc strict="yes" ?>
@@ -985,6 +986,7 @@
           <c>1</c><c>Link-layer address plus time</c>
           <c>2</c><c>Vendor-assigned unique ID based on Enterprise Number</c>
           <c>3</c><c>Link-layer address</c>
+          <c>4</c><c>Universally Unique IDentifier (UUID) - see <xref target="RFC6355"/></c> 
 	</texttable>
 
 <!-- Alternative, but multiple spaces are ignored
@@ -1005,8 +1007,9 @@
         </t>
 -->
 
-        <t>Formats for the variable field of the DUID for each of the above
-        types are shown below.</t>
+        <t>Formats for the variable field of the DUID for the first 3 of the
+        above types are shown below. For the fourth type, refer to
+        <xref target="RFC6355"/>.</t>
       </section>
 
       <!-- ends: "9.1 from line 953-->
@@ -5673,8 +5676,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       &RFC2132;
 
       <!-- Alexander, S. and R. Droms, "DHCP Options and BOOTP VendorExtensions", RFC 2132, March 1997. -->
-    </references>
 
+	&RFC6355;
+
+    </references>
 
     <!-- Let's briefly document relevant changes against 3315 here -->
     <section title="Changes since RFC3315">
@@ -5688,6 +5693,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Clarified section 21.4.1 of RFC3315 by defining length of "key ID" field
           and specifying that 'DHCP realm' is Domain Name encoded as per section 8 of RFC3315.
           Ticket 43.</t>
+
+          <t>Added DUID-UUID and reference to RFC6355. Ticket 54.</t>
+
           <t>...</t>
         </list>
 
