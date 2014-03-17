@@ -928,7 +928,7 @@
 
     <!-- ends: "7 from line 825-->
 
-    <section title="Representation and Use of Domain Names">
+    <section anchor='RFC3315-8' title="Representation and Use of Domain Names">
       <!-- 8, line 912-->
 
       <t>So that domain names may be encoded uniformly, a domain name or a
@@ -3571,7 +3571,7 @@
    .                                                               .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                            key ID                             |
+   |                      key ID (4 octets)                        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                                                               |
    |                           HMAC-MD5                            |
@@ -3587,7 +3587,8 @@
           <t><list hangIndent="24" style="hanging">
 
           <t hangText="   DHCP realm"> The DHCP realm that identifies the key used to
-          generate the HMAC-MD5 value.</t>
+          generate the HMAC-MD5 value. This is a domain name encoded as described in
+          <xref target='RFC3315-8'/>.</t>
 
           <t hangText="   key ID"> The key identifier that identified the key used to
           generate the HMAC-MD5 value.</t>
@@ -5683,6 +5684,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Incorporated RFC3315 erratas (ids: 294, 2472, 1373, 2928, 1815, 3577,
           2509, 295)</t>
+          
+          <t>Clarified section 21.4.1 of RFC3315 by defining length of "key ID" field
+          and specifying that 'DHCP realm' is Domain Name encoded as per section 8 of RFC3315.
+          Ticket 43.</t>
           <t>...</t>
         </list>
 
