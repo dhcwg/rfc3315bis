@@ -1944,6 +1944,9 @@
           preference value, addresses advertised, when the advertisement was
           received, and so on.</t>
 
+          <t>In practice, this means that the client will maintain
+          independent per-IA state machines per each selected server.</t>
+
           <t>If the client needs to select an alternate server in the case
           that a chosen server does not respond, the client chooses the next
           server according to the criteria given above.</t>
