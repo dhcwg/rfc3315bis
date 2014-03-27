@@ -980,9 +980,9 @@
 
         <t>A DUID consists of a two-octet type code represented in network
         byte order, followed by a variable number of octets that make up the
-        actual identifier. A DUID can be no more than 128 octets long (not
-        including the type code). The following types are currently
-        defined:</t>
+        actual identifier. The length of the DUID (not including the type code)
+        is at least 1 octet and at most 128 octets. The following types are
+        currently defined:</t>
 
 	<texttable>
 	  <ttcol>Type</ttcol><ttcol>Description</ttcol>
@@ -5715,6 +5715,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           Ticket 43.</t>
 
           <t>Added DUID-UUID and reference to RFC6355. Ticket 54.</t>
+
+          <t>Specified a minimum length for the DUID in section 9.1. DUID Contents.
+          Ticket 39.</t>
 
           <t>...</t>
         </list>
