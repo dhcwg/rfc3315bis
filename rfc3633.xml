@@ -433,7 +433,7 @@
       <t>If a requesting router receives an IA_PD with T1 greater than
       T2, and both T1 and T2 are greater than 0, the requesting router discards
       the IA_PD option and processes the remainder of the message as
-      though the delegating router had not included the IA_PD
+      though the requesting router had not included the IA_PD
       option.</t>
 
     </section>
