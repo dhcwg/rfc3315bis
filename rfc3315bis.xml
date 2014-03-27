@@ -3698,31 +3698,45 @@
             protocol using the validation test described in
             <xref target='RFC3315-21.4.2'/>.</t>
 
-            <t>Client behavior, if no Advertise messages include
-            authentication information or pass the validation test, is
-            controlled by local policy on the client. According to client
-            policy, the client MAY choose to respond to an Advertise message
-            that has not been authenticated.</t>
+            <t>The Client behavior is defined by local policy, as detailed below. </t>
+            <t>
+            If the client
+            requires that Advertise messages be authenticated, then it MUST
+            ignore Advertise messages that do not include authentication information,
+            or for which the client has no matching key, or that do not pass the validation test.
+            </t>
+            <t>
+            Local policy MAY also prefer authenticated Advertise messages,
+            in which case the client SHOULD attempt to validate all Advertise
+            messages for which the client has a matching key.  Messages for which
+            the client has a key, but which do not pass the validation test MUST be
+            rejected, even if the client would otherwise accept the same
+            message without the Authentication option.  </t>
+            <t> In all cases, messages for which the client does not have a matching key
+            should be treated as if they have no Authentication option.
+            </t>
 
-            <t>The decision to set local policy to accept unauthenticated
-            messages should be made with care. Accepting an unauthenticated
+            <t>When the decision to accept unauthenticated
+            message is made, it should be made with care.  Accepting an unauthenticated
             Advertise message can make the client vulnerable to spoofing and
-            other attacks. If local users are not explicitly informed that the
-            client has accepted an unauthenticated Advertise message, the
-            users may incorrectly assume that the client has received an
-            authenticated address and is not subject to DHCP attacks through
-            unauthenticated messages.</t>
+            other attacks.  Policies and actions which were depending upon
+            Authentication MUST NOT be executed.  Local users are SHOULD be informed that the
+            client has accepted an unauthenticated Advertise message. </t>
 
             <t>A client MUST be configurable to discard unauthenticated
             messages, and SHOULD be configured by default to discard
             unauthenticated messages if the client has been configured with an
-            authentication key or other authentication information. A client
+            authentication key or other authentication information.
+            </t>
+
+            <t> A client
             MAY choose to differentiate between Advertise messages with no
             authentication information and Advertise messages that do not pass
             the validation test; for example, a client might accept the former
             and discard the latter. If a client does accept an unauthenticated
             message, the client SHOULD inform any local users and SHOULD log
             the event.</t>
+
           </section>
 
           <!-- ends: "21.4.4.2 from line 3342-->
