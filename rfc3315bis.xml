@@ -639,6 +639,9 @@
         provide additional information about the specific cause of the failure
         of a message. The specific status codes are defined in
         <xref target='RFC3315-24.4'/>.</t>
+
+	<t>If the Status Code option does not appear in a message in which
+	the option could appear, the status of the message is assumed to be Success.</t>
       </section>
 
       <!-- ends: "5.4 from line 733-->
@@ -1940,6 +1943,9 @@
           typically store information about each server, such as server
           preference value, addresses advertised, when the advertisement was
           received, and so on.</t>
+
+          <t>In practice, this means that the client will maintain
+          independent per-IA state machines per each selected server.</t>
 
           <t>If the client needs to select an alternate server in the case
           that a chosen server does not respond, the client chooses the next
