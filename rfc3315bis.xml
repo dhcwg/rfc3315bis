@@ -3052,9 +3052,10 @@
           has been added. In particular, the server specifies the IA option in
           the Option Request option if the server wants the client to obtain
           new address information. If the server identifies the IA option in
-          the Option Request option, the server MUST include an IA option that
-          contains no other sub-options to identify each IA that is to be
-          reconfigured on the client.</t>
+          the Option Request option, the server MUST include an IA option
+          to identify each IA that is to be reconfigured on the client.
+          The IA options included by the server MUST not contain any
+          options.</t>
 
           <t>Because of the risk of denial of service attacks against DHCP
           clients, the use of a security mechanism is mandated in Reconfigure
@@ -5716,8 +5717,11 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Added DUID-UUID and reference to RFC6355. Ticket 54.</t>
 
-          <t>Specified a minimum length for the DUID in section 9.1. DUID Contents.
+          <t>Specified a minimum length for the DUID in section "9.1. DUID Contents".
           Ticket 39.</t>
+
+          <t>Removed the use of term "sub-options" from section "19.1.1. Creation and
+          Transmission of Reconfigure Messages". Ticket 40.</t>
 
           <t>...</t>
         </list>
