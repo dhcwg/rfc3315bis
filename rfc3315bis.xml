@@ -3826,7 +3826,11 @@
             the message as specified in <xref target='RFC3315-21.4.2'/>. If the message fails
             to pass the validation test or the server does not know the key
             identified by the 'key ID' field, the server MUST discard the
-            message and MAY choose to log the validation failure.</t>
+            message and MAY choose to log the validation failure. If the server 
+            receives a client message without an authentication option while the 
+            server has previously sent authentication information in the same session, 
+            it MUST discard the message and MAY choose to log the validation failure, because 
+            the client violates the definition in <xref target='RFC3315-21.4.4.3'/>.</t>
 
             <t>If the message passes the validation test, the server responds
             to the specific message as described in <xref target='RFC3315-18.2'/>. The server
