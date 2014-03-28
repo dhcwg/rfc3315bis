@@ -3528,7 +3528,7 @@
         replay detection used in the Replay Detection field.</t>
 
         <t>If the RDM field contains 0x00, the replay detection field MUST be
-        set to the value of a monotonically increasing counter. Using a
+        set to the value of a strictly monotonically increasing counter. Using a
         counter value, such as the current time of day (for example, an
         NTP-format timestamp <xref target="RFC1305"/>), can reduce the danger
         of replay attacks. This method MUST be supported by all protocols.</t>
