@@ -2847,7 +2847,7 @@
 
         <!-- ends: "18.2.3 from line 2554-->
 
-        <section title="Receipt of Rebind Messages">
+        <section anchor='RFC3315-18.2.4' title="Receipt of Rebind Messages">
           <!-- 18.2.4, line 2594-->
 
           <t>When the server receives a Rebind message that contains an IA
@@ -3760,7 +3760,7 @@
 
           <!-- ends: "21.4.4.2 from line 3342-->
 
-          <section title="Sending Request, Confirm, Renew, Rebind, Decline or Release Messages">
+          <section anchor='RFC3315-21.4.4.3' title="Sending Request, Confirm, Renew, Rebind, Decline or Release Messages">
             <!-- 21.4.4.3, line 3374-->
 
             <t>If the client authenticated the Advertise message through which
