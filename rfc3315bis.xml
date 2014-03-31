@@ -3659,8 +3659,9 @@
 
           <t>To validate an incoming message, the receiver first checks that
           the value in the replay detection field is acceptable according to
-          the replay detection method specified by the RDM field. Next, the
-          receiver computes the MAC as described in <xref target="RFC2104"/>.
+          the replay detection method specified by the RDM field. If no replay
+          is detected, then the receiver computes the MAC as described in
+          <xref target="RFC2104"/>.
           The entire DHCP message (setting the MAC field of the authentication
           option to 0) is used as input to the HMAC-MD5 computation function.
           If the MAC computed by the receiver does not match the MAC contained
@@ -5754,6 +5755,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Added text to section 22.6 "IA Address Option" about the usage of
           unspecified address to express the client hints for Preferred and Valid
           lifetimes. Ticket 45.</t>
+
+          <t>Updated text in 21.4.2 of RFC3315 ("Message Validation") as suggested in
+          section 3.1 of draft-ietf-dhc-dhcpv6-clarify-auth-01. Ticket 87.</t> 
 
           <t>...</t>
         </list>
