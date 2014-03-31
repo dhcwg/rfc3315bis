@@ -4422,7 +4422,12 @@
         <t>In a message sent by a client to a server, values in the preferred
         and valid lifetime fields indicate the client's preference for those
         parameters. The client may send 0 if it has no preference for the
-        preferred and valid lifetimes. In a message sent by a server to a
+        preferred and valid lifetimes. If a client wishes to express
+        its lifetimes preferences and does not have the knowledge
+        to populate the IPv6 address field, it can use unspecified address (::).
+        It is up to a server to honor or ignore these preferences.</t>
+
+        <t>In a message sent by a server to a
         client, the client MUST use the values in the preferred and valid
         lifetime fields for the preferred and valid lifetimes. The values in
         the preferred and valid lifetimes are the number of seconds remaining
@@ -5745,6 +5750,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Removed the use of term "sub-options" from section "19.1.1. Creation and
           Transmission of Reconfigure Messages". Ticket 40.</t>
+
+          <t>Added text to section 22.6 "IA Address Option" about the usage of
+          unspecified address to express the client hints for Preferred and Valid
+          lifetimes. Ticket 45.</t>
 
           <t>...</t>
         </list>
