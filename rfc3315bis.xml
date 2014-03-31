@@ -4444,7 +4444,8 @@
         or an IA_TA option.</t>
 
         <t>The status of any operations involving this IA Address is indicated
-        in a Status Code option in the IAaddr-options field.</t>
+        in a Status Code option in the IAaddr-options field, as specified
+        in section <xref target='RFC3315-22.13'/>.</t>
       </section>
 
       <!-- ends: "22.6 from line 3840-->
@@ -4760,7 +4761,7 @@
 
       <!-- ends: "22.12 from line 4089-->
 
-      <section title="Status Code Option">
+      <section anchor='RFC3315-22.13' title="Status Code Option">
         <!-- 22.13, line 4134-->
 
         <t>This option returns a status indication related to the DHCP message
