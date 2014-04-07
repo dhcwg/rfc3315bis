@@ -667,7 +667,7 @@
 	  <c>Initial Solicit timeout</c>
 
 	  <c>SOL_MAX_RT</c>
-	  <c>120 secs</c>
+	  <c>3600 secs</c>
 	  <c>Max Solicit timeout value</c>
 
 	  <c>REQ_TIMEOUT</c>
@@ -723,7 +723,7 @@
 	  <c>Initial Information-request timeout</c>
 
 	  <c>INF_MAX_RT</c>
-	  <c>120 secs</c>
+	  <c>3600 secs</c>
 	  <c>Max Information-request timeout value</c>
 
 	  <c>REL_TIMEOUT</c>
@@ -1453,6 +1453,11 @@
 
       <t>If both MRC and MRD are zero, the client continues to transmit the
       message until it receives a response.</t>
+
+      <!-- New text from section 6 of RFC7083 -->
+      <t>A client is not expected to listen for a response during the entire
+      period between transmission of Solicit or Information-request
+      messages.</t>
     </section>
 
     <!-- ends: "14 from line 1258-->
@@ -1912,10 +1917,13 @@
         <section  anchor='RFC3315-17.1.3' title="Receipt of Advertise Messages">
           <!-- 17.1.3, line 1750-->
 
-          <t>The client MUST ignore any Advertise message that includes a
-          Status Code option containing the value NoAddrsAvail, with the
-          exception that the client MAY display the associated status message
-          to the user.</t>
+          <!-- The following paragraph has been updated with the changes from
+          section 6 of RFC7083 -->
+          <t>The client MUST ignore any Advertise message that includes a Status
+          Code option containing the value NoAddrsAvail, with the exception
+          that the client MUST process an included SOL_MAX_RT option, MUST
+          process an included INF_MAX_RT option, and MAY display the
+          associated status message to the user.</t>
 
           <t>Upon receipt of one or more valid Advertise messages, the client
           selects one or more Advertise messages based upon the following
@@ -2059,14 +2067,17 @@
           addresses as hints about the addresses the client would like to
           receive.</t>
 
+          <!-- This paragraph has been updated with the changes from section
+          6 of RFC7083 -->
           <t>If the server will not assign any addresses to any IA in a
           subsequent Request from the client, the server MUST send an
           Advertise message to the client that includes the IA containing a
           Status Code option with status code NoAddrsAvail and a status message
           for the user, a Server Identifier option with the server's DUID,
-          and a Client Identifier option with the client's DUID. The server
-          SHOULD include other stateful IA options (like IA_PD) and other
-          configuration options in the Advertise message.</t>
+          a Client Identifier option with the client's DUID, and (optionally)
+          SOL_MAX_RT and/or INF_MAX_RT options. The server SHOULD include
+          other stateful IA options (like IA_PD) and other configuration
+          options in the Advertise message.</t>
 
           <t>If the Solicit message was received directly by the server, the
           server unicasts the Advertise message directly to the client using
@@ -5280,6 +5291,143 @@
       </section>
 
       <!-- ends: "22.20 from line 4468-->
+
+      <!-- Merging section 4. from RFC7083 (SOL_MAX_RT option) -->
+      <section anchor='RFC3315-22.21' title="SOL_MAX_RT Option">
+        <t>A DHCPv6 server sends the SOL_MAX_RT option to a client to override
+        the default value of SOL_MAX_RT.  The value of SOL_MAX_RT in the
+        option replaces the default value defined in <xref target='RFC3315-5.5'/>.
+        One use for the SOL_MAX_RT option is to set a longer value for
+        SOL_MAX_RT, which reduces the Solicit traffic from a client that has
+        not received a response to its Solicit messages. </t>
+
+        <t>The format of the SOL_MAX_RT option is:</t>
+
+        <figure align="center" anchor="FigOption82"
+                title="SOL_MAX_RT Option Format">
+          <preamble/>
+
+          <artwork align="left">
+            <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          option-code          |         option-len            |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                       SOL_MAX_RT value                        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
+
+        <t><list hangIndent="24" style="hanging">
+
+        <t hangText="   option-code"> OPTION_SOL_MAX_RT (82).</t>
+
+        <t hangText="   option-len"> 4.</t>
+
+        <t hangText="   SOL_MAX_RT value"> Overriding value for SOL_MAX_RT
+        in seconds; MUST be in range: 60 &lt;= "value" &lt;= 86400 (1 day).</t>
+
+        </list></t>
+
+        <!-- The following paragraphs have been merged from section 7 and 8
+             of RFC7083 -->
+        <t>A DHCPv6 client MUST include the SOL_MAX_RT option code in any Option
+        Request option (see <xref target='RFC3315-22.7'/>) it sends.</t>
+
+        <t>The DHCPv6 server MAY include the SOL_MAX_RT option in any response
+        it sends to a client that has included the SOL_MAX_RT option code in
+        an Option Request option.  The SOL_MAX_RT option is sent in the main
+        body of the message to client, not as an encapsulated option in,
+        e.g., an IA_NA, IA_TA, or IA_PD option.</t>
+
+        <t>A DHCPv6 client MUST silently ignore any SOL_MAX_RT option values
+        that are less than 60 or more than 86400.</t>
+
+        <t>If a DHCPv6 client receives a message containing a SOL_MAX_RT option
+        that has a valid value for SOL_MAX_RT, the client MUST set its
+        internal SOL_MAX_RT parameter to the value contained in the
+        SOL_MAX_RT option.  This value of SOL_MAX_RT is then used by the
+        retransmission mechanism defined in <xref target='RFC3315-14'/>
+        and <xref target='RFC3315-17.1.2'/>.</t>
+
+        <t>Updated SOL_MAX_RT value applies only to the network interface on
+        which the client received SOL_MAX_RT option.</t>
+
+      </section>
+
+      <!-- ends: merged section 4. from RFC7083 -->
+
+      <section anchor='RFC3315-22.22' title="INF_MAX_RT Option">
+        <t>A DHCPv6 server sends the INF_MAX_RT option to a client to override
+        the default value of INF_MAX_RT.  The value of INF_MAX_RT in the
+        option replaces the default value defined in <xref target='RFC3315-5.5'/>.
+        One use for the INF_MAX_RT option is to set a longer value for INF_MAX_RT,
+        which reduces the Information-request traffic from a client that has not
+        received a response to its Information-request messages.</t>
+
+        <t>The format of the INF_MAX_RT option is:</t>
+
+        <figure align="center" anchor="FigOption83"
+                title="INF_MAX_RT Option Format">
+          <preamble/>
+
+          <artwork align="left">
+            <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          option-code          |         option-len            |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                       INF_MAX_RT value                        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
+
+        <t><list hangIndent="24" style="hanging">
+
+        <t hangText="   option-code"> OPTION_INF_MAX_RT (83).</t>
+
+        <t hangText="   option-len"> 4.</t>
+
+        <t hangText="   SOL_MAX_RT value"> Overriding value for INF_MAX_RT
+        in seconds; MUST be in range: 60 &lt;= "value" &lt;= 86400 (1 day).</t>
+
+        </list></t>
+
+        <!-- The following paragraphs have been merged from section 7 of RFC7083 -->
+        <t>A DHCPv6 client MUST include the INF_MAX_RT option code in any Option
+        Request option (see <xref target='RFC3315-22.7'/>) it sends.</t>
+
+        <t>The DHCPv6 server MAY include the INF_MAX_RT option in any response
+        it sends to a client that has included the INF_MAX_RT option code in
+        an Option Request option.  The INF_MAX_RT option is sent in the main
+        body of the message to client, not as an encapsulated option in,
+        e.g., an IA_NA, IA_TA, or IA_PD option.</t>
+
+        <t>A DHCPv6 client MUST silently ignore any INF_MAX_RT option values
+        that are less than 60 or more than 86400.</t>
+
+        <t>If a DHCPv6 client receives a message containing an INF_MAX_RT option
+        that has a valid value for INF_MAX_RT, the client MUST set its
+        internal INF_MAX_RT parameter to the value contained in the
+        INF_MAX_RT option. This value of INF_MAX_RT is then used by the
+        retransmission mechanism defined in <xref target='RFC3315-14'/>
+        and <xref target='RFC3315-18.1.5'/>.</t>
+
+        <t>Updated INF_MAX_RT value applies only to the network interface on
+        which the client received INF_MAX_RT option.</t>
+
+      </section>
+
+      <!-- ends: merged section 5. from RFC7083 -->
+
     </section>
 
     <!-- ends: "22 from line 3547-->
@@ -5307,6 +5455,15 @@
       or NTP. The malicious server may also mount a denial of service attack
       through misconfiguration of the client that causes all network
       communication from the client to fail.</t>
+
+      <!-- Merged from the section 10 of RFC7083. -->
+      <t>A malicious DHCP server might cause a client to set its SOL_MAX_RT
+      and INF_MAX_RT parameters to an unreasonably high value with the
+      SOL_MAX_RT and INF_MAX_RT options, which may cause an undue delay in a
+      client completing its DHCPv6 protocol transaction in the case no other
+      valid response is received. Assuming the client also receives a response
+      from a valid DHCPv6 server, large values for SOL_MAX_RT and INF_MAX_RT
+      will not have any effect.</t>
 
       <t>There is another threat to DHCP clients from mistakenly or
       accidentally configured DHCP servers that answer DHCP client requests
@@ -5528,6 +5685,11 @@
             <t hangText="   OPTION_RECONF_MSG">19</t>
 
             <t hangText="   OPTION_RECONF_ACCEPT">20</t>
+
+            <!-- Options incorporated from RFC7083 -->
+            <t hangText="   OPTION_SOL_MAX_RT">82</t>
+
+            <t hangText="   OPTION_INF_MAX_RT">83</t>
         </list></t>
       </section>
 
@@ -5758,6 +5920,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Updated text in 21.4.2 of RFC3315 ("Message Validation") as suggested in
           section 3.1 of draft-ietf-dhc-dhcpv6-clarify-auth-01. Ticket 87.</t> 
+
+          <t>Merged RFC7083, "Modification to Default Values of SOL_MAX_RT and
+          INF_MAX_RT", into this document.</t>
 
           <t>...</t>
         </list>
