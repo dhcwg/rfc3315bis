@@ -1917,13 +1917,18 @@
         <section  anchor='RFC3315-17.1.3' title="Receipt of Advertise Messages">
           <!-- 17.1.3, line 1750-->
 
-          <!-- The following paragraph has been updated with the changes from
-          section 6 of RFC7083 -->
-          <t>The client MUST ignore any Advertise message that includes a Status
-          Code option containing the value NoAddrsAvail, with the exception
-          that the client MUST process an included SOL_MAX_RT option, MUST
-          process an included INF_MAX_RT option, and MAY display the
-          associated status message to the user.</t>
+          <!-- The new paragraph to introduce the requirement stated in first
+               paragraph of section 6. of RFC7083. -->
+          <t>The client MUST process SOL_MAX_RT and INF_MAX_RT options in an
+          Advertise message, even if the Status Code option indicates a failure
+          and Advertise message will be discarded by the client.</t>
+
+          <!-- todo: Update this paragraph with NoPrefixAvail status code when
+               RFC3633 is merged -->
+          <t>The client MUST ignore any IAs in an Advertise message that include
+          a Status Code option containing the value NoAddrsAvail, with the
+          exception that the client MAY display the associated status message to the
+          user.</t>
 
           <t>Upon receipt of one or more valid Advertise messages, the client
           selects one or more Advertise messages based upon the following
