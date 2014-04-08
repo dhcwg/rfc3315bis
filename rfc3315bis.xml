@@ -2074,16 +2074,19 @@
           receive.</t>
 
           <!-- This paragraph has been updated with the changes from section
-          6 of RFC7083 -->
-          <t>If the server will not assign any addresses to any IA in a
+               6 of RFC7083 -->
+          <!-- Also, partially applied RFC3315 errata 2472, to include other IA
+               options if NoAddrsAvail status code is sent. Do not apply the part
+               of errata that mandates sending NoAddrsAvail encapsulated in IA -->
+          <t>If the server will not assign any addresses to any IAs in a
           subsequent Request from the client, the server MUST send an
-          Advertise message to the client that includes the IA containing a
-          Status Code option with status code NoAddrsAvail and a status message
-          for the user, a Server Identifier option with the server's DUID,
-          a Client Identifier option with the client's DUID, and (optionally)
-          SOL_MAX_RT and/or INF_MAX_RT options. The server SHOULD include
-          other stateful IA options (like IA_PD) and other configuration
-          options in the Advertise message.</t>
+          Advertise message to the client that includes only a Status Code option
+          with code NoAddrsAvail and a status message for the user, a Server
+          Identifier option with the server's DUID, a Client Identifier option
+          with the client's DUID, and (optionally) SOL_MAX_RT and/or INF_MAX_RT
+          options. The server SHOULD include other stateful IA options
+          (like IA_PD) and other configuration options in the Advertise
+          message.</t>
 
           <t>If the Solicit message was received directly by the server, the
           server unicasts the Advertise message directly to the client using
@@ -5905,8 +5908,11 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <t>
         <list style="numbers">
 
-          <t>Incorporated RFC3315 erratas (ids: 294, 2472, 1373, 2928, 1815, 3577,
+          <t>Incorporated RFC3315 erratas (ids: 294, 1373, 2928, 1815, 3577,
           2509, 295)</t>
+
+          <t>Partially incorporated RFC3315 errata id 2472 (place other IA options
+          if NoAddrsAvail is sent in Advertise)</t>
           
           <t>Clarified section 21.4.1 of RFC3315 by defining length of "key ID" field
           and specifying that 'DHCP realm' is Domain Name encoded as per section 8 of RFC3315.
