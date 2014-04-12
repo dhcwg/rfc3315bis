@@ -3498,7 +3498,7 @@
         relay agents to which messages will be returned. The selectors for the
         relay agents and servers will be the pairs of addresses defining relay
         agents and servers that exchange DHCP messages on the DHCPv6 UDP ports
-        546 and 547.</t>
+        547 and 547.</t>
 
         <t hangText="   Mode"> Relay agents and servers use transport mode and ESP. The
         information in DHCP messages is not generally considered confidential,
