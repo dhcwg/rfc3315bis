@@ -3481,8 +3481,8 @@
         agents must have established independent, pairwise trust
         relationships. That is, if messages from client C will be relayed by
         relay agent A to relay agent B and then to the server, relay agents A
-        and B must be configured to use IPSec for the messages they exchange,
-        and relay agent B and the server must be configured to use IPSec for
+        and B must be configured to use IPsec for the messages they exchange,
+        and relay agent B and the server must be configured to use IPsec for
         the messages they exchange.</t>
 
         <t>Relay agents and servers that support secure relay agent to server
@@ -5543,13 +5543,13 @@
       the client.</t>
 
       <t>Communication between a server and a relay agent, and communication
-      between relay agents, can be secured through the use of IPSec, as
+      between relay agents, can be secured through the use of IPsec, as
       described in <xref target='RFC3315-21.1'/>. The use of manual configuration and
       installation of static keys are acceptable in this instance because
       relay agents and the server will belong to the same administrative
       domain and the relay agents will require other specific configuration
       (for example, configuration of the DHCP server address) as well as the
-      IPSec configuration.</t>
+      IPsec configuration.</t>
     </section>
 
     <!-- ends: "23 from line 4492-->
