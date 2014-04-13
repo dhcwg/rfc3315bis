@@ -3384,7 +3384,7 @@
 
         <t>The relay agent extracts the message from the Relay Message option
         and relays it to the address contained in the peer-address field of
-        the Relay-reply message.</t>
+        the Relay-reply message. Relay agents MUST NOT modify the message.</t>
 
         <t>If the Relay-reply message includes an Interface-id option, the
         relay agent relays the message from the server to the client on the
@@ -3497,8 +3497,7 @@
         securing DHCP messages must also be configured with a list of the
         relay agents to which messages will be returned. The selectors for the
         relay agents and servers will be the pairs of addresses defining relay
-        agents and servers that exchange DHCP messages on the DHCPv6 UDP ports
-        547 and 547.</t>
+        agents and servers that exchange DHCP messages on DHCPv6 UDP port 547.</t>
 
         <t hangText="   Mode"> Relay agents and servers use transport mode and ESP. The
         information in DHCP messages is not generally considered confidential,
@@ -5937,6 +5936,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           INF_MAX_RT", into this document.</t>
 
           <t>Incorporated RFC3315 errata (id 2471), into section 17.1.3. Ticket 25.</t>
+          
+          <t>Added text that relay agents MUST NOT modify the relayed message to section
+          20.1.2 Ticket 57.</t>
 
           <t>...</t>
         </list>
