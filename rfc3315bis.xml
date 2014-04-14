@@ -5302,7 +5302,7 @@
 
       <!-- Merging section 4. from RFC7083 (SOL_MAX_RT option) -->
       <section anchor='RFC3315-22.21' title="SOL_MAX_RT Option">
-        <t>A DHCPv6 server sends the SOL_MAX_RT option to a client to override
+        <t>A DHCP server sends the SOL_MAX_RT option to a client to override
         the default value of SOL_MAX_RT.  The value of SOL_MAX_RT in the
         option replaces the default value defined in <xref target='RFC3315-5.5'/>.
         One use for the SOL_MAX_RT option is to set a longer value for
@@ -5343,19 +5343,19 @@
 
         <!-- The following paragraphs have been merged from section 7 and 8
              of RFC7083 -->
-        <t>A DHCPv6 client MUST include the SOL_MAX_RT option code in any Option
+        <t>A DHCP client MUST include the SOL_MAX_RT option code in any Option
         Request option (see <xref target='RFC3315-22.7'/>) it sends.</t>
 
-        <t>The DHCPv6 server MAY include the SOL_MAX_RT option in any response
+        <t>The DHCP server MAY include the SOL_MAX_RT option in any response
         it sends to a client that has included the SOL_MAX_RT option code in
         an Option Request option.  The SOL_MAX_RT option is sent in the main
         body of the message to client, not as an encapsulated option in,
         e.g., an IA_NA, IA_TA, or IA_PD option.</t>
 
-        <t>A DHCPv6 client MUST silently ignore any SOL_MAX_RT option values
+        <t>A DHCP client MUST silently ignore any SOL_MAX_RT option values
         that are less than 60 or more than 86400.</t>
 
-        <t>If a DHCPv6 client receives a message containing a SOL_MAX_RT option
+        <t>If a DHCP client receives a message containing a SOL_MAX_RT option
         that has a valid value for SOL_MAX_RT, the client MUST set its
         internal SOL_MAX_RT parameter to the value contained in the
         SOL_MAX_RT option.  This value of SOL_MAX_RT is then used by the
@@ -5370,7 +5370,7 @@
       <!-- ends: merged section 4. from RFC7083 -->
 
       <section anchor='RFC3315-22.22' title="INF_MAX_RT Option">
-        <t>A DHCPv6 server sends the INF_MAX_RT option to a client to override
+        <t>A DHCP server sends the INF_MAX_RT option to a client to override
         the default value of INF_MAX_RT.  The value of INF_MAX_RT in the
         option replaces the default value defined in <xref target='RFC3315-5.5'/>.
         One use for the INF_MAX_RT option is to set a longer value for INF_MAX_RT,
@@ -5410,19 +5410,19 @@
         </list></t>
 
         <!-- The following paragraphs have been merged from section 7 of RFC7083 -->
-        <t>A DHCPv6 client MUST include the INF_MAX_RT option code in any Option
+        <t>A DHCP client MUST include the INF_MAX_RT option code in any Option
         Request option (see <xref target='RFC3315-22.7'/>) it sends.</t>
 
-        <t>The DHCPv6 server MAY include the INF_MAX_RT option in any response
+        <t>The DHCP server MAY include the INF_MAX_RT option in any response
         it sends to a client that has included the INF_MAX_RT option code in
         an Option Request option.  The INF_MAX_RT option is sent in the main
         body of the message to client, not as an encapsulated option in,
         e.g., an IA_NA, IA_TA, or IA_PD option.</t>
 
-        <t>A DHCPv6 client MUST silently ignore any INF_MAX_RT option values
+        <t>A DHCP client MUST silently ignore any INF_MAX_RT option values
         that are less than 60 or more than 86400.</t>
 
-        <t>If a DHCPv6 client receives a message containing an INF_MAX_RT option
+        <t>If a DHCP client receives a message containing an INF_MAX_RT option
         that has a valid value for INF_MAX_RT, the client MUST set its
         internal INF_MAX_RT parameter to the value contained in the
         INF_MAX_RT option. This value of INF_MAX_RT is then used by the
@@ -5468,9 +5468,9 @@
       <t>A malicious DHCP server might cause a client to set its SOL_MAX_RT
       and INF_MAX_RT parameters to an unreasonably high value with the
       SOL_MAX_RT and INF_MAX_RT options, which may cause an undue delay in a
-      client completing its DHCPv6 protocol transaction in the case no other
+      client completing its DHCP protocol transaction in the case no other
       valid response is received. Assuming the client also receives a response
-      from a valid DHCPv6 server, large values for SOL_MAX_RT and INF_MAX_RT
+      from a valid DHCP server, large values for SOL_MAX_RT and INF_MAX_RT
       will not have any effect.</t>
 
       <t>There is another threat to DHCP clients from mistakenly or
