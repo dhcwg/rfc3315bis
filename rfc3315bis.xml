@@ -5151,6 +5151,38 @@
         appear in a DHCP message. Each instance of the option is interpreted
         according to the option codes defined by the vendor identified by the
         Enterprise Number in that option.</t>
+        
+        <t>A client that is interested in receiving a Vendor-specific Information Option:
+        </t>
+        
+        <t><list hangIndent="3" style="hanging">
+
+        <t hangText="-"> MUST specify the Vendor-specific Information Option in an 
+        Option Request Option.</t>
+        
+        <t hangText="-"> MAY specify an associated Vendor Class Option.</t>	
+
+        <t hangText="-"> MAY specify the Vendor-specific Information Option with any 
+        data.</t>	
+
+        </list></t>
+
+        <t>Severs only return the Vendor-specific Information Options if specified in 
+        Option Request Options from clients and:</t>
+
+        <t><list hangIndent="3" style="hanging">
+        
+        <t hangText="-"> MAY use the Enterprise Numbers in the associated Vendor Class 
+        Options to restrict the set of Enterprise Numbers in the Vendor-specific 
+        Information Options returned.</t>	
+
+        <t hangText="-"> MAY return all configured Vendor-specific Information Options.</t>	
+
+        <t hangText="-"> MAY use other information in the packet or in its configuration
+        to determine which set of Enterprise Numbers in the Vendor-specific Information 
+        Options to return.</t>	
+
+        </list> </t>
       </section>
 
       <!-- ends: "22.17 from line 4325-->
