@@ -3810,10 +3810,8 @@
 
             <t>If the client authenticated the Advertise it accepted, the
             client MUST validate the associated Reply message from the server.
-            The client MUST discard the Reply if the message fails to pass the
-            validation test and MAY log the validation failure. If the Reply
-            fails to pass the validation test, the client MUST restart the
-            DHCP configuration process by sending a Solicit message.</t>
+            The client MUST ignore and discard the Reply if the message fails to pass the
+            validation test and MAY log the validation failure.</t>
 
             <t>If the client accepted an Advertise message that did not
             include authentication information or did not pass the validation
@@ -5970,7 +5968,11 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Incorporated RFC3315 errata (id 2471), into section 17.1.3. Ticket 25.</t>
           
           <t>Added text that relay agents MUST NOT modify the relayed message to section
-          20.1.2 Ticket 57.</t>
+          20.1.2. Ticket 57.</t>
+          
+          <t>Modified the text in section 21.4.4.5, Receiving Reply Messages, to remove
+          special treatment of a Reply validation failure (client ignores message).
+          Ticket 89.</t>
 
           <t>...</t>
         </list>
