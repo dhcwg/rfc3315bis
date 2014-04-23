@@ -24,6 +24,7 @@
 <!ENTITY RFC3633 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3633.xml">
 <!ENTITY RFC3646 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3646.xml">
 <!ENTITY RFC4075 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4075.xml">
+<!ENTITY RFC6355 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6355.xml">
 ]>
 <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
 <?rfc strict="yes" ?>
@@ -650,6 +651,9 @@
         provide additional information about the specific cause of the failure
         of a message. The specific status codes are defined in
         <xref target='RFC3315-24.4'/>.</t>
+
+	<t>If the Status Code option does not appear in a message in which
+	the option could appear, the status of the message is assumed to be Success.</t>
       </section>
 
       <!-- ends: "5.4 from line 733-->
@@ -675,7 +679,7 @@
 	  <c>Initial Solicit timeout</c>
 
 	  <c>SOL_MAX_RT</c>
-	  <c>120 secs</c>
+	  <c>3600 secs</c>
 	  <c>Max Solicit timeout value</c>
 
 	  <c>REQ_TIMEOUT</c>
@@ -731,7 +735,7 @@
 	  <c>Initial Information-request timeout</c>
 
 	  <c>INF_MAX_RT</c>
-	  <c>120 secs</c>
+	  <c>3600 secs</c>
 	  <c>Max Information-request timeout value</c>
 
 	  <c>REL_TIMEOUT</c>
@@ -940,7 +944,7 @@
 
     <!-- ends: "7 from line 825-->
 
-    <section title="Representation and Use of Domain Names">
+    <section anchor='RFC3315-8' title="Representation and Use of Domain Names">
       <!-- 8, line 912-->
 
       <t>So that domain names may be encoded uniformly, a domain name or a
@@ -988,15 +992,16 @@
 
         <t>A DUID consists of a two-octet type code represented in network
         byte order, followed by a variable number of octets that make up the
-        actual identifier. A DUID can be no more than 128 octets long (not
-        including the type code). The following types are currently
-        defined:</t>
+        actual identifier. The length of the DUID (not including the type code)
+        is at least 1 octet and at most 128 octets. The following types are
+        currently defined:</t>
 
 	<texttable>
 	  <ttcol>Type</ttcol><ttcol>Description</ttcol>
           <c>1</c><c>Link-layer address plus time</c>
           <c>2</c><c>Vendor-assigned unique ID based on Enterprise Number</c>
           <c>3</c><c>Link-layer address</c>
+          <c>4</c><c>Universally Unique IDentifier (UUID) - see <xref target="RFC6355"/></c>
 	</texttable>
 
 <!-- Alternative, but multiple spaces are ignored
@@ -1017,8 +1022,9 @@
         </t>
 -->
 
-        <t>Formats for the variable field of the DUID for each of the above
-        types are shown below.</t>
+        <t>Formats for the variable field of the DUID for the first 3 of the
+        above types are shown below. For the fourth type, refer to
+        <xref target="RFC6355"/>.</t>
       </section>
 
       <!-- ends: "9.1 from line 953-->
@@ -1459,6 +1465,11 @@
 
       <t>If both MRC and MRD are zero, the client continues to transmit the
       message until it receives a response.</t>
+
+      <!-- New text from section 6 of RFC7083 -->
+      <t>A client is not expected to listen for a response during the entire
+      period between transmission of Solicit or Information-request
+      messages.</t>
     </section>
 
     <!-- ends: "14 from line 1258-->
@@ -1948,10 +1959,19 @@
         <section  anchor='RFC3315-17.1.3' title="Receipt of Advertise Messages">
           <!-- 17.1.3, line 1750-->
 
-          <t>The client MUST ignore any Advertise message that includes a
-          Status Code option containing the value NoAddrsAvail, with the
-          exception that the client MAY display the associated status message
-          to the user.</t>
+          <!-- The new paragraph to introduce the requirement stated in first
+               paragraph of section 6. of RFC7083. -->
+          <t>The client MUST process SOL_MAX_RT and INF_MAX_RT options in an
+          Advertise message, even if the message contains a Status Code
+          option indicating a failure, and the Advertise message will be
+          discarded by the client.</t>
+
+          <!-- todo: Update this paragraph with NoPrefixAvail status code when
+               RFC3633 is merged -->
+          <t>The client MUST ignore any IAs in an Advertise message that include
+          a Status Code option containing the value NoAddrsAvail, with the
+          exception that the client MAY display the associated status message to the
+          user.</t>
 
           <t>Upon receipt of one or more valid Advertise messages, the client
           selects one or more Advertise messages based upon the following
@@ -1979,6 +1999,9 @@
           typically store information about each server, such as server
           preference value, addresses advertised, when the advertisement was
           received, and so on.</t>
+
+          <t>In practice, this means that the client will maintain
+          independent per-IA state machines per each selected server.</t>
 
           <t>If the client needs to select an alternate server in the case
           that a chosen server does not respond, the client chooses the next
@@ -2092,14 +2115,20 @@
           addresses as hints about the addresses the client would like to
           receive.</t>
 
-          <t>If the server will not assign any addresses to any IA in a
+          <!-- This paragraph has been updated with the changes from section
+               6 of RFC7083 -->
+          <!-- Also, partially applied RFC3315 errata 2472, to include other IA
+               options if NoAddrsAvail status code is sent. Do not apply the part
+               of errata that mandates sending NoAddrsAvail encapsulated in IA -->
+          <t>If the server will not assign any addresses to any IAs in a
           subsequent Request from the client, the server MUST send an
-          Advertise message to the client that includes the IA containing a
-          Status Code option with status code NoAddrsAvail and a status message
-          for the user, a Server Identifier option with the server's DUID,
-          and a Client Identifier option with the client's DUID. The server
-          SHOULD include other stateful IA options (like IA_PD) and other
-          configuration options in the Advertise message.</t>
+          Advertise message to the client that includes only a Status Code option
+          with code NoAddrsAvail and a status message for the user, a Server
+          Identifier option with the server's DUID, a Client Identifier option
+          with the client's DUID, and (optionally) SOL_MAX_RT and/or INF_MAX_RT
+          options. The server SHOULD include other stateful IA options
+          (like IA_PD) and other configuration options in the Advertise
+          message.</t>
 
           <t>If the Solicit message was received directly by the server, the
           server unicasts the Advertise message directly to the client using
@@ -2953,7 +2982,7 @@
 
         <!-- ends: "18.2.3 from line 2554-->
 
-        <section title="Receipt of Rebind Messages">
+        <section anchor='RFC3315-18.2.4' title="Receipt of Rebind Messages">
           <!-- 18.2.4, line 2594-->
 
           <t>When the server receives a Rebind message that contains an IA
@@ -3252,9 +3281,10 @@
           has been added. In particular, the server specifies the IA option in
           the Option Request option if the server wants the client to obtain
           new address information. If the server identifies the IA option in
-          the Option Request option, the server MUST include an IA option that
-          contains no other sub-options to identify each IA that is to be
-          reconfigured on the client.</t>
+          the Option Request option, the server MUST include an IA option
+          to identify each IA that is to be reconfigured on the client.
+          The IA options included by the server MUST not contain any
+          options.</t>
 
           <t>Because of the risk of denial of service attacks against DHCP
           clients, the use of a security mechanism is mandated in Reconfigure
@@ -3263,7 +3293,7 @@
 
           <t>The server MUST include a Reconfigure Message option (defined in
           <xref target='RFC3315-22.19'/>) to select whether the client responds with a Renew
-          message or an Information-Request message.</t>
+          message, a Rebind message, or an Information-Request message.</t>
 
           <t>The server MUST NOT include any other options in the Reconfigure
           except as specifically allowed in the definition of individual
@@ -3288,8 +3318,8 @@
           progress.</t>
 
           <t>The Reconfigure message causes the client to initiate a
-          Renew/Reply or Information-request/Reply message exchange with the
-          server. The server interprets the receipt of a Renew or
+          Renew/Reply, a Rebind/Reply, or Information-request/Reply message exchange with the
+          server. The server interprets the receipt of a Renew, a Rebind, or
           Information-request message (whichever was specified in the original
           Reconfigure message) from the client as satisfying the Reconfigure
           message request.</t>
@@ -3300,7 +3330,7 @@
         <section title="Time Out and Retransmission of Reconfigure Messages">
           <!-- 19.1.2, line 2824-->
 
-          <t>If the server does not receive a Renew or Information-request
+          <t>If the server does not receive a Renew, Rebind, or Information-request
           message from the client in REC_TIMEOUT milliseconds, the server
           retransmits the Reconfigure message, doubles the REC_TIMEOUT value
           and waits again. The server continues this process until REC_MAX_RC
@@ -3316,17 +3346,23 @@
 
       <!-- ends: "19.1 from line 2762-->
 
-      <section title="Receipt of Renew Messages">
+      <section title="Receipt of Renew or Rebind Messages">
         <!-- 19.2, line 2837-->
 
-        <t>The server generates and sends a Reply message to the client as
+        <t>In response to a Renew message, the server generates
+        and sends a Reply message to the client as
         described in <xref target='RFC3315-18.2.3'/> and
         <xref target='RFC3315-18.2.8'/>, including options for
         configuration parameters.</t>
 
+        <t>In response to a Rebind message, the server generates and sends a
+   	Reply message to the client as described in <xref target='RFC3315-18.2.4'/>
+   	and <xref target='RFC3315-18.2.8'/>, including options
+   	for configuration parameters.</t>
+
         <t>The server MAY include options containing the IAs and new values
         for other configuration parameters in the Reply message, even if those
-        IAs and parameters were not requested in the Renew message from the
+        IAs and parameters were not requested in the Renew or Rebind message from the
         client.</t>
       </section>
 
@@ -3362,7 +3398,7 @@
           <!-- 19.4.1, line 2871-->
 
           <t>Upon receipt of a valid Reconfigure message, the client responds
-          with either a Renew message or an Information-request message as
+          with either a Renew message, a Rebind message, or an Information-request message as
           indicated by the Reconfigure Message option (as defined in
           <xref target='RFC3315-22.19'/>). The client ignores the transaction-id field in the received
           Reconfigure message. While the transaction is in progress, the
@@ -3409,7 +3445,19 @@
           the Renew message in exactly the same manner as outlined in
           <xref target='RFC3315-18.1.3'/>, with the exception that the client copies the Option Request
           option and any IA options from the Reconfigure message into the
-          Renew message.</t>
+          Renew message. The client MUST include a Server Identifier
+          option in the Renew message, identifying the server with which
+          the client most recently communicated.</t>
+
+          <t>When responding to a Reconfigure, the client creates and sends the
+   	  Rebind message in exactly the same manner as outlined in
+   	  <xref target='RFC3315-18.1.4'/>, with the exception that the client copies the
+   	  Option Request option and any IA options from the Reconfigure message
+   	  into the Rebind message.</t>
+
+   	  <t>If a client is currently sending Rebind messages, as described in
+   	  <xref target='RFC3315-18.1.3'/>, the client ignores any received
+   	  Reconfigure messages.</t>
         </section>
 
         <!-- ends: "19.4.2 from line 2913-->
@@ -3432,9 +3480,9 @@
           <t>Messages</t>
 
           <t>The client uses the same variables and retransmission algorithm
-          as it does with Renew or Information-request messages generated as
+          as it does with Renew, Rebind, or Information-request messages generated as
           part of a client-initiated configuration exchange. See
-          <xref target='RFC3315-18.1.3'/> and <xref target='RFC3315-18.1.5'/>
+          <xref target='RFC3315-18.1.3'/>, <xref target='RFC3315-18.1.4'/>, and <xref target='RFC3315-18.1.5'/>
           for details. If the client does not receive a
           response from the server by the end of the retransmission process,
           the client ignores and discards the Reconfigure message.</t>
@@ -3545,7 +3593,7 @@
 
         <t>The relay agent extracts the message from the Relay Message option
         and relays it to the address contained in the peer-address field of
-        the Relay-reply message.</t>
+        the Relay-reply message. Relay agents MUST NOT modify the message.</t>
 
         <t>If the Relay-reply message includes an Interface-id option, the
         relay agent relays the message from the server to the client on the
@@ -3642,8 +3690,8 @@
         agents must have established independent, pairwise trust
         relationships. That is, if messages from client C will be relayed by
         relay agent A to relay agent B and then to the server, relay agents A
-        and B must be configured to use IPSec for the messages they exchange,
-        and relay agent B and the server must be configured to use IPSec for
+        and B must be configured to use IPsec for the messages they exchange,
+        and relay agent B and the server must be configured to use IPsec for
         the messages they exchange.</t>
 
         <t>Relay agents and servers that support secure relay agent to server
@@ -3658,8 +3706,7 @@
         securing DHCP messages must also be configured with a list of the
         relay agents to which messages will be returned. The selectors for the
         relay agents and servers will be the pairs of addresses defining relay
-        agents and servers that exchange DHCP messages on the DHCPv6 UDP ports
-        546 and 547.</t>
+        agents and servers that exchange DHCP messages on DHCPv6 UDP port 547.</t>
 
         <t hangText="   Mode"> Relay agents and servers use transport mode and ESP. The
         information in DHCP messages is not generally considered confidential,
@@ -3727,7 +3774,7 @@
         replay detection used in the Replay Detection field.</t>
 
         <t>If the RDM field contains 0x00, the replay detection field MUST be
-        set to the value of a monotonically increasing counter. Using a
+        set to the value of a strictly monotonically increasing counter. Using a
         counter value, such as the current time of day (for example, an
         NTP-format timestamp <xref target="RFC1305"/>), can reduce the danger
         of replay attacks. This method MUST be supported by all protocols.</t>
@@ -3780,7 +3827,7 @@
    .                                                               .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                            key ID                             |
+   |                      key ID (4 octets)                        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                                                               |
    |                           HMAC-MD5                            |
@@ -3796,7 +3843,8 @@
           <t><list hangIndent="24" style="hanging">
 
           <t hangText="   DHCP realm"> The DHCP realm that identifies the key used to
-          generate the HMAC-MD5 value.</t>
+          generate the HMAC-MD5 value. This is a domain name encoded as described in
+          <xref target='RFC3315-8'/>.</t>
 
           <t hangText="   key ID"> The key identifier that identified the key used to
           generate the HMAC-MD5 value.</t>
@@ -3839,8 +3887,9 @@
 
           <t>To validate an incoming message, the receiver first checks that
           the value in the replay detection field is acceptable according to
-          the replay detection method specified by the RDM field. Next, the
-          receiver computes the MAC as described in <xref target="RFC2104"/>.
+          the replay detection method specified by the RDM field. If no replay
+          is detected, then the receiver computes the MAC as described in
+          <xref target="RFC2104"/>.
           The entire DHCP message (setting the MAC field of the authentication
           option to 0) is used as input to the HMAC-MD5 computation function.
           If the MAC computed by the receiver does not match the MAC contained
@@ -3897,36 +3946,50 @@
             protocol using the validation test described in
             <xref target='RFC3315-21.4.2'/>.</t>
 
-            <t>Client behavior, if no Advertise messages include
-            authentication information or pass the validation test, is
-            controlled by local policy on the client. According to client
-            policy, the client MAY choose to respond to an Advertise message
-            that has not been authenticated.</t>
+            <t>The Client behavior is defined by local policy, as detailed below. </t>
+            <t>
+            If the client
+            requires that Advertise messages be authenticated, then it MUST
+            ignore Advertise messages that do not include authentication information,
+            or for which the client has no matching key, or that do not pass the validation test.
+            </t>
+            <t>
+            Local policy MAY also prefer authenticated Advertise messages,
+            in which case the client SHOULD attempt to validate all Advertise
+            messages for which the client has a matching key.  Messages for which
+            the client has a key, but which do not pass the validation test MUST be
+            rejected, even if the client would otherwise accept the same
+            message without the Authentication option.  </t>
+            <t> In all cases, messages for which the client does not have a matching key
+            should be treated as if they have no Authentication option.
+            </t>
 
-            <t>The decision to set local policy to accept unauthenticated
-            messages should be made with care. Accepting an unauthenticated
+            <t>When the decision to accept unauthenticated
+            message is made, it should be made with care.  Accepting an unauthenticated
             Advertise message can make the client vulnerable to spoofing and
-            other attacks. If local users are not explicitly informed that the
-            client has accepted an unauthenticated Advertise message, the
-            users may incorrectly assume that the client has received an
-            authenticated address and is not subject to DHCP attacks through
-            unauthenticated messages.</t>
+            other attacks.  Policies and actions which were depending upon
+            Authentication MUST NOT be executed.  Local users are SHOULD be informed that the
+            client has accepted an unauthenticated Advertise message. </t>
 
             <t>A client MUST be configurable to discard unauthenticated
             messages, and SHOULD be configured by default to discard
             unauthenticated messages if the client has been configured with an
-            authentication key or other authentication information. A client
+            authentication key or other authentication information.
+            </t>
+
+            <t> A client
             MAY choose to differentiate between Advertise messages with no
             authentication information and Advertise messages that do not pass
             the validation test; for example, a client might accept the former
             and discard the latter. If a client does accept an unauthenticated
             message, the client SHOULD inform any local users and SHOULD log
             the event.</t>
+
           </section>
 
           <!-- ends: "21.4.4.2 from line 3342-->
 
-          <section title="Sending Request, Confirm, Renew, Rebind, Decline or Release Messages">
+          <section anchor='RFC3315-21.4.4.3' title="Sending Request, Confirm, Renew, Rebind, Decline or Release Messages">
             <!-- 21.4.4.3, line 3374-->
 
             <t>If the client authenticated the Advertise message through which
@@ -3956,10 +4019,8 @@
 
             <t>If the client authenticated the Advertise it accepted, the
             client MUST validate the associated Reply message from the server.
-            The client MUST discard the Reply if the message fails to pass the
-            validation test and MAY log the validation failure. If the Reply
-            fails to pass the validation test, the client MUST restart the
-            DHCP configuration process by sending a Solicit message.</t>
+            The client MUST ignore and discard the Reply if the message fails to pass the
+            validation test and MAY log the validation failure.</t>
 
             <t>If the client accepted an Advertise message that did not
             include authentication information or did not pass the validation
@@ -4010,7 +4071,11 @@
             the message as specified in <xref target='RFC3315-21.4.2'/>. If the message fails
             to pass the validation test or the server does not know the key
             identified by the 'key ID' field, the server MUST discard the
-            message and MAY choose to log the validation failure.</t>
+            message and MAY choose to log the validation failure. If the server
+            receives a client message without an authentication option while the
+            server has previously sent authentication information in the same session,
+            it MUST discard the message and MAY choose to log the validation failure, because
+            the client violates the definition in <xref target='RFC3315-21.4.4.3'/>.</t>
 
             <t>If the message passes the validation test, the server responds
             to the specific message as described in <xref target='RFC3315-18.2'/>. The server
@@ -4584,7 +4649,12 @@
         <t>In a message sent by a client to a server, values in the preferred
         and valid lifetime fields indicate the client's preference for those
         parameters. The client may send 0 if it has no preference for the
-        preferred and valid lifetimes. In a message sent by a server to a
+        preferred and valid lifetimes. If a client wishes to express
+        its lifetimes preferences and does not have the knowledge
+        to populate the IPv6 address field, it can use unspecified address (::).
+        It is up to a server to honor or ignore these preferences.</t>
+
+        <t>In a message sent by a server to a
         client, the client MUST use the values in the preferred and valid
         lifetime fields for the preferred and valid lifetimes. The values in
         the preferred and valid lifetimes are the number of seconds remaining
@@ -4606,7 +4676,8 @@
         or an IA_TA option.</t>
 
         <t>The status of any operations involving this IA Address is indicated
-        in a Status Code option in the IAaddr-options field.</t>
+        in a Status Code option in the IAaddr-options field, as specified
+        in section <xref target='RFC3315-22.13'/>.</t>
       </section>
 
       <!-- ends: "22.6 from line 3840-->
@@ -4922,7 +4993,7 @@
 
       <!-- ends: "22.12 from line 4089-->
 
-      <section title="Status Code Option">
+      <section anchor='RFC3315-22.13' title="Status Code Option">
         <!-- 22.13, line 4134-->
 
         <t>This option returns a status indication related to the DHCP message
@@ -5287,6 +5358,38 @@
         appear in a DHCP message. Each instance of the option is interpreted
         according to the option codes defined by the vendor identified by the
         Enterprise Number in that option.</t>
+
+        <t>A client that is interested in receiving a Vendor-specific Information Option:
+        </t>
+
+        <t><list hangIndent="3" style="hanging">
+
+        <t hangText="-"> MUST specify the Vendor-specific Information Option in an
+        Option Request Option.</t>
+
+        <t hangText="-"> MAY specify an associated Vendor Class Option.</t>
+
+        <t hangText="-"> MAY specify the Vendor-specific Information Option with any
+        data.</t>
+
+        </list></t>
+
+        <t>Severs only return the Vendor-specific Information Options if specified in
+        Option Request Options from clients and:</t>
+
+        <t><list hangIndent="3" style="hanging">
+
+        <t hangText="-"> MAY use the Enterprise Numbers in the associated Vendor Class
+        Options to restrict the set of Enterprise Numbers in the Vendor-specific
+        Information Options returned.</t>
+
+        <t hangText="-"> MAY return all configured Vendor-specific Information Options.</t>
+
+        <t hangText="-"> MAY use other information in the packet or in its configuration
+        to determine which set of Enterprise Numbers in the Vendor-specific Information
+        Options to return.</t>
+
+        </list> </t>
       </section>
 
       <!-- ends: "22.17 from line 4325-->
@@ -5357,8 +5460,8 @@
 
         <t>A server includes a Reconfigure Message option in a Reconfigure
         message to indicate to the client whether the client responds with a
-        Renew message or an Information-request message. The format of this
-        option is:</t>
+        Renew message, a Rebind message, or an Information-request message.
+        The format of this option is:</t>
 
         <figure align="center" anchor="FigOption19"
               title="Reconfigure Message Option Format">
@@ -5385,8 +5488,8 @@
 
         <t hangText="   option-len"> 1.</t>
 
-        <t hangText="   msg-type"> 5 for Renew message, 11 for Information-request
-        message.</t>
+        <t hangText="   msg-type"> 5 for Renew message, 6 for Rebind,
+        11 for Information-request message.</t>
 
         </list></t>
 
@@ -5434,6 +5537,142 @@
         </list></t>
       </section>
       <!-- ends: "22.20 from line 4468-->
+
+      <!-- Merging section 4. from RFC7083 (SOL_MAX_RT option) -->
+      <section anchor='RFC3315-22.21' title="SOL_MAX_RT Option">
+        <t>A DHCP server sends the SOL_MAX_RT option to a client to override
+        the default value of SOL_MAX_RT.  The value of SOL_MAX_RT in the
+        option replaces the default value defined in <xref target='RFC3315-5.5'/>.
+        One use for the SOL_MAX_RT option is to set a longer value for
+        SOL_MAX_RT, which reduces the Solicit traffic from a client that has
+        not received a response to its Solicit messages. </t>
+
+        <t>The format of the SOL_MAX_RT option is:</t>
+
+        <figure align="center" anchor="FigOption82"
+                title="SOL_MAX_RT Option Format">
+          <preamble/>
+
+          <artwork align="left">
+            <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          option-code          |         option-len            |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                       SOL_MAX_RT value                        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
+
+        <t><list hangIndent="24" style="hanging">
+
+        <t hangText="   option-code"> OPTION_SOL_MAX_RT (82).</t>
+
+        <t hangText="   option-len"> 4.</t>
+
+        <t hangText="   SOL_MAX_RT value"> Overriding value for SOL_MAX_RT
+        in seconds; MUST be in range: 60 &lt;= "value" &lt;= 86400 (1 day).</t>
+
+        </list></t>
+
+        <!-- The following paragraphs have been merged from section 7 and 8
+             of RFC7083 -->
+        <t>A DHCP client MUST include the SOL_MAX_RT option code in any Option
+        Request option (see <xref target='RFC3315-22.7'/>) it sends.</t>
+
+        <t>The DHCP server MAY include the SOL_MAX_RT option in any response
+        it sends to a client that has included the SOL_MAX_RT option code in
+        an Option Request option.  The SOL_MAX_RT option is sent in the main
+        body of the message to client, not as an encapsulated option in,
+        e.g., an IA_NA, IA_TA, or IA_PD option.</t>
+
+        <t>A DHCP client MUST silently ignore any SOL_MAX_RT option values
+        that are less than 60 or more than 86400.</t>
+
+        <t>If a DHCP client receives a message containing a SOL_MAX_RT option
+        that has a valid value for SOL_MAX_RT, the client MUST set its
+        internal SOL_MAX_RT parameter to the value contained in the
+        SOL_MAX_RT option.  This value of SOL_MAX_RT is then used by the
+        retransmission mechanism defined in <xref target='RFC3315-14'/>
+        and <xref target='RFC3315-17.1.2'/>.</t>
+
+        <t>Updated SOL_MAX_RT value applies only to the network interface on
+        which the client received SOL_MAX_RT option.</t>
+
+      </section>
+
+      <!-- ends: merged section 4. from RFC7083 -->
+
+      <section anchor='RFC3315-22.22' title="INF_MAX_RT Option">
+        <t>A DHCP server sends the INF_MAX_RT option to a client to override
+        the default value of INF_MAX_RT.  The value of INF_MAX_RT in the
+        option replaces the default value defined in <xref target='RFC3315-5.5'/>.
+        One use for the INF_MAX_RT option is to set a longer value for INF_MAX_RT,
+        which reduces the Information-request traffic from a client that has not
+        received a response to its Information-request messages.</t>
+
+        <t>The format of the INF_MAX_RT option is:</t>
+
+        <figure align="center" anchor="FigOption83"
+                title="INF_MAX_RT Option Format">
+          <preamble/>
+
+          <artwork align="left">
+            <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          option-code          |         option-len            |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                       INF_MAX_RT value                        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
+
+        <t><list hangIndent="24" style="hanging">
+
+        <t hangText="   option-code"> OPTION_INF_MAX_RT (83).</t>
+
+        <t hangText="   option-len"> 4.</t>
+
+        <t hangText="   SOL_MAX_RT value"> Overriding value for INF_MAX_RT
+        in seconds; MUST be in range: 60 &lt;= "value" &lt;= 86400 (1 day).</t>
+
+        </list></t>
+
+        <!-- The following paragraphs have been merged from section 7 of RFC7083 -->
+        <t>A DHCP client MUST include the INF_MAX_RT option code in any Option
+        Request option (see <xref target='RFC3315-22.7'/>) it sends.</t>
+
+        <t>The DHCP server MAY include the INF_MAX_RT option in any response
+        it sends to a client that has included the INF_MAX_RT option code in
+        an Option Request option.  The INF_MAX_RT option is sent in the main
+        body of the message to client, not as an encapsulated option in,
+        e.g., an IA_NA, IA_TA, or IA_PD option.</t>
+
+        <t>A DHCP client MUST silently ignore any INF_MAX_RT option values
+        that are less than 60 or more than 86400.</t>
+
+        <t>If a DHCP client receives a message containing an INF_MAX_RT option
+        that has a valid value for INF_MAX_RT, the client MUST set its
+        internal INF_MAX_RT parameter to the value contained in the
+        INF_MAX_RT option. This value of INF_MAX_RT is then used by the
+        retransmission mechanism defined in <xref target='RFC3315-14'/>
+        and <xref target='RFC3315-18.1.5'/>.</t>
+
+        <t>Updated INF_MAX_RT value applies only to the network interface on
+        which the client received INF_MAX_RT option.</t>
+
+      </section>
+
+      <!-- ends: merged section 5. from RFC7083 -->
 
       <section anchor="IA_PD-option"
                title="Identity Association for Prefix Delegation Option">
@@ -5746,6 +5985,15 @@
       through misconfiguration of the client that causes all network
       communication from the client to fail.</t>
 
+      <!-- Merged from the section 10 of RFC7083. -->
+      <t>A malicious DHCP server might cause a client to set its SOL_MAX_RT
+      and INF_MAX_RT parameters to an unreasonably high value with the
+      SOL_MAX_RT and INF_MAX_RT options, which may cause an undue delay in a
+      client completing its DHCP protocol transaction in the case no other
+      valid response is received. Assuming the client also receives a response
+      from a valid DHCP server, large values for SOL_MAX_RT and INF_MAX_RT
+      will not have any effect.</t>
+
       <t>There is another threat to DHCP clients from mistakenly or
       accidentally configured DHCP servers that answer DHCP client requests
       with unintentionally incorrect configuration parameters.</t>
@@ -5815,13 +6063,13 @@
       the client.</t>
 
       <t>Communication between a server and a relay agent, and communication
-      between relay agents, can be secured through the use of IPSec, as
+      between relay agents, can be secured through the use of IPsec, as
       described in <xref target='RFC3315-21.1'/>. The use of manual configuration and
       installation of static keys are acceptable in this instance because
       relay agents and the server will belong to the same administrative
       domain and the relay agents will require other specific configuration
       (for example, configuration of the DHCP server address) as well as the
-      IPSec configuration.</t>
+      IPsec configuration.</t>
     </section>
 
     <!-- ends: "23 from line 4492-->
@@ -5966,8 +6214,14 @@
             <t hangText="   OPTION_RECONF_MSG">19</t>
 
             <t hangText="   OPTION_RECONF_ACCEPT">20</t>
+
     	    <t hangText="   OPTION_IA_PD">25</t>
 	    <t hangText="   OPTION_IAPREFIX">26</t>
+
+            <!-- Options incorporated from RFC7083 -->
+            <t hangText="   OPTION_SOL_MAX_RT">82</t>
+
+            <t hangText="   OPTION_INF_MAX_RT">83</t>
         </list></t>
       </section>
 
@@ -6186,8 +6440,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
     <references title="Informative References">
       &RFC3315;
       &RFC3633;
-    </references>
+	&RFC6355;
 
+    </references>
 
     <!-- Let's briefly document relevant changes against 3315 here -->
     <section title="Changes since RFC3315">
@@ -6195,8 +6450,43 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <t>
         <list style="numbers">
 
-          <t>Incorporated RFC3315 erratas (ids: 294, 2472, 1373, 2928, 1815, 3577,
+          <t>Incorporated RFC3315 erratas (ids: 294, 1373, 2928, 1815, 3577,
           2509, 295)</t>
+
+          <t>Partially incorporated RFC3315 errata id 2472 (place other IA options
+          if NoAddrsAvail is sent in Advertise)</t>
+
+          <t>Clarified section 21.4.1 of RFC3315 by defining length of "key ID" field
+          and specifying that 'DHCP realm' is Domain Name encoded as per section 8 of RFC3315.
+          Ticket 43.</t>
+
+          <t>Added DUID-UUID and reference to RFC6355. Ticket 54.</t>
+
+          <t>Specified a minimum length for the DUID in section "9.1. DUID Contents".
+          Ticket 39.</t>
+
+          <t>Removed the use of term "sub-options" from section "19.1.1. Creation and
+          Transmission of Reconfigure Messages". Ticket 40.</t>
+
+          <t>Added text to section 22.6 "IA Address Option" about the usage of
+          unspecified address to express the client hints for Preferred and Valid
+          lifetimes. Ticket 45.</t>
+
+          <t>Updated text in 21.4.2 of RFC3315 ("Message Validation") as suggested in
+          section 3.1 of draft-ietf-dhc-dhcpv6-clarify-auth-01. Ticket 87.</t>
+
+          <t>Merged RFC7083, "Modification to Default Values of SOL_MAX_RT and
+          INF_MAX_RT", into this document.</t>
+
+          <t>Incorporated RFC3315 errata (id 2471), into section 17.1.3. Ticket 25.</t>
+
+          <t>Added text that relay agents MUST NOT modify the relayed message to section
+          20.1.2. Ticket 57.</t>
+
+          <t>Modified the text in section 21.4.4.5, Receiving Reply Messages, to remove
+          special treatment of a Reply validation failure (client ignores message).
+          Ticket 89.</t>
+
           <t>...</t>
         </list>
 
