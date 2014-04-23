@@ -6,7 +6,7 @@ Network Working Group                                     A. Yourtchenko
 Internet-Draft                                                   B. Volz
 Obsoletes: 3315,3633 (if approved)                                 Cisco
 Intended status: Standards Track                            M. Siodelski
-Expires: October 15, 2014                                            ISC
+Expires: October 25, 2014                                            ISC
                                                            M. Richardson
                                                                      SSW
                                                                 S. Jiang
@@ -15,7 +15,7 @@ Expires: October 15, 2014                                            ISC
                                                                  Nominum
                                                        T. Mrugalski, Ed.
                                                                      ISC
-                                                          April 13, 2014
+                                                          April 23, 2014
 
 
        Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis
@@ -47,13 +47,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 15, 2014.
+   This Internet-Draft will expire on October 25, 2014.
 
 
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014                [Page 1]
+Yourtchenko, et al.     Expires October 25, 2014                [Page 1]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014                [Page 2]
+Yourtchenko, et al.     Expires October 25, 2014                [Page 2]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -165,7 +165,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014                [Page 3]
+Yourtchenko, et al.     Expires October 25, 2014                [Page 3]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -221,7 +221,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014                [Page 4]
+Yourtchenko, et al.     Expires October 25, 2014                [Page 4]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -258,8 +258,8 @@ Internet-Draft                RFC 3315 bis                    April 2014
      22.15. User Class Option  . . . . . . . . . . . . . . . . . . .  85
      22.16. Vendor Class Option  . . . . . . . . . . . . . . . . . .  87
      22.17. Vendor-specific Information Option . . . . . . . . . . .  88
-     22.18. Interface-Id Option  . . . . . . . . . . . . . . . . . .  89
-     22.19. Reconfigure Message Option . . . . . . . . . . . . . . .  90
+     22.18. Interface-Id Option  . . . . . . . . . . . . . . . . . .  90
+     22.19. Reconfigure Message Option . . . . . . . . . . . . . . .  91
      22.20. Reconfigure Accept Option  . . . . . . . . . . . . . . .  91
      22.21. SOL_MAX_RT Option  . . . . . . . . . . . . . . . . . . .  92
      22.22. INF_MAX_RT Option  . . . . . . . . . . . . . . . . . . .  93
@@ -270,14 +270,14 @@ Internet-Draft                RFC 3315 bis                    April 2014
      24.3.  DHCP Options . . . . . . . . . . . . . . . . . . . . . .  98
      24.4.  Status Codes . . . . . . . . . . . . . . . . . . . . . .  99
      24.5.  DUID . . . . . . . . . . . . . . . . . . . . . . . . . .  99
-   25. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  99
+   25. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . 100
    26. Normative References  . . . . . . . . . . . . . . . . . . . . 100
    Appendix A.  Changes since RFC3315  . . . . . . . . . . . . . . . 102
-   Appendix B.  Changes since RFC3633  . . . . . . . . . . . . . . . 102
+   Appendix B.  Changes since RFC3633  . . . . . . . . . . . . . . . 103
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014                [Page 5]
+Yourtchenko, et al.     Expires October 25, 2014                [Page 5]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -285,7 +285,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
    Appendix C.  Appearance of Options in Message Types . . . . . . . 103
    Appendix D.  Appearance of Options in the Options Field of DHCP
                 Options  . . . . . . . . . . . . . . . . . . . . . . 104
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 104
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 105
 
 1.  Introduction and Overview
 
@@ -333,7 +333,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014                [Page 6]
+Yourtchenko, et al.     Expires October 25, 2014                [Page 6]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -389,7 +389,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014                [Page 7]
+Yourtchenko, et al.     Expires October 25, 2014                [Page 7]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -445,7 +445,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014                [Page 8]
+Yourtchenko, et al.     Expires October 25, 2014                [Page 8]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -501,7 +501,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014                [Page 9]
+Yourtchenko, et al.     Expires October 25, 2014                [Page 9]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -557,7 +557,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 10]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 10]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -613,7 +613,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 11]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 11]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -669,7 +669,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 12]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 12]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -725,7 +725,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 13]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 13]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -781,7 +781,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 14]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 14]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -837,7 +837,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 15]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 15]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -893,7 +893,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 16]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 16]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -949,7 +949,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 17]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 17]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1005,7 +1005,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 18]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 18]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1061,7 +1061,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 19]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 19]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1117,7 +1117,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 20]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 20]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1173,7 +1173,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 21]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 21]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1229,7 +1229,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 22]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 22]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1285,7 +1285,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 23]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 23]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1341,7 +1341,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 24]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 24]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1397,7 +1397,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 25]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 25]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1453,7 +1453,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 26]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 26]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1509,7 +1509,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 27]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 27]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1565,7 +1565,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 28]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 28]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1621,7 +1621,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 29]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 29]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1677,7 +1677,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 30]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 30]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1733,7 +1733,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 31]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 31]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1789,7 +1789,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 32]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 32]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1845,7 +1845,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 33]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 33]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1901,7 +1901,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 34]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 34]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1957,7 +1957,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 35]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 35]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2013,7 +2013,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 36]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 36]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2069,7 +2069,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 37]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 37]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2125,7 +2125,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 38]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 38]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2181,7 +2181,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 39]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 39]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2237,7 +2237,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 40]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 40]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2293,7 +2293,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 41]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 41]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2349,7 +2349,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 42]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 42]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2405,7 +2405,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 43]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 43]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2461,7 +2461,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 44]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 44]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2517,7 +2517,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 45]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 45]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2573,7 +2573,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 46]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 46]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2629,7 +2629,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 47]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 47]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2685,7 +2685,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 48]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 48]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2741,7 +2741,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 49]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 49]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2797,7 +2797,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 50]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 50]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2853,7 +2853,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 51]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 51]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2909,7 +2909,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 52]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 52]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2965,7 +2965,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 53]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 53]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3021,7 +3021,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 54]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 54]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3077,7 +3077,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 55]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 55]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3133,7 +3133,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 56]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 56]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3189,7 +3189,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 57]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 57]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3245,7 +3245,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 58]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 58]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3301,7 +3301,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 59]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 59]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3357,7 +3357,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 60]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 60]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3413,7 +3413,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 61]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 61]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3469,7 +3469,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 62]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 62]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3525,7 +3525,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 63]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 63]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3581,7 +3581,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 64]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 64]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3637,7 +3637,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 65]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 65]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3693,7 +3693,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 66]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 66]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3749,7 +3749,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 67]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 67]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3768,10 +3768,8 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
    If the client authenticated the Advertise it accepted, the client
    MUST validate the associated Reply message from the server.  The
-   client MUST discard the Reply if the message fails to pass the
-   validation test and MAY log the validation failure.  If the Reply
-   fails to pass the validation test, the client MUST restart the DHCP
-   configuration process by sending a Solicit message.
+   client MUST ignore and discard the Reply if the message fails to pass
+   the validation test and MAY log the validation failure.
 
    If the client accepted an Advertise message that did not include
    authentication information or did not pass the validation test, the
@@ -3805,7 +3803,9 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 68]
+
+
+Yourtchenko, et al.     Expires October 25, 2014               [Page 68]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3861,7 +3861,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 69]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 69]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3917,7 +3917,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 70]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 70]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3973,7 +3973,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 71]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 71]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4029,7 +4029,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 72]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 72]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4085,7 +4085,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 73]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 73]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4141,7 +4141,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 74]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 74]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4197,7 +4197,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 75]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 75]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4253,7 +4253,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 76]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 76]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4309,7 +4309,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 77]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 77]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4365,7 +4365,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 78]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 78]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4421,7 +4421,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 79]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 79]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4477,7 +4477,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 80]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 80]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4533,7 +4533,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 81]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 81]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4589,7 +4589,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 82]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 82]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4645,7 +4645,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 83]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 83]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4701,7 +4701,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 84]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 84]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4757,7 +4757,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 85]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 85]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4813,7 +4813,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 86]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 86]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4869,7 +4869,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 87]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 87]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4925,7 +4925,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014               [Page 88]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 88]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4966,6 +4966,36 @@ Internet-Draft                RFC 3315 bis                    April 2014
    according to the option codes defined by the vendor identified by the
    Enterprise Number in that option.
 
+   A client that is interested in receiving a Vendor-specific
+   Information Option:
+
+   -  MUST specify the Vendor-specific Information Option in an Option
+      Request Option.
+
+   -  MAY specify an associated Vendor Class Option.
+
+   -  MAY specify the Vendor-specific Information Option with any data.
+
+   Severs only return the Vendor-specific Information Options if
+   specified in Option Request Options from clients and:
+
+
+
+Yourtchenko, et al.     Expires October 25, 2014               [Page 89]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
+   -  MAY use the Enterprise Numbers in the associated Vendor Class
+      Options to restrict the set of Enterprise Numbers in the Vendor-
+      specific Information Options returned.
+
+   -  MAY return all configured Vendor-specific Information Options.
+
+   -  MAY use other information in the packet or in its configuration to
+      determine which set of Enterprise Numbers in the Vendor-specific
+      Information Options to return.
+
 22.18.  Interface-Id Option
 
    The relay agent MAY send the Interface-id option to identify the
@@ -4975,15 +5005,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
    identified by the option.
 
    The format of the Interface ID option is:
-
-
-
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014               [Page 89]
-
-Internet-Draft                RFC 3315 bis                    April 2014
 
 
        0                   1                   2                   3
@@ -5012,6 +5033,15 @@ Internet-Draft                RFC 3315 bis                    April 2014
    agent in response to the Relay-Forward message.  This option MUST NOT
    appear in any message except a Relay-Forward or Relay-Reply message.
 
+
+
+
+
+Yourtchenko, et al.     Expires October 25, 2014               [Page 90]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
    Servers MAY use the Interface-ID for parameter assignment policies.
    The Interface-ID SHOULD be considered an opaque value, with policies
    based on exact match only; that is, the Interface-ID SHOULD NOT be
@@ -5026,20 +5056,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
    message to indicate to the client whether the client responds with a
    Renew message, a Rebind message, or an Information-request message.
    The format of this option is:
-
-
-
-
-
-
-
-
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014               [Page 90]
-
-Internet-Draft                RFC 3315 bis                    April 2014
 
 
        0                   1                   2                   3
@@ -5075,6 +5091,13 @@ Internet-Draft                RFC 3315 bis                    April 2014
    of the Reconfigure Accept option:
 
 
+
+
+Yourtchenko, et al.     Expires October 25, 2014               [Page 91]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5088,24 +5111,14 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
       option-len           0.
 
-
-
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014               [Page 91]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
-
 22.21.  SOL_MAX_RT Option
 
-   A DHCPv6 server sends the SOL_MAX_RT option to a client to override
-   the default value of SOL_MAX_RT.  The value of SOL_MAX_RT in the
-   option replaces the default value defined in Section 5.5.  One use
-   for the SOL_MAX_RT option is to set a longer value for SOL_MAX_RT,
-   which reduces the Solicit traffic from a client that has not received
-   a response to its Solicit messages.
+   A DHCP server sends the SOL_MAX_RT option to a client to override the
+   default value of SOL_MAX_RT.  The value of SOL_MAX_RT in the option
+   replaces the default value defined in Section 5.5.  One use for the
+   SOL_MAX_RT option is to set a longer value for SOL_MAX_RT, which
+   reduces the Solicit traffic from a client that has not received a
+   response to its Solicit messages.
 
    The format of the SOL_MAX_RT option is:
 
@@ -5129,42 +5142,44 @@ Internet-Draft                RFC 3315 bis                    April 2014
                            MUST be in range: 60 <= "value" <= 86400 (1
                            day).
 
-   A DHCPv6 client MUST include the SOL_MAX_RT option code in any Option
+   A DHCP client MUST include the SOL_MAX_RT option code in any Option
    Request option (see Section 22.7) it sends.
 
-   The DHCPv6 server MAY include the SOL_MAX_RT option in any response
-   it sends to a client that has included the SOL_MAX_RT option code in
-   an Option Request option.  The SOL_MAX_RT option is sent in the main
+
+
+
+
+Yourtchenko, et al.     Expires October 25, 2014               [Page 92]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
+   The DHCP server MAY include the SOL_MAX_RT option in any response it
+   sends to a client that has included the SOL_MAX_RT option code in an
+   Option Request option.  The SOL_MAX_RT option is sent in the main
    body of the message to client, not as an encapsulated option in,
    e.g., an IA_NA, IA_TA, or IA_PD option.
 
-   A DHCPv6 client MUST silently ignore any SOL_MAX_RT option values
-   that are less than 60 or more than 86400.
+   A DHCP client MUST silently ignore any SOL_MAX_RT option values that
+   are less than 60 or more than 86400.
 
-   If a DHCPv6 client receives a message containing a SOL_MAX_RT option
+   If a DHCP client receives a message containing a SOL_MAX_RT option
    that has a valid value for SOL_MAX_RT, the client MUST set its
    internal SOL_MAX_RT parameter to the value contained in the
    SOL_MAX_RT option.  This value of SOL_MAX_RT is then used by the
    retransmission mechanism defined in Section 14 and Section 17.1.2.
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014               [Page 92]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
    Updated SOL_MAX_RT value applies only to the network interface on
    which the client received SOL_MAX_RT option.
 
 22.22.  INF_MAX_RT Option
 
-   A DHCPv6 server sends the INF_MAX_RT option to a client to override
-   the default value of INF_MAX_RT.  The value of INF_MAX_RT in the
-   option replaces the default value defined in Section 5.5.  One use
-   for the INF_MAX_RT option is to set a longer value for INF_MAX_RT,
-   which reduces the Information-request traffic from a client that has
-   not received a response to its Information-request messages.
+   A DHCP server sends the INF_MAX_RT option to a client to override the
+   default value of INF_MAX_RT.  The value of INF_MAX_RT in the option
+   replaces the default value defined in Section 5.5.  One use for the
+   INF_MAX_RT option is to set a longer value for INF_MAX_RT, which
+   reduces the Information-request traffic from a client that has not
+   received a response to its Information-request messages.
 
    The format of the INF_MAX_RT option is:
 
@@ -5188,28 +5203,27 @@ Internet-Draft                RFC 3315 bis                    April 2014
                            MUST be in range: 60 <= "value" <= 86400 (1
                            day).
 
-   A DHCPv6 client MUST include the INF_MAX_RT option code in any Option
-   Request option (see Section 22.7) it sends.
-
-   The DHCPv6 server MAY include the INF_MAX_RT option in any response
-   it sends to a client that has included the INF_MAX_RT option code in
-   an Option Request option.  The INF_MAX_RT option is sent in the main
-   body of the message to client, not as an encapsulated option in,
-   e.g., an IA_NA, IA_TA, or IA_PD option.
-
-   A DHCPv6 client MUST silently ignore any INF_MAX_RT option values
-   that are less than 60 or more than 86400.
-
-   If a DHCPv6 client receives a message containing an INF_MAX_RT option
-   that has a valid value for INF_MAX_RT, the client MUST set its
 
 
-
-Yourtchenko, et al.     Expires October 15, 2014               [Page 93]
+Yourtchenko, et al.     Expires October 25, 2014               [Page 93]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
 
+   A DHCP client MUST include the INF_MAX_RT option code in any Option
+   Request option (see Section 22.7) it sends.
+
+   The DHCP server MAY include the INF_MAX_RT option in any response it
+   sends to a client that has included the INF_MAX_RT option code in an
+   Option Request option.  The INF_MAX_RT option is sent in the main
+   body of the message to client, not as an encapsulated option in,
+   e.g., an IA_NA, IA_TA, or IA_PD option.
+
+   A DHCP client MUST silently ignore any INF_MAX_RT option values that
+   are less than 60 or more than 86400.
+
+   If a DHCP client receives a message containing an INF_MAX_RT option
+   that has a valid value for INF_MAX_RT, the client MUST set its
    internal INF_MAX_RT parameter to the value contained in the
    INF_MAX_RT option.  This value of INF_MAX_RT is then used by the
    retransmission mechanism defined in Section 14 and Section 18.1.5.
@@ -5243,10 +5257,18 @@ Internet-Draft                RFC 3315 bis                    April 2014
    A malicious DHCP server might cause a client to set its SOL_MAX_RT
    and INF_MAX_RT parameters to an unreasonably high value with the
    SOL_MAX_RT and INF_MAX_RT options, which may cause an undue delay in
-   a client completing its DHCPv6 protocol transaction in the case no
+   a client completing its DHCP protocol transaction in the case no
+
+
+
+Yourtchenko, et al.     Expires October 25, 2014               [Page 94]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
    other valid response is received.  Assuming the client also receives
-   a response from a valid DHCPv6 server, large values for SOL_MAX_RT
-   and INF_MAX_RT will not have any effect.
+   a response from a valid DHCP server, large values for SOL_MAX_RT and
+   INF_MAX_RT will not have any effect.
 
    There is another threat to DHCP clients from mistakenly or
    accidentally configured DHCP servers that answer DHCP client requests
@@ -5258,14 +5280,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
    that although a client sends its response (Renew or Information-
    request message) through a relay agent and, therefore, that response
    will only be received by servers to which DHCP messages are relayed,
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014               [Page 94]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
-
    a malicious server could send a Reconfigure message to a client,
    followed (after an appropriate delay) by a Reply message that would
    be accepted by the client.  Thus, a malicious server that is not on
@@ -5301,6 +5315,13 @@ Internet-Draft                RFC 3315 bis                    April 2014
    between DHCP clients and servers.  DHCP authentication does not
    provide any privacy for the contents of DHCP messages.
 
+
+
+Yourtchenko, et al.     Expires October 25, 2014               [Page 95]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
    The Delayed Authentication protocol described in Section 21.4 uses a
    secret key that is shared between a client and a server.  The use of
    a "DHCP realm" in the shared key allows identification of
@@ -5312,15 +5333,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
    scale well and does not provide for repudiation of compromised keys.
    This protocol is focused on solving the intradomain problem where the
    out-of-band exchange of a shared key is feasible.
-
-
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014               [Page 95]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
    Because of the opportunity for attack through the Reconfigure
    message, a DHCP client MUST discard any Reconfigure message that does
@@ -5358,6 +5370,14 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
    IANA has established a registry of values for each of these name
    spaces, which are described in the remainder of this section.  These
+
+
+
+Yourtchenko, et al.     Expires October 25, 2014               [Page 96]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
    name spaces will be managed by the IANA and all will be managed
    separately from the name spaces defined for DHCPv4.
 
@@ -5369,14 +5389,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
    Draft, has received expert review by a designated expert [RFC2434].
    The final assignment of DHCP option codes is through Standards
    Action, as defined in [RFC2434].
-
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014               [Page 96]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
    This document also references three name spaces in Section 21 that
    are associated with the Authentication Option (Section 22.11).  These
@@ -5415,6 +5427,13 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
       REBIND                6
 
+
+
+Yourtchenko, et al.     Expires October 25, 2014               [Page 97]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
       REPLY                 7
 
       RELEASE               8
@@ -5426,13 +5445,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
       INFORMATION-REQUEST   11
 
       RELAY-FORW            12
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014               [Page 97]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
       RELAY-REPL            13
 
@@ -5471,6 +5483,13 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
       OPTION_VENDOR_CLASS   16
 
+
+
+Yourtchenko, et al.     Expires October 25, 2014               [Page 98]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
       OPTION_VENDOR_OPTS    17
 
       OPTION_INTERFACE_ID   18
@@ -5482,13 +5501,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
       OPTION_SOL_MAX_RT     82
 
       OPTION_INF_MAX_RT     83
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014               [Page 98]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
 24.4.  Status Codes
 
@@ -5526,6 +5538,14 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
       DUID-EN               2
 
+
+
+
+Yourtchenko, et al.     Expires October 25, 2014               [Page 99]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
       DUID-LL               3
 
 25.  Acknowledgments
@@ -5536,15 +5556,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
    not be possible without their original work
 
    The following acknowledgements are from the original RFC3315:
-
-
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014               [Page 99]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
    Thanks to the DHC Working Group and the members of the IETF for their
    time and input into the specification.  In particular, thanks also
@@ -5584,6 +5595,13 @@ Internet-Draft                RFC 3315 bis                    April 2014
    [RFC1305]  Mills, D., "Network Time Protocol (Version 3)
               Specification, Implementation", RFC 1305, March 1992.
 
+
+
+Yourtchenko, et al.     Expires October 25, 2014              [Page 100]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
    [RFC1321]  Rivest, R., "The MD5 Message-Digest Algorithm", RFC 1321,
               April 1992.
 
@@ -5593,14 +5611,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
-
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014              [Page 100]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
    [RFC2131]  Droms, R., "Dynamic Host Configuration Protocol", RFC
               2131, March 1997.
@@ -5639,6 +5649,15 @@ Internet-Draft                RFC 3315 bis                    April 2014
               Stateless Address Autoconfiguration in IPv6", RFC 3041,
               January 2001.
 
+
+
+
+
+Yourtchenko, et al.     Expires October 25, 2014              [Page 101]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
    [RFC3118]  Droms, R. and W. Arbaugh, "Authentication for DHCP
               Messages", RFC 3118, June 2001.
 
@@ -5648,15 +5667,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
    [RFC4075]  Kalusivalingam, V., "Simple Network Time Protocol (SNTP)
               Configuration Option for DHCPv6", RFC 4075, May 2005.
-
-
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014              [Page 101]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
    [RFC6355]  Narten, T. and J. Johnson, "Definition of the UUID-Based
               DHCPv6 Unique Identifier (DUID-UUID)", RFC 6355, August
@@ -5696,23 +5706,27 @@ Appendix A.  Changes since RFC3315
    10.  Incorporated RFC3315 errata (id 2471), into section 17.1.3.
         Ticket 25.
 
-   11.  Added text that relay agents MUST NOT modify the relayed message
-        to section 20.1.2 Ticket 57.
 
-   12.  ...
+
+
+Yourtchenko, et al.     Expires October 25, 2014              [Page 102]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
+   11.  Added text that relay agents MUST NOT modify the relayed message
+        to section 20.1.2.  Ticket 57.
+
+   12.  Modified the text in section 21.4.4.5, Receiving Reply Messages,
+        to remove special treatment of a Reply validation failure
+        (client ignores message).  Ticket 89.
+
+   13.  ...
 
 Appendix B.  Changes since RFC3633
 
    1.  Incorporated RFC3633 erratas (ids: 248, 1880, 2468, 2469, 2470,
        3736)
-
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014              [Page 102]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
    2.  ...
 
@@ -5742,6 +5756,20 @@ Appendix C.  Appearance of Options in Message Types
    Only included in Information-Request messages that are sent in
    response to a Reconfigure (see section 19.4.3).
 
+
+
+
+
+
+
+
+
+
+Yourtchenko, et al.     Expires October 25, 2014              [Page 103]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
             Status  Rap. User  Vendor Vendor Inter. Recon. Recon.
              Code  Comm. Class Class  Spec.    ID    Msg.  Accept
    Solicit           *     *     *      *                    *
@@ -5757,18 +5785,6 @@ Appendix C.  Appearance of Options in Message Types
    Inform.                 *     *      *                    *
    R-forw.                 *     *      *      *
    R-repl.                 *     *      *      *
-
-
-
-
-
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014              [Page 103]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
 Appendix D.  Appearance of Options in the Options Field of DHCP Options
 
@@ -5799,6 +5815,17 @@ Appendix D.  Appearance of Options in the Options Field of DHCP Options
    Note: "Relay Forw" / "Relay Reply" options appear in the options
    field of the message but may only appear in these messages.
 
+
+
+
+
+
+
+Yourtchenko, et al.     Expires October 25, 2014              [Page 104]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
 Authors' Addresses
 
    Andrew Yourtchenko
@@ -5817,13 +5844,6 @@ Authors' Addresses
    USA
 
    Email: volz@cisco.com
-
-
-
-
-Yourtchenko, et al.     Expires October 15, 2014              [Page 104]
-
-Internet-Draft                RFC 3315 bis                    April 2014
 
 
    Marcin Siodelski
@@ -5854,6 +5874,14 @@ Internet-Draft                RFC 3315 bis                    April 2014
    Email: jiangsheng@huawei.com
 
 
+
+
+
+Yourtchenko, et al.     Expires October 25, 2014              [Page 105]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
    Ted Lemon
    Nominum, Inc.
    950 Charter St.
@@ -5877,4 +5905,32 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 15, 2014              [Page 105]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Yourtchenko, et al.     Expires October 25, 2014              [Page 106]
