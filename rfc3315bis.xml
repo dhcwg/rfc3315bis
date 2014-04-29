@@ -6032,7 +6032,7 @@ Request   *      *      *      *           *           *
 Confirm   *             *                  *           *
 Renew     *      *      *      *           *           *
 Rebind    *             *      *           *           *
-Decline   *      *      *      *           *           *
+Decline   *      *      *                  *           *
 Release   *      *      *                  *           *
 Reply     *      *      *                              *     *
 Reconf.   *      *             *                       *
@@ -6049,21 +6049,21 @@ R-repl.                                          *
 
 <figure>
 <artwork>
-         Status  Rap. User  Vendor Vendor Inter. Recon. Recon.
-          Code  Comm. Class Class  Spec.    ID    Msg.  Accept
-Solicit           *     *     *      *                    *
-Advert.    *            *     *      *                    *
-Request                 *     *      *                    *
-Confirm                 *     *      *
-Renew                   *     *      *                    *
-Rebind                  *     *      *                    *
-Decline                 *     *      *
-Release                 *     *      *
-Reply      *      *     *     *      *                    *
-Reconf.                                            *
-Inform.                 *     *      *                    *
-R-forw.                 *     *      *      *
-R-repl.                 *     *      *      *
+        Status  Rap. User  Vendor Vendor Inter. Recon. Recon. SOL_MAX_RT
+         Code  Comm. Class Class  Spec.    ID    Msg.  Accept INF_MAX_RT
+Solicit          *     *     *      *                    *
+Advert.   *            *     *      *                    *        *
+Request                *     *      *                    *
+Confirm                *     *      *
+Renew                  *     *      *                    *
+Rebind                 *     *      *                    *
+Decline                *     *      *
+Release                *     *      *
+Reply     *      *     *     *      *                    *        *
+Reconf.                                           *
+Inform.                *     *      *                    *
+R-forw.                *     *      *      *
+R-repl.                *     *      *      *
 </artwork>
 </figure>
 
