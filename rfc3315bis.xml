@@ -5974,6 +5974,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           special treatment of a Reply validation failure (client ignores message).
           Ticket 89.</t>
 
+          <t>Appendix C updated: Auth option is no longer allowed in Relay-Forward and
+          Relay-Reply messages, ORO is no longer allowed in Confirm and Release messages;
+          Preference option is no longer allowed in Reply messages (only in Advertise).</t>
+
           <t>...</t>
         </list>
 
@@ -6004,21 +6008,21 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
 <figure>
 <artwork>
-        Client Server IA_NA  Option Pref  Time Relay Auth. Server
-          ID     ID   IA_TA  Request            Msg.       Unica.
+        Client Server IA_NA  Option Pref Elap. Relay Auth. Server
+          ID     ID   IA_TA  Request     Time   Msg.       Unicast
 Solicit   *             *      *           *           *
 Advert.   *      *      *            *                 *
 Request   *      *      *      *           *           *
-Confirm   *             *      *           *           *
+Confirm   *             *                  *           *
 Renew     *      *      *      *           *           *
 Rebind    *             *      *           *           *
 Decline   *      *      *      *           *           *
-Release   *      *      *      *           *           *
-Reply     *      *      *            *                 *     *
+Release   *      *      *                  *           *
+Reply     *      *      *                              *     *
 Reconf.   *      *             *                       *
 Inform.   * (see note)         *           *           *
-R-forw.                                          *     *
-R-repl.                                          *     *
+R-forw.                                          *
+R-repl.                                          *
 </artwork>
 </figure>
 
