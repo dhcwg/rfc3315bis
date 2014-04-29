@@ -609,7 +609,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
    DHCP relay agent (or relay agent)  A node that acts as an
                              intermediary to deliver DHCP messages
-
+                             between clients and servers.  In certain
 
 
 
@@ -618,8 +618,10 @@ Yourtchenko, et al.     Expires October 31, 2014               [Page 11]
 Internet-Draft                RFC 3315 bis                    April 2014
 
 
-                             between clients and servers, and is on the
-                             same link as the client.
+                             configurations there may be more than one
+                             relay agent between clients and servers, so
+                             a relay agent may send DHCP messages to
+                             another relay agent.
 
    DHCP server (or server)   A node that responds to requests from
                              clients, and may or may not be on the same
@@ -663,9 +665,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
                              UDP datagram, exchanged among DHCP servers,
                              relay agents and clients.
 
-   Reconfigure key           A key supplied to a client by a server used
-                             to provide security for Reconfigure
-                             messages.
+
 
 
 
@@ -673,6 +673,10 @@ Yourtchenko, et al.     Expires October 31, 2014               [Page 12]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
+
+   Reconfigure key           A key supplied to a client by a server used
+                             to provide security for Reconfigure
+                             messages.
 
    relaying                  A DHCP relay agent relays DHCP messages
                              between DHCP participants.
@@ -718,10 +722,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
    not listed here are reserved for future use.  The numeric encoding
    for each message type is shown in parentheses.
 
-   SOLICIT (1)     A client sends a Solicit message to locate servers.
-
-
-
 
 
 
@@ -729,6 +729,8 @@ Yourtchenko, et al.     Expires October 31, 2014               [Page 13]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
+
+   SOLICIT (1)     A client sends a Solicit message to locate servers.
 
    ADVERTISE (2)   A server sends an Advertise message to indicate that
                    it is available for DHCP service, in response to a
@@ -776,8 +778,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
                    indicate that the client has determined that one or
                    more addresses assigned by the server are already in
                    use on the link to which the client is connected.
-
-
 
 
 
@@ -5743,7 +5743,7 @@ Appendix A.  Changes since RFC3315
         auth-01.  Ticket 87.
 
    9.   Merged RFC7083, "Modification to Default Values of SOL_MAX_RT
-        and INF_MAX_RT", into this document.
+        and INF_MAX_RT", into this document.  Ticket #51.
 
    10.  Incorporated RFC3315 errata (id 2471), into section 17.1.3.
         Ticket 25.
@@ -5757,11 +5757,11 @@ Appendix A.  Changes since RFC3315
 
    13.  Appendix C updated: Auth option is no longer allowed in Relay-
         Forward and Relay-Reply messages, ORO is no longer allowed in
-        Confirm and Release messages; Preference option is no longer
-        allowed in Reply messages (only in Advertise).  Ticket 10.
+        Confirm, Release and Decline messages; Preference option is no
+        longer allowed in Reply messages (only in Advertise).  Ticket
+        10.
 
-   14.  Removed "silently" from several instances of "silently ignores"
-        or "silently" discards.  It it up to software vendor if and how
+
 
 
 
@@ -5770,6 +5770,8 @@ Yourtchenko, et al.     Expires October 31, 2014              [Page 103]
 Internet-Draft                RFC 3315 bis                    April 2014
 
 
+   14.  Removed "silently" from several instances of "silently ignores"
+        or "silently" discards.  It it up to software vendor if and how
         to log such events (debug log message, event log, message pop-up
         etc.).  Ticket 50.
 
@@ -5777,7 +5779,9 @@ Internet-Draft                RFC 3315 bis                    April 2014
         Vendor Class option with a given Enterprise Number; that one
         instance of Vendor Class can contain multiple encapsulated
         options; the same applies to Vendor Specific Information option.
-        (ticket #22).
+        Ticket #22.
+
+   16.  Clarified relay agent definition.  Ticket #12.
 
 Appendix B.  Changes since RFC3633
 
@@ -5811,10 +5815,6 @@ Appendix C.  Appearance of Options in Message Types
 
    Only included in Information-Request messages that are sent in
    response to a Reconfigure (see section 19.4.3).
-
-
-
-
 
 
 
