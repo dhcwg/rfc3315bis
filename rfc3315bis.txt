@@ -2864,7 +2864,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
    lifetimes for the addresses in the IA set to zero.  This Reply
    constitutes an explicit notification to the client that the addresses
    in the IA are no longer valid.  In this situation, if the server does
-   not send a Reply message it silently discards the Rebind message.
+   not send a Reply message it discards the Rebind message.
 
    If the server finds that any of the addresses are no longer
    appropriate for the link to which the client is attached, the server
@@ -3157,7 +3157,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
    message as indicated by the Reconfigure Message option (as defined in
    Section 22.19).  The client ignores the transaction-id field in the
    received Reconfigure message.  While the transaction is in progress,
-   the client silently discards any Reconfigure messages it receives.
+   the client discards any Reconfigure messages it receives.
 
    DISCUSSION:
 
@@ -5160,8 +5160,8 @@ Internet-Draft                RFC 3315 bis                    April 2014
    body of the message to client, not as an encapsulated option in,
    e.g., an IA_NA, IA_TA, or IA_PD option.
 
-   A DHCP client MUST silently ignore any SOL_MAX_RT option values that
-   are less than 60 or more than 86400.
+   A DHCP client MUST ignore any SOL_MAX_RT option values that are less
+   than 60 or more than 86400.
 
    If a DHCP client receives a message containing a SOL_MAX_RT option
    that has a valid value for SOL_MAX_RT, the client MUST set its
@@ -5219,8 +5219,8 @@ Internet-Draft                RFC 3315 bis                    April 2014
    body of the message to client, not as an encapsulated option in,
    e.g., an IA_NA, IA_TA, or IA_PD option.
 
-   A DHCP client MUST silently ignore any INF_MAX_RT option values that
-   are less than 60 or more than 86400.
+   A DHCP client MUST ignore any INF_MAX_RT option values that are less
+   than 60 or more than 86400.
 
    If a DHCP client receives a message containing an INF_MAX_RT option
    that has a valid value for INF_MAX_RT, the client MUST set its
@@ -5726,7 +5726,12 @@ Internet-Draft                RFC 3315 bis                    April 2014
         Confirm and Release messages; Preference option is no longer
         allowed in Reply messages (only in Advertise).
 
-   14.  ...
+   14.  Removed "silently" from several instances of "silently ignores"
+        or "silently" discards.  It it up to software vendor if and how
+        to log such events (debug log message, event log, message pop-up
+        etc.).
+
+   15.  ...
 
 Appendix B.  Changes since RFC3633
 
@@ -5758,17 +5763,15 @@ Appendix C.  Appearance of Options in Message Types
 
    NOTE:
 
-   Only included in Information-Request messages that are sent in
-   response to a Reconfigure (see section 19.4.3).
-
-
-
 
 
 Yourtchenko, et al.     Expires October 31, 2014              [Page 103]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
+
+   Only included in Information-Request messages that are sent in
+   response to a Reconfigure (see section 19.4.3).
 
             Status  Rap. User  Vendor Vendor Inter. Recon. Recon.
              Code  Comm. Class Class  Spec.    ID    Msg.  Accept
@@ -5814,9 +5817,6 @@ Appendix D.  Appearance of Options in the Options Field of DHCP Options
 
    Note: "Relay Forw" / "Relay Reply" options appear in the options
    field of the message but may only appear in these messages.
-
-
-
 
 
 
