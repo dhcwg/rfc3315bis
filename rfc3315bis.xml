@@ -2883,7 +2883,7 @@
           the lifetimes for the addresses in the IA set to zero. This Reply
           constitutes an explicit notification to the client that the
           addresses in the IA are no longer valid. In this situation, if the
-          server does not send a Reply message it silently discards the Rebind
+          server does not send a Reply message it discards the Rebind
           message.</t>
 
           <t>If the server finds that any of the addresses are no longer
@@ -3193,7 +3193,7 @@
           indicated by the Reconfigure Message option (as defined in
           <xref target='RFC3315-22.19'/>). The client ignores the transaction-id field in the received
           Reconfigure message. While the transaction is in progress, the
-          client silently discards any Reconfigure messages it receives.</t>
+          client discards any Reconfigure messages it receives.</t>
 
           <t>DISCUSSION:</t>
 
@@ -5382,7 +5382,7 @@
         body of the message to client, not as an encapsulated option in,
         e.g., an IA_NA, IA_TA, or IA_PD option.</t>
 
-        <t>A DHCP client MUST silently ignore any SOL_MAX_RT option values
+        <t>A DHCP client MUST ignore any SOL_MAX_RT option values
         that are less than 60 or more than 86400.</t>
 
         <t>If a DHCP client receives a message containing a SOL_MAX_RT option
@@ -5449,7 +5449,7 @@
         body of the message to client, not as an encapsulated option in,
         e.g., an IA_NA, IA_TA, or IA_PD option.</t>
 
-        <t>A DHCP client MUST silently ignore any INF_MAX_RT option values
+        <t>A DHCP client MUST ignore any INF_MAX_RT option values
         that are less than 60 or more than 86400.</t>
 
         <t>If a DHCP client receives a message containing an INF_MAX_RT option
@@ -5977,6 +5977,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Appendix C updated: Auth option is no longer allowed in Relay-Forward and
           Relay-Reply messages, ORO is no longer allowed in Confirm and Release messages;
           Preference option is no longer allowed in Reply messages (only in Advertise).</t>
+
+          <t>Removed "silently" from several instances of "silently ignores" or "silently"
+          discards. It it up to software vendor if and how to log such events (debug log
+          message, event log, message pop-up etc.).</t>
 
           <t>...</t>
         </list>
