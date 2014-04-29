@@ -2,19 +2,18 @@
 
 
 
-Network Working Group                                     A. Yourtchenko
-Internet-Draft                                                   B. Volz
-Obsoletes: 3315,3633 (if approved)                                 Cisco
-Intended status: Standards Track                            M. Siodelski
-Expires: October 31, 2014                                            ISC
+Network Working Group                                  T. Mrugalski, Ed.
+Internet-Draft                                              M. Siodelski
+Obsoletes: 3315,3633 (if approved)                                   ISC
+Intended status: Standards Track                                 B. Volz
+Expires: October 31, 2014                                 A. Yourtchenko
+                                                                   Cisco
                                                            M. Richardson
                                                                      SSW
                                                                 S. Jiang
                                                                   Huawei
                                                                 T. Lemon
                                                                  Nominum
-                                                       T. Mrugalski, Ed.
-                                                                     ISC
                                                           April 29, 2014
 
 
@@ -53,7 +52,8 @@ Status of This Memo
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014                [Page 1]
+
+Mrugalski, et al.       Expires October 31, 2014                [Page 1]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014                [Page 2]
+Mrugalski, et al.       Expires October 31, 2014                [Page 2]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -165,7 +165,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014                [Page 3]
+Mrugalski, et al.       Expires October 31, 2014                [Page 3]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -221,7 +221,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014                [Page 4]
+Mrugalski, et al.       Expires October 31, 2014                [Page 4]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -277,7 +277,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014                [Page 5]
+Mrugalski, et al.       Expires October 31, 2014                [Page 5]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -333,7 +333,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014                [Page 6]
+Mrugalski, et al.       Expires October 31, 2014                [Page 6]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -389,7 +389,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014                [Page 7]
+Mrugalski, et al.       Expires October 31, 2014                [Page 7]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -445,7 +445,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014                [Page 8]
+Mrugalski, et al.       Expires October 31, 2014                [Page 8]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -501,7 +501,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014                [Page 9]
+Mrugalski, et al.       Expires October 31, 2014                [Page 9]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -557,7 +557,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 10]
+Mrugalski, et al.       Expires October 31, 2014               [Page 10]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -613,7 +613,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 11]
+Mrugalski, et al.       Expires October 31, 2014               [Page 11]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -669,7 +669,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 12]
+Mrugalski, et al.       Expires October 31, 2014               [Page 12]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -725,7 +725,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 13]
+Mrugalski, et al.       Expires October 31, 2014               [Page 13]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -781,7 +781,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 14]
+Mrugalski, et al.       Expires October 31, 2014               [Page 14]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -837,7 +837,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 15]
+Mrugalski, et al.       Expires October 31, 2014               [Page 15]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -893,7 +893,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 16]
+Mrugalski, et al.       Expires October 31, 2014               [Page 16]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -949,7 +949,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 17]
+Mrugalski, et al.       Expires October 31, 2014               [Page 17]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1005,7 +1005,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 18]
+Mrugalski, et al.       Expires October 31, 2014               [Page 18]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1061,7 +1061,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 19]
+Mrugalski, et al.       Expires October 31, 2014               [Page 19]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1117,7 +1117,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 20]
+Mrugalski, et al.       Expires October 31, 2014               [Page 20]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1173,7 +1173,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 21]
+Mrugalski, et al.       Expires October 31, 2014               [Page 21]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1229,7 +1229,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 22]
+Mrugalski, et al.       Expires October 31, 2014               [Page 22]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1285,7 +1285,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 23]
+Mrugalski, et al.       Expires October 31, 2014               [Page 23]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1341,7 +1341,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 24]
+Mrugalski, et al.       Expires October 31, 2014               [Page 24]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1397,7 +1397,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 25]
+Mrugalski, et al.       Expires October 31, 2014               [Page 25]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1453,7 +1453,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 26]
+Mrugalski, et al.       Expires October 31, 2014               [Page 26]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1509,7 +1509,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 27]
+Mrugalski, et al.       Expires October 31, 2014               [Page 27]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1565,7 +1565,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 28]
+Mrugalski, et al.       Expires October 31, 2014               [Page 28]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1621,7 +1621,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 29]
+Mrugalski, et al.       Expires October 31, 2014               [Page 29]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1677,7 +1677,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 30]
+Mrugalski, et al.       Expires October 31, 2014               [Page 30]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1733,7 +1733,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 31]
+Mrugalski, et al.       Expires October 31, 2014               [Page 31]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1789,7 +1789,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 32]
+Mrugalski, et al.       Expires October 31, 2014               [Page 32]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1845,7 +1845,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 33]
+Mrugalski, et al.       Expires October 31, 2014               [Page 33]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1901,7 +1901,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 34]
+Mrugalski, et al.       Expires October 31, 2014               [Page 34]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -1957,7 +1957,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 35]
+Mrugalski, et al.       Expires October 31, 2014               [Page 35]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2013,7 +2013,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 36]
+Mrugalski, et al.       Expires October 31, 2014               [Page 36]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2069,7 +2069,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 37]
+Mrugalski, et al.       Expires October 31, 2014               [Page 37]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2125,7 +2125,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 38]
+Mrugalski, et al.       Expires October 31, 2014               [Page 38]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2181,7 +2181,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 39]
+Mrugalski, et al.       Expires October 31, 2014               [Page 39]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2237,7 +2237,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 40]
+Mrugalski, et al.       Expires October 31, 2014               [Page 40]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2293,7 +2293,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 41]
+Mrugalski, et al.       Expires October 31, 2014               [Page 41]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2349,7 +2349,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 42]
+Mrugalski, et al.       Expires October 31, 2014               [Page 42]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2405,7 +2405,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 43]
+Mrugalski, et al.       Expires October 31, 2014               [Page 43]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2461,7 +2461,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 44]
+Mrugalski, et al.       Expires October 31, 2014               [Page 44]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2503,7 +2503,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
       MRT     0
 
-      MRC     REL_MAX_RC
+      MRC     REL_MAX_RC - 1
 
       MRD     0
 
@@ -2517,7 +2517,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 45]
+Mrugalski, et al.       Expires October 31, 2014               [Page 45]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2557,7 +2557,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
       MRT     0
 
-      MRC     DEC_MAX_RC
+      MRC     DEC_MAX_RC - 1
 
       MRD     0
 
@@ -2573,7 +2573,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 46]
+Mrugalski, et al.       Expires October 31, 2014               [Page 46]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2629,7 +2629,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 47]
+Mrugalski, et al.       Expires October 31, 2014               [Page 47]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2685,7 +2685,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 48]
+Mrugalski, et al.       Expires October 31, 2014               [Page 48]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2741,7 +2741,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 49]
+Mrugalski, et al.       Expires October 31, 2014               [Page 49]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2797,7 +2797,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 50]
+Mrugalski, et al.       Expires October 31, 2014               [Page 50]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2853,7 +2853,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 51]
+Mrugalski, et al.       Expires October 31, 2014               [Page 51]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2909,7 +2909,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 52]
+Mrugalski, et al.       Expires October 31, 2014               [Page 52]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -2965,7 +2965,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 53]
+Mrugalski, et al.       Expires October 31, 2014               [Page 53]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3021,7 +3021,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 54]
+Mrugalski, et al.       Expires October 31, 2014               [Page 54]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3077,7 +3077,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 55]
+Mrugalski, et al.       Expires October 31, 2014               [Page 55]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3133,7 +3133,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 56]
+Mrugalski, et al.       Expires October 31, 2014               [Page 56]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3189,7 +3189,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 57]
+Mrugalski, et al.       Expires October 31, 2014               [Page 57]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3245,7 +3245,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 58]
+Mrugalski, et al.       Expires October 31, 2014               [Page 58]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3301,7 +3301,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 59]
+Mrugalski, et al.       Expires October 31, 2014               [Page 59]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3357,7 +3357,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 60]
+Mrugalski, et al.       Expires October 31, 2014               [Page 60]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3413,7 +3413,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 61]
+Mrugalski, et al.       Expires October 31, 2014               [Page 61]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3469,7 +3469,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 62]
+Mrugalski, et al.       Expires October 31, 2014               [Page 62]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3525,7 +3525,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 63]
+Mrugalski, et al.       Expires October 31, 2014               [Page 63]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3581,7 +3581,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 64]
+Mrugalski, et al.       Expires October 31, 2014               [Page 64]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3637,7 +3637,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 65]
+Mrugalski, et al.       Expires October 31, 2014               [Page 65]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3693,7 +3693,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 66]
+Mrugalski, et al.       Expires October 31, 2014               [Page 66]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3749,7 +3749,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 67]
+Mrugalski, et al.       Expires October 31, 2014               [Page 67]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3805,7 +3805,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 68]
+Mrugalski, et al.       Expires October 31, 2014               [Page 68]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3861,7 +3861,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 69]
+Mrugalski, et al.       Expires October 31, 2014               [Page 69]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3917,7 +3917,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 70]
+Mrugalski, et al.       Expires October 31, 2014               [Page 70]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -3973,7 +3973,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 71]
+Mrugalski, et al.       Expires October 31, 2014               [Page 71]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4029,7 +4029,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 72]
+Mrugalski, et al.       Expires October 31, 2014               [Page 72]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4085,7 +4085,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 73]
+Mrugalski, et al.       Expires October 31, 2014               [Page 73]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4141,7 +4141,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 74]
+Mrugalski, et al.       Expires October 31, 2014               [Page 74]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4197,7 +4197,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 75]
+Mrugalski, et al.       Expires October 31, 2014               [Page 75]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4253,7 +4253,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 76]
+Mrugalski, et al.       Expires October 31, 2014               [Page 76]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4309,7 +4309,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 77]
+Mrugalski, et al.       Expires October 31, 2014               [Page 77]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4365,7 +4365,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 78]
+Mrugalski, et al.       Expires October 31, 2014               [Page 78]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4421,7 +4421,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 79]
+Mrugalski, et al.       Expires October 31, 2014               [Page 79]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4477,7 +4477,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 80]
+Mrugalski, et al.       Expires October 31, 2014               [Page 80]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4533,7 +4533,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 81]
+Mrugalski, et al.       Expires October 31, 2014               [Page 81]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4589,7 +4589,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 82]
+Mrugalski, et al.       Expires October 31, 2014               [Page 82]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4645,7 +4645,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 83]
+Mrugalski, et al.       Expires October 31, 2014               [Page 83]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4701,7 +4701,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 84]
+Mrugalski, et al.       Expires October 31, 2014               [Page 84]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4757,7 +4757,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 85]
+Mrugalski, et al.       Expires October 31, 2014               [Page 85]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4813,7 +4813,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 86]
+Mrugalski, et al.       Expires October 31, 2014               [Page 86]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4869,7 +4869,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 87]
+Mrugalski, et al.       Expires October 31, 2014               [Page 87]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4925,7 +4925,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 88]
+Mrugalski, et al.       Expires October 31, 2014               [Page 88]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -4981,7 +4981,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 89]
+Mrugalski, et al.       Expires October 31, 2014               [Page 89]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5037,7 +5037,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 90]
+Mrugalski, et al.       Expires October 31, 2014               [Page 90]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5093,7 +5093,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 91]
+Mrugalski, et al.       Expires October 31, 2014               [Page 91]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5149,7 +5149,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 92]
+Mrugalski, et al.       Expires October 31, 2014               [Page 92]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5205,7 +5205,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 93]
+Mrugalski, et al.       Expires October 31, 2014               [Page 93]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5261,7 +5261,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 94]
+Mrugalski, et al.       Expires October 31, 2014               [Page 94]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5317,7 +5317,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 95]
+Mrugalski, et al.       Expires October 31, 2014               [Page 95]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5373,7 +5373,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 96]
+Mrugalski, et al.       Expires October 31, 2014               [Page 96]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5429,7 +5429,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 97]
+Mrugalski, et al.       Expires October 31, 2014               [Page 97]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5485,7 +5485,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 98]
+Mrugalski, et al.       Expires October 31, 2014               [Page 98]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5541,7 +5541,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014               [Page 99]
+Mrugalski, et al.       Expires October 31, 2014               [Page 99]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5597,7 +5597,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014              [Page 100]
+Mrugalski, et al.       Expires October 31, 2014              [Page 100]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5653,7 +5653,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014              [Page 101]
+Mrugalski, et al.       Expires October 31, 2014              [Page 101]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5709,7 +5709,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014              [Page 102]
+Mrugalski, et al.       Expires October 31, 2014              [Page 102]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5765,7 +5765,7 @@ Appendix A.  Changes since RFC3315
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014              [Page 103]
+Mrugalski, et al.       Expires October 31, 2014              [Page 103]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5782,6 +5782,9 @@ Internet-Draft                RFC 3315 bis                    April 2014
         Ticket #22.
 
    16.  Clarified relay agent definition.  Ticket #12.
+
+   17.  Changed MRC to use REL_MAX_RC-1 and DEC_MAX_RC-1 to clarify MRC
+        to be retransmission count.  Ticket #84.
 
 Appendix B.  Changes since RFC3633
 
@@ -5818,10 +5821,7 @@ Appendix C.  Appearance of Options in Message Types
 
 
 
-
-
-
-Yourtchenko, et al.     Expires October 31, 2014              [Page 104]
+Mrugalski, et al.       Expires October 31, 2014              [Page 104]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5877,20 +5877,29 @@ Appendix D.  Appearance of Options in the Options Field of DHCP Options
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014              [Page 105]
+Mrugalski, et al.       Expires October 31, 2014              [Page 105]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
 
 Authors' Addresses
 
-   Andrew Yourtchenko
-   Cisco Systems, Inc.
-   De Kleetlaan, 7
-   Diegem  B-1831
-   Belgium
+   Tomek Mrugalski (editor)
+   Internet Systems Consortium, Inc.
+   950 Charter Street
+   Redwood City, CA  94063
+   USA
 
-   Email: ayourtch@cisco.com
+   Email: tomasz.mrugalski@gmail.com
+
+
+   Marcin Siodelski
+   Internet Systems Consortium, Inc.
+   950 Charter St.
+   Redwood City, CA  94063
+   USA
+
+   Email: msiodelski@gmail.com
 
 
    Bernie Volz
@@ -5902,13 +5911,13 @@ Authors' Addresses
    Email: volz@cisco.com
 
 
-   Marcin Siodelski
-   Internet Systems Consortium, Inc.
-   950 Charter St.
-   Redwood City, CA  94063
-   USA
+   Andrew Yourtchenko
+   Cisco Systems, Inc.
+   De Kleetlaan, 7
+   Diegem  B-1831
+   Belgium
 
-   Email: msiodelski@gmail.com
+   Email: ayourtch@cisco.com
 
 
    Michael C. Richardson
@@ -5921,6 +5930,14 @@ Authors' Addresses
    URI:   http://www.sandelman.ca/
 
 
+
+
+
+Mrugalski, et al.       Expires October 31, 2014              [Page 106]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
    Sheng Jiang
    Huawei Technologies Co., Ltd
    Q14, Huawei Campus, No.156 Beiqing Road
@@ -5928,14 +5945,6 @@ Authors' Addresses
    P.R. China
 
    Email: jiangsheng@huawei.com
-
-
-
-
-
-Yourtchenko, et al.     Expires October 31, 2014              [Page 106]
-
-Internet-Draft                RFC 3315 bis                    April 2014
 
 
    Ted Lemon
@@ -5947,13 +5956,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
    Email: Ted.Lemon@nominum.com
 
 
-   Tomek Mrugalski (editor)
-   Internet Systems Consortium, Inc.
-   950 Charter Street
-   Redwood City, CA  94063
-   USA
-
-   Email: tomasz.mrugalski@gmail.com
 
 
 
@@ -5987,6 +5989,4 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-
-
-Yourtchenko, et al.     Expires October 31, 2014              [Page 107]
+Mrugalski, et al.       Expires October 31, 2014              [Page 107]
