@@ -36,19 +36,34 @@
   <front>
     <title abbrev="RFC 3315 bis">Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis</title>
 
-    <author fullname="Andrew Yourtchenko" initials="A" surname="Yourtchenko">
-      <organization abbrev="Cisco">Cisco Systems, Inc.</organization>
+    <author fullname="Tomek Mrugalski" initials="T." role="editor" surname="Mrugalski">
+      <organization abbrev="ISC">Internet Systems Consortium, Inc.</organization>
       <address>
         <postal>
-	  <street>De Kleetlaan, 7</street>
-          <city>Diegem</city>
-          <code>B-1831</code>
-          <country>Belgium</country>
+          <street>950 Charter Street</street>
+          <city>Redwood City</city>
+          <region>CA</region>
+          <code>94063</code>
+          <country>USA</country>
         </postal>
-        <email>ayourtch@cisco.com</email>
+        <email>tomasz.mrugalski@gmail.com</email>
       </address>
     </author>
-
+    
+    <author fullname="Marcin Siodelski" initials="M" surname="Siodelski">
+      <organization abbrev="ISC">Internet Systems Consortium, Inc.</organization>
+      <address>
+        <postal>
+          <street>950 Charter St.</street>
+          <city>Redwood City</city>
+	  <region>CA</region>
+          <code>94063</code>
+          <country>USA</country>
+        </postal>
+        <email>msiodelski@gmail.com</email>
+      </address>
+    </author>    
+    
     <author fullname="Bernie Volz" initials="B" surname="Volz">
       <organization abbrev="Cisco">Cisco Systems, Inc.</organization>
       <address>
@@ -62,18 +77,17 @@
         <email>volz@cisco.com</email>
       </address>
     </author>
-
-    <author fullname="Marcin Siodelski" initials="M" surname="Siodelski">
-      <organization abbrev="ISC">Internet Systems Consortium, Inc.</organization>
+    
+    <author fullname="Andrew Yourtchenko" initials="A" surname="Yourtchenko">
+      <organization abbrev="Cisco">Cisco Systems, Inc.</organization>
       <address>
         <postal>
-          <street>950 Charter St.</street>
-          <city>Redwood City</city>
-	  <region>CA</region>
-          <code>94063</code>
-          <country>USA</country>
+	  <street>De Kleetlaan, 7</street>
+          <city>Diegem</city>
+          <code>B-1831</code>
+          <country>Belgium</country>
         </postal>
-        <email>msiodelski@gmail.com</email>
+        <email>ayourtch@cisco.com</email>
       </address>
     </author>
 
@@ -115,21 +129,6 @@
           <country>USA</country>
         </postal>
         <email>Ted.Lemon@nominum.com</email>
-      </address>
-    </author>
-
-    <author fullname="Tomek Mrugalski" initials="T." role="editor" surname="Mrugalski">
-      <organization abbrev="ISC">Internet Systems Consortium, Inc.</organization>
-
-      <address>
-        <postal>
-          <street>950 Charter Street</street>
-          <city>Redwood City</city>
-          <region>CA</region>
-          <code>94063</code>
-          <country>USA</country>
-        </postal>
-        <email>tomasz.mrugalski@gmail.com</email>
       </address>
     </author>
 
