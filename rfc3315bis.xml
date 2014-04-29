@@ -5051,6 +5051,10 @@
 
         <t>The vendor-class-len is two octets long and specifies the length of
         the opaque vendor class data in network byte order.</t>
+
+        <t>Servers and clients MUST NOT include more than one instance
+        of OPTION_VENDOR_CLASS with the same Enterprise Number. Each instance
+        of OPTION_VENDOR_CLASS can carry multiple </t>
       </section>
 
       <!-- ends: "22.16 from line 4276-->
@@ -5148,7 +5152,10 @@
         <t>Multiple instances of the Vendor-specific Information option may
         appear in a DHCP message. Each instance of the option is interpreted
         according to the option codes defined by the vendor identified by the
-        Enterprise Number in that option.</t>
+        Enterprise Number in that option. Servers and clients MUST NOT send
+        more than one instance of Vendor-specific Information option with the
+        same Enterprise Number. Each instanf of Vendor-specific Information option
+        MAY contain multiple encapsulated options.</t>
         
         <t>A client that is interested in receiving a Vendor-specific Information Option:
         </t>
@@ -5976,13 +5983,18 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Appendix C updated: Auth option is no longer allowed in Relay-Forward and
           Relay-Reply messages, ORO is no longer allowed in Confirm and Release messages;
-          Preference option is no longer allowed in Reply messages (only in Advertise).</t>
+          Preference option is no longer allowed in Reply messages (only in Advertise).
+          Ticket 10.</t>
 
           <t>Removed "silently" from several instances of "silently ignores" or "silently"
           discards. It it up to software vendor if and how to log such events (debug log
-          message, event log, message pop-up etc.).</t>
+          message, event log, message pop-up etc.). Ticket 50.</t>
 
-          <t>...</t>
+          <t>Clarified that: there should be no more that one instance of Vendor Class
+          option with a given Enterprise Number; that one instance of Vendor Class can
+          contain multiple encapsulated options; the same applies to Vendor Specific
+          Information option. (ticket #22).</t>
+
         </list>
 
       </t>
