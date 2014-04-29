@@ -260,20 +260,20 @@ Internet-Draft                RFC 3315 bis                    April 2014
      22.17. Vendor-specific Information Option . . . . . . . . . . .  88
      22.18. Interface-Id Option  . . . . . . . . . . . . . . . . . .  90
      22.19. Reconfigure Message Option . . . . . . . . . . . . . . .  91
-     22.20. Reconfigure Accept Option  . . . . . . . . . . . . . . .  91
+     22.20. Reconfigure Accept Option  . . . . . . . . . . . . . . .  92
      22.21. SOL_MAX_RT Option  . . . . . . . . . . . . . . . . . . .  92
      22.22. INF_MAX_RT Option  . . . . . . . . . . . . . . . . . . .  93
    23. Security Considerations . . . . . . . . . . . . . . . . . . .  94
-   24. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  96
-     24.1.  Multicast Addresses  . . . . . . . . . . . . . . . . . .  97
-     24.2.  DHCP Message Types . . . . . . . . . . . . . . . . . . .  97
+   24. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  97
+     24.1.  Multicast Addresses  . . . . . . . . . . . . . . . . . .  98
+     24.2.  DHCP Message Types . . . . . . . . . . . . . . . . . . .  98
      24.3.  DHCP Options . . . . . . . . . . . . . . . . . . . . . .  98
      24.4.  Status Codes . . . . . . . . . . . . . . . . . . . . . .  99
-     24.5.  DUID . . . . . . . . . . . . . . . . . . . . . . . . . .  99
+     24.5.  DUID . . . . . . . . . . . . . . . . . . . . . . . . . . 100
    25. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . 100
-   26. Normative References  . . . . . . . . . . . . . . . . . . . . 100
-   Appendix A.  Changes since RFC3315  . . . . . . . . . . . . . . . 102
-   Appendix B.  Changes since RFC3633  . . . . . . . . . . . . . . . 103
+   26. Normative References  . . . . . . . . . . . . . . . . . . . . 101
+   Appendix A.  Changes since RFC3315  . . . . . . . . . . . . . . . 103
+   Appendix B.  Changes since RFC3633  . . . . . . . . . . . . . . . 104
 
 
 
@@ -282,10 +282,10 @@ Yourtchenko, et al.     Expires October 31, 2014                [Page 5]
 Internet-Draft                RFC 3315 bis                    April 2014
 
 
-   Appendix C.  Appearance of Options in Message Types . . . . . . . 103
+   Appendix C.  Appearance of Options in Message Types . . . . . . . 104
    Appendix D.  Appearance of Options in the Options Field of DHCP
-                Options  . . . . . . . . . . . . . . . . . . . . . . 104
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 105
+                Options  . . . . . . . . . . . . . . . . . . . . . . 105
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 106
 
 1.  Introduction and Overview
 
@@ -4884,6 +4884,10 @@ Internet-Draft                RFC 3315 bis                    April 2014
    The vendor-class-len is two octets long and specifies the length of
    the opaque vendor class data in network byte order.
 
+   Servers and clients MUST NOT include more than one instance of
+   OPTION_VENDOR_CLASS with the same Enterprise Number.  Each instance
+   of OPTION_VENDOR_CLASS can carry multiple
+
 22.17.  Vendor-specific Information Option
 
    This option is used by clients and servers to exchange vendor-
@@ -4917,11 +4921,7 @@ Internet-Draft                RFC 3315 bis                    April 2014
       option-data          An opaque object, interpreted by vendor-
                            specific code on the clients and servers
 
-   The definition of the information carried in this option is vendor
-   specific.  The vendor is indicated in the enterprise-number field.
-   Use of vendor-specific information allows enhanced operation,
-   utilizing additional features in a vendor's DHCP implementation.  A
-   DHCP client that does not receive requested vendor-specific
+
 
 
 
@@ -4930,6 +4930,11 @@ Yourtchenko, et al.     Expires October 31, 2014               [Page 88]
 Internet-Draft                RFC 3315 bis                    April 2014
 
 
+   The definition of the information carried in this option is vendor
+   specific.  The vendor is indicated in the enterprise-number field.
+   Use of vendor-specific information allows enhanced operation,
+   utilizing additional features in a vendor's DHCP implementation.  A
+   DHCP client that does not receive requested vendor-specific
    information will still configure the host device's IPv6 stack to be
    functional.
 
@@ -4964,10 +4969,22 @@ Internet-Draft                RFC 3315 bis                    April 2014
    Multiple instances of the Vendor-specific Information option may
    appear in a DHCP message.  Each instance of the option is interpreted
    according to the option codes defined by the vendor identified by the
-   Enterprise Number in that option.
+   Enterprise Number in that option.  Servers and clients MUST NOT send
+   more than one instance of Vendor-specific Information option with the
+   same Enterprise Number.  Each instanf of Vendor-specific Information
+   option MAY contain multiple encapsulated options.
 
    A client that is interested in receiving a Vendor-specific
    Information Option:
+
+
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014               [Page 89]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
 
    -  MUST specify the Vendor-specific Information Option in an Option
       Request Option.
@@ -4978,13 +4995,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
    Severs only return the Vendor-specific Information Options if
    specified in Option Request Options from clients and:
-
-
-
-Yourtchenko, et al.     Expires October 31, 2014               [Page 89]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
    -  MAY use the Enterprise Numbers in the associated Vendor Class
       Options to restrict the set of Enterprise Numbers in the Vendor-
@@ -5024,6 +5034,14 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
       option-len           Length of interface-id field.
 
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014               [Page 90]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
       interface-id         An opaque value of arbitrary length generated
                            by the relay agent to identify one of the
                            relay agent's interfaces.
@@ -5032,15 +5050,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
    message into the Relay-Reply message the server sends to the relay
    agent in response to the Relay-Forward message.  This option MUST NOT
    appear in any message except a Relay-Forward or Relay-Reply message.
-
-
-
-
-
-Yourtchenko, et al.     Expires October 31, 2014               [Page 90]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
    Servers MAY use the Interface-ID for parameter assignment policies.
    The Interface-ID SHOULD be considered an opaque value, with policies
@@ -5079,6 +5088,16 @@ Internet-Draft                RFC 3315 bis                    April 2014
    The Reconfigure Message option can only appear in a Reconfigure
    message.
 
+
+
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014               [Page 91]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
 22.20.  Reconfigure Accept Option
 
    A client uses the Reconfigure Accept option to announce to the server
@@ -5089,13 +5108,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
    instruction not to accept Reconfigure messages, for the client and
    server messages, respectively.  The following figure gives the format
    of the Reconfigure Accept option:
-
-
-
-
-Yourtchenko, et al.     Expires October 31, 2014               [Page 91]
-
-Internet-Draft                RFC 3315 bis                    April 2014
 
 
        0                   1                   2                   3
@@ -5134,6 +5146,14 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
                     Figure 33: SOL_MAX_RT Option Format
 
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014               [Page 92]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
       option-code          OPTION_SOL_MAX_RT (82).
 
       option-len           4.
@@ -5144,15 +5164,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
    A DHCP client MUST include the SOL_MAX_RT option code in any Option
    Request option (see Section 22.7) it sends.
-
-
-
-
-
-Yourtchenko, et al.     Expires October 31, 2014               [Page 92]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
    The DHCP server MAY include the SOL_MAX_RT option in any response it
    sends to a client that has included the SOL_MAX_RT option code in an
@@ -5184,6 +5195,21 @@ Internet-Draft                RFC 3315 bis                    April 2014
    The format of the INF_MAX_RT option is:
 
 
+
+
+
+
+
+
+
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014               [Page 93]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5202,13 +5228,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
       SOL_MAX_RT value     Overriding value for INF_MAX_RT in seconds;
                            MUST be in range: 60 <= "value" <= 86400 (1
                            day).
-
-
-
-Yourtchenko, et al.     Expires October 31, 2014               [Page 93]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
    A DHCP client MUST include the INF_MAX_RT option code in any Option
    Request option (see Section 22.7) it sends.
@@ -5239,6 +5258,14 @@ Internet-Draft                RFC 3315 bis                    April 2014
    configuration, however, the potential attacks by insiders and
    outsiders are the same.
 
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014               [Page 94]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
    Use of manually configured preshared keys for IPsec between relay
    agents and servers does not defend against replayed DHCP messages.
    Replayed messages can represent a DOS attack through exhaustion of
@@ -5258,14 +5285,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
    and INF_MAX_RT parameters to an unreasonably high value with the
    SOL_MAX_RT and INF_MAX_RT options, which may cause an undue delay in
    a client completing its DHCP protocol transaction in the case no
-
-
-
-Yourtchenko, et al.     Expires October 31, 2014               [Page 94]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
-
    other valid response is received.  Assuming the client also receives
    a response from a valid DHCP server, large values for SOL_MAX_RT and
    INF_MAX_RT will not have any effect.
@@ -5294,6 +5313,15 @@ Internet-Draft                RFC 3315 bis                    April 2014
    theft of service, or to circumvent auditing for any number of
    nefarious purposes.
 
+
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014               [Page 95]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
    The threat common to both the client and the server is the resource
    "denial of service" (DoS) attack.  These attacks typically involve
    the exhaustion of available addresses, or the exhaustion of CPU or
@@ -5314,13 +5342,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
    DHCP clients and servers, and for the integrity of messages delivered
    between DHCP clients and servers.  DHCP authentication does not
    provide any privacy for the contents of DHCP messages.
-
-
-
-Yourtchenko, et al.     Expires October 31, 2014               [Page 95]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
 
    The Delayed Authentication protocol described in Section 21.4 uses a
    secret key that is shared between a client and a server.  The use of
@@ -5349,6 +5370,14 @@ Internet-Draft                RFC 3315 bis                    April 2014
    Communication between a server and a relay agent, and communication
    between relay agents, can be secured through the use of IPsec, as
    described in Section 21.1.  The use of manual configuration and
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014               [Page 96]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
    installation of static keys are acceptable in this instance because
    relay agents and the server will belong to the same administrative
    domain and the relay agents will require other specific configuration
@@ -5370,14 +5399,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
    IANA has established a registry of values for each of these name
    spaces, which are described in the remainder of this section.  These
-
-
-
-Yourtchenko, et al.     Expires October 31, 2014               [Page 96]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
-
    name spaces will be managed by the IANA and all will be managed
    separately from the name spaces defined for DHCPv4.
 
@@ -5400,6 +5421,18 @@ Internet-Draft                RFC 3315 bis                    April 2014
    define new Protocol, Algorithm and RDM mechanisms will explicitly
    define whether the new mechanisms are used with DHCPv4, DHCPv6 or
    both.
+
+
+
+
+
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014               [Page 97]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
 
 24.1.  Multicast Addresses
 
@@ -5427,13 +5460,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
       REBIND                6
 
-
-
-Yourtchenko, et al.     Expires October 31, 2014               [Page 97]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
-
       REPLY                 7
 
       RELEASE               8
@@ -5456,6 +5482,13 @@ Internet-Draft                RFC 3315 bis                    April 2014
       OPTION_CLIENTID       1
 
       OPTION_SERVERID       2
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014               [Page 98]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
 
       OPTION_IA_NA          3
 
@@ -5483,13 +5516,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
       OPTION_VENDOR_CLASS   16
 
-
-
-Yourtchenko, et al.     Expires October 31, 2014               [Page 98]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
-
       OPTION_VENDOR_OPTS    17
 
       OPTION_INTERFACE_ID   18
@@ -5507,6 +5533,18 @@ Internet-Draft                RFC 3315 bis                    April 2014
    IANA has recorded the status codes defined in the following table.
    IANA will manage the definition of additional status codes in the
    future.
+
+
+
+
+
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014               [Page 99]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
 
    +--------------+------+---------------------------------------------+
    | Name         | Code | Description                                 |
@@ -5538,14 +5576,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
       DUID-EN               2
 
-
-
-
-Yourtchenko, et al.     Expires October 31, 2014               [Page 99]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
-
       DUID-LL               3
 
 25.  Acknowledgments
@@ -5564,6 +5594,14 @@ Internet-Draft                RFC 3315 bis                    April 2014
    A. K.  Vijayabhaskar, Brian Carpenter, Matt Crawford, Francis Dupont,
    Richard Hussong, Kim Kinnear, Fredrik Lindholm, Tony Lindstrom, Josh
    Littlefield, Gerald Maguire, Jack McCann, Shin Miyakawa, Thomas
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014              [Page 100]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
    Narten, Erik Nordmark, Jarno Rajahalme, Yakov Rekhter, Mark Stapp,
    Matt Thomas, Sue Thomson, Tatuya Jinmei and Phil Wells.
 
@@ -5595,13 +5633,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
    [RFC1305]  Mills, D., "Network Time Protocol (Version 3)
               Specification, Implementation", RFC 1305, March 1992.
 
-
-
-Yourtchenko, et al.     Expires October 31, 2014              [Page 100]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
-
    [RFC1321]  Rivest, R., "The MD5 Message-Digest Algorithm", RFC 1321,
               April 1992.
 
@@ -5617,6 +5648,15 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
    [RFC2132]  Alexander, S. and R. Droms, "DHCP Options and BOOTP Vendor
               Extensions", RFC 2132, March 1997.
+
+
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014              [Page 101]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
 
    [RFC2136]  Vixie, P., Thomson, S., Rekhter, Y., and J. Bound,
               "Dynamic Updates in the Domain Name System (DNS UPDATE)",
@@ -5649,15 +5689,6 @@ Internet-Draft                RFC 3315 bis                    April 2014
               Stateless Address Autoconfiguration in IPv6", RFC 3041,
               January 2001.
 
-
-
-
-
-Yourtchenko, et al.     Expires October 31, 2014              [Page 101]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
-
    [RFC3118]  Droms, R. and W. Arbaugh, "Authentication for DHCP
               Messages", RFC 3118, June 2001.
 
@@ -5671,6 +5702,17 @@ Internet-Draft                RFC 3315 bis                    April 2014
    [RFC6355]  Narten, T. and J. Johnson, "Definition of the UUID-Based
               DHCPv6 Unique Identifier (DUID-UUID)", RFC 6355, August
               2011.
+
+
+
+
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014              [Page 102]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
 
 Appendix A.  Changes since RFC3315
 
@@ -5706,14 +5748,6 @@ Appendix A.  Changes since RFC3315
    10.  Incorporated RFC3315 errata (id 2471), into section 17.1.3.
         Ticket 25.
 
-
-
-
-Yourtchenko, et al.     Expires October 31, 2014              [Page 102]
-
-Internet-Draft                RFC 3315 bis                    April 2014
-
-
    11.  Added text that relay agents MUST NOT modify the relayed message
         to section 20.1.2.  Ticket 57.
 
@@ -5724,14 +5758,26 @@ Internet-Draft                RFC 3315 bis                    April 2014
    13.  Appendix C updated: Auth option is no longer allowed in Relay-
         Forward and Relay-Reply messages, ORO is no longer allowed in
         Confirm and Release messages; Preference option is no longer
-        allowed in Reply messages (only in Advertise).
+        allowed in Reply messages (only in Advertise).  Ticket 10.
 
    14.  Removed "silently" from several instances of "silently ignores"
         or "silently" discards.  It it up to software vendor if and how
-        to log such events (debug log message, event log, message pop-up
-        etc.).
 
-   15.  ...
+
+
+Yourtchenko, et al.     Expires October 31, 2014              [Page 103]
+
+Internet-Draft                RFC 3315 bis                    April 2014
+
+
+        to log such events (debug log message, event log, message pop-up
+        etc.).  Ticket 50.
+
+   15.  Clarified that: there should be no more that one instance of
+        Vendor Class option with a given Enterprise Number; that one
+        instance of Vendor Class can contain multiple encapsulated
+        options; the same applies to Vendor Specific Information option.
+        (ticket #22).
 
 Appendix B.  Changes since RFC3633
 
@@ -5763,15 +5809,22 @@ Appendix C.  Appearance of Options in Message Types
 
    NOTE:
 
+   Only included in Information-Request messages that are sent in
+   response to a Reconfigure (see section 19.4.3).
 
 
-Yourtchenko, et al.     Expires October 31, 2014              [Page 103]
+
+
+
+
+
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014              [Page 104]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
-
-   Only included in Information-Request messages that are sent in
-   response to a Reconfigure (see section 19.4.3).
 
             Status  Rap. User  Vendor Vendor Inter. Recon. Recon.
              Code  Comm. Class Class  Spec.    ID    Msg.  Accept
@@ -5821,7 +5874,10 @@ Appendix D.  Appearance of Options in the Options Field of DHCP Options
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014              [Page 104]
+
+
+
+Yourtchenko, et al.     Expires October 31, 2014              [Page 105]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5877,7 +5933,7 @@ Authors' Addresses
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014              [Page 105]
+Yourtchenko, et al.     Expires October 31, 2014              [Page 106]
 
 Internet-Draft                RFC 3315 bis                    April 2014
 
@@ -5933,4 +5989,4 @@ Internet-Draft                RFC 3315 bis                    April 2014
 
 
 
-Yourtchenko, et al.     Expires October 31, 2014              [Page 106]
+Yourtchenko, et al.     Expires October 31, 2014              [Page 107]
