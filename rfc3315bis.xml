@@ -458,8 +458,9 @@
             from which a DHCP authentication key was selected.</t>
 
             <t hangText="DHCP relay agent (or relay agent)"> A node that acts as an
-            intermediary to deliver DHCP messages between clients and servers, and
-            is on the same link as the client.</t>
+            intermediary to deliver DHCP messages between clients and servers. In certain
+            configurations there may be more than one relay agent between clients and servers,
+            so  a relay agent may send DHCP messages to another relay agent.</t>
 
             <t hangText="DHCP server (or server)"> A node that responds to requests from
             clients, and may or may not be on the same link as the client(s).</t>
@@ -5970,7 +5971,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           section 3.1 of draft-ietf-dhc-dhcpv6-clarify-auth-01. Ticket 87.</t>
 
           <t>Merged RFC7083, "Modification to Default Values of SOL_MAX_RT and
-          INF_MAX_RT", into this document.</t>
+          INF_MAX_RT", into this document. Ticket #51.</t>
 
           <t>Incorporated RFC3315 errata (id 2471), into section 17.1.3. Ticket 25.</t>
           
@@ -5982,9 +5983,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           Ticket 89.</t>
 
           <t>Appendix C updated: Auth option is no longer allowed in Relay-Forward and
-          Relay-Reply messages, ORO is no longer allowed in Confirm and Release messages;
-          Preference option is no longer allowed in Reply messages (only in Advertise).
-          Ticket 10.</t>
+          Relay-Reply messages, ORO is no longer allowed in Confirm, Release and Decline
+          messages; Preference option is no longer allowed in Reply messages (only in
+          Advertise). Ticket 10.</t>
 
           <t>Removed "silently" from several instances of "silently ignores" or "silently"
           discards. It it up to software vendor if and how to log such events (debug log
@@ -5993,7 +5994,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Clarified that: there should be no more that one instance of Vendor Class
           option with a given Enterprise Number; that one instance of Vendor Class can
           contain multiple encapsulated options; the same applies to Vendor Specific
-          Information option. (ticket #22).</t>
+          Information option. Ticket #22.</t>
+
+          <t>Clarified relay agent definition. Ticket #12.</t>
 
         </list>
 
