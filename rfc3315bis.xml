@@ -2533,7 +2533,7 @@
 
           <t hangText="   MRT"> 0</t>
 
-          <t hangText="   MRC"> REL_MAX_RC</t>
+          <t hangText="   MRC"> REL_MAX_RC - 1</t>
 
           <t hangText="   MRD"> 0</t>
 
@@ -2589,7 +2589,7 @@
 
           <t hangText="   MRT"> 0</t>
 
-          <t hangText="   MRC"> DEC_MAX_RC</t>
+          <t hangText="   MRC"> DEC_MAX_RC - 1</t>
 
           <t hangText="   MRD"> 0</t>
 
@@ -5997,6 +5997,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           Information option. Ticket #22.</t>
 
           <t>Clarified relay agent definition. Ticket #12.</t>
+          
+          <t>Changed MRC to use REL_MAX_RC-1 and DEC_MAX_RC-1 to clarify MRC to
+          be retransmission count. Ticket #84.</t>
 
         </list>
 
