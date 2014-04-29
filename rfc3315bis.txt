@@ -5799,7 +5799,7 @@ Appendix C.  Appearance of Options in Message Types
    Confirm   *             *                  *           *
    Renew     *      *      *      *           *           *
    Rebind    *             *      *           *           *
-   Decline   *      *      *      *           *           *
+   Decline   *      *      *                  *           *
    Release   *      *      *                  *           *
    Reply     *      *      *                              *     *
    Reconf.   *      *             *                       *
@@ -5826,21 +5826,21 @@ Yourtchenko, et al.     Expires October 31, 2014              [Page 104]
 Internet-Draft                RFC 3315 bis                    April 2014
 
 
-            Status  Rap. User  Vendor Vendor Inter. Recon. Recon.
-             Code  Comm. Class Class  Spec.    ID    Msg.  Accept
-   Solicit           *     *     *      *                    *
-   Advert.    *            *     *      *                    *
-   Request                 *     *      *                    *
-   Confirm                 *     *      *
-   Renew                   *     *      *                    *
-   Rebind                  *     *      *                    *
-   Decline                 *     *      *
-   Release                 *     *      *
-   Reply      *      *     *     *      *                    *
-   Reconf.                                            *
-   Inform.                 *     *      *                    *
-   R-forw.                 *     *      *      *
-   R-repl.                 *     *      *      *
+        Status  Rap. User  Vendor Vendor Inter. Recon. Recon. SOL_MAX_RT
+         Code  Comm. Class Class  Spec.    ID    Msg.  Accept INF_MAX_RT
+Solicit          *     *     *      *                    *
+Advert.   *            *     *      *                    *        *
+Request                *     *      *                    *
+Confirm                *     *      *
+Renew                  *     *      *                    *
+Rebind                 *     *      *                    *
+Decline                *     *      *
+Release                *     *      *
+Reply     *      *     *     *      *                    *        *
+Reconf.                                           *
+Inform.                *     *      *                    *
+R-forw.                *     *      *      *
+R-repl.                *     *      *      *
 
 Appendix D.  Appearance of Options in the Options Field of DHCP Options
 
