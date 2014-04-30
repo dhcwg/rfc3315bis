@@ -2062,8 +2062,7 @@
           the server has been configured to return to the client. The server
           MAY return additional options to the client if it has been
           configured to do so. The server must be aware of the recommendations
-          on packet sizes and the use of fragmentation in section 5 of RFC
-          2460.</t>
+          on packet sizes and the use of fragmentation in section 5 of <xref target='RFC2460'/>.</t>
 
           <t>If the Solicit message from the client included one or more IA
           options, the server MUST include IA options in the Advertise message
@@ -2730,7 +2729,7 @@
         <t>In most Reply messages, the server includes options containing
         configuration information for the client. The server must be aware of
         the recommendations on packet sizes and the use of fragmentation in
-        section 5 of <xref target="2460"></xref>. If the client included an Option Request option
+        section 5 of <xref target="RFC2460"></xref>. If the client included an Option Request option
         in its message, the server includes options in the Reply message
         containing configuration parameters for all of the options identified
         in the Option Request option that the server has been configured to
@@ -5858,7 +5857,7 @@
 
       &RFC4291;
 
-      <!--  Hinden, R. and S. Deering, "IP Version 6 AddressingArchitecture", RFC 3513, April 2003. -->
+      <!--  Hinden, R. and S. Deering, "IP Version 6 AddressingArchitecture", RFC 4291, February 2006. -->
 
       &RFC3118;
 
