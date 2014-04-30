@@ -6000,6 +6000,18 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Changed MRC to use REL_MAX_RC-1 and DEC_MAX_RC-1 to clarify MRC to
           be retransmission count. Ticket #84.</t>
 
+          <t>Clarify handling process for Vendor-specific Information Option
+          and Vendor Class Option. Ticket #20.</t>
+
+          <t>Replace "monotonic" with "strictly monotonic" in Section 21.3.
+          Ticket #11.</t>
+
+          <t>Incorporate everything of RFC 6644, except for Security
+          Considerations Section, which has already covered ini a more
+          abstracted way. Ticket #55 &amp; # 56.</t>
+
+          <t>Clarify the server behavior process when a client violates
+          Delayed Authentication Protocol, in Section 21.4. Ticket # 90.</t>
         </list>
 
       </t>
