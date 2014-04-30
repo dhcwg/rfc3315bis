@@ -4,18 +4,18 @@
 <!ENTITY RFC2119 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
 <!ENTITY RFC2460 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2460.xml">
 <!ENTITY RFC2464 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2464.xml">
-<!ENTITY RFC2373 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3513.xml">
+<!ENTITY RFC4291 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4291.xml">
 <!ENTITY RFC3118 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3118.xml">
-<!ENTITY RFC2401 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4301.xml">
-<!ENTITY RFC1305 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5905.xml">
+<!ENTITY RFC4301 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4301.xml">
+<!ENTITY RFC5905 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5905.xml">
 <!ENTITY RFC2104 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2104.xml">
-<!ENTITY RFC2434 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5226.xml">
+<!ENTITY RFC5226 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5226.xml">
 <!ENTITY RFC1035 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1035.xml">
-<!ENTITY RFC2461 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4861.xml">
-<!ENTITY RFC3041 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4941.xml">
+<!ENTITY RFC4861 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4861.xml">
+<!ENTITY RFC4941 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4941.xml">
 <!ENTITY RFC0768 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0768.xml">
 <!ENTITY RFC0826 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0826.xml">
-<!ENTITY RFC2462 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4862.xml">
+<!ENTITY RFC4862 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4862.xml">
 <!ENTITY RFC1321 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1321.xml">
 <!ENTITY RFC2131 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2131.xml">
 <!ENTITY RFC2132 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2132.xml">
@@ -304,7 +304,7 @@
       <t>The IPv6 Specification provides the base architecture and design of
       IPv6. Related work in IPv6 that would best serve an implementor to study
       includes the IPv6 Specification <xref target="RFC2460"/>, the IPv6
-      Addressing Architecture <xref target="RFC3513"/>, IPv6 Stateless Address
+      Addressing Architecture <xref target="RFC4291"/>, IPv6 Stateless Address
       Autoconfiguration <xref target="RFC4862"/>, IPv6 Neighbor Discovery
       Processing <xref target="RFC4861"/>, and Dynamic Updates to DNS <xref
       target="RFC2136"/>. These specifications enable DHCP to build upon the
@@ -312,7 +312,7 @@
       autoregistration of DNS Host Names.</t>
 
       <t>The IPv6 Addressing Architecture specification <xref
-      target="RFC3513"/> defines the address scope that can be used in an IPv6
+      target="RFC4291"/> defines the address scope that can be used in an IPv6
       implementation, and the various configuration architecture guidelines
       for network designers of the IPv6 address space. Two advantages of IPv6
       are that support for multicast is required and nodes can create
@@ -356,7 +356,7 @@
 
         <t>IPv6 terminology relevant to this specification from the IPv6
         Protocol <xref target="RFC2460"/>, IPv6 Addressing Architecture <xref
-        target="RFC3513"/>, and IPv6 Stateless Address Autoconfiguration <xref
+        target="RFC4291"/>, and IPv6 Stateless Address Autoconfiguration <xref
         target="RFC4862"/> is included below.</t>
 
         <t>
@@ -486,7 +486,7 @@
             "identity association for temporary addresses")</t>
 
             <t hangText="Identity association for temporary addresses (IA_TA)"> An IA that
-            carries temporary addresses (see RFC <xref target="RFC4941"/>).</t>
+            carries temporary addresses (see <xref target="RFC4941"/>).</t>
 
             <t hangText="message"> A unit of data carried as the payload of a UDP datagram,
             exchanged among DHCP servers, relay agents and clients.</t>
@@ -939,7 +939,7 @@
       list of domain names is encoded using the technique described in section
       3.1 of <xref target="RFC1035"/>. A domain name, or list of
       domain names, in DHCP MUST NOT be stored in compressed form, as
-      described in section 4.1.4 of RFC 1035.</t>
+      described in section 4.1.4 of <xref target="RFC1035"/>.</t>
     </section>
 
     <!-- ends: "8 from line 912-->
@@ -1302,11 +1302,11 @@
       identifier MUST include an interface identifier with the "u"
       (universal/local) and "g" (individual/group) bits of the interface
       identifier set appropriately, as indicated in section 2.5.1 of
-      <xref target="RFC3513"/>.</t>
+      <xref target="RFC4291"/>.</t>
 
       <t>A server MUST NOT assign an address that is otherwise reserved for
       some other purpose. For example, a server MUST NOT assign reserved
-      anycast addresses, as defined in RFC 2526, from any subnet.</t>
+      anycast addresses, as defined in <xref target="RFC2526"/>, from any subnet.</t>
     </section>
 
     <!-- ends: "11 from line 1159-->
@@ -2730,7 +2730,7 @@
         <t>In most Reply messages, the server includes options containing
         configuration information for the client. The server must be aware of
         the recommendations on packet sizes and the use of fragmentation in
-        section 5 of RFC 2460. If the client included an Option Request option
+        section 5 of <xref target="2460"></xref>. If the client included an Option Request option
         in its message, the server includes options in the Reply message
         containing configuration parameters for all of the options identified
         in the Option Request option that the server has been configured to
@@ -5856,7 +5856,7 @@
 
       <!--  Crawford, M., "Transmission of IPv6 Packets over EthernetNetworks", RFC 2464, December 1998. -->
 
-      &RFC3513;
+      &RFC4291;
 
       <!--  Hinden, R. and S. Deering, "IP Version 6 AddressingArchitecture", RFC 3513, April 2003. -->
 
@@ -5914,6 +5914,11 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
 	&RFC6355;
 
+      <?rfc include='reference.RFC.2526'?>
+
+      <!--  Johnson, D. and S. Deering, "Reserved IPv6 Subnet Anycast Addresses", RFC 2526, March 1999. -->
+    
+    	
     </references>
 
 
