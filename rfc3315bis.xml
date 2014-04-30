@@ -5799,12 +5799,21 @@
 
     <section title="Acknowledgments">
       <!-- 25, line 4764-->
-      <t>The following people are authors of the original RFC3315:
+      <t>The following people are authors of the original RFC 3315:
       Ralph Droms, Jim Bound, Bernie Volz, Ted Lemon, Charles Perkins,
       and Mike Carney. This document is merely a refinement of their
-      work and would not be possible without their original work</t>
+      work and would not be possible without their original work.</t>
 
-      <t>The following acknowledgements are from the original RFC3315:</t>
+      <t>A number of additional people have contributed to identifying
+      issues with RFC 3315 and RFC 3633 and proposed resolutions to
+      these issues as reflected in this document (in no particular
+      order): Ole Troan, Robert Marks, Leaf Yeh, Tim Winters, Michelle
+      Cotton, Pablo Armando, John Brzozowski, Suresh Krishnan,
+      Hideshi Enokihara, Alexandru Petrescu, Yukiyo Akisada, Tatuya
+      Jinmei. With special thanks to Ralph Droms for answering many
+      questions related to the original RFC 3315 work.<t>
+
+      <t>The following acknowledgements are from the original RFC 3315:</t>
 
       <t>Thanks to the DHC Working Group and the members of the IETF for their
       time and input into the specification. In particular, thanks also for
