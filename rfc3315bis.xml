@@ -731,16 +731,16 @@
 	  <c>Initial Release timeout</c>
 
 	  <c>REL_MAX_RC</c>
-	  <c>5</c>
-	  <c>MAX Release attempts</c>
+	  <c>4</c>
+	  <c>MAX Release retry attempts</c>
 
 	  <c>DEC_TIMEOUT</c>
 	  <c>1 sec</c>
 	  <c>Initial Decline timeout</c>
 
 	  <c>DEC_MAX_RC</c>
-	  <c>5</c>
-	  <c>Max Decline attempts</c>
+	  <c>4</c>
+	  <c>Max Decline retry attempts</c>
 
 	  <c>REC_TIMEOUT</c>
 	  <c>2 secs</c>
@@ -2531,7 +2531,7 @@
 
           <t hangText="   MRT"> 0</t>
 
-          <t hangText="   MRC"> REL_MAX_RC - 1</t>
+          <t hangText="   MRC"> REL_MAX_RC</t>
 
           <t hangText="   MRD"> 0</t>
 
@@ -2587,7 +2587,7 @@
 
           <t hangText="   MRT"> 0</t>
 
-          <t hangText="   MRC"> DEC_MAX_RC - 1</t>
+          <t hangText="   MRC"> DEC_MAX_RC</t>
 
           <t hangText="   MRD"> 0</t>
 
@@ -6005,8 +6005,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Clarified relay agent definition. Ticket #12.</t>
           
-          <t>Changed MRC to use REL_MAX_RC-1 and DEC_MAX_RC-1 to clarify MRC to
-          be retransmission count. Ticket #84.</t>
+          <t>Changed REL_MAX_RC and DEC_MAX_RC defaults from 5 to 4 and added retry to
+          parameter description. Ticket #84.</t>
 
           <t>Clarify handling process for Vendor-specific Information Option
           and Vendor Class Option. Ticket #20.</t>
