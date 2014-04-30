@@ -1017,7 +1017,7 @@
 
       <!-- ends: "9.1 from line 953-->
 
-      <section title="DUID Based on Link-layer Address Plus Time [DUID-LLT]">
+      <section title="DUID Based on Link-layer Address Plus Time, DUID-LLT">
         <!-- 9.2, line 972-->
 
         <t>This type of DUID consists of a two octet type field containing the
@@ -1094,7 +1094,7 @@
 
       <!-- ends: "9.2 from line 972-->
 
-      <section title="DUID Assigned by Vendor Based on Enterprise Number [DUID-EN]">
+      <section title="DUID Assigned by Vendor Based on Enterprise Number, DUID-EN">
         <!-- 9.3, line 1038-->
 
         <t>This form of DUID is assigned by the vendor to the device. It
@@ -1161,7 +1161,7 @@
 
       <!-- ends: "9.3 from line 1038-->
 
-      <section title="DUID Based on Link-layer Address [DUID-LL]">
+      <section title="DUID Based on Link-layer Address, DUID-LL">
         <!-- 9.4, line 1084-->
 
         <t>This type of DUID consists of two octets containing the DUID type
