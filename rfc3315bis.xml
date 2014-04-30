@@ -3074,7 +3074,7 @@
           new address information. If the server identifies the IA option in
           the Option Request option, the server MUST include an IA option
           to identify each IA that is to be reconfigured on the client.
-          The IA options included by the server MUST not contain any
+          The IA options included by the server MUST NOT contain any
           options.</t>
 
           <t>Because of the risk of denial of service attacks against DHCP
@@ -5856,17 +5856,17 @@
 
       <!--  Crawford, M., "Transmission of IPv6 Packets over EthernetNetworks", RFC 2464, December 1998. -->
 
-      &RFC2373;
+      &RFC3513;
 
-      <!--  Hinden, R. and S. Deering, "IP Version 6 AddressingArchitecture", RFC 2373, July 1998. -->
+      <!--  Hinden, R. and S. Deering, "IP Version 6 AddressingArchitecture", RFC 3513, April 2003. -->
 
       &RFC3118;
 
       <!--  Droms, R., Ed. and W. Arbaugh, Ed., "Authentication forDHCP Messages", RFC 3118, June 2001. -->
 
-      &RFC2401;
+      &RFC4301;
 
-      <!--  Kent, S. and R. Atkinson, "Security Architecture for the InternetProtocol", RFC 2401, November 1998. -->
+      <!--  Kent, S. and R. Atkinson, "Security Architecture for the Internet Protocol", RFC 4301, December 2005. -->
 
       <reference anchor="IANA-PEN">
         <front>
@@ -5882,17 +5882,17 @@
         </front>
       </reference>
 
-      &RFC1305;
+      &RFC5905;
 
-      <!--  Mills, D., "Network Time Protocol (Version 3)Specification, Implementation", RFC 1305, March 1992. -->
+      <!--  Mills, D., "Network Time Protocol Version 4: Protocol and Algorithms Specification", RFC 5905, June 2010. -->
 
       &RFC2104;
 
       <!--  Krawczyk, H., Bellare, M. and R. Canetti, "HMAC: Keyed-Hashingfor Message Authentication", RFC 2104, February 1997. -->
 
-      &RFC2434;
+      &RFC5226;
 
-      <!-- Narten, T. and H. Alvestrand, "Guidelines for Writing an IANAConsiderations Section in RFCs", BCP 26, RFC 2434, October 1998.
+      <!-- Narten, T. and H. Alvestrand, "Guidelines for Writing an IANAConsiderations Section in RFCs", BCP 26, RFC 5226, May 2008.
 
 -->
 
@@ -5900,13 +5900,13 @@
 
       <!-- Mockapetris, P., "Domain names - implementation andspecification", RFC 1035, November 1987. -->
 
-      &RFC2461;
+      &RFC4861;
 
-      <!-- Narten, T., Nordmark, E. and W. Simpson, "Neighbor Discovery forIP Version 6 (IPv6)", RFC 2461, December 1998. -->
+      <!-- Narten, T., Nordmark, E. and W. Simpson, "Neighbor Discovery forIP Version 6 (IPv6)", RFC 4861, September 2007. -->
 
-      &RFC3041;
+      &RFC4941;
 
-      <!-- Narten, T. and R. Draves, "Privacy Extensions for StatelessAddress Autoconfiguration in IPv6", RFC 3041, January 2001. -->
+      <!-- Narten, T. and R. Draves, "Privacy Extensions for StatelessAddress Autoconfiguration in IPv6", RFC 4941, . -->
 
       &RFC0768;
 
@@ -5918,9 +5918,9 @@
 
 transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
-      &RFC2462;
+      &RFC4862;
 
-      <!-- Thomson, S. and T. Narten, "IPv6 Stateless AddressAutoconfiguration", RFC 2462, December 1998. -->
+      <!-- Thomson, S. and T. Narten, "IPv6 Stateless AddressAutoconfiguration", RFC 4862, September 2007. -->
 
       &RFC1321;
 
