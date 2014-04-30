@@ -5868,27 +5868,9 @@
 
       <!--  Kent, S. and R. Atkinson, "Security Architecture for the Internet Protocol", RFC 4301, December 2005. -->
 
-      <reference anchor="IANA-PEN">
-        <front>
-          <title>Private Enterprise Numbers registry
-          http://www.iana.org/assignments/enterprise-numbers
-          </title>
-
-          <author>
-            <organization>IANA</organization>
-          </author>
-
-          <date/>
-        </front>
-      </reference>
-
       &RFC5905;
 
       <!--  Mills, D., "Network Time Protocol Version 4: Protocol and Algorithms Specification", RFC 5905, June 2010. -->
-
-      &RFC2104;
-
-      <!--  Krawczyk, H., Bellare, M. and R. Canetti, "HMAC: Keyed-Hashingfor Message Authentication", RFC 2104, February 1997. -->
 
       &RFC5226;
 
@@ -5922,10 +5904,6 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
       <!-- Thomson, S. and T. Narten, "IPv6 Stateless AddressAutoconfiguration", RFC 4862, September 2007. -->
 
-      &RFC1321;
-
-      <!-- Rivest, R., "The MD5 Message-Digest Algorithm", RFC 1321, April1992. -->
-
       &RFC2131;
 
       <!-- Droms, R., "Dynamic Host Configuration Protocol", RFC 2131, March1997. -->
@@ -5938,6 +5916,32 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
     </references>
 
+
+    <references title="Informative References">
+      <reference anchor="IANA-PEN">
+        <front>
+          <title>Private Enterprise Numbers registry
+          http://www.iana.org/assignments/enterprise-numbers</title>
+
+          <author>
+            <organization>IANA</organization>
+          </author>
+
+          <date />
+        </front>
+      </reference>
+
+      <?rfc include='reference.RFC.1321'?>
+
+
+    <!--Rivest, R., "The MD5 Message-Digest Algorithm", RFC 1321, April1992. -->
+
+    <?rfc include='reference.RFC.2104'?>
+
+    <!--Krawczyk, H., Bellare, M. and R. Canetti, "HMAC: Keyed-Hashingfor Message Authentication", RFC 2104, February 1997. -->
+
+    </references>
+    
     <!-- Let's briefly document relevant changes against 3315 here -->
     <section title="Changes since RFC3315">
 
