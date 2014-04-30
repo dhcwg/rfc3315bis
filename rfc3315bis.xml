@@ -4,18 +4,18 @@
 <!ENTITY RFC2119 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
 <!ENTITY RFC2460 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2460.xml">
 <!ENTITY RFC2464 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2464.xml">
-<!ENTITY RFC2373 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2373.xml">
+<!ENTITY RFC2373 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3513.xml">
 <!ENTITY RFC3118 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3118.xml">
-<!ENTITY RFC2401 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2401.xml">
-<!ENTITY RFC1305 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1305.xml">
+<!ENTITY RFC2401 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4301.xml">
+<!ENTITY RFC1305 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5905.xml">
 <!ENTITY RFC2104 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2104.xml">
-<!ENTITY RFC2434 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2434.xml">
+<!ENTITY RFC2434 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5226.xml">
 <!ENTITY RFC1035 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1035.xml">
-<!ENTITY RFC2461 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2461.xml">
-<!ENTITY RFC3041 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3041.xml">
+<!ENTITY RFC2461 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4861.xml">
+<!ENTITY RFC3041 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4941.xml">
 <!ENTITY RFC0768 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0768.xml">
 <!ENTITY RFC0826 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0826.xml">
-<!ENTITY RFC2462 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2462.xml">
+<!ENTITY RFC2462 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4862.xml">
 <!ENTITY RFC1321 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1321.xml">
 <!ENTITY RFC2131 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2131.xml">
 <!ENTITY RFC2132 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2132.xml">
@@ -144,7 +144,7 @@
       addresses to IPv6 nodes.  It offers the capability of automatic
       allocation of reusable network addresses and additional configuration
       flexibility.  This protocol is a stateful counterpart to "IPv6
-      Stateless Address Autoconfiguration" (RFC 2462), and can be used
+      Stateless Address Autoconfiguration" (RFC 4862), and can be used
       separately or concurrently with the latter to obtain configuration
       parameters.
       </t>
@@ -167,7 +167,7 @@
 
       <t>DHCP is the "stateful address autoconfiguration protocol" and the
       "stateful autoconfiguration protocol" referred to in "IPv6 Stateless
-      Address Autoconfiguration" <xref target="RFC2462"/>.</t>
+      Address Autoconfiguration" <xref target="RFC4862"/>.</t>
 
       <t>The operational models and relevant configuration information for
       DHCPv4 <xref target="RFC2132"/><xref target="RFC2131"/> and DHCPv6 are
@@ -304,15 +304,15 @@
       <t>The IPv6 Specification provides the base architecture and design of
       IPv6. Related work in IPv6 that would best serve an implementor to study
       includes the IPv6 Specification <xref target="RFC2460"/>, the IPv6
-      Addressing Architecture <xref target="RFC2373"/>, IPv6 Stateless Address
-      Autoconfiguration <xref target="RFC2462"/>, IPv6 Neighbor Discovery
-      Processing <xref target="RFC2461"/>, and Dynamic Updates to DNS <xref
+      Addressing Architecture <xref target="RFC3513"/>, IPv6 Stateless Address
+      Autoconfiguration <xref target="RFC4862"/>, IPv6 Neighbor Discovery
+      Processing <xref target="RFC4861"/>, and Dynamic Updates to DNS <xref
       target="RFC2136"/>. These specifications enable DHCP to build upon the
       IPv6 work to provide both robust stateful autoconfiguration and
       autoregistration of DNS Host Names.</t>
 
       <t>The IPv6 Addressing Architecture specification <xref
-      target="RFC2373"/> defines the address scope that can be used in an IPv6
+      target="RFC3513"/> defines the address scope that can be used in an IPv6
       implementation, and the various configuration architecture guidelines
       for network designers of the IPv6 address space. Two advantages of IPv6
       are that support for multicast is required and nodes can create
@@ -321,16 +321,16 @@
       well-known multicast address to discover and communicate with DHCP
       servers or relay agents on its link.</t>
 
-      <t>IPv6 Stateless Address Autoconfiguration <xref target="RFC2462"/>
+      <t>IPv6 Stateless Address Autoconfiguration <xref target="RFC4862"/>
       specifies procedures by which a node may autoconfigure addresses based
-      on router advertisements <xref target="RFC2461"/>, and the use of a
+      on router advertisements <xref target="RFC4861"/>, and the use of a
       valid lifetime to support renumbering of addresses on the Internet. In
       addition, the protocol interaction by which a node begins stateless or
       stateful autoconfiguration is specified. DHCP is one vehicle to perform
       stateful autoconfiguration. Compatibility with stateless address
       autoconfiguration is a design requirement of DHCP.</t>
 
-      <t>IPv6 Neighbor Discovery <xref target="RFC2461"/> is the node
+      <t>IPv6 Neighbor Discovery <xref target="RFC4861"/> is the node
       discovery protocol in IPv6 which replaces and enhances functions of ARP
       <xref target="RFC0826"/>. To understand IPv6 and stateless address
       autoconfiguration, it is strongly recommended that implementors
@@ -356,8 +356,8 @@
 
         <t>IPv6 terminology relevant to this specification from the IPv6
         Protocol <xref target="RFC2460"/>, IPv6 Addressing Architecture <xref
-        target="RFC2373"/>, and IPv6 Stateless Address Autoconfiguration <xref
-        target="RFC2462"/> is included below.</t>
+        target="RFC3513"/>, and IPv6 Stateless Address Autoconfiguration <xref
+        target="RFC4862"/> is included below.</t>
 
         <t>
         <list hangIndent="26" style="hanging">
@@ -486,7 +486,7 @@
             "identity association for temporary addresses")</t>
 
             <t hangText="Identity association for temporary addresses (IA_TA)"> An IA that
-            carries temporary addresses (see RFC <xref target="RFC3041"/>).</t>
+            carries temporary addresses (see RFC <xref target="RFC4941"/>).</t>
 
             <t hangText="message"> A unit of data carried as the payload of a UDP datagram,
             exchanged among DHCP servers, relay agents and clients.</t>
@@ -764,7 +764,7 @@
 
         <t>All time values for lifetimes, T1 and T2 are unsigned integers. The
         value 0xffffffff is taken to mean "infinity" when used as a lifetime
-        (as in <xref target="RFC2461"/>) or a value for T1 or T2.</t>
+        (as in <xref target="RFC4861"/>) or a value for T1 or T2.</t>
 
       </section>
 
@@ -1247,10 +1247,10 @@
       for the representation of an IA in a DHCP message.</t>
 
       <t>Each address in an IA has a preferred lifetime and a valid lifetime,
-      as defined in <xref target="RFC2462"/>. The lifetimes are
+      as defined in <xref target="RFC4862"/>. The lifetimes are
       transmitted from the DHCP server to the client in the IA option. The
       lifetimes apply to the use of IPv6 addresses, as described in section
-      5.5.4 of RFC 2462.</t>
+      5.5.4 of <xref target="RFC4862"/>.</t>
     </section>
 
     <!-- ends: "10 from line 1125-->
@@ -1302,7 +1302,7 @@
       identifier MUST include an interface identifier with the "u"
       (universal/local) and "g" (individual/group) bits of the interface
       identifier set appropriately, as indicated in section 2.5.1 of
-      <xref target="RFC2373"/>.</t>
+      <xref target="RFC3513"/>.</t>
 
       <t>A server MUST NOT assign an address that is otherwise reserved for
       some other purpose. For example, a server MUST NOT assign reserved
@@ -1314,8 +1314,8 @@
     <section title="Management of Temporary Addresses">
       <!-- 12, line 1217-->
 
-      <t>A client may request the assignment of temporary addresses (see RFC
-      3041 <xref target="RFC3041"/> for the definition of temporary
+      <t>A client may request the assignment of temporary addresses (see 
+      <xref target="RFC4941"/> for the definition of temporary
       addresses). DHCPv6 handling of address assignment is no different for
       temporary addresses. DHCPv6 says nothing about details of temporary
       addresses like lifetimes, how clients use temporary addresses, rules for
@@ -1331,7 +1331,7 @@
       separate from the IA_NA option IAID number space.</t>
 
       <t>The server MAY update the DNS for a temporary address, as described
-      in section 4 of RFC 3041.</t>
+      in section 4 of <xref target="RFC4941"/>.</t>
     </section>
 
     <!-- ends: "12 from line 1217-->
@@ -1850,7 +1850,7 @@
           by IPv6 Neighbor Discovery, the delay gives the amount of time to
           wait after IPv6 Neighbor Discovery causes the client to invoke the
           stateful address autoconfiguration protocol (see section 5.5.3 of
-          RFC 2462). This random delay desynchronizes clients which start at
+          <xref target="RFC4862"/>). This random delay desynchronizes clients which start at
           the same time (for example, after a power outage).</t>
 
           <t>The client transmits the message according to <xref target='RFC3315-14'/>, using
@@ -2615,7 +2615,7 @@
           option in the Reply message.</t>
 
           <t>The client SHOULD perform duplicate address detection <xref
-          target="RFC2462"/> on each of the addresses in any IAs it receives
+          target="RFC4862"/> on each of the addresses in any IAs it receives
           in the Reply message before using that address for traffic. If any
           of the addresses are found to be in use on the link, the client
           sends a Decline message to the server as described in
@@ -3476,7 +3476,7 @@
         <!-- 21.1, line 3108-->
 
         <t>Relay agents and servers that exchange messages securely use the
-        IPsec mechanisms for IPv6 <xref target="RFC2401"/>. If a client
+        IPsec mechanisms for IPv6 <xref target="RFC4301"/>. If a client
         message is relayed through multiple relay agents, each of the relay
         agents must have established independent, pairwise trust
         relationships. That is, if messages from client C will be relayed by
@@ -3567,7 +3567,7 @@
         <t>If the RDM field contains 0x00, the replay detection field MUST be
         set to the value of a strictly monotonically increasing counter. Using a
         counter value, such as the current time of day (for example, an
-        NTP-format timestamp <xref target="RFC1305"/>), can reduce the danger
+        NTP-format timestamp <xref target="RFC5905"/>), can reduce the danger
         of replay attacks. This method MUST be supported by all protocols.</t>
       </section>
 
@@ -4292,7 +4292,7 @@
         is used to carry an IA_TA, the parameters associated with the IA_TA
         and the addresses associated with the IA_TA. All of the addresses in
         this option are used by the client as temporary addresses, as defined
-        in <xref target="RFC3041"/>. The format of the IA_TA option
+        in <xref target="RFC4941"/>. The format of the IA_TA option
         is:</t>
 
         <figure align="center" anchor="FigOption4"
@@ -4362,7 +4362,7 @@
         <t>The client obtains new temporary addresses by sending an IA_TA
         option with a new IAID to a server. Requesting new temporary addresses
         from the server is the equivalent of generating new temporary
-        addresses as described in RFC 3041. The server will generate new
+        addresses as described in <xref target="RFC4941"/>. The server will generate new
         temporary addresses and return them to the client. The client should
         request new temporary addresses before the lifetimes on the previously
         assigned addresses expire.</t>
@@ -5614,13 +5614,13 @@
       from the name spaces defined for DHCPv4.</t>
 
       <t>New multicast addresses, message types, status codes, and DUID types
-      are assigned via Standards Action <xref target="RFC2434"/>.</t>
+      are assigned via Standards Action <xref target="RFC5226"/>.</t>
 
       <t>New DHCP option codes are tentatively assigned after the
       specification for the associated option, published as an Internet Draft,
       has received expert review by a designated expert <xref
-      target="RFC2434"/>. The final assignment of DHCP option codes is through
-      Standards Action, as defined in <xref target="RFC2434"/>.</t>
+      target="RFC5226"/>. The final assignment of DHCP option codes is through
+      Standards Action, as defined in <xref target="RFC5226"/>.</t>
 
       <t>This document also references three name spaces in <xref target='RFC3315-21'/> that
       are associated with the Authentication Option (<xref target='RFC3315-22.11'/>). These
