@@ -468,7 +468,7 @@
             client and server has exactly one DUID. See <xref target='RFC3315-9'/> for details of
             the ways in which a DUID may be constructed.</t>
 
-            <t hangText="Identity association (IA)"> A collection of addresses assigned to a
+            <t hangText="IA"> Identity Association: A collection of addresses assigned to a
             client. Each IA has an associated IAID. A client may have more than
             one IA assigned to it; for example, one for each of its interfaces.
             Each IA holds one type of address; for example, an identity
@@ -477,22 +477,34 @@
             document, "IA" is used to refer to an identity association without
             identifying the type of addresses in the IA.</t>
 
-            <t hangText="Identity association identifier (IAID)"> An identifier for an IA,
+            <t hangText="IAID">Identity Association IDentifier: An identifier for an IA,
             chosen by the client. Each IA has an IAID, which is chosen to be
             unique among all IAIDs for IAs belonging to that client.</t>
 
-            <t hangText="Identity association for non-temporary addresses (IA_NA)"> An IA that
+            <t hangText="IA_NA">Identity association for Non-temporary Addresses: An IA that
             carries assigned addresses that are not temporary addresses (see
             "identity association for temporary addresses")</t>
 
-            <t hangText="Identity association for temporary addresses (IA_TA)"> An IA that
+            <t hangText="IA_TA">Identity Association for Temporary Addresses: An IA that
             carries temporary addresses (see <xref target="RFC4941"/>).</t>
+
+            <t hangText="IA_PD"> Identity Association for Prefix Delegation:
+            A collection of prefixes assigned to the requesting
+            router.  Each IA_PD has an associated IAID. A requesting
+            router may have more than one IA_PD assigned to it; for
+            example, one for each of its interfaces.</t>
 
             <t hangText="message"> A unit of data carried as the payload of a UDP datagram,
             exchanged among DHCP servers, relay agents and clients.</t>
 
             <t hangText="Reconfigure key"> A key supplied to a client by a server used to
             provide security for Reconfigure messages.</t>
+
+            <t hangText="requesting router:">The router that acts as a
+            DHCP client and is requesting prefix(es) to be assigned.</t>
+
+            <t hangText="delegating router:">The router that acts as a
+            DHCP server, and is responding to the prefix request.</t>
 
             <t hangText="relaying"> A DHCP relay agent relays DHCP messages between DHCP
             participants.</t>
