@@ -5973,7 +5973,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <t>
         <list style="numbers">
 
-          <t>Incorporated RFC3315 erratas (ids: 294, 1373, 2928, 1815, 3577,
+          <t>Incorporated RFC3315 errata (ids: 294, 1373, 2928, 1815, 3577,
           2509, 295)</t>
 
           <t>Partially incorporated RFC3315 errata id 2472 (place other IA options
@@ -6010,13 +6010,13 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           special treatment of a Reply validation failure (client ignores message).
           Ticket 89.</t>
 
-          <t>Appendix C updated: Auth option is no longer allowed in Relay-Forward and
+          <t>Appendix C updated: Authentication option is no longer allowed in Relay-Forward and
           Relay-Reply messages, ORO is no longer allowed in Confirm, Release and Decline
           messages; Preference option is no longer allowed in Reply messages (only in
           Advertise). Ticket 10.</t>
 
           <t>Removed "silently" from several instances of "silently ignores" or "silently"
-          discards. It it up to software vendor if and how to log such events (debug log
+          discards. It is up to software vendor if and how to log such events (debug log
           message, event log, message pop-up etc.). Ticket 50.</t>
 
           <t>Clarified that: there should be no more that one instance of Vendor Class
@@ -6036,7 +6036,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           Ticket #11.</t>
 
           <t>Incorporate everything of RFC 6644, except for Security
-          Considerations Section, which has already covered ini a more
+          Considerations Section, which has already covered in a more
           abstracted way. Ticket #55 &amp; # 56.</t>
 
           <t>Clarify the server behavior process when a client violates
@@ -6052,7 +6052,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
       <t>
         <list style="numbers">
-          <t>Incorporated RFC3633 erratas (ids: 248, 1880, 2468, 2469, 2470, 3736)</t>
+          <t>Incorporated RFC3633 errata (ids: 248, 1880, 2468, 2469, 2470, 3736)</t>
           <t>...</t>
         </list>
       </t>
