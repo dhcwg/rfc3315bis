@@ -2030,7 +2030,7 @@
           message. For example, if the administrative policy for the server is
           that it may only respond to a client that is willing to accept a
           Reconfigure message, if the client does not include a Reconfigure
-          Accept option (see section <xref target='RFC3315-22.20'/>) in the
+          Accept option (see <xref target='RFC3315-22.20'/>) in the
           Solicit message, the servers discard the Solicit message.</t>
 
           <t>If the client has included a Rapid Commit option in the Solicit
@@ -4479,7 +4479,7 @@
 
         <t>The status of any operations involving this IA Address is indicated
         in a Status Code option in the IAaddr-options field, as specified
-        in section <xref target='RFC3315-22.13'/>.</t>
+        in <xref target='RFC3315-22.13'/>.</t>
       </section>
 
       <!-- ends: "22.6 from line 3840-->
@@ -6091,7 +6091,7 @@ R-repl.                                          *
           <t>NOTE:</t>
 
         <t>Only included in Information-Request messages that are sent in
-        response to a Reconfigure (see section 19.4.3).</t>
+        response to a Reconfigure (see <xref target='RFC3315-19.4.3'/>).</t>
 
 <figure>
 <artwork>
