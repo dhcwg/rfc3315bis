@@ -493,6 +493,8 @@
             router.  Each IA_PD has an associated IAID. A requesting
             router may have more than one IA_PD assigned to it; for
             example, one for each of its interfaces.</t>
+	    <!-- tomek: Should this text mention delegating/requesting
+	    routers instead of clients and servers? -->
 
             <t hangText="message"> A unit of data carried as the payload of a UDP datagram,
             exchanged among DHCP servers, relay agents and clients.</t>
@@ -1029,7 +1031,7 @@
 
       <!-- ends: "9.1 from line 953-->
 
-      <section title="DUID Based on Link-layer Address Plus Time, DUID-LLT">
+       <section title="DUID Based on Link-layer Address Plus Time, DUID-LLT">
         <!-- 9.2, line 972-->
 
         <t>This type of DUID consists of a two octet type field containing the
@@ -3629,7 +3631,7 @@
    .                                                               .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |                      key ID (4 octets)                        |
+   |                      key ID (32 bits)                         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                                                               |
    |                           HMAC-MD5                            |
@@ -3770,7 +3772,7 @@
             message is made, it should be made with care.  Accepting an unauthenticated
             Advertise message can make the client vulnerable to spoofing and
             other attacks.  Policies and actions which were depending upon
-            Authentication MUST NOT be executed.  Local users are SHOULD be informed that the
+            Authentication MUST NOT be executed.  Local users SHOULD be informed that the
             client has accepted an unauthenticated Advertise message. </t>
 
             <t>A client MUST be configurable to discard unauthenticated
@@ -5065,7 +5067,7 @@
 
         <t>Servers and clients MUST NOT include more than one instance
         of OPTION_VENDOR_CLASS with the same Enterprise Number. Each instance
-        of OPTION_VENDOR_CLASS can carry multiple </t>
+        of OPTION_VENDOR_CLASS can carry multiple sub-options.</t>
       </section>
 
       <!-- ends: "22.16 from line 4276-->
