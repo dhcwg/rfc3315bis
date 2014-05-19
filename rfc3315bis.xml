@@ -3242,7 +3242,7 @@
 
         <!-- ends: "19.4.1 from line 2871-->
 
-        <section title="Creation and Transmission of Renew Messages">
+        <section title="Creation and Transmission of Renew or Rebind Messages">
           <!-- 19.4.2, line 2913-->
 
           <t>When responding to a Reconfigure, the client creates and sends
@@ -3278,10 +3278,8 @@
 
         <!-- ends: "19.4.3 from line 2922-->
 
-        <section title="Time Out and Retransmission of Renew or Information-request">
+        <section title="Time Out and Retransmission of Renew, Rebind or Information-request Messages">
           <!-- 19.4.4, line 2931-->
-
-          <t>Messages</t>
 
           <t>The client uses the same variables and retransmission algorithm
           as it does with Renew, Rebind, or Information-request messages generated as
@@ -6043,6 +6041,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Clarify the server behavior process when a client violates
           Delayed Authentication Protocol, in Section 21.4. Ticket # 90.</t>
+
+          <t>Updated titles of sections 19.4.2. and 19.4.4. to include Rebind
+          messages.</t>
         </list>
 
       </t>
