@@ -5572,6 +5572,28 @@
       domain and the relay agents will require other specific configuration
       (for example, configuration of the DHCP server address) as well as the
       IPsec configuration.</t>
+
+      <t>A rogue delegating router can issue bogus prefixes to a requesting
+      router. This may cause denial of service due to unreachability.</t>
+
+      <t>A malicious requesting router may be able to mount a denial of
+      service attack by repeated requests for delegated prefixes that exhaust
+      the delegating router's available prefixes.</t>
+
+      <t>To guard against attacks through prefix delegation, requesting
+      routers and delegating routers SHOULD use DHCP authentication as
+      described in <xref target='RFC3315-21'/>.
+      For point to point links, where one trusts that there is no man in the
+      middle, or one trusts layer two authentication, DHCP authentication or
+      IPsec may not be necessary. Because a requesting router and delegating
+      routers must each have at least one assigned IPv6 address, the routers
+      may be able to use IPsec for authentication of DHCPv6 messages. The
+      details of using IPsec for DHCPv6 are under development.</t>
+
+      <t>Networks configured with delegated prefixes should be configured to
+      preclude intentional or inadvertent inappropriate advertisement of these
+      prefixes.</t>
+
     </section>
 
     <!-- ends: "23 from line 4492-->
