@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="US-ASCII"?>
-<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
-]>
 <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
 <?rfc strict="yes" ?>
 <?rfc toc="yes"?>
@@ -5790,8 +5788,10 @@
       <!-- 25, line 4764-->
       <t>The following people are authors of the original RFC 3315:
       Ralph Droms, Jim Bound, Bernie Volz, Ted Lemon, Charles Perkins,
-      and Mike Carney. This document is merely a refinement of their
-      work and would not be possible without their original work.</t>
+      and Mike Carney. The following people are authors of the original 
+      RFC 3633: Ole Troan and Ralph Droms. This document is merely a 
+      refinement of their work and would not be possible without their 
+      original work.</t>
 
       <t>A number of additional people have contributed to identifying
       issues with RFC 3315 and RFC 3633 and proposed resolutions to
@@ -5802,17 +5802,19 @@
       Jinmei, Fred Templin. With special thanks to Ralph Droms for answering
       many questions related to the original RFC 3315 work.</t>
 
-      <t>The following acknowledgements are from the original RFC 3315:</t>
+      <t>The following acknowledgements are from the original RFC 3315 and RFC 3633:</t>
 
       <t>Thanks to the DHC Working Group and the members of the IETF for their
       time and input into the specification. In particular, thanks also for
       the consistent input, ideas, and review by (in alphabetical order)
       Bernard Aboba, Bill Arbaugh, Thirumalesh Bhat, Steve Bellovin, A. K.
-      Vijayabhaskar, Brian Carpenter, Matt Crawford, Francis Dupont, Richard
-      Hussong, Kim Kinnear, Fredrik Lindholm, Tony Lindstrom, Josh
-      Littlefield, Gerald Maguire, Jack McCann, Shin Miyakawa, Thomas Narten,
-      Erik Nordmark, Jarno Rajahalme, Yakov Rekhter, Mark Stapp, Matt Thomas,
-      Sue Thomson, Tatuya Jinmei and Phil Wells.</t>
+      Vijayabhaskar, Brian Carpenter, Matt Crawford, Steve Deering, Francis 
+      Dupont, Dave Forster, Brian Haberman, Richard Hussong, Tatuya Jinmei, 
+      Kim Kinnear, Fredrik Lindholm, Tony Lindstrom, Josh Littlefield, Gerald 
+      Maguire, Jack McCann, Shin Miyakawa, Thomas Narten, Erik Nordmark, Jarno 
+      Rajahalme, Yakov Rekhter, Pekka Savola, Mark Stapp, Matt Thomas,
+      Sue Thomson, Tatuya Jinmei, Bernie Volz, Trevor Warwick, Phil Wells and
+      Toshi Yamasaki.</t>
 
       <t>Thanks to Steve Deering and Bob Hinden, who have consistently taken
       the time to discuss the more complex parts of the IPv6
@@ -5824,7 +5826,6 @@
     </section>
 
     <!-- ends: "25 from line 4764-->
-
 
   </middle>
 
