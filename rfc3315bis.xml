@@ -1506,11 +1506,12 @@
     <section title="Message Validation">
       <!-- 15, line 1345-->
 
-      <t>Clients and servers SHOULD discard any messages that contain options
-      that are not allowed to appear in the received message. For example, an
+      <t>Clients and servers might get messages that contain options
+      not allowed to appear in the received message. For example, an
       IA option is not allowed to appear in an Information-request message.
-      Clients and servers MAY choose to extract information from such a
-      message if the information is of use to the recipient.</t>
+      Clients and servers MAY choose either to extract information from such a
+      message if the information is of use to the recipient, or to ignore
+      such message completely and just drop it.</t>
 
       <t>A server MUST discard any Solicit, Confirm, Rebind or
       Information-request messages it receives with a unicast destination
@@ -6102,6 +6103,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           
           <t>Applied many of the review comments from a review done by Fred
           Templin in August 2006. Ticket #14.</t>
+
+          <t>Reworded the first paragraph of Section 15 to relax the "SHOULD"
+          requirement to drop the messages which contain the options not expected
+          in the current message. Ticket #17.</t>
         </list>
 
       </t>
