@@ -187,6 +187,41 @@
 
       <!-- ends: "1.1 from line 260-->
 
+      <section anchor='RFC3633-Intro' title="Prefix Delegation">
+        <t>This document also provide a mechanism for automated
+        delegation of IPv6 prefixes using DHCP. Through this mechanism, a
+        delegating router can delegate prefixes to authorized requesting routers.</t>
+        
+        <t>This mechanism is intended for simple delegation of prefixes 
+        from a delegating router to requesting routers. It is appropriate 
+        for situations in which the delegating router does not have 
+        knowledge about the topology of the networks to which the requesting 
+        router is attached, and the delegating router does not require other 
+        information aside from the identity of the requesting router to choose 
+        a prefix for delegation.</t>
+        
+        <t>For example, these IPv6 Prefix options would be used by a 
+        service provider to assign a prefix to a Customer Premise 
+        Equipment (CPE) device acting as a router between the subscriber's 
+        internal network and the service provider's core network.</t>
+        
+        <t>Many applications expect stable addresses. Even though this
+        mechanism makes automatic renumbering easier, it is expected that
+        prefixes have a long lifespan.  During renumbering it is expected
+        that the old and the new prefix co-exist for some time.</t>
+        
+        <t>The design of this prefix delegation mechanism meets the requirements
+        for prefix delegation in Requirements for IPv6 prefix delegation 
+        <xref target="RFC3769"/>.</t>
+        
+        <t>Note that this use of DHCP is not bound to the assignment of IP
+        addresses or other configuration information to hosts, and that no
+        mechanism is currently available to communicate delegated prefixes to
+        a DHCP server that serves such a function.</t>
+   
+      </section>
+      <!-- ends: "1.1-->
+      
       <section anchor='RFC3315-1.2' title="Client-server Exchanges Involving Two Messages">
         <!-- 1.2, line 284-->
 
@@ -5982,6 +6017,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
     <?rfc include='reference.RFC.2104'?>
 
     <!--Krawczyk, H., Bellare, M. and R. Canetti, "HMAC: Keyed-Hashingfor Message Authentication", RFC 2104, February 1997. -->
+
+    <?rfc include='reference.RFC.3769'?>
 
     </references>
     
