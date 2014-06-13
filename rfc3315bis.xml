@@ -3438,6 +3438,20 @@
         </section>
 
         <!-- ends: "20.1.2 from line 2999-->
+
+        <!-- begins: RFC3633 Section 14: Relay agent behavior -->
+        <section title="Relay agent behavior with Prefix Delegation">
+          <t>A relay agent forwards messages containing Prefix Delegation
+          options in the same way as described earlier in this section.</t>
+
+          <t>If a delegating router communicates with a requesting router
+          through a relay agent, the delegating router may need a protocol
+          or other out-of-band communication to configure routing information
+          for delegated prefixes on any router through which the requesting
+          router may forward traffic.</t>
+        </section>
+        <!-- ends: RFC3633 Section 14: Relay agent behavior -->
+
       </section>
 
       <!-- ends: "20.1 from line 2964-->
