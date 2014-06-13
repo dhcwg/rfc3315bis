@@ -1307,21 +1307,37 @@
       <t>A client may request the assignment of temporary addresses (see 
       <xref target="RFC4941"/> for the definition of temporary
       addresses). DHCPv6 handling of address assignment is no different for
-      temporary addresses. DHCPv6 says nothing about details of temporary
-      addresses like lifetimes, how clients use temporary addresses, rules for
-      generating successive temporary addresses, etc.</t>
+      temporary addresses.</t>
 
       <t>Clients ask for temporary addresses and servers assign them.
       Temporary addresses are carried in the Identity Association for
       Temporary Addresses (IA_TA) option (see <xref target='RFC3315-22.5'/>). Each IA_TA option
       contains at most one temporary address for each of the prefixes on the
       link to which the client is attached.</t>
+      
+      <t>The lifetime of the assigned temporary address is set in the IA Address Option 
+      (see <xref target='RFC3315-22.6'/>) with in the IA_TA option. It is 
+      RECOMMENDED to set short lifetimes, typically shorter than 
+      TEMP_VALID_LIFETIME and TEMP_PREFERRED_LIFETIME (see Section 5, <xref target='RFC4941'/>.</t>
 
       <t>The IAID number space for the IA_TA option IAID number space is
       separate from the IA_NA option IAID number space.</t>
-
+      
+      <t>A DHCPv6 server implementation MAY generate temporary addresses 
+      referring to the algorithm defined in Section 3.2.1, <xref target='RFC4941'/>, 
+      with additional condition that the new address is not duplicated with any assigned addresses. </t>
+      
       <t>The server MAY update the DNS for a temporary address, as described
       in section 4 of <xref target="RFC4941"/>.</t>
+      
+      <t>On the clients, by default, temporary addresses are preferred in source address selection, 
+      according to Rule 7, <xref target='RFC6724'/>. However, this policy is overridable.</t>
+      
+      <t>One of the most important properties of temporary address is 
+      unlinkability of different actions over time. So, it is NOT RECOMMENDED 
+      for a client to renew expired temporary addresses, though DHCPv6 
+      provides such possibility (see <xref target='RFC3315-22.5'/>).</t>
+
     </section>
 
     <!-- ends: "12 from line 1217-->
@@ -5933,6 +5949,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <!-- Alexander, S. and R. Droms, "DHCP Options and BOOTP VendorExtensions", RFC 2132, March 1997. -->
 
       <?rfc include='reference.RFC.6355'?>
+
+      <?rfc include='reference.RFC.6724'?>
 
       <?rfc include='reference.RFC.2526'?>
 
