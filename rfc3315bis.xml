@@ -3092,7 +3092,7 @@
       changes in the location of directory servers, addition of new services
       such as printing, and availability of new software.</t>
 
-      <section title="Server Behavior">
+      <section anchor='RFC3315-19.1' title="Server Behavior">
         <!-- 19.1, line 2762-->
 
         <t>A server sends a Reconfigure message to cause a client to initiate
@@ -3215,7 +3215,7 @@
 
       <!-- ends: "19.3 from line 2849-->
 
-      <section title="Client Behavior">
+      <section anchor='RFC3315-19.4' title="Client Behavior">
         <!-- 19.4, line 2861-->
 
         <t>A client receives Reconfigure messages sent to the UDP port 546 on
@@ -3332,6 +3332,35 @@
       </section>
 
       <!-- ends: "19.4 from line 2861-->
+
+      <!-- begins: RFC3633 Section 13: Prefix Delegation reconfiguration -->
+      <section anchor="sipd" title="Prefix Delegation reconfiguration">
+        <t>This section describes prefix delegation in Reconfigure
+        message exchanges.</t>
+
+        <section anchor="sipd-server" title="Delegating Router behavior">
+          <t>The delegating router initiates a configuration message
+          exchange with a requesting router, as described in <xref target='RFC3315-19'/>,
+          by sending a Reconfigure message (acting as a DHCP server)
+          to the requesting router, as described in <xref target='RFC3315-19.1'/>.
+          The delegating router specifies the IA_PD option in the
+          Option Request option to cause the requesting router to
+          include an IA_PD option to obtain new information about
+          delegated prefix(es).</t>
+        </section>
+
+        <section anchor="sipd-client" title="Requesting Router behavior">
+          <t>The requesting router responds to a Reconfigure message,
+          acting as a DHCP client, received from a delegating router
+          as described in <xref target='RFC3315-19.4'/>
+          The requesting router MUST include the IA_PD Prefix option(s) (in
+          an IA_PD option) for prefix(es) that have been delegated to
+          the requesting router by the delegating router from which the
+          Reconfigure message was received.</t>
+        </section>
+      </section>
+      <!-- ends: RFC3633 Section 13: Prefix Delegation reconfiguration -->
+
     </section>
 
     <!-- ends: "19 from line 2751-->
