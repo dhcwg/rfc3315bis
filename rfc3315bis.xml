@@ -1286,35 +1286,59 @@
 
       <t>An "identity-association" (IA) is a construct through which a server
       and a client can identify, group, and manage a set of related IPv6
-      addresses. Each IA consists of an IAID and associated configuration
-      information.</t>
+      addresses or delegated prefixes. Each IA consists of an IAID and
+      associated configuration information.</t>
+
+      <t>The IAID uniquely identifies the IA and must be chosen to be unique
+      among the IAIDs for that IA type on the client. The IAID is chosen
+      by the client. For any given use of an IA by the client, the IAID
+      for that IA MUST be consistent across restarts of the DHCP client.
+      The client may maintain consistency either by storing the IAID in
+      non-volatile storage or by using an algorithm that will consistently
+      produce the same IAID as long as the configuration of the client has
+      not changed. There may be no way for a client to maintain consistency
+      of the IAIDs if it does not have non-volatile storage and the
+      client's hardware configuration changes. If the client uses only one
+      IAID, it can use a well-known value, e.g., zero.</t>
+
+     <section anchor='RFC3315-10.1' title="Identity Associations for Address Assignment">
 
       <t>A client must associate at least one distinct IA with each of its
       network interfaces for which it is to request the assignment of IPv6
       addresses from a DHCP server. The client uses the IAs assigned to an
       interface to obtain configuration information from a server for that
-      interface. Each IA must be associated with exactly one interface.</t>
-
-      <t>The IAID uniquely identifies the IA and must be chosen to be unique
-      among the IAIDs on the client. The IAID is chosen by the client. For any
-      given use of an IA by the client, the IAID for that IA MUST be
-      consistent across restarts of the DHCP client. The client may maintain
-      consistency either by storing the IAID in non-volatile storage or by
-      using an algorithm that will consistently produce the same IAID as long
-      as the configuration of the client has not changed. There may be no way
-      for a client to maintain consistency of the IAIDs if it does not have
-      non-volatile storage and the client's hardware configuration
-      changes.</t>
+      interface. Each IA must be associated with exactly one interface.
+      </t>
 
       <t>The configuration information in an IA consists of one or more IPv6
-      addresses along with the times T1 and T2 for the IA. See <xref target='RFC3315-22.4'/>
-      for the representation of an IA in a DHCP message.</t>
+      addresses along with the times T1 and T2 for the IA. See
+      Section 22.4 for the representation of an IA in a DHCP message.</t>
 
       <t>Each address in an IA has a preferred lifetime and a valid lifetime,
-      as defined in <xref target="RFC4862"/>. The lifetimes are
-      transmitted from the DHCP server to the client in the IA option. The
-      lifetimes apply to the use of IPv6 addresses, as described in section
-      5.5.4 of <xref target="RFC4862"/>.</t>
+      as defined in <xref target="RFC4862"/>. The lifetimes are transmitted from the DHCP
+      server to the client in the IA option. The lifetimes apply to the
+      use of IPv6 addresses, as described in section 5.5.4 of <xref target="RFC4862"/>.
+      </t>
+
+     </section>
+
+     <section anchor='RFC3315-10.2' title="Identity Associations for Prefix Delegation">
+
+      <t>An IA_PD is different from an IA for address assignment, in that it
+      does not need to be associated with exactly one interface. One IA_PD
+      can be associated with the requesting router, with a set of interfaces
+      or with exactly one interface. A requesting router must create at
+      least one distinct IA_PD. It may associate a distinct IA_PD with each
+      of its downstream network interfaces and use that IA_PD to obtain a
+      prefix for that interface from the delegating router.</t>
+
+      <t>The configuration information in an IA_PD consists of one or more
+      IPv6 prefixes along with the times T1 and T2 for the IA_PD. See
+      section 22.XX for the representation of an IA_PD in a DHCP message.
+      </t>
+
+     </section>
+
     </section>
 
     <!-- ends: "10 from line 1125-->
