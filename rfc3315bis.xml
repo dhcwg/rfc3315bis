@@ -6496,21 +6496,21 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
 <figure>
 <artwork>
-        Client Server IA_NA  Option Pref Elap. Relay Auth. Server
-          ID     ID   IA_TA  Request     Time   Msg.       Unicast
-Solicit   *             *      *           *           *
-Advert.   *      *      *            *                 *
-Request   *      *      *      *           *           *
-Confirm   *             *                  *           *
-Renew     *      *      *      *           *           *
-Rebind    *             *      *           *           *
-Decline   *      *      *                  *           *
-Release   *      *      *                  *           *
-Reply     *      *      *                              *     *
-Reconf.   *      *             *                       *
-Inform.   * (see note)         *           *           *
-R-forw.                                          *
-R-repl.                                          *
+        Client Server IA_NA IA_PD Option Pref Elap. Relay Auth. Server
+          ID     ID   IA_TA       Request     Time   Msg.       Unicast
+Solicit   *             *     *     *           *           *
+Advert.   *      *      *     *           *                 *
+Request   *      *      *     *     *           *           *
+Confirm   *             *                       *           *
+Renew     *      *      *     *     *           *           *
+Rebind    *             *     *     *           *           *
+Decline   *      *      *     *                 *           *
+Release   *      *      *     *                 *           *
+Reply     *      *      *     *                             *     *
+Reconf.   *      *                  *                       *
+Inform.   * (see note)              *           *           *
+R-forw.                                               *
+R-repl.                                               *
 </artwork>
 </figure>
 
@@ -6549,24 +6549,26 @@ R-repl.                *     *      *      *
 
 <figure>
 <artwork>
-             Option  IA_NA/ IAADDR Relay  Relay
-             Field   IA_TA         Forw.  Reply
+             Option  IA_NA/ IAADDR                 Relay  Relay
+             Field   IA_TA         IA_PD  IAPREFIX Forw.  Reply
 Client ID      *
 Server ID      *
 IA_NA/IA_TA    *
 IAADDR                 *
+IA_PD          *
+IAPREFIX                             *
 ORO            *
 Preference     *
 Elapsed Time   *
-Relay Message                        *      *
+Relay Message                                        *      *
 Authentic.     *
 Server Uni.    *
-Status Code    *       *       *
+Status Code    *       *       *     *
 Rapid Comm.    *
 User Class     *
 Vendor Class   *
 Vendor Info.   *
-Interf. ID                           *      *
+Interf. ID                                           *      *
 Reconf. MSG.   *
 Reconf. Accept *
 </artwork>
