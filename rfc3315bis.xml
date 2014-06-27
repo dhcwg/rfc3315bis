@@ -190,7 +190,8 @@
       <section anchor='RFC3633-Intro' title="Prefix Delegation">
         <t>This document also provide a mechanism for automated
         delegation of IPv6 prefixes using DHCP. Through this mechanism, a
-        delegating router can delegate prefixes to authorized requesting routers.</t>
+        delegating router (DHCP server) can delegate prefixes to authorized
+        requesting routers (DHCP clients).</t>
         
         <t>This mechanism is intended for simple delegation of prefixes 
         from a delegating router to requesting routers. It is appropriate 
@@ -203,7 +204,8 @@
         <t>For example, these IPv6 Prefix options would be used by a 
         service provider to assign a prefix to a Customer Premise 
         Equipment (CPE) device acting as a router between the subscriber's 
-        internal network and the service provider's core network.</t>
+        internal network and the service provider's core network, as
+        described in <xref target="rfc7084"/>.</t>
         
         <t>Many applications expect stable addresses. Even though this
         mechanism makes automatic renumbering easier, it is expected that
@@ -6125,6 +6127,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
     <!--Krawczyk, H., Bellare, M. and R. Canetti, "HMAC: Keyed-Hashingfor Message Authentication", RFC 2104, February 1997. -->
 
     <?rfc include='reference.RFC.3769'?>
+    
+    
+    <?rfc include='reference.RFC.7084'?>
 
     </references>
     
