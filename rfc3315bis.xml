@@ -205,7 +205,7 @@
         service provider to assign a prefix to a Customer Premise 
         Equipment (CPE) device acting as a router between the subscriber's 
         internal network and the service provider's core network, as
-        described in <xref target="rfc7084"/>.</t>
+        described in <xref target="RFC7084"/>.</t>
         
         <t>Many applications expect stable addresses. Even though this
         mechanism makes automatic renumbering easier, it is expected that
@@ -1334,7 +1334,7 @@
 
       <t>The configuration information in an IA_PD consists of one or more
       IPv6 prefixes along with the times T1 and T2 for the IA_PD. See
-      section 22.XX for the representation of an IA_PD in a DHCP message.
+      <xref target="IA_PD-option"/> for the representation of an IA_PD in a DHCP message.
       </t>
 
      </section>
@@ -5482,8 +5482,228 @@
 
       <!-- ends: "22.20 from line 4468-->
 
+      <!-- begins: merged section 9. and 10. from RFC3633 -->
+
+    <section anchor="IA_PD-option"
+      title="Identity Association for Prefix Delegation Option">
+
+      <t>The IA_PD option is used to carry a prefix delegation
+      identity association, the parameters associated with the IA_PD
+      and the prefixes associated with it.</t>
+
+        <figure align="center" anchor="FigOption25"
+              title="Identity Association for Prefix Delegation Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |         OPTION_IA_PD          |         option-length         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                         IAID (4 octets)                       |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              T1                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              T2                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   .                                                               .
+   .                          IA_PD-options                        .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+              ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
+
+           <t>
+	    <list style="hanging" hangIndent='24'>
+	    <t hangText="   option-code">OPTION_IA_PD (25).</t>
+
+	    <t hangText="   option-length">12 + length of IA_PD-options
+	    field.</t>
+
+            <t hangText="   IAID">The unique identifier for this IA_PD;
+            the IAID must be unique among the identifiers for all of
+            this requesting router's IA_PDs.</t>
+
+            <t hangText="   T1">The time at which the requesting router
+            should contact the delegating router from which the
+            prefixes in the IA_PD were obtained to extend the
+            lifetimes of the prefixes delegated to the IA_PD; T1 is a
+            time duration relative to the current time expressed in
+            units of seconds.</t>
+
+            <t hangText="   T2">The time at which the requesting router
+            should contact any available delegating router to extend
+            the lifetimes of the prefixes assigned to the IA_PD; T2 is
+            a time duration relative to the current time expressed in
+            units of seconds.</t>
+
+            <t hangText="   IA_PD-options">Options associated with this
+            IA_PD.</t>
+
+	  </list>
+           </t>
+
+      <t>The IA_PD-options field encapsulates those options that are
+      specific to this IA_PD. For example, all of the IA_PD Prefix
+      Options carrying the prefixes associated with this IA_PD are in
+      the IA_PD-options field.</t>
+
+      <t>An IA_PD option may only appear in the options area of a DHCP
+      message. A DHCP message may contain multiple IA_PD options.</t>
+
+      <t>The status of any operations involving this IA_PD is indicated
+      in a Status Code option in the IA_PD-options field.</t>
+
+      <t>Note that an IA_PD has no explicit "lifetime" or "lease
+      length" of its own. When the valid lifetimes of all of the
+      prefixes in a IA_PD have expired, the IA_PD can be considered as
+      having expired. T1 and T2 are included to give delegating
+      routers explicit control over when a requesting router should
+      contact the delegating router about a specific IA_PD.</t>
+
+      <t>In a message sent by a requesting router to a delegating
+      router, values in the T1 and T2 fields indicate the requesting
+      router's preference for those parameters. The requesting router
+      sets T1 and T2 to zero if it has no preference for those values.
+      In a message sent by a delegating router to a requesting router,
+      the requesting router MUST use the values in the T1 and T2
+      fields for the T1 and T2 parameters. The values in the T1 and T2
+      fields are the number of seconds until T1 and T2.</t>
+
+      <t>The delegating router selects the T1 and T2 times to allow
+      the requesting router to extend the lifetimes of any prefixes in
+      the IA_PD before the lifetimes expire, even if the delegating
+      router is unavailable for some short period of time.
+      Recommended values for T1 and T2 are .5 and .8 times the
+      shortest preferred lifetime of the prefixes in the IA_PD that
+      the delegating router is willing to extend, respectively. If the
+      time at which the prefixes in an IA_PD are to be renewed is to
+      be left to the discretion of the requesting router, the
+      delegating router sets T1 and T2 to 0.</t>
+
+      <t>If a delegating router receives an IA_PD with T1 greater than
+      T2, and both T1 and T2 are greater than 0, the delegating router
+      ignores the invalid values of T1 and T2 and processes the IA_PD
+      as though the requesting router had set T1 and T2 to 0.</t>
+
+      <t>If a requesting router receives an IA_PD with T1 greater than
+      T2, and both T1 and T2 are greater than 0, the requesting router discards
+      the IA_PD option and processes the remainder of the message as
+      though the requesting router had not included the IA_PD
+      option.</t>
+
+    </section>
+
+    <section anchor='IAPREFIX-option' title="IA Prefix Option">
+      <t>The IA_PD Prefix option is used to specify IPv6 address
+      prefixes associated with an IA_PD. The IA_PD Prefix option must
+      be encapsulated in the IA_PD-options field of an IA_PD
+      option.</t>
+
+        <figure align="center" anchor="FigOption26"
+              title="IA Prefix Option Format">
+          <preamble/>
+
+          <artwork align="left">
+          <![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |        OPTION_IAPREFIX        |         option-length         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                      preferred-lifetime                       |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                        valid-lifetime                         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | prefix-length |                                               |
+   +-+-+-+-+-+-+-+-+          IPv6 prefix                          |
+   |                           (16 octets)                         |
+   |                                                               |
+   |                                                               |
+   |                                                               |
+   |               +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |               |                                               .
+   +-+-+-+-+-+-+-+-+                                               .
+   .                       IAprefix-options                        .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+              ]]>
+          </artwork>
+
+          <postamble/>
+        </figure>
+
+      <t>
+	    <list style="hanging" hangIndent='24'>
+	    <t hangText="   option-code">OPTION_IAPREFIX (26)</t>
+
+	    <t hangText="   option-length">25 + length of
+	    IAprefix-options field.</t>
+
+	    <t hangText="   preferred-lifetime">The recommended
+            preferred lifetime for the IPv6 prefix in the option,
+            expressed in units of seconds. A value of 0xFFFFFFFF
+            represents infinity.</t>
+
+            <t hangText="   valid-lifetime">The valid lifetime for the
+            IPv6 prefix in the option, expressed in units of
+            seconds. A value of 0xFFFFFFFF represents infinity.</t>
+
+	    <t hangText="   prefix-length">Length for this prefix in
+	    bits.</t>
+
+	    <t hangText="   IPv6-prefix">An IPv6 prefix.</t>
+
+	    <t hangText="   IAprefix-options">Options associated with
+	    this prefix.</t>
+
+	  </list>
+      </t>
+
+      <t>In a message sent by a requesting router to a delegating
+      router, the values in the fields can be used to indicate the
+      requesting router's preference for those values. The requesting
+      router may send a value of zero to indicate no preference. A
+      requesting router may set the IPv6 prefix field to zero and a
+      given value in the prefix-length field to indicate a preference
+      for the size of the prefix to be delegated.</t>
+
+      <t>In a message sent by a delegating router the preferred and
+      valid lifetimes should be set to the values of
+      AdvPreferredLifetime and AdvValidLifetime as specified in
+      section 6.2.1, "Router Configuration Variables" of <xref
+      target="RFC2461"/>, unless administratively configured.</t>
+
+      <t>A requesting router discards any prefixes for which the
+      preferred lifetime is greater than the valid lifetime. A
+      delegating router ignores the lifetimes set by the requesting
+      router if the preferred lifetime is greater than the valid
+      lifetime and ignores the values for T1 and T2 set by the
+      requesting router if those values are greater than the preferred
+      lifetime.</t>
+
+      <t>The values in the preferred and valid lifetimes are the
+      number of seconds remaining for each lifetime.</t>
+
+      <t>An IA_PD Prefix option may appear only in an IA_PD
+      option. More than one IA_PD Prefix Option can appear in a single
+      IA_PD option.</t>
+
+      <t>The status of any operations involving this IA_PD Prefix
+      option is indicated in a Status Code option in the
+      IAprefix-options field.</t>
+      
+    </section>
+
+      <!-- ends: merged section 9. and 10. from RFC3633 -->
+
       <!-- Merging section 4. from RFC7083 (SOL_MAX_RT option) -->
-      <section anchor='RFC3315-22.21' title="SOL_MAX_RT Option">
+      <section anchor='SOL_MAX_RT_option' title="SOL_MAX_RT Option">
         <t>A DHCP server sends the SOL_MAX_RT option to a client to override
         the default value of SOL_MAX_RT.  The value of SOL_MAX_RT in the
         option replaces the default value defined in <xref target='RFC3315-5.5'/>.
@@ -5551,7 +5771,7 @@
 
       <!-- ends: merged section 4. from RFC7083 -->
 
-      <section anchor='RFC3315-22.22' title="INF_MAX_RT Option">
+      <section anchor='INF_MAX_RT_option' title="INF_MAX_RT Option">
         <t>A DHCP server sends the INF_MAX_RT option to a client to override
         the default value of INF_MAX_RT.  The value of INF_MAX_RT in the
         option replaces the default value defined in <xref target='RFC3315-5.5'/>.
@@ -5617,7 +5837,7 @@
       </section>
 
       <!-- ends: merged section 5. from RFC7083 -->
-
+      
     </section>
 
     <!-- ends: "22 from line 3547-->
@@ -5921,6 +6141,11 @@
             <t hangText="   OPTION_RECONF_MSG">19</t>
 
             <t hangText="   OPTION_RECONF_ACCEPT">20</t>
+            
+            <!-- Options incorporated from RFC3633 -->
+            <t hangText="   OPTION_IA_PD">25</t>
+
+            <t hangText="   OPTION_IAPREFIX">26</t>            
 
             <!-- Options incorporated from RFC7083 -->
             <t hangText="   OPTION_SOL_MAX_RT">82</t>
@@ -6122,7 +6347,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.2526'?>
 
       <!--  Johnson, D. and S. Deering, "Reserved IPv6 Subnet Anycast Addresses", RFC 2526, March 1999. -->
-    
+
+      <?rfc include='reference.RFC.2461'?>    
     	
     </references>
 
