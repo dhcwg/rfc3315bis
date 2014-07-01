@@ -470,6 +470,11 @@
 
         <t>
           <list hangIndent="26" style="hanging">
+            <t hangText="allocatable resource"> (or resource). It is an address,
+            a prefix or any other allocatable resource that may be defined in
+            the future. Currently there are three defined allocatable resources:
+            non-temporary addresses, temporary addresses and delegated prefixes.</t>
+
             <t hangText="appropriate to the link"> An address is "appropriate to the link"
             when the address is consistent with the DHCP server's knowledge of the
             network topology, prefix assignment and address assignment
@@ -498,7 +503,9 @@
             ambiguity.</t>
 
             <t hangText="DHCP client (or client)"> A node that initiates requests on a link to
-            obtain configuration parameters from one or more DHCP servers.</t>
+            obtain configuration parameters from one or more DHCP servers. Depending on the
+            purpose of the client, it may feature the requesting router functionality, if it
+            supports prefix delegation.</t>
 
             <t hangText="DHCP domain"> A set of links managed by DHCP and operated by a single
             administrative entity.</t>
@@ -512,20 +519,24 @@
             so  a relay agent may send DHCP messages to another relay agent.</t>
 
             <t hangText="DHCP server (or server)"> A node that responds to requests from
-            clients, and may or may not be on the same link as the client(s).</t>
+            clients, and may or may not be on the same link as the client(s). Depending
+            on its capabilities, it may also feature the functionality of delegating router,
+            if it supports prefix delegation.</t>
 
             <t hangText="DUID"> A DHCP Unique IDentifier for a DHCP participant; each DHCP
             client and server has exactly one DUID. See <xref target='RFC3315-9'/> for details of
             the ways in which a DUID may be constructed.</t>
 
-            <t hangText="IA"> Identity Association: A collection of addresses assigned to a
+            <t hangText="IA"> Identity Association: A collection of
+            allocatable resources assigned to a
             client. Each IA has an associated IAID. A client may have more than
             one IA assigned to it; for example, one for each of its interfaces.
             Each IA holds one type of address; for example, an identity
             association for temporary addresses (IA_TA) holds temporary addresses
             (see "identity association for temporary addresses"). Throughout this
             document, "IA" is used to refer to an identity association without
-            identifying the type of addresses in the IA.</t>
+            identifying the type of addresses in the IA. New IA types may be defined
+            in the future.</t>
 
             <t hangText="IAID">Identity Association IDentifier: An identifier for an IA,
             chosen by the client. Each IA has an IAID, which is chosen to be
