@@ -1866,23 +1866,49 @@
 
     <section title="Client Source Address and Interface Selection">
       <!-- 16, line 1605-->
+      <t>Client's behavior is different depending on the purpose of the
+      configuration.</t>
 
-      <t>When a client sends a DHCP message to the
-      All_DHCP_Relay_Agents_and_Servers address, it SHOULD send the message
-      through the interface for which configuration information is being
-      requested. However, the client MAY send the message through another
-      interface attached to the same link, if and only if the client is
-      certain the two interfaces are attached to the same link. The client
-      MUST use a link-local address assigned to the interface for which it is
-      requesting configuration information as the source address in the header
-      of the IP datagram.</t>
+      <section title="Address Assignment">
 
-      <t>When a client sends a DHCP message directly to a server using unicast
-      (after receiving the Server Unicast option from that server), the source
-      address in the header of the IP datagram MUST be an address assigned to
-      the interface for which the client is interested in obtaining
-      configuration and which is suitable for use by the server in responding
-      to the client.</t>
+        <t>When a client sends a DHCP message to the
+        All_DHCP_Relay_Agents_and_Servers address, it SHOULD send the message
+        through the interface for which configuration information is being
+        requested. However, the client MAY send the message through another
+        interface attached to the same link, if and only if the client is
+        certain the two interfaces are attached to the same link. The client
+        MUST use a link-local address assigned to the interface for which it is
+        requesting configuration information as the source address in the header
+        of the IPv6 datagram.</t>
+
+        <t>When a client sends a DHCP message directly to a server using unicast
+        (after receiving the Server Unicast option from that server), the source
+        address in the header of the IPv6 datagram MUST be an address assigned to
+        the interface for which the client is interested in obtaining
+        configuration and which is suitable for use by the server in responding
+        to the client.</t>
+      </section>
+
+      <section title="Prefix Delegation">
+      <t>Delegated prefixes are not associated with a particular
+      interface in the same way as addresses are for address
+      assignment, and mentioned above.</t>
+
+      <t>When a client (acting as requesting router) sends a DHCP
+      message for the purpose of prefix delegation, it SHOULD be sent
+      on the interface associated with the upstream router (ISP
+      network). The upstream interface is typically determined by
+      configuration. This rule applies even in the case where a
+      separate IA_PD is used for each downstream interface.</t>
+
+      <t>When a requesting router sends a DHCP message directly to a
+      delegating router using unicast (after receiving the Server
+      Unicast option from that delegating router), the source address
+      SHOULD be an address from the upstream interface and which is
+      suitable for use by the delegating router in responding to the
+      requesting router.</t>
+      </section>
+
     </section>
 
     <!-- ends: "16 from line 1605-->
