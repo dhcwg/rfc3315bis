@@ -110,6 +110,12 @@
 
     <date year="2014"/>
 
+    <area>Internet</area>
+    <workgroup>Dynamic Host Configuration (DHC)</workgroup>
+    <keyword>DHCPv6</keyword>
+    <keyword>IPv6</keyword>
+    <keyword>DHCP</keyword>
+
     <!--  SECTION 0:  Abstract                      -->
 
     <abstract>
@@ -1203,8 +1209,11 @@
 
         <t>The source of the identifier is left up to the vendor defining it,
         but each identifier part of each DUID-EN MUST be unique to the device
-        that is using it, and MUST be assigned to the device at the time it is
-        manufactured and stored in some form of non-volatile storage. The
+        that is using it, and MUST be assigned to the device no later than
+        at the first usage and stored in some form of non-volatile storage.
+        This typically means being assigned during manufacture process in case
+        of physical devices or when the image is created or booted for the
+        first time in case of virtual machines. The
         generated DUID SHOULD be recorded in non-erasable storage. The
         enterprise-number is the vendor's registered Private Enterprise Number
         as maintained by IANA <xref target="IANA-PEN"/>. The enterprise-number
@@ -6504,6 +6513,11 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Reworded the first paragraph of Section 15 to relax the "SHOULD"
           requirement to drop the messages which contain the options not expected
           in the current message. Ticket #17.</t>
+
+          <t>Changed WG to DHC, added keywords</t>
+
+          <t>Loosened requirements for DUID-EN, so that DUID type can be used
+          for virtual machines. Ticket #16.</t>
         </list>
 
       </t>
