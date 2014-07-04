@@ -539,10 +539,12 @@
             one IA assigned to it; for example, one for each of its interfaces.
             Each IA holds one type of address; for example, an identity
             association for temporary addresses (IA_TA) holds temporary addresses
-            (see "identity association for temporary addresses"). Throughout this
+            (see "identity association for temporary addresses") and identity association
+            for prefix delegation (IA_PD) holds delegated prefixes. Throughout this
             document, "IA" is used to refer to an identity association without
-            identifying the type of addresses in the IA. New IA types may be defined
-            in the future.</t>
+            identifying the type of allocatable resources in the IA. At the time of writing
+            this document, there are 3 IA types defined: IA_NA, IA_TA and IA_PD. New IA types
+            may be defined in the future.</t>
 
             <t hangText="IAID">Identity Association IDentifier: An identifier for an IA,
             chosen by the client. Each IA has an IAID, which is chosen to be
@@ -6518,6 +6520,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Loosened requirements for DUID-EN, so that DUID type can be used
           for virtual machines. Ticket #16.</t>
+
+          <t>Clarified that IA may contain other resources than just address.
+          Ticket #93.</t>
         </list>
 
       </t>
