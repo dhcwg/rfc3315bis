@@ -504,6 +504,9 @@
             subsystem and enable communication on a link or internetwork, for
             example.</t>
 
+            <t hangText="delegating router:">The router that acts as a
+            DHCP server, and is responding to the prefix request.</t>
+
             <t hangText="DHCP">Dynamic Host Configuration Protocol for IPv6. The terms DHCPv4
             and DHCPv6 are used only in contexts where it is necessary to avoid
             ambiguity.</t>
@@ -574,8 +577,8 @@
             <t hangText="requesting router:">The router that acts as a
             DHCP client and is requesting prefix(es) to be assigned.</t>
 
-            <t hangText="delegating router:">The router that acts as a
-            DHCP server, and is responding to the prefix request.</t>
+            <t hangText="singleton option:">An option that is allowed to appear only once.
+            Most options are singletons.</t>
 
             <t hangText="relaying"> A DHCP relay agent relays DHCP messages between DHCP
             participants.</t>
@@ -4228,6 +4231,15 @@
       appear multiple times, each instance is considered separate and the data
       areas of the options MUST NOT be concatenated or otherwise combined.</t>
 
+      <t>Options that are allowed to appear only once are called singleton options.
+      The only non-singleton options defined in this document are
+      IA_NA (See <xref target="RFC3315-22.4"/>),
+      IA_TA (See <xref target="RFC3315-22.5"/>), and
+      IA_PD (See <xref target="IA_PD-option"/>) options.
+      Also, IAAddress (See <xref target="RFC3315-22.6"/>) and
+      IAPrefix (See <xref target="IAPREFIX-option"/> may appear in their
+      respective IA options more than once.</t>
+
       <section anchor='RFC3315-22.1' title="Format of DHCP Options">
         <!-- 22.1, line 3566-->
 
@@ -6523,6 +6535,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Clarified that IA may contain other resources than just address.
           Ticket #93.</t>
+
+          <t>Clarified that most options are singletons (i.e. can appear only
+          once). Ticket #83.</t>
         </list>
 
       </t>
