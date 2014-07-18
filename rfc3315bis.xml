@@ -238,7 +238,7 @@
         list of available DNS servers <xref target="RFC3646"/> or NTP
         servers <xref target="RFC4075"/> through a single message and reply
         exchanged with a DHCP server. To obtain configuration information the
-        client first sends an Information-Request message to the
+        client first sends an Information-request message to the
         All_DHCP_Relay_Agents_and_Servers multicast address. Servers respond
         with a Reply message containing the configuration information for the
         client.</t>
@@ -5506,10 +5506,10 @@
 
         </list></t>
 
-        <t>The server MUST copy the Interface-Id option from the Relay-Forward
-        message into the Relay-Reply message the server sends to the relay
-        agent in response to the Relay-Forward message. This option MUST NOT
-        appear in any message except a Relay-Forward or Relay-Reply
+        <t>The server MUST copy the Interface-Id option from the Relay-forward
+        message into the Relay-reply message the server sends to the relay
+        agent in response to the Relay-forward message. This option MUST NOT
+        appear in any message except a Relay-forward or Relay-reply
         message.</t>
 
         <t>Servers MAY use the Interface-ID for parameter assignment policies.
@@ -6553,8 +6553,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           special treatment of a Reply validation failure (client ignores message).
           Ticket #89.</t>
 
-          <t>Appendix C updated: Authentication option is no longer allowed in Relay-Forward and
-          Relay-Reply messages, ORO is no longer allowed in Confirm, Release and Decline
+          <t>Appendix C updated: Authentication option is no longer allowed in Relay-forward and
+          Relay-reply messages, ORO is no longer allowed in Confirm, Release and Decline
           messages; Preference option is no longer allowed in Reply messages (only in
           Advertise). Ticket #10.</t>
 
@@ -6660,7 +6660,7 @@ R-repl.                                               *
 
           <t>NOTE:</t>
 
-        <t>Only included in Information-Request messages that are sent in
+        <t>Only included in Information-request messages that are sent in
         response to a Reconfigure (see <xref target='RFC3315-19.4.3'/>).</t>
 
 <figure>
