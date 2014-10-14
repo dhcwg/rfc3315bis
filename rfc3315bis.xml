@@ -4308,7 +4308,8 @@
 
       <t>This document describes the DHCP options defined as part of the base
       DHCP specification. Other options may be defined in the future in
-      separate documents.</t>
+      separate documents. See <xref target="RFC7227"/> for guidelines regarding
+      new options definition.</t>
 
       <t>Unless otherwise noted, each option may appear only in the options
       area of a DHCP message and may appear only once. If an option does
@@ -6495,6 +6496,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <!--  Johnson, D. and S. Deering, "Reserved IPv6 Subnet Anycast Addresses", RFC 2526, March 1999. -->
 
       <?rfc include='reference.RFC.2461'?>    
+
+      <?rfc include='reference.RFC.7227'?>
     	
     </references>
 
@@ -6640,6 +6643,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>CONFIRM is now an optional message (MUST send Confirm eased to
           SHOULD) (ticket #120).</t>
+
+          <t>Added reference to RFC7227: DHCPv6 Option Guidelines (ticket #121).
+          </t>
         </list>
 
       </t>
