@@ -2504,13 +2504,20 @@
           </list></t>
 
           <t>In any situation when a client may have moved to a new link, the
-          client MUST initiate a Confirm/Reply message exchange. The client
+          client SHOULD initiate a Confirm/Reply message exchange. The client
           includes any IAs assigned to the interface that may have moved to a
           new link, along with the addresses associated with those IAs, in its
           Confirm message. Any responding servers will indicate whether those
           addresses are appropriate for the link to which the client is
           attached with the status in the Reply message it returns to the
           client.</t>
+
+          <t>One example when this rule may not be followed is when
+          the client does not store its leases in stable storage and
+          experiences a reboot. It may simply not retain any
+          information, so it does not know what to confirm. In such
+          case client MUST restart server discovery process as described
+          in <xref target="RFC3315-17.1.1"/>.</t>
 
           <t>The client sets the "msg-type" field to CONFIRM. The client
           generates a transaction ID and inserts this value in the
@@ -6630,6 +6637,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Clarified that configuration for interface X should be requested
           over interface X (ticket #48).</t>
+
+          <t>CONFIRM is now an optional message (MUST send Confirm eased to
+          SHOULD) (ticket #120).</t>
         </list>
 
       </t>
