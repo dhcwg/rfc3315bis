@@ -4788,7 +4788,9 @@
         inform the server about options the client wants the server to send to
         the client. A server MAY include an Option Request option in a
         Reconfigure message to indicate which options the client should request
-        from the server.</t>
+        from the server. If there is a need to request encapsulated options,
+        top-level Option Request option MUST be used for that purpose. There is
+        no need request IAADDR or IAPREFIX.</t>
       </section>
 
       <!-- ends: "22.7 from line 3912-->
@@ -6611,6 +6613,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           10 (Ticket #105), 11 (Ticket #106), 13 (Ticket #108), 14 (Ticket #109),
           15 (Ticket #110), 16 (Ticket #111), 17 (Ticket #112) and 19
           (Ticket #113) from RFC3633 (Prefix Delegation).</t>
+
+          <t>Clarified that encapsulated options must be requested using
+          top level ORO (ticket #38).</t>
         </list>
 
       </t>
