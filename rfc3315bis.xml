@@ -1900,11 +1900,22 @@
         All_DHCP_Relay_Agents_and_Servers address, it SHOULD send the message
         through the interface for which configuration information is being
         requested. However, the client MAY send the message through another
-        interface attached to the same link, if and only if the client is
-        certain the two interfaces are attached to the same link. The client
-        MUST use a link-local address assigned to the interface for which it is
-        requesting configuration information as the source address in the header
-        of the IPv6 datagram.</t>
+        interface if the interface is a logical interface without direct link
+        attachement or the client is certain that two interfaces are attached
+        to the same link.
+        <!-- tomek: ok, this is a bit confusing. The intention is to say:
+        - if you want to configure interface X, send you packets over X
+        - you may send it over Y, if you're sure X and Y are connected to the same
+          link
+        - if you're doing weird stuff with virtual interfaces, that's fine,
+          just be careful, ok?
+        -->
+
+        <!-- tomek: removed this sentence. Source address selection is not covered
+        by DHCPv6. -->
+        <!-- The client MUST use a link-local address assigned to the interface
+        for which it is requesting configuration information as the source
+        address in the header of the IPv6 datagram. --></t>
 
         <t>When a client sends a DHCP message directly to a server using unicast
         (after receiving the Server Unicast option from that server), the source
@@ -6616,6 +6627,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Clarified that encapsulated options must be requested using
           top level ORO (ticket #38).</t>
+
+          <t>Clarified that configuration for interface X should be requested
+          over interface X (ticket #48).</t>
         </list>
 
       </t>
