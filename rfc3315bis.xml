@@ -1594,7 +1594,10 @@
       <t hangText="*"> If the server receives the message from a forwarding relay agent,
       then the client is on the same link as the one to which the interface,
       identified by the link-address field in the message from the relay
-      agent, is attached.</t>
+      agent, is attached. According to <xref target="RFC6221"></xref>, the server MUST
+      ignore any link-address field whose value is zero. The link address field referes
+      to the link-address field of the Relay-Forward message, and the link-address fields
+      in any Relay-Forward messages that may be nested within the Relay-Forward message.</t>
 
       <t hangText="*"> If the server receives the message directly from the client and the
       source address in the IP datagram in which the message was received is
@@ -3792,6 +3795,11 @@
         message (excluding any IP or UDP headers) into a Relay Message option
         in the new message. The relay agent adds to the Relay-forward message
         any other options it is configured to include.</t>
+
+         <t><xref target="RFC6221"></xref> defines a Lightweight DHCPv6 Relay
+         Agent (LDRA) that allows Relay Agent Information to be inserted by an
+         access node that performs a link- layer bridging (i.e., non-routing)
+         function.</t>
 
         <section title="Relaying a Message from a Client">
           <!-- 20.1.1, line 2979-->
@@ -6679,6 +6687,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.2461'?>    
 
       <?rfc include='reference.RFC.7227'?>
+
+      <?rfc include='reference.RFC.6221'?>
     	
     </references>
 
