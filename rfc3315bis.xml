@@ -803,7 +803,7 @@
       <t>This section describes various program and networking constants used
       by DHCP.</t>
 
-      <section title="Multicast Addresses">
+      <section anchor="mutlicastAddr" title="Multicast Addresses">
         <!-- 5.1, line 603-->
 
         <t>DHCP makes use of the following multicast addresses:</t>
@@ -6369,34 +6369,10 @@
       define new Protocol, Algorithm and RDM mechanisms will explicitly define
       whether the new mechanisms are used with DHCPv4, DHCPv6 or both.</t>
 
-      <!-- ayourtch: next chunk is from RFC3633 Section 16: IANA Considerations, probably to be deleted later ? -->
-      <t>IANA has assigned option codes to:</t>
-
-      <t>
-      <list style="hanging" hangIndent='20'>
-        <t hangText="OPTION_IA_PD (25)"></t>
-        <t hangText="OPTION_IAPREFIX (26)"></t>
-      </list>
-      </t>
-
-      <t>from the option-code space as defined in <xref target='RFC3315-24.3'/>.</t>
-
-      <t>IANA has assigned status code 6 to:</t>
-
-      <t>
-      <list style="hanging" hangIndent='20'>
-        <t hangText="NoPrefixAvail:">Delegating router has no
-        prefixes available to assign to the IAPD(s)</t>
-      </list>
-      </t>
-
-      <t>from the status-code space as defined in <xref target='RFC3315-24.4'/>.</t>
-      <!-- end of RFC3633 Section 16: IANA Considerations -->
-
       <section title="Multicast Addresses">
         <!-- 24.1, line 4634-->
 
-        <t>Section 5.1 defines the following multicast addresses, which have
+        <t><xref target="mutlicastAddr"></xref> defines the following multicast addresses, which have
         been assigned by IANA for use by DHCPv6:
 
         <list hangIndent="48" style="hanging">
@@ -6536,7 +6512,9 @@
           <c>UseMulticast</c><c>5</c><c>Sent by a server to a client to
           force the client to send messages to the server using the
           All_DHCP_Relay_Agents_and_Servers address.</c>
-
+          
+          <c>NoPrefixAvail</c><c>6</c><c>Delegating router has no prefixes available to assign to the
+          IAPD(s).</c>
 	</texttable>
       </section>
 
