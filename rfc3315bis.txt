@@ -6,7 +6,7 @@ Dynamic Host Configuration (DHC)                       T. Mrugalski, Ed.
 Internet-Draft                                              M. Siodelski
 Obsoletes: 3315,3633,3736 (if approved)                              ISC
 Intended status: Standards Track                                 B. Volz
-Expires: April 23, 2015                                   A. Yourtchenko
+Expires: April 24, 2015                                   A. Yourtchenko
                                                                    Cisco
                                                            M. Richardson
                                                                      SSW
@@ -14,7 +14,7 @@ Expires: April 23, 2015                                   A. Yourtchenko
                                                                   Huawei
                                                                 T. Lemon
                                                                  Nominum
-                                                        October 20, 2014
+                                                        October 21, 2014
 
 
        Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis
@@ -46,14 +46,14 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 23, 2015.
+   This Internet-Draft will expire on April 24, 2015.
 
 
 
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                 [Page 1]
+Mrugalski, et al.        Expires April 24, 2015                 [Page 1]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                 [Page 2]
+Mrugalski, et al.        Expires April 24, 2015                 [Page 2]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -165,7 +165,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                 [Page 3]
+Mrugalski, et al.        Expires April 24, 2015                 [Page 3]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -221,7 +221,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                 [Page 4]
+Mrugalski, et al.        Expires April 24, 2015                 [Page 4]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -277,7 +277,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                 [Page 5]
+Mrugalski, et al.        Expires April 24, 2015                 [Page 5]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -301,7 +301,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
    27. References  . . . . . . . . . . . . . . . . . . . . . . . . . 115
      27.1.  Normative References . . . . . . . . . . . . . . . . . . 115
      27.2.  Informative References . . . . . . . . . . . . . . . . . 117
-   Appendix A.  Changes since RFC3315  . . . . . . . . . . . . . . . 117
+   Appendix A.  Changes since RFC3315  . . . . . . . . . . . . . . . 118
    Appendix B.  Changes since RFC3633  . . . . . . . . . . . . . . . 120
    Appendix C.  Appearance of Options in Message Types . . . . . . . 120
    Appendix D.  Appearance of Options in the Options Field of DHCP
@@ -329,17 +329,21 @@ Internet-Draft                RFC 3315 bis                  October 2014
    The operational models and relevant configuration information for
    DHCPv4 [RFC2132][RFC2131] and DHCPv6 are sufficiently different that
    integration between the two services is not included in this
-   document.  If there is sufficient interest and demand, integration
+   document.  [RFC3315] suggested that future work might be to extend
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                 [Page 6]
+Mrugalski, et al.        Expires April 24, 2015                 [Page 6]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
 
-   can be specified in a document that extends DHCPv6 to carry IPv4
-   addresses and configuration information.
+   DHCPv6 to carry IPv4 address and configuration information.  However,
+   the current consensus of the IETF is that DHCPv4 should be used
+   rather than DHCPv6 when conveying IPv4 configuration information to
+   nodes.  [RFC7341] describes a transport mechanism to carry DHCPv4
+   messages using the DHCPv6 protocol for the dynamic provisioning of
+   IPv4 address and configuration information across IPv6-only networks.
 
    The remainder of this introduction summarizes DHCP, explaining the
    message exchange mechanisms and example message flows.  The message
@@ -381,18 +385,18 @@ Internet-Draft                RFC 3315 bis                  October 2014
    multicast address.  Servers respond with a Reply message containing
    the configuration information for the client.
 
-   This message exchange assumes that the client requires only
-   configuration information and does not require the assignment of any
-   IPv6 addresses.
 
 
 
 
-
-Mrugalski, et al.        Expires April 23, 2015                 [Page 7]
+Mrugalski, et al.        Expires April 24, 2015                 [Page 7]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
+
+   This message exchange assumes that the client requires only
+   configuration information and does not require the assignment of any
+   IPv6 addresses.
 
    When a server has IPv6 addresses and other configuration information
    committed to a client, the client and server may be able to complete
@@ -439,17 +443,16 @@ Internet-Draft                RFC 3315 bis                  October 2014
    SHOULD NOT, RECOMMENDED, MAY, and OPTIONAL, when they appear in this
    document, are to be interpreted as described in [RFC2119].
 
-   This document also makes use of internal conceptual variables to
-   describe protocol behavior and external variables that an
-   implementation must allow system administrators to change.  The
 
 
-
-Mrugalski, et al.        Expires April 23, 2015                 [Page 8]
+Mrugalski, et al.        Expires April 24, 2015                 [Page 8]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
 
+   This document also makes use of internal conceptual variables to
+   describe protocol behavior and external variables that an
+   implementation must allow system administrators to change.  The
    specific variable names, how their values change, and how their
    settings influence protocol behavior are provided to demonstrate
    protocol behavior.  An implementation is not required to have them in
@@ -495,16 +498,16 @@ Internet-Draft                RFC 3315 bis                  October 2014
    Dynamic Updates to DNS [RFC2136] is a specification that supports the
    dynamic update of DNS records for both IPv4 and IPv6.  DHCP can use
    the dynamic updates to DNS to integrate addresses and name space to
-   not only support autoconfiguration, but also autoregistration in
-   IPv6.
 
 
 
-
-Mrugalski, et al.        Expires April 23, 2015                 [Page 9]
+Mrugalski, et al.        Expires April 24, 2015                 [Page 9]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
+
+   not only support autoconfiguration, but also autoregistration in
+   IPv6.
 
 4.  Terminology
 
@@ -551,16 +554,17 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
    multicast address         An identifier for a set of interfaces
                              (typically belonging to different nodes).
-                             A packet sent to a multicast address is
-                             delivered to all interfaces identified by
-                             that address.
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 10]
+Mrugalski, et al.        Expires April 24, 2015                [Page 10]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
+
+                             A packet sent to a multicast address is
+                             delivered to all interfaces identified by
+                             that address.
 
    neighbor                  A node attached to the same link.
 
@@ -606,18 +610,18 @@ Internet-Draft                RFC 3315 bis                  October 2014
                              information explicitly assigned to the
                              client.  Configuration information that has
                              been returned to a client through a policy
-                             - for example, the information returned to
-                             all clients on the same link - does not
-                             require a binding.  A binding containing
-                             information about an IA is indexed by the
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 11]
+Mrugalski, et al.        Expires April 24, 2015                [Page 11]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
 
+                             - for example, the information returned to
+                             all clients on the same link - does not
+                             require a binding.  A binding containing
+                             information about an IA is indexed by the
                              tuple <DUID, IA-type, IAID> (where IA-type
                              is the type of address in the IA; for
                              example, temporary).  A binding containing
@@ -662,18 +666,18 @@ Internet-Draft                RFC 3315 bis                  October 2014
                              a relay agent may send DHCP messages to
                              another relay agent.
 
-   DHCP server (or server)   A node that responds to requests from
-                             clients, and may or may not be on the same
-                             link as the client(s).  Depending on its
-                             capabilities, it may also feature the
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 12]
+Mrugalski, et al.        Expires April 24, 2015                [Page 12]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
 
+   DHCP server (or server)   A node that responds to requests from
+                             clients, and may or may not be on the same
+                             link as the client(s).  Depending on its
+                             capabilities, it may also feature the
                              functionality of delegating router, if it
                              supports prefix delegation.
 
@@ -719,17 +723,16 @@ Internet-Draft                RFC 3315 bis                  October 2014
                              Addresses: An IA that carries temporary
                              addresses (see [RFC4941]).
 
-   IA_PD                     Identity Association for Prefix Delegation:
-                             A collection of prefixes assigned to the
-                             requesting router.  Each IA_PD has an
 
 
-
-Mrugalski, et al.        Expires April 23, 2015                [Page 13]
+Mrugalski, et al.        Expires April 24, 2015                [Page 13]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
 
+   IA_PD                     Identity Association for Prefix Delegation:
+                             A collection of prefixes assigned to the
+                             requesting router.  Each IA_PD has an
                              associated IAID.  A requesting router may
                              have more than one IA_PD assigned to it;
                              for example, one for each of its
@@ -775,17 +778,17 @@ Internet-Draft                RFC 3315 bis                  October 2014
    software on the node requires some missing or expired configuration
    information that is available via DHCPv6.
 
-   This is the simplest and most basic operation for DHCPv6 and requires
-   a client (and a server) to support only two messages - Information-
-   request and Reply.  Note that DHCPv6 servers and relay agents
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 14]
+Mrugalski, et al.        Expires April 24, 2015                [Page 14]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
 
+   This is the simplest and most basic operation for DHCPv6 and requires
+   a client (and a server) to support only two messages - Information-
+   request and Reply.  Note that DHCPv6 servers and relay agents
    typically also need to support the Relay-Forw and Relay-Reply
    messages to accommodate operation when clients and servers are not on
    the same link.
@@ -831,16 +834,16 @@ Internet-Draft                RFC 3315 bis                  October 2014
    information aside from the identity of the requesting router to
    choose a prefix for delegation.  For example, these options would be
    used by a service provider to assign a prefix to a Customer Premise
-   Equipment (CPE) device acting as a router between the subscriber's
-   internal network and the service provider's core network.
 
 
 
-
-Mrugalski, et al.        Expires April 23, 2015                [Page 15]
+Mrugalski, et al.        Expires April 24, 2015                [Page 15]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
+
+   Equipment (CPE) device acting as a router between the subscriber's
+   internal network and the service provider's core network.
 
    The design of this prefix delegation mechanism meets the requirements
    for prefix delegation in [RFC3769].
@@ -890,10 +893,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-
-
-
-Mrugalski, et al.        Expires April 23, 2015                [Page 16]
+Mrugalski, et al.        Expires April 24, 2015                [Page 16]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -949,7 +949,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 17]
+Mrugalski, et al.        Expires April 24, 2015                [Page 17]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1005,7 +1005,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 18]
+Mrugalski, et al.        Expires April 24, 2015                [Page 18]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1061,7 +1061,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 19]
+Mrugalski, et al.        Expires April 24, 2015                [Page 19]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1117,7 +1117,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 20]
+Mrugalski, et al.        Expires April 24, 2015                [Page 20]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1173,7 +1173,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 21]
+Mrugalski, et al.        Expires April 24, 2015                [Page 21]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1229,7 +1229,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 22]
+Mrugalski, et al.        Expires April 24, 2015                [Page 22]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1285,7 +1285,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 23]
+Mrugalski, et al.        Expires April 24, 2015                [Page 23]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1341,7 +1341,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 24]
+Mrugalski, et al.        Expires April 24, 2015                [Page 24]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1397,7 +1397,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 25]
+Mrugalski, et al.        Expires April 24, 2015                [Page 25]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1453,7 +1453,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 26]
+Mrugalski, et al.        Expires April 24, 2015                [Page 26]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1509,7 +1509,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 27]
+Mrugalski, et al.        Expires April 24, 2015                [Page 27]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1565,7 +1565,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 28]
+Mrugalski, et al.        Expires April 24, 2015                [Page 28]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1621,7 +1621,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 29]
+Mrugalski, et al.        Expires April 24, 2015                [Page 29]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1677,7 +1677,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 30]
+Mrugalski, et al.        Expires April 24, 2015                [Page 30]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1733,7 +1733,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 31]
+Mrugalski, et al.        Expires April 24, 2015                [Page 31]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1789,7 +1789,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 32]
+Mrugalski, et al.        Expires April 24, 2015                [Page 32]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1845,7 +1845,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 33]
+Mrugalski, et al.        Expires April 24, 2015                [Page 33]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1901,7 +1901,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 34]
+Mrugalski, et al.        Expires April 24, 2015                [Page 34]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -1957,7 +1957,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 35]
+Mrugalski, et al.        Expires April 24, 2015                [Page 35]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2013,7 +2013,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 36]
+Mrugalski, et al.        Expires April 24, 2015                [Page 36]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2069,7 +2069,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 37]
+Mrugalski, et al.        Expires April 24, 2015                [Page 37]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2125,7 +2125,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 38]
+Mrugalski, et al.        Expires April 24, 2015                [Page 38]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2181,7 +2181,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 39]
+Mrugalski, et al.        Expires April 24, 2015                [Page 39]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2237,7 +2237,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 40]
+Mrugalski, et al.        Expires April 24, 2015                [Page 40]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2293,7 +2293,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 41]
+Mrugalski, et al.        Expires April 24, 2015                [Page 41]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2349,7 +2349,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 42]
+Mrugalski, et al.        Expires April 24, 2015                [Page 42]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2405,7 +2405,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 43]
+Mrugalski, et al.        Expires April 24, 2015                [Page 43]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2461,7 +2461,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 44]
+Mrugalski, et al.        Expires April 24, 2015                [Page 44]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2517,7 +2517,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 45]
+Mrugalski, et al.        Expires April 24, 2015                [Page 45]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2573,7 +2573,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 46]
+Mrugalski, et al.        Expires April 24, 2015                [Page 46]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2629,7 +2629,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 47]
+Mrugalski, et al.        Expires April 24, 2015                [Page 47]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2685,7 +2685,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 48]
+Mrugalski, et al.        Expires April 24, 2015                [Page 48]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2741,7 +2741,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 49]
+Mrugalski, et al.        Expires April 24, 2015                [Page 49]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2797,7 +2797,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 50]
+Mrugalski, et al.        Expires April 24, 2015                [Page 50]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2853,7 +2853,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 51]
+Mrugalski, et al.        Expires April 24, 2015                [Page 51]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2909,7 +2909,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 52]
+Mrugalski, et al.        Expires April 24, 2015                [Page 52]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -2965,7 +2965,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 53]
+Mrugalski, et al.        Expires April 24, 2015                [Page 53]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3021,7 +3021,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 54]
+Mrugalski, et al.        Expires April 24, 2015                [Page 54]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3077,7 +3077,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 55]
+Mrugalski, et al.        Expires April 24, 2015                [Page 55]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3133,7 +3133,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 56]
+Mrugalski, et al.        Expires April 24, 2015                [Page 56]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3189,7 +3189,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 57]
+Mrugalski, et al.        Expires April 24, 2015                [Page 57]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3245,7 +3245,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 58]
+Mrugalski, et al.        Expires April 24, 2015                [Page 58]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3301,7 +3301,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 59]
+Mrugalski, et al.        Expires April 24, 2015                [Page 59]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3357,7 +3357,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 60]
+Mrugalski, et al.        Expires April 24, 2015                [Page 60]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3413,7 +3413,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 61]
+Mrugalski, et al.        Expires April 24, 2015                [Page 61]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3469,7 +3469,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 62]
+Mrugalski, et al.        Expires April 24, 2015                [Page 62]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3525,7 +3525,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 63]
+Mrugalski, et al.        Expires April 24, 2015                [Page 63]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3581,7 +3581,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 64]
+Mrugalski, et al.        Expires April 24, 2015                [Page 64]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3637,7 +3637,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 65]
+Mrugalski, et al.        Expires April 24, 2015                [Page 65]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3693,7 +3693,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 66]
+Mrugalski, et al.        Expires April 24, 2015                [Page 66]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3749,7 +3749,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 67]
+Mrugalski, et al.        Expires April 24, 2015                [Page 67]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3805,7 +3805,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 68]
+Mrugalski, et al.        Expires April 24, 2015                [Page 68]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3861,7 +3861,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 69]
+Mrugalski, et al.        Expires April 24, 2015                [Page 69]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3917,7 +3917,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 70]
+Mrugalski, et al.        Expires April 24, 2015                [Page 70]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -3973,7 +3973,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 71]
+Mrugalski, et al.        Expires April 24, 2015                [Page 71]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4029,7 +4029,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 72]
+Mrugalski, et al.        Expires April 24, 2015                [Page 72]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4085,7 +4085,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 73]
+Mrugalski, et al.        Expires April 24, 2015                [Page 73]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4141,7 +4141,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 74]
+Mrugalski, et al.        Expires April 24, 2015                [Page 74]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4197,7 +4197,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 75]
+Mrugalski, et al.        Expires April 24, 2015                [Page 75]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4253,7 +4253,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 76]
+Mrugalski, et al.        Expires April 24, 2015                [Page 76]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4309,7 +4309,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 77]
+Mrugalski, et al.        Expires April 24, 2015                [Page 77]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4365,7 +4365,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 78]
+Mrugalski, et al.        Expires April 24, 2015                [Page 78]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4421,7 +4421,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 79]
+Mrugalski, et al.        Expires April 24, 2015                [Page 79]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4477,7 +4477,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 80]
+Mrugalski, et al.        Expires April 24, 2015                [Page 80]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4533,7 +4533,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 81]
+Mrugalski, et al.        Expires April 24, 2015                [Page 81]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4589,7 +4589,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 82]
+Mrugalski, et al.        Expires April 24, 2015                [Page 82]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4645,7 +4645,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 83]
+Mrugalski, et al.        Expires April 24, 2015                [Page 83]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4701,7 +4701,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 84]
+Mrugalski, et al.        Expires April 24, 2015                [Page 84]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4757,7 +4757,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 85]
+Mrugalski, et al.        Expires April 24, 2015                [Page 85]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4813,7 +4813,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 86]
+Mrugalski, et al.        Expires April 24, 2015                [Page 86]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4869,7 +4869,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 87]
+Mrugalski, et al.        Expires April 24, 2015                [Page 87]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4925,7 +4925,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 88]
+Mrugalski, et al.        Expires April 24, 2015                [Page 88]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -4981,7 +4981,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 89]
+Mrugalski, et al.        Expires April 24, 2015                [Page 89]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5037,7 +5037,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 90]
+Mrugalski, et al.        Expires April 24, 2015                [Page 90]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5093,7 +5093,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 91]
+Mrugalski, et al.        Expires April 24, 2015                [Page 91]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5149,7 +5149,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 92]
+Mrugalski, et al.        Expires April 24, 2015                [Page 92]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5205,7 +5205,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 93]
+Mrugalski, et al.        Expires April 24, 2015                [Page 93]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5261,7 +5261,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 94]
+Mrugalski, et al.        Expires April 24, 2015                [Page 94]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5317,7 +5317,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 95]
+Mrugalski, et al.        Expires April 24, 2015                [Page 95]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5373,7 +5373,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 96]
+Mrugalski, et al.        Expires April 24, 2015                [Page 96]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5429,7 +5429,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 97]
+Mrugalski, et al.        Expires April 24, 2015                [Page 97]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5485,7 +5485,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 98]
+Mrugalski, et al.        Expires April 24, 2015                [Page 98]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5541,7 +5541,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015                [Page 99]
+Mrugalski, et al.        Expires April 24, 2015                [Page 99]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5597,7 +5597,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 100]
+Mrugalski, et al.        Expires April 24, 2015               [Page 100]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5653,7 +5653,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 101]
+Mrugalski, et al.        Expires April 24, 2015               [Page 101]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5709,7 +5709,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 102]
+Mrugalski, et al.        Expires April 24, 2015               [Page 102]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5765,7 +5765,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 103]
+Mrugalski, et al.        Expires April 24, 2015               [Page 103]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5821,7 +5821,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 104]
+Mrugalski, et al.        Expires April 24, 2015               [Page 104]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5877,7 +5877,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 105]
+Mrugalski, et al.        Expires April 24, 2015               [Page 105]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5933,7 +5933,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 106]
+Mrugalski, et al.        Expires April 24, 2015               [Page 106]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -5989,7 +5989,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 107]
+Mrugalski, et al.        Expires April 24, 2015               [Page 107]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -6045,7 +6045,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 108]
+Mrugalski, et al.        Expires April 24, 2015               [Page 108]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -6101,7 +6101,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 109]
+Mrugalski, et al.        Expires April 24, 2015               [Page 109]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -6157,7 +6157,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 110]
+Mrugalski, et al.        Expires April 24, 2015               [Page 110]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -6213,7 +6213,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 111]
+Mrugalski, et al.        Expires April 24, 2015               [Page 111]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -6269,7 +6269,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 112]
+Mrugalski, et al.        Expires April 24, 2015               [Page 112]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -6325,7 +6325,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 113]
+Mrugalski, et al.        Expires April 24, 2015               [Page 113]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -6381,7 +6381,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 114]
+Mrugalski, et al.        Expires April 24, 2015               [Page 114]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -6437,7 +6437,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 115]
+Mrugalski, et al.        Expires April 24, 2015               [Page 115]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -6493,7 +6493,7 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-Mrugalski, et al.        Expires April 23, 2015               [Page 116]
+Mrugalski, et al.        Expires April 24, 2015               [Page 116]
 
 Internet-Draft                RFC 3315 bis                  October 2014
 
@@ -6521,6 +6521,10 @@ Internet-Draft                RFC 3315 bis                  October 2014
    [RFC3162]  Aboba, B., Zorn, G., and D. Mitton, "RADIUS and IPv6", RFC
               3162, August 2001.
 
+   [RFC3315]  Droms, R., Bound, J., Volz, B., Lemon, T., Perkins, C.,
+              and M. Carney, "Dynamic Host Configuration Protocol for
+              IPv6 (DHCPv6)", RFC 3315, July 2003.
+
    [RFC3633]  Troan, O. and R. Droms, "IPv6 Prefix Options for Dynamic
               Host Configuration Protocol (DHCP) version 6", RFC 3633,
               December 2003.
@@ -6535,6 +6539,21 @@ Internet-Draft                RFC 3315 bis                  October 2014
               Requirements for IPv6 Customer Edge Routers", RFC 7084,
               November 2013.
 
+   [RFC7341]  Sun, Q., Cui, Y., Siodelski, M., Krishnan, S., and I.
+              Farrer, "DHCPv4-over-DHCPv6 (DHCP 4o6) Transport", RFC
+              7341, August 2014.
+
+
+
+
+
+
+
+Mrugalski, et al.        Expires April 24, 2015               [Page 117]
+
+Internet-Draft                RFC 3315 bis                  October 2014
+
+
 Appendix A.  Changes since RFC3315
 
    1.   Incorporated RFC3315 errata (ids: 294, 1373, 2928, 1815, 3577,
@@ -6546,13 +6565,6 @@ Appendix A.  Changes since RFC3315
    3.   Clarified section 21.4.1 of RFC3315 by defining length of "key
         ID" field and specifying that 'DHCP realm' is Domain Name
         encoded as per section 8 of RFC3315.  Ticket #43.
-
-
-
-Mrugalski, et al.        Expires April 23, 2015               [Page 117]
-
-Internet-Draft                RFC 3315 bis                  October 2014
-
 
    4.   Added DUID-UUID and reference to RFC6355.  Ticket #54.
 
@@ -6589,6 +6601,15 @@ Internet-Draft                RFC 3315 bis                  October 2014
         option is no longer allowed in Reply messages (only in
         Advertise).  Ticket #10.
 
+
+
+
+
+Mrugalski, et al.        Expires April 24, 2015               [Page 118]
+
+Internet-Draft                RFC 3315 bis                  October 2014
+
+
    14.  Removed "silently" from several instances of "silently ignores"
         or "silently" discards.  It is up to software vendor if and how
         to log such events (debug log message, event log, message pop-up
@@ -6601,14 +6622,6 @@ Internet-Draft                RFC 3315 bis                  October 2014
         Ticket #22.
 
    16.  Clarified relay agent definition.  Ticket #12.
-
-
-
-
-Mrugalski, et al.        Expires April 23, 2015               [Page 118]
-
-Internet-Draft                RFC 3315 bis                  October 2014
-
 
    17.  Changed REL_MAX_RC and DEC_MAX_RC defaults from 5 to 4 and added
         retry to parameter description.  Ticket #84.
@@ -6644,6 +6657,15 @@ Internet-Draft                RFC 3315 bis                  October 2014
    27.  Clarified that IA may contain other resources than just address.
         Ticket #93.
 
+
+
+
+
+Mrugalski, et al.        Expires April 24, 2015               [Page 119]
+
+Internet-Draft                RFC 3315 bis                  October 2014
+
+
    28.  Clarified that most options are singletons (i.e. can appear only
         once).  Ticket #83.
 
@@ -6659,13 +6681,6 @@ Internet-Draft                RFC 3315 bis                  October 2014
    31.  Clarified that configuration for interface X should be requested
         over interface X (ticket #48).
 
-
-
-Mrugalski, et al.        Expires April 23, 2015               [Page 119]
-
-Internet-Draft                RFC 3315 bis                  October 2014
-
-
    32.  CONFIRM is now an optional message (MUST send Confirm eased to
         SHOULD) (ticket #120).
 
@@ -6675,6 +6690,9 @@ Internet-Draft                RFC 3315 bis                  October 2014
    34.  Added new section 5 providing an overview of DHCPv6 operational
         modes and removed two prefix delegation sections from section 1.
         See tickets #53, #100, and #102.
+
+   35.  Addressed ticket #115 - don't use DHCPv6 for DHCPv4
+        configuration.
 
 Appendix B.  Changes since RFC3633
 
@@ -6687,6 +6705,22 @@ Appendix C.  Appearance of Options in Message Types
 
    The following table indicates with a "*" the options are allowed in
    each DHCP message type:
+
+
+
+
+
+
+
+
+
+
+
+
+Mrugalski, et al.        Expires April 24, 2015               [Page 120]
+
+Internet-Draft                RFC 3315 bis                  October 2014
+
 
          Client Server IA_NA IA_PD Option Pref Elap. Relay Auth. Server
            ID     ID   IA_TA       Request     Time   Msg.       Unicast
@@ -6709,19 +6743,6 @@ Appendix C.  Appearance of Options in Message Types
    Only included in Information-request messages that are sent in
    response to a Reconfigure (see Section 20.4.3).
 
-
-
-
-
-
-
-
-
-Mrugalski, et al.        Expires April 23, 2015               [Page 120]
-
-Internet-Draft                RFC 3315 bis                  October 2014
-
-
         Status  Rap. User  Vendor Vendor Inter. Recon. Recon. SOL_MAX_RT
          Code  Comm. Class Class  Spec.    ID    Msg.  Accept INF_MAX_RT
 Solicit          *     *     *      *                    *
@@ -6742,6 +6763,20 @@ Appendix D.  Appearance of Options in the Options Field of DHCP Options
 
    The following table indicates with a "*" where options can appear in
    the options field of other options:
+
+
+
+
+
+
+
+
+
+
+Mrugalski, et al.        Expires April 24, 2015               [Page 121]
+
+Internet-Draft                RFC 3315 bis                  October 2014
+
 
                 Option  IA_NA/ IAADDR                 Relay  Relay
                 Field   IA_TA         IA_PD  IAPREFIX Forw.  Reply
@@ -6769,15 +6804,6 @@ Appendix D.  Appearance of Options in the Options Field of DHCP Options
    Note: "Relay Forw" / "Relay Reply" options appear in the options
    field of the message but may only appear in these messages.
 
-
-
-
-
-Mrugalski, et al.        Expires April 23, 2015               [Page 121]
-
-Internet-Draft                RFC 3315 bis                  October 2014
-
-
 Authors' Addresses
 
    Tomek Mrugalski (editor)
@@ -6796,6 +6822,16 @@ Authors' Addresses
    USA
 
    Email: msiodelski@gmail.com
+
+
+
+
+
+
+
+Mrugalski, et al.        Expires April 24, 2015               [Page 122]
+
+Internet-Draft                RFC 3315 bis                  October 2014
 
 
    Bernie Volz
@@ -6826,14 +6862,6 @@ Authors' Addresses
    URI:   http://www.sandelman.ca/
 
 
-
-
-
-Mrugalski, et al.        Expires April 23, 2015               [Page 122]
-
-Internet-Draft                RFC 3315 bis                  October 2014
-
-
    Sheng Jiang
    Huawei Technologies Co., Ltd
    Q14, Huawei Campus, No.156 Beiqing Road
@@ -6857,32 +6885,4 @@ Internet-Draft                RFC 3315 bis                  October 2014
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Mrugalski, et al.        Expires April 23, 2015               [Page 123]
+Mrugalski, et al.        Expires April 24, 2015               [Page 123]
