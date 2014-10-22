@@ -6695,8 +6695,6 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.7227'?>
 
       <?rfc include='reference.RFC.6221'?>
-      
-      <?rfc include='reference.RFC.7341'?>
     	
     </references>
 
@@ -6737,6 +6735,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
     <?rfc include='reference.RFC.2462'?>
         
     <?rfc include='reference.RFC.3041'?>
+    
+    <?rfc include='reference.RFC.3315'?>
+          
+    <?rfc include='reference.RFC.7341'?>
 
     </references>
     
