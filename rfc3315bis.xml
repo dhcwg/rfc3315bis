@@ -156,11 +156,17 @@
       router can delegate prefixes to requesting routers.</t>
 
       <t>The operational models and relevant configuration information for
-      DHCPv4 <xref target="RFC2132"/><xref target="RFC2131"/> and DHCPv6 are
-      sufficiently different that integration between the two services is not
-      included in this document. If there is sufficient interest and demand,
-      integration can be specified in a document that extends DHCPv6 to carry
-      IPv4 addresses and configuration information.</t>
+      DHCPv4 <xref target="RFC2132"/><xref target="RFC2131"/> and DHCPv6
+      are sufficiently different that integration between the two
+      services is not included in this document. <xref target="RFC3315"/>
+      suggested that future work might be to extend DHCPv6 to carry IPv4
+      address and configuration information. However, the current
+      consensus of the IETF is that DHCPv4 should be used rather than
+      DHCPv6 when conveying IPv4 configuration information to
+      nodes. <xref target="RFC7341"/> describes a transport mechanism to
+      carry DHCPv4 messages using the DHCPv6 protocol for the dynamic
+      provisioning of IPv4 address and configuration information across
+      IPv6-only networks.</t>
 
       <t>The remainder of this introduction summarizes DHCP, explaining the
       message exchange mechanisms and example message flows. The message flows
@@ -6689,6 +6695,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.7227'?>
 
       <?rfc include='reference.RFC.6221'?>
+      
+      <?rfc include='reference.RFC.7341'?>
     	
     </references>
 
@@ -6849,6 +6857,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Added new section 5 providing an overview of DHCPv6 operational
           modes and removed two prefix delegation sections from section 1.
           See tickets #53, #100, and #102.</t>
+          
+          <t>Addressed ticket #115 - don't use DHCPv6 for DHCPv4 configuration.</t>
         </list>
 
       </t>
