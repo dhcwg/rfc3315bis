@@ -5330,7 +5330,19 @@
         <t hangText="   option-len"> 2 + length of status-message.</t>
 
 	<t hangText="   status-code"> The numeric code for the status encoded in
-	this option. The status codes previously defined by <xref target="RFC3315"/>
+	this option.</t>
+
+        <t hangText="   status-message"> A UTF-8 encoded text string suitable for display to
+        an end user, which MUST NOT be null-terminated.</t>
+
+        </list></t>
+
+        <t>A Status Code option may appear in the options field of a DHCP
+        message and/or in the options field of another option. If the Status
+        Code option does not appear in a message in which the option could
+        appear, the status of the message is assumed to be Success.</t>
+        
+        <t>The status-codes values previously defined by <xref target="RFC3315"/>
 	and <xref target="RFC3633"/> are:</t>
 
 	<texttable>
@@ -5359,17 +5371,7 @@
           <c>NoPrefixAvail</c><c>6</c><c>Delegating router has no prefixes
 	  available to assign to the IAPD(s).</c>
 	</texttable>
-	</t>
-
-        <t hangText="   status-message"> A UTF-8 encoded text string suitable for display to
-        an end user, which MUST NOT be null-terminated.</t>
-
-        </list></t>
-
-        <t>A Status Code option may appear in the options field of a DHCP
-        message and/or in the options field of another option. If the Status
-        Code option does not appear in a message in which the option could
-        appear, the status of the message is assumed to be Success.</t>
+	
       </section>
 
       <!-- ends: "22.13 from line 4134-->
@@ -6378,7 +6380,8 @@
       <t>IANA is requested to update the
       http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
       page to add a reference to this document for definitions previously created by
-      <xref target="RFC3315"/>, <xref target="RFC3633"/>, and <xref target="RFC7083"/>.      
+      <xref target="RFC3315"/>, <xref target="RFC3633"/>, and <xref target="RFC7083"/>.
+      </t>
 
     </section>
 
@@ -6523,6 +6526,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.7227'?>
 
       <?rfc include='reference.RFC.6221'?>
+      
+      <?rfc include='reference.RFC.7083'?>
     	
     </references>
 
