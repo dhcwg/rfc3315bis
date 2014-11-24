@@ -7,7 +7,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="std" docName="draft-dhcwg-dhc-rfc3315bis-03" ipr="pre5378Trust200902"
+<rfc category="std" docName="draft-dhcwg-dhc-rfc3315bis-04" ipr="pre5378Trust200902"
      obsoletes="3315,3633,3736">
   <front>
     <title abbrev="RFC 3315 bis">Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis</title>
@@ -933,7 +933,7 @@
         operations requested in messages from clients and servers, and to
         provide additional information about the specific cause of the failure
         of a message. The specific status codes are defined in
-        <xref target='RFC3315-24.4'/>.</t>
+        <xref target='RFC3315-22.12'/>.</t>
 
 	<t>If the Status Code option does not appear in a message in which
 	the option could appear, the status of the message is assumed to be Success.</t>
@@ -5329,8 +5329,37 @@
 
         <t hangText="   option-len"> 2 + length of status-message.</t>
 
-        <t hangText="   status-code"> The numeric code for the status encoded in this option.
-        The status codes are defined in <xref target='RFC3315-24.4'/>.</t>
+	<t hangText="   status-code"> The numeric code for the status encoded in
+	this option. The status codes previously defined by <xref target="RFC3315"/>
+	and <xref target="RFC3633"/> are:</t>
+
+	<texttable>
+	  <ttcol>Name</ttcol>
+	  <ttcol align="right">Code</ttcol>
+	  <ttcol>Description</ttcol>
+
+          <c>Success</c><c>0</c><c>Success.</c>
+
+          <c>UnspecFail</c><c>1</c><c>Failure, reason unspecified; this
+          status code is sent by either a client or a server to indicate
+          a failure not explicitly specified in this document.</c>
+
+          <c>NoAddrsAvail</c><c>2</c><c>Server has no addresses available
+          to assign to the IA(s).</c>
+
+          <c>NoBinding</c><c>3</c><c>Client record (binding) unavailable.</c>
+
+          <c>NotOnLink</c><c>4</c><c>The prefix for the address is not
+          appropriate for the link to which the client is attached.</c>
+
+          <c>UseMulticast</c><c>5</c><c>Sent by a server to a client to
+          force the client to send messages to the server using the
+          All_DHCP_Relay_Agents_and_Servers address.</c>
+          
+          <c>NoPrefixAvail</c><c>6</c><c>Delegating router has no prefixes
+	  available to assign to the IAPD(s).</c>
+	</texttable>
+	</t>
 
         <t hangText="   status-message"> A UTF-8 encoded text string suitable for display to
         an end user, which MUST NOT be null-terminated.</t>
@@ -6344,214 +6373,13 @@
     <section title="IANA Considerations">
       <!-- 24, line 4595-->
 
-      <t>This document defines several new name spaces associated with DHCPv6
-      and DHCPv6 options:
+      <t>This document does not define any new DHCPv6 name spaces or definitions.</t>
 
-      <list hangIndent="3" style="hanging">
+      <t>IANA is requested to update the
+      http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
+      page to add a reference to this document for definitions previously created by
+      <xref target="RFC3315"/>, <xref target="RFC3633"/>, and <xref target="RFC7083"/>.      
 
-      <t hangText="-"> Message types</t>
-
-      <t hangText="-"> Status codes</t>
-
-      <t hangText="-"> DUID</t>
-
-      <t hangText="-"> Option codes</t>
-
-      </list></t>
-
-      <t>IANA has established a registry of values for each of these name
-      spaces, which are described in the remainder of this section. These name
-      spaces will be managed by the IANA and all will be managed separately
-      from the name spaces defined for DHCPv4.</t>
-
-      <t>New multicast addresses, message types, status codes, and DUID types
-      are assigned via Standards Action <xref target="RFC5226"/>.</t>
-
-      <t>New DHCP option codes are tentatively assigned after the
-      specification for the associated option, published as an Internet Draft,
-      has received expert review by a designated expert <xref
-      target="RFC5226"/>. The final assignment of DHCP option codes is through
-      Standards Action, as defined in <xref target="RFC5226"/>.</t>
-
-      <t>This document also references three name spaces in <xref target='RFC3315-21'/> that
-      are associated with the Authentication Option (<xref target='RFC3315-22.11'/>). These
-      name spaces are defined by the authentication mechanism for DHCPv4 in
-      <xref target="RFC3118"/>.</t>
-
-      <t>The authentication name spaces currently registered by IANA will
-      apply to both DHCPv6 and DHCPv4. In the future, specifications that
-      define new Protocol, Algorithm and RDM mechanisms will explicitly define
-      whether the new mechanisms are used with DHCPv4, DHCPv6 or both.</t>
-
-      <section title="Multicast Addresses">
-        <!-- 24.1, line 4634-->
-
-        <t><xref target="mutlicastAddr"></xref> defines the following multicast addresses, which have
-        been assigned by IANA for use by DHCPv6:
-
-        <list hangIndent="48" style="hanging">
-
-        <t hangText="   All_DHCP_Relay_Agents_and_Servers address:"> FF02::1:2</t>
-
-        <t hangText="   All_DHCP_Servers address:"> FF05::1:3</t>
-        </list></t>
-      </section>
-
-      <!-- ends: "24.1 from line 4634-->
-
-      <section title="DHCP Message Types">
-        <!-- 24.2, line 4644-->
-
-        <t>IANA has recorded the following message types (defined in
-        <xref target='RFC3315-5.3'/>). IANA will maintain the registry of DHCP message types.
-
-        <list hangIndent="25" style="hanging">
-          <t hangText="   SOLICIT">1</t>
-
-          <t hangText="   ADVERTISE">2</t>
-
-          <t hangText="   REQUEST">3</t>
-
-          <t hangText="   CONFIRM">4</t>
-
-          <t hangText="   RENEW">5</t>
-
-          <t hangText="   REBIND">6</t>
-
-          <t hangText="   REPLY">7</t>
-
-          <t hangText="   RELEASE">8</t>
-
-          <t hangText="   DECLINE">9</t>
-
-          <t hangText="   RECONFIGURE">10</t>
-
-          <t hangText="   INFORMATION-REQUEST">11</t>
-
-          <t hangText="   RELAY-FORW">12</t>
-
-          <t hangText="   RELAY-REPL">13</t>
-        </list></t>
-      </section>
-
-      <!-- ends: "24.2 from line 4644-->
-
-      <section anchor='RFC3315-24.3' title="DHCP Options">
-        <!-- 24.3, line 4678-->
-
-        <t>IANA has recorded the following option-codes (as defined in section
-        <xref target='RFC3315-22'/>). IANA will maintain the registry of DHCP option codes.
-
-        <list hangIndent="25" style="hanging">
-
-            <t hangText="   OPTION_CLIENTID">1</t>
-
-            <t hangText="   OPTION_SERVERID">2</t>
-
-            <t hangText="   OPTION_IA_NA">3</t>
-
-            <t hangText="   OPTION_IA_TA">4</t>
-
-            <t hangText="   OPTION_IAADDR">5</t>
-
-            <t hangText="   OPTION_ORO">6</t>
-
-            <t hangText="   OPTION_PREFERENCE">7</t>
-
-            <t hangText="   OPTION_ELAPSED_TIME">8</t>
-
-            <t hangText="   OPTION_RELAY_MSG">9</t>
-
-            <t hangText="   OPTION_AUTH">11</t>
-
-            <t hangText="   OPTION_UNICAST">12</t>
-
-            <t hangText="   OPTION_STATUS_CODE">13</t>
-
-            <t hangText="   OPTION_RAPID_COMMIT">14</t>
-
-            <t hangText="   OPTION_USER_CLASS">15</t>
-
-            <t hangText="   OPTION_VENDOR_CLASS">16</t>
-
-            <t hangText="   OPTION_VENDOR_OPTS">17</t>
-
-            <t hangText="   OPTION_INTERFACE_ID">18</t>
-
-            <t hangText="   OPTION_RECONF_MSG">19</t>
-
-            <t hangText="   OPTION_RECONF_ACCEPT">20</t>
-            
-            <!-- Options incorporated from RFC3633 -->
-            <t hangText="   OPTION_IA_PD">25</t>
-
-            <t hangText="   OPTION_IAPREFIX">26</t>            
-
-            <!-- Options incorporated from RFC7083 -->
-            <t hangText="   OPTION_SOL_MAX_RT">82</t>
-
-            <t hangText="   OPTION_INF_MAX_RT">83</t>
-        </list></t>
-      </section>
-
-      <!-- ends: "24.3 from line 4678-->
-
-      <section anchor='RFC3315-24.4' title="Status Codes">
-        <!-- 24.4, line 4724-->
-
-        <t>IANA has recorded the status codes defined in the following table.
-        IANA will manage the definition of additional status codes in the
-        future.</t>
-
-	<texttable>
-
-	  <ttcol>Name</ttcol>
-	  <ttcol align="right">Code</ttcol>
-	  <ttcol>Description</ttcol>
-
-          <c>Success</c><c>0</c><c>Success.</c>
-
-          <c>UnspecFail</c><c>1</c><c>Failure, reason unspecified; this
-          status code is sent by either a client or a server to indicate
-          a failure not explicitly specified in this document.</c>
-
-          <c>NoAddrsAvail</c><c>2</c><c>Server has no addresses available
-          to assign to the IA(s).</c>
-
-          <c>NoBinding</c><c>3</c><c>Client record (binding) unavailable.</c>
-
-          <c>NotOnLink</c><c>4</c><c>The prefix for the address is not
-          appropriate for the link to which the client is attached.</c>
-
-          <c>UseMulticast</c><c>5</c><c>Sent by a server to a client to
-          force the client to send messages to the server using the
-          All_DHCP_Relay_Agents_and_Servers address.</c>
-          
-          <c>NoPrefixAvail</c><c>6</c><c>Delegating router has no prefixes available to assign to the
-          IAPD(s).</c>
-	</texttable>
-      </section>
-
-      <!-- ends: "24.4 from line 4724-->
-
-      <section title="DUID">
-        <!-- 24.5, line 4750-->
-
-        <t>IANA has recorded the following DUID types (as defined in
-        <xref target='RFC3315-9.1'/>). IANA will manage the definition
-        of additional DUID types in the future.
-
-        <list hangIndent="25" style="hanging">
-
-            <t hangText="   DUID-LLT">1</t>
-
-            <t hangText="   DUID-EN">2</t>
-
-            <t hangText="   DUID-LL">3</t>
-        </list></t>
-      </section>
-
-      <!-- ends: "24.5 from line 4750-->
     </section>
 
     <!-- ends: "24 from line 4595-->
@@ -6861,6 +6689,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           See tickets #53, #100, and #102.</t>
           
           <t>Addressed ticket #115 - don't use DHCPv6 for DHCPv4 configuration.</t>
+          
+          <t>Revised IANA Considerations based on ticket #117.</t>
         </list>
 
       </t>
