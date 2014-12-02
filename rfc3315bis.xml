@@ -4969,8 +4969,7 @@
         0xffffffff ("infinity"), which amounts to a permanent assignment of an
         address to a client.</t>
 
-        <t>An IA Address option may appear only in an IA_NA option or an IA_TA
-        option. More than one IA Address Option can appear in an IA_NA option
+        <t>More than one IA Address Option can appear in an IA_NA option
         or an IA_TA option.</t>
 
         <t>The status of any operations involving this IA Address is indicated
