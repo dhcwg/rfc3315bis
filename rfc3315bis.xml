@@ -1306,8 +1306,9 @@
 -->
 
         <t>Formats for the variable field of the DUID for the first 3 of the
-        above types are shown below. For the fourth type, refer to
-        <xref target="RFC6355"/>.</t>
+        above types are shown below. The fourth type, DUID-UUID <xref target="RFC6355">, can
+        be used in situations where there is a UUID stored in a device's firmware settings.
+        </t>
       </section>
 
       <!-- ends: "9.1 from line 953-->
