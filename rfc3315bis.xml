@@ -2603,7 +2603,17 @@
       initiate the configuration exchange as part of the operating system
       configuration process, when requested to do so by the application layer,
       when required by Stateless Address Autoconfiguration or as required to
-      extend the lifetime of an address (Renew and Rebind messages).</t>
+      extend the lifetime of address(es) or/and delegated prefix(es), using
+      Renew and Rebind messages.</t>
+
+      <t>According to a terminology for the prefix delegation, a client requesting a
+      delegation of a prefix is referred to as a requesting router and a server
+      delegating the prefix is referred to as a delegating router. The requesting
+      router and the delegating router use the IA_PD Prefix option to exchange
+      information about prefix(es) in much the same way as IA Address options
+      are used for assigned addresses. Typically, a single DHCP session is
+      used to exchange information about addresses and prefixes, i.e.
+      IA_NA and IA_PD options are carried in the same message.</t>
 
       <section title="Client Behavior">
         <!-- 18.1, line 1953-->
@@ -2695,7 +2705,7 @@
 
         <!-- ends: "18.1.1 from line 1981-->
 
-        <section title="Creation and Transmission of Confirm Messages">
+        <section anchor='RFC3315-18.1.2' title="Creation and Transmission of Confirm Messages">
           <!-- 18.1.2, line 2037-->
 
           <t>Whenever a client may have moved to a new link, the prefixes from
@@ -3489,7 +3499,153 @@
         <!-- ends: "18.2.8 from line 2729-->
       </section>
 
-      <!-- ends: "18.2 from line 2455-->
+      <!-- ends: "18.2 -->
+
+      <section anchor='pd-client-initiated-client'
+               title="Requesting Router Behavior for Prefix Delegation">
+	    <t>The requesting router uses a Request message to populate
+        IA_PDs with prefixes. The requesting router includes one or
+        more IA_PD options in the Request message. The delegating
+        router then returns the prefixes for the IA_PDs to the
+        requesting router in IA_PD options in a Reply message.</t>
+
+	    <t>The requesting router includes IA_PD options in any Renew,
+        or Rebind messages sent by the requesting router. The IA_PD
+        option includes all of the prefixes the requesting router
+        currently has associated with that IA_PD.</t>
+
+	    <t>In some circumstances the requesting router may need
+	    verification that the delegating router still has a valid
+	    binding for the requesting router. Examples of times when a
+	    requesting router may ask for such verification include:</t>
+
+	    <t><list style="symbols">
+	      <t>The requesting router reboots.</t>
+	      <t>The requesting router's upstream link flaps.</t>
+	      <t>The requesting router is physically disconnected from a
+	      wired connection.</t>
+	    </list></t>
+
+        <t>If such verification is needed the requesting router MUST
+        initiate a Rebind/Reply message exchange as described in
+        section <xref target="RFC3315-18.1.4"/>, with the exception
+        that the retransmission parameters should be set as for the
+        Confirm message, described in <xref target="RFC3315-18.1.2"/>.
+        The requesting router includes any IA_PDs, along with
+        prefixes associated with those IA_PDs in its Rebind
+        message.</t>
+
+  	    <t>Each prefix has valid and preferred lifetimes whose
+	    durations are specified in the IA_PD Prefix option for that
+	    prefix. The requesting router uses Renew and Rebind messages
+	    to request the extension of the lifetimes of a delegated
+	    prefix.</t>
+
+  	    <t>The requesting router uses a Release message to return a
+	    delegated prefix to a delegating router. The prefixes to be
+	    released MUST be included in the IA_PDs.</t>
+
+	    <t>The Confirm and Decline message types are not used with
+	    Prefix Delegation.</t>
+
+	    <t>Upon the receipt of a valid Reply message, for each IA_PD
+	    the requesting router assigns a subnet from each of the
+	    delegated prefixes to each of the links to which the
+	    associated interfaces are attached.</t>
+
+        <t>When the Delegating Router delegates prefixes to a Requesting
+        Router, the Requesting Router has sole authority for assignment
+        of those prefixes, and the Delegating Router MUST NOT assign any
+        prefixes from that delegated prefix to any of its own links.</t>
+
+	    <t>When a requesting router subnets a delegated prefix, it
+        must assign additional bits to the prefix to generate unique,
+        longer prefixes.  For example, if the requesting router in
+        Figure 1 were delegated 3FFE:FFFF:0::/48, it might generate
+        3FFE:FFFF:0:1::/64 and 3FFE:FFFF:0:2::/64 for assignment to
+        the two links in the subscriber network.  If the requesting
+        router were delegated 3FFE:FFFF:0::/48 and 3FFE:FFFF:5::/48,
+        it might assign 3FFE:FFFF:0:1::/64 and 3FFE:FFFF:5:1::/64 to
+        one of the links, and 3FFE:FFFF:0:2::/64 and
+        3FFE:FFFF:5:2::/64 for assignment to the other link.</t>
+
+	    <t>If the requesting router assigns a delegated prefix to a
+	    link to which the router is attached, and begins to send
+	    router advertisements for the prefix on the link, the
+	    requesting router MUST set the valid lifetime in those
+	    advertisements to be no later than the valid lifetime
+	    specified in the IA_PD Prefix option. A requesting router MAY
+	    use the preferred lifetime specified in the IA_PD Prefix
+	    option.</t>
+
+	    <t>Handling of Status Codes options in received Reply messages
+	    is described in section <xref target="RFC3315-18.1.8"/>. The
+	    NoPrefixAvail Status Code is handled in the same manner as the
+	    NoAddrsAvail Status Code.</t>
+      </section>
+
+      <section anchor='pd-client-initated-server'
+               title="Delegating Router Behavior for Prefix Delegation">
+	    <t>When a delegating router receives a Request message from a
+	    requesting router that contains an IA_PD option, and the
+	    delegating router is authorized to delegate prefix(es) to the
+	    requesting router, the delegating router selects the
+	    prefix(es) to be delegated to the requesting router.
+
+        The mechanism through which the delegating router selects
+	    prefix(es) for delegation is not specified in this
+	    document. <xref target="pd-solicit-server"
+	    pageno="false"/> gives examples of ways in which a delegating
+	    router might select the prefix(es) to be delegated to a
+	    requesting router.</t>
+
+	    <t>A delegating router examines the prefix(es) identified in
+	    IA_PD Prefix options (in an IA_PD option) in Renew and Rebind
+	    messages and responds according to the current status of the
+	    prefix(es). The delegating router returns IA_PD Prefix options
+	    (within an IA_PD option) with updated lifetimes for each valid
+	    prefix in the message from the requesting router. If the
+	    delegating router finds that any of the prefixes are not in
+	    the requesting router's binding entry, the delegating router
+	    returns the prefix to the requesting router with lifetimes of
+	    0.</t>
+
+	    <t>The delegating router behaves as follows when it cannot
+	    find a binding for the requesting router's IA_PD:</t>
+
+	    <t><list style="hanging" hangIndent='20'>
+	      <t hangText="Renew message:">If the delegating router cannot
+	      find a binding for the requesting router's IA_PD the
+	      delegating router returns the IA_PD containing no prefixes
+	      with a Status Code option set to NoBinding in the Reply
+	      message.</t>
+
+	      <t hangText="Rebind message:">If the delegating router cannot
+	      find a binding for the requesting router's IA_PD and the
+	      delegating router determines that the prefixes in the IA_PD
+	      are not appropriate for the link to which the requesting
+	      router's interface is attached according to the delegating
+	      routers explicit configuration, the delegating router MAY
+	      send a Reply message to the requesting router containing the
+	      IA_PD with the lifetimes of the prefixes in the IA_PD set to
+	      zero. This Reply constitutes an explicit notification to the
+	      requesting router that the prefixes in the IA_PD are no
+	      longer valid. If the delegating router is unable to
+	      determine if the prefix is not appropriate for the link, the
+	      Rebind message is discarded.</t>
+	    </list>
+        </t>
+
+	    <t>A delegating router may mark any prefix(es) in IA_PD Prefix
+	    options in a Release message from a requesting router as
+	    "available", dependent on the mechanism used to acquire the
+	    prefix, e.g., in the case of a dynamic pool.</t>
+
+	    <t>The delegating router MUST include an IA_PD Prefix option
+	    or options (in an IA_PD option) in Reply messages sent to a
+	    requesting router.</t>
+      </section>
+
     </section>
 
     <!-- ends: "18 from line 1942-->
@@ -6700,6 +6856,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Updated IAID description in the terminology with the clarification
           that the IAID is unique among IAs of a specific type, rather than
           globally unique among all IAs (ticket #94).</t>
+
+          <t>Merged Section 12 from RFC3633 (ticket #107)</t>
+
         </list>
 
       </t>
