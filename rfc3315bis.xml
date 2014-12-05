@@ -487,8 +487,8 @@
             may be defined in the future.</t>
 
             <t hangText="IAID">Identity Association IDentifier: An identifier for an IA,
-            chosen by the client. Each IA has an IAID, which is chosen to be
-            unique among all IAIDs for IAs belonging to that client.</t>
+            chosen by the client. Each IA has an IAID, which is chosen to be unique
+            among IAIDs for IAs of a specific type, belonging to that client.</t>
 
             <t hangText="IA_NA">Identity association for Non-temporary Addresses: An IA that
             carries assigned addresses that are not temporary addresses (see
@@ -6696,6 +6696,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Addressed ticket #115 - don't use DHCPv6 for DHCPv4 configuration.</t>
           
           <t>Revised IANA Considerations based on ticket #117.</t>
+
+          <t>Updated IAID description in the terminology with the clarification
+          that the IAID is unique among IAs of a specific type, rather than
+          globally unique among all IAs (ticket #94).</t>
         </list>
 
       </t>
