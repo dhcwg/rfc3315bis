@@ -1696,7 +1696,7 @@
       <t>A client may send some messages directly to a server using unicast,
       as described in <xref target='RFC3315-22.12'/>.</t>
       
-      <section title="Rate Limiting">
+      <section anchor='rate-limit' title="Rate Limiting">
       
         <t>In order to avoid prolonged message bursts that may be caused by 
         possible logic loops, a DHCPv6 client MUST limit the rate of DHCPv6 
@@ -1704,14 +1704,14 @@
         but does not like the response; it reverts back to Solicit procedure, 
         discovers the same (sole) server, requests an address and gets the 
         same address as before (the server still has the lease that was 
-        requested just now). This loops can repeat infinitely if there is not 
+        requested just previously). This loops can repeat infinitely if there is not 
         a quit/stop mechanism. Therefore, a client must not initiate 
         transmissions too frequently.</t>
         
         <t>A recommended method for implementing the rate limiting function 
         is a token bucket, limiting the average rate of transmission to a 
-        certain number in a certain time. It allows the long-term average 
-        is not exceeded.</t>
+        certain number in a certain time. This method of bounding burstiness
+        also guarantees that the long-term transmission rate will not exceed.</t>
         
         <t>
           <list hangIndent="11" style="hanging">
@@ -1723,7 +1723,7 @@
         <t>For a device that has multiple interfaces, the limit MUST be 
         enforced on a per interface basis.</t>
         
-        <t>Rate limiting of forwarded DHCPv6 messages and server-slide 
+        <t>Rate limiting of forwarded DHCPv6 messages and server-side 
         messages are out of scope of this specification.</t>
         	
       </section>
@@ -3149,7 +3149,7 @@
           the client retransmits the original message to the same server to
           retry the desired operation, the client MUST limit the rate at which
           it retransmits the message and limit the duration of the time during
-          which it retransmits the message.</t>
+          which it retransmits the message (see <xref target='rate-limit'/>).</t>
 
           <t>When the client receives a Reply message with a Status Code
           option with the value UseMulticast, the client records the receipt
