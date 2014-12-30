@@ -848,7 +848,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
    The model of operation for prefix delegation is as follows.  A
    delegating router is provided IPv6 prefixes to be delegated to
    requesting routers.  Examples of ways in which the delegating router
-   may be provided these prefixes is given in Section 19.4).  A
+   may be provided these prefixes is given in Section 19.4.  A
    requesting router requests prefix(es) from the delegating router, as
    described in Section 19.3.  The delegating router chooses prefix(es)
    for delegation, and responds with prefix(es) to the requesting
