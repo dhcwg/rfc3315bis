@@ -644,7 +644,7 @@
       A delegating router is provided IPv6 prefixes to be 
       delegated to requesting routers.  Examples of ways in which
       the delegating router may be provided these prefixes is
-      given in <xref target='pd-client-initated-server'/>). A requesting
+      given in <xref target='pd-client-initated-server'/>. A requesting
       router requests prefix(es) from the delegating router, as
       described in <xref target='pd-client-initiated-client'/>.  The
       delegating router chooses prefix(es) for delegation, and
