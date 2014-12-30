@@ -8,7 +8,7 @@
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
 <rfc category="std" docName="draft-dhcwg-dhc-rfc3315bis-04" ipr="pre5378Trust200902"
-     obsoletes="3315,3633,3736">
+     obsoletes="3315,3633,3736,7083">
   <front>
     <title abbrev="RFC 3315 bis">Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis</title>
 
@@ -534,8 +534,8 @@
     <section anchor='OpModes' title="Operational Models">
 
       <t>
-      This section describes some of the currently most common
-      DHCPv6 operational models. The described models are not
+      This section describes some of the current most common
+      DHCP operational models. The described models are not
       mutually exclusive and are sometimes used together. For
       example, a device may start in stateful mode to obtain
       an address, and at a later time when an application
@@ -543,24 +543,24 @@
       mode.
       </t>
 
-      <section anchor='OpModes-Stateless' title="Stateless DHCPv6">
+      <section anchor='OpModes-Stateless' title="Stateless DHCP">
 
       <t>
-      Stateless DHCPv6 <xref target='RFC3736'/> is used when DHCPv6
+      Stateless DHCP <xref target='RFC3736'/> is used when DHCP
       is not used for obtaining an allocatable resource, but a node
-      (DHCPv6 client) desires one or more DHCPv6 "other
+      (DHCP client) desires one or more DHCP "other
       configuration" parameters, such as a list of DNS recursive
       name servers or DNS domain search lists <xref target='RFC3646'/>.
       Stateless may be used when a node initially boots or at
       any time the software on the node requires some missing
       or expired configuration information that is available via
-      DHCPv6.
+      DHCP.
       </t>
 
       <t>
-      This is the simplest and most basic operation for DHCPv6
+      This is the simplest and most basic operation for DHCP
       and requires a client (and a server) to support only two
-      messages - Information-request and Reply. Note that DHCPv6
+      messages - Information-request and Reply. Note that DHCP
       servers and relay agents typically also need to support
       the Relay-Forw and Relay-Reply messages to accommodate
       operation when clients and servers are not on the same link.
@@ -569,11 +569,11 @@
       </section>
 
       <section anchor='OpModes-NA'
-       title="DHCPv6 for Non-Temporary Address Assignment">
+       title="DHCP for Non-Temporary Address Assignment">
 
       <t>
       This model of operation was the original motivation for
-      DHCPv6 and is the "stateful address autoconfiguration
+      DHCP and is the "stateful address autoconfiguration
       protocol" for IPv6 <xref target='RFC2462'/>. It is
       appropriate for situations where stateless address
       autoconfiguration is not desired, because of network
@@ -614,14 +614,14 @@
           
       </section>
 
-      <section anchor='OpModes-PD' title="DHCPv6 for Prefix Delegation">
+      <section anchor='OpModes-PD' title="DHCP for Prefix Delegation">
 
       <t>
       The prefix delegation mechanism, originally described in
       <xref target='RFC3633'/>, is another stateful mode of
       operation and intended for simple delegation of prefixes
-      from a delegating router (DHCPv6 server) to requesting
-      routers (DHCPv6 clients).  It is appropriate for
+      from a delegating router (DHCP server) to requesting
+      routers (DHCP clients).  It is appropriate for
       situations in which the delegating router does not have
       knowledge about the topology of the networks to which the
       requesting router is attached, and the delegating router
@@ -643,10 +643,10 @@
       The model of operation for prefix delegation is as follows.
       A delegating router is provided IPv6 prefixes to be 
       delegated to requesting routers.  Examples of ways in which
-      the delegating router may be provided these prefixes are
-      given in Section XXXX (was 12.2 in RFC 3633). A requesting
+      the delegating router may be provided these prefixes is
+      given in <xref target='pd-client-initated-server'/>). A requesting
       router requests prefix(es) from the delegating router, as
-      described in Section XXXX (was 12.1 in RFC 3633).  The
+      described in <xref target='pd-client-initiated-client'/>.  The
       delegating router chooses prefix(es) for delegation, and
       responds with prefix(es) to the requesting router.  The
       requesting router is then responsible for the delegated
@@ -756,10 +756,10 @@
       </section>
  
       <section anchor='OpModes-CPE'
-       title="DHCPv6 for Customer Edge Routers">
+       title="DHCP for Customer Edge Routers">
 
       <t>
-      The DHCPv6 requirements and network architecture for
+      The DHCP requirements and network architecture for
       Customer Edge Routers are described in <xref
       target='RFC7084'/>. This model of operation combines
       address assignment (see <xref target='OpModes-NA'/>)
@@ -773,14 +773,14 @@
       </section>
 
       <section anchor='OpModes-TA'
-       title="DHCPv6 for Temporary Addresses">
+       title="DHCP for Temporary Addresses">
 
       <t>
       Temporary addresses were originally introduced to avoid
       privacy concerns with stateless address autoconfiguration,
       which based 64-bits of the address on the EUI-64 (see
       <xref target='RFC3041'/> and <xref target='RFC4941'/>).
-      They were added to DHCPv6 to provide complementary support
+      They were added to DHCP to provide complementary support
       when stateful address assignment is used.
       </t>
 
@@ -790,13 +790,6 @@
       these addresses are generally intended to be used for a short
       period of time and not to have their lifetimes extended,
       though they can be if required.
-      </t>
-
-      <t>
-      Whether temporary addresses are useful when DHCPv6 is
-      used for non-temporary address assignment is open to debate
-      as the privacy concerns expressed in <xref target='RFC3041'/>
-      and <xref target='RFC4941'/> are not applicable.
       </t>
 
       </section>
@@ -2241,9 +2234,10 @@
           assignment of temporary addresses. Either IA_NA or IA_TA options, or
           a combination of both, can be included in DHCP messages.</t>
 
-          <t>The client SHOULD include an Option Request option (see
-          <xref target='RFC3315-22.7'/>) to indicate the options the
-          client is interested in receiving.
+          <t>The client MUST include an Option Request option (see
+          <xref target='RFC3315-22.7'/>) to request the SOL_MAX_RT option
+          (see <xref target='SOL_MAX_RT_option'/>) and any
+          other options the client is interested in receiving.
           The client MAY additionally include instances of those options that
           are identified in the Option Request option, with data values as
           hints to the server about parameter values the client would like to
@@ -2962,7 +2956,9 @@
           authenticated.</t>
 
           <t>The client MUST include an Option Request option (see
-          <xref target='RFC3315-22.7'/>) to indicate the options the client is interested in receiving.
+          <xref target='RFC3315-22.7'/>) to request the INF_MAX_RT option
+          (see <xref target='INF_MAX_RT_option'/>) and any
+          other options the client is interested in receiving.
           The client MAY include options with data values as hints to the
           server about parameter values the client would like to have
           returned.</t>
@@ -3935,11 +3931,11 @@
       <!-- ends: "19.4 from line 2861-->
 
       <!-- begins: RFC3633 Section 13: Prefix Delegation reconfiguration -->
-      <section anchor="sipd" title="Prefix Delegation reconfiguration">
+      <section anchor="sipd" title="Prefix Delegation Reconfiguration">
         <t>This section describes prefix delegation in Reconfigure
         message exchanges.</t>
 
-        <section anchor="sipd-server" title="Delegating Router behavior">
+        <section anchor="sipd-server" title="Delegating Router Behavior">
           <t>The delegating router initiates a configuration message
           exchange with a requesting router, as described in <xref target='RFC3315-19'/>,
           by sending a Reconfigure message (acting as a DHCP server)
@@ -3950,7 +3946,7 @@
           delegated prefix(es).</t>
         </section>
 
-        <section anchor="sipd-client" title="Requesting Router behavior">
+        <section anchor="sipd-client" title="Requesting Router Behavior">
           <t>The requesting router responds to a Reconfigure message,
           acting as a DHCP client, received from a delegating router
           as described in <xref target='RFC3315-19.4'/>
@@ -4046,7 +4042,7 @@
         <!-- ends: "20.1.2 from line 2999-->
 
         <!-- begins: RFC3633 Section 14: Relay agent behavior -->
-        <section title="Relay agent behavior with Prefix Delegation">
+        <section title="Relay Agent Behavior with Prefix Delegation">
           <t>A relay agent forwards messages containing Prefix Delegation
           options in the same way as described earlier in this section.</t>
 
@@ -4648,7 +4644,7 @@
           </list>
           </t>
 
-          <t hangText="   Value"> Data as defined by field.</t>
+          <t hangText="   Value"> Data as defined by the Type field.</t>
 
           </list></t>
         </section>
@@ -4725,11 +4721,11 @@
 
       <t>Options that are allowed to appear only once are called singleton options.
       The only non-singleton options defined in this document are
-      IA_NA (See <xref target="RFC3315-22.4"/>),
-      IA_TA (See <xref target="RFC3315-22.5"/>), and
-      IA_PD (See <xref target="IA_PD-option"/>) options.
-      Also, IAAddress (See <xref target="RFC3315-22.6"/>) and
-      IAPrefix (See <xref target="IAPREFIX-option"/> may appear in their
+      IA_NA (see <xref target="RFC3315-22.4"/>),
+      IA_TA (see <xref target="RFC3315-22.5"/>), and
+      IA_PD (see <xref target="IA_PD-option"/>) options.
+      Also, IAAddress (see <xref target="RFC3315-22.6"/>) and
+      IAPrefix (see <xref target="IAPREFIX-option"/>) may appear in their
       respective IA options more than once.</t>
 
       <section anchor='RFC3315-22.1' title="Format of DHCP Options">
@@ -5399,23 +5395,23 @@
 
         <t><list hangIndent="24" style="hanging">
 
-        <t hangText="   option-code"> OPTION_AUTH (11)</t>
+        <t hangText="   option-code"> OPTION_AUTH (11).</t>
 
-        <t hangText="   option-len"> 11 + length of authentication information field</t>
+        <t hangText="   option-len"> 11 + length of authentication information field.</t>
 
         <t hangText="   protocol"> The authentication protocol used in this authentication
-        option</t>
+        option.</t>
 
-        <t hangText="   algorithm"> The algorithm used in the authentication protocol</t>
+        <t hangText="   algorithm"> The algorithm used in the authentication protocol.</t>
 
         <t hangText="   RDM"> The replay detection method used in this authentication
-        option</t>
+        option.</t>
 
-        <t hangText="   Replay detection"> The replay detection information for the RDM</t>
+        <t hangText="   Replay detection"> The replay detection information for the RDM.</t>
 
         <t hangText="   authentication information">The authentication information, as
         specified by the protocol and algorithm used in this authentication
-        option</t>
+        option.</t>
 
         </list></t>
       </section>
@@ -5821,15 +5817,15 @@
 
         <t><list hangIndent="24" style="hanging">
 
-        <t hangText="   option-code"> OPTION_VENDOR_OPTS (17)</t>
+        <t hangText="   option-code"> OPTION_VENDOR_OPTS (17).</t>
 
-        <t hangText="   option-len"> 4 + length of option-data field</t>
+        <t hangText="   option-len"> 4 + length of option-data field.</t>
 
         <t hangText="   enterprise-number"> The vendor's registered Enterprise Number as
         registered with IANA <xref target="IANA-PEN"/>.</t>
 
         <t hangText="   option-data"> An opaque object, interpreted by
-        vendor-specific code on the clients and servers</t>
+        vendor-specific code on the clients and servers.</t>
 
         </list></t>
 
@@ -6224,7 +6220,7 @@
 
       <t>
 	    <list style="hanging" hangIndent='24'>
-	    <t hangText="   option-code">OPTION_IAPREFIX (26)</t>
+	    <t hangText="   option-code">OPTION_IAPREFIX (26).</t>
 
 	    <t hangText="   option-length">25 + length of
 	    IAprefix-options field.</t>
@@ -6974,8 +6970,8 @@ R-repl.                *     *      *      *
 
 <figure>
 <artwork>
-             Option  IA_NA/ IAADDR                 Relay  Relay
-             Field   IA_TA         IA_PD  IAPREFIX Forw.  Reply
+             Option  IA_NA/                        Relay  Relay
+             Field   IA_TA  IAADDR IA_PD  IAPREFIX Forw.  Reply
 Client ID      *
 Server ID      *
 IA_NA/IA_TA    *
@@ -6988,11 +6984,11 @@ Elapsed Time   *
 Relay Message                                        *      *
 Authentic.     *
 Server Uni.    *
-Status Code    *       *       *     *
+Status Code    *       *             *
 Rapid Comm.    *
 User Class     *
 Vendor Class   *
-Vendor Info.   *
+Vendor Info.   *                                     *      *
 Interf. ID                                           *      *
 Reconf. MSG.   *
 Reconf. Accept *
