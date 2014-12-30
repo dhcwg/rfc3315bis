@@ -4,17 +4,17 @@
 
 Dynamic Host Configuration (DHC)                       T. Mrugalski, Ed.
 Internet-Draft                                              M. Siodelski
-Obsoletes: 3315,3633,3736 (if approved)                              ISC
-Intended status: Standards Track                                 B. Volz
-Expires: June 11, 2015                                    A. Yourtchenko
-                                                                   Cisco
+Obsoletes: 3315,3633,3736,7083 (if                                   ISC
+           approved)                                             B. Volz
+Intended status: Standards Track                          A. Yourtchenko
+Expires: July 3, 2015                                              Cisco
                                                            M. Richardson
                                                                      SSW
                                                                 S. Jiang
                                                                   Huawei
                                                                 T. Lemon
                                                                  Nominum
-                                                        December 8, 2014
+                                                       December 30, 2014
 
 
        Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis
@@ -46,14 +46,14 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 11, 2015.
+   This Internet-Draft will expire on July 3, 2015.
 
 
 
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                 [Page 1]
+Mrugalski, et al.         Expires July 3, 2015                  [Page 1]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -97,11 +97,11 @@ Table of Contents
      4.1.  IPv6 Terminology  . . . . . . . . . . . . . . . . . . . .  10
      4.2.  DHCP Terminology  . . . . . . . . . . . . . . . . . . . .  11
    5.  Operational Models  . . . . . . . . . . . . . . . . . . . . .  14
-     5.1.  Stateless DHCPv6  . . . . . . . . . . . . . . . . . . . .  14
-     5.2.  DHCPv6 for Non-Temporary Address Assignment . . . . . . .  15
-     5.3.  DHCPv6 for Prefix Delegation  . . . . . . . . . . . . . .  15
-     5.4.  DHCPv6 for Customer Edge Routers  . . . . . . . . . . . .  18
-     5.5.  DHCPv6 for Temporary Addresses  . . . . . . . . . . . . .  18
+     5.1.  Stateless DHCP  . . . . . . . . . . . . . . . . . . . . .  14
+     5.2.  DHCP for Non-Temporary Address Assignment . . . . . . . .  15
+     5.3.  DHCP for Prefix Delegation  . . . . . . . . . . . . . . .  15
+     5.4.  DHCP for Customer Edge Routers  . . . . . . . . . . . . .  18
+     5.5.  DHCP for Temporary Addresses  . . . . . . . . . . . . . .  18
    6.  DHCP Constants  . . . . . . . . . . . . . . . . . . . . . . .  18
      6.1.  Multicast Addresses . . . . . . . . . . . . . . . . . . .  18
      6.2.  UDP Ports . . . . . . . . . . . . . . . . . . . . . . . .  19
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                 [Page 2]
+Mrugalski, et al.         Expires July 3, 2015                  [Page 2]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -165,7 +165,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                 [Page 3]
+Mrugalski, et al.         Expires July 3, 2015                  [Page 3]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -212,22 +212,22 @@ Internet-Draft                RFC 3315 bis                 December 2014
        20.4.4.  Time Out and Retransmission of Renew, Rebind or
                 Information-request Messages . . . . . . . . . . . .  71
        20.4.5.  Receipt of Reply Messages  . . . . . . . . . . . . .  71
-     20.5.  Prefix Delegation reconfiguration  . . . . . . . . . . .  71
-       20.5.1.  Delegating Router behavior . . . . . . . . . . . . .  71
-       20.5.2.  Requesting Router behavior . . . . . . . . . . . . .  72
+     20.5.  Prefix Delegation Reconfiguration  . . . . . . . . . . .  71
+       20.5.1.  Delegating Router Behavior . . . . . . . . . . . . .  71
+       20.5.2.  Requesting Router Behavior . . . . . . . . . . . . .  72
    21. Relay Agent Behavior  . . . . . . . . . . . . . . . . . . . .  72
      21.1.  Relaying a Client Message or a Relay-forward Message . .  72
        21.1.1.  Relaying a Message from a Client . . . . . . . . . .  72
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                 [Page 4]
+Mrugalski, et al.         Expires July 3, 2015                  [Page 4]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
 
        21.1.2.  Relaying a Message from a Relay Agent  . . . . . . .  73
-       21.1.3.  Relay agent behavior with Prefix Delegation  . . . .  73
+       21.1.3.  Relay Agent Behavior with Prefix Delegation  . . . .  73
      21.2.  Relaying a Relay-reply Message . . . . . . . . . . . . .  74
      21.3.  Construction of Relay-reply Messages . . . . . . . . . .  74
    22. Authentication of DHCP Messages . . . . . . . . . . . . . . .  75
@@ -277,7 +277,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                 [Page 5]
+Mrugalski, et al.         Expires July 3, 2015                  [Page 5]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -333,7 +333,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                 [Page 6]
+Mrugalski, et al.         Expires July 3, 2015                  [Page 6]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -389,7 +389,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                 [Page 7]
+Mrugalski, et al.         Expires July 3, 2015                  [Page 7]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -445,7 +445,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                 [Page 8]
+Mrugalski, et al.         Expires July 3, 2015                  [Page 8]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -501,7 +501,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                 [Page 9]
+Mrugalski, et al.         Expires July 3, 2015                  [Page 9]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -557,7 +557,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 10]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 10]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -613,7 +613,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 11]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 11]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -669,7 +669,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 12]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 12]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -725,7 +725,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 13]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 13]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -758,41 +758,41 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 5.  Operational Models
 
-   This section describes some of the currently most common DHCPv6
+   This section describes some of the current most common DHCP
    operational models.  The described models are not mutually exclusive
    and are sometimes used together.  For example, a device may start in
    stateful mode to obtain an address, and at a later time when an
    application is started, request additional parameters using stateless
    mode.
 
-5.1.  Stateless DHCPv6
+5.1.  Stateless DHCP
 
-   Stateless DHCPv6 [RFC3736] is used when DHCPv6 is not used for
-   obtaining an allocatable resource, but a node (DHCPv6 client) desires
-   one or more DHCPv6 "other configuration" parameters, such as a list
-   of DNS recursive name servers or DNS domain search lists [RFC3646].
+   Stateless DHCP [RFC3736] is used when DHCP is not used for obtaining
+   an allocatable resource, but a node (DHCP client) desires one or more
+   DHCP "other configuration" parameters, such as a list of DNS
+   recursive name servers or DNS domain search lists [RFC3646].
    Stateless may be used when a node initially boots or at any time the
    software on the node requires some missing or expired configuration
-   information that is available via DHCPv6.
+   information that is available via DHCP.
 
-   This is the simplest and most basic operation for DHCPv6 and requires
-   a client (and a server) to support only two messages - Information-
-   request and Reply.  Note that DHCPv6 servers and relay agents
+   This is the simplest and most basic operation for DHCP and requires a
+   client (and a server) to support only two messages - Information-
+   request and Reply.  Note that DHCP servers and relay agents typically
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 14]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 14]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
 
-   typically also need to support the Relay-Forw and Relay-Reply
-   messages to accommodate operation when clients and servers are not on
-   the same link.
+   also need to support the Relay-Forw and Relay-Reply messages to
+   accommodate operation when clients and servers are not on the same
+   link.
 
-5.2.  DHCPv6 for Non-Temporary Address Assignment
+5.2.  DHCP for Non-Temporary Address Assignment
 
-   This model of operation was the original motivation for DHCPv6 and is
+   This model of operation was the original motivation for DHCP and is
    the "stateful address autoconfiguration protocol" for IPv6 [RFC2462].
    It is appropriate for situations where stateless address
    autoconfiguration is not desired, because of network policy,
@@ -819,25 +819,25 @@ Internet-Draft                RFC 3315 bis                 December 2014
    Typically clients request other configuration parameters, such as the
    domain server addresses and search lists, when requesting addresses.
 
-5.3.  DHCPv6 for Prefix Delegation
+5.3.  DHCP for Prefix Delegation
 
    The prefix delegation mechanism, originally described in [RFC3633],
    is another stateful mode of operation and intended for simple
-   delegation of prefixes from a delegating router (DHCPv6 server) to
-   requesting routers (DHCPv6 clients).  It is appropriate for
-   situations in which the delegating router does not have knowledge
-   about the topology of the networks to which the requesting router is
-   attached, and the delegating router does not require other
-   information aside from the identity of the requesting router to
-   choose a prefix for delegation.  For example, these options would be
-   used by a service provider to assign a prefix to a Customer Premise
-   Equipment (CPE) device acting as a router between the subscriber's
-   internal network and the service provider's core network.
+   delegation of prefixes from a delegating router (DHCP server) to
+   requesting routers (DHCP clients).  It is appropriate for situations
+   in which the delegating router does not have knowledge about the
+   topology of the networks to which the requesting router is attached,
+   and the delegating router does not require other information aside
+   from the identity of the requesting router to choose a prefix for
+   delegation.  For example, these options would be used by a service
+   provider to assign a prefix to a Customer Premise Equipment (CPE)
+   device acting as a router between the subscriber's internal network
+   and the service provider's core network.
 
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 15]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 15]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -848,15 +848,14 @@ Internet-Draft                RFC 3315 bis                 December 2014
    The model of operation for prefix delegation is as follows.  A
    delegating router is provided IPv6 prefixes to be delegated to
    requesting routers.  Examples of ways in which the delegating router
-   may be provided these prefixes are given in Section XXXX (was 12.2 in
-   RFC 3633).  A requesting router requests prefix(es) from the
-   delegating router, as described in Section XXXX (was 12.1 in RFC
-   3633).  The delegating router chooses prefix(es) for delegation, and
-   responds with prefix(es) to the requesting router.  The requesting
-   router is then responsible for the delegated prefix(es).  For
-   example, the requesting router might assign a subnet from a delegated
-   prefix to one of its interfaces, and begin sending router
-   advertisements for the prefix on that link.
+   may be provided these prefixes is given in Section 19.4).  A
+   requesting router requests prefix(es) from the delegating router, as
+   described in Section 19.3.  The delegating router chooses prefix(es)
+   for delegation, and responds with prefix(es) to the requesting
+   router.  The requesting router is then responsible for the delegated
+   prefix(es).  For example, the requesting router might assign a subnet
+   from a delegated prefix to one of its interfaces, and begin sending
+   router advertisements for the prefix on that link.
 
    Each prefix has an associated valid and preferred lifetime, which
    constitutes an agreement about the length of time over which the
@@ -893,7 +892,8 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 16]
+
+Mrugalski, et al.         Expires July 3, 2015                 [Page 16]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -949,7 +949,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 17]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 17]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -963,31 +963,27 @@ Internet-Draft                RFC 3315 bis                 December 2014
    information on to the subscriber hosts through a DHCP server in the
    requesting router.
 
-5.4.  DHCPv6 for Customer Edge Routers
+5.4.  DHCP for Customer Edge Routers
 
-   The DHCPv6 requirements and network architecture for Customer Edge
+   The DHCP requirements and network architecture for Customer Edge
    Routers are described in [RFC7084].  This model of operation combines
    address assignment (see Section 5.2) and prefix delegation (see
    Section 5.3).  In general, this model assumes that a single set of
    transactions between the client and server will assign or extend the
    client's non-temporary addresses and delegated prefixes.
 
-5.5.  DHCPv6 for Temporary Addresses
+5.5.  DHCP for Temporary Addresses
 
    Temporary addresses were originally introduced to avoid privacy
    concerns with stateless address autoconfiguration, which based
    64-bits of the address on the EUI-64 (see [RFC3041] and [RFC4941]).
-   They were added to DHCPv6 to provide complementary support when
+   They were added to DHCP to provide complementary support when
    stateful address assignment is used.
 
    Temporary address assignment works mostly like non-temporary address
    assignment (see Section 5.2), however these addresses are generally
    intended to be used for a short period of time and not to have their
    lifetimes extended, though they can be if required.
-
-   Whether temporary addresses are useful when DHCPv6 is used for non-
-   temporary address assignment is open to debate as the privacy
-   concerns expressed in [RFC3041] and [RFC4941] are not applicable.
 
 6.  DHCP Constants
 
@@ -1001,20 +997,19 @@ Internet-Draft                RFC 3315 bis                 December 2014
    All_DHCP_Relay_Agents_and_Servers (FF02::1:2)  A link-scoped
                    multicast address used by a client to communicate
                    with neighboring (i.e., on-link) relay agents and
-
-
-
-
-Mrugalski, et al.         Expires June 11, 2015                [Page 18]
-
-Internet-Draft                RFC 3315 bis                 December 2014
-
-
                    servers.  All servers and relay agents are members of
                    this multicast group.
 
    All_DHCP_Servers (FF05::1:3)  A site-scoped multicast address used by
                    a relay agent to communicate with servers, either
+
+
+
+Mrugalski, et al.         Expires July 3, 2015                 [Page 18]
+
+Internet-Draft                RFC 3315 bis                 December 2014
+
+
                    because the relay agent wants to send messages to all
                    servers or because it does not know the unicast
                    addresses of the servers.  Note that in order for a
@@ -1058,17 +1053,18 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
    REBIND (6)      A client sends a Rebind message to any available
                    server to extend the lifetimes on the addresses
-
-
-
-Mrugalski, et al.         Expires June 11, 2015                [Page 19]
-
-Internet-Draft                RFC 3315 bis                 December 2014
-
-
                    assigned to the client and to update other
                    configuration parameters; this message is sent after
                    a client receives no response to a Renew message.
+
+
+
+
+
+Mrugalski, et al.         Expires July 3, 2015                 [Page 19]
+
+Internet-Draft                RFC 3315 bis                 December 2014
+
 
    REPLY (7)       A server sends a Reply message containing assigned
                    addresses and configuration parameters in response to
@@ -1114,16 +1110,17 @@ Internet-Draft                RFC 3315 bis                 December 2014
    RELAY-REPL (13) A server sends a Relay-reply message to a relay agent
                    containing a message that the relay agent delivers to
                    a client.  The Relay-reply message may be relayed by
+                   other relay agents for delivery to the destination
+                   relay agent.
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 20]
+
+
+Mrugalski, et al.         Expires July 3, 2015                 [Page 20]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
-
-                   other relay agents for delivery to the destination
-                   relay agent.
 
                    The server encapsulates the client message as an
                    option in the Relay-reply message, which the relay
@@ -1173,7 +1170,10 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 21]
+
+
+
+Mrugalski, et al.         Expires July 3, 2015                 [Page 21]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -1229,7 +1229,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 22]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 22]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -1285,7 +1285,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 23]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 23]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -1341,7 +1341,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 24]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 24]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -1397,7 +1397,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 25]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 25]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -1453,7 +1453,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 26]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 26]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -1509,7 +1509,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 27]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 27]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -1565,7 +1565,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 28]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 28]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -1621,7 +1621,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 29]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 29]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -1677,7 +1677,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 30]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 30]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -1733,7 +1733,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 31]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 31]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -1789,7 +1789,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 32]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 32]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -1819,14 +1819,14 @@ Internet-Draft                RFC 3315 bis                 December 2014
    address, but does not like the response; it reverts back to Solicit
    procedure, discovers the same (sole) server, requests an address and
    gets the same address as before (the server still has the lease that
-   was requested just now).  This loops can repeat infinitely if there
-   is not a quit/stop mechanism.  Therefore, a client must not initiate
-   transmissions too frequently.
+   was requested just previously).  This loops can repeat infinitely if
+   there is not a quit/stop mechanism.  Therefore, a client must not
+   initiate transmissions too frequently.
 
    A recommended method for implementing the rate limiting function is a
    token bucket, limiting the average rate of transmission to a certain
-   number in a certain time.  It allows the long-term average is not
-   exceeded.
+   number in a certain time.  This method of bounding burstiness also
+   guarantees that the long-term transmission rate will not exceed.
 
       TRT     Transmission Rate Limit
 
@@ -1836,7 +1836,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
    For a device that has multiple interfaces, the limit MUST be enforced
    on a per interface basis.
 
-   Rate limiting of forwarded DHCPv6 messages and server-slide messages
+   Rate limiting of forwarded DHCPv6 messages and server-side messages
    are out of scope of this specification.
 
 
@@ -1845,7 +1845,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 33]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 33]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -1901,7 +1901,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 34]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 34]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -1957,7 +1957,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 35]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 35]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2013,7 +2013,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 36]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 36]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2069,7 +2069,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 37]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 37]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2125,7 +2125,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 38]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 38]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2181,7 +2181,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 39]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 39]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2237,7 +2237,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 40]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 40]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2285,21 +2285,21 @@ Internet-Draft                RFC 3315 bis                 December 2014
    of temporary addresses.  Either IA_NA or IA_TA options, or a
    combination of both, can be included in DHCP messages.
 
-   The client SHOULD include an Option Request option (see Section 23.7)
-   to indicate the options the client is interested in receiving.  The
-   client MAY additionally include instances of those options that are
-   identified in the Option Request option, with data values as hints to
+   The client MUST include an Option Request option (see Section 23.7)
+   to request the SOL_MAX_RT option (see Section 23.23) and any other
+   options the client is interested in receiving.  The client MAY
+   additionally include instances of those options that are identified
 
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 41]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 41]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
 
-   the server about parameter values the client would like to have
-   returned.
+   in the Option Request option, with data values as hints to the server
+   about parameter values the client would like to have returned.
 
    The client includes a Reconfigure Accept option (see Section 23.20)
    if the client is willing to accept Reconfigure messages from the
@@ -2349,7 +2349,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 42]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 42]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2405,7 +2405,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 43]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 43]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2461,7 +2461,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 44]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 44]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2517,7 +2517,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 45]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 45]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2573,7 +2573,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 46]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 46]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2629,7 +2629,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 47]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 47]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2685,7 +2685,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 48]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 48]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2741,7 +2741,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 49]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 49]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2797,7 +2797,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 50]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 50]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2853,7 +2853,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 51]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 51]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2909,7 +2909,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 52]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 52]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2965,7 +2965,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 53]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 53]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -2992,9 +2992,10 @@ Internet-Draft                RFC 3315 bis                 December 2014
    authenticated.
 
    The client MUST include an Option Request option (see Section 23.7)
-   to indicate the options the client is interested in receiving.  The
-   client MAY include options with data values as hints to the server
-   about parameter values the client would like to have returned.
+   to request the INF_MAX_RT option (see Section 23.24) and any other
+   options the client is interested in receiving.  The client MAY
+   include options with data values as hints to the server about
+   parameter values the client would like to have returned.
 
    The first Information-request message from the client on the
    interface MUST be delayed by a random amount of time between 0 and
@@ -3020,8 +3021,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-
-Mrugalski, et al.         Expires June 11, 2015                [Page 54]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 54]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3077,7 +3077,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 55]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 55]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3133,7 +3133,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 56]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 56]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3176,7 +3176,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
    retransmits the original message to the same server to retry the
    desired operation, the client MUST limit the rate at which it
    retransmits the message and limit the duration of the time during
-   which it retransmits the message.
+   which it retransmits the message (see Section 14.1).
 
    When the client receives a Reply message with a Status Code option
    with the value UseMulticast, the client records the receipt of the
@@ -3189,7 +3189,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 57]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 57]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3245,7 +3245,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 58]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 58]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3301,7 +3301,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 59]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 59]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3357,7 +3357,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 60]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 60]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3413,7 +3413,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 61]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 61]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3469,7 +3469,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 62]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 62]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3525,7 +3525,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 63]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 63]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3581,7 +3581,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 64]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 64]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3637,7 +3637,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 65]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 65]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3693,7 +3693,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 66]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 66]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3749,7 +3749,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 67]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 67]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3805,7 +3805,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 68]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 68]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3861,7 +3861,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 69]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 69]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3917,7 +3917,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 70]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 70]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3957,12 +3957,12 @@ Internet-Draft                RFC 3315 bis                 December 2014
    The client records and updates the lifetimes for any addresses
    specified in IAs in the Reply message.
 
-20.5.  Prefix Delegation reconfiguration
+20.5.  Prefix Delegation Reconfiguration
 
    This section describes prefix delegation in Reconfigure message
    exchanges.
 
-20.5.1.  Delegating Router behavior
+20.5.1.  Delegating Router Behavior
 
    The delegating router initiates a configuration message exchange with
    a requesting router, as described in Section 20, by sending a
@@ -3973,7 +3973,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 71]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 71]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -3981,7 +3981,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
    requesting router to include an IA_PD option to obtain new
    information about delegated prefix(es).
 
-20.5.2.  Requesting Router behavior
+20.5.2.  Requesting Router Behavior
 
    The requesting router responds to a Reconfigure message, acting as a
    DHCP client, received from a delegating router as described in
@@ -4029,7 +4029,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 72]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 72]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4067,7 +4067,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
    Interface-ID option to identify the interface on which the message
    was received.
 
-21.1.3.  Relay agent behavior with Prefix Delegation
+21.1.3.  Relay Agent Behavior with Prefix Delegation
 
    A relay agent forwards messages containing Prefix Delegation options
    in the same way as described earlier in this section.
@@ -4085,7 +4085,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 73]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 73]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4141,7 +4141,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 74]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 74]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4197,7 +4197,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 75]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 75]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4253,7 +4253,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 76]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 76]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4309,7 +4309,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 77]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 77]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4365,7 +4365,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 78]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 78]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4421,7 +4421,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 79]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 79]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4477,7 +4477,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 80]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 80]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4533,7 +4533,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 81]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 81]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4589,7 +4589,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 82]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 82]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4645,12 +4645,12 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 83]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 83]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
 
-      Value            Data as defined by field.
+      Value            Data as defined by the Type field.
 
 22.5.2.  Server considerations for Reconfigure Key protocol
 
@@ -4701,7 +4701,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 84]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 84]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4714,10 +4714,10 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
    Options that are allowed to appear only once are called singleton
    options.  The only non-singleton options defined in this document are
-   IA_NA (See Section 23.4), IA_TA (See Section 23.5), and IA_PD (See
-   Section 23.21) options.  Also, IAAddress (See Section 23.6) and
-   IAPrefix (See Section 23.22 may appear in their respective IA options
-   more than once.
+   IA_NA (see Section 23.4), IA_TA (see Section 23.5), and IA_PD (see
+   Section 23.21) options.  Also, IAAddress (see Section 23.6) and
+   IAPrefix (see Section 23.22) may appear in their respective IA
+   options more than once.
 
 23.1.  Format of DHCP Options
 
@@ -4757,7 +4757,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 85]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 85]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4813,7 +4813,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 86]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 86]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4869,7 +4869,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 87]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 87]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4925,7 +4925,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 88]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 88]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -4981,7 +4981,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 89]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 89]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5037,7 +5037,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 90]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 90]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5093,7 +5093,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 91]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 91]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5149,7 +5149,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 92]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 92]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5205,7 +5205,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 93]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 93]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5261,7 +5261,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 94]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 94]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5317,7 +5317,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 95]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 95]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5340,25 +5340,25 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
                   Figure 21: Authentication Option Format
 
-      option-code          OPTION_AUTH (11)
+      option-code          OPTION_AUTH (11).
 
       option-len           11 + length of authentication information
-                           field
+                           field.
 
       protocol             The authentication protocol used in this
-                           authentication option
+                           authentication option.
 
       algorithm            The algorithm used in the authentication
-                           protocol
+                           protocol.
 
       RDM                  The replay detection method used in this
-                           authentication option
+                           authentication option.
 
-      Replay detection     The replay detection information for the RDM
+      Replay detection     The replay detection information for the RDM.
 
       authentication information  The authentication information, as
                            specified by the protocol and algorithm used
-                           in this authentication option
+                           in this authentication option.
 
 23.12.  Server Unicast Option
 
@@ -5373,7 +5373,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 96]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 96]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5429,7 +5429,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 97]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 97]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5485,7 +5485,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 98]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 98]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5541,7 +5541,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015                [Page 99]
+Mrugalski, et al.         Expires July 3, 2015                 [Page 99]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5597,7 +5597,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 100]
+Mrugalski, et al.         Expires July 3, 2015                [Page 100]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5653,7 +5653,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 101]
+Mrugalski, et al.         Expires July 3, 2015                [Page 101]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5709,7 +5709,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 102]
+Mrugalski, et al.         Expires July 3, 2015                [Page 102]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5736,15 +5736,15 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
            Figure 29: Vendor-specific Information Option Format
 
-      option-code          OPTION_VENDOR_OPTS (17)
+      option-code          OPTION_VENDOR_OPTS (17).
 
-      option-len           4 + length of option-data field
+      option-len           4 + length of option-data field.
 
       enterprise-number    The vendor's registered Enterprise Number as
                            registered with IANA [IANA-PEN].
 
       option-data          An opaque object, interpreted by vendor-
-                           specific code on the clients and servers
+                           specific code on the clients and servers.
 
    The definition of the information carried in this option is vendor
    specific.  The vendor is indicated in the enterprise-number field.
@@ -5765,7 +5765,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 103]
+Mrugalski, et al.         Expires July 3, 2015                [Page 103]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5821,7 +5821,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 104]
+Mrugalski, et al.         Expires July 3, 2015                [Page 104]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5877,7 +5877,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 105]
+Mrugalski, et al.         Expires July 3, 2015                [Page 105]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5933,7 +5933,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 106]
+Mrugalski, et al.         Expires July 3, 2015                [Page 106]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -5989,7 +5989,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 107]
+Mrugalski, et al.         Expires July 3, 2015                [Page 107]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6045,7 +6045,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 108]
+Mrugalski, et al.         Expires July 3, 2015                [Page 108]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6086,7 +6086,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
                     Figure 35: IA Prefix Option Format
 
-      option-code          OPTION_IAPREFIX (26)
+      option-code          OPTION_IAPREFIX (26).
 
       option-length        25 + length of IAprefix-options field.
 
@@ -6101,7 +6101,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 109]
+Mrugalski, et al.         Expires July 3, 2015                [Page 109]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6157,7 +6157,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 110]
+Mrugalski, et al.         Expires July 3, 2015                [Page 110]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6213,7 +6213,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 111]
+Mrugalski, et al.         Expires July 3, 2015                [Page 111]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6269,7 +6269,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 112]
+Mrugalski, et al.         Expires July 3, 2015                [Page 112]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6325,7 +6325,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 113]
+Mrugalski, et al.         Expires July 3, 2015                [Page 113]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6381,7 +6381,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 114]
+Mrugalski, et al.         Expires July 3, 2015                [Page 114]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6437,7 +6437,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 115]
+Mrugalski, et al.         Expires July 3, 2015                [Page 115]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6493,7 +6493,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 116]
+Mrugalski, et al.         Expires July 3, 2015                [Page 116]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6549,7 +6549,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 117]
+Mrugalski, et al.         Expires July 3, 2015                [Page 117]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6605,7 +6605,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 118]
+Mrugalski, et al.         Expires July 3, 2015                [Page 118]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6661,7 +6661,7 @@ Appendix A.  Changes since RFC3315
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 119]
+Mrugalski, et al.         Expires July 3, 2015                [Page 119]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6717,7 +6717,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 120]
+Mrugalski, et al.         Expires July 3, 2015                [Page 120]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6773,7 +6773,7 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 121]
+Mrugalski, et al.         Expires July 3, 2015                [Page 121]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6829,7 +6829,7 @@ Appendix C.  Appearance of Options in Message Types
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 122]
+Mrugalski, et al.         Expires July 3, 2015                [Page 122]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6855,8 +6855,8 @@ Appendix D.  Appearance of Options in the Options Field of DHCP Options
    The following table indicates with a "*" where options can appear in
    the options field of other options:
 
-                Option  IA_NA/ IAADDR                 Relay  Relay
-                Field   IA_TA         IA_PD  IAPREFIX Forw.  Reply
+                Option  IA_NA/                        Relay  Relay
+                Field   IA_TA  IAADDR IA_PD  IAPREFIX Forw.  Reply
    Client ID      *
    Server ID      *
    IA_NA/IA_TA    *
@@ -6869,11 +6869,11 @@ Appendix D.  Appearance of Options in the Options Field of DHCP Options
    Relay Message                                        *      *
    Authentic.     *
    Server Uni.    *
-   Status Code    *       *       *     *
+   Status Code    *       *             *
    Rapid Comm.    *
    User Class     *
    Vendor Class   *
-   Vendor Info.   *
+   Vendor Info.   *                                     *      *
    Interf. ID                                           *      *
    Reconf. MSG.   *
    Reconf. Accept *
@@ -6885,7 +6885,7 @@ Appendix D.  Appearance of Options in the Options Field of DHCP Options
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 123]
+Mrugalski, et al.         Expires July 3, 2015                [Page 123]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6941,7 +6941,7 @@ Authors' Addresses
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 124]
+Mrugalski, et al.         Expires July 3, 2015                [Page 124]
 
 Internet-Draft                RFC 3315 bis                 December 2014
 
@@ -6997,4 +6997,4 @@ Internet-Draft                RFC 3315 bis                 December 2014
 
 
 
-Mrugalski, et al.         Expires June 11, 2015               [Page 125]
+Mrugalski, et al.         Expires July 3, 2015                [Page 125]
