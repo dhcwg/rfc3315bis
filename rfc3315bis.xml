@@ -1711,7 +1711,7 @@
             <t hangText="   TRT">Transmission Rate Limit</t>
           </list>
         The Transmission Rate Limit parameter (TRT) SHOULD be configurable. 
-        A possible default could be 60 packets in 10 seconds.</t>
+        A possible default could be 20 packets in 20 seconds.</t>
         
         <t>For a device that has multiple interfaces, the limit MUST be 
         enforced on a per interface basis.</t>
