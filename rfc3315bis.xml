@@ -1855,6 +1855,10 @@
       option, a Client Identifier option if one was included in the message
       and a Status Code option with status UnSpecFail.</t>
 
+      <!-- Applied text from Section 5 of RFC7283 -->
+      <t>A client or server MUST silently discary and yreceived DHCPv6
+      messages with an unknown message type.</t>
+
       <section title="Use of Transaction IDs">
         <!-- 15.1, line 1370-->
 
@@ -3975,12 +3979,21 @@
       relay agent relays messages to the All_DHCP_Servers multicast address or
       other multicast addresses, it sets the Hop Limit field to 32.</t>
 
+      <!-- Applied text from Section 4.2 of RFC7283 -->
+      <t>If the relay agent receives a message other than Relay-forward
+      and Relay-reply and the relay agent does not recognize its
+      message type, it MUST forward them as described in <xref
+      target="relaying-from-client" />.</t>
+
       <section title="Relaying a Client Message or a Relay-forward Message">
         <!-- 20.1, line 2964-->
 
         <t>A relay agent relays both messages from clients and Relay-forward
         messages from other relay agents. When a relay agent receives a valid
-        message to be relayed, it constructs a new Relay-forward message. The
+        message (for a definition of a valid message, see Section 4.1 of <xref
+        target="RFC7283"/>) to be relayed, it constructs a new Relay-forward message. The
+        <!-- Applied text from Section 4.1 of RFC7283 -->
+
         relay agent copies the source address from the header of the IP
         datagram in which the message was received to the peer-address field
         of the Relay-forward message. The relay agent copies the received DHCP
@@ -3993,7 +4006,7 @@
          access node that performs a link- layer bridging (i.e., non-routing)
          function.</t>
 
-        <section title="Relaying a Message from a Client">
+        <section anchor="relaying-from-client" title="Relaying a Message from a Client">
           <!-- 20.1.1, line 2979-->
 
           <t>If the relay agent received the message to be relayed from a
@@ -4037,6 +4050,7 @@
           assigned to the interface on which the message was received, or
           includes an Interface-ID option to identify the interface on which
           the message was received.</t>
+
         </section>
 
         <!-- ends: "20.1.2 from line 2999-->
@@ -4074,6 +4088,11 @@
         link identified by the Interface-id option. Otherwise, if the
         link-address field is not set to zero, the relay agent relays the
         message on the link identified by the link-address field.</t>
+
+        <!-- Applied text from Section 4.3 of RFC7283 -->
+        <t>If the relay agent receives a Relay-reply message, it
+        MUST process the message as defined above, regardless of the
+        type of message encapsulated in the Relay Message option.</t>
       </section>
 
       <!-- ends: "20.2 from line 3021-->
@@ -6713,6 +6732,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.6221'?>
       
       <?rfc include='reference.RFC.7083'?>
+
+      <?rfc include='reference.RFC.7283'?>
     	
     </references>
 
@@ -6887,6 +6908,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           globally unique among all IAs (ticket #94).</t>
 
           <t>Merged Section 12 from RFC3633 (ticket #107)</t>
+
+          <t>Clarified behavior for unknown messages (RFC7283), ticket #58.</t>
 
         </list>
 
