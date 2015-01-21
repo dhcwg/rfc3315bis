@@ -5634,7 +5634,9 @@
           <t>The problem of unused addresses can be minimized, for example, by
           designing the DHCP service so that only one server responds to the
           Solicit or by using relatively short lifetimes for assigned
-          addresses.</t>
+          addresses, or the DHCP client initiatively releases unused addresses
+          using the Release message.
+          </t>
 	</list></t>
       </section>
 
