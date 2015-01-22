@@ -2739,8 +2739,8 @@
         <section anchor='RFC3315-18.1.2' title="Creation and Transmission of Confirm Messages">
           <!-- 18.1.2, line 2037-->
 
-          <t>Whenever a client may have moved to a new link, the prefixes from
-          the addresses assigned to the interfaces on that link may no longer
+          <t>Whenever a client may have moved to a new link, the 
+          prefixes/addresses assigned to the interfaces on that link may no longer
           be appropriate for the link to which the client is attached.
           Examples of times when a client may have moved to a new link
           include:
@@ -3166,7 +3166,8 @@
           IA and ignore any messages that indicate a NotOnLink status.</t>
 
           <t>When the client receives a NotOnLink status from the server in
-          response to a Request, the client can either re-issue the Request
+          response to a Solicit (with a Rapid Commit option) or a Request, 
+          the client can either re-issue the Request
           without specifying any addresses or restart the DHCP server
           discovery process (see <xref target='RFC3315-17'/>).</t>
 
