@@ -5096,8 +5096,9 @@
 
         <t>The IA Address option is used to specify IPv6 addresses associated
         with an IA_NA or an IA_TA. The IA Address option must be encapsulated
-        in the Options field of an IA_NA or IA_TA option. The Options field
-        encapsulates those options that are specific to this address.</t>
+        in the Options field of an IA_NA or IA_TA option. The Options fields 
+        of the IA_NA or IA_TA option encapsulates those options that are 
+        specific to this address.</t>
 
         <t>The format of the IA Address option is:</t>
 
