@@ -4999,6 +4999,9 @@
         any addresses in an IA with T1 set to 0xffffffff. A client will never
         attempt to use a Rebind message to locate a different server to extend
         the lifetimes of any addresses in an IA with T2 set to 0xffffffff.</t>
+        
+        <t>This option MAY appear in a Confirm message if the lifetimes on the 
+        non-temporary addresses in the associated IA have not expired.</t>
       </section>
 
       <!-- ends: "22.4 from line 3649-->
