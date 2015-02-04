@@ -1179,8 +1179,10 @@
             <t hangText="   hop-count">Number of relay agents that have relayed this
             message.</t>
 
-            <t hangText="   link-address">A global or site-scoped address that will be used by
-            the server to identify the link on which the client is located.</t>
+            <t hangText="   link-address">An address that will be used by
+            the server to identify the link on which the client is located.
+            This is typically global, site-scoped or ULA <xref target="RFC4193"/>,
+            but see discussion in <xref target="relaying-from-client" />.</t>
 
             <t hangText="   peer-address">The address of the client or relay agent from which
             the message to be relayed was received.</t>
@@ -4028,9 +4030,14 @@
           <!-- 20.1.1, line 2979-->
 
           <t>If the relay agent received the message to be relayed from a
-          client, the relay agent places a global or site-scoped address with
+          client, the relay agent places a global, ULA <xref target="RFC4193" />
+          or site-scoped address with
           a prefix assigned to the link on which the client should be assigned
-          an address in the link-address field. This address will be used by
+          an address in the link-address field. (It is possible for the relay
+          to use link local address instead, but that is not recommended as
+          it would require additional information to be provided in the server
+          configuration. See Section 3.2 of <xref target="I-D.ietf-dhc-topo-conf" />
+          for detailed discussion.) This address will be used by
           the server to determine the link from which the client should be
           assigned an address and other configuration information. The
           hop-count in the Relay-forward message is set to 0.</t>
@@ -6807,9 +6814,12 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
     <?rfc include='reference.RFC.3041'?>
     
     <?rfc include='reference.RFC.3315'?>
+
+    <?rfc include='reference.RFC.4193'?>
           
     <?rfc include='reference.RFC.7341'?>
 
+    <?rfc include='reference.I-D.ietf-dhc-topo-conf'?>
     </references>
     
     <!-- Let's briefly document relevant changes against 3315 here -->
@@ -6945,6 +6955,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Addressed tickets #123 and #126, and clarified that the client
           SHOULD abandon its bindings when restarts the server solicitation.</t>
 
+          <t>Clarified link-address field usage, ticket #73.</t>
         </list>
 
       </t>
