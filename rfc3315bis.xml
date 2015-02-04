@@ -4970,6 +4970,10 @@
         carrying the addresses associated with this IA_NA are in the
         IA_NA-options field.</t>
 
+        <t>Each IA_NA carries one "set" of non-temporary addresses; that is, at
+        most one address from each prefix assigned to the link to which the
+        client is attached.</t>
+        
         <t>An IA_NA option may only appear in the options area of a DHCP
         message. A DHCP message may contain multiple IA_NA options.</t>
 
@@ -5076,9 +5080,7 @@
         carrying the addresses associated with this IA_TA are in the
         IA_TA-options field.</t>
 
-        <t>Each IA_TA carries one "set" of temporary addresses; that is, at
-        most one address from each prefix assigned to the link to which the
-        client is attached.</t>
+        <t>Each IA_TA carries one "set" of temporary addresses.</t>
 
         <t>An IA_TA option may only appear in the options area of a DHCP
         message. A DHCP message may contain multiple IA_TA options.</t>
