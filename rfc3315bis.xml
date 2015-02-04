@@ -4033,11 +4033,14 @@
           client, the relay agent places a global, ULA <xref target="RFC4193" />
           or site-scoped address with
           a prefix assigned to the link on which the client should be assigned
-          an address in the link-address field. (It is possible for the relay
-          to use link local address instead, but that is not recommended as
-          it would require additional information to be provided in the server
-          configuration. See Section 3.2 of <xref target="I-D.ietf-dhc-topo-conf" />
-          for detailed discussion.) This address will be used by
+          an address in the link-address field. If not addresses of other scopes
+          are available the relay agent may fill in the link-address field with
+          a link-local address from the interface the original message was received
+          on. That is not recommended as it requires additional information
+          to be provided in the server configuration. See Section 3.2 of
+          <xref target="I-D.ietf-dhc-topo-conf" /> for detailed discussion.</t>
+
+          <t>This address will be used by
           the server to determine the link from which the client should be
           assigned an address and other configuration information. The
           hop-count in the Relay-forward message is set to 0.</t>
