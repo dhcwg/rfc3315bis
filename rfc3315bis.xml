@@ -1858,7 +1858,7 @@
       and a Status Code option with status UnSpecFail.</t>
 
       <!-- Applied text from Section 5 of RFC7283 -->
-      <t>A client or server MUST silently discary and yreceived DHCPv6
+      <t>A client or server MUST silently discard any received DHCPv6
       messages with an unknown message type.</t>
 
       <section title="Use of Transaction IDs">
