@@ -7,7 +7,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="std" docName="draft-dhcwg-dhc-rfc3315bis-04" ipr="pre5378Trust200902"
+<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-00" ipr="pre5378Trust200902"
      obsoletes="3315,3633,3736,7083">
   <front>
     <title abbrev="RFC 3315 bis">Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis</title>
@@ -1858,7 +1858,7 @@
       and a Status Code option with status UnSpecFail.</t>
 
       <!-- Applied text from Section 5 of RFC7283 -->
-      <t>A client or server MUST silently discary and yreceived DHCPv6
+      <t>A client or server MUST silently discard any received DHCPv6
       messages with an unknown message type.</t>
 
       <section title="Use of Transaction IDs">
