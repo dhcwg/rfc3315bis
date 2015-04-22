@@ -1541,8 +1541,9 @@
       </t>
 
       <t>The configuration information in an IA consists of one or more IPv6
-      addresses along with the times T1 and T2 for the IA. See
-      Section 22.4 for the representation of an IA in a DHCP message.</t>
+      addresses along with the times T1 and T2 for the IA. See Section <xref
+      target="RFC3315-22.4"/> for the representation of an IA in a DHCP
+      message.</t>
 
       <t>Each address in an IA has a preferred lifetime and a valid lifetime,
       as defined in <xref target="RFC4862"/>. The lifetimes are transmitted from the DHCP
@@ -1721,6 +1722,23 @@
         <t>Rate limiting of forwarded DHCPv6 messages and server-side 
         messages are out of scope of this specification.</t>
         	
+      </section>
+
+      <section anchor='t1-t2-0' title="Choosing transmission time when T1,T2 is 0">
+        <t>In certain cases, T1 and/or T2 timers may be set to zero. Currently
+        there are three such cases: 1. a client received IA_NA option with
+        zeroed values; 2. a client received IA_PD option with zeroed values;
+        3. a client received IA_TA option (which does not contain T1 or T2
+        fields).  Additional cases may appear in the future. This is an
+        indication that the transmission times are left at client's
+        dicretion. They are not completely disretionary, though.</t>
+        <t>When T1 and/or T2 timers are zet to zero, client MUST choose
+        transmission time to avoid packet storms. In particular, it MUST NOT
+        transmit immediately. If the client received multiple IA containers, it
+        SHOULD pick renew and/or rebind transmission time so all IA containers
+        are received in one exchange, if possible. Client MUST choose the
+        transmission times to not violate rate limiting restrictions, defined in
+        <xref target='rate-limit'/>.</t>
       </section>
 
     </section>
@@ -2846,9 +2864,10 @@
           client includes an IA option with all addresses currently assigned
           to the IA in its Renew message.</t>
 
-          <t>If T1 or T2 is set to 0 by the server (for an IA_NA) or there are
-          no T1 or T2 times (for an IA_TA), the client may send a Renew or
-          Rebind message, respectively, at the client's discretion.</t>
+          <t>If T1 or T2 is set to 0 by the server (for an IA_NA or IA_PD) or
+          there are no T1 or T2 times (for an IA_TA), the client may send a
+          Renew or Rebind message, respectively, at the client's discretion. The
+          client MUST follow the rules defined in <xref target='t1-t2-0'/>.</t>
 
           <t>The client sets the "msg-type" field to RENEW. The client
           generates a transaction ID and inserts this value in the
@@ -5013,7 +5032,8 @@
         lifetime is 0xffffffff ("infinity"), the recommended T1 and T2 values
         are also 0xffffffff. If the time at which the addresses in an IA_NA
         are to be renewed is to be left to the discretion of the client, the
-        server sets T1 and T2 to 0.</t>
+        server sets T1 and T2 to 0. The client MUST follow the rules defined
+        in <xref target='t1-t2-0'/>.</t>
 
         <t>If a server receives an IA_NA with T1 greater than T2, and both T1
         and T2 are greater than 0, the server ignores the invalid values of T1
@@ -6224,7 +6244,8 @@
       the delegating router is willing to extend, respectively. If the
       time at which the prefixes in an IA_PD are to be renewed is to
       be left to the discretion of the requesting router, the
-      delegating router sets T1 and T2 to 0.</t>
+      delegating router sets T1 and T2 to 0. The requesting router MUST
+      follow the rules defined in <xref target='t1-t2-0'/>.</t>
 
       <t>If a delegating router receives an IA_PD with T1 greater than
       T2, and both T1 and T2 are greater than 0, the delegating router
@@ -6959,6 +6980,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           SHOULD abandon its bindings when restarts the server solicitation.</t>
 
           <t>Clarified link-address field usage, ticket #73.</t>
+
+          <t>Clarified that retransmitting at client's discretion (t1,t2=0) does
+          not mean immediate transmission (ticket #71).</t>
         </list>
 
       </t>
