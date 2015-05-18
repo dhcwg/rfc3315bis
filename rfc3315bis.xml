@@ -1868,7 +1868,7 @@
       option, a Client Identifier option if one was included in the message
       and a Status Code option with status UnSpecFail.</t>
 
-      <t>Clients and servers MUST NOT discard messages that contain
+      <t>Clients, relay agents and servers MUST NOT discard messages that contain
       unknown options (or instances of vendor options with unknown
       enterprise-numbers). These should be ignored as if they weren't
       present.</t>
