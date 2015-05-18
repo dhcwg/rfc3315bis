@@ -1861,19 +1861,24 @@
       message if the information is of use to the recipient, or to ignore
       such message completely and just drop it.</t>
 
-      <t>A server MUST discard any Solicit, Confirm, Rebind or
-      Information-request messages it receives with a unicast destination
-      address.</t>
-
-      <t>Message validation based on DHCP authentication is discussed in
-      <xref target='RFC3315-21.4.2'/>.</t>
-
       <t>If a server receives a message that contains options it should not
       contain (such as an Information-request message with an IA option), is
       missing options that it should contain, or is otherwise not valid, it
       MAY send a Reply (or Advertise as appropriate) with a Server Identifier
       option, a Client Identifier option if one was included in the message
       and a Status Code option with status UnSpecFail.</t>
+
+      <t>Clients and servers MUST NOT discard messages that contain
+      unknown options (or instances of vendor options with unknown
+      enterprise-numbers). These should be ignored as if they weren't
+      present.</t>
+
+      <t>A server MUST discard any Solicit, Confirm, Rebind or
+      Information-request messages it receives with a unicast destination
+      address.</t>
+
+      <t>Message validation based on DHCP authentication is discussed in
+      <xref target='RFC3315-21.4.2'/>.</t>
 
       <!-- Applied text from Section 5 of RFC7283 -->
       <t>A client or server MUST silently discard any received DHCPv6
