@@ -8,7 +8,7 @@
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
 <rfc category="std" docName="draft-ietf-dhc-rfc3315bis-00" ipr="pre5378Trust200902"
-     obsoletes="3315,3633,3736,7083">
+     obsoletes="3315,3633,3736,7083,7550">
   <front>
     <title abbrev="RFC 3315 bis">Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis</title>
 
@@ -130,6 +130,9 @@
       separately or concurrently with the latter to obtain configuration
       parameters.
       </t>
+      
+      <t>This document updates the original DHCPv6 specification (RFC 3315)
+      and incorporates RFC 3633, RFC 3736, RFC 7083, and RFC 7550.</t>
 
     </abstract>
 
@@ -177,6 +180,10 @@
       operational models. <xref target='RFC3315-17'/>, <xref target='RFC3315-18'/>, and
       <xref target='RFC3315-19'/> explain client and server
       operation in detail.</t>
+      
+      <t>This document updates the original DHCPv6 specification (<xref target="RFC3315"/>)
+      and incorporates <xref target="RFC3633"/>, <xref target="RFC3736"/>,
+      <xref target="RFC7083"/>, and <xref target="RFC7550"/>.</t>
 
       <section title="Protocols and Addressing">
         <!-- 1.1, line 260-->
@@ -2371,12 +2378,22 @@
           option indicating a failure, and the Advertise message will be
           discarded by the client.</t>
 
-          <!-- todo: Update this paragraph with NoPrefixAvail status code when
-               RFC3633 is merged -->
-          <t>The client MUST ignore any IAs in an Advertise message that include
-          a Status Code option containing the value NoAddrsAvail, with the
-          exception that the client MAY display the associated status message to the
-          user.</t>
+          <!-- Change from RFC 7550 section 4.1/4.2 has been applied. 6/1/2015 -->
+          <t>The client MUST ignore any Advertise message that contains no
+          addresses (IAADDR options encapsulated in IA_NA or IA_TA options)
+          and no delegated prefixes (IAPREFIX options encapsulated in IA_PD
+          options) with the exception that the client:
+
+          <list hangIndent="3" style="hanging">
+          <t hangText="-"> MUST process an included SOL_MAX_RT option and</t>
+          <t hangText="-"> MUST process an included INF_MAX_RT option.</t>
+          </list></t>
+
+          <t>A client can display any associated status message(s) to the user
+          or activity log.</t>
+
+          <t>The client ignoring this Advertise message MUST NOT restart the
+          Solicit retransmission timer.</t>
 
           <t>Upon receipt of one or more valid Advertise messages, the client
           selects one or more Advertise messages based upon the following
@@ -2391,9 +2408,10 @@
           preference value, a client MAY select those servers whose Advertise
           messages advertise information of interest to the client.</t>
 
-          <t hangText="-"> The client MAY choose a less-preferred server if that server
-          has a better set of advertised parameters, such as the available
-          addresses advertised in IAs.</t>
+          <t hangText="-"> The client MAY choose a less-preferred server if that
+          server has a better set of advertised parameters, such as the available
+          set of IAs, as well as the set of other configuration options
+          advertised.</t>
 
           </list></t>
 
@@ -2522,15 +2540,11 @@
           <!-- Also, partially applied RFC3315 errata 2472, to include other IA
                options if NoAddrsAvail status code is sent. Do not apply the part
                of errata that mandates sending NoAddrsAvail encapsulated in IA -->
-          <t>If the server will not assign any addresses to any IAs in a
-          subsequent Request from the client, the server MUST send an
-          Advertise message to the client that includes only a Status Code option
-          with code NoAddrsAvail and a status message for the user, a Server
-          Identifier option with the server's DUID, a Client Identifier option
-          with the client's DUID, and (optionally) SOL_MAX_RT and/or INF_MAX_RT
-          options. The server SHOULD include other stateful IA options
-          (like IA_PD) and other configuration options in the Advertise
-          message.</t>
+          <!-- Change from RFC 7550 section 4.1 has been applied. 6/1/2015 -->
+          <t>If the server will not assign any addresses to an IA in a
+          subsequent Request from the client, the server MUST include the IA
+          in the Advertise message with no addresses in the IA and a Status Code
+          option encapsulated in the IA containing status code NoAddrsAvail.</t>
 
           <t>If the Solicit message was received directly by the server, the
           server unicasts the Advertise message directly to the client using
@@ -6965,6 +6979,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
     <?rfc include='reference.RFC.4193'?>
           
     <?rfc include='reference.RFC.7341'?>
+    
+    <?rfc include='reference.RFC.7550'?>
 
     <?rfc include='reference.I-D.ietf-dhc-topo-conf'?>
     </references>
@@ -7111,6 +7127,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           new Renew and Rebind processing by the server, i.e. a client may
           request allocation of new addresses/prefixes during Renew and
           Rebind. This addresses tickets #62 and #63.</t>
+          
+          <t>Merged section 4.1 and 4.2  of RFC7550 (stateful-issues). This
+          addresses tickets #59 and #60.</t>
         </list>
 
       </t>
