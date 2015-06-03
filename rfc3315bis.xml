@@ -550,6 +550,10 @@
       mode.
       </t>
 
+      <t>This document assumes that the DHCP servers and the client,
+      communicating with the servers via specific interface, belong
+      to a single provisioning domain.</t>
+
       <section anchor='OpModes-Stateless' title="Stateless DHCP">
 
       <t>
@@ -7145,6 +7149,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           
           <t>Merged section 4.6 of RFC7550 (stateful-issues). This addresses
           ticket #85.</t>
+
+          <t>Clarified that the document assumes single provisioning domain.
+          This resolves ticket #66.</t>
         </list>
 
       </t>
