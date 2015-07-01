@@ -3827,6 +3827,10 @@
         lifetime hints provided by the requesting router in the IA Prefix
         option.</t>
 
+        <t>The requesting router SHOULD NOT send IA Prefix option with
+        the zero-value IPv6 prefix field unless it is supplying a hint for
+        the prefix length or the lifetimes.</t>
+
         <t>The delegating router behaves as follows when it cannot find
         a binding for the requesting router's IA_PD containing prefixes:
         </t>
@@ -5046,6 +5050,9 @@
         its lifetimes preferences and does not have the knowledge
         to populate the IPv6 address field, it can use unspecified address (::).
         It is up to a server to honor or ignore these preferences.</t>
+
+        <t>The client SHOULD NOT send the IA Address option with unspecified
+        address (::) unless it is supplying these preferences for the lifetimes.</t>
 
         <t>In a message sent by a server to a
         client, the client MUST use the values in the preferred and valid
@@ -6824,6 +6831,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           This resolves ticket #66.</t>
           
           <t>Removed the Delayed Auth Protocol. This resolves ticket #86.</t>
+
+          <t>Added text the text suggesting to not send all-zero address/prefix
+          unless the client wishes to hint the lifetimes and/or prefix lengths.
+          This resolves ticket#82.</t>
           
         </list>
 
