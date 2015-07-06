@@ -1552,7 +1552,7 @@
       </t>
 
       <t>The configuration information in an IA consists of one or more IPv6
-      addresses along with the times T1 and T2 for the IA. See Section <xref
+      addresses along with the times T1 and T2 for the IA. See <xref
       target="RFC3315-22.4"/> for the representation of an IA in a DHCP
       message.</t>
 
@@ -2937,7 +2937,7 @@
           </list></t>
 
           <t>The message exchange is terminated when time T2 is reached (see
-          section <xref target='RFC3315-18.1.4'/>), at which time the client
+          <xref target='RFC3315-18.1.4'/>), at which time the client
           begins a Rebind message exchange.</t>
         </section>
 
@@ -6565,12 +6565,6 @@
 
       <!--  Mills, D., "Network Time Protocol Version 4: Protocol and Algorithms Specification", RFC 5905, June 2010. -->
 
-      <?rfc include='reference.RFC.5226'?>
-
-      <!-- Narten, T. and H. Alvestrand, "Guidelines for Writing an IANAConsiderations Section in RFCs", BCP 26, RFC 5226, May 2008.
-
--->
-
       <?rfc include='reference.RFC.1035'?>
 
       <!-- Mockapetris, P., "Domain names - implementation andspecification", RFC 1035, November 1987. -->
@@ -6639,13 +6633,6 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <date />
         </front>
       </reference>
-
-    <?rfc include='reference.RFC.1321'?>
-
-
-    <!--Rivest, R., "The MD5 Message-Digest Algorithm", RFC 1321, April1992. -->
-
-    <?rfc include='reference.RFC.2104'?>
 
     <!--Krawczyk, H., Bellare, M. and R. Canetti, "HMAC: Keyed-Hashingfor Message Authentication", RFC 2104, February 1997. -->
 
