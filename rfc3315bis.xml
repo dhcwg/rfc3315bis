@@ -2795,7 +2795,7 @@
           include:
 
           <list hangIndent="3" style="hanging">
-          <t hangText="o"> The client reboots.</t>
+          <t hangText="o"> The client reboots (and has no stable storage or persisted DHCP state).</t>
 
           <t hangText="o"> The client is physically connected to a wired connection.</t>
 
@@ -2814,13 +2814,6 @@
           addresses are appropriate for the link to which the client is
           attached with the status in the Reply message it returns to the
           client.</t>
-
-          <t>One example when this rule may not be followed is when
-          the client does not store its leases in stable storage and
-          experiences a reboot. It may simply not retain any
-          information, so it does not know what to confirm. In such
-          case client MUST restart server discovery process as described
-          in <xref target="RFC3315-17.1.1"/>.</t>
 
           <t>The client sets the "msg-type" field to CONFIRM. The client
           generates a transaction ID and inserts this value in the
@@ -6822,6 +6815,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Added text the text suggesting to not send all-zero address/prefix
           unless the client wishes to hint the lifetimes and/or prefix lengths.
           This resolves ticket#82.</t>
+          
+          <t>Cleaned up Confirm text regarding rebooting client an stable storage.</t>
           
         </list>
 
