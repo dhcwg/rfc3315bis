@@ -3317,7 +3317,9 @@
           <!-- 18.2.1, line 2477-->
 
           <t>When the server receives a Request message via unicast from a
-          client to which the server has not sent a unicast option, the server
+          client to which the server has not sent a unicast option (or is
+          not currently configured to send a unicast option to the client),
+          the server
           discards the Request message and responds with a Reply message
           containing a Status Code option with the value UseMulticast, a
           Server Identifier option containing the server's DUID, the Client
@@ -3403,7 +3405,8 @@
           <!-- 18.2.3, line 2554-->
 
          <t>When the server receives a Renew message via unicast from a client to
-         which the server has not sent a unicast option, the server discards
+         which the server has not sent a unicast option (or is not currently
+         configured to send a unicast option to the client), the server discards
          the Renew message and responds with a Reply message containing a
          Status Code option with the value UseMulticast, a Server Identifier
          option containing the server's DUID, the Client Identifier option
@@ -3597,7 +3600,8 @@
           <!-- 18.2.6, line 2663-->
 
           <t>When the server receives a Release message via unicast from a
-          client to which the server has not sent a unicast option, the server
+          client to which the server has not sent a unicast option (or is not currently
+          configured to send a unicast option to the client), the server
           discards the Release message and responds with a Reply message
           containing a Status Code option with value UseMulticast, a Server
           Identifier option containing the server's DUID, the Client
@@ -3632,7 +3636,8 @@
           <!-- 18.2.7, line 2694-->
 
           <t>When the server receives a Decline message via unicast from a
-          client to which the server has not sent a unicast option, the server
+          client to which the server has not sent a unicast option (or is not currently
+          configured to send a unicast option to the client), the server
           discards the Decline message and responds with a Reply message
           containing a Status Code option with the value UseMulticast, a
           Server Identifier option containing the server's DUID, the Client
@@ -6817,6 +6822,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           This resolves ticket#82.</t>
           
           <t>Cleaned up Confirm text regarding rebooting client an stable storage.</t>
+          
+          <t>Updated server processing section to clarify that server unicast
+          check can be based on current configuration of unicast setting so server
+          is not required to remember what it sent. This resolves ticket #130.</t>
           
         </list>
 
