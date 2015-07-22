@@ -142,22 +142,61 @@
     <section title="Introduction and Overview">
       <!-- 1, line 230-->
 
-      <t>This document describes DHCP for IPv6 (DHCP), a client/server
-      protocol that provides managed configuration of devices.</t>
+      <t>This document describes DHCP for IPv6 (DHCPv6), a client/server
+      protocol that provides managed configuration of devices. Relay agent
+      functionality is also defined for enabling communication between
+      clients and servers that are not on the same link.</t>
 
-      <t>DHCP can provide a device with addresses assigned by a DHCP server
-      and other configuration information, which are carried in options. DHCP
+      <t>DHCPv6 can provide a device with addresses assigned by a DHCPv6 server
+      and other configuration information, which are carried in options. DHCPv6
       can be extended through the definition of new options to carry
       configuration information not specified in this document.</t>
 
-      <t>DHCP is the "stateful address autoconfiguration protocol" and the
+      <t>DHCPv6 is the "stateful address autoconfiguration protocol" and the
       "stateful autoconfiguration protocol" referred to in "IPv6 Stateless
       Address Autoconfiguration" <xref target="RFC4862"/>.</t>
 
       <t>This document also provides a mechanism for automated delegation
-      of IPv6 prefixes using DHCP. Through this mechanism, a delegating
+      of IPv6 prefixes using DHCPv6. Through this mechanism, a delegating
       router can delegate prefixes to requesting routers.</t>
 
+      <t>DHCPv6 can also operate in mode, where only configuration options (but
+      no addresses or prefixes) are provided. That implies that the server
+      doesn't have to track any state, and thus the mode is called stateless
+      DHCPv6. Mechanisms necessary to support stateless DHCPv6 are much smaller
+      than to support stateful DHCPv6.</t>
+
+      <t>The remainder of this introduction summarizes relation to the previous
+      DHCPv6 standards <xref target="previous-dhcp6"/>, clarifies the stance
+      with regards to DHCPv4 <xref target="dhcpv4" />. More detailed description
+      of the message exchange mechanisms and example message flows in <xref
+      target='RFC3315-1.2'/> and <xref target='RFC3315-1.3'/> are intended as
+      illustrations of DHCP operation rather than an exhaustive list of all
+      possible client-server interactions. <xref target='OpModes'/> provides an
+      overview of common operational models. <xref target='RFC3315-17'/>, <xref
+      target='RFC3315-18'/>, and <xref target='RFC3315-19'/> explain client and
+      server operation in detail.</t>
+
+      <section anchor="previous-dhcp6" title="Relation to previous DHCPv6 standards">
+
+      <t>The initial specification of DHCPv6 was defined in <xref
+      target="RFC3315" /> and a number of follow up extensions published over
+      the years. Several notable extensions were published: prefix delegation <xref
+      target="RFC3633" />, stateless <xref target="RFC3736" />, update to
+      SOL_MAX_RT and INF_MAX_RT option values <xref target="RFC7083" /> and
+      harmonization between addresses and prefixes support <xref
+      target="RFC7550" />. Understanding a protocol which definition is spread
+      between large number of documents may be cumbersome. Furthermore,
+      a significant operational experience has been gained over the years and
+      certain small elements of the protocol have been reworked. This document
+      provides a unified, corrected and cleaned up definition of the DHCPv6.
+      As such, it obsoletes a number of aforementioned RFCs. There is a small
+      number of mechanisms that were obsoleted. They are listed in
+      <xref target="obsolete" />.</t>
+
+      </section>
+
+      <section anchor="dhcpv4" title="Relation to DHCP in IPv4">
       <t>The operational models and relevant configuration information for
       DHCPv4 <xref target="RFC2132"/><xref target="RFC2131"/> and DHCPv6
       are sufficiently different that integration between the two
@@ -170,21 +209,8 @@
       carry DHCPv4 messages using the DHCPv6 protocol for the dynamic
       provisioning of IPv4 address and configuration information across
       IPv6-only networks.</t>
-
-      <t>The remainder of this introduction summarizes DHCP, explaining the
-      message exchange mechanisms and example message flows. The message flows
-      in <xref target='RFC3315-1.2'/> and <xref target='RFC3315-1.3'/> are intended
-      as illustrations of DHCP operation
-      rather than an exhaustive list of all possible client-server
-      interactions. <xref target='OpModes'/> provides an overview of common
-      operational models. <xref target='RFC3315-17'/>, <xref target='RFC3315-18'/>, and
-      <xref target='RFC3315-19'/> explain client and server
-      operation in detail.</t>
+      </section>
       
-      <t>This document updates the original DHCPv6 specification (<xref target="RFC3315"/>)
-      and incorporates <xref target="RFC3633"/>, <xref target="RFC3736"/>,
-      <xref target="RFC7083"/>, and <xref target="RFC7550"/>.</t>
-
       <section title="Protocols and Addressing">
         <!-- 1.1, line 260-->
 
@@ -6471,6 +6497,11 @@
     </section>
 
     <!-- ends: "24 from line 4595-->
+
+    <section anchor="obsolete" title="Obsoleted mechanisms">
+      <t>TODO: see ticket #149</t>
+
+    </section>
 
     <section title="Acknowledgments">
       <!-- 25, line 4764-->
