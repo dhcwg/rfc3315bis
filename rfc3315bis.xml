@@ -448,7 +448,7 @@
             subsystem and enable communication on a link or internetwork, for
             example.</t>
 
-            <t hangText="delegating router:">The router that acts as a
+            <t hangText="delegating router">The router that acts as a
             DHCP server, and is responding to the prefix request.</t>
 
             <t hangText="DHCP">Dynamic Host Configuration Protocol for IPv6. The terms DHCPv4
@@ -518,10 +518,10 @@
             <t hangText="Reconfigure key"> A key supplied to a client by a server used to
             provide security for Reconfigure messages.</t>
 
-            <t hangText="requesting router:">The router that acts as a
+            <t hangText="requesting router">The router that acts as a
             DHCP client and is requesting prefix(es) to be assigned.</t>
 
-            <t hangText="singleton option:">An option that is allowed to appear only once.
+            <t hangText="singleton option">An option that is allowed to appear only once.
             Most options are singletons.</t>
 
             <t hangText="relaying"> A DHCP relay agent relays DHCP messages between DHCP
@@ -2824,7 +2824,7 @@
           IAs assigned to the interface for which the Confirm message is being
           sent. The IA options include all of the addresses the client
           currently has associated with those IAs. The client SHOULD set the
-          T1 and T2 fields in any IA_NA options, and the preferred-lifetime
+          T1 and T2 fields in any IA_NA options and the preferred-lifetime
           and valid-lifetime fields in the IA Address options to 0, as the
           server will ignore these fields.</t>
 
@@ -2902,11 +2902,7 @@
          that are no longer valid (that have a valid lifetime of 0).</t>
 
          <t>The client MAY include an IA option for each binding it desires but
-         has been unable to obtain.  This IA option MUST NOT contain any
-         addresses.  However, it MAY contain the IA Address option with
-         the "IPv6 address" field set to 0 to indicate the client's preference
-         for the  preferred and valid lifetimes for any newly assigned
-         addresses.</t>
+         has been unable to obtain.</t>
 
          <t>The client MUST include an Option Request option (see
          <xref target='RFC3315-22.7'/>) to indicate the options the client
@@ -2972,14 +2968,14 @@
           </list></t>
 
           <t>If all addresses for an IA have expired, the client may choose to
-          include this IA without any addresses (or with only a hint for
-          lifetimes) in subsequent Rebind messages to indicate that the
-          client is interested in assignment of the addresses to this IA.</t>
+          include this IA in subsequent Rebind messages to indicate that the
+          client is interested in assignment of addresses or delegated
+          prefxies to this IA.</t>
 
           <t>The message exchange is terminated when the valid lifetimes of all
-          addresses across all IAs have expired, at which time the client
-          uses the Solicit message to locate a new DHCP server and sends a
-          Request for the expired IAs to the new server.</t>
+          addresses or delegated prefixes across all IAs have expired, at which
+          time the client uses the Solicit message to locate a new DHCP server
+          and sends a Request for the expired IAs to the new server.</t>
         </section>
 
         <!-- ends: "18.1.4 from line 2160-->
@@ -3209,18 +3205,20 @@
          <list style="hanging">
          <t hangText="-"> Record T1 and T2 times.</t>
 
-         <t hangText="-"> Add any new addresses in the IA option to the IA as
-         recorded by the client.</t>
+         <t hangText="-"> Add any new addresses or delegated prefixes in
+         the IA option to the IA as recorded by the client.</t>
 
-         <t hangText="-"> Update lifetimes for any addresses in the IA option
-         that the client already has recorded in the IA.</t>
+         <t hangText="-"> Update lifetimes for any addresses or delegated
+         prefixes in the IA option that the client already has recorded in
+         the IA.</t>
 
-         <t hangText="-"> Discard any addresses from the IA, as recorded by
-         the client, that have a valid lifetime of 0 in the IA Address option.</t>
+         <t hangText="-"> Discard any addresses or delegated prefixes from the
+         IA, as recorded by the client, that have a valid lifetime of 0 in the
+         IA Address or IA Prefix option.</t>
 
-         <t hangText="-"> Leave unchanged any information about addresses the
-         client has recorded in the IA but that were not included in the IA
-         from the server.</t>
+         <t hangText="-"> Leave unchanged any information about addresses or
+         delegated prefixes the client has recorded in the IA but that were not
+         included in the IA from the server.</t>
 
          </list></t>
 
@@ -3228,24 +3226,25 @@
          the definition of each option in <xref target='RFC3315-22'/>.</t>
 
          <t>The client examines the status code in each IA individually. If the
-         client receives a NoAddrsAvail status code, the client has received no
-         usable addresses in the IA.</t>
+         client receives a NoAddrsAvail or NoPrefixAvail status code, the client
+         has received no usable addresses or prefxies in the IA.</t>
 
-         <t>If the client can operate with the addresses obtained from the server,
-         the client uses addresses and other information from any IAs that
-         do not contain a Status Code option with the NoAddrsAvail status code.
-         The client MAY include the IAs for which it received the NoAddrsAvail
-         status code, with no addresses, in subsequent Renew and Rebind
-         messages sent to the server, to retry obtaining the addresses for these
-         IAs.</t>
+         <t>If the client can operate with the addresses and prefixes obtained
+         from the server, the client uses the addresses, delegated prefixes, and
+         other information from any IAs that do not contain a Status Code option
+         with the NoAddrsAvail or NoPrefixAvail status code. The client MAY include
+         the IAs for which it received the NoAddrsAvail or NoPrefixAvail
+         status code, with no addresses or prefixes, in subsequent Renew and Rebind
+         messages sent to the server, to retry obtaining the addresses or prefixes
+         for these IAs.</t>
 
-         <t>If the client cannot operate without the addresses for the IAs
-         for which it received the NoAddrsAvail status code, the client
+         <t>If the client cannot operate without the addresses or prefixes for the IAs
+         for which it received the NoAddrsAvail or NoPrefixAvail status code, the client
          may try another server (perhaps by restarting the DHCP server discovery
          process).</t>
 
-         <t>If the client finds no usable addresses in any of the IAs, it may
-         either try another server (perhaps restarting the DHCP server discovery
+         <t>If the client finds no usable addresses and prefixes in any of the IAs, it
+         may either try another server (perhaps restarting the DHCP server discovery
          process) or use the Information-request message to obtain other
          configuration information only.</t>
 
@@ -3419,15 +3418,20 @@
          <t>If the server finds the client entry for the IA, the
          server sends back the IA to the client with new lifetimes and,
          if applicable, T1/T2 times. If the server is unable to extend the
-         lifetimes of an address in the IA, the server MAY choose not to include
-         the IA Address option for this address.</t>
+         lifetimes of an address or delegated prefix in the IA, the server MAY
+         choose not to include
+         the IA Address or IA Prefix option for this address or delegated prefix.</t>
 
-         <t>The server may choose to change the list of addresses and the
-         lifetimes of addresses in IAs that are returned to the client.</t>
+         <t>The server may choose to change the list of addresses or delegated prefixes and the
+         lifetimes in IAs that are returned to the client.</t>
 
          <t>If the server finds that any of the addresses in the IA are not
          appropriate for the link to which the client is attached, the server
          returns the address to the client with lifetimes of 0.</t>
+         
+         <t>If the server finds that any of the delegated prefixes in the IA are not
+         appropriate for the link to which the client is attached, the server
+         returns the delegated prefixes to the client with lifetimes of 0.</t>         
 
          <t>For each IA for which the server cannot find a client entry, the server
          has the following choices depending on the server's policy and
@@ -3436,15 +3440,14 @@
          <list style="hanging">
            <t hangText="-">If the server is configured to create new bindings
            as a result of processing Renew messages, the server SHOULD create
-           a binding and return the IA with allocated addresses with lifetimes
+           a binding and return the IA with allocated addresses or delegated prefix with lifetimes
            and, if applicable, T1/T2 times and other information requested by
-           the client. The server MAY use values in the IA Address option
-           (if included) as a hint.</t>
+           the client.</t>
 
            <t hangText="-">If the server is configured to create new bindings
            as a result of processing Renew messages, but the server will not
-           assign any addresses to an IA, the server returns the IA option
-           containing a Status Code option with the NoAddrsAvail status code
+           assign any addresses or delegate a prefix to an IA, the server returns the IA option
+           containing a Status Code option with the NoAddrsAvail or NoPrefixAvail status code
            and a status message for a user.</t>
 
            <t hangText="-">If the server does not support creation of new
@@ -3517,14 +3520,13 @@
            <t hangText="-">If the server is configured to create new bindings
            as a result of processing Rebind messages (also see the note about
            the Rapid Commit option below), the server SHOULD create a binding and
-           return the IA with allocated addresses with lifetimes and, if applicable,
-           T1/T2 times and other information requested by the client. The server
-           MAY use values in the IA Address option (if included) as a hint.</t>
+           return the IA with allocated addresses or delegated prefixes with lifetimes and, if applicable,
+           T1/T2 times and other information requested by the client.</t>
 
            <t hangText="-">If the server is configured to create new bindings
            as a result of processing Rebind messages, but the server will not
-           assign any addresses to an IA, the server returns the IA option
-           containing a Status Code option with the NoAddrsAvail status code
+           assign any addresses or delegate prefxies to an IA, the server returns the IA option
+           containing a Status Code option with the NoAddrsAvail or NoPrefixAvail status code
            and a status message for a user.</t>
 
            <t hangText="-">If the server does not support creation of new
@@ -3821,13 +3823,11 @@
         In this case, if the IA_PD contains an IA Prefix option with the IPv6
         prefix field set to 0, the delegating router MAY use the value in the
         "prefix-length" field of the IA Prefix option as a hint for the length
-        of the prefixes to be assigned. The delegating router MAY also respect
-        lifetime hints provided by the requesting router in the IA Prefix
-        option.</t>
+        of the prefixes to be assigned.</t>
 
         <t>The requesting router SHOULD NOT send IA Prefix option with
         the zero-value IPv6 prefix field unless it is supplying a hint for
-        the prefix length or the lifetimes.</t>
+        the prefix length.</t>
 
         <t>The delegating router behaves as follows when it cannot find
         a binding for the requesting router's IA_PD containing prefixes:
@@ -4848,10 +4848,11 @@
         are included to give servers explicit control over when a client
         recontacts the server about a specific IA_NA.</t>
 
-        <t>In a message sent by a client to a server, values in the T1 and T2
-        fields indicate the client's preference for those parameters. The
-        client sets T1 and T2 to 0 if it has no preference for those values.
-        In a message sent by a server to a client, the client MUST use the
+        <t>In a message sent by a client to a server, the T1 and T2
+        fields SHOULD be set to 0. The server MUST ignore any values in
+        these fields in messages received from a client.</t>
+        
+        <t>In a message sent by a server to a client, the client MUST use the
         values in the T1 and T2 fields for the T1 and T2 parameters, unless
         those values in those fields are 0. The values in the T1 and T2 fields
         are the number of seconds until T1 and T2.</t>
@@ -5041,16 +5042,12 @@
 
         </list></t>
 
-        <t>In a message sent by a client to a server, values in the preferred
-        and valid lifetime fields indicate the client's preference for those
-        parameters. The client may send 0 if it has no preference for the
-        preferred and valid lifetimes. If a client wishes to express
-        its lifetimes preferences and does not have the knowledge
-        to populate the IPv6 address field, it can use unspecified address (::).
-        It is up to a server to honor or ignore these preferences.</t>
+        <t>In a message sent by a client to a server, the preferred
+        and valid lifetime fields SHOULD be set to 0. The server MUST ignore
+        any received values.</t>
 
         <t>The client SHOULD NOT send the IA Address option with unspecified
-        address (::) unless it is supplying these preferences for the lifetimes.</t>
+        address (::).</t>
 
         <t>In a message sent by a server to a
         client, the client MUST use the values in the preferred and valid
@@ -6063,13 +6060,15 @@
       contact the delegating router about a specific IA_PD.</t>
 
       <t>In a message sent by a requesting router to a delegating
-      router, values in the T1 and T2 fields indicate the requesting
-      router's preference for those parameters. The requesting router
-      sets T1 and T2 to zero if it has no preference for those values.
-      In a message sent by a delegating router to a requesting router,
-      the requesting router MUST use the values in the T1 and T2
-      fields for the T1 and T2 parameters. The values in the T1 and T2
-      fields are the number of seconds until T1 and T2.</t>
+      router, the T1 and T2 fields SHOULD be set to 0. The delegating
+      router MUST ignore any values in these fields in messages received
+      from a requesting router.</t>
+        
+      <t>In a message sent by a delegating router to a requesting router,
+      the delegating router MUST use the values in the T1 and T2 fields
+      for the T1 and T2 parameters, unless those values in those fields
+      are 0. The values in the T1 and T2 fields are the number of seconds
+      until T1 and T2.</t>
 
       <t>The delegating router selects the T1 and T2 times to allow
       the requesting router to extend the lifetimes of any prefixes in
@@ -6163,10 +6162,10 @@
       </t>
 
       <t>In a message sent by a requesting router to a delegating
-      router, the values in the fields can be used to indicate the
-      requesting router's preference for those values. The requesting
-      router may send a value of zero to indicate no preference. A
-      requesting router may set the IPv6 prefix field to zero and a
+      router, the preferred and valid lifetime fields SHOULD be set to 0.
+      The server MUST ignore any received values in these lifetime fields.</t>
+      
+      <t>A requesting router may set the IPv6 prefix field to zero and a
       given value in the prefix-length field to indicate a preference
       for the size of the prefix to be delegated.</t>
 
@@ -6826,6 +6825,14 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Updated server processing section to clarify that server unicast
           check can be based on current configuration of unicast setting so server
           is not required to remember what it sent. This resolves ticket #130.</t>
+          
+          <t>Removed references to lifetime hints from the client; only IAPREFIX
+          prefix-length hints are now allowed. Servers will ignore any lifetime
+          hints; clients should set lifetime to 0. This resolves ticket #148. Also,
+          removed T1/T2 hints from clients to servers - while not explicitly
+          discussed, seems to make sense? And, fixed some of the message processing
+          text to include PD, not just addresses (though I think Marcin will
+          eventually replace much of this text? Plus a few other minor edits.</t>          
           
         </list>
 
