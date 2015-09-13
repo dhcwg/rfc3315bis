@@ -7,7 +7,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-01" ipr="pre5378Trust200902"
+<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-02" ipr="pre5378Trust200902"
      obsoletes="3315,3633,3736,7083,7550">
   <front>
     <title abbrev="RFC 3315 bis">Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis</title>
@@ -690,7 +690,7 @@
       </t>
 
       <figure align="center" anchor="FigISPNetwork"
-              title="Prefix Delegation Newtork">
+              title="Prefix Delegation Network">
         <preamble/>
         <artwork align="left">
           <![CDATA[
@@ -715,7 +715,7 @@
                       | (requesting |              \
                       |   router)   |               |
                       +----+---+----+               |
-                           |   |                    | Subsciber
+                           |   |                    | Subscriber
     ---+-------------+-----+   +-----+------        | Network 
        |             |               |              |
   +----+-----+ +-----+----+     +----+-----+        |
@@ -1742,8 +1742,9 @@
         3. a client received IA_TA option (which does not contain T1 or T2
         fields).  Additional cases may appear in the future. This is an
         indication that the transmission times are left at client's
-        dicretion. They are not completely disretionary, though.</t>
-        <t>When T1 and/or T2 timers are zet to zero, client MUST choose
+        discretion. They are not completely discretionary, though.</t>
+        
+        <t>When T1 and/or T2 timers are set to zero, client MUST choose
         transmission time to avoid packet storms. In particular, it MUST NOT
         transmit immediately. If the client received multiple IA containers, it
         SHOULD pick renew and/or rebind transmission time so all IA containers
@@ -2177,7 +2178,7 @@
         through the interface for which configuration information is being
         requested. However, the client MAY send the message through another
         interface if the interface is a logical interface without direct link
-        attachement or the client is certain that two interfaces are attached
+        attachment or the client is certain that two interfaces are attached
         to the same link.
         <!-- tomek: ok, this is a bit confusing. The intention is to say:
         - if you want to configure interface X, send you packets over X
@@ -3174,7 +3175,7 @@
          <t>When the client receives a NotOnLink status from the server in
          response to a Confirm message, the client performs DHCP server
          solicitation, as described in <xref target='RFC3315-17'/>, and
-         client-initiated configuration, as described in section
+         client-initiated configuration, as described in
          <xref target='RFC3315-18'/>.  If the client receives any Reply
          messages that do not indicate a NotOnLink status, the client
          can use the addresses in the IA and ignore any messages that indicate
@@ -3252,7 +3253,7 @@
          or selects an alternate server, as described in
          <xref target="RFC3315-17.1.3"/>, the client SHOULD stop using
          all the addresses and delegated prefixes for which it has the bindings
-         and try to obtain all required adresses and prefixes from the new
+         and try to obtain all required addresses and prefixes from the new
          server. This facilitates the client using a single state machine
          for all bindings.</t>
 
@@ -3525,7 +3526,7 @@
 
            <t hangText="-">If the server is configured to create new bindings
            as a result of processing Rebind messages, but the server will not
-           assign any addresses or delegate prefxies to an IA, the server returns the IA option
+           assign any addresses or delegate prefixes to an IA, the server returns the IA option
            containing a Status Code option with the NoAddrsAvail or NoPrefixAvail status code
            and a status message for a user.</t>
 
@@ -3540,7 +3541,7 @@
          <t>When the server creates new bindings for the IA, it is possible that
          other servers also create bindings as a result of receiving the
          same Rebind message.  This is the same issue as in the Discussion
-         under "Rapid Commit Option"; see section <xref target='RFC3315-22.14'/>.
+         under "Rapid Commit Option"; see <xref target='RFC3315-22.14'/>.
          Therefore, the server SHOULD only create new bindings during processing
          of a Rebind message if the server is configured to respond with a Reply
          message to a Solicit message containing the Rapid Commit option.</t>
@@ -3725,7 +3726,7 @@
 
         <t>If such verification is needed the requesting router MUST
         initiate a Rebind/Reply message exchange as described in
-        section <xref target="RFC3315-18.1.4"/>, with the exception
+        <xref target="RFC3315-18.1.4"/>, with the exception
         that the retransmission parameters should be set as for the
         Confirm message, described in <xref target="RFC3315-18.1.2"/>.
         The requesting router includes any IA_PDs, along with
@@ -3744,8 +3745,7 @@
         Rebind message to obtain bindings it desires but has been
         unable to obtain. The requesting router MAY set the
         "prefix-length" field of the IA Prefix option as a hint to the
-        server. The requesting router MAY also provide lifetime hints
-        in the IA Prefix option.</t>
+        server.</t>
 
   	    <t>The requesting router uses a Release message to return a
 	    delegated prefix to a delegating router. The prefixes to be
@@ -3785,7 +3785,7 @@
 	    option.</t>
 
 	    <t>Handling of Status Codes options in received Reply messages
-	    is described in section <xref target="RFC3315-18.1.8"/>. The
+	    is described in <xref target="RFC3315-18.1.8"/>. The
 	    NoPrefixAvail Status Code is handled in the same manner as the
 	    NoAddrsAvail Status Code.</t>
       </section>
@@ -3823,7 +3823,9 @@
         In this case, if the IA_PD contains an IA Prefix option with the IPv6
         prefix field set to 0, the delegating router MAY use the value in the
         "prefix-length" field of the IA Prefix option as a hint for the length
-        of the prefixes to be assigned.</t>
+        of the prefixes to be assigned (see
+        <xref target="I-D.cui-dhc-dhcpv6-prefix-length-hint-issue"/> for
+        further details on prefix length hints).</t>
 
         <t>The requesting router SHOULD NOT send IA Prefix option with
         the zero-value IPv6 prefix field unless it is supplying a hint for
@@ -5792,7 +5794,7 @@
         according to the option codes defined by the vendor identified by the
         Enterprise Number in that option. Servers and clients MUST NOT send
         more than one instance of Vendor-specific Information option with the
-        same Enterprise Number. Each instanf of Vendor-specific Information option
+        same Enterprise Number. Each instance of Vendor-specific Information option
         MAY contain multiple encapsulated options.</t>
         
         <t>A client that is interested in receiving a Vendor-specific Information Option:
@@ -6656,6 +6658,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
     <?rfc include='reference.RFC.7550'?>
 
     <?rfc include='reference.I-D.ietf-dhc-topo-conf'?>
+    
+    <?rfc include='reference.I-D.cui-dhc-dhcpv6-prefix-length-hint-issue'?>
+
     </references>
     
     <!-- Let's briefly document relevant changes against 3315 here -->
