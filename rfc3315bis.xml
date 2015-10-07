@@ -189,7 +189,8 @@
       between large number of documents may be cumbersome. Furthermore,
       a significant operational experience has been gained over the years and
       certain small elements of the protocol have been reworked. This document
-      provides a unified, corrected and cleaned up definition of the DHCPv6.
+      provides a unified, corrected and cleaned up definition of the
+      DHCPv6 that also covers all erratas filled against older RFCs.
       As such, it obsoletes a number of aforementioned RFCs. There is a small
       number of mechanisms that were obsoleted. They are listed in
       <xref target="obsolete" />.</t>
@@ -6858,6 +6859,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           check can be based on current configuration of unicast setting so server
           is not required to remember what it sent. This resolves ticket #130.</t>
           
+	  <t>Introduction updated, including relation to previous RFCs
+	  (ticket #136).</t>
         </list>
 
       </t>
