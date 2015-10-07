@@ -2535,7 +2535,9 @@
           the Solicit message from the client. If the client has included
           addresses in the IAs in the Solicit message, the server uses those
           addresses as hints about the addresses the client would like to
-          receive.</t>
+          receive. If the server is not going to assign an address received
+          as a hint in the Solicit message, the server MUST NOT include this
+          address in the Advertise message.</t>
 
           <!-- This paragraph has been updated with the changes from section
                6 of RFC7083 -->
@@ -3349,10 +3351,14 @@
           with no addresses in the IA and a Status Code option in the IA
           containing status code NoAddrsAvail.</t>
 
+          <t>The server MAY assign different addresses to an IA than included
+          in the IA within the Request message sent by the client.</t>
+
           <t>For any IAs to which the server
           can assign addresses, the server includes the IA with addresses and
           other configuration parameters, and records the IA as a new client
-          binding.</t>
+          binding. The server MUST NOT include any addresses in the IA which
+          the server does not assign to the client.</t>
 
           <t>The server includes a Reconfigure Accept option if the server
           wants to require that the client accept Reconfigure messages.</t>
@@ -3441,9 +3447,11 @@
          <list style="hanging">
            <t hangText="-">If the server is configured to create new bindings
            as a result of processing Renew messages, the server SHOULD create
-           a binding and return the IA with allocated addresses or delegated prefix with lifetimes
+           a binding and return the IA with assigned addresses or delegated prefixes with lifetimes
            and, if applicable, T1/T2 times and other information requested by
-           the client.</t>
+           the client. The server MUST NOT return any addresses or delegated
+           prefixes in the IA which the server does not assign to the client.
+           </t>
 
            <t hangText="-">If the server is configured to create new bindings
            as a result of processing Renew messages, but the server will not
@@ -3521,8 +3529,10 @@
            <t hangText="-">If the server is configured to create new bindings
            as a result of processing Rebind messages (also see the note about
            the Rapid Commit option below), the server SHOULD create a binding and
-           return the IA with allocated addresses or delegated prefixes with lifetimes and, if applicable,
-           T1/T2 times and other information requested by the client.</t>
+           return the IA with assigned addresses or delegated prefixes with lifetimes and, if applicable,
+           T1/T2 times and other information requested by the client. The
+           server MUST NOT return any addresses or delegated prefixes in
+           the IA which the server does not assign to the client.</t>
 
            <t hangText="-">If the server is configured to create new bindings
            as a result of processing Rebind messages, but the server will not
@@ -6837,8 +6847,12 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           removed T1/T2 hints from clients to servers - while not explicitly
           discussed, seems to make sense? And, fixed some of the message processing
           text to include PD, not just addresses (though I think Marcin will
-          eventually replace much of this text? Plus a few other minor edits.</t>          
-          
+          eventually replace much of this text? Plus a few other minor edits.</t>
+
+          <t>Clarified that the server may return different addresses in the Reply
+          than requested by the client in the Request message. Also clarified that
+          the server must not include addresses that it will not assign. This
+          resolves ticket #69.</t>
         </list>
 
       </t>
