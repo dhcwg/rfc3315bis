@@ -6516,8 +6516,29 @@
     <!-- ends: "24 from line 4595-->
 
     <section anchor="obsolete" title="Obsoleted mechanisms">
-      <t>TODO: see ticket #149</t>
+      <t>This specification of the DHCPv6 is mostly a corrected and
+      cleaned up version of the original spec <xref target="RFC3315"/>
+      along with numerous additions from later RFCs. However, there is
+      a small number of mechanisms that didn't get much traction,
+      were not widely deployed, underspecified or had other
+      operational issues. Those mechanisms are now considered
+      decprecated. Legacy implementations MAY support it, but
+      implementations conformant to this document MUST NOT rely on them.
+      </t>
 
+      <t>The following mechanism are now obsolete:</t>
+
+      <t>Delayed Authentication. This mechanism was underspecified and
+      had significant operational burden. As a result, after 10 years
+      its adoption was extremely limited at best.</t>
+
+      <t>Lifetime hints sent by a client. Client used to be allowed to
+      send lifetime values as hints.  This mechanism was not widely
+      implemented and there were known misimplementations that sent
+      remaining lifetimes rather than total lifetimes. That in turn
+      was sometimes misunderstood by the servers as a request for ever
+      decreasing lease lifetimes, which caused issues when values
+      started approaching zero.</t>
     </section>
 
     <section title="Acknowledgments">
