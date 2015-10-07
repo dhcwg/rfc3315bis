@@ -6909,6 +6909,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
 	  <t>Introduction updated, including relation to previous RFCs
 	  (ticket #136).</t>
+
+	  <t>Added section with deprecated mechanisms (ticket #149).</t>
         </list>
 
       </t>
