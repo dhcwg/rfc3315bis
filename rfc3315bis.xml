@@ -664,8 +664,8 @@
       does not require other information aside from the
       identity of the requesting router to choose a prefix for
       delegation. For example, these options would be used by a
-      service provider to assign a prefix to a Customer Premise
-      Equipment (CPE) device acting as a router between the
+      service provider to assign a prefix to a Customer Edge
+      Router device acting as a router between the
       subscriber's internal network and the service provider's
       core network.
       </t>
