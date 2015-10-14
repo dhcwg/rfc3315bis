@@ -6785,6 +6785,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 	  (ticket #136).</t>
 
 	  <t>Added section with deprecated mechanisms (ticket #149).</t>
+
+      <t>Combined text for prefix delegation and address assignment in sections
+      18 and 19. Also, introduced a term "lease" replacing "allocable resources".
+      This resolves ticket #146.</t>
         </list>
 
       </t>
