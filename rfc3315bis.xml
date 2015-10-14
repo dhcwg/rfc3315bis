@@ -787,14 +787,6 @@
       </t>
 
       <t>
-      When the delegating router delagates prefixes to a
-      requesting router, the requesting router has sole
-      authority for assignment of those prefixes, and the
-      delegating router MUST NOT assign any prefixes from that
-      delegated prefix to any of its own links.
-      </t>
-
-      <t>
       The prefix delegation options can be used in conjunction
       with other DHCP options carrying other configuration
       information to the requesting router.  The requesting
@@ -2286,7 +2278,7 @@
       addresses and delegated prefixes to IAs belonging to the client.</t>
 
       <t>The client is responsible for creating IAs and requesting that a
-      server assign IPv6 addresses and delegated prefixes to the IAs. The client
+      server assign IPv6 addresses and/or delegated prefixes to the IAs. The client
       first creates the IAs and assigns IAIDs to them. The client then transmits
       a Solicit message containing the IA options describing the IAs. The client
       MUST NOT be using any of the addresses or delegated prefixes for which
@@ -2594,7 +2586,7 @@
 
           <t>If the Solicit message from the client included one or more IA
           options, the server MUST include IA options in the Advertise message
-          containing any addresses and delegated prefixes that would be assigned
+          containing any addresses and/or delegated prefixes that would be assigned
           to IAs contained in the Solicit message from the client. If the client
           has included addresses in the IA in the Solicit message, the server
           MAY use those addresses as hints about the addresses that the client
@@ -2695,7 +2687,7 @@
       initiate the configuration exchange as part of the operating system
       configuration process, when requested to do so by the application layer,
       when required by Stateless Address Autoconfiguration or as required to
-      extend the lifetime of address(es) or/and delegated prefix(es), using
+      extend the lifetime of address(es) and/or delegated prefix(es), using
       Renew and Rebind messages.</t>
 
       <t>According to a terminology for the prefix delegation, a client requesting a
@@ -2711,12 +2703,11 @@
         <!-- 18.1, line 1953-->
 
         <t>A client uses Request, Renew, Rebind, Release and Decline messages
-        during the normal life cycle of addresses and delegated prefixes. It
-        uses Rebind when it has any delegated prefixes but it may have moved to
-        a new link. It uses Confirm to validate addresses when it may have moved
-        to a new link, but it doesn't have any delegated prefixes. It uses
-        Information-Request messages when it needs configuration information
-        but no addresses and no prefixes.</t>
+        during the normal life cycle of addresses and delegated prefixes. When a
+        client detects it may have moved to a new link, it uses Confirm if it
+        only has addresses and Rebind if it has delegated prefixes (and
+        addresses). It uses Information-request messages when it needs
+        configuration information but no addresses and no prefixes.</t>
 
         <t>If the client has a source address of sufficient scope that can be
         used by the server as a return address, and the client has received a
@@ -3016,7 +3007,7 @@
           <!-- 18.1.5, line 2215-->
 
           <t>The client uses an Information-request message to obtain
-          configuration information without having addresses and
+          configuration information without having addresses and/or
           delegated prefixes assigned to it.</t>
 
           <t>The client sets the "msg-type" field to INFORMATION-REQUEST. The
@@ -3028,7 +3019,7 @@
           Identifier option, the server will not be able to return any
           client-specific options to the client, or the server may choose not
           to respond to the message at all. The client MUST include a Client
-          Identifier option if the Information-Request message will be
+          Identifier option if the Information-request message will be
           authenticated.</t>
 
           <t>The client MUST include an Option Request option (see
@@ -3260,8 +3251,8 @@
          the definition of each option in <xref target='RFC3315-22'/>.</t>
 
          <t>The client examines the status code in each IA individually. If the
-         client receives a NoAddrsAvail or NoPrefixAvail status code, the client
-         has received no usable addresses and delegated prefxies in the IA.</t>
+         client receives a NoAddrsAvail and/or NoPrefixAvail status code, the client
+         has received no usable addresses and/or delegated prefixes in the IA.</t>
 
          <t>If the client can operate with the addresses and prefixes obtained
          from the server, the client uses the addresses, delegated prefixes, and
@@ -3569,7 +3560,7 @@
          information stored for that client.</t>
 
          <t>If the server finds the client entry for the IA and the
-         server determines that the addresses and delegated prefixes in the
+         server determines that the addresses or delegated prefixes in the
          IA are appropriate for the link to which the client's interface is
          attached according to the server's explicit configuration information,
          the server SHOULD send back the IA to the client with new lifetimes and,
@@ -3834,7 +3825,7 @@
 
           <t>The server MUST include a Reconfigure Message option (defined in
           <xref target='RFC3315-22.19'/>) to select whether the client responds with a Renew
-          message, a Rebind message, or an Information-Request message.</t>
+          message, a Rebind message, or an Information-request message.</t>
 
           <t>The server MUST NOT include any other options in the Reconfigure
           except as specifically allowed in the definition of individual
