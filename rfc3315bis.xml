@@ -447,11 +447,6 @@
 
         <t>
           <list hangIndent="26" style="hanging">
-            <t hangText="allocatable resource"> (or resource). It is an address,
-            a prefix or any other allocatable resource that may be defined in
-            the future. Currently there are three defined allocatable resources:
-            non-temporary addresses, temporary addresses and delegated prefixes.</t>
-
             <t hangText="appropriate to the link"> An address is "appropriate to the link"
             when the address is consistent with the DHCP server's knowledge of the
             network topology, prefix assignment and address assignment
@@ -508,7 +503,7 @@
             the ways in which a DUID may be constructed.</t>
 
             <t hangText="IA"> Identity Association: A collection of
-            allocatable resources assigned to a
+            leases assigned to a
             client. Each IA has an associated IAID. A client may have more than
             one IA assigned to it; for example, one for each of its interfaces.
             Each IA holds one type of address; for example, an identity
@@ -516,7 +511,7 @@
             (see "identity association for temporary addresses") and identity association
             for prefix delegation (IA_PD) holds delegated prefixes. Throughout this
             document, "IA" is used to refer to an identity association without
-            identifying the type of allocatable resources in the IA. At the time of writing
+            identifying the type of a lease in the IA. At the time of writing
             this document, there are 3 IA types defined: IA_NA, IA_TA and IA_PD. New IA types
             may be defined in the future.</t>
 
@@ -536,8 +531,11 @@
             router.  Each IA_PD has an associated IAID. A requesting
             router may have more than one IA_PD assigned to it; for
             example, one for each of its interfaces.</t>
-	    <!-- tomek: Should this text mention delegating/requesting
-	    routers instead of clients and servers? -->
+
+            <t hangText="lease"> It is an address assigned by the DHCP server to the client
+            or a delegated prefix assigned by the delegating router to the requesting
+            router. Leases are carried in the IA Address or IA Prefix options within the
+            IA_NA/IA_TA and IA_PD options respectively.</t>
 
             <t hangText="message"> A unit of data carried as the payload of a UDP datagram,
             exchanged among DHCP servers, relay agents and clients.</t>
@@ -585,7 +583,7 @@
 
       <t>
       Stateless DHCP <xref target='RFC3736'/> is used when DHCP
-      is not used for obtaining an allocatable resource, but a node
+      is not used for obtaining a lease, but a node
       (DHCP client) desires one or more DHCP "other
       configuration" parameters, such as a list of DNS recursive
       name servers or DNS domain search lists <xref target='RFC3646'/>.
@@ -680,11 +678,9 @@
       <t>
       The model of operation for prefix delegation is as follows.
       A delegating router is provided IPv6 prefixes to be 
-      delegated to requesting routers.  Examples of ways in which
-      the delegating router may be provided these prefixes is
-      given in <xref target='pd-client-initated-server'/>. A requesting
+      delegated to requesting routers. A requesting
       router requests prefix(es) from the delegating router, as
-      described in <xref target='pd-client-initiated-client'/>.  The
+      described in <xref target='RFC3315-18'/>.  The
       delegating router chooses prefix(es) for delegation, and
       responds with prefix(es) to the requesting router.  The
       requesting router is then responsible for the delegated
@@ -702,6 +698,17 @@
       lifetimes on a delegated prefix and is required to terminate
       the use of a delegated prefix if the valid lifetime of the
       prefix expires.
+      </t>
+
+      <t>
+      The mechanism through which the delegating router
+	  selects prefix(es) for delegation is not specified in this
+	  document. Examples of ways in which the server might select
+	  prefix(es) for a client include: static assignment based on
+	  subscription to an ISP; dynamic assignment from a pool of
+	  available prefixes; selection based on an external authority
+	  such as a RADIUS server using the Framed-IPv6-Prefix option as
+	  described in <xref target="RFC3162" pageno="false" />.
       </t>
 
       <t>
@@ -780,6 +787,14 @@
       </t>
 
       <t>
+      When the delegating router delagates prefixes to a
+      requesting router, the requesting router has sole
+      authority for assignment of those prefixes, and the
+      delegating router MUST NOT assign any prefixes from that
+      delegated prefix to any of its own links.
+      </t>
+
+      <t>
       The prefix delegation options can be used in conjunction
       with other DHCP options carrying other configuration
       information to the requesting router.  The requesting
@@ -789,6 +804,17 @@
       servers from the ISP delegating router, and then pass
       that configuration information on to the subscriber hosts
       through a DHCP server in the requesting router.
+      </t>
+
+	  <t>
+      If the requesting router assigns a delegated prefix to a
+	  link to which the router is attached, and begins to send
+	  router advertisements for the prefix on the link, the
+	  requesting router MUST set the valid lifetime in those
+	  advertisements to be no later than the valid lifetime
+	  specified in the IA_PD Prefix option. A requesting router MAY
+	  use the preferred lifetime specified in the IA_PD Prefix
+	  option.
       </t>
 
       </section>
@@ -2276,7 +2302,7 @@
       the client with an Advertise message. The client then initiates a
       configuration exchange as described in <xref target='RFC3315-18'/>.</t>
 
-      <t>If the client will accept a Reply message with committed address
+      <t>If the client will accept a Reply message with committed leases
       assignments and other resources in response to the Solicit message, the
       client includes a Rapid Commit option (see <xref target='RFC3315-22.14'/>) in the Solicit
       message.</t>
@@ -2285,7 +2311,7 @@
         <!-- 17.1, line 1644-->
 
         <t>A client uses the Solicit message to discover DHCP servers
-        configured to assign addresses or return other configuration
+        configured to assign leases or return other configuration
         parameters on the link to which the client is attached.</t>
 
         <section anchor='RFC3315-17.1.1' title="Creation of Solicit Messages">
@@ -2297,16 +2323,26 @@
 
           <t>The client MUST include a Client Identifier option to identify
           itself to the server. The client includes IA options for any IAs to
-          which it wants the server to assign addresses. The client MAY
-          include addresses in the IAs as a hint to the server about addresses
-          for which the client has a preference. The client MUST NOT include
+          which it wants the server to assign leases.</t>
+
+          <t>The client MAY include addresses in the IA_NA and IA_TA options
+          as hints to the server about the addresses for which the client has
+          a preference.</t>
+
+          <t>The client MAY include values in the IA Prefix option encapsulated
+          within IA_PD option as hints for the delegated prefix and/or prefix
+          length for which the client has a preference.</t>
+
+          <t>The client MUST NOT include
           any other options in the Solicit message, except as specifically
           allowed in the definition of individual options.</t>
 
           <t>The client uses IA_NA options to request the assignment of
-          non-temporary addresses and uses IA_TA options to request the
-          assignment of temporary addresses. Either IA_NA or IA_TA options, or
-          a combination of both, can be included in DHCP messages.</t>
+          non-temporary addresses, IA_TA options to request the
+          assignment of temporary addresses and IA_PD options to request
+          prefix delegation. Either IA_NA, IA_TA or IA_PD options, or
+          a combination of all, can be included in DHCP messages. In addition,
+          multiple instances of any IA option type can be included.</t>
 
           <t>The client MUST include an Option Request option (see
           <xref target='RFC3315-22.7'/>) to request the SOL_MAX_RT option
@@ -2515,7 +2551,7 @@
 
           <t>If the client has included a Rapid Commit option in the Solicit
           message and the server has been configured to respond with committed
-          address assignments and other resources, the server responds to the
+          lease assignments and other resources, the server responds to the
           Solicit with a Reply message as described in <xref target='RFC3315-17.2.3'/>.
           Otherwise, the server ignores the Rapid Commit option and
           processes the remainder of the message as if no Rapid Commit
@@ -2558,13 +2594,18 @@
 
           <t>If the Solicit message from the client included one or more IA
           options, the server MUST include IA options in the Advertise message
-          containing any addresses that would be assigned to IAs contained in
-          the Solicit message from the client. If the client has included
-          addresses in the IAs in the Solicit message, the server uses those
-          addresses as hints about the addresses the client would like to
-          receive. If the server is not going to assign an address received
-          as a hint in the Solicit message, the server MUST NOT include this
-          address in the Advertise message.</t>
+          containing any addresses and delegated prefixes that would be assigned
+          to IAs contained in the Solicit message from the client. If the client
+          has included addresses in the IA in the Solicit message, the server
+          MAY use those addresses as hints about the addresses that the client
+          would like to receive. If the client has included IA Prefix option
+          in the IA_PD, the server MAY use the prefix contained in the
+          IPv6 prefix field and/or the prefix length contained in the
+          "prefix-length" field as a hints about the prefixes the client
+          would like to receive. If the server is not going to assign an address
+          or delegated prefix received as a hint in the Solicit message, the
+          server MUST NOT include this address or delegated prefix in the
+          Advertise message</t>
 
           <!-- This paragraph has been updated with the changes from section
                6 of RFC7083 -->
@@ -2572,10 +2613,17 @@
                options if NoAddrsAvail status code is sent. Do not apply the part
                of errata that mandates sending NoAddrsAvail encapsulated in IA -->
           <!-- Change from RFC 7550 section 4.1 has been applied. 6/1/2015 -->
-          <t>If the server will not assign any addresses to an IA in a
-          subsequent Request from the client, the server MUST include the IA
-          in the Advertise message with no addresses in the IA and a Status Code
-          option encapsulated in the IA containing status code NoAddrsAvail.</t>
+          <t>If the server will not assign any addresses to an IA (IA_NA or
+          IA_IA) in subsequent Request from the client, the server MUST include
+          the IA in the Advertise message with no addresses in the IA and a
+          Status Code option encapsulated in the IA containing status code
+          NoAddrsAvail.</t>
+
+          <t>If the server will not assign any prefixes to an IA_PD in
+          subsequent Request from the client, the server MUST include the
+          IA_PD in the Advertise message with no prefixes in the IA and a
+          Status Code option encapsulated in the IA_PD containing status code
+          NoPrefixAvail.</t>
 
           <t>If the Solicit message was received directly by the server, the
           server unicasts the Advertise message directly to the client using
@@ -2607,16 +2655,16 @@
 
           <t><list style="empty">
             <t>When using the Solicit-Reply message exchange, the server commits
-            the assignment of any addresses before sending the Reply message.
-            The client can assume it has been assigned the addresses in the
+            the assignment of any leases before sending the Reply message.
+            The client can assume it has been assigned the leases in the
             Reply message and does not need to send a Request message for those
             addresses.</t>
 
             <t>Typically, servers that are configured to use the Solicit-Reply
             message exchange will be deployed so that only one server will
             respond to a Solicit message. If more than one server responds, the
-            client will only use the addresses from one of the servers, while
-            the addresses from the other servers will be committed to the client
+            client will only use the leases from one of the servers, while
+            the leases from the other servers will be committed to the client
             but not used by the client.</t>
           </list></t>
 
@@ -2633,72 +2681,6 @@
 
         <!-- ends: "17.2.3 from line 1906-->
       </section>
-
-      <section anchor="pd-solicit-client"
-	       title="Client behavior for Prefix Delegation">
-
-	<t>The requesting router creates and transmits a Solicit
-	message as described in <xref target="RFC3315-17.1.1"/> and
-	<xref target="RFC3315-17.1.2"/>. The client creates an IA_PD
-	and assigns it an IAID. The client MUST include the IA_PD
-	option in the Solicit message.</t>
-
-	<t>The client processes any received Advertise messages as
-	described in <xref target="RFC3315-17.1.3"/>.  The client MAY
-	choose to consider the presence of advertised prefixes in its
-	decision about which delegating router to respond to.</t>
-
-	<t>The client MUST ignore any IA_PDs in an Advertise message
-	that include a Status Code option containing the value
-	NoPrefixAvail, with the exception that the client MAY display
-	the associated status message to the user and SHOULD process
-	SOL_MAX_RT and INF_MAX_RT options.</t>
-      </section>
-
-      <section anchor="pd-solicit-server"
-	       title="Server Behavior for Prefix Delegation">
-
-	<t>The server sends an Advertise message to the requesting
-	router in the same way as described in <xref
-	target="RFC3315-17.2.2"/>. If the message contains an IA_PD
-	option and the delegating router is configured to delegate
-	prefix(es) to the requesting router, the delegating router
-	selects the prefix(es) to be delegated to the requesting
-	router. The mechanism through which the delegating router
-	selects prefix(es) for delegation is not specified in this
-	document. Examples of ways in which the server might select
-	prefix(es) for a client include: static assignment based on
-	subscription to an ISP; dynamic assignment from a pool of
-	available prefixes; selection based on an external authority
-	such as a RADIUS server using the Framed-IPv6-Prefix option as
-	described in <xref target="RFC3162" pageno="false" />.</t>
-
-	<t>If the client includes an IA_PD Prefix option in
-	the IA_PD option in its Solicit message, the server
-	MAY choose to use the information in that option to select the
-	prefix(es) or prefix size to be delegated to the client.</t>
-
-	<t>The server sends an Advertise message to the
-	requesting router in the same way as described in
-        <xref target="RFC3315-17.2.2"/>. The server
-        MUST include an IA_PD option,
-	identifying any prefix(es) that the server will
-	delegate to the client.</t>
-
-	<t>If the server will not assign any prefixes to
-        an IA_PD in a subsequent Request from the requesting router,
-        the server MUST send an Advertise message to the
-        client that includes the IA_PD with no prefixes in
-        the IA_PD and a Status Code option in the IA_PD containing
-        status code NoPrefixAvail and a status message for the user, a
-        Server Identifier option with the server's DUID and
-        a Client Identifier option with the client's
-        DUID. The server SHOULD include other stateful IA options
-        (like IA_NA) and other configuration options in the Advertise
-        message.</t>
-
-      </section>
-
 
       <!-- ends: "17.2 from line 1816-->
     </section>
@@ -2729,10 +2711,12 @@
         <!-- 18.1, line 1953-->
 
         <t>A client uses Request, Renew, Rebind, Release and Decline messages
-        during the normal life cycle of addresses. It uses Confirm to validate
-        addresses when it may have moved to a new link. It uses
+        during the normal life cycle of addresses and delegated prefixes. It
+        uses Rebind when it has any delegated prefixes but it may have moved to
+        a new link. It uses Confirm to validate addresses when it may have moved
+        to a new link, but it doesn't have any delegated prefixes. It uses
         Information-Request messages when it needs configuration information
-        but no addresses.</t>
+        but no addresses and no prefixes.</t>
 
         <t>If the client has a source address of sufficient scope that can be
         used by the server as a return address, and the client has received a
@@ -2755,10 +2739,10 @@
         <section title="Creation and Transmission of Request Messages">
           <!-- 18.1.1, line 1981-->
 
-          <t>The client uses a Request message to populate IAs with addresses
+          <t>The client uses a Request message to populate IAs with leases
           and obtain other configuration information. The client includes one
           or more IA options in the Request message. The server then returns
-          addresses and other information about the IAs to the client in IA
+          leases and other information about the IAs to the client in IA
           options in a Reply message.</t>
 
           <t>The client generates a transaction ID and inserts this value in
@@ -2770,7 +2754,8 @@
           <t>The client MUST include a Client Identifier option to identify
           itself to the server. The client adds any other appropriate options,
           including one or more IA options (if the client is requesting that
-          the server assign it some network addresses).</t>
+          the server assign it some network addresses or delegated prefixes).
+          </t>
 
           <t>The client MUST include an Option Request option (see
           <xref target='RFC3315-22.7'/>) to indicate the options the client is interested in receiving.
@@ -2836,7 +2821,9 @@
 
           </list></t>
 
-          <t>In any situation when a client may have moved to a new link, the
+          <t>In any situation when a client may have moved to a new link and
+          the client does not have any delegated prefixes obtained from the
+          DHCP server from which it has obtained the addresses, the
           client SHOULD initiate a Confirm/Reply message exchange. The client
           includes any IAs assigned to the interface that may have moved to a
           new link, along with the addresses associated with those IAs, in its
@@ -2844,6 +2831,12 @@
           addresses are appropriate for the link to which the client is
           attached with the status in the Reply message it returns to the
           client.</t>
+
+          <t>If the client has any valid delegated prefixes obtained from the
+          DHCP server from which it has obtained the addresses, the client
+          initiates Rebind/Reply exchange as described in
+          <xref target='pd-bindings-verification'/> instead of sending the
+          Confirm message.</t>
 
           <t>The client sets the "msg-type" field to CONFIRM. The client
           generates a transaction ID and inserts this value in the
@@ -2887,19 +2880,21 @@
         <section anchor='RFC3315-18.1.3' title="Creation and Transmission of Renew Messages">
           <!-- 18.1.3, line 2100-->
 
-         <t>To extend the valid and preferred lifetimes for the addresses
-         assigned to an IA, the client sends a Renew message to the server
-         from which the addresses were obtained, which includes an IA option
-         for the IA whose address lifetimes are to be extended. The client
-         includes IA Address options within the IA option for the addresses
-         assigned to the IA. The server determines new lifetimes for these
-         addresses according to the administrative configuration of the server.
-         The server may also add new addresses to the IA. The server can remove
-         addresses from the IA by returning IA Address options for such
-         addresses with preferred and valid lifetimes set to 0.</t>
+         <t>To extend the valid and preferred lifetimes for the leases
+         assigned to the IAs, the client sends a Renew message to the server
+         from which the leases were obtained, which includes IA options
+         for the IAs whose lease lifetimes are to be extended. The client
+         includes IA Address options within IA_NA and IA_TA options for the
+         addresses assigned to the IAs. The client includes IA Prefix options
+         within IA_PD options for the delegated prefixes assigned to the IAs.
+         The server determines new lifetimes for the leases according to the
+         administrative configuration of the server. The server may also add
+         leases to the IAs. The server can remove leases from the IAs
+         by returning IA Address options (for IA_NA and IA_TA) and IA Prefix
+         options (for IA_PD) with preferred and valid lifetimes set to 0.</t>
 
          <t>The server controls the time at which the client contacts the server
-         to extend the lifetimes on assigned addresses through the T1 and T2
+         to extend the lifetimes on assigned leases through the T1 and T2
          parameters assigned to an IA. However, as the client Renews/Rebinds all
          IAs from the server at the same time, the client MUST select a T1 and
          T2 time from all IA options, which will guarantee that the client will
@@ -2907,7 +2902,7 @@
          with any of the client's bindings.</t>
 
          <t>At time T1, the client initiates a Renew/Reply message
-         exchange to extend the lifetimes on any addresses in the IA.</t>
+         exchange to extend the lifetimes on any leases in the IA.</t>
 
          <t>If T1 or T2 had been set to 0 by the server (for an IA_NA or IA_PD) or
          there are no T1 or T2 times (for an IA_TA) in a previous Reply, the client
@@ -2925,14 +2920,22 @@
          to the server.  The client adds any appropriate options, including
          one or more IA options.</t>
 
-         <t>For IAs to which addresses have been assigned, the client includes
+         <t>For IAs to which leases have been assigned, the client includes
          a corresponding IA option containing an IA Address option for each
-         address assigned to the IA. The client MUST NOT include addresses
-         in any IA option that the client did not obtain from the server or
-         that are no longer valid (that have a valid lifetime of 0).</t>
+         address assigned to the IA and IA Prefix option for each prefix
+         assigned to the IA. The client MUST NOT include addresses and
+         prefixes in any IA option that the client did not obtain from the
+         server or that are no longer valid (that have a valid lifetime of 0).</t>
 
          <t>The client MAY include an IA option for each binding it desires but
-         has been unable to obtain.</t>
+         has been unable to obtain. In this case, if the client includes the
+         IA_PD option to request prefix delegation, the client MAY include
+         the IA Prefix option encapsulated within the IA_PD option, with
+         the IPv6 prefix field set to 0 and the "prefix-length" field set
+         to the desired length of the prefix to be delegated. The server MAY
+         use this value as a hint for the prefix length. The client SHOULD NOT
+         include IA Prefix option with the IPv6 prefix field set to 0 unless
+         it is supplying a hint for the prefix length.</t>
 
          <t>The client MUST include an Option Request option (see
          <xref target='RFC3315-22.7'/>) to indicate the options the client
@@ -2997,15 +3000,14 @@
 
           </list></t>
 
-          <t>If all addresses for an IA have expired, the client may choose to
+          <t>If all leases for an IA have expired, the client may choose to
           include this IA in subsequent Rebind messages to indicate that the
-          client is interested in assignment of addresses or delegated
-          prefxies to this IA.</t>
+          client is interested in assignment of the leases to this IA.</t>
 
           <t>The message exchange is terminated when the valid lifetimes of all
-          addresses or delegated prefixes across all IAs have expired, at which
-          time the client uses the Solicit message to locate a new DHCP server
-          and sends a Request for the expired IAs to the new server.</t>
+          leases across all IAs have expired, at which time the client uses
+          the Solicit message to locate a new DHCP server and sends a Request
+          for the expired IAs to the new server.</t>
         </section>
 
         <!-- ends: "18.1.4 from line 2160-->
@@ -3014,8 +3016,8 @@
           <!-- 18.1.5, line 2215-->
 
           <t>The client uses an Information-request message to obtain
-          configuration information without having addresses assigned to
-          it.</t>
+          configuration information without having addresses and
+          delegated prefixes assigned to it.</t>
 
           <t>The client sets the "msg-type" field to INFORMATION-REQUEST. The
           client generates a transaction ID and inserts this value in the
@@ -3060,7 +3062,7 @@
         <section title="Creation and Transmission of Release Messages">
           <!-- 18.1.6, line 2251-->
 
-          <t>To release one or more addresses, a client sends a Release
+          <t>To release one or more leases, a client sends a Release
           message to the server.</t>
 
           <t>The client sets the "msg-type" field to RELEASE. The client
@@ -3068,12 +3070,12 @@
           "transaction-id" field.</t>
 
           <t>The client places the identifier of the server that allocated the
-          address(es) in a Server Identifier option.</t>
+          lease(s) in a Server Identifier option.</t>
 
           <t>The client MUST include a Client Identifier option to identify
           itself to the server. The client includes options containing the IAs
-          for the addresses it is releasing in the "options" field. The
-          addresses to be released MUST be included in the IAs. Any addresses
+          for the leases it is releasing in the "options" field. The
+          leases to be released MUST be included in the IAs. Any leases
           for the IAs the client wishes to continue to use MUST NOT be added
           to the IAs.</t>
 
@@ -3103,17 +3105,17 @@
 
           </list></t>
 
-          <t>The client MUST stop using all of the addresses being released as
+          <t>The client MUST stop using all of the leases being released as
           soon as the client begins the Release message exchange process. If
-          addresses are released but the Reply from a DHCP server is lost, the
+          leases are released but the Reply from a DHCP server is lost, the
           client will retransmit the Release message, and the server may
           respond with a Reply indicating a status of NoBinding. Therefore,
           the client does not treat a Reply message with a status of NoBinding
           in a Release message exchange as if it indicates an error.</t>
 
-          <t>Note that if the client fails to release the addresses, each
-          address assigned to the IA will be reclaimed by the server when the
-          valid lifetime of that address expires.</t>
+          <t>Note that if the client fails to release the lease, each
+          lease assigned to the IA will be reclaimed by the server when the
+          valid lifetime of that lease expires.</t>
         </section>
 
         <!-- ends: "18.1.6 from line 2251-->
@@ -3125,6 +3127,9 @@
           a server are already in use by another node, the client sends a
           Decline message to the server to inform it that the address is
           suspect.</t>
+
+          <t>The Decline message is not used in prefix delegation and thus
+          the client MUST NOT include IA_PD options in the Decline message.</t>
 
           <t>The client sets the "msg-type" field to DECLINE. The client
           generates a transaction ID and places this value in the
@@ -3235,20 +3240,19 @@
          <list style="hanging">
          <t hangText="-"> Record T1 and T2 times.</t>
 
-         <t hangText="-"> Add any new addresses or delegated prefixes in
-         the IA option to the IA as recorded by the client.</t>
+         <t hangText="-"> Add any new leases in the IA option to the IA as
+         recorded by the client.</t>
 
-         <t hangText="-"> Update lifetimes for any addresses or delegated
-         prefixes in the IA option that the client already has recorded in
-         the IA.</t>
+         <t hangText="-"> Update lifetimes for any leases in the IA option
+         that the client already has recorded in the IA.</t>
 
-         <t hangText="-"> Discard any addresses or delegated prefixes from the
-         IA, as recorded by the client, that have a valid lifetime of 0 in the
-         IA Address or IA Prefix option.</t>
+         <t hangText="-"> Discard any leases from the IA, as recorded by the
+         client, that have a valid lifetime of 0 in the IA Address or
+         IA Prefix option.</t>
 
-         <t hangText="-"> Leave unchanged any information about addresses or
-         delegated prefixes the client has recorded in the IA but that were not
-         included in the IA from the server.</t>
+         <t hangText="-"> Leave unchanged any information about leases the
+         client has recorded in the IA but that were not included in the IA
+         from the server.</t>
 
          </list></t>
 
@@ -3257,7 +3261,7 @@
 
          <t>The client examines the status code in each IA individually. If the
          client receives a NoAddrsAvail or NoPrefixAvail status code, the client
-         has received no usable addresses or prefxies in the IA.</t>
+         has received no usable addresses and delegated prefxies in the IA.</t>
 
          <t>If the client can operate with the addresses and prefixes obtained
          from the server, the client uses the addresses, delegated prefixes, and
@@ -3282,9 +3286,8 @@
          or selects an alternate server, as described in
          <xref target="RFC3315-17.1.3"/>, the client SHOULD stop using
          all the addresses and delegated prefixes for which it has the bindings
-         and try to obtain all required addresses and prefixes from the new
-         server. This facilitates the client using a single state machine
-         for all bindings.</t>
+         and try to obtain all required leases from the new server. This
+         facilitates the client using a single state machine for all bindings.</t>
 
          <t>When the client receives a Reply message in response to a Renew or
          Rebind message, the client:
@@ -3306,6 +3309,11 @@
 
          </list></t>
 
+         <t>When the requesting router receives a valid Reply message, for
+         each IA_PD the delegating router assigns a subnet from each of the
+         delegated prefixes to each of the links to which the associated
+         interfaces are attached.</t>
+
          <t>When the client receives a valid Reply message in response to a
          Release message, the client considers the Release event completed,
          regardless of the Status Code option(s) returned by the server.</t>
@@ -3316,6 +3324,31 @@
         </section>
 
         <!-- ends: "18.1.8 from line 2345-->
+
+        <section anchor='pd-bindings-verification'
+                 title="Bindings Verification by Requesting Router">
+	      <t>In some circumstances the requesting router may need
+	      verification that the delegating router still has a valid
+	      binding for the requesting router. Examples of times when a
+	      requesting router may ask for such verification include:</t>
+
+	      <t><list style="symbols">
+	        <t>The requesting router reboots.</t>
+	        <t>The requesting router's upstream link flaps.</t>
+	        <t>The requesting router is physically disconnected from a
+	        wired connection.</t>
+	      </list></t>
+
+          <t>If such verification is needed the requesting router MUST
+          initiate a Rebind/Reply message exchange as described in
+          <xref target="RFC3315-18.1.4"/>, with the exception
+          that the retransmission parameters should be set as for the
+          Confirm message, described in <xref target="RFC3315-18.1.2"/>.
+          The requesting router includes any IA_PDs, along with
+          prefixes associated with those IA_PDs in its Rebind
+          message.</t>
+        </section>
+
       </section>
 
       <!-- ends: "18.1 from line 1953-->
@@ -3367,25 +3400,33 @@
           server's DUID and the Client Identifier option from the Request
           message in the Reply message.</t>
 
-          <t>If the server finds that the prefix on one or more IP addresses
-          in any IA in the message from the client is not appropriate for the
-          link to which the client is connected, the server MUST return the IA
-          to the client with a Status Code option with the value
-          NotOnLink.</t>
+          <t>The server examines all IAs in the message from the client.</t>
 
-          <t>If the server cannot assign any addresses to an IA in the message
-          from the client, the server MUST include the IA in the Reply message
-          with no addresses in the IA and a Status Code option in the IA
-          containing status code NoAddrsAvail.</t>
+          <t>For each IA_NA and IA_TA the server checks if the prefixes on
+          included IP addresses are appropriate for the link to which the
+          client is connected. If any of the prefixes on the included IP
+          addresses is not appropriate for the link to which the client is
+          connected, the server MUST return the IA to the client with a Status Code
+          option with the value NotOnLink. If the server does not send the
+          NotOnLink status code but it cannot assign any IP addresses to an IA,
+          the server MUST return the IA in the Reply message with no addresses
+          in the IA and a Status Code option containing status code NoAddrsAvail.</t>
 
-          <t>The server MAY assign different addresses to an IA than included
-          in the IA within the Request message sent by the client.</t>
+          <t>For any IA_PD to which the server cannot assign any delegated
+          prefixes, the server MUST return the IA_PD option in the Reply
+          message with the Status Code option containing status code NoPrefixAvail.</t>
 
-          <t>For any IAs to which the server
-          can assign addresses, the server includes the IA with addresses and
-          other configuration parameters, and records the IA as a new client
-          binding. The server MUST NOT include any addresses in the IA which
-          the server does not assign to the client.</t>
+          <t>The server MAY assign different addresses and/or delegated prefixes
+          to an IA than included in the IA within the Request message sent by the
+          client.</t>
+
+
+          <t>For all IAs to which the server
+          can assign addresses or delegated prefixes, the server includes the IAs
+          with addresses (for IA_NA and IA_TA), prefixes (for IA_PD) and other
+          configuration parameters, and records the IA as a new client
+          binding. The server MUST NOT include any addresses or delegated prefixes
+          in the IA which the server does not assign to the client.</t>
 
           <t>The server includes a Reconfigure Accept option if the server
           wants to require that the client accept Reconfigure messages.</t>
@@ -3416,7 +3457,7 @@
           this test (for example, the server does not have information about
           prefixes on the link to which the client is connected), or there
           were no addresses in any of the IAs sent by the client, the server
-          MUST NOT send a reply to the client.</t>
+          MUST NOT send a Reply to the client.</t>
 
           <t>The server ignores the T1 and T2 fields in the IA options and the
           preferred-lifetime and valid-lifetime fields in the IA Address
@@ -3465,7 +3506,7 @@
          
          <t>If the server finds that any of the delegated prefixes in the IA are not
          appropriate for the link to which the client is attached, the server
-         returns the delegated prefixes to the client with lifetimes of 0.</t>         
+         returns the delegated prefix to the client with lifetimes of 0.</t>         
 
          <t>For each IA for which the server cannot find a client entry, the server
          has the following choices depending on the server's policy and
@@ -3476,13 +3517,17 @@
            as a result of processing Renew messages, the server SHOULD create
            a binding and return the IA with assigned addresses or delegated prefixes with lifetimes
            and, if applicable, T1/T2 times and other information requested by
-           the client. The server MUST NOT return any addresses or delegated
-           prefixes in the IA which the server does not assign to the client.
+           the client. If the client included the IA Prefix option within the
+           IA_PD option with the non-zero value in the "prefix-length" field,
+           the server MAY use this value as a hint for the length of the prefixes
+           to be assigned (see
+           <xref target="I-D.cui-dhc-dhcpv6-prefix-length-hint-issue"/> for
+           further details on prefix length hints).
            </t>
 
            <t hangText="-">If the server is configured to create new bindings
            as a result of processing Renew messages, but the server will not
-           assign any addresses or delegate a prefix to an IA, the server returns the IA option
+           assign any leases to an IA, the server returns the IA option
            containing a Status Code option with the NoAddrsAvail or NoPrefixAvail status code
            and a status message for a user.</t>
 
@@ -3524,29 +3569,36 @@
          information stored for that client.</t>
 
          <t>If the server finds the client entry for the IA and the
-         server determines that the addresses in the IA are appropriate for
-         the link to which the client's interface is attached according to
-         the server's explicit configuration information, the server SHOULD
-         send back the IA to the client with new lifetimes and, if
-         applicable, T1/T2 times. If the server is unable to extend the
+         server determines that the addresses and delegated prefixes in the
+         IA are appropriate for the link to which the client's interface is
+         attached according to the server's explicit configuration information,
+         the server SHOULD send back the IA to the client with new lifetimes and,
+         if applicable, T1/T2 times. If the server is unable to extend the
          lifetimes of an address in the IA, the server MAY choose not to
-         include the IA Address option for this address.</t>
+         include the IA Address option for this address. If the server is unable
+         to extend the lifetimes of a delegated prefix in the IA, the server MAY
+         choose not to include the IA Prefix option for this prefix.</t>
 
          <t>If the server finds that the client entry for the IA and any of the
-         addresses are no longer appropriate for the link to which the
-         client's interface is attached according to the server's explicit
-         configuration information, the server returns the address to the
-         client with lifetimes of 0.</t>
+         addresses or delegated prefixes are no longer appropriate for the link
+         to which the client's interface is attached according to the server's
+         explicit configuration information, the server returns the address or
+         delegated prefix to the client with lifetimes of 0.</t>
 
-         <t>If the server cannot find a client entry for the IA, the IA contains
-         addresses and the server determines that the addresses in the IA are
-         not appropriate for the link to which the client's interface is attached
-         according to the server's explicit configuration information, the server
-         MAY send a Reply message to the client containing the client's IA, with
-         the lifetimes for the addresses in the IA set to 0. This Reply constitutes
-         an explicit notification to the client that the addresses in the IA are
-         no longer valid. In this situation, if the server does not send a
-         Reply message, it silently discards the Rebind message.</t>
+         <t>If the server cannot find a client entry for the IA, the server checks
+         if the IA contains addresses (for IA_NA and IA_TA) or delegated prefixes
+         (for IA_PD). The server checks if the addresses and delegated prefixes
+         are appropriate for the link to which the client's interface is attached
+         according to the server's explicit configuration information. For any
+         address which is not appropriate for the link to which the client's
+         interface is attached, the server MAY include the IA Address option with
+         the lifetimes of 0. For any delegated prefix which is not appropriate for
+         the link to which the client's interface is attached, the server MAY
+         include the IA Prefix option with the lifetimes of 0. The Reply with
+         lifetimes of 0 constitutes an explicit notification to the client that
+         the specific addresses and delegated prefixes are no longer valid and
+         MUST not be used by the client. In this situation, if the server does
+         not send a Reply message, it silently discards the Rebind message.</t>
 
          <t>Otherwise, for each IA for which the server cannot find a client entry,
          the server has the following choices depending on the server's policy and
@@ -3556,14 +3608,14 @@
            <t hangText="-">If the server is configured to create new bindings
            as a result of processing Rebind messages (also see the note about
            the Rapid Commit option below), the server SHOULD create a binding and
-           return the IA with assigned addresses or delegated prefixes with lifetimes and, if applicable,
+           return the IA with allocated leases with lifetimes and, if applicable,
            T1/T2 times and other information requested by the client. The
            server MUST NOT return any addresses or delegated prefixes in
            the IA which the server does not assign to the client.</t>
 
            <t hangText="-">If the server is configured to create new bindings
            as a result of processing Rebind messages, but the server will not
-           assign any addresses or delegate prefixes to an IA, the server returns the IA option
+           assign any leases to an IA, the server returns the IA option
            containing a Status Code option with the NoAddrsAvail or NoPrefixAvail status code
            and a status message for a user.</t>
 
@@ -3609,7 +3661,7 @@
 
           <t>When the server receives an Information-request message, the
           client is requesting configuration information that does not include
-          the assignment of any addresses. The server determines all
+          the assignment of any leases. The server determines all
           configuration parameters appropriate to the client, based on the
           server configuration policies known to the server.</t>
 
@@ -3648,14 +3700,14 @@
           Identifier option from the client message, and no other options.</t>
 
           <t>Upon the receipt of a valid Release message, the server examines
-          the IAs and the addresses in the IAs for validity. If the IAs in the
-          message are in a binding for the client, and the addresses in the
+          the IAs and the leases in the IAs for validity. If the IAs in the
+          message are in a binding for the client, and the leases in the
           IAs have been assigned by the server to those IAs, the server
-          deletes the addresses from the IAs and makes the addresses available
-          for assignment to other clients. The server ignores addresses not
+          deletes the leases from the IAs and makes the leases available
+          for assignment to other clients. The server ignores leases not
           assigned to the IA, although it may choose to log an error.</t>
 
-          <t>After all the addresses have been processed, the server generates
+          <t>After all the leases have been processed, the server generates
           a Reply message and includes a Status Code option with value
           Success, a Server Identifier option with the server's DUID, and a
           Client Identifier option with the client's DUID. For each IA in the
@@ -3664,9 +3716,9 @@
           and includes a Status Code option with the value NoBinding in the IA
           option. No other options are included in the IA option.</t>
 
-          <t>A server may choose to retain a record of assigned addresses and
-          IAs after the lifetimes on the addresses have expired to allow the
-          server to reassign the previously assigned addresses to a
+          <t>A server may choose to retain a record of assigned leases and
+          IAs after the lifetimes on the leases have expired to allow the
+          server to reassign the previously assigned leases to a
           client.</t>
         </section>
 
@@ -3735,175 +3787,6 @@
       </section>
 
       <!-- ends: "18.2 -->
-
-      <section anchor='pd-client-initiated-client'
-               title="Requesting Router Behavior for Prefix Delegation">
-	    <t>The requesting router uses a Request message to populate
-        IA_PDs with prefixes. The requesting router includes one or
-        more IA_PD options in the Request message. The delegating
-        router then returns the prefixes for the IA_PDs to the
-        requesting router in IA_PD options in a Reply message.</t>
-
-	    <t>The requesting router includes IA_PD options in any Renew,
-        or Rebind messages sent by the requesting router. The IA_PD
-        option includes all of the prefixes the requesting router
-        currently has associated with that IA_PD.</t>
-
-	    <t>In some circumstances the requesting router may need
-	    verification that the delegating router still has a valid
-	    binding for the requesting router. Examples of times when a
-	    requesting router may ask for such verification include:</t>
-
-	    <t><list style="symbols">
-	      <t>The requesting router reboots.</t>
-	      <t>The requesting router's upstream link flaps.</t>
-	      <t>The requesting router is physically disconnected from a
-	      wired connection.</t>
-	    </list></t>
-
-        <t>If such verification is needed the requesting router MUST
-        initiate a Rebind/Reply message exchange as described in
-        <xref target="RFC3315-18.1.4"/>, with the exception
-        that the retransmission parameters should be set as for the
-        Confirm message, described in <xref target="RFC3315-18.1.2"/>.
-        The requesting router includes any IA_PDs, along with
-        prefixes associated with those IA_PDs in its Rebind
-        message.</t>
-
-  	    <t>Each prefix has valid and preferred lifetimes whose
-	    durations are specified in the IA_PD Prefix option for that
-	    prefix. The requesting router uses Renew and Rebind messages
-	    to request the extension of the lifetimes of a delegated
-	    prefix.</t>
-
-        <t>The requesting router MAY include IA_PD options without any
-        prefixes, i.e., without an IA Prefix option or with the IPv6
-        prefix field of the IA Prefix option set to 0, in a Renew or
-        Rebind message to obtain bindings it desires but has been
-        unable to obtain. The requesting router MAY set the
-        "prefix-length" field of the IA Prefix option as a hint to the
-        server.</t>
-
-  	    <t>The requesting router uses a Release message to return a
-	    delegated prefix to a delegating router. The prefixes to be
-	    released MUST be included in the IA_PDs.</t>
-
-	    <t>The Confirm and Decline message types are not used with
-	    Prefix Delegation.</t>
-
-	    <t>Upon the receipt of a valid Reply message, for each IA_PD
-	    the requesting router assigns a subnet from each of the
-	    delegated prefixes to each of the links to which the
-	    associated interfaces are attached.</t>
-
-        <t>When the Delegating Router delegates prefixes to a Requesting
-        Router, the Requesting Router has sole authority for assignment
-        of those prefixes, and the Delegating Router MUST NOT assign any
-        prefixes from that delegated prefix to any of its own links.</t>
-
-	    <t>When a requesting router subnets a delegated prefix, it
-        must assign additional bits to the prefix to generate unique,
-        longer prefixes.  For example, if the requesting router in
-        Figure 1 were delegated 3FFE:FFFF:0::/48, it might generate
-        3FFE:FFFF:0:1::/64 and 3FFE:FFFF:0:2::/64 for assignment to
-        the two links in the subscriber network.  If the requesting
-        router were delegated 3FFE:FFFF:0::/48 and 3FFE:FFFF:5::/48,
-        it might assign 3FFE:FFFF:0:1::/64 and 3FFE:FFFF:5:1::/64 to
-        one of the links, and 3FFE:FFFF:0:2::/64 and
-        3FFE:FFFF:5:2::/64 for assignment to the other link.</t>
-
-	    <t>If the requesting router assigns a delegated prefix to a
-	    link to which the router is attached, and begins to send
-	    router advertisements for the prefix on the link, the
-	    requesting router MUST set the valid lifetime in those
-	    advertisements to be no later than the valid lifetime
-	    specified in the IA_PD Prefix option. A requesting router MAY
-	    use the preferred lifetime specified in the IA_PD Prefix
-	    option.</t>
-
-	    <t>Handling of Status Codes options in received Reply messages
-	    is described in <xref target="RFC3315-18.1.8"/>. The
-	    NoPrefixAvail Status Code is handled in the same manner as the
-	    NoAddrsAvail Status Code.</t>
-      </section>
-
-      <section anchor='pd-client-initated-server'
-               title="Delegating Router Behavior for Prefix Delegation">
-	    <t>When a delegating router receives a Request message from a
-	    requesting router that contains an IA_PD option, and the
-	    delegating router is authorized to delegate prefix(es) to the
-	    requesting router, the delegating router selects the
-	    prefix(es) to be delegated to the requesting router.
-
-        The mechanism through which the delegating router selects
-	    prefix(es) for delegation is not specified in this
-	    document. <xref target="pd-solicit-server"
-	    pageno="false"/> gives examples of ways in which a delegating
-	    router might select the prefix(es) to be delegated to a
-	    requesting router.</t>
-
-	    <t>A delegating router examines the prefix(es) identified in
-	    IA_PD Prefix options (in an IA_PD option) in Renew and Rebind
-	    messages and responds according to the current status of the
-	    prefix(es). The delegating router returns IA_PD Prefix options
-	    (within an IA_PD option) with updated lifetimes for each valid
-	    prefix in the message from the requesting router. If the
-	    delegating router finds that any of the prefixes are not in
-	    the requesting router's binding entry, the delegating router
-	    returns the prefix to the requesting router with lifetimes of
-	    0.</t>
-
-        <t>For the Renew or Rebind, if the IA_PD contains no IA Prefix option
-        or it contains an IA Prefix option with the IPv6 prefix field
-        set to 0, the delegating router SHOULD assign prefixes to the IA_PD
-        according to the delegating router's explicit configuration information.
-        In this case, if the IA_PD contains an IA Prefix option with the IPv6
-        prefix field set to 0, the delegating router MAY use the value in the
-        "prefix-length" field of the IA Prefix option as a hint for the length
-        of the prefixes to be assigned (see
-        <xref target="I-D.cui-dhc-dhcpv6-prefix-length-hint-issue"/> for
-        further details on prefix length hints).</t>
-
-        <t>The requesting router SHOULD NOT send IA Prefix option with
-        the zero-value IPv6 prefix field unless it is supplying a hint for
-        the prefix length.</t>
-
-        <t>The delegating router behaves as follows when it cannot find
-        a binding for the requesting router's IA_PD containing prefixes:
-        </t>
-
-	    <t><list style="hanging" hangIndent='20'>
-	      <t hangText="Renew message:">If the delegating router cannot
-	      find a binding for the requesting router's IA_PD the
-	      delegating router returns the IA_PD containing no prefixes
-	      with a Status Code option set to NoBinding in the Reply
-	      message.</t>
-
-	      <t hangText="Rebind message:">If the delegating router cannot
-	      find a binding for the requesting router's IA_PD and the
-	      delegating router determines that the prefixes in the IA_PD
-	      are not appropriate for the link to which the requesting
-	      router's interface is attached according to the delegating
-	      routers explicit configuration, the delegating router MAY
-	      send a Reply message to the requesting router containing the
-	      IA_PD with the lifetimes of the prefixes in the IA_PD set to
-	      zero. This Reply constitutes an explicit notification to the
-	      requesting router that the prefixes in the IA_PD are no
-	      longer valid. If the delegating router is unable to
-	      determine if the prefix is not appropriate for the link, the
-	      Rebind message is discarded.</t>
-	    </list>
-        </t>
-
-	    <t>A delegating router may mark any prefix(es) in IA_PD Prefix
-	    options in a Release message from a requesting router as
-	    "available", dependent on the mechanism used to acquire the
-	    prefix, e.g., in the case of a dynamic pool.</t>
-
-	    <t>The delegating router MUST include an IA_PD Prefix option
-	    or options (in an IA_PD option) in Reply messages sent to a
-	    requesting router.</t>
-      </section>
 
     </section>
 
