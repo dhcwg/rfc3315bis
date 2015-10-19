@@ -307,10 +307,9 @@
 
     <section title="Requirements">
       <!-- 2, line 343-->
-
-      <t>The keywords MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD,
-      SHOULD NOT, RECOMMENDED, MAY, and OPTIONAL, when they appear in this
-      document, are to be interpreted as described in <xref
+      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+        "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in
+        this document are to be interpreted as described in <xref
       target="RFC2119"/>.</t>
 
       <t>This document also makes use of internal conceptual variables to
@@ -3588,7 +3587,7 @@
          include the IA Prefix option with the lifetimes of 0. The Reply with
          lifetimes of 0 constitutes an explicit notification to the client that
          the specific addresses and delegated prefixes are no longer valid and
-         MUST not be used by the client. In this situation, if the server does
+         MUST NOT be used by the client. In this situation, if the server does
          not send a Reply message, it silently discards the Rebind message.</t>
 
          <t>Otherwise, for each IA for which the server cannot find a client entry,
@@ -6543,8 +6542,6 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
       <!--  Johnson, D. and S. Deering, "Reserved IPv6 Subnet Anycast Addresses", RFC 2526, March 1999. -->
 
-      <?rfc include='reference.RFC.2461'?>    
-
       <?rfc include='reference.RFC.7227'?>
 
       <?rfc include='reference.RFC.6221'?>
@@ -6571,6 +6568,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       </reference>
 
     <!--Krawczyk, H., Bellare, M. and R. Canetti, "HMAC: Keyed-Hashingfor Message Authentication", RFC 2104, February 1997. -->
+
+    <?rfc include='reference.RFC.2461'?>
 
     <?rfc include='reference.RFC.3769'?>
     
