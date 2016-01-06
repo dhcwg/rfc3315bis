@@ -6250,8 +6250,12 @@
 
     <!-- ends: "22 from line 3547-->
 
-    <section title="Security Considerations">
+    <section anchor="security" title="Security Considerations">
       <!-- 23, line 4492-->
+
+      <t>This section discusses security considerations that are not
+      related to privacy. For dedicated privacy discussion, see
+      <xref target="privacy"/>.</t>
 
       <t>The threat to DHCP is inherently an insider threat (assuming a
       properly configured network where DHCPv6 ports are blocked on the
@@ -6373,6 +6377,50 @@
 
     <!-- ends: "23 from line 4492-->
 
+    <section anchor="privacy" title="Privacy Considerations">
+
+      <t>The following sections focuses on the server considerations.  For
+      extended discussion about privacy considerations for the client, see <xref
+      target="I-D.ietf-dhc-dhcpv6-privacy"/>. It particular, Section 3 of said
+      document discuss various identifiers that could be misused to track the
+      client. Section 4 discusses existing mechanisms that may have an impact on
+      client's privacy. Finally, Section 5 discusses potential attack
+      vectors. For recommendations how to address or mitigate those issues, see
+      <xref target="I-D.ietf-dhc-anonymity-profile"/>.</t>
+
+      <t>This specification does not define any allocation strategies.
+      Implementors are expected to develop their own algorithm for the server to
+      choose a resource out of the available pool. Several possible allocation
+      strategies are mentioned in Section 4.3 of <xref
+      target="I-D.ietf-dhc-dhcpv6-privacy"/>. Please keep in mind that this list
+      is not exhaustive and there are certainly possible other strategies. Here
+      are some observations for the implementor to consider.</t>
+
+      <t>Assigning addresses using some kind of sequential
+      algorithm (prefix::1, prefix::2, prefix::3,...) is fast, but greatly
+      facilitate scanning of the network. Also, it makes any attacks that
+      require guessing the next address much easier to conduct.</t>
+
+      <t>Deriving the IID (Interface Identifier) par of the
+      addresses from the link layer address of the client exposes information
+      about the client hardware and enables tracking the client across
+      multiple subnets. Also, since the address will likely be used to access
+      remote services, this tracking can be conducted remotely.</t>
+
+      <!-- Christian's suggestion was also to include the following text:
+
+      Using memory-less random allocation schemes fails to maintain enough
+      stability for many applications; The algorithm presented in [RFC7217]
+      provides a solution to this problem for nodes using IPv6 Stateless
+      Address Autoconfiguration. Similar algorithms could be used by DHCPv6
+      servers to avoid the aforementioned issues.
+
+      I (tomek) chose not to do this, because DHC had a similar proposal, and
+      after a long deliberation, decided to drop it. This mail summarises the issues:
+      https://mailarchive.ietf.org/arch/msg/dhcwg/iQKRFN2iRx4zqkyijBub9X-4Byg -->
+
+    </section>
+
     <section title="IANA Considerations">
       <!-- 24, line 4595-->
 
@@ -6429,8 +6477,9 @@
       order): Ole Troan, Robert Marks, Leaf Yeh, Tim Winters, Michelle
       Cotton, Pablo Armando, John Brzozowski, Suresh Krishnan,
       Hideshi Enokihara, Alexandru Petrescu, Yukiyo Akisada, Tatuya
-      Jinmei, Fred Templin. With special thanks to Ralph Droms for answering
-      many questions related to the original RFC 3315 work.</t>
+      Jinmei, Fred Templin and Christian Huitema. With special thanks to
+      Ralph Droms for answering many questions related to the original RFC
+      3315 work.</t>
 
       <t>The following acknowledgements are from the original RFC 3315 and RFC 3633:</t>
 
@@ -6597,6 +6646,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
     
     <?rfc include='reference.I-D.cui-dhc-dhcpv6-prefix-length-hint-issue'?>
 
+    <?rfc include='reference.I-D.ietf-dhc-dhcpv6-privacy'?>
+
+    <?rfc include='reference.I-D.ietf-dhc-anonymity-profile'?>
+    
     </references>
     
     <!-- Let's briefly document relevant changes against 3315 here -->
@@ -6900,6 +6953,5 @@ Reconf. Accept *
 
         </section>
 
-  </back>
-</rfc>
-<!-- generated from file samples/rfc3315.nroff with nroff2xml 0.0.2 by Tomek Mrugalski -->
+  </back> </rfc> <!-- generated from file samples/rfc3315.nroff with nroff2xml
+  0.0.2 by Tomek Mrugalski -->
