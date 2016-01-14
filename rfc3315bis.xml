@@ -1823,7 +1823,7 @@
 
       <t>Note that the procedure described in this section is slightly
       modified when used with the Solicit message. The modified procedure is
-      described in <xref target='RFC3315-17.1.2'/>.</t>
+      described in <xref target='solicit-create-transmit'/>.</t>
 
       <t>The client begins the message exchange by transmitting a message to
       the server. The message exchange terminates when either the client
@@ -2282,218 +2282,15 @@
     <section anchor='RFC3315-17' title="DHCP Server Solicitation">
       <!-- 17, line 1625-->
 
-      <t>This section describes how a client locates servers that will assign
-      addresses and delegated prefixes to IAs belonging to the client.</t>
-
-      <t>The client is responsible for creating IAs and requesting that a
-      server assign IPv6 addresses and/or delegated prefixes to the IAs. The client
-      first creates the IAs and assigns IAIDs to them. The client then transmits
-      a Solicit message containing the IA options describing the IAs. The client
-      MUST NOT be using any of the addresses or delegated prefixes for which
-      it tries to obtain the bindings by sending the Solicit message. In particular,
-      if the client had some valid bindings and has chosen to start the
-      server solicitation process to obtain the bindings from a different
-      server, the client MUST stop using the addresses and delegated prefixes
-      for the bindings it had obtained from the previous server, and which
-      it is now trying to obtain from a new server.</t>
-
-      <t>Servers
-      that can assign addresses or delegated prefixes to the IAs respond to
-      the client with an Advertise message. The client then initiates a
-      configuration exchange as described in <xref target='RFC3315-18'/>.</t>
-
-      <t>If the client will accept a Reply message with committed leases
-      assignments and other resources in response to the Solicit message, the
-      client includes a Rapid Commit option (see <xref target='RFC3315-22.14'/>) in the Solicit
-      message.</t>
-
       <section title="Client Behavior">
         <!-- 17.1, line 1644-->
 
-        <t>A client uses the Solicit message to discover DHCP servers
-        configured to assign leases or return other configuration
-        parameters on the link to which the client is attached.</t>
 
-        <section anchor='RFC3315-17.1.1' title="Creation of Solicit Messages">
-          <!-- 17.1.1, line 1651-->
+        <!-- Creation of Solicit Messages moved from here -->
 
-          <t>The client sets the "msg-type" field to SOLICIT. The client
-          generates a transaction ID and inserts this value in the
-          "transaction-id" field.</t>
 
-          <t>The client MUST include a Client Identifier option to identify
-          itself to the server. The client includes IA options for any IAs to
-          which it wants the server to assign leases.</t>
+        <!-- Receipt of Advertise Messages moved from here -->
 
-          <t>The client MAY include addresses in the IA_NA and IA_TA options
-          as hints to the server about the addresses for which the client has
-          a preference.</t>
-
-          <t>The client MAY include values in the IA Prefix option encapsulated
-          within IA_PD option as hints for the delegated prefix and/or prefix
-          length for which the client has a preference.</t>
-
-          <t>The client MUST NOT include
-          any other options in the Solicit message, except as specifically
-          allowed in the definition of individual options.</t>
-
-          <t>The client uses IA_NA options to request the assignment of
-          non-temporary addresses, IA_TA options to request the
-          assignment of temporary addresses and IA_PD options to request
-          prefix delegation. Either IA_NA, IA_TA or IA_PD options, or
-          a combination of all, can be included in DHCP messages. In addition,
-          multiple instances of any IA option type can be included.</t>
-
-          <t>The client MUST include an Option Request option (see
-          <xref target='RFC3315-22.7'/>) to request the SOL_MAX_RT option
-          (see <xref target='SOL_MAX_RT_option'/>) and any
-          other options the client is interested in receiving.
-          The client MAY additionally include instances of those options that
-          are identified in the Option Request option, with data values as
-          hints to the server about parameter values the client would like to
-          have returned.</t>
-
-          <t>The client includes a Reconfigure Accept option (see
-          <xref target='RFC3315-22.20'/>) if the client is willing to accept
-          Reconfigure messages from the server.</t>
-        </section>
-
-        <!-- ends: "17.1.1 from line 1651-->
-
-        <section anchor='RFC3315-17.1.2' title="Transmission of Solicit Messages">
-          <!-- 17.1.2, line 1682-->
-
-          <t>The first Solicit message from the client on the interface MUST
-          be delayed by a random amount of time between 0 and SOL_MAX_DELAY.
-          In the case of a Solicit message transmitted when DHCP is initiated
-          by IPv6 Neighbor Discovery, the delay gives the amount of time to
-          wait after IPv6 Neighbor Discovery causes the client to invoke the
-          stateful address autoconfiguration protocol (see section 5.5.3 of
-          <xref target="RFC4862"/>). This random delay desynchronizes clients which start at
-          the same time (for example, after a power outage).</t>
-
-          <t>The client transmits the message according to <xref target='RFC3315-14'/>, using
-          the following parameters:
-
-          <list hangIndent="11" style="hanging">
-
-          <t hangText="   IRT"> SOL_TIMEOUT</t>
-
-          <t hangText="   MRT"> SOL_MAX_RT</t>
-
-          <t hangText="   MRC"> 0</t>
-
-          <t hangText="   MRD"> 0</t>
-
-          </list></t>
-
-          <t>If the client has included a Rapid Commit option in its Solicit
-          message, the client terminates the waiting process as soon as a
-          Reply message with a Rapid Commit option is received.</t>
-
-          <t>If the client is waiting for an Advertise message, the mechanism
-          in <xref target='RFC3315-14'/> is modified as follows for use in the transmission of
-          Solicit messages. The message exchange is not terminated by the
-          receipt of an Advertise before the first RT has elapsed. Rather, the
-          client collects Advertise messages until the first RT has elapsed.
-          Also, the first RT MUST be selected to be strictly greater than IRT
-          by choosing RAND to be strictly greater than 0.</t>
-
-          <t>A client MUST collect Advertise messages for the first RT
-          seconds, unless it receives an Advertise message with a preference
-          value of 255. The preference value is carried in the Preference
-          option (<xref target='RFC3315-22.8'/>). Any Advertise that does not include a
-          Preference option is considered to have a preference value of 0. If
-          the client receives an Advertise message that includes a Preference
-          option with a preference value of 255, the client immediately begins
-          a client-initiated message exchange (as described in <xref target='RFC3315-18'/>) by
-          sending a Request message to the server from which the Advertise
-          message was received. If the client receives an Advertise message
-          that does not include a Preference option with a preference value of
-          255, the client continues to wait until the first RT elapses. If the
-          first RT elapses and the client has received an Advertise message,
-          the client SHOULD continue with a client-initiated message exchange
-          by sending a Request message.</t>
-
-          <t>If the client does not receive any Advertise messages before the
-          first RT has elapsed, it begins the retransmission mechanism
-          described in <xref target='RFC3315-14'/>. The client terminates the retransmission
-          process as soon as it receives any Advertise message, and the client
-          acts on the received Advertise message without waiting for any
-          additional Advertise messages.</t>
-
-          <t>A DHCP client SHOULD choose MRC and MRD to be 0. If the DHCP
-          client is configured with either MRC or MRD set to a value other
-          than 0, it MUST stop trying to configure the interface if the
-          message exchange fails. After the DHCP client stops trying to
-          configure the interface, it SHOULD restart the reconfiguration
-          process after some external event, such as user input, system
-          restart, or when the client is attached to a new link.</t>
-        </section>
-
-        <!-- ends: "17.1.2 from line 1682-->
-
-        <section  anchor='RFC3315-17.1.3' title="Receipt of Advertise Messages">
-          <!-- 17.1.3, line 1750-->
-
-          <!-- The new paragraph to introduce the requirement stated in first
-               paragraph of section 6. of RFC7083. -->
-          <t>The client MUST process SOL_MAX_RT and INF_MAX_RT options in an
-          Advertise message, even if the message contains a Status Code
-          option indicating a failure, and the Advertise message will be
-          discarded by the client.</t>
-
-          <!-- Change from RFC 7550 section 4.1/4.2 has been applied. 6/1/2015 -->
-          <t>The client MUST ignore any Advertise message that contains no
-          addresses (IAADDR options encapsulated in IA_NA or IA_TA options)
-          and no delegated prefixes (IAPREFIX options encapsulated in IA_PD
-          options) with the exception that the client:
-
-          <list hangIndent="3" style="hanging">
-          <t hangText="-"> MUST process an included SOL_MAX_RT option and</t>
-          <t hangText="-"> MUST process an included INF_MAX_RT option.</t>
-          </list></t>
-
-          <t>A client can display any associated status message(s) to the user
-          or activity log.</t>
-
-          <t>The client ignoring this Advertise message MUST NOT restart the
-          Solicit retransmission timer.</t>
-
-          <t>Upon receipt of one or more valid Advertise messages, the client
-          selects one or more Advertise messages based upon the following
-          criteria.
-
-          <list hangIndent="3" style="hanging">
-
-          <t hangText="-"> Those Advertise messages with the highest server preference
-          value are preferred over all other Advertise messages.</t>
-
-          <t hangText="-"> Within a group of Advertise messages with the same server
-          preference value, a client MAY select those servers whose Advertise
-          messages advertise information of interest to the client.</t>
-
-          <t hangText="-"> The client MAY choose a less-preferred server if that
-          server has a better set of advertised parameters, such as the available
-          set of IAs, as well as the set of other configuration options
-          advertised.</t>
-
-          </list></t>
-
-          <t>Once a client has selected Advertise message(s), the client will
-          typically store information about each server, such as server
-          preference value, addresses advertised, when the advertisement was
-          received, and so on.</t>
-
-          <t>In practice, this means that the client will maintain
-          independent per-IA state machines per each selected server.</t>
-
-          <t>If the client needs to select an alternate server in the case
-          that a chosen server does not respond, the client chooses the next
-          server according to the criteria given above.</t>
-        </section>
-
-        <!-- ends: "17.1.3 from line 1750-->
 
         <section title="Receipt of Reply Message">
           <!-- 17.1.4, line 1790-->
@@ -2527,352 +2324,345 @@
         <!-- ends: "17.1.4 from line 1790-->
       </section>
 
-      <!-- ends: "17.1 from line 1644-->
-
-      <section title="Server Behavior">
-        <!-- 17.2, line 1816-->
-
-        <t>A server sends an Advertise message in response to valid Solicit
-        messages it receives to announce the availability of the server to the
-        client.</t>
-
-        <section title="Receipt of Solicit Messages">
-          <!-- 17.2.1, line 1823-->
-
-          <t>The server determines the information about the client and its
-          location as described in <xref target='RFC3315-11'/> and checks its administrative
-          policy about responding to the client. If the server is not
-          permitted to respond to the client, the server discards the Solicit
-          message. For example, if the administrative policy for the server is
-          that it may only respond to a client that is willing to accept a
-          Reconfigure message, if the client does not include a Reconfigure
-          Accept option (see <xref target='RFC3315-22.20'/>) in the
-          Solicit message, the servers discard the Solicit message.</t>
-
-          <t>If the client has included a Rapid Commit option in the Solicit
-          message and the server has been configured to respond with committed
-          lease assignments and other resources, the server responds to the
-          Solicit with a Reply message as described in <xref target='RFC3315-17.2.3'/>.
-          Otherwise, the server ignores the Rapid Commit option and
-          processes the remainder of the message as if no Rapid Commit
-          option were present.</t>
-
-        </section>
-
-        <!-- ends: "17.2.1 from line 1823-->
-
-        <section anchor="RFC3315-17.2.2" title="Creation and Transmission of Advertise Messages">
-          <!-- 17.2.2, line 1844-->
-
-          <t>The server sets the "msg-type" field to ADVERTISE and copies the
-          contents of the transaction-id field from the Solicit message
-          received from the client to the Advertise message. The server
-          includes its server identifier in a Server Identifier option and
-          copies the Client Identifier from the Solicit message into the
-          Advertise message.</t>
-
-          <t>The server MAY add a Preference option to carry
-          the preference value for the Advertise message. The server
-          implementation SHOULD allow the setting of a server preference value
-          by the administrator. The server preference value MUST default to
-          zero unless otherwise configured by the server administrator.</t>
-
-          <t>The server includes a Reconfigure Accept option if the server
-          wants to require that the client accept Reconfigure messages.</t>
-
-          <t>The server includes options the server will return to the client
-          in a subsequent Reply message. The information in these options may
-          be used by the client in the selection of a server if the client
-          receives more than one Advertise message. If the client has included
-          an Option Request option in the Solicit message, the server includes
-          options in the Advertise message containing configuration parameters
-          for all of the options identified in the Option Request option that
-          the server has been configured to return to the client. The server
-          MAY return additional options to the client if it has been
-          configured to do so. The server must be aware of the recommendations
-          on packet sizes and the use of fragmentation in section 5 of <xref target='RFC2460'/>.</t>
-
-          <t>If the Solicit message from the client included one or more IA
-          options, the server MUST include IA options in the Advertise message
-          containing any addresses and/or delegated prefixes that would be assigned
-          to IAs contained in the Solicit message from the client. If the client
-          has included addresses in the IA in the Solicit message, the server
-          MAY use those addresses as hints about the addresses that the client
-          would like to receive. If the client has included IA Prefix option
-          in the IA_PD, the server MAY use the prefix contained in the
-          IPv6 prefix field and/or the prefix length contained in the
-          "prefix-length" field as a hints about the prefixes the client
-          would like to receive. If the server is not going to assign an address
-          or delegated prefix received as a hint in the Solicit message, the
-          server MUST NOT include this address or delegated prefix in the
-          Advertise message</t>
-
-          <!-- This paragraph has been updated with the changes from section
-               6 of RFC7083 -->
-          <!-- Also, partially applied RFC3315 errata 2472, to include other IA
-               options if NoAddrsAvail status code is sent. Do not apply the part
-               of errata that mandates sending NoAddrsAvail encapsulated in IA -->
-          <!-- Change from RFC 7550 section 4.1 has been applied. 6/1/2015 -->
-          <t>If the server will not assign any addresses to an IA (IA_NA or
-          IA_IA) in subsequent Request from the client, the server MUST include
-          the IA in the Advertise message with no addresses in the IA and a
-          Status Code option encapsulated in the IA containing status code
-          NoAddrsAvail.</t>
-
-          <t>If the server will not assign any prefixes to an IA_PD in
-          subsequent Request from the client, the server MUST include the
-          IA_PD in the Advertise message with no prefixes in the IA and a
-          Status Code option encapsulated in the IA_PD containing status code
-          NoPrefixAvail.</t>
-
-          <t>If the Solicit message was received directly by the server, the
-          server unicasts the Advertise message directly to the client using
-          the address in the source address field from the IP datagram in
-          which the Solicit message was received. The Advertise message MUST
-          be unicast on the link from which the Solicit message was
-          received.</t>
-
-          <t>If the Solicit message was received in a Relay-forward message,
-          the server constructs a Relay-reply message with the Advertise
-          message in the payload of a "relay-message" option. If the
-          Relay-forward messages included an Interface-id option, the server
-          copies that option to the Relay-reply message. The server unicasts
-          the Relay-reply message directly to the relay agent using the
-          address in the source address field from the IP datagram in which
-          the Relay-forward message was received.</t>
-        </section>
-
-        <!-- ends: "17.2.2 from line 1844-->
-
-        <section anchor='RFC3315-17.2.3' title="Creation and Transmission of Reply Messages">
-          <!-- 17.2.3, line 1906-->
-
-          <t>The server MUST commit the assignment of any addresses or other
-          configuration information message before sending a Reply message to
-          a client in response to a Solicit message.</t>
-
-          <t>DISCUSSION:</t>
-
-          <t><list style="empty">
-            <t>When using the Solicit-Reply message exchange, the server commits
-            the assignment of any leases before sending the Reply message.
-            The client can assume it has been assigned the leases in the
-            Reply message and does not need to send a Request message for those
-            addresses.</t>
-
-            <t>Typically, servers that are configured to use the Solicit-Reply
-            message exchange will be deployed so that only one server will
-            respond to a Solicit message. If more than one server responds, the
-            client will only use the leases from one of the servers, while
-            the leases from the other servers will be committed to the client
-            but not used by the client.</t>
-          </list></t>
-
-          <t>The server includes a Rapid Commit option in the Reply message to
-          indicate that the Reply is in response to a Solicit message.</t>
-
-          <t>The server includes a Reconfigure Accept option if the server
-          wants to require that the client accept Reconfigure messages.</t>
-
-          <t>The server produces the Reply message as though it had received a
-          Request message, as described in <xref target='RFC3315-18.2.1'/>. The server
-          transmits the Reply message as described in <xref target='RFC3315-18.2.8'/>.</t>
-        </section>
-
-        <!-- ends: "17.2.3 from line 1906-->
-      </section>
-
-      <!-- ends: "17.2 from line 1816-->
     </section>
 
     <!-- ends: "17 from line 1625-->
 
-    <section anchor='RFC3315-18' title="DHCP Client-Initiated Configuration Exchange">
-      <!-- 18, line 1942-->
+    <section anchor='configuration-exchange' title="DHCP Configuration Exchanges">
 
-      <t>A client initiates a message exchange with a server or servers to
-      acquire or update configuration information of interest. The client may
-      initiate the configuration exchange as part of the operating system
-      configuration process, when requested to do so by the application layer,
-      when required by Stateless Address Autoconfiguration or as required to
-      extend the lifetime of address(es) and/or delegated prefix(es), using
-      Renew and Rebind messages.</t>
+      <section anchor='RFC3315-18' title="DHCP Client-Initiated Configuration Exchange">
+        <!-- 18, line 1942-->
 
-      <t>According to a terminology for the prefix delegation, a client requesting a
-      delegation of a prefix is referred to as a requesting router and a server
-      delegating the prefix is referred to as a delegating router. The requesting
-      router and the delegating router use the IA_PD Prefix option to exchange
-      information about prefix(es) in much the same way as IA Address options
-      are used for assigned addresses. Typically, a single DHCP session is
-      used to exchange information about addresses and prefixes, i.e.
-      IA_NA and IA_PD options are carried in the same message.</t>
+        <t>A client initiates a message exchange with a server or servers to
+        acquire or update configuration information of interest. The client may
+        initiate the configuration exchange as part of the operating system
+        configuration process, when requested to do so by the application layer,
+        when required by Stateless Address Autoconfiguration or as required to
+        extend the lifetime of address(es) and/or delegated prefix(es), using
+        Renew and Rebind messages.</t>
 
-      <section title="Client Behavior">
-        <!-- 18.1, line 1953-->
+        <!-- The following paragraph has been moved from the 'DHCP Server Solicitation -->
 
-        <t>A client uses Request, Renew, Rebind, Release and Decline messages
-        during the normal life cycle of addresses and delegated prefixes. When a
-        client detects it may have moved to a new link, it uses Confirm if it
-        only has addresses and Rebind if it has delegated prefixes (and
-        addresses). It uses Information-request messages when it needs
-        configuration information but no addresses and no prefixes.</t>
+        <t>The client is responsible for creating IAs and requesting that a
+        server assign IPv6 addresses and/or delegated prefixes to the IAs. The client
+        first creates the IAs and assigns IAIDs to them. The client then transmits
+        a Solicit message containing the IA options describing the IAs. The client
+        MUST NOT be using any of the addresses or delegated prefixes for which
+        it tries to obtain the bindings by sending the Solicit message. In particular,
+        if the client had some valid bindings and has chosen to start the
+        server solicitation process to obtain the bindings from a different
+        server, the client MUST stop using the addresses and delegated prefixes
+        for the bindings it had obtained from the previous server, and which
+        it is now trying to obtain from a new server.</t>
 
-        <t>If the client has a source address of sufficient scope that can be
-        used by the server as a return address, and the client has received a
-        Server Unicast option (<xref target='RFC3315-22.12'/>) from the server, the client
-        SHOULD unicast any Request, Renew, Release and Decline messages to the
-        server.</t>
+        <t>If the client will accept a Reply message with committed leases
+        assignments and other resources in response to the Solicit message, the
+        client includes a Rapid Commit option (see <xref target='RFC3315-22.14'/>)
+        in the Solicit message.</t>
 
-        <t>DISCUSSION:</t>
+        <t>Servers
+        that can assign addresses or delegated prefixes to the IAs respond to
+        the client with an Advertise message. The client then initiates a
+        configuration exchange as described in <xref target='request-create-transmit'/>.
+        </t>
 
-        <t><list style="empty">
-          <t>Use of unicast may avoid delays due to the relaying of messages by
-          relay agents, as well as avoid overhead and duplicate responses by
-          servers due to the delivery of client messages to multiple servers.
-          Requiring the client to relay all DHCP messages through a relay agent
-          enables the inclusion of relay agent options in all messages sent by
-          the client. The server should enable the use of unicast only when
-          relay agent options will not be used.</t>
-        </list></t>
+        <t>According to a terminology for the prefix delegation, a client requesting a
+        delegation of a prefix is referred to as a requesting router and a server
+        delegating the prefix is referred to as a delegating router. The requesting
+        router and the delegating router use the IA_PD Prefix option to exchange
+        information about prefix(es) in much the same way as IA Address options
+        are used for assigned addresses. Typically, a single DHCP session is
+        used to exchange information about addresses and prefixes, i.e.
+        IA_NA and IA_PD options are carried in the same message.</t>
 
-        <section title="Creation and Transmission of Request Messages">
-          <!-- 18.1.1, line 1981-->
+        <section title="Client Behavior">
+          <!-- 18.1, line 1953-->
 
-          <t>The client uses a Request message to populate IAs with leases
-          and obtain other configuration information. The client includes one
-          or more IA options in the Request message. The server then returns
-          leases and other information about the IAs to the client in IA
-          options in a Reply message.</t>
+          <t>A client uses the Solicit message to discover DHCP servers
+          configured to assign leases or return other configuration
+          parameters on the link to which the client is attached.</t>
 
-          <t>The client generates a transaction ID and inserts this value in
-          the "transaction-id" field.</t>
+          <t>A client uses Request, Renew, Rebind, Release and Decline messages
+          during the normal life cycle of addresses and delegated prefixes. When a
+          client detects it may have moved to a new link, it uses Confirm if it
+          only has addresses and Rebind if it has delegated prefixes (and
+          addresses). It uses Information-request messages when it needs
+          configuration information but no addresses and no prefixes.</t>
 
-          <t>The client places the identifier of the destination server in a
-          Server Identifier option.</t>
+          <t>If the client has a source address of sufficient scope that can be
+          used by the server as a return address, and the client has received a
+          Server Unicast option (<xref target='RFC3315-22.12'/>) from the server, the client
+          SHOULD unicast any Request, Renew, Release and Decline messages to the
+          server.</t>
 
-          <t>The client MUST include a Client Identifier option to identify
-          itself to the server. The client adds any other appropriate options,
-          including one or more IA options (if the client is requesting that
-          the server assign it some network addresses or delegated prefixes).
+          <t>DISCUSSION:</t>
+
+          <t><list style="empty">
+            <t>Use of unicast may avoid delays due to the relaying of messages by
+            relay agents, as well as avoid overhead and duplicate responses by
+            servers due to the delivery of client messages to multiple servers.
+            Requiring the client to relay all DHCP messages through a relay agent
+            enables the inclusion of relay agent options in all messages sent by
+            the client. The server should enable the use of unicast only when
+            relay agent options will not be used.</t>
+          </list></t>
+
+          <section anchor='solicit-create-transmit' title="Creation and Transmission of Solicit Messages">
+            <!-- 17.1.1, line 1651-->
+
+            <t>The client sets the "msg-type" field to SOLICIT. The client
+            generates a transaction ID and inserts this value in the
+            "transaction-id" field.</t>
+
+            <t>The client MUST include a Client Identifier option to identify
+            itself to the server. The client includes IA options for any IAs to
+            which it wants the server to assign leases.</t>
+
+            <t>The client MAY include addresses in the IA_NA and IA_TA options
+            as hints to the server about the addresses for which the client has
+            a preference.</t>
+
+            <t>The client MAY include values in the IA Prefix option encapsulated
+            within IA_PD option as hints for the delegated prefix and/or prefix
+            length for which the client has a preference.</t>
+
+            <t>The client MUST NOT include
+            any other options in the Solicit message, except as specifically
+            allowed in the definition of individual options.</t>
+
+            <t>The client uses IA_NA options to request the assignment of
+            non-temporary addresses, IA_TA options to request the
+            assignment of temporary addresses and IA_PD options to request
+            prefix delegation. Either IA_NA, IA_TA or IA_PD options, or
+            a combination of all, can be included in DHCP messages. In addition,
+            multiple instances of any IA option type can be included.</t>
+
+            <t>The client MUST include an Option Request option (see
+            <xref target='RFC3315-22.7'/>) to request the SOL_MAX_RT option
+            (see <xref target='SOL_MAX_RT_option'/>) and any
+            other options the client is interested in receiving.
+            The client MAY additionally include instances of those options that
+            are identified in the Option Request option, with data values as
+            hints to the server about parameter values the client would like to
+            have returned.</t>
+
+            <t>The client includes a Reconfigure Accept option (see
+            <xref target='RFC3315-22.20'/>) if the client is willing to accept
+            Reconfigure messages from the server.</t>
+
+            <!-- ends: "17.1.1 from line 1651-->
+
+            <!-- 17.1.2, line 1682-->
+
+            <t>The first Solicit message from the client on the interface MUST
+            be delayed by a random amount of time between 0 and SOL_MAX_DELAY.
+            In the case of a Solicit message transmitted when DHCP is initiated
+            by IPv6 Neighbor Discovery, the delay gives the amount of time to
+            wait after IPv6 Neighbor Discovery causes the client to invoke the
+            stateful address autoconfiguration protocol (see section 5.5.3 of
+            <xref target="RFC4862"/>). This random delay desynchronizes clients which start at
+            the same time (for example, after a power outage).</t>
+
+            <t>The client transmits the message according to <xref target='RFC3315-14'/>, using
+            the following parameters:
+
+            <list hangIndent="11" style="hanging">
+
+              <t hangText="   IRT"> SOL_TIMEOUT</t>
+
+              <t hangText="   MRT"> SOL_MAX_RT</t>
+
+              <t hangText="   MRC"> 0</t>
+
+              <t hangText="   MRD"> 0</t>
+
+            </list></t>
+
+            <t>If the client has included a Rapid Commit option in its Solicit
+            message, the client terminates the waiting process as soon as a
+            Reply message with a Rapid Commit option is received.</t>
+
+            <t>If the client is waiting for an Advertise message, the mechanism
+            in <xref target='RFC3315-14'/> is modified as follows for use in the transmission of
+            Solicit messages. The message exchange is not terminated by the
+            receipt of an Advertise before the first RT has elapsed. Rather, the
+            client collects Advertise messages until the first RT has elapsed.
+            Also, the first RT MUST be selected to be strictly greater than IRT
+            by choosing RAND to be strictly greater than 0.</t>
+
+            <t>A client MUST collect Advertise messages for the first RT
+            seconds, unless it receives an Advertise message with a preference
+            value of 255. The preference value is carried in the Preference
+            option (<xref target='RFC3315-22.8'/>). Any Advertise that does not include a
+            Preference option is considered to have a preference value of 0. If
+            the client receives an Advertise message that includes a Preference
+            option with a preference value of 255, the client immediately begins
+            a client-initiated message exchange (as described in <xref target='RFC3315-18'/>) by
+            sending a Request message to the server from which the Advertise
+            message was received. If the client receives an Advertise message
+            that does not include a Preference option with a preference value of
+            255, the client continues to wait until the first RT elapses. If the
+            first RT elapses and the client has received an Advertise message,
+            the client SHOULD continue with a client-initiated message exchange
+            by sending a Request message.</t>
+
+            <t>If the client does not receive any Advertise messages before the
+            first RT has elapsed, it begins the retransmission mechanism
+            described in <xref target='RFC3315-14'/>. The client terminates the retransmission
+            process as soon as it receives any Advertise message, and the client
+            acts on the received Advertise message without waiting for any
+            additional Advertise messages.</t>
+
+            <t>A DHCP client SHOULD choose MRC and MRD to be 0. If the DHCP
+            client is configured with either MRC or MRD set to a value other
+            than 0, it MUST stop trying to configure the interface if the
+            message exchange fails. After the DHCP client stops trying to
+            configure the interface, it SHOULD restart the reconfiguration
+            process after some external event, such as user input, system
+            restart, or when the client is attached to a new link.</t>
+
+            <!-- ends: "17.1.2 from line 1682-->
+
+          </section>
+
+            <section anchor='request-create-transmit' title="Creation and Transmission of Request Messages">
+            <!-- 18.1.1, line 1981-->
+
+            <t>The client uses a Request message to populate IAs with leases
+            and obtain other configuration information. The client includes one
+            or more IA options in the Request message. The server then returns
+            leases and other information about the IAs to the client in IA
+            options in a Reply message.</t>
+
+            <t>The client generates a transaction ID and inserts this value in
+            the "transaction-id" field.</t>
+
+            <t>The client places the identifier of the destination server in a
+            Server Identifier option.</t>
+
+            <t>The client MUST include a Client Identifier option to identify
+            itself to the server. The client adds any other appropriate options,
+            including one or more IA options (if the client is requesting that
+            the server assign it some network addresses or delegated prefixes).
           </t>
 
-          <t>The client MUST include an Option Request option (see
-          <xref target='RFC3315-22.7'/>) to indicate the options the client is interested in receiving.
-          The client MAY include options with data values as hints to the
-          server about parameter values the client would like to have
-          returned.</t>
+            <t>The client MUST include an Option Request option (see
+            <xref target='RFC3315-22.7'/>) to indicate the options the client is interested in receiving.
+            The client MAY include options with data values as hints to the
+            server about parameter values the client would like to have
+            returned.</t>
 
-          <t>The client includes a Reconfigure Accept option (see
-          <xref target='RFC3315-22.20'/>) indicating whether or not the client is willing to accept
-          Reconfigure messages from the server.</t>
+            <t>The client includes a Reconfigure Accept option (see
+            <xref target='RFC3315-22.20'/>) indicating whether or not the client is willing to accept
+            Reconfigure messages from the server.</t>
 
-          <t>The client transmits the message according to <xref target='RFC3315-14'/>, using
+            <t>The client transmits the message according to <xref target='RFC3315-14'/>, using
           the following parameters:
 
-          <list hangIndent="11" style="hanging">
+            <list hangIndent="11" style="hanging">
 
-          <t hangText="   IRT"> REQ_TIMEOUT</t>
+            <t hangText="   IRT"> REQ_TIMEOUT</t>
 
-          <t hangText="   MRT"> REQ_MAX_RT</t>
+            <t hangText="   MRT"> REQ_MAX_RT</t>
 
-          <t hangText="   MRC"> REQ_MAX_RC</t>
+            <t hangText="   MRC"> REQ_MAX_RC</t>
 
-          <t hangText="   MRD"> 0</t>
-
-          </list></t>
-
-          <t>If the message exchange fails, the client takes an action based
-          on the client's local policy. Examples of actions the client might
-          take include:
-
-          <list hangIndent="3" style="hanging">
-          <t hangText="-"> Select another server from a list of servers known to the
-          client; for example, servers that responded with an Advertise
-          message.</t>
-
-          <t hangText="-"> Initiate the server discovery process described in
-          <xref target='RFC3315-17'/>.</t>
-
-          <t hangText="-"> Terminate the configuration process and report failure.</t>
-          </list></t>
-        </section>
-
-        <!-- ends: "18.1.1 from line 1981-->
-
-        <section anchor='RFC3315-18.1.2' title="Creation and Transmission of Confirm Messages">
-          <!-- 18.1.2, line 2037-->
-
-          <t>Whenever a client may have moved to a new link, the 
-          prefixes/addresses assigned to the interfaces on that link may no longer
-          be appropriate for the link to which the client is attached.
-          Examples of times when a client may have moved to a new link
-          include:
-
-          <list hangIndent="3" style="hanging">
-          <t hangText="o"> The client reboots (and has no stable storage or persisted DHCP state).</t>
-
-          <t hangText="o"> The client is physically connected to a wired connection.</t>
-
-          <t hangText="o"> The client returns from sleep mode.</t>
-
-          <t hangText="o"> The client using a wireless technology changes access
-          points.</t>
+            <t hangText="   MRD"> 0</t>
 
           </list></t>
 
-          <t>In any situation when a client may have moved to a new link and
-          the client does not have any delegated prefixes obtained from the
-          DHCP server from which it has obtained the addresses, the
-          client SHOULD initiate a Confirm/Reply message exchange. The client
-          includes any IAs assigned to the interface that may have moved to a
-          new link, along with the addresses associated with those IAs, in its
-          Confirm message. Any responding servers will indicate whether those
-          addresses are appropriate for the link to which the client is
-          attached with the status in the Reply message it returns to the
-          client.</t>
+            <t>If the message exchange fails, the client takes an action based
+            on the client's local policy. Examples of actions the client might
+            take include:
 
-          <t>If the client has any valid delegated prefixes obtained from the
-          DHCP server from which it has obtained the addresses, the client
-          initiates Rebind/Reply exchange as described in
-          <xref target='pd-bindings-verification'/> instead of sending the
-          Confirm message.</t>
+            <list hangIndent="3" style="hanging">
+            <t hangText="-"> Select another server from a list of servers known to the
+            client; for example, servers that responded with an Advertise
+            message.</t>
 
-          <t>The client sets the "msg-type" field to CONFIRM. The client
-          generates a transaction ID and inserts this value in the
-          "transaction-id" field.</t>
+            <t hangText="-"> Initiate the server discovery process described in
+            <xref target='RFC3315-17'/>.</t>
 
-          <t>The client MUST include a Client Identifier option to identify
-          itself to the server. The client includes IA options for all of the
-          IAs assigned to the interface for which the Confirm message is being
-          sent. The IA options include all of the addresses the client
-          currently has associated with those IAs. The client SHOULD set the
-          T1 and T2 fields in any IA_NA options and the preferred-lifetime
-          and valid-lifetime fields in the IA Address options to 0, as the
-          server will ignore these fields.</t>
+            <t hangText="-"> Terminate the configuration process and report failure.</t>
+          </list></t>
+          </section>
 
-          <t>The first Confirm message from the client on the interface MUST
-          be delayed by a random amount of time between 0 and CNF_MAX_DELAY.
-          The client transmits the message according to <xref target='RFC3315-14'/>, using the
-          following parameters:
+            <!-- ends: "18.1.1 from line 1981-->
 
-          <list hangIndent="11" style="hanging">
+            <section anchor='RFC3315-18.1.2' title="Creation and Transmission of Confirm Messages">
+            <!-- 18.1.2, line 2037-->
 
-          <t hangText="   IRT"> CNF_TIMEOUT</t>
+            <t>Whenever a client may have moved to a new link, the 
+            prefixes/addresses assigned to the interfaces on that link may no longer
+            be appropriate for the link to which the client is attached.
+            Examples of times when a client may have moved to a new link
+            include:
 
-          <t hangText="   MRT"> CNF_MAX_RT</t>
+            <list hangIndent="3" style="hanging">
+            <t hangText="o"> The client reboots (and has no stable storage or persisted DHCP state).</t>
 
-          <t hangText="   MRC"> 0</t>
+            <t hangText="o"> The client is physically connected to a wired connection.</t>
 
-          <t hangText="   MRD"> CNF_MAX_RD</t>
+            <t hangText="o"> The client returns from sleep mode.</t>
+
+            <t hangText="o"> The client using a wireless technology changes access
+            points.</t>
 
           </list></t>
 
-          <t>If the client receives no responses before the message
-          transmission process terminates, as described in <xref target='RFC3315-14'/>, the
-          client SHOULD continue to use any IP addresses, using the last known
-          lifetimes for those addresses, and SHOULD continue to use any other
-          previously obtained configuration parameters.</t>
-        </section>
+            <t>In any situation when a client may have moved to a new link and
+            the client does not have any delegated prefixes obtained from the
+            DHCP server from which it has obtained the addresses, the
+            client SHOULD initiate a Confirm/Reply message exchange. The client
+            includes any IAs assigned to the interface that may have moved to a
+            new link, along with the addresses associated with those IAs, in its
+            Confirm message. Any responding servers will indicate whether those
+            addresses are appropriate for the link to which the client is
+            attached with the status in the Reply message it returns to the
+            client.</t>
+
+            <t>If the client has any valid delegated prefixes obtained from the
+            DHCP server from which it has obtained the addresses, the client
+            initiates Rebind/Reply exchange as described in
+            <xref target='pd-bindings-verification'/> instead of sending the
+            Confirm message.</t>
+
+            <t>The client sets the "msg-type" field to CONFIRM. The client
+            generates a transaction ID and inserts this value in the
+            "transaction-id" field.</t>
+
+            <t>The client MUST include a Client Identifier option to identify
+            itself to the server. The client includes IA options for all of the
+            IAs assigned to the interface for which the Confirm message is being
+            sent. The IA options include all of the addresses the client
+            currently has associated with those IAs. The client SHOULD set the
+            T1 and T2 fields in any IA_NA options and the preferred-lifetime
+            and valid-lifetime fields in the IA Address options to 0, as the
+            server will ignore these fields.</t>
+
+            <t>The first Confirm message from the client on the interface MUST
+            be delayed by a random amount of time between 0 and CNF_MAX_DELAY.
+            The client transmits the message according to <xref target='RFC3315-14'/>,
+            using the following parameters:
+
+            <list hangIndent="11" style="hanging">
+
+            <t hangText="   IRT"> CNF_TIMEOUT</t>
+
+            <t hangText="   MRT"> CNF_MAX_RT</t>
+
+            <t hangText="   MRC"> 0</t>
+
+            <t hangText="   MRD"> CNF_MAX_RD</t>
+
+          </list></t>
+
+            <t>If the client receives no responses before the message
+            transmission process terminates, as described in <xref target='RFC3315-14'/>, the
+            client SHOULD continue to use any IP addresses, using the last known
+            lifetimes for those addresses, and SHOULD continue to use any other
+            previously obtained configuration parameters.</t>
+          </section>
 
         <!-- ends: "18.1.2 from line 2037-->
 
@@ -3188,6 +2978,68 @@
 
         <!-- ends: "18.1.7 from line 2304-->
 
+        <section  anchor='RFC3315-17.1.3' title="Receipt of Advertise Messages">
+          <!-- 17.1.3, line 1750-->
+
+          <!-- The new paragraph to introduce the requirement stated in first
+               paragraph of section 6. of RFC7083. -->
+          <t>The client MUST process SOL_MAX_RT and INF_MAX_RT options in an
+          Advertise message, even if the message contains a Status Code
+          option indicating a failure, and the Advertise message will be
+          discarded by the client.</t>
+
+          <!-- Change from RFC 7550 section 4.1/4.2 has been applied. 6/1/2015 -->
+          <t>The client MUST ignore any Advertise message that contains no
+          addresses (IAADDR options encapsulated in IA_NA or IA_TA options)
+          and no delegated prefixes (IAPREFIX options encapsulated in IA_PD
+          options) with the exception that the client:
+
+          <list hangIndent="3" style="hanging">
+          <t hangText="-"> MUST process an included SOL_MAX_RT option and</t>
+          <t hangText="-"> MUST process an included INF_MAX_RT option.</t>
+          </list></t>
+
+          <t>A client can display any associated status message(s) to the user
+          or activity log.</t>
+
+          <t>The client ignoring this Advertise message MUST NOT restart the
+          Solicit retransmission timer.</t>
+
+          <t>Upon receipt of one or more valid Advertise messages, the client
+          selects one or more Advertise messages based upon the following
+          criteria.
+
+          <list hangIndent="3" style="hanging">
+
+          <t hangText="-"> Those Advertise messages with the highest server preference
+          value are preferred over all other Advertise messages.</t>
+
+          <t hangText="-"> Within a group of Advertise messages with the same server
+          preference value, a client MAY select those servers whose Advertise
+          messages advertise information of interest to the client.</t>
+
+          <t hangText="-"> The client MAY choose a less-preferred server if that
+          server has a better set of advertised parameters, such as the available
+          set of IAs, as well as the set of other configuration options
+          advertised.</t>
+
+          </list></t>
+
+          <t>Once a client has selected Advertise message(s), the client will
+          typically store information about each server, such as server
+          preference value, addresses advertised, when the advertisement was
+          received, and so on.</t>
+
+          <t>In practice, this means that the client will maintain
+          independent per-IA state machines per each selected server.</t>
+
+          <t>If the client needs to select an alternate server in the case
+          that a chosen server does not respond, the client chooses the next
+          server according to the criteria given above.</t>
+        </section>
+
+        <!-- ends: "17.1.3 from line 1750-->
+
         <section anchor='RFC3315-18.1.8' title="Receipt of Reply Messages">
           <!-- 18.1.8, line 2345-->
 
@@ -3372,8 +3224,17 @@
         in an implementation specific manner with configuration of interest to
         clients.</t>
 
+        <t>A server sends Advertise message in response to valid Solicit
+        messages it receives to announce the availability of the server to the
+        client.</t>
+
         <t>In most instances, the server will send a Reply in response to a
-        client message. This Reply message MUST always contain the Server
+        Request, Confirm, Renew, Rebind, Decline and Information-request messages
+        sent by a client. The server will also send Reply in response to a
+        Solicit with a Rapid Commit option, when the server is configured to
+        respond with committed lease assignments.</t>
+
+        <t>This Reply message MUST always contain the Server
         Identifier option containing the server's DUID and the Client
         Identifier option from the client message if one was present.</t>
 
@@ -3386,6 +3247,56 @@
         in the Option Request option that the server has been configured to
         return to the client. The server MAY return additional options to the
         client if it has been configured to do so.</t>
+
+        <section title="Receipt of Solicit Messages">
+          <!-- 17.2.1, line 1823-->
+
+          <t>The server determines the information about the client and its
+          location as described in <xref target='RFC3315-11'/> and checks its administrative
+          policy about responding to the client. If the server is not
+          permitted to respond to the client, the server discards the Solicit
+          message. For example, if the administrative policy for the server is
+          that it may only respond to a client that is willing to accept a
+          Reconfigure message, if the client does not include a Reconfigure
+          Accept option (see <xref target='RFC3315-22.20'/>) in the
+          Solicit message, the servers discard the Solicit message.</t>
+
+          <t>If the client has included a Rapid Commit option in the Solicit
+          message and the server has been configured to respond with committed
+          lease assignments and other resources, the server responds to the
+          Solicit with a Reply message. The server MUST commit the assignment
+          of any addresses or other configuration information before sending
+          a Reply message to a client. In this case the server includes a
+          Rapid Commit option in the Reply message to indicate that the
+          Reply is in response to a Solicit message.</t>
+
+          <t>DISCUSSION:</t>
+
+          <t><list style="empty">
+            <t>When using the Solicit-Reply message exchange, the server commits
+            the assignment of any leases before sending the Reply message.
+            The client can assume it has been assigned the leases in the
+            Reply message and does not need to send a Request message for those
+            addresses.</t>
+
+            <t>Typically, servers that are configured to use the Solicit-Reply
+            message exchange will be deployed so that only one server will
+            respond to a Solicit message. If more than one server responds, the
+            client will only use the leases from one of the servers, while
+            the leases from the other servers will be committed to the client
+            but not used by the client.</t>
+          </list></t>
+
+          <t>The server includes a Reconfigure Accept option if the server
+          wants to require that the client accept Reconfigure messages.</t>
+
+          <t>The server produces the Reply message as though it had received a
+          Request message, as described in <xref target='RFC3315-18.2.1'/>. The server
+          transmits the Reply message as described in <xref target='RFC3315-18.2.8'/>.</t>
+
+        </section>
+
+        <!-- ends: "17.2.1 from line 1823-->
 
         <section anchor='RFC3315-18.2.1' title="Receipt of Request Messages">
           <!-- 18.2.1, line 2477-->
@@ -3786,6 +3697,90 @@
 
         <!-- ends: "18.2.7 from line 2694-->
 
+        <section anchor="RFC3315-17.2.2" title="Creation and Transmission of Advertise Messages">
+          <!-- 17.2.2, line 1844-->
+
+          <t>The server sets the "msg-type" field to ADVERTISE and copies the
+          contents of the transaction-id field from the Solicit message
+          received from the client to the Advertise message. The server
+          includes its server identifier in a Server Identifier option and
+          copies the Client Identifier from the Solicit message into the
+          Advertise message.</t>
+
+          <t>The server MAY add a Preference option to carry
+          the preference value for the Advertise message. The server
+          implementation SHOULD allow the setting of a server preference value
+          by the administrator. The server preference value MUST default to
+          zero unless otherwise configured by the server administrator.</t>
+
+          <t>The server includes a Reconfigure Accept option if the server
+          wants to require that the client accept Reconfigure messages.</t>
+
+          <t>The server includes options the server will return to the client
+          in a subsequent Reply message. The information in these options may
+          be used by the client in the selection of a server if the client
+          receives more than one Advertise message. If the client has included
+          an Option Request option in the Solicit message, the server includes
+          options in the Advertise message containing configuration parameters
+          for all of the options identified in the Option Request option that
+          the server has been configured to return to the client. The server
+          MAY return additional options to the client if it has been
+          configured to do so. The server must be aware of the recommendations
+          on packet sizes and the use of fragmentation in section 5 of <xref target='RFC2460'/>.</t>
+
+          <t>If the Solicit message from the client included one or more IA
+          options, the server MUST include IA options in the Advertise message
+          containing any addresses and/or delegated prefixes that would be assigned
+          to IAs contained in the Solicit message from the client. If the client
+          has included addresses in the IA in the Solicit message, the server
+          MAY use those addresses as hints about the addresses that the client
+          would like to receive. If the client has included IA Prefix option
+          in the IA_PD, the server MAY use the prefix contained in the
+          IPv6 prefix field and/or the prefix length contained in the
+          "prefix-length" field as a hints about the prefixes the client
+          would like to receive. If the server is not going to assign an address
+          or delegated prefix received as a hint in the Solicit message, the
+          server MUST NOT include this address or delegated prefix in the
+          Advertise message</t>
+
+          <!-- This paragraph has been updated with the changes from section
+               6 of RFC7083 -->
+          <!-- Also, partially applied RFC3315 errata 2472, to include other IA
+               options if NoAddrsAvail status code is sent. Do not apply the part
+               of errata that mandates sending NoAddrsAvail encapsulated in IA -->
+          <!-- Change from RFC 7550 section 4.1 has been applied. 6/1/2015 -->
+          <t>If the server will not assign any addresses to an IA (IA_NA or
+          IA_IA) in subsequent Request from the client, the server MUST include
+          the IA in the Advertise message with no addresses in the IA and a
+          Status Code option encapsulated in the IA containing status code
+          NoAddrsAvail.</t>
+
+          <t>If the server will not assign any prefixes to an IA_PD in
+          subsequent Request from the client, the server MUST include the
+          IA_PD in the Advertise message with no prefixes in the IA and a
+          Status Code option encapsulated in the IA_PD containing status code
+          NoPrefixAvail.</t>
+
+          <t>If the Solicit message was received directly by the server, the
+          server unicasts the Advertise message directly to the client using
+          the address in the source address field from the IP datagram in
+          which the Solicit message was received. The Advertise message MUST
+          be unicast on the link from which the Solicit message was
+          received.</t>
+
+          <t>If the Solicit message was received in a Relay-forward message,
+          the server constructs a Relay-reply message with the Advertise
+          message in the payload of a "relay-message" option. If the
+          Relay-forward messages included an Interface-id option, the server
+          copies that option to the Relay-reply message. The server unicasts
+          the Relay-reply message directly to the relay agent using the
+          address in the source address field from the IP datagram in which
+          the Relay-forward message was received.</t>
+        </section>
+
+        <!-- ends: "17.2.2 from line 1844-->
+
+
         <section anchor='RFC3315-18.2.8' title="Transmission of Reply Messages">
           <!-- 18.2.8, line 2729-->
 
@@ -3810,6 +3805,8 @@
       </section>
 
       <!-- ends: "18.2 -->
+
+    </section>
 
     </section>
 
@@ -5451,7 +5448,7 @@
 
         <t>A client MAY include this option in a Solicit message if the client
         is prepared to perform the Solicit-Reply message exchange described in
-        <xref target='RFC3315-17.1.1'/>.</t>
+        <xref target='solicit-create-transmit'/>.</t>
 
         <t>A server MUST include this option in a Reply message sent in
         response to a Solicit message when completing the Solicit-Reply
@@ -6203,7 +6200,7 @@
         internal SOL_MAX_RT parameter to the value contained in the
         SOL_MAX_RT option.  This value of SOL_MAX_RT is then used by the
         retransmission mechanism defined in <xref target='RFC3315-14'/>
-        and <xref target='RFC3315-17.1.2'/>.</t>
+        and <xref target='solicit-create-transmit'/>.</t>
 
         <t>Updated SOL_MAX_RT value applies only to the network interface on
         which the client received SOL_MAX_RT option.</t>
