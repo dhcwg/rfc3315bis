@@ -551,6 +551,10 @@
             <t hangText="relaying"> A DHCP relay agent relays DHCP messages between DHCP
             participants.</t>
 
+            <t hangText="top-level option">An option conveyed in a DHCP message directly,
+            i.e. not encapsulated in any other option, as described in Section 9 of
+            <xref target='RFC7227'/>.</t>
+
             <t hangText="transaction ID"> An opaque value used to match responses with replies
             initiated either by a client or server.</t>
           </list>
@@ -3160,7 +3164,7 @@
           Therefore, the client does not treat a Reply message with a status
           of NoBinding in a Decline message exchange as if it indicates an
           error.</t>
-          
+
           <!-- Added text from section 4.6 of RFC 7550 -->
           <t>The client SHOULD NOT send a Release message for other bindings
           it may have received just because it sent a Decline message.  The
@@ -3175,142 +3179,148 @@
         <section anchor='RFC3315-18.1.8' title="Receipt of Reply Messages">
           <!-- 18.1.8, line 2345-->
 
-         <t>Upon the receipt of a valid Reply message in response to a Solicit
-         (with a Rapid Commit option), Request, Confirm, Renew, Rebind, or
-         Information-request message, the client extracts the configuration
-         information contained in the Reply.  The client MAY choose to report
-         any status code or message from the Status Code option in the Reply
-         message.</t>
+          <t>Upon the receipt of a valid Reply message in response to a Solicit
+          (with a Rapid Commit option), Request, Confirm, Renew, Rebind, or
+          Information-request message, the client extracts the top-level Status
+          Code option if present.</t>
 
-         <t>If the client receives a Reply message with a status code containing
-         UnspecFail, the server is indicating that it was unable to process
-         the message due to an unspecified failure condition.  If the client
-         retransmits the original message to the same server to retry the
-         desired operation, the client MUST limit the rate at which it
-         retransmits the message and limit the duration of the time during
-         which it retransmits the message (see <xref target='rate-limit'/>).</t>
+          <t>If the client receives a Reply message with a status code of
+          UnspecFail, the server is indicating that it was unable to process
+          the message due to an unspecified failure condition.  If the client
+          retransmits the original message to the same server to retry the
+          desired operation, the client MUST limit the rate at which it
+          retransmits the message and limit the duration of the time during
+          which it retransmits the message (see
+          <xref target='rate-limit'/>).</t>
 
-         <t>When the client receives a Reply message with a Status Code option
-         with the value UseMulticast, the client records the receipt of the
-         message and sends subsequent messages to the server through the
-         interface on which the message was received using multicast.  The
-         client resends the original message using multicast.</t>
+          <t>If the client receives a Reply message with a status code of
+          UseMulticast, the client records the receipt of the message and
+          sends subsequent messages to the server through the interface on
+          which the message was received using multicast. The client resends
+          the original message using multicast.</t>
 
-         <t>When the client receives a NotOnLink status from the server in
-         response to a Confirm message, the client performs DHCP server
-         solicitation, as described in <xref target='RFC3315-17'/>, and
-         client-initiated configuration, as described in
-         <xref target='RFC3315-18'/>.  If the client receives any Reply
-         messages that do not indicate a NotOnLink status, the client
-         can use the addresses in the IA and ignore any messages that indicate
-         a NotOnLink status.</t>
+          <t>Otherwise (no status code or another status code), the client
+          processes the Reply as described below based on the original
+          message for which the Reply was received.</t>
 
-         <t>When the client receives a NotOnLink status from the server in
-         response to a Solicit (with a Rapid Commit option) or a Request,
-         the client can either re-issue the message
-         without specifying any addresses or restart the DHCP server
-         discovery process (see <xref target='RFC3315-17'/>).</t>
+          <t>The client MAY choose to report any status code or message from
+          the Status Code option in the Reply message.</t>
 
+          <section anchor='reply-solicit-request-renew-rebind'
+                   title="Reply for Solicit (with Rapid Commit), Request, Renew or Rebind">
+             <t>If the client receives a NotOnLink status from the server in
+             response to a Solicit (with a Rapid Commit option) or a Request, the
+             client can either re-issue the message without specifying any
+             addresses or restart the DHCP server discovery process (see
+             Section 18).</t>
 
-         <t>The client SHOULD perform duplicate address detection
-         <xref target="RFC4862"/> on each of
-         the received addresses in any IAs, on which it has not performed duplicate
-         address detection during processing of any of the previous Reply
-         messages from the server. The client performs the duplicate address
-         detection before using the received addresses for the traffic. If
-         any of the addresses are found to be in use on the link, the client
-         sends a Decline message to the server for those addresses as described in
-         <xref target='RFC3315-18.1.7'/>.</t>
+             <t>If the Reply was received in response to a Solicit (with a Rapid
+             Commit option), Request, Renew, or Rebind message, the client updates
+             the information it has recorded about IAs from the IA options
+             contained in the Reply message:
 
-         <t>If the Reply was received in response to a Solicit (with a Rapid
-         Commit option), Request, Renew, or Rebind message, the client updates
-         the information it has recorded about IAs from the IA options
-         contained in the Reply message:
+             <list style="hanging">
+               <t hangText="-"> Record T1 and T2 times.</t>
 
-         <list style="hanging">
-         <t hangText="-"> Record T1 and T2 times.</t>
+               <t hangText="-"> Add any new leases in the IA option to the IA as
+               recorded by the client.</t>
 
-         <t hangText="-"> Add any new leases in the IA option to the IA as
-         recorded by the client.</t>
+               <t hangText="-"> Update lifetimes for any leases in the IA option
+               that the client already has recorded in the IA.</t>
 
-         <t hangText="-"> Update lifetimes for any leases in the IA option
-         that the client already has recorded in the IA.</t>
+               <t hangText="-"> Discard any leases from the IA, as recorded by the
+               client, that have a valid lifetime of 0 in the IA Address or
+               IA Prefix option.</t>
 
-         <t hangText="-"> Discard any leases from the IA, as recorded by the
-         client, that have a valid lifetime of 0 in the IA Address or
-         IA Prefix option.</t>
+               <t hangText="-"> Leave unchanged any information about leases the
+               client has recorded in the IA but that were not included in the IA
+               from the server.</t>
+             </list></t>
 
-         <t hangText="-"> Leave unchanged any information about leases the
-         client has recorded in the IA but that were not included in the IA
-         from the server.</t>
+             <t>If the client can operate with the addresses and/or prefixes
+             obtained from the server:
 
-         </list></t>
+             <list style="hanging">
+               <t hangText="-">The client uses the addresses, delegated prefixes,
+               and other information from any IAs that do not contain a Status Code
+               option with the NoAddrsAvail or NoPrefixAvail status code.  The
+               client MAY include the IAs for which it received the NoAddrsAvail or
+               NoPrefixAvail status code, with no addresses or prefixes, in
+               subsequent Renew and Rebind messages sent to the server, to retry
+               obtaining the addresses or prefixes for these IAs.</t>
 
-         <t>Management of the specific configuration information is detailed in
-         the definition of each option in <xref target='RFC3315-22'/>.</t>
+               <t hangText="-">The client SHOULD perform duplicate address detection
+               <xref target="RFC4862"/> on each of the received addresses in any IAs,
+               on which it has not performed duplicate address detection during
+               processing of any of the previous Reply messages from the server.
+               The client performs the duplicate address detection before using
+               the received addresses for the traffic.  If any of the addresses
+               are found to be in use on the link, the client sends a Decline
+               message to the server for those addresses as described in
+               <xref target="RFC3315-18.1.7"/>.</t>
 
-         <t>The client examines the status code in each IA individually. If the
-         client receives a NoAddrsAvail and/or NoPrefixAvail status code, the client
-         has received no usable addresses and/or delegated prefixes in the IA.</t>
+               <t hangText="-">For each IA_PD the delegating router assigns a subnet from each
+               of the delegated prefixes to each of the links to which the associated
+               interfaces are attached.</t>
+             </list></t>
 
-         <t>If the client can operate with the addresses and prefixes obtained
-         from the server, the client uses the addresses, delegated prefixes, and
-         other information from any IAs that do not contain a Status Code option
-         with the NoAddrsAvail or NoPrefixAvail status code. The client MAY include
-         the IAs for which it received the NoAddrsAvail or NoPrefixAvail
-         status code, with no addresses or prefixes, in subsequent Renew and Rebind
-         messages sent to the server, to retry obtaining the addresses or prefixes
-         for these IAs.</t>
+             <t>Management of the specific configuration information is detailed in
+             the definition of each option in <xref target='RFC3315-22'/>.</t>
 
-         <t>If the client cannot operate without the addresses or prefixes for the IAs
-         for which it received the NoAddrsAvail or NoPrefixAvail status code, the client
-         may try another server (perhaps by restarting the DHCP server discovery
-         process).</t>
+             <t>If the Reply message contains any IAs, but the client finds no usable
+             addresses and/or delegated prefixes in any of these IAs, the client
+             may either try another server (perhaps restarting the DHCP server
+             discovery process) or use the Information-request message to obtain
+             other configuration information only.</t>
 
-         <t>If the client finds no usable addresses and prefixes in any of the IAs, it
-         may either try another server (perhaps restarting the DHCP server discovery
-         process) or use the Information-request message to obtain other
-         configuration information only.</t>
+             <t>When the client receives a Reply message in response to a Renew or
+             Rebind message, the client:
+             <list style="hanging">
+               <t hangText="-">Sends a Request message if any of the IAs in the
+               Reply message contains the NoBinding status code.  The client places
+               IA options in this message for only those IAs for which the server
+               returned the NoBinding status code in the Reply message.  The client
+               continues to use other bindings for which the server did not
+               return an error.</t>
 
-         <t>Whenever a client restarts the DHCP server discovery process
-         or selects an alternate server, as described in
-         <xref target="RFC3315-17.1.3"/>, the client SHOULD stop using
-         all the addresses and delegated prefixes for which it has the bindings
-         and try to obtain all required leases from the new server. This
-         facilitates the client using a single state machine for all bindings.</t>
+               <t hangText="-">Sends a Renew/Rebind if any of the IAs are not in the
+               Reply message, but in this case the client MUST limit the rate at which
+               it sends these messages, to avoid the Renew/Rebind storm.</t>
 
-         <t>When the client receives a Reply message in response to a Renew or
-         Rebind message, the client:
+               <t hangText="-">Otherwise accepts the information in the IA.</t>
+              </list>
+             </t>
 
-         <list style="hanging">
+             <t>Whenever a client restarts the DHCP server discovery process
+             or selects an alternate server, as described in
+             <xref target="RFC3315-17.1.3"/>, the client SHOULD stop using
+             all the addresses and delegated prefixes for which it has the bindings
+             and try to obtain all required leases from the new server. This
+             facilitates the client using a single state machine for all bindings.
+             </t>
+          </section>
 
-           <t hangText="-"> sends a Request message if any of the IAs in the
-           Reply message contains the NoBinding status code. The client places
-           IA options in this message for only those IAs for which the
-           server returned the NoBinding status code in the Reply message.
-           The client continues to use other bindings for which the server
-           did not return an error.</t>
+          <section anchor='reply-release-decline' title="Reply for Release and Decline">
+            <t>When the client receives a valid Reply message in response to a
+            Release message, the client considers the Release event completed,
+            regardless of the Status Code option(s) returned by the server.</t>
 
-           <t hangText="-"> sends a Renew/Rebind if any of the IAs are not in the
-           Reply message, but in this case the client MUST limit the rate at
-           which it sends these messages, to avoid the Renew/Rebind storm.</t>
+            <t>When the client receives a valid Reply message in response to a
+            Decline message, the client considers the Decline event completed,
+            regardless of the Status Code option(s) returned by the server.</t>
+          </section>
 
-           <t hangText="-"> otherwise accepts the information in the IA.</t>
+          <section anchor='reply-confirm' title="Reply for Confirm">
+            <t>When the client receives a NotOnLink status from the server in
+            response to a Confirm message, the client performs DHCP server
+            solicitation, as described in <xref target='RFC3315-17'/>, and
+            client-initiated configuration, as described in
+            <xref target='RFC3315-18'/>.  If the client receives any Reply
+            messages that indicate a success status (explicit or implicit),
+            the client can use the addresses in the IA and ignore any messages
+            that indicate a NotOnLink status.</t>
+          </section>
 
-         </list></t>
-
-         <t>When the requesting router receives a valid Reply message, for
-         each IA_PD the delegating router assigns a subnet from each of the
-         delegated prefixes to each of the links to which the associated
-         interfaces are attached.</t>
-
-         <t>When the client receives a valid Reply message in response to a
-         Release message, the client considers the Release event completed,
-         regardless of the Status Code option(s) returned by the server.</t>
-
-         <t>When the client receives a valid Reply message in response to a
-         Decline message, the client considers the Decline event completed,
-         regardless of the Status Code option(s) returned by the server.</t>
         </section>
 
         <!-- ends: "18.1.8 from line 2345-->
@@ -6755,7 +6765,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           (Ticket #113) from RFC3633 (Prefix Delegation).</t>
 
           <t>Clarified that encapsulated options must be requested using
-          top level ORO (ticket #38).</t>
+          top-level ORO (ticket #38).</t>
 
           <t>Clarified that configuration for interface X should be requested
           over interface X (ticket #48).</t>
@@ -6841,6 +6851,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <t>Combined text for prefix delegation and address assignment in sections
       18 and 19. Also, introduced a term "lease" replacing "allocable resources".
       This resolves ticket #146.</t>
+
+      <t>Reorganized text about Reply processing on the client side (ticket 140).
+      </t>
         </list>
 
       </t>
