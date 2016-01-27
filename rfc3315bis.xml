@@ -2967,8 +2967,8 @@
          the client initiates a Rebind/Reply message exchange with any
          available server.</t>
 
-         <t>The client constructs the Rebind message as described in section 18.1.3
-         with the following differences:
+         <t>The client constructs the Rebind message as described in
+         <xref target='RFC3315-17.1.3'/> with the following differences:
 
          <list style="hanging">
          <t hangText="-"> The client sets the "msg-type" field to REBIND.</t>
@@ -3099,9 +3099,16 @@
 
           </list></t>
 
-          <t>The client MUST stop using all of the leases being released as
-          soon as the client begins the Release message exchange process. If
-          leases are released but the Reply from a DHCP server is lost, the
+          <t>The client MUST stop using all of the leases being released
+          before the client begins the Release message exchange process.
+          For an address, this means the address MUST have been removed from
+          the interface. For a delegated prefix, this means the prefix
+          MUST have been advertised with a Preferred Lifetime and a Valid
+          Lifetime of zero in a Router Advertisement message as described in
+          Section 5.5.3, (e) of <xref target="RFC4862"/> - also see L-13 in
+          Section 4.3 of <xref target="RFC7084"/>.</t>
+          
+          <t>If leases are released but the Reply from a DHCP server is lost, the
           client will retransmit the Release message, and the server may
           respond with a Reply indicating a status of NoBinding. Therefore,
           the client does not treat a Reply message with a status of NoBinding
@@ -3212,7 +3219,7 @@
              response to a Solicit (with a Rapid Commit option) or a Request, the
              client can either re-issue the message without specifying any
              addresses or restart the DHCP server discovery process (see
-             Section 18).</t>
+             <xref target='RFC3315-17'/>).</t>
 
              <t>If the Reply was received in response to a Solicit (with a Rapid
              Commit option), Request, Renew, or Rebind message, the client updates
@@ -6822,7 +6829,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Added text the text suggesting to not send all-zero address/prefix
           unless the client wishes to hint the lifetimes and/or prefix lengths.
-          This resolves ticket#82.</t>
+          This resolves ticket #82.</t>
           
           <t>Cleaned up Confirm text regarding rebooting client an stable storage.</t>
           
@@ -6848,12 +6855,15 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
 	  <t>Added section with deprecated mechanisms (ticket #149).</t>
 
-      <t>Combined text for prefix delegation and address assignment in sections
-      18 and 19. Also, introduced a term "lease" replacing "allocable resources".
-      This resolves ticket #146.</t>
+          <t>Combined text for prefix delegation and address assignment in sections
+          18 and 19. Also, introduced a term "lease" replacing "allocable resources".
+          This resolves ticket #146.</t>
 
-      <t>Reorganized text about Reply processing on the client side (ticket 140).
-      </t>
+          <t>Reorganized text about Reply processing on the client side (ticket #140).
+          </t>
+      
+          <t>Revised the "Creation and Transmission of Release Messages" section to
+          clarify what a client must do before initiating a Release (ticket #151).</t>
         </list>
 
       </t>
@@ -6883,8 +6893,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
 <figure>
 <artwork>
-        Client Server IA_NA IA_PD Option Pref Elap. Relay Auth. Server
-          ID     ID   IA_TA       Request     Time   Msg.       Unicast
+        Client Server IA_NA/                  Elap. Relay Auth. Server
+          ID     ID   IA_TA IA_PD  ORO   Pref Time   Msg.       Unicast
 Solicit   *             *     *     *           *           *
 Advert.   *      *      *     *           *                 *
 Request   *      *      *     *     *           *           *
@@ -6958,6 +6968,8 @@ Vendor Info.   *                                     *      *
 Interf. ID                                           *      *
 Reconf. MSG.   *
 Reconf. Accept *
+SOL_MAX_RT     *
+INF_MAX_RT     *
 </artwork>
 </figure>
 
