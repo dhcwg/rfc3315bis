@@ -98,7 +98,7 @@
       <organization abbrev="Nominum">Nominum, Inc.</organization>
       <address>
         <postal>
-          <street>950 Charter St.</street>
+          <street>800 Bridge St.</street>
           <city>Redwood City</city>
 	  <region>CA</region>
           <code>94043</code>
@@ -121,18 +121,23 @@
     <abstract>
 
       <t>
-      The Dynamic Host Configuration Protocol for IPv6 (DHCP) enables DHCP
-      servers to pass configuration parameters such as IPv6 network
-      addresses to IPv6 nodes.  It offers the capability of automatic
-      allocation of reusable network addresses and additional configuration
-      flexibility.  This protocol is a stateful counterpart to "IPv6
-      Stateless Address Autoconfiguration" (RFC 4862), and can be used
-      separately or concurrently with the latter to obtain configuration
-      parameters.
+      This document describes the Dynamic Host Configuration Protocol
+      for IPv6 (DHCP): an extensible mechanism for configuring hosts
+      with network configuration parameters, IP addresses, and
+      prefixes.  Parameters can be provided statelessly, or in
+      combination with stateful assignment of one or more IPv6
+      addresses and/or IPv6 prefixes.  DHCP can operate either in
+      place of or in addition to stateless address autoconfiguration
+      (SLAAC).
       </t>
       
-      <t>This document updates the original DHCPv6 specification (RFC 3315)
-      and incorporates RFC 3633, RFC 3736, RFC 7083, and RFC 7550.</t>
+      <t>This document updates RFC 3315, the original DHCP
+      specification, and incorporates the stateless DHCPv6 extensions
+      (RFC 3736) and prefix delegation (RFC 3633), clarifying the
+      interactions between these modes of operation (RFC 7550) and
+      providing a mechanism for throttling DHCPv6 clients when DHCPv6
+      service is not available (RFC 7083).
+      </t>
 
     </abstract>
 
