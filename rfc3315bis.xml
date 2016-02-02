@@ -3458,7 +3458,7 @@
           <!-- Explanation:
           <t>The reason why cached replies are bad is because their lifetimes
           are out of sync. If the client retransmits its REQUEST for 20
-          seconds and finally get cached answer, its notion of the lease
+          seconds and finally gets the cached answer, its notion of the lease
           expiration moment would be 20 seconds later than the server's.
           So the server could think the lease has expired and reassign it,
           while the client would believe its lease is still valid for
