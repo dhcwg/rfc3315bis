@@ -136,7 +136,8 @@
       (RFC 3736) and prefix delegation (RFC 3633), clarifying the
       interactions between these modes of operation (RFC 7550) and
       providing a mechanism for throttling DHCPv6 clients when DHCPv6
-      service is not available (RFC 7083).
+      service is not available (RFC 7083). As such, RFC3315, RFC3633,
+      RFC3736, RFC7083 and RFC7550 are obsoleted.
       </t>
 
     </abstract>
