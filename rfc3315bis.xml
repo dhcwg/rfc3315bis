@@ -6412,7 +6412,7 @@
 
     <section anchor="privacy" title="Privacy Considerations">
 
-      <t>The following sections focuses on the server considerations.  For
+      <t>This section focuses on the server considerations.  For
       extended discussion about privacy considerations for the client, see <xref
       target="I-D.ietf-dhc-dhcpv6-privacy"/>. It particular, Section 3 of said
       document discuss various identifiers that could be misused to track the
@@ -6434,7 +6434,7 @@
       facilitate scanning of the network. Also, it makes any attacks that
       require guessing the next address much easier to conduct.</t>
 
-      <t>Deriving the IID (Interface Identifier) par of the
+      <t>Deriving the IID (Interface Identifier) part of the
       addresses from the link layer address of the client exposes information
       about the client hardware and enables tracking the client across
       multiple subnets. Also, since the address will likely be used to access
