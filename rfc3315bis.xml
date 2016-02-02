@@ -122,11 +122,11 @@
 
       <t>
       This document describes the Dynamic Host Configuration Protocol
-      for IPv6 (DHCP): an extensible mechanism for configuring hosts
+      for IPv6 (DHCPv6): an extensible mechanism for configuring hosts
       with network configuration parameters, IP addresses, and
       prefixes.  Parameters can be provided statelessly, or in
       combination with stateful assignment of one or more IPv6
-      addresses and/or IPv6 prefixes.  DHCP can operate either in
+      addresses and/or IPv6 prefixes.  DHCPv6 can operate either in
       place of or in addition to stateless address autoconfiguration
       (SLAAC).
       </t>
@@ -3544,7 +3544,7 @@
            IA_PD option with the non-zero value in the "prefix-length" field,
            the server MAY use this value as a hint for the length of the prefixes
            to be assigned (see
-           <xref target="I-D.cui-dhc-dhcpv6-prefix-length-hint-issue"/> for
+           <xref target="I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue"/> for
            further details on prefix length hints).
            </t>
 
@@ -6677,7 +6677,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
     <?rfc include='reference.I-D.ietf-dhc-topo-conf'?>
     
-    <?rfc include='reference.I-D.cui-dhc-dhcpv6-prefix-length-hint-issue'?>
+    <?rfc include='reference.I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue'?>
 
     <?rfc include='reference.I-D.ietf-dhc-dhcpv6-privacy'?>
 
