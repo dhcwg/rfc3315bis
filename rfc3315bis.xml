@@ -131,7 +131,7 @@
       (SLAAC).
       </t>
       
-      <t>This document updates RFC 3315, the original DHCP
+      <t>This document updates RFC 3315, the original DHCPv6
       specification, and incorporates the stateless DHCPv6 extensions
       (RFC 3736) and prefix delegation (RFC 3633), clarifying the
       interactions between these modes of operation (RFC 7550) and
