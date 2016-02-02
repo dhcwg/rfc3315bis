@@ -6868,7 +6868,12 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           </t>
       
           <t>Revised the "Creation and Transmission of Release Messages" section to
-          clarify what a client must do before initiating a Release (ticket #151).</t>
+          clarify what a client must do before initiating a Release
+          (ticket #151).</t>
+
+          <t>Privacy considerations added (ticket #145).</t>
+
+          <t>Abstract updated (#133).</t>
         </list>
 
       </t>
