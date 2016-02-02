@@ -3449,10 +3449,21 @@
 
           <t>If the server finds that the client has included an IA in the
           Request message for which the server already has a binding that
-          associates the IA with the client, the client has resent a Request
-          message for which it did not receive a Reply message. The server
-          either resends a previously cached Reply message or sends a new
-          Reply message.</t>
+          associates the IA with the client, the server sends a new Reply
+          message with existing bindings, possibly with updated lifetimes.
+          The server may update the bindings according to its local policies,
+          but the server SHOULD generate the response again and not simply
+          retransmit previously sent information, even if the transaction-id
+          matches previous transmission. The server MUST NOT cache its responses.</t>
+          <!-- Explanation:
+          <t>The reason why cached replies are bad is because their lifetimes
+          are out of sync. If the client retransmits its REQUEST for 20
+          seconds and finally get cached answer, its notion of the lease
+          expiration moment would be 20 seconds later than the server's.
+          So the server could think the lease has expired and reassign it,
+          while the client would believe its lease is still valid for
+          another 20 seconds. </t> -->
+
         </section>
 
         <!-- ends: "18.2.1 from line 2477-->
@@ -6874,6 +6885,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Privacy considerations added (ticket #145).</t>
 
           <t>Abstract updated (#133).</t>
+
+          <t>Removed references to the text that server was allowed to cache its
+          replies (#80).</t>
         </list>
 
       </t>
