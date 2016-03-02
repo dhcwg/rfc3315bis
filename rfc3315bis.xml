@@ -709,17 +709,6 @@
       </t>
 
       <t>
-      The mechanism through which the delegating router
-	  selects prefix(es) for delegation is not specified in this
-	  document. Examples of ways in which the server might select
-	  prefix(es) for a client include: static assignment based on
-	  subscription to an ISP; dynamic assignment from a pool of
-	  available prefixes; selection based on an external authority
-	  such as a RADIUS server using the Framed-IPv6-Prefix option as
-	  described in <xref target="RFC3162" pageno="false" />.
-      </t>
-
-      <t>
       This prefix delegation mechanism would be appropriate for
       use by an ISP to delegate a prefix to a subscriber, where
       the delegated prefix would possibly be subnetted and
@@ -1638,10 +1627,12 @@
 
     <!-- ends: "10 from line 1125-->
 
-    <section anchor='RFC3315-11' title="Selecting Addresses for Assignment to an IA">
+    <section anchor='RFC3315-11' title="Assignment to an IA">
       <!-- 11, line 1159-->
 
-      <t>A server selects addresses to be assigned to an IA according to the
+      <section title="Selecting Addresses for Assignment to an IA_NA">
+      
+      <t>A server selects addresses to be assigned to an IA_NA according to the
       address assignment policies determined by the server administrator and
       the specific information the server determines about the client from
       some combination of the following sources:
@@ -1694,12 +1685,21 @@
       <t>A server MUST NOT assign an address that is otherwise reserved for
       some other purpose. For example, a server MUST NOT assign reserved
       anycast addresses, as defined in <xref target="RFC2526"/>, from any subnet.</t>
-    </section>
+      </section>
 
-    <!-- ends: "11 from line 1159-->
-
-    <section title="Management of Temporary Addresses">
-      <!-- 12, line 1217-->
+      <section title="Assignment of Prefixes for IA_PD">
+      <t>
+      The mechanism through which the delegating router
+	  selects prefix(es) for delegation is not specified in this
+	  document. Examples of ways in which the server might select
+	  prefix(es) for a client include: static assignment based on
+	  subscription to an ISP; dynamic assignment from a pool of
+	  available prefixes; selection based on an external authority
+	  such as a RADIUS server using the Framed-IPv6-Prefix option as
+	  described in <xref target="RFC3162" pageno="false" />.
+      </t>
+      </section>
+      <section title="Assignment of Temporary Addresses">
 
       <t>A client may request the assignment of temporary addresses (see 
       <xref target="RFC4941"/> for the definition of temporary
@@ -1735,8 +1735,8 @@
       for a client to renew expired temporary addresses, though DHCPv6 
       provides such possibility (see <xref target='RFC3315-22.5'/>).</t>
 
+      </section>
     </section>
-
     <!-- ends: "12 from line 1217-->
 
     <section title="Transmission of Messages by a Client">
