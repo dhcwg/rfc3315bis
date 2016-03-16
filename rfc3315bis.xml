@@ -178,9 +178,8 @@
       target='RFC3315-1.2'/> and <xref target='RFC3315-1.3'/> are intended as
       illustrations of DHCP operation rather than an exhaustive list of all
       possible client-server interactions. <xref target='OpModes'/> provides an
-      overview of common operational models. <xref target='RFC3315-17'/>, <xref
-      target='RFC3315-18'/>, and <xref target='RFC3315-19'/> explain client and
-      server operation in detail.</t>
+      overview of common operational models. <xref target='configuration-exchange'/>
+      explains client and server operation in detail.</t>
 
       <section anchor="previous-dhcp6" title="Relation to previous DHCPv6 standards">
 
@@ -688,7 +687,7 @@
       A delegating router is provided IPv6 prefixes to be 
       delegated to requesting routers. A requesting
       router requests prefix(es) from the delegating router, as
-      described in <xref target='RFC3315-18'/>.  The
+      described in <xref target='configuration-exchange'/>.  The
       delegating router chooses prefix(es) for delegation, and
       responds with prefix(es) to the requesting router.  The
       requesting router is then responsible for the delegated
@@ -1815,7 +1814,7 @@
 
       <t>DHCP clients are responsible for reliable delivery of messages in the
       client-initiated message exchanges described in
-      <xref target='RFC3315-17'/> and <xref target='RFC3315-18'/>. If a
+      <xref target='configuration-exchange'/>. If a
       DHCP client fails to receive an expected response from a server, the
       client must retransmit its message. This section describes the
       retransmission strategy to be used by clients in client-initiated
@@ -2279,67 +2278,38 @@
 
     <!-- ends: "16 from line 1605-->
 
-    <section anchor='RFC3315-17' title="DHCP Server Solicitation">
-      <!-- 17, line 1625-->
-
-      <section title="Client Behavior">
-        <!-- 17.1, line 1644-->
-
-
-        <!-- Creation of Solicit Messages moved from here -->
-
-
-        <!-- Receipt of Advertise Messages moved from here -->
-
-
-        <section title="Receipt of Reply Message">
-          <!-- 17.1.4, line 1790-->
-
-          <t>If the client includes a Rapid Commit option in the Solicit
-          message, it will expect a Reply message that includes a Rapid Commit
-          option in response. The client discards any Reply messages it
-          receives that do not include a Rapid Commit option. If the client
-          receives a valid Reply message that includes a Rapid Commit option,
-          it processes the message as described in <xref target='RFC3315-18.1.8'/>. If it does
-          not receive such a Reply message and does receive a valid Advertise
-          message, the client processes the Advertise message as described in
-          <xref target='RFC3315-17.1.3'/>.</t>
-
-          <t>If the client subsequently receives a valid Reply
-          message that includes a Rapid Commit option, it either:</t>
-
-          <t><list hangIndent="3" style="hanging">
-            <t hangText="-"> processes the Reply message as described in
-            <xref target='RFC3315-18.1.8'/>, and
-            discards any Reply messages received in response to the Request
-            message, or</t>
-
-            <t hangText="-"> processes any Reply messages received in response to the Request
-            message and discards the Reply message that includes the Rapid
-            Commit option.</t>
-          </list></t>
-
-        </section>
-
-        <!-- ends: "17.1.4 from line 1790-->
-      </section>
-
-    </section>
-
-    <!-- ends: "17 from line 1625-->
-
     <section anchor='configuration-exchange' title="DHCP Configuration Exchanges">
-
-      <section anchor='RFC3315-18' title="DHCP Client-Initiated Configuration Exchange">
-        <!-- 18, line 1942-->
-
         <t>A client initiates a message exchange with a server or servers to
-        acquire or update configuration information of interest. The client may
+        acquire or update configuration information of interest. Before the
+        client can acquire configuration information it needs to locate
+        available servers. The client does it by sending the Solicit message
+        (see <xref target='solicit-create-transmit'/>) to the
+        All_DHCP_Relay_Agents_and_Servers multicast address and
+        collecting Advertise messages from the servers which respond to the
+        client's message and selects a server from which it wants to obtain
+        configuration information. This process is referred to as server
+        discovery or server solicitation. When the client has selected the
+        server it sends a Request message to this server as described in the
+        <xref target='request-create-transmit'/>.</t>
+
+        <t>The client which is performing a server discovery MAY include a
+        Rapid Commit option (see <xref target='RFC3315-22.14'/>) in a
+        Solicit message to indicate that it is prepared to perform
+        Solicit-Reply message exchange described in
+        <xref target='solicit-create-transmit'/>.</t>
+
+        <t>The client may
         initiate the configuration exchange as part of the operating system
         configuration process, when requested to do so by the application layer,
         when required by Stateless Address Autoconfiguration or as required to
         extend the lifetime of address(es) and/or delegated prefix(es), using
         Renew and Rebind messages.</t>
+
+        <t>A server may initiate a message exchange with a client by sending a
+        Reconfigure message to cause the client to send Renew, Rebind or
+        Information-request message to refresh its configuration information
+        as soon as the Reconfigure message is received by the client.
+        </t>
 
         <!-- The following paragraph has been moved from the 'DHCP Server Solicitation -->
 
@@ -2388,6 +2358,12 @@
           only has addresses and Rebind if it has delegated prefixes (and
           addresses). It uses Information-request messages when it needs
           configuration information but no addresses and no prefixes.</t>
+
+          <t>Upon receipt of a Reconfigure message from the server, a client
+          responds with a Renew, Rebind or an Information-request message as
+          indicated by the Reconfigure Message option. The server sends IAs
+          and/or other configuration information to the client in a Reply
+          message.</t>
 
           <t>If the client has a source address of sufficient scope that can be
           used by the server as a return address, and the client has received a
@@ -2480,7 +2456,28 @@
 
             <t>If the client has included a Rapid Commit option in its Solicit
             message, the client terminates the waiting process as soon as a
-            Reply message with a Rapid Commit option is received.</t>
+            Reply message with a Rapid Commit option is received. The client
+            discards any Reply messages it receives that do not include a
+            Rapid Commit option. If the client receives a valid Reply message
+            that includes a Rapid Commit option, it processes the message as
+            described in <xref target='RFC3315-18.1.8'/>. If it does not
+            receive such a Reply message and does receive a valid Advertise
+            message, the client processes the Advertise as described in
+            <xref target='RFC3315-17.1.3'/>.</t>
+
+            <t>If the client subsequently receives a valid Reply
+            message that includes a Rapid Commit option, it either:</t>
+
+            <t><list hangIndent="3" style="hanging">
+              <t hangText="-"> processes the Reply message as described in
+              <xref target='RFC3315-18.1.8'/>, and
+              discards any Reply messages received in response to the Request
+              message, or</t>
+
+              <t hangText="-"> processes any Reply messages received in response to the Request
+              message and discards the Reply message that includes the Rapid
+              Commit option.</t>
+            </list></t>
 
             <t>If the client is waiting for an Advertise message, the mechanism
             in <xref target='RFC3315-14'/> is modified as follows for use in the transmission of
@@ -2497,7 +2494,7 @@
             Preference option is considered to have a preference value of 0. If
             the client receives an Advertise message that includes a Preference
             option with a preference value of 255, the client immediately begins
-            a client-initiated message exchange (as described in <xref target='RFC3315-18'/>) by
+            a client-initiated message exchange (as described in <xref target='request-create-transmit'/>) by
             sending a Request message to the server from which the Advertise
             message was received. If the client receives an Advertise message
             that does not include a Preference option with a preference value of
@@ -2581,7 +2578,7 @@
             message.</t>
 
             <t hangText="-"> Initiate the server discovery process described in
-            <xref target='RFC3315-17'/>.</t>
+            <xref target='configuration-exchange'/>.</t>
 
             <t hangText="-"> Terminate the configuration process and report failure.</t>
           </list></t>
@@ -2698,12 +2695,17 @@
          may send a Renew or Rebind message, respectively, at the client's discretion.
          The client MUST follow the rules defined in <xref target='t1-t2-0'/>.</t>
 
+         <t>If the client is sending a Renew message in response to a Reconfigure
+         message from the server, the client copies IA options from the Reconfigure
+         message into the Renew message.</t>
+
          <t>The client sets the "msg-type" field to RENEW.  The client generates
          a transaction ID and inserts this value in the "transaction-id"
          field.</t>
 
-         <t>The client places the identifier of the destination server in a
-         Server Identifier option.</t>
+         <t> The client MUST include a Server Identifier option in the
+         Renew message, identifying the server with which the client most
+         recently communicated.</t>
 
          <t>The client MUST include a Client Identifier option to identify itself
          to the server.  The client adds any appropriate options, including
@@ -2727,8 +2729,11 @@
          it is supplying a hint for the prefix length.</t>
 
          <t>The client MUST include an Option Request option (see
-         <xref target='RFC3315-22.7'/>) to indicate the options the client
-         is interested in receiving.  The client MAY include options with
+         <xref target='RFC3315-22.7'/>) in the Renew message. When responding to
+         a Reconfigure, the client copies the Option Request option from the
+         Reconfigure message into the Renew message. Otherwise, the client
+         includes Option Request option indicating options which the
+         client is interested in receiving. The client MAY include options with
          data values as hints to the server about parameter values the
          client would like to have returned.</t>
 
@@ -2747,9 +2752,17 @@
 
           </list></t>
 
-          <t>The message exchange is terminated when time T2 is reached (see
-          <xref target='RFC3315-18.1.4'/>), at which time the client
-          begins a Rebind message exchange.</t>
+          <t>The message exchange is terminated when time T2 is reached. If
+          the client is responding to a Reconfigure, the client ignores
+          and discards the Reconfigure message. In this case, the client
+          continues to operate as if Reconfigure message was not received,
+          i.e. it uses T1/T2 times associated with the client's leases to
+          determine when it should send Renew or Rebind to the server.
+          If the terminated Renew exchange was not initiated as a result
+          of receiving a Reconfigure message, the client begins a Rebind
+          message exchange (see <xref target='RFC3315-18.1.4'/>) when
+          the time T2 is reached.</t>
+
         </section>
 
         <!-- ends: "18.1.3 from line 2100-->
@@ -2796,7 +2809,9 @@
           <t>The message exchange is terminated when the valid lifetimes of all
           leases across all IAs have expired, at which time the client uses
           the Solicit message to locate a new DHCP server and sends a Request
-          for the expired IAs to the new server.</t>
+          for the expired IAs to the new server. If the terminated Rebind
+          exchange was initiated as a result of receiving a Reconfigure
+          message, the client ignores and discards the Reconfigure message.</t>
         </section>
 
         <!-- ends: "18.1.4 from line 2160-->
@@ -2828,6 +2843,10 @@
           server about parameter values the client would like to have
           returned.</t>
 
+          <t>When responding to a Reconfigure, the client includes a
+          Server Identifier option with the identifier from the
+          Reconfigure message to which the client is responding.</t>
+
           <t>The first Information-request message from the client on the
           interface MUST be delayed by a random amount of time between 0 and
           INF_MAX_DELAY. The client transmits the message according to
@@ -2844,6 +2863,7 @@
           <t hangText="   MRD"> 0</t>
 
           </list></t>
+
         </section>
 
         <!-- ends: "18.1.5 from line 2215-->
@@ -3076,7 +3096,7 @@
              response to a Solicit (with a Rapid Commit option) or a Request, the
              client can either re-issue the message without specifying any
              addresses or restart the DHCP server discovery process (see
-             <xref target='RFC3315-17'/>).</t>
+             <xref target='configuration-exchange'/>).</t>
 
              <t>If the Reply was received in response to a Solicit (with a Rapid
              Commit option), Request, Renew, or Rebind message, the client updates
@@ -3177,9 +3197,9 @@
           <section anchor='reply-confirm' title="Reply for Confirm">
             <t>When the client receives a NotOnLink status from the server in
             response to a Confirm message, the client performs DHCP server
-            solicitation, as described in <xref target='RFC3315-17'/>, and
+            solicitation, as described in <xref target='configuration-exchange'/>, and
             client-initiated configuration, as described in
-            <xref target='RFC3315-18'/>.  If the client receives any Reply
+            <xref target='configuration-exchange'/>.  If the client receives any Reply
             messages that indicate a success status (explicit or implicit),
             the client can use the addresses in the IA and ignore any messages
             that indicate a NotOnLink status.</t>
@@ -3188,6 +3208,57 @@
         </section>
 
         <!-- ends: "18.1.8 from line 2345-->
+
+        <section title="Receipt of Reconfigure Messages">
+          <!-- 19.4.1, line 2871-->
+
+          <t>A client receives Reconfigure messages sent to the UDP port 546 on
+          interfaces for which it has acquired configuration information through
+          DHCP. These messages may be sent at any time. Since the results of a
+          reconfiguration event may affect application layer programs, the
+          client SHOULD log these events, and MAY notify these programs of the
+          change through an implementation-specific interface.</t>
+
+          <t>Upon receipt of a valid Reconfigure message, the client responds
+          with either a Renew message, a Rebind message, or an Information-request message as
+          indicated by the Reconfigure Message option (as defined in
+          <xref target='RFC3315-22.19'/>). The client ignores the transaction-id field in the received
+          Reconfigure message. While the transaction is in progress, the
+          client discards any Reconfigure messages it receives.</t>
+
+          <t>DISCUSSION:</t>
+
+          <t><list style="empty">
+            <t>The Reconfigure message acts as a trigger that signals the client
+            to complete a successful message exchange. Once the client has
+            received a Reconfigure, the client proceeds with the message
+            exchange (retransmitting the Renew or Information-request message if
+            necessary); the client ignores any additional Reconfigure messages
+            until the exchange is complete. Subsequent Reconfigure messages
+            cause the client to initiate a new exchange.</t>
+
+            <t>How does this mechanism work in the face of duplicated or
+            retransmitted Reconfigure messages? Duplicate messages will be
+            ignored because the client will begin the exchange after the receipt
+            of the first Reconfigure. Retransmitted messages will either trigger
+            the exchange (if the first Reconfigure was not received by the
+            client) or will be ignored. The server can discontinue
+            retransmission of Reconfigure messages to the client once the server
+            receives the Renew or Information-request message from the
+            client.</t>
+
+            <t>It might be possible for a duplicate or retransmitted Reconfigure
+            to be sufficiently delayed (and delivered out of order) to arrive at
+            the client after the exchange (initiated by the original
+            Reconfigure) has been completed. In this case, the client would
+            initiate a redundant exchange. The likelihood of delayed and out of
+            order delivery is small enough to be ignored. The consequence of the
+            redundant exchange is inefficiency rather than incorrect
+            operation.</t>
+          </list></t>
+        </section>
+
+        <!-- ends: "19.4.1 from line 2871-->
 
         <section anchor='pd-bindings-verification'
                  title="Bindings Verification by Requesting Router">
@@ -3247,6 +3318,23 @@
         in the Option Request option that the server has been configured to
         return to the client. The server MAY return additional options to the
         client if it has been configured to do so.</t>
+
+        <t>The server MAY initiate a configuration exchange, by sending
+        Reconfigure messages, to cause DHCP clients to obtain new addresses,
+        prefixes and other configuration information. For example, an
+        administrator may use a server-initiated configuration exchange when
+        links in the DHCP domain are to be renumbered. Other examples include
+        changes in the location of directory servers, addition of new services
+        such as printing, and availability of new software.</t>
+
+        <t>When a client receives a Reconfigure message from the server, the
+        client sends Renew, Rebind or Information-request message as indicated
+        by the as indicated by the Reconfigure Message option (as defined in
+        <xref target='RFC3315-22.19'/>). The server sends IAs and/or
+        other configuration information to the client in a Reply message. The
+        server MAY include options containing the IAs and new values for other
+        configuration parameters in the Reply message, even if those IAs and
+        parameters were not requested in the client's message.</t>
 
         <section title="Receipt of Solicit Messages">
           <!-- 17.2.1, line 1823-->
@@ -3485,6 +3573,10 @@
          information to be returned to the client as described in
          <xref target='RFC3315-18.2'/>.</t>
 
+         <t>The server MAY include options containing the IAs and values for
+         other configuration parameters, even if those parameters were not
+         requested in the Renew message.</t>
+
          <t>The T1/T2 times set in each applicable IA option for a Reply
          MUST be the same values across all IAs. The server MUST determine
          the T1/T2 times across all of the applicable client's bindings in
@@ -3581,6 +3673,10 @@
          information to be returned to the client as described in
          <xref target='RFC3315-18.2'/>.</t>
 
+         <t>The server MAY include options containing the IAs and values for
+         other configuration parameters, even if those IAs and parameters
+         were not requested in the Rebind message.</t>
+
          <t>The T1/T2 times set in each applicable IA option for a Reply
          MUST be the same values across all IAs. The server MUST determine
          the T1/T2 times across all of the applicable client's bindings in
@@ -3599,10 +3695,6 @@
           configuration parameters appropriate to the client, based on the
           server configuration policies known to the server.</t>
 
-          <t>The server constructs a Reply message by setting the "msg-type"
-          field to REPLY, and copying the transaction ID from the
-          Information-request message into the transaction-id field.</t>
-
           <t>The server MUST include a Server Identifier option containing the
           server's DUID in the Reply message. If the client included a Client
           Identification option in the Information-request message, the server
@@ -3610,7 +3702,9 @@
 
           <t>The server includes options
           containing configuration information to be returned to the client as
-          described in <xref target='RFC3315-18.2'/>.</t>
+          described in <xref target='RFC3315-18.2'/>. The server MAY include
+          additional options that were not requested by the client in the
+          Information-request message.</t>
 
           <t>If the Information-request message received from the client did
           not include a Client Identifier option, the server SHOULD respond
@@ -3802,34 +3896,8 @@
         </section>
 
         <!-- ends: "18.2.8 from line 2729-->
-      </section>
 
-      <!-- ends: "18.2 -->
-
-    </section>
-
-    </section>
-
-    <!-- ends: "18 from line 1942-->
-
-    <section anchor='RFC3315-19' title="DHCP Server-Initiated Configuration Exchange">
-      <!-- 19, line 2751-->
-
-      <t>A server initiates a configuration exchange to cause DHCP clients to
-      obtain new addresses and other configuration information. For example,
-      an administrator may use a server-initiated configuration exchange when
-      links in the DHCP domain are to be renumbered. Other examples include
-      changes in the location of directory servers, addition of new services
-      such as printing, and availability of new software.</t>
-
-      <section anchor='RFC3315-19.1' title="Server Behavior">
-        <!-- 19.1, line 2762-->
-
-        <t>A server sends a Reconfigure message to cause a client to initiate
-        immediately a Renew/Reply or Information-request/Reply message
-        exchange with the server.</t>
-
-        <section title="Creation and Transmission of Reconfigure Messages">
+        <section anchor='reconfigure-transmission' title="Creation and Transmission of Reconfigure Messages">
           <!-- 19.1.1, line 2769-->
 
           <t>The server sets the "msg-type" field to RECONFIGURE. The server
@@ -3884,12 +3952,6 @@
           Information-request message (whichever was specified in the original
           Reconfigure message) from the client as satisfying the Reconfigure
           message request.</t>
-        </section>
-
-        <!-- ends: "19.1.1 from line 2769-->
-
-        <section title="Time Out and Retransmission of Reconfigure Messages">
-          <!-- 19.1.2, line 2824-->
 
           <t>If the server does not receive a Renew, Rebind, or Information-request
           message from the client in REC_TIMEOUT milliseconds, the server
@@ -3902,198 +3964,15 @@
           documented in <xref target='RFC3315-5.5'/>.</t>
         </section>
 
-        <!-- ends: "19.1.2 from line 2824-->
+        <!-- ends: "19.1.1 from line 2769-->
+
       </section>
 
-      <!-- ends: "19.1 from line 2762-->
-
-      <section title="Receipt of Renew or Rebind Messages">
-        <!-- 19.2, line 2837-->
-
-        <t>In response to a Renew message, the server generates
-        and sends a Reply message to the client as
-        described in <xref target='RFC3315-18.2.3'/> and
-        <xref target='RFC3315-18.2.8'/>, including options for
-        configuration parameters.</t>
-
-        <t>In response to a Rebind message, the server generates and sends a
-   	Reply message to the client as described in <xref target='RFC3315-18.2.4'/>
-   	and <xref target='RFC3315-18.2.8'/>, including options
-   	for configuration parameters.</t>
-
-        <t>The server MAY include options containing the IAs and new values
-        for other configuration parameters in the Reply message, even if those
-        IAs and parameters were not requested in the Renew or Rebind message from the
-        client.</t>
-      </section>
-
-      <!-- ends: "19.2 from line 2837-->
-
-      <section title="Receipt of Information-request Messages">
-        <!-- 19.3, line 2849-->
-
-        <t>The server generates and sends a Reply message to the client as
-        described in <xref target='RFC3315-18.2.5'/> and
-        <xref target='RFC3315-18.2.8'/>, including options for
-        configuration parameters.</t>
-
-        <t>The server MAY include options containing
-        new values for other configuration parameters in the Reply message,
-        even if those parameters were not requested in the Information-request
-        message from the client.</t>
-      </section>
-
-      <!-- ends: "19.3 from line 2849-->
-
-      <section anchor='RFC3315-19.4' title="Client Behavior">
-        <!-- 19.4, line 2861-->
-
-        <t>A client receives Reconfigure messages sent to the UDP port 546 on
-        interfaces for which it has acquired configuration information through
-        DHCP. These messages may be sent at any time. Since the results of a
-        reconfiguration event may affect application layer programs, the
-        client SHOULD log these events, and MAY notify these programs of the
-        change through an implementation-specific interface.</t>
-
-        <section title="Receipt of Reconfigure Messages">
-          <!-- 19.4.1, line 2871-->
-
-          <t>Upon receipt of a valid Reconfigure message, the client responds
-          with either a Renew message, a Rebind message, or an Information-request message as
-          indicated by the Reconfigure Message option (as defined in
-          <xref target='RFC3315-22.19'/>). The client ignores the transaction-id field in the received
-          Reconfigure message. While the transaction is in progress, the
-          client discards any Reconfigure messages it receives.</t>
-
-          <t>DISCUSSION:</t>
-
-          <t><list style="empty">
-            <t>The Reconfigure message acts as a trigger that signals the client
-            to complete a successful message exchange. Once the client has
-            received a Reconfigure, the client proceeds with the message
-            exchange (retransmitting the Renew or Information-request message if
-            necessary); the client ignores any additional Reconfigure messages
-            until the exchange is complete. Subsequent Reconfigure messages
-            cause the client to initiate a new exchange.</t>
-
-            <t>How does this mechanism work in the face of duplicated or
-            retransmitted Reconfigure messages? Duplicate messages will be
-            ignored because the client will begin the exchange after the receipt
-            of the first Reconfigure. Retransmitted messages will either trigger
-            the exchange (if the first Reconfigure was not received by the
-            client) or will be ignored. The server can discontinue
-            retransmission of Reconfigure messages to the client once the server
-            receives the Renew or Information-request message from the
-            client.</t>
-
-            <t>It might be possible for a duplicate or retransmitted Reconfigure
-            to be sufficiently delayed (and delivered out of order) to arrive at
-            the client after the exchange (initiated by the original
-            Reconfigure) has been completed. In this case, the client would
-            initiate a redundant exchange. The likelihood of delayed and out of
-            order delivery is small enough to be ignored. The consequence of the
-            redundant exchange is inefficiency rather than incorrect
-            operation.</t>
-          </list></t>
-        </section>
-
-        <!-- ends: "19.4.1 from line 2871-->
-
-        <section title="Creation and Transmission of Renew or Rebind Messages">
-          <!-- 19.4.2, line 2913-->
-
-          <t>When responding to a Reconfigure, the client creates and sends
-          the Renew message in exactly the same manner as outlined in
-          <xref target='RFC3315-18.1.3'/>, with the exception that the client copies the Option Request
-          option and any IA options from the Reconfigure message into the
-          Renew message. The client MUST include a Server Identifier
-          option in the Renew message, identifying the server with which
-          the client most recently communicated.</t>
-
-          <t>When responding to a Reconfigure, the client creates and sends the
-   	  Rebind message in exactly the same manner as outlined in
-   	  <xref target='RFC3315-18.1.4'/>, with the exception that the client copies the
-   	  Option Request option and any IA options from the Reconfigure message
-   	  into the Rebind message.</t>
-
-   	  <t>If a client is currently sending Rebind messages, as described in
-   	  <xref target='RFC3315-18.1.3'/>, the client ignores any received
-   	  Reconfigure messages.</t>
-        </section>
-
-        <!-- ends: "19.4.2 from line 2913-->
-
-        <section anchor='RFC3315-19.4.3' title="Creation and Transmission of Information-request Messages">
-          <!-- 19.4.3, line 2922-->
-
-          <t>When responding to a Reconfigure, the client creates and sends
-          the Information-request message in exactly the same manner as
-          outlined in <xref target='RFC3315-18.1.5'/>, with the exception that the client
-          includes a Server Identifier option with the identifier from the
-          Reconfigure message to which the client is responding.</t>
-        </section>
-
-        <!-- ends: "19.4.3 from line 2922-->
-
-        <section title="Time Out and Retransmission of Renew, Rebind or Information-request Messages">
-          <!-- 19.4.4, line 2931-->
-
-          <t>The client uses the same variables and retransmission algorithm
-          as it does with Renew, Rebind, or Information-request messages generated as
-          part of a client-initiated configuration exchange. See
-          <xref target='RFC3315-18.1.3'/>, <xref target='RFC3315-18.1.4'/>, and <xref target='RFC3315-18.1.5'/>
-          for details. If the client does not receive a
-          response from the server by the end of the retransmission process,
-          the client ignores and discards the Reconfigure message.</t>
-        </section>
-
-        <!-- ends: "19.4.4 from line 2931-->
-
-        <section title="Receipt of Reply Messages">
-          <!-- 19.4.5, line 2942-->
-
-          <t>Upon the receipt of a valid Reply message, the client processes
-          the options and sets (or resets) configuration parameters
-          appropriately. The client records and updates the lifetimes for any
-          addresses specified in IAs in the Reply message.</t>
-        </section>
-
-        <!-- ends: "19.4.5 from line 2942-->
-      </section>
-
-      <!-- ends: "19.4 from line 2861-->
-
-      <!-- begins: RFC3633 Section 13: Prefix Delegation reconfiguration -->
-      <section anchor="sipd" title="Prefix Delegation Reconfiguration">
-        <t>This section describes prefix delegation in Reconfigure
-        message exchanges.</t>
-
-        <section anchor="sipd-server" title="Delegating Router Behavior">
-          <t>The delegating router initiates a configuration message
-          exchange with a requesting router, as described in <xref target='RFC3315-19'/>,
-          by sending a Reconfigure message (acting as a DHCP server)
-          to the requesting router, as described in <xref target='RFC3315-19.1'/>.
-          The delegating router specifies the IA_PD option in the
-          Option Request option to cause the requesting router to
-          include an IA_PD option to obtain new information about
-          delegated prefix(es).</t>
-        </section>
-
-        <section anchor="sipd-client" title="Requesting Router Behavior">
-          <t>The requesting router responds to a Reconfigure message,
-          acting as a DHCP client, received from a delegating router
-          as described in <xref target='RFC3315-19.4'/>
-          The requesting router MUST include the IA_PD Prefix option(s) (in
-          an IA_PD option) for prefix(es) that have been delegated to
-          the requesting router by the delegating router from which the
-          Reconfigure message was received.</t>
-        </section>
-      </section>
-      <!-- ends: RFC3633 Section 13: Prefix Delegation reconfiguration -->
+      <!-- ends: "18.2 -->
 
     </section>
 
-    <!-- ends: "19 from line 2751-->
+    <!-- ends: "18 from line 1942-->
 
     <section title="Relay Agent Behavior">
       <!-- 20, line 2950-->
@@ -5326,7 +5205,7 @@
         by Relay Agents when Relay Agent options are in use.</t>
 
         <t>Details about when the client may send messages to the server using
-        unicast are in <xref target='RFC3315-18'/>.</t>
+        unicast are in <xref target='configuration-exchange'/>.</t>
       </section>
 
       <!-- ends: "22.12 from line 4089-->
@@ -6935,7 +6814,7 @@ R-repl.                                               *
           <t>NOTE:</t>
 
         <t>Only included in Information-request messages that are sent in
-        response to a Reconfigure (see <xref target='RFC3315-19.4.3'/>).</t>
+        response to a Reconfigure (see <xref target='RFC3315-18.1.5'/>).</t>
 
 <figure>
 <artwork>
