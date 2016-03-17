@@ -6764,6 +6764,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Removed references to the text that server was allowed to cache its
           replies (#80).</t>
+
+          <t>Merged sections 17, 18 and 19 into a single section describing client and
+          server behaviors (ticket 142).</t>
+
         </list>
 
       </t>
