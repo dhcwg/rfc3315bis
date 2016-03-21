@@ -7,7 +7,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-04" ipr="pre5378Trust200902"
+<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-05" ipr="pre5378Trust200902"
      obsoletes="3315,3633,3736,7083,7550">
   <front>
     <title abbrev="RFC 3315 bis">Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis</title>
