@@ -333,7 +333,7 @@
       <!-- 3, line 360-->
 
       <t>The IPv6 Specification provides the base architecture and design of
-      IPv6. Related work in IPv6 that would best serve an implementor to study
+      IPv6. Related work in IPv6 that would best serve an implementer to study
       includes the IPv6 Specification <xref target="RFC2460"/>, the IPv6
       Addressing Architecture <xref target="RFC4291"/>, IPv6 Stateless Address
       Autoconfiguration <xref target="RFC4862"/>, IPv6 Neighbor Discovery
@@ -364,7 +364,7 @@
       <t>IPv6 Neighbor Discovery <xref target="RFC4861"/> is the node
       discovery protocol in IPv6 which replaces and enhances functions of ARP
       <xref target="RFC0826"/>. To understand IPv6 and stateless address
-      autoconfiguration, it is strongly recommended that implementors
+      autoconfiguration, it is strongly recommended that implementers
       understand IPv6 Neighbor Discovery.</t>
 
       <t>Dynamic Updates to DNS <xref target="RFC2136"/> is a specification
@@ -1653,7 +1653,7 @@
       then the client is on the same link as the one to which the interface,
       identified by the link-address field in the message from the relay
       agent, is attached. According to <xref target="RFC6221"></xref>, the server MUST
-      ignore any link-address field whose value is zero. The link address field referes
+      ignore any link-address field whose value is zero. The link address field refers
       to the link-address field of the Relay-Forward message, and the link-address fields
       in any Relay-Forward messages that may be nested within the Relay-Forward message.</t>
 
@@ -6422,12 +6422,12 @@
       <xref target="I-D.ietf-dhc-anonymity-profile"/>.</t>
 
       <t>This specification does not define any allocation strategies.
-      Implementors are expected to develop their own algorithm for the server to
+      Implementers are expected to develop their own algorithm for the server to
       choose a resource out of the available pool. Several possible allocation
       strategies are mentioned in Section 4.3 of <xref
       target="I-D.ietf-dhc-dhcpv6-privacy"/>. Please keep in mind that this list
       is not exhaustive and there are certainly possible other strategies. Here
-      are some observations for the implementor to consider.</t>
+      are some observations for the implementer to consider.</t>
 
       <t>Assigning addresses using some kind of sequential
       algorithm (prefix::1, prefix::2, prefix::3,...) is fast, but greatly
@@ -6476,7 +6476,7 @@
       a small number of mechanisms that didn't get much traction,
       were not widely deployed, underspecified or had other
       operational issues. Those mechanisms are now considered
-      decprecated. Legacy implementations MAY support it, but
+      deprecated. Legacy implementations MAY support it, but
       implementations conformant to this document MUST NOT rely on them.
       </t>
 
@@ -6737,7 +6737,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           discards. It is up to software vendor if and how to log such events (debug log
           message, event log, message pop-up etc.). Ticket #50.</t>
 
-          <t>Clarified that: there should be no more that one instance of Vendor Class
+          <t>Clarified that: there should be no more than one instance of Vendor Class
           option with a given Enterprise Number; that one instance of Vendor Class can
           contain multiple encapsulated options; the same applies to Vendor Specific
           Information option. Ticket #22.</t>
