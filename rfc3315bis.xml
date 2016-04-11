@@ -2292,7 +2292,7 @@
         server it sends a Request message to this server as described in the
         <xref target='request-create-transmit'/>.</t>
 
-        <t>The client which is performing a server discovery MAY include a
+        <t>The client which is performing server discovery MAY include a
         Rapid Commit option (see <xref target='RFC3315-22.14'/>) in a
         Solicit message to indicate that it is prepared to perform
         Solicit-Reply message exchange described in
@@ -2306,7 +2306,7 @@
         Renew and Rebind messages.</t>
 
         <t>A server may initiate a message exchange with a client by sending a
-        Reconfigure message to cause the client to send Renew, Rebind or
+        Reconfigure message to cause the client to send a Renew, Rebind or
         Information-request message to refresh its configuration information
         as soon as the Reconfigure message is received by the client.
         </t>
@@ -2332,14 +2332,14 @@
 
         <t>Servers
         that can assign addresses or delegated prefixes to the IAs respond to
-        the client with an Advertise message. The client then initiates a
+        the client with an Advertise message or Reply message if the client included
+        a Rapid Commit option and the server is configured to accept it.</t>
+
+        <t>If the server responds with an Advertise mesage, the client initiates a
         configuration exchange as described in <xref target='request-create-transmit'/>.
         </t>
 
-        <t>According to a terminology for the prefix delegation, a client requesting a
-        delegation of a prefix is referred to as a requesting router and a server
-        delegating the prefix is referred to as a delegating router. The requesting
-        router and the delegating router use the IA_PD Prefix option to exchange
+        <t>Requesting router and delegating router use the IA_PD Prefix option to exchange
         information about prefix(es) in much the same way as IA Address options
         are used for assigned addresses. Typically, a single DHCP session is
         used to exchange information about addresses and prefixes, i.e.
@@ -2377,7 +2377,7 @@
             <t>Use of unicast may avoid delays due to the relaying of messages by
             relay agents, as well as avoid overhead and duplicate responses by
             servers due to the delivery of client messages to multiple servers.
-            Requiring the client to relay all DHCP messages through a relay agent
+            However, requiring the client to relay all DHCP messages through a relay agent
             enables the inclusion of relay agent options in all messages sent by
             the client. The server should enable the use of unicast only when
             relay agent options will not be used.</t>
@@ -2539,15 +2539,17 @@
 
             <t>The client MUST include a Client Identifier option to identify
             itself to the server. The client adds any other appropriate options,
-            including one or more IA options (if the client is requesting that
-            the server assign it some network addresses or delegated prefixes).
+            including one or more IA options.
           </t>
 
             <t>The client MUST include an Option Request option (see
-            <xref target='RFC3315-22.7'/>) to indicate the options the client is interested in receiving.
-            The client MAY include options with data values as hints to the
-            server about parameter values the client would like to have
-            returned.</t>
+            <xref target='RFC3315-22.7'/>) to request the SOL_MAX_RT option
+            (see <xref target='SOL_MAX_RT_option'/>) and any
+            other options the client is interested in receiving.
+            The client MAY additionally include instances of those options that
+            are identified in the Option Request option, with data values as
+            hints to the server about parameter values the client would like to
+            have returned.</t>
 
             <t>The client includes a Reconfigure Accept option (see
             <xref target='RFC3315-22.20'/>) indicating whether or not the client is willing to accept
@@ -2667,7 +2669,8 @@
           <!-- 18.1.3, line 2100-->
 
          <t>To extend the valid and preferred lifetimes for the leases
-         assigned to the IAs, the client sends a Renew message to the server
+         assigned to the IAs and obtain new addresses or delegated prefixes for
+         IAs, the client sends a Renew message to the server
          from which the leases were obtained, which includes IA options
          for the IAs whose lease lifetimes are to be extended. The client
          includes IA Address options within IA_NA and IA_TA options for the
@@ -2685,7 +2688,7 @@
          IAs from the server at the same time, the client MUST select a T1 and
          T2 time from all IA options, which will guarantee that the client will
          send Renew/Rebind messages not later than at the T1/T2 times associated
-         with any of the client's bindings.</t>
+         with any of the client's bindings (earliest T1/T2).</t>
 
          <t>At time T1, the client initiates a Renew/Reply message
          exchange to extend the lifetimes on any leases in the IA.</t>
@@ -2748,11 +2751,11 @@
 
           <t hangText="MRC"> 0</t>
 
-          <t hangText="MRD"> Remaining time until T2</t>
+          <t hangText="MRD"> Remaining time until earliest T2</t>
 
           </list></t>
 
-          <t>The message exchange is terminated when time T2 is reached. If
+          <t>The message exchange is terminated when earliest time T2 is reached. If
           the client is responding to a Reconfigure, the client ignores
           and discards the Reconfigure message. In this case, the client
           continues to operate as if Reconfigure message was not received,
@@ -2761,7 +2764,7 @@
           If the terminated Renew exchange was not initiated as a result
           of receiving a Reconfigure message, the client begins a Rebind
           message exchange (see <xref target='RFC3315-18.1.4'/>) when
-          the time T2 is reached.</t>
+          the earliest time T2 is reached.</t>
 
         </section>
 
@@ -2776,7 +2779,7 @@
          available server.</t>
 
          <t>The client constructs the Rebind message as described in
-         <xref target='RFC3315-17.1.3'/> with the following differences:
+         <xref target='RFC3315-18.1.3'/> with the following differences:
 
          <list style="hanging">
          <t hangText="-"> The client sets the "msg-type" field to REBIND.</t>
@@ -2798,7 +2801,7 @@
           <t hangText="   MRC"> 0</t>
 
           <t hangText="   MRD"> Remaining time until valid lifetimes of all
-          addresses in all IAs have expired</t>
+          leases in all IAs have expired</t>
 
           </list></t>
 
@@ -2831,9 +2834,7 @@
           itself to the server. If the client does not include a Client
           Identifier option, the server will not be able to return any
           client-specific options to the client, or the server may choose not
-          to respond to the message at all. The client MUST include a Client
-          Identifier option if the Information-request message will be
-          authenticated.</t>
+          to respond to the message at all.</t>
 
           <t>The client MUST include an Option Request option (see
           <xref target='RFC3315-22.7'/>) to request the INF_MAX_RT option
@@ -3070,7 +3071,7 @@
 
           <t>If the client receives a Reply message with a status code of
           UnspecFail, the server is indicating that it was unable to process
-          the message due to an unspecified failure condition.  If the client
+          the client's message due to an unspecified failure condition.  If the client
           retransmits the original message to the same server to retry the
           desired operation, the client MUST limit the rate at which it
           retransmits the message and limit the duration of the time during
@@ -3104,7 +3105,7 @@
              contained in the Reply message:
 
              <list style="hanging">
-               <t hangText="-"> Record T1 and T2 times.</t>
+               <t hangText="-"> Record T1 and T2 times, if appropriate for the IA type.</t>
 
                <t hangText="-"> Add any new leases in the IA option to the IA as
                recorded by the client.</t>
@@ -3178,7 +3179,7 @@
              <t>Whenever a client restarts the DHCP server discovery process
              or selects an alternate server, as described in
              <xref target="RFC3315-17.1.3"/>, the client SHOULD stop using
-             all the addresses and delegated prefixes for which it has the bindings
+             all the addresses and delegated prefixes for which it has bindings
              and try to obtain all required leases from the new server. This
              facilitates the client using a single state machine for all bindings.
              </t>
@@ -3244,7 +3245,7 @@
             the exchange (if the first Reconfigure was not received by the
             client) or will be ignored. The server can discontinue
             retransmission of Reconfigure messages to the client once the server
-            receives the Renew or Information-request message from the
+            receives the Renew, Rebind or Information-request message from the
             client.</t>
 
             <t>It might be possible for a duplicate or retransmitted Reconfigure
@@ -3301,7 +3302,7 @@
 
         <t>In most instances, the server will send a Reply in response to a
         Request, Confirm, Renew, Rebind, Decline and Information-request messages
-        sent by a client. The server will also send Reply in response to a
+        sent by a client. The server will also send a Reply in response to a
         Solicit with a Rapid Commit option, when the server is configured to
         respond with committed lease assignments.</t>
 
@@ -3309,11 +3310,11 @@
         Identifier option containing the server's DUID and the Client
         Identifier option from the client message if one was present.</t>
 
-        <t>In most Reply messages, the server includes options containing
+        <t>In most reply messages, the server includes options containing
         configuration information for the client. The server must be aware of
         the recommendations on packet sizes and the use of fragmentation in
         section 5 of <xref target="RFC2460"></xref>. If the client included an Option Request option
-        in its message, the server includes options in the Reply message
+        in its message, the server includes options in the reply message
         containing configuration parameters for all of the options identified
         in the Option Request option that the server has been configured to
         return to the client. The server MAY return additional options to the
@@ -3353,7 +3354,8 @@
           message and the server has been configured to respond with committed
           lease assignments and other resources, the server responds to the
           Solicit with a Reply message. The server MUST commit the assignment
-          of any addresses or other configuration information before sending
+          of any addresses and delegated prefixes or other configuration
+          information before sending
           a Reply message to a client. In this case the server includes a
           Rapid Commit option in the Reply message to indicate that the
           Reply is in response to a Solicit message.</t>
@@ -3413,19 +3415,20 @@
 
           <t>The server examines all IAs in the message from the client.</t>
 
-          <t>For each IA_NA and IA_TA the server checks if the prefixes on
-          included IP addresses are appropriate for the link to which the
-          client is connected. If any of the prefixes on the included IP
-          addresses is not appropriate for the link to which the client is
+          <t>For each IA_NA and IA_TA in the Request messsage the server checks
+          if the prefixes on included IP addresses are appropriate for the
+          link to which the client is connected. If any of the prefixes on the
+          included IP addresses is not appropriate for the link to which the client is
           connected, the server MUST return the IA to the client with a Status Code
           option with the value NotOnLink. If the server does not send the
           NotOnLink status code but it cannot assign any IP addresses to an IA,
           the server MUST return the IA in the Reply message with no addresses
           in the IA and a Status Code option containing status code NoAddrsAvail.</t>
 
-          <t>For any IA_PD to which the server cannot assign any delegated
-          prefixes, the server MUST return the IA_PD option in the Reply
-          message with the Status Code option containing status code NoPrefixAvail.</t>
+          <t>For any IA_PD in the Request message, to which the server cannot
+          assign any delegated prefixes, the server MUST return the IA_PD option
+          in the Reply message with the Status Code option containing status code
+          NoPrefixAvail.</t>
 
           <t>The server MAY assign different addresses and/or delegated prefixes
           to an IA than included in the IA within the Request message sent by the
@@ -3540,9 +3543,10 @@
            a binding and return the IA with assigned addresses or delegated prefixes with lifetimes
            and, if applicable, T1/T2 times and other information requested by
            the client. If the client included the IA Prefix option within the
-           IA_PD option with the non-zero value in the "prefix-length" field,
-           the server MAY use this value as a hint for the length of the prefixes
-           to be assigned (see
+           IA_PD option with zero value in the "IPv6 prefix" field and non-zero
+           value in the "prefix-length" field,
+           the server MAY use the "prefix-length" value as a hint for the length
+           of the prefixes to be assigned (see
            <xref target="I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue"/> for
            further details on prefix length hints).
            </t>
