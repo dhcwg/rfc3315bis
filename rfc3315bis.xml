@@ -2774,7 +2774,7 @@
           <!-- 18.1.4, line 2160-->
 
          <t> At time T2 (which will only be reached if the server to
-         which the Renew message was sent at time T1 has not responded),
+         which the Renew message was sent starting at time T1 has not responded),
          the client initiates a Rebind/Reply message exchange with any
          available server.</t>
 
@@ -3699,6 +3699,10 @@
           configuration parameters appropriate to the client, based on the
           server configuration policies known to the server.</t>
 
+          <t>The server constructs a Reply message by setting the "msg-type"
+          field to REPLY, and copying the transaction ID from the Information-request
+          message into the transaction-id field.</t>
+
           <t>The server MUST include a Server Identifier option containing the
           server's DUID in the Reply message. If the client included a Client
           Identification option in the Information-request message, the server
@@ -3722,6 +3726,10 @@
 
         <section title="Receipt of Release Messages">
           <!-- 18.2.6, line 2663-->
+
+          <t>The server constructs a Reply message by setting the "msg-type"
+          field to REPLY, and copying the transaction ID from the Release
+          message into the transaction-id field.</t>
 
           <t>When the server receives a Release message via unicast from a
           client to which the server has not sent a unicast option (or is not currently
@@ -3784,7 +3792,9 @@
           available for assignment.</t>
 
           <t>After all the addresses have been processed, the server generates
-          a Reply message and includes a Status Code option with the value
+          a Reply message by setting the "msg-type" field to REPLY, and copying
+          the transaction ID from the Decline message into the transaction-id
+          field. The client includes a Status Code option with the value
           Success, a Server Identifier option with the server's DUID, and a
           Client Identifier option with the client's DUID. For each IA in the
           Decline message for which the server has no binding information, the
@@ -3802,7 +3812,7 @@
           contents of the transaction-id field from the Solicit message
           received from the client to the Advertise message. The server
           includes its server identifier in a Server Identifier option and
-          copies the Client Identifier from the Solicit message into the
+          copies the Client Identifier option from the Solicit message into the
           Advertise message.</t>
 
           <t>The server MAY add a Preference option to carry
