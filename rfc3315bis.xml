@@ -2731,14 +2731,14 @@
          include IA Prefix option with the IPv6 prefix field set to 0 unless
          it is supplying a hint for the prefix length.</t>
 
-         <t>The client MUST include an Option Request option (see
-         <xref target='RFC3315-22.7'/>) in the Renew message. When responding to
-         a Reconfigure, the client copies the Option Request option from the
-         Reconfigure message into the Renew message. Otherwise, the client
-         includes Option Request option indicating options which the
-         client is interested in receiving. The client MAY include options with
-         data values as hints to the server about parameter values the
-         client would like to have returned.</t>
+         <t>When the client is responding to a Reconfigure, the client copies the
+         Option Request option from the Reconfigure message into the Renew message.
+         Otherwise, the client includes Option Request option (see
+         <xref target='RFC3315-22.7'/>) to request the SOL_MAX_RT option
+         (see <xref target='SOL_MAX_RT_option'/>) and any
+         other options the client is interested in receiving. The client MAY
+         include options with data values as hints to the server about
+         parameter values the client would like to have returned.</t>
 
           <t>The client transmits the message according to <xref target='RFC3315-14'/>, using
           the following parameters:
