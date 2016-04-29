@@ -6370,6 +6370,16 @@
       page to add a reference to this document for definitions previously
       created by <xref target="RFC3315"></xref>, <xref
       target="RFC3633"></xref>, and <xref target="RFC7083"></xref>.</t>
+      
+            <t>IANA is requested to update the
+      http://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml#authentication-protocol-id
+      page to add an "Obsolete" annotation into the "DHCPv6 Delayed
+      Authentication" entity in the "Authentication Suboption (value 8) -
+      Protocol identifier values" registry, and
+      https://www.iana.org/assignments/auth-namespaces/auth-namespaces.xhtml
+      page to add an "Obsolete" annotation into the "Delayed Authentication"
+      entity in the "Protocol Name Space Values" registry.</t>
+
     </section>
 
     <!-- ends: "24 from line 4595-->
