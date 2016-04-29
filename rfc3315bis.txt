@@ -261,7 +261,7 @@ Internet-Draft                RFC 3315 bis                    April 2016
    25. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . 113
    26. References  . . . . . . . . . . . . . . . . . . . . . . . . . 114
      26.1.  Normative References . . . . . . . . . . . . . . . . . . 114
-     26.2.  Informative References . . . . . . . . . . . . . . . . . 116
+     26.2.  Informative References . . . . . . . . . . . . . . . . . 117
    Appendix A.  Changes since RFC3315  . . . . . . . . . . . . . . . 118
    Appendix B.  Changes since RFC3633  . . . . . . . . . . . . . . . 123
    Appendix C.  Appearance of Options in Message Types . . . . . . . 123
@@ -6284,6 +6284,16 @@ Internet-Draft                RFC 3315 bis                    April 2016
    this document for definitions previously created by [RFC3315],
    [RFC3633], and [RFC7083].
 
+   IANA is requested to update the http://www.iana.org/assignments/
+   bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml#authentication-
+   protocol-id page to add an "Obsolete" annotation into the "DHCPv6
+   Delayed Authentication" entity in the "Authentication Suboption
+   (value 8) - Protocol identifier values" registry, and
+   https://www.iana.org/assignments/auth-namespaces/auth-
+   namespaces.xhtml page to add an "Obsolete" annotation into the
+   "Delayed Authentication" entity in the "Protocol Name Space Values"
+   registry.
+
 24.  Obsoleted mechanisms
 
    This specification of the DHCPv6 is mostly a corrected and cleaned up
@@ -6312,6 +6322,14 @@ Internet-Draft                RFC 3315 bis                    April 2016
    The following people are authors of the original RFC 3315: Ralph
    Droms, Jim Bound, Bernie Volz, Ted Lemon, Charles Perkins, and Mike
    Carney.  The following people are authors of the original RFC 3633:
+
+
+
+Mrugalski, et al.       Expires October 30, 2016              [Page 113]
+
+Internet-Draft                RFC 3315 bis                    April 2016
+
+
    Ole Troan and Ralph Droms.  This document is merely a refinement of
    their work and would not be possible without their original work.
 
@@ -6321,15 +6339,6 @@ Internet-Draft                RFC 3315 bis                    April 2016
    Robert Marks, Leaf Yeh, Tim Winters, Michelle Cotton, Pablo Armando,
    John Brzozowski, Suresh Krishnan, Hideshi Enokihara, Alexandru
    Petrescu, Yukiyo Akisada, Tatuya Jinmei, Fred Templin and Christian
-
-
-
-
-Mrugalski, et al.       Expires October 30, 2016              [Page 113]
-
-Internet-Draft                RFC 3315 bis                    April 2016
-
-
    Huitema.  With special thanks to Ralph Droms for answering many
    questions related to the original RFC 3315 work.
 
@@ -6370,6 +6379,13 @@ Internet-Draft                RFC 3315 bis                    April 2016
               RFC 826, DOI 10.17487/RFC0826, November 1982,
               <http://www.rfc-editor.org/info/rfc826>.
 
+
+
+Mrugalski, et al.       Expires October 30, 2016              [Page 114]
+
+Internet-Draft                RFC 3315 bis                    April 2016
+
+
    [RFC1035]  Mockapetris, P., "Domain names - implementation and
               specification", STD 13, RFC 1035, DOI 10.17487/RFC1035,
               November 1987, <http://www.rfc-editor.org/info/rfc1035>.
@@ -6378,13 +6394,6 @@ Internet-Draft                RFC 3315 bis                    April 2016
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
-
-
-
-Mrugalski, et al.       Expires October 30, 2016              [Page 114]
-
-Internet-Draft                RFC 3315 bis                    April 2016
-
 
    [RFC2131]  Droms, R., "Dynamic Host Configuration Protocol",
               RFC 2131, DOI 10.17487/RFC2131, March 1997,
@@ -6425,6 +6434,14 @@ Internet-Draft                RFC 3315 bis                    April 2016
               Architecture", RFC 4291, DOI 10.17487/RFC4291, February
               2006, <http://www.rfc-editor.org/info/rfc4291>.
 
+
+
+
+Mrugalski, et al.       Expires October 30, 2016              [Page 115]
+
+Internet-Draft                RFC 3315 bis                    April 2016
+
+
    [RFC4301]  Kent, S. and K. Seo, "Security Architecture for the
               Internet Protocol", RFC 4301, DOI 10.17487/RFC4301,
               December 2005, <http://www.rfc-editor.org/info/rfc4301>.
@@ -6433,14 +6450,6 @@ Internet-Draft                RFC 3315 bis                    April 2016
               "Neighbor Discovery for IP version 6 (IPv6)", RFC 4861,
               DOI 10.17487/RFC4861, September 2007,
               <http://www.rfc-editor.org/info/rfc4861>.
-
-
-
-
-Mrugalski, et al.       Expires October 30, 2016              [Page 115]
-
-Internet-Draft                RFC 3315 bis                    April 2016
-
 
    [RFC4862]  Thomson, S., Narten, T., and T. Jinmei, "IPv6 Stateless
               Address Autoconfiguration", RFC 4862,
@@ -6481,15 +6490,6 @@ Internet-Draft                RFC 3315 bis                    April 2016
               BCP 187, RFC 7227, DOI 10.17487/RFC7227, May 2014,
               <http://www.rfc-editor.org/info/rfc7227>.
 
-   [RFC7283]  Cui, Y., Sun, Q., and T. Lemon, "Handling Unknown DHCPv6
-              Messages", RFC 7283, DOI 10.17487/RFC7283, July 2014,
-              <http://www.rfc-editor.org/info/rfc7283>.
-
-26.2.  Informative References
-
-
-
-
 
 
 
@@ -6498,6 +6498,12 @@ Mrugalski, et al.       Expires October 30, 2016              [Page 116]
 Internet-Draft                RFC 3315 bis                    April 2016
 
 
+   [RFC7283]  Cui, Y., Sun, Q., and T. Lemon, "Handling Unknown DHCPv6
+              Messages", RFC 7283, DOI 10.17487/RFC7283, July 2014,
+              <http://www.rfc-editor.org/info/rfc7283>.
+
+26.2.  Informative References
+
    [I-D.ietf-dhc-anonymity-profile]
               Huitema, C., Mrugalski, T., and S. Krishnan, "Anonymity
               profile for DHCP clients", draft-ietf-dhc-anonymity-
@@ -6505,8 +6511,8 @@ Internet-Draft                RFC 3315 bis                    April 2016
 
    [I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue]
               Cui, Y., Li, T., and C. Liu, "DHCPv6 Prefix Length Hint
-              Issues", draft-ietf-dhc-dhcpv6-prefix-length-hint-issue-00
-              (work in progress), January 2016.
+              Issues", draft-ietf-dhc-dhcpv6-prefix-length-hint-issue-01
+              (work in progress), April 2016.
 
    [I-D.ietf-dhc-dhcpv6-privacy]
               Krishnan, S., Mrugalski, T., and S. Jiang, "Privacy
@@ -6540,12 +6546,6 @@ Internet-Draft                RFC 3315 bis                    April 2016
               RFC 3162, DOI 10.17487/RFC3162, August 2001,
               <http://www.rfc-editor.org/info/rfc3162>.
 
-   [RFC3315]  Droms, R., Ed., Bound, J., Volz, B., Lemon, T., Perkins,
-              C., and M. Carney, "Dynamic Host Configuration Protocol
-              for IPv6 (DHCPv6)", RFC 3315, DOI 10.17487/RFC3315, July
-              2003, <http://www.rfc-editor.org/info/rfc3315>.
-
-
 
 
 
@@ -6553,6 +6553,11 @@ Mrugalski, et al.       Expires October 30, 2016              [Page 117]
 
 Internet-Draft                RFC 3315 bis                    April 2016
 
+
+   [RFC3315]  Droms, R., Ed., Bound, J., Volz, B., Lemon, T., Perkins,
+              C., and M. Carney, "Dynamic Host Configuration Protocol
+              for IPv6 (DHCPv6)", RFC 3315, DOI 10.17487/RFC3315, July
+              2003, <http://www.rfc-editor.org/info/rfc3315>.
 
    [RFC3633]  Troan, O. and R. Droms, "IPv6 Prefix Options for Dynamic
               Host Configuration Protocol (DHCP) version 6", RFC 3633,
@@ -6598,17 +6603,17 @@ Appendix A.  Changes since RFC3315
         ID" field and specifying that 'DHCP realm' is Domain Name
         encoded as per section 8 of RFC3315.  Ticket #43.
 
-   4.   Added DUID-UUID and reference to RFC6355.  Ticket #54.
-
-   5.   Specified a minimum length for the DUID in section "9.1.  DUID
-        Contents".  Ticket #39.
-
 
 
 Mrugalski, et al.       Expires October 30, 2016              [Page 118]
 
 Internet-Draft                RFC 3315 bis                    April 2016
 
+
+   4.   Added DUID-UUID and reference to RFC6355.  Ticket #54.
+
+   5.   Specified a minimum length for the DUID in section "9.1.  DUID
+        Contents".  Ticket #39.
 
    6.   Removed the use of term "sub-options" from section "19.1.1.
         Creation and Transmission of Reconfigure Messages".  Ticket #40.
@@ -6653,11 +6658,6 @@ Internet-Draft                RFC 3315 bis                    April 2016
 
    16.  Clarified relay agent definition.  Ticket #12.
 
-   17.  Changed REL_MAX_RC and DEC_MAX_RC defaults from 5 to 4 and added
-        retry to parameter description.  Ticket #84.
-
-   18.  Clarify handling process for Vendor-specific Information Option
-        and Vendor Class Option.  Ticket #20.
 
 
 
@@ -6665,6 +6665,12 @@ Mrugalski, et al.       Expires October 30, 2016              [Page 119]
 
 Internet-Draft                RFC 3315 bis                    April 2016
 
+
+   17.  Changed REL_MAX_RC and DEC_MAX_RC defaults from 5 to 4 and added
+        retry to parameter description.  Ticket #84.
+
+   18.  Clarify handling process for Vendor-specific Information Option
+        and Vendor Class Option.  Ticket #20.
 
    19.  Replace "monotonic" with "strictly monotonic" in Section 21.3.
         Ticket #11.
@@ -6709,18 +6715,18 @@ Internet-Draft                RFC 3315 bis                    April 2016
    31.  Clarified that configuration for interface X should be requested
         over interface X (ticket #48).
 
-   32.  CONFIRM is now an optional message (MUST send Confirm eased to
-        SHOULD) (ticket #120).
-
-   33.  Added reference to RFC7227: DHCPv6 Option Guidelines (ticket
-        #121).
-
 
 
 Mrugalski, et al.       Expires October 30, 2016              [Page 120]
 
 Internet-Draft                RFC 3315 bis                    April 2016
 
+
+   32.  CONFIRM is now an optional message (MUST send Confirm eased to
+        SHOULD) (ticket #120).
+
+   33.  Added reference to RFC7227: DHCPv6 Option Guidelines (ticket
+        #121).
 
    34.  Added new section 5 providing an overview of DHCPv6 operational
         modes and removed two prefix delegation sections from section 1.
@@ -6763,12 +6769,6 @@ Internet-Draft                RFC 3315 bis                    April 2016
    46.  Merged section 4.6 of RFC7550 (stateful-issues).  This addresses
         ticket #85.
 
-   47.  Clarified that the document assumes single provisioning domain.
-        This resolves ticket #66.
-
-   48.  Removed the Delayed Auth Protocol.  This resolves ticket #86.
-
-
 
 
 
@@ -6777,6 +6777,11 @@ Mrugalski, et al.       Expires October 30, 2016              [Page 121]
 
 Internet-Draft                RFC 3315 bis                    April 2016
 
+
+   47.  Clarified that the document assumes single provisioning domain.
+        This resolves ticket #66.
+
+   48.  Removed the Delayed Auth Protocol.  This resolves ticket #86.
 
    49.  Added text the text suggesting to not send all-zero address/
         prefix unless the client wishes to hint the lifetimes and/or
@@ -6821,11 +6826,6 @@ Internet-Draft                RFC 3315 bis                    April 2016
         section to clarify what a client must do before initiating a
         Release (ticket #151).
 
-   59.  Privacy considerations added (ticket #145).
-
-   60.  Abstract updated (#133).
-
-
 
 
 
@@ -6833,6 +6833,10 @@ Mrugalski, et al.       Expires October 30, 2016              [Page 122]
 
 Internet-Draft                RFC 3315 bis                    April 2016
 
+
+   59.  Privacy considerations added (ticket #145).
+
+   60.  Abstract updated (#133).
 
    61.  Removed references to the text that server was allowed to cache
         its replies (#80).
@@ -6872,10 +6876,6 @@ Appendix C.  Appearance of Options in Message Types
 
    Only included in Information-request messages that are sent in
    response to a Reconfigure (see Section 17.1.6).
-
-
-
-
 
 
 
