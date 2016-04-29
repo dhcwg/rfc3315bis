@@ -2388,6 +2388,23 @@
         it only has addresses and Rebind if it has delegated prefixes (and
         addresses). It uses Information-request messages when it needs
         configuration information but no addresses and no prefixes.</t>
+        
+        <!-- Ticket 160 text-->
+        
+        <t>When a client requests multiple IA option types in a Solicit,
+        Request, Renew, or Rebind, it is possible
+        that the available server(s) may only be configured to offer a subset
+        of them. When possible, the client SHOULD use the best configuration
+        available and continue to request the additional IAs in subsequent
+        messages (<xref target="RFC7550"/>). This allows the client to maintain
+        a single session and state machine. In practice, especially in the
+        case of handling IA_NA and IA_PD requests (<xref target="RFC7084"/>),
+        this situation should be rare or a temporary operational error.
+        Thus, it is more likely for the client to get all configuration if
+        it continues, in each subsequent configuration exchange, to request
+        all the configuration information it is programmed to try to obtain,
+        including any stateful configuration options for which no results
+        were returned in previous message exchanges.</t>
 
         <t>Upon receipt of a Reconfigure message from the server, a client
         responds with a Renew, Rebind or an Information-request message as
@@ -6803,6 +6820,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Merged sections 17, 18 and 19 into a single section describing
           client and server behaviors (ticket 142).</t>
+          
+          <t>Added text about single session for multiple IA option types - ticket 160.</t>
         </list></t>
     </section>
 
