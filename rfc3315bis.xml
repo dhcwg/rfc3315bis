@@ -3498,6 +3498,13 @@
           records the IA as a new client binding. The server MUST NOT include
           any addresses or delegated prefixes in the IA which the server does
           not assign to the client.</t>
+          
+          <!-- Ticket #61 - copied text from "Receipt of Renew Message -->
+          <t>The T1/T2 times set in each applicable IA option for a Reply MUST
+          be the same values across all IAs. The server MUST determine the
+          T1/T2 times across all of the applicable client's bindings in the
+          Reply. This facilitates the client being able to renew all of the
+          bindings at the same time.</t>
 
           <t>The server includes a Reconfigure Accept option if the server
           wants to require that the client accept Reconfigure messages.</t>
@@ -6854,7 +6861,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           
           <t>Moved additional text from RFC3633 section 12.1 - ticket 102.</t>
           
-          <t>Addressed minor addition to text as per ticket 131.</t>
+          <t>Addressed minor addition to text as per ticket 131 and also ticket 61.</t>
         </list></t>
     </section>
 
