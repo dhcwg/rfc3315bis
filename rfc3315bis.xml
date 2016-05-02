@@ -3579,7 +3579,11 @@
           T1/T2 times. If the server is unable to extend the lifetimes of an
           address or delegated prefix in the IA, the server MAY choose not to
           include the IA Address or IA Prefix option for this address or
-          delegated prefix.</t>
+          delegated prefix. If the server chooses to include the IA Address or
+          IA Prefix option for such an address or delegated prefix, the server
+          SHOULD set T1 and T2 to the valid lifetime for the IA option unless
+          the server also includes other addresses or delegated prefix which
+          the server is able to extend.</t>
 
           <t>The server may choose to change the list of addresses or
           delegated prefixes and the lifetimes in IAs that are returned to the
@@ -6847,6 +6851,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           client and server behaviors (ticket 142).</t>
           
           <t>Added text about single session for multiple IA option types - ticket 160.</t>
+          
+          <t>Moved additional text from RFC3633 section 12.1 - ticket 102.</t>
+          
+          <t>Addressed minor addition to text as per ticket 131.</t>
         </list></t>
     </section>
 
