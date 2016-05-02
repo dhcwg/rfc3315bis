@@ -3169,11 +3169,34 @@
                 addresses for the traffic. If any of the addresses are found
                 to be in use on the link, the client sends a Decline message
                 to the server for those addresses as described in <xref
-                target="RFC3315-18.1.7"></xref>.</t>
+                target="RFC3315-18.1.7"/>.</t>
 
-                <t hangText="-">For each IA_PD the delegating router assigns a
-                subnet from each of the delegated prefixes to each of the
-                links to which the associated interfaces are attached.</t>
+                <t hangText="-">For each IA_PD the requesting router assigns a
+                subnet from each of the delegated prefixes
+                to each of the links to which the associated interfaces are
+                attached, with the following exception: the requesting router MUST
+                NOT assign any delegated prefixes or subnets from the delegated
+                prefix(es) to the link through which it received the DHCP message
+                from the delegating router (see <xref target="RFC6603/">
+                for exceptions).
+                <vspace />
+                When a requesting router subnets a delegated prefix, it must assign
+                additional bits to the prefix to generate unique, longer prefixes.
+                For example, if the requesting router in Figure 1 were delegated
+                3FFE:FFFF:0::/48, it might generate 3FFE:FFFF:0:1::/64 and
+                3FFE:FFFF:0:2::/64 for assignment to the two links in the subscriber
+                network.  If the requesting router were delegated 3FFE:FFFF:0::/48
+                and 3FFE:FFFF:5::/48, it might assign 3FFE:FFFF:0:1::/64 and
+                3FFE:FFFF:5:1::/64 to one of the links, and 3FFE:FFFF:0:2::/64 and
+                3FFE:FFFF:5:2::/64 for assignment to the other link.
+                <vspace />
+                If the requesting router assigns a delegated prefix to a link to
+                which the router is attached, and begins to send router
+                advertisements for the prefix on the link, the requesting router MUST
+                set the valid lifetime in those advertisements to be no later than
+                the valid lifetime specified in the IA_PD Prefix option.  A
+                requesting router MAY use the preferred lifetime specified in the
+                IA_PD Prefix option.</t>
               </list></t>
 
             <t>Management of the specific configuration information is
@@ -6591,6 +6614,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.3315'?>
 
       <?rfc include='reference.RFC.4193'?>
+      
+      <?rfc include='reference.RFC.6603'?>
 
       <?rfc include='reference.RFC.7341'?>
 
