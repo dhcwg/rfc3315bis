@@ -3178,9 +3178,9 @@
                 attached, with the following exception: the requesting router MUST
                 NOT assign any delegated prefixes or subnets from the delegated
                 prefix(es) to the link through which it received the DHCP message
-                from the delegating router (see <xref target="RFC6603/">
+                from the delegating router (see <xref target="RFC6603"/>
                 for exceptions).
-                <vspace />
+                <vspace blankLines='1'/>
                 When a requesting router subnets a delegated prefix, it must assign
                 additional bits to the prefix to generate unique, longer prefixes.
                 For example, if the requesting router in Figure 1 were delegated
@@ -3190,7 +3190,7 @@
                 and 3FFE:FFFF:5::/48, it might assign 3FFE:FFFF:0:1::/64 and
                 3FFE:FFFF:5:1::/64 to one of the links, and 3FFE:FFFF:0:2::/64 and
                 3FFE:FFFF:5:2::/64 for assignment to the other link.
-                <vspace />
+                <vspace blankLines='1'/>
                 If the requesting router assigns a delegated prefix to a link to
                 which the router is attached, and begins to send router
                 advertisements for the prefix on the link, the requesting router MUST
