@@ -3160,8 +3160,9 @@
                 Rebind messages sent to the server, to retry obtaining the
                 addresses or prefixes for these IAs.</t>
 
-                <t hangText="-">The client SHOULD perform duplicate address
-                detection <xref target="RFC4862"></xref> on each of the
+                <t hangText="-">The client MUST perform duplicate address
+                detection as per <xref target="RFC4862"/> Section 5.4, which
+                does list some exceptions, on each of the
                 received addresses in any IAs, on which it has not performed
                 duplicate address detection during processing of any of the
                 previous Reply messages from the server. The client performs
@@ -6855,13 +6856,17 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           its replies (#80).</t>
 
           <t>Merged sections 17, 18 and 19 into a single section describing
-          client and server behaviors (ticket 142).</t>
+          client and server behaviors (ticket #142).</t>
           
-          <t>Added text about single session for multiple IA option types - ticket 160.</t>
+          <t>Added text about single session for multiple IA option types - ticket #160.</t>
           
-          <t>Moved additional text from RFC3633 section 12.1 - ticket 102.</t>
+          <t>Moved additional text from RFC3633 section 12.1 - ticket #102.</t>
           
-          <t>Addressed minor addition to text as per ticket 131 and also ticket 61.</t>
+          <t>Addressed minor addition to text as per ticket 131 and also ticket #61.</t>
+          
+          <t>Clarified MUST perform DAD, excepting exceptions listed in RFC4862 Section
+          5.4 (ticket #153).</t>
+          
         </list></t>
     </section>
 
