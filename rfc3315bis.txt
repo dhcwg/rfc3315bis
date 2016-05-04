@@ -7,14 +7,14 @@ Internet-Draft                                              M. Siodelski
 Obsoletes: 3315,3633,3736,7083,7550 (if                              ISC
            approved)                                             B. Volz
 Intended status: Standards Track                          A. Yourtchenko
-Expires: November 4, 2016                                          Cisco
+Expires: November 5, 2016                                          Cisco
                                                            M. Richardson
                                                                      SSW
                                                                 S. Jiang
                                                                   Huawei
                                                                 T. Lemon
                                                                  Nominum
-                                                             May 3, 2016
+                                                             May 4, 2016
 
 
        Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Mrugalski, et al.       Expires November 4, 2016                [Page 1]
+Mrugalski, et al.       Expires November 5, 2016                [Page 1]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -61,7 +61,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 4, 2016.
+   This Internet-Draft will expire on November 5, 2016.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Mrugalski, et al.       Expires November 4, 2016                [Page 2]
+Mrugalski, et al.       Expires November 5, 2016                [Page 2]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -165,7 +165,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016                [Page 3]
+Mrugalski, et al.       Expires November 5, 2016                [Page 3]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -200,74 +200,74 @@ Internet-Draft                RFC 3315 bis                      May 2016
        17.2.5.  Receipt of Rebind Messages . . . . . . . . . . . . .  66
        17.2.6.  Receipt of Information-request Messages  . . . . . .  68
        17.2.7.  Receipt of Release Messages  . . . . . . . . . . . .  69
-       17.2.8.  Receipt of Decline Messages  . . . . . . . . . . . .  69
+       17.2.8.  Receipt of Decline Messages  . . . . . . . . . . . .  70
        17.2.9.  Creation and Transmission of Advertise Messages  . .  70
        17.2.10. Transmission of Reply Messages . . . . . . . . . . .  72
        17.2.11. Creation and Transmission of Reconfigure Messages  .  72
-   18. Relay Agent Behavior  . . . . . . . . . . . . . . . . . . . .  73
+   18. Relay Agent Behavior  . . . . . . . . . . . . . . . . . . . .  74
      18.1.  Relaying a Client Message or a Relay-forward Message . .  74
        18.1.1.  Relaying a Message from a Client . . . . . . . . . .  74
        18.1.2.  Relaying a Message from a Relay Agent  . . . . . . .  75
        18.1.3.  Relay Agent Behavior with Prefix Delegation  . . . .  75
-     18.2.  Relaying a Relay-reply Message . . . . . . . . . . . . .  75
+     18.2.  Relaying a Relay-reply Message . . . . . . . . . . . . .  76
      18.3.  Construction of Relay-reply Messages . . . . . . . . . .  76
    19. Authentication of DHCP Messages . . . . . . . . . . . . . . .  77
      19.1.  Security of Messages Sent Between Servers and Relay
             Agents . . . . . . . . . . . . . . . . . . . . . . . . .  77
-     19.2.  Summary of DHCP Authentication . . . . . . . . . . . . .  78
+     19.2.  Summary of DHCP Authentication . . . . . . . . . . . . .  79
      19.3.  Replay Detection . . . . . . . . . . . . . . . . . . . .  79
      19.4.  Reconfigure Key Authentication Protocol  . . . . . . . .  79
        19.4.1.  Use of the Authentication Option in the Reconfigure
 
 
 
-Mrugalski, et al.       Expires November 4, 2016                [Page 4]
+Mrugalski, et al.       Expires November 5, 2016                [Page 4]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
-                Key Authentication Protocol  . . . . . . . . . . . .  79
-       19.4.2.  Server considerations for Reconfigure Key protocol .  80
+                Key Authentication Protocol  . . . . . . . . . . . .  80
+       19.4.2.  Server considerations for Reconfigure Key protocol .  81
        19.4.3.  Client considerations for Reconfigure Key protocol .  81
-   20. DHCP Options  . . . . . . . . . . . . . . . . . . . . . . . .  81
+   20. DHCP Options  . . . . . . . . . . . . . . . . . . . . . . . .  82
      20.1.  Format of DHCP Options . . . . . . . . . . . . . . . . .  82
-     20.2.  Client Identifier Option . . . . . . . . . . . . . . . .  82
+     20.2.  Client Identifier Option . . . . . . . . . . . . . . . .  83
      20.3.  Server Identifier Option . . . . . . . . . . . . . . . .  83
      20.4.  Identity Association for Non-temporary Addresses Option   84
-     20.5.  Identity Association for Temporary Addresses Option  . .  86
+     20.5.  Identity Association for Temporary Addresses Option  . .  87
      20.6.  IA Address Option  . . . . . . . . . . . . . . . . . . .  88
-     20.7.  Option Request Option  . . . . . . . . . . . . . . . . .  89
-     20.8.  Preference Option  . . . . . . . . . . . . . . . . . . .  90
+     20.7.  Option Request Option  . . . . . . . . . . . . . . . . .  90
+     20.8.  Preference Option  . . . . . . . . . . . . . . . . . . .  91
      20.9.  Elapsed Time Option  . . . . . . . . . . . . . . . . . .  91
      20.10. Relay Message Option . . . . . . . . . . . . . . . . . .  92
-     20.11. Authentication Option  . . . . . . . . . . . . . . . . .  92
-     20.12. Server Unicast Option  . . . . . . . . . . . . . . . . .  93
-     20.13. Status Code Option . . . . . . . . . . . . . . . . . . .  94
-     20.14. Rapid Commit Option  . . . . . . . . . . . . . . . . . .  96
-     20.15. User Class Option  . . . . . . . . . . . . . . . . . . .  97
-     20.16. Vendor Class Option  . . . . . . . . . . . . . . . . . .  98
-     20.17. Vendor-specific Information Option . . . . . . . . . . . 100
-     20.18. Interface-Id Option  . . . . . . . . . . . . . . . . . . 102
-     20.19. Reconfigure Message Option . . . . . . . . . . . . . . . 103
-     20.20. Reconfigure Accept Option  . . . . . . . . . . . . . . . 103
-     20.21. Identity Association for Prefix Delegation Option  . . . 104
-     20.22. IA Prefix Option . . . . . . . . . . . . . . . . . . . . 106
-     20.23. SOL_MAX_RT Option  . . . . . . . . . . . . . . . . . . . 108
-     20.24. INF_MAX_RT Option  . . . . . . . . . . . . . . . . . . . 109
-   21. Security Considerations . . . . . . . . . . . . . . . . . . . 110
-   22. Privacy Considerations  . . . . . . . . . . . . . . . . . . . 113
-   23. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 114
-   24. Obsoleted mechanisms  . . . . . . . . . . . . . . . . . . . . 114
-   25. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . 114
-   26. References  . . . . . . . . . . . . . . . . . . . . . . . . . 115
-     26.1.  Normative References . . . . . . . . . . . . . . . . . . 115
-     26.2.  Informative References . . . . . . . . . . . . . . . . . 118
-   Appendix A.  Changes since RFC3315  . . . . . . . . . . . . . . . 120
-   Appendix B.  Changes since RFC3633  . . . . . . . . . . . . . . . 124
-   Appendix C.  Appearance of Options in Message Types . . . . . . . 125
+     20.11. Authentication Option  . . . . . . . . . . . . . . . . .  93
+     20.12. Server Unicast Option  . . . . . . . . . . . . . . . . .  94
+     20.13. Status Code Option . . . . . . . . . . . . . . . . . . .  95
+     20.14. Rapid Commit Option  . . . . . . . . . . . . . . . . . .  97
+     20.15. User Class Option  . . . . . . . . . . . . . . . . . . .  98
+     20.16. Vendor Class Option  . . . . . . . . . . . . . . . . . .  99
+     20.17. Vendor-specific Information Option . . . . . . . . . . . 101
+     20.18. Interface-Id Option  . . . . . . . . . . . . . . . . . . 103
+     20.19. Reconfigure Message Option . . . . . . . . . . . . . . . 104
+     20.20. Reconfigure Accept Option  . . . . . . . . . . . . . . . 104
+     20.21. Identity Association for Prefix Delegation Option  . . . 105
+     20.22. IA Prefix Option . . . . . . . . . . . . . . . . . . . . 107
+     20.23. SOL_MAX_RT Option  . . . . . . . . . . . . . . . . . . . 109
+     20.24. INF_MAX_RT Option  . . . . . . . . . . . . . . . . . . . 110
+   21. Security Considerations . . . . . . . . . . . . . . . . . . . 111
+   22. Privacy Considerations  . . . . . . . . . . . . . . . . . . . 114
+   23. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 115
+   24. Obsoleted mechanisms  . . . . . . . . . . . . . . . . . . . . 115
+   25. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . 115
+   26. References  . . . . . . . . . . . . . . . . . . . . . . . . . 116
+     26.1.  Normative References . . . . . . . . . . . . . . . . . . 116
+     26.2.  Informative References . . . . . . . . . . . . . . . . . 119
+   Appendix A.  Changes since RFC3315  . . . . . . . . . . . . . . . 121
+   Appendix B.  Changes since RFC3633  . . . . . . . . . . . . . . . 125
+   Appendix C.  Appearance of Options in Message Types . . . . . . . 126
    Appendix D.  Appearance of Options in the Options Field of DHCP
-                Options  . . . . . . . . . . . . . . . . . . . . . . 125
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 126
+                Options  . . . . . . . . . . . . . . . . . . . . . . 126
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 127
 
 1.  Introduction and Overview
 
@@ -277,7 +277,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016                [Page 5]
+Mrugalski, et al.       Expires November 5, 2016                [Page 5]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -333,7 +333,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016                [Page 6]
+Mrugalski, et al.       Expires November 5, 2016                [Page 6]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -389,7 +389,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016                [Page 7]
+Mrugalski, et al.       Expires November 5, 2016                [Page 7]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -445,7 +445,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016                [Page 8]
+Mrugalski, et al.       Expires November 5, 2016                [Page 8]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -501,7 +501,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016                [Page 9]
+Mrugalski, et al.       Expires November 5, 2016                [Page 9]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -557,7 +557,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 10]
+Mrugalski, et al.       Expires November 5, 2016               [Page 10]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -613,7 +613,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 11]
+Mrugalski, et al.       Expires November 5, 2016               [Page 11]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -669,7 +669,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 12]
+Mrugalski, et al.       Expires November 5, 2016               [Page 12]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -725,7 +725,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 13]
+Mrugalski, et al.       Expires November 5, 2016               [Page 13]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -781,7 +781,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 14]
+Mrugalski, et al.       Expires November 5, 2016               [Page 14]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -837,7 +837,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 15]
+Mrugalski, et al.       Expires November 5, 2016               [Page 15]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -893,7 +893,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 16]
+Mrugalski, et al.       Expires November 5, 2016               [Page 16]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -949,7 +949,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 17]
+Mrugalski, et al.       Expires November 5, 2016               [Page 17]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1005,7 +1005,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 18]
+Mrugalski, et al.       Expires November 5, 2016               [Page 18]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1061,7 +1061,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 19]
+Mrugalski, et al.       Expires November 5, 2016               [Page 19]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1117,7 +1117,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 20]
+Mrugalski, et al.       Expires November 5, 2016               [Page 20]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1173,7 +1173,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 21]
+Mrugalski, et al.       Expires November 5, 2016               [Page 21]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1229,7 +1229,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 22]
+Mrugalski, et al.       Expires November 5, 2016               [Page 22]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1285,7 +1285,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 23]
+Mrugalski, et al.       Expires November 5, 2016               [Page 23]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1341,7 +1341,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 24]
+Mrugalski, et al.       Expires November 5, 2016               [Page 24]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1397,7 +1397,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 25]
+Mrugalski, et al.       Expires November 5, 2016               [Page 25]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1453,7 +1453,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 26]
+Mrugalski, et al.       Expires November 5, 2016               [Page 26]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1509,7 +1509,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 27]
+Mrugalski, et al.       Expires November 5, 2016               [Page 27]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1565,7 +1565,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 28]
+Mrugalski, et al.       Expires November 5, 2016               [Page 28]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1621,7 +1621,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 29]
+Mrugalski, et al.       Expires November 5, 2016               [Page 29]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1677,7 +1677,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 30]
+Mrugalski, et al.       Expires November 5, 2016               [Page 30]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1733,7 +1733,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 31]
+Mrugalski, et al.       Expires November 5, 2016               [Page 31]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1789,7 +1789,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 32]
+Mrugalski, et al.       Expires November 5, 2016               [Page 32]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1845,7 +1845,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 33]
+Mrugalski, et al.       Expires November 5, 2016               [Page 33]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1901,7 +1901,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 34]
+Mrugalski, et al.       Expires November 5, 2016               [Page 34]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -1957,7 +1957,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 35]
+Mrugalski, et al.       Expires November 5, 2016               [Page 35]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2013,7 +2013,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 36]
+Mrugalski, et al.       Expires November 5, 2016               [Page 36]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2069,7 +2069,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 37]
+Mrugalski, et al.       Expires November 5, 2016               [Page 37]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2125,7 +2125,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 38]
+Mrugalski, et al.       Expires November 5, 2016               [Page 38]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2181,7 +2181,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 39]
+Mrugalski, et al.       Expires November 5, 2016               [Page 39]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2237,7 +2237,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 40]
+Mrugalski, et al.       Expires November 5, 2016               [Page 40]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2293,14 +2293,14 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 41]
+Mrugalski, et al.       Expires November 5, 2016               [Page 41]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
-   Autoconfiguration or as required to extend the lifetime of
-   address(es) and/or delegated prefix(es), using Renew and Rebind
-   messages.
+   Autoconfiguration (as defined in [RFC2462]) or as required to extend
+   the lifetime of address(es) and/or delegated prefix(es), using Renew
+   and Rebind messages.
 
    A server may initiate a message exchange with a client by sending a
    Reconfigure message to cause the client to send a Renew, Rebind or
@@ -2349,7 +2349,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 42]
+Mrugalski, et al.       Expires November 5, 2016               [Page 42]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2405,7 +2405,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 43]
+Mrugalski, et al.       Expires November 5, 2016               [Page 43]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2461,7 +2461,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 44]
+Mrugalski, et al.       Expires November 5, 2016               [Page 44]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2517,7 +2517,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 45]
+Mrugalski, et al.       Expires November 5, 2016               [Page 45]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2573,7 +2573,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 46]
+Mrugalski, et al.       Expires November 5, 2016               [Page 46]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2629,7 +2629,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 47]
+Mrugalski, et al.       Expires November 5, 2016               [Page 47]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2685,7 +2685,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 48]
+Mrugalski, et al.       Expires November 5, 2016               [Page 48]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2741,7 +2741,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 49]
+Mrugalski, et al.       Expires November 5, 2016               [Page 49]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2797,7 +2797,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 50]
+Mrugalski, et al.       Expires November 5, 2016               [Page 50]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2853,7 +2853,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 51]
+Mrugalski, et al.       Expires November 5, 2016               [Page 51]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2909,7 +2909,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 52]
+Mrugalski, et al.       Expires November 5, 2016               [Page 52]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -2965,7 +2965,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 53]
+Mrugalski, et al.       Expires November 5, 2016               [Page 53]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -3021,7 +3021,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 54]
+Mrugalski, et al.       Expires November 5, 2016               [Page 54]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -3077,7 +3077,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 55]
+Mrugalski, et al.       Expires November 5, 2016               [Page 55]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -3133,7 +3133,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 56]
+Mrugalski, et al.       Expires November 5, 2016               [Page 56]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -3189,7 +3189,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 57]
+Mrugalski, et al.       Expires November 5, 2016               [Page 57]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -3245,7 +3245,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 58]
+Mrugalski, et al.       Expires November 5, 2016               [Page 58]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -3301,7 +3301,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 59]
+Mrugalski, et al.       Expires November 5, 2016               [Page 59]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -3357,7 +3357,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 60]
+Mrugalski, et al.       Expires November 5, 2016               [Page 60]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -3401,22 +3401,28 @@ Internet-Draft                RFC 3315 bis                      May 2016
    Accept option (see Section 20.20) in the Solicit message, the servers
    discard the Solicit message.
 
+   If the server is permitted to respond to the client, the client has
+   not included a Rapid Commit option in the Solicit message or the
+   server has not been configured to respond with committed assignment
+   of leases and other resources, the server sends an Advertise message
+   to the client as described in Section 17.2.9.
+
    If the client has included a Rapid Commit option in the Solicit
    message and the server has been configured to respond with committed
-   lease assignments and other resources, the server responds to the
+   assignments of leases and other resources, the server responds to the
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 61]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    Solicit with a Reply message.  The server MUST commit the assignment
    of any addresses and delegated prefixes or other configuration
    information before sending a Reply message to a client.  In this case
    the server includes a Rapid Commit option in the Reply message to
    indicate that the Reply is in response to a Solicit message.
-
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 61]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
 
    DISCUSSION:
 
@@ -3459,20 +3465,20 @@ Internet-Draft                RFC 3315 bis                      May 2016
    to REPLY, and copying the transaction ID from the Request message
    into the transaction-id field.
 
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 62]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    The server MUST include a Server Identifier option containing the
    server's DUID and the Client Identifier option from the Request
    message in the Reply message.
 
    The server examines all IAs in the message from the client.
-
-
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 62]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
 
    For each IA_NA and IA_TA in the Request messsage the server checks if
    the prefixes on included IP addresses are appropriate for the link to
@@ -3516,19 +3522,20 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    If the server finds that the client has included an IA in the Request
    message for which the server already has a binding that associates
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 63]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    the IA with the client, the server sends a new Reply message with
    existing bindings, possibly with updated lifetimes.  The server may
    update the bindings according to its local policies, but the server
    SHOULD generate the response again and not simply retransmit
    previously sent information, even if the transaction-id matches
    previous transmission.  The server MUST NOT cache its responses.
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 63]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
 
 17.2.3.  Receipt of Confirm Messages
 
@@ -3570,6 +3577,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
    the client's binding and verifies that the information in the IA from
    the client matches the information stored for that client.
 
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 64]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    If the server finds the client entry for the IA, the server sends
    back the IA to the client with new lifetimes and, if applicable, T1/
    T2 times.  If the server is unable to extend the lifetimes of an
@@ -3578,14 +3594,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    delegated prefix.  If the server chooses to include the IA Address or
    IA Prefix option for such an address or delegated prefix, the server
    SHOULD set T1 and T2 to the valid lifetime for the IA option unless
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 64]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
    the server also includes other addresses or delegated prefix which
    the server is able to extend.
 
@@ -3626,21 +3634,20 @@ Internet-Draft                RFC 3315 bis                      May 2016
    -  If the server does not support creation of new bindings for the
       client sending a Renew message, or if this behavior is disabled
       according to the server's policy or configuration information, the
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 65]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
       server returns the IA option containing a Status Code option with
       the NoBinding status code and a status message for a user.
 
    The server constructs a Reply message by setting the "msg-type" field
    to REPLY and copying the transaction ID from the Renew message into
    the "transaction-id" field.
-
-
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 65]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
 
    The server MUST include a Server Identifier option containing the
    server's DUID and the Client Identifier option from the Renew message
@@ -3682,6 +3689,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
    If the server finds that the client entry for the IA and any of the
    addresses or delegated prefixes are no longer appropriate for the
    link to which the client's interface is attached according to the
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 66]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    server's explicit configuration information, the server returns the
    address or delegated prefix to the client with lifetimes of 0.
 
@@ -3690,14 +3706,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    delegated prefixes (for IA_PD).  The server checks if the addresses
    and delegated prefixes are appropriate for the link to which the
    client's interface is attached according to the server's explicit
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 66]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
    configuration information.  For any address which is not appropriate
    for the link to which the client's interface is attached, the server
    MAY include the IA Address option with the lifetimes of 0.  For any
@@ -3706,8 +3714,11 @@ Internet-Draft                RFC 3315 bis                      May 2016
    option with the lifetimes of 0.  The Reply with lifetimes of 0
    constitutes an explicit notification to the client that the specific
    addresses and delegated prefixes are no longer valid and MUST NOT be
-   used by the client.  In this situation, if the server does not send a
-   Reply message, it silently discards the Rebind message.
+   used by the client.  If the server chooses to not include any IAs
+   containing IA Address or IA Prefix options with lifetimes of 0 and
+   the server does not include any other IAs with leases and/or status
+   codes, the server does not send a Reply message.  In this situation
+   the server silently discards the Rebind message.
 
    Otherwise, for each IA for which the server cannot find a client
    entry, the server has the following choices depending on the server's
@@ -3735,6 +3746,14 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    When the server creates new bindings for the IA, it is possible that
    other servers also create bindings as a result of receiving the same
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 67]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    Rebind message.  This is the same issue as in the Discussion under
    "Rapid Commit Option"; see Section 20.14.  Therefore, the server
    SHOULD only create new bindings during processing of a Rebind message
@@ -3744,15 +3763,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    The server constructs a Reply message by setting the "msg-type" field
    to REPLY and copying the transaction ID from the Rebind message into
    the "transaction-id" field.
-
-
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 67]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
 
    The server MUST include a Server Identifier option containing the
    server's DUID and the Client Identifier option from the Rebind
@@ -3791,6 +3801,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    The server includes options containing configuration information to
    be returned to the client as described in Section 17.2.  The server
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 68]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    MAY include additional options that were not requested by the client
    in the Information-request message.
 
@@ -3800,15 +3819,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    determined by the client's identity.  If the server chooses not to
    respond, the client may continue to retransmit the Information-
    request message indefinitely.
-
-
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 68]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
 
 17.2.7.  Receipt of Release Messages
 
@@ -3845,6 +3855,17 @@ Internet-Draft                RFC 3315 bis                      May 2016
    after the lifetimes on the leases have expired to allow the server to
    reassign the previously assigned leases to a client.
 
+
+
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 69]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
 17.2.8.  Receipt of Decline Messages
 
    When the server receives a Decline message via unicast from a client
@@ -3858,14 +3879,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    Upon the receipt of a valid Decline message, the server examines the
    IAs and the addresses in the IAs for validity.  If the IAs in the
    message are in a binding for the client, and the addresses in the IAs
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 69]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
    have been assigned by the server to those IAs, the server deletes the
    addresses from the IAs.  The server ignores addresses not assigned to
    the IA (though it may choose to log an error if it finds such an
@@ -3901,6 +3914,14 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    The server MAY add a Preference option to carry the preference value
    for the Advertise message.  The server implementation SHOULD allow
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 70]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    the setting of a server preference value by the administrator.  The
    server preference value MUST default to zero unless otherwise
    configured by the server administrator.
@@ -3914,14 +3935,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    receives more than one Advertise message.  If the client has included
    an Option Request option in the Solicit message, the server includes
    options in the Advertise message containing configuration parameters
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 70]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
    for all of the options identified in the Option Request option that
    the server has been configured to return to the client.  The server
    MAY return additional options to the client if it has been configured
@@ -3957,6 +3970,14 @@ Internet-Draft                RFC 3315 bis                      May 2016
    If the Solicit message was received directly by the server, the
    server unicasts the Advertise message directly to the client using
    the address in the source address field from the IP datagram in which
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 71]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    the Solicit message was received.  The Advertise message MUST be
    unicast on the link from which the Solicit message was received.
 
@@ -3968,15 +3989,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    reply message directly to the relay agent using the address in the
    source address field from the IP datagram in which the Relay-forward
    message was received.
-
-
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 71]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
 
 17.2.10.  Transmission of Reply Messages
 
@@ -4013,6 +4025,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    Because of the risk of denial of service attacks against DHCP
    clients, the use of a security mechanism is mandated in Reconfigure
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 72]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    messages.  The server MUST use DHCP authentication in the Reconfigure
    message.
 
@@ -4026,14 +4047,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    A server sends each Reconfigure message to a single DHCP client,
    using an IPv6 unicast address of sufficient scope belonging to the
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 72]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
    DHCP client.  If the server does not have an address to which it can
    send the Reconfigure message directly to the client, the server uses
    a Relay-reply message (as described in Section 18.3) to send the
@@ -4066,6 +4079,17 @@ Internet-Draft                RFC 3315 bis                      May 2016
    Default and initial values for REC_TIMEOUT and REC_MAX_RC are
    documented in Section 6.5.
 
+
+
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 73]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
 18.  Relay Agent Behavior
 
    The relay agent MAY be configured to use a list of destination
@@ -4082,13 +4106,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    If the relay agent receives a message other than Relay-forward and
    Relay-reply and the relay agent does not recognize its message type,
    it MUST forward them as described in Section 18.1.1.
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 73]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
 
 18.1.  Relaying a Client Message or a Relay-forward Message
 
@@ -4120,6 +4137,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
    configuration.  See Section 3.2 of [I-D.ietf-dhc-topo-conf] for
    detailed discussion.
 
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 74]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    This address will be used by the server to determine the link from
    which the client should be assigned an address and other
    configuration information.  The hop-count in the Relay-forward
@@ -4133,18 +4159,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    relay agent fills in the link-address field as described in the
    previous paragraph regardless of whether the relay agent includes an
    Interface-id option in the Relay-forward message.
-
-
-
-
-
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 74]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
 
 18.1.2.  Relaying a Message from a Relay Agent
 
@@ -4178,6 +4192,16 @@ Internet-Draft                RFC 3315 bis                      May 2016
    delegated prefixes on any router through which the requesting router
    may forward traffic.
 
+
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 75]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
 18.2.  Relaying a Relay-reply Message
 
    The relay agent processes any options included in the Relay-reply
@@ -4193,14 +4217,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    identified by the Interface-id option.  Otherwise, if the link-
    address field is not set to zero, the relay agent relays the message
    on the link identified by the link-address field.
-
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 75]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
 
    If the relay agent receives a Relay-reply message, it MUST process
    the message as defined above, regardless of the type of message
@@ -4230,6 +4246,18 @@ Internet-Draft                RFC 3315 bis                      May 2016
    send the following Relay-Reply message to relay agent B:
 
 
+
+
+
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 76]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
       msg-type:       RELAY-REPLY
       hop-count:      1
       link-address:   0
@@ -4250,14 +4278,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    agent in the return path to the client.  The server sets the peer-
    address field in the Relay-reply message header to the address of the
    client, and sets the link-address field as required by the relay
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 76]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
    agent to relay the Reconfigure message to the client.  The server
    obtains the addresses of the client and the relay agent through prior
    interaction with the client or through some external mechanism.
@@ -4284,6 +4304,16 @@ Internet-Draft                RFC 3315 bis                      May 2016
    agent B and the server must be configured to use IPsec for the
    messages they exchange.
 
+
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 77]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    Relay agents and servers that support secure relay agent to server or
    relay agent to relay agent communication use IPsec under the
    following conditions:
@@ -4306,13 +4336,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
                            not generally considered confidential, so
                            encryption need not be used (i.e., NULL
                            encryption can be used).
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 77]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
 
       Key management       Because the relay agents and servers are used
                            within an organization, public key schemes
@@ -4338,6 +4361,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
                            agents in more featureful devices used in
                            enterprise and core ISP networks.  IPsec is
                            less likely to be available for relay agents
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 78]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
                            in low end devices primarily used in the home
                            or small office markets.
 
@@ -4362,14 +4394,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    specific protocol used to generate the authentication information
    carried in the option.  The algorithm field identifies a specific
    algorithm within the authentication protocol; for example, the
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 78]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
    algorithm field specifies the hash algorithm used to generate the
    message authentication code (MAC) in the authentication option.  The
    replay detection method (RDM) field specifies the type of replay
@@ -4394,6 +4418,14 @@ Internet-Draft                RFC 3315 bis                      May 2016
    The Reconfigure key authentication protocol provides protection
    against misconfiguration of a client caused by a Reconfigure message
    sent by a malicious DHCP server.  In this protocol, a DHCP server
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 79]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    sends a Reconfigure Key to the client in the initial exchange of DHCP
    messages.  The client records the Reconfigure Key for use in
    authenticating subsequent Reconfigure messages from that server.  The
@@ -4419,13 +4451,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
       protocol   3
 
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 79]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
       algorithm  1
 
       RDM        0
@@ -4447,6 +4472,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
                  Figure 9: RKAP Authentication Information
+
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 80]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
 
       Type             Type of data in Value field carried in this
                        option:
@@ -4474,14 +4508,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    selects a replay detection value according to the RDM selected by the
    server, and computes an HMAC-MD5 of the Reconfigure message using the
    Reconfigure Key for the client.  The server computes the HMAC-MD5
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 80]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
    over the entire DHCP Reconfigure message, including the
    Authentication option; the HMAC-MD5 field in the Authentication
    option is set to zero for the HMAC-MD5 computation.  The server
@@ -4501,6 +4527,16 @@ Internet-Draft                RFC 3315 bis                      May 2016
    received from the server.  If this computed HMAC-MD5 matches the
    value in the Authentication option, the client accepts the
    Reconfigure message.
+
+
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 81]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
 
 20.  DHCP Options
 
@@ -4527,17 +4563,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    IAPrefix (see Section 20.22) may appear in their respective IA
    options more than once.
 
-
-
-
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 81]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
 20.1.  Format of DHCP Options
 
    The format of DHCP options is:
@@ -4561,6 +4586,14 @@ Internet-Draft                RFC 3315 bis                      May 2016
       option-len           An unsigned integer giving the length of the
                            option-data field in this option in octets.
 
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 82]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
       option-data          The data for the option; the format of this
                            data depends on the definition of the option.
 
@@ -4574,24 +4607,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    The Client Identifier option is used to carry a DUID (see Section 10)
    identifying a client between a client and a server.  The format of
    the Client Identifier option is:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 82]
-
-Internet-Draft                RFC 3315 bis                      May 2016
 
 
       0                   1                   2                   3
@@ -4621,6 +4636,20 @@ Internet-Draft                RFC 3315 bis                      May 2016
    the Server Identifier option is:
 
 
+
+
+
+
+
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 83]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4641,15 +4670,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
       DUID                 The DUID for the server.
 
-
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 83]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
 20.4.  Identity Association for Non-temporary Addresses Option
 
    The Identity Association for Non-temporary Addresses option (IA_NA
@@ -4660,6 +4680,30 @@ Internet-Draft                RFC 3315 bis                      May 2016
    (see Section 20.5).
 
    The format of the IA_NA option is:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 84]
+
+Internet-Draft                RFC 3315 bis                      May 2016
 
 
        0                   1                   2                   3
@@ -4699,13 +4743,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
                            duration relative to the current time
                            expressed in units of seconds.
 
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 84]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
       T2                   The time at which the client contacts any
                            available server to extend the lifetimes of
                            the addresses assigned to the IA_NA; T2 is a
@@ -4716,6 +4753,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    The IA_NA-options field encapsulates those options that are specific
    to this IA_NA.  For example, all of the IA Address Options carrying
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 85]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    the addresses associated with this IA_NA are in the IA_NA-options
    field.
 
@@ -4753,15 +4799,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    preferred lifetime is 0xffffffff ("infinity"), the recommended T1 and
    T2 values are also 0xffffffff.  If the time at which the addresses in
    an IA_NA are to be renewed is to be left to the discretion of the
-
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 85]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
    client, the server sets T1 and T2 to 0.  The client MUST follow the
    rules defined in Section 13.2.
 
@@ -4772,6 +4809,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    If a client receives an IA_NA with T1 greater than T2, and both T1
    and T2 are greater than 0, the client discards the IA_NA option and
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 86]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    processes the remainder of the message as though the server had not
    included the invalid IA_NA option.
 
@@ -4810,14 +4856,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
       option-code          OPTION_IA_TA (4).
 
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 86]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
       option-len           4 + length of IA_TA-options field.
 
       IAID                 The unique identifier for this IA_TA; the
@@ -4827,6 +4865,14 @@ Internet-Draft                RFC 3315 bis                      May 2016
                            number space for IA_NA IAIDs.
 
       IA_TA-options        Options associated with this IA_TA.
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 87]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
 
    The IA_TA-Options field encapsulates those options that are specific
    to this IA_TA.  For example, all of the IA Address Options carrying
@@ -4866,14 +4912,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    expired, the IAID may be reused to identify a new IA_TA with new
    temporary addresses.
 
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 87]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
    This option MAY appear in a Confirm message if the lifetimes on the
    temporary addresses in the associated IA have not expired.
 
@@ -4884,6 +4922,13 @@ Internet-Draft                RFC 3315 bis                      May 2016
    encapsulated in the Options field of an IA_NA or IA_TA option.  The
    Options fields of the IA_NA or IA_TA option encapsulates those
    options that are specific to this address.
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 88]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
 
    The format of the IA Address option is:
 
@@ -4922,14 +4967,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
       valid-lifetime       The valid lifetime for the IPv6 address in
                            the option, expressed in units of seconds.
 
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 88]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
       IAaddr-options       Options associated with this address.
 
    In a message sent by a client to a server, the preferred and valid
@@ -4941,6 +4978,14 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    In a message sent by a server to a client, the client MUST use the
    values in the preferred and valid lifetime fields for the preferred
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 89]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    and valid lifetimes.  The values in the preferred and valid lifetimes
    are the number of seconds remaining in each lifetime.
 
@@ -4968,24 +5013,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    Request option is:
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 89]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5005,6 +5032,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
       requested-option-code-n  The option code for an option requested
                            by the client.
+
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 90]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
 
    A client MAY include an Option Request option in a Solicit, Request,
    Renew, Rebind, Confirm or Information-request message to inform the
@@ -5034,14 +5070,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
                     Figure 17: Preference Option Format
 
-
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 90]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
       option-code          OPTION_PREFERENCE (7).
 
       option-len           1.
@@ -5055,6 +5083,19 @@ Internet-Draft                RFC 3315 bis                      May 2016
    interpretation of Preference option data value.
 
 20.9.  Elapsed Time Option
+
+
+
+
+
+
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 91]
+
+Internet-Draft                RFC 3315 bis                      May 2016
 
 
        0                   1                   2                   3
@@ -5091,19 +5132,26 @@ Internet-Draft                RFC 3315 bis                      May 2016
    represent any elapsed time values greater than the largest time value
    that can be represented in the Elapsed Time option.
 
-
-
-Mrugalski, et al.       Expires November 4, 2016               [Page 91]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
 20.10.  Relay Message Option
 
    The Relay Message option carries a DHCP message in a Relay-forward or
    Relay-reply message.
 
    The format of the Relay Message option is:
+
+
+
+
+
+
+
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 92]
+
+Internet-Draft                RFC 3315 bis                      May 2016
 
 
        0                   1                   2                   3
@@ -5149,7 +5197,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 92]
+
+
+
+
+
+
+
+
+Mrugalski, et al.       Expires November 5, 2016               [Page 93]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5205,7 +5261,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 93]
+Mrugalski, et al.       Expires November 5, 2016               [Page 94]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5261,7 +5317,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 94]
+Mrugalski, et al.       Expires November 5, 2016               [Page 95]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5317,7 +5373,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 95]
+Mrugalski, et al.       Expires November 5, 2016               [Page 96]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5373,7 +5429,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 96]
+Mrugalski, et al.       Expires November 5, 2016               [Page 97]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5429,7 +5485,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 97]
+Mrugalski, et al.       Expires November 5, 2016               [Page 98]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5485,7 +5541,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 98]
+Mrugalski, et al.       Expires November 5, 2016               [Page 99]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5541,7 +5597,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016               [Page 99]
+Mrugalski, et al.       Expires November 5, 2016              [Page 100]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5597,7 +5653,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 100]
+Mrugalski, et al.       Expires November 5, 2016              [Page 101]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5653,7 +5709,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 101]
+Mrugalski, et al.       Expires November 5, 2016              [Page 102]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5709,7 +5765,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 102]
+Mrugalski, et al.       Expires November 5, 2016              [Page 103]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5765,7 +5821,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 103]
+Mrugalski, et al.       Expires November 5, 2016              [Page 104]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5821,7 +5877,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 104]
+Mrugalski, et al.       Expires November 5, 2016              [Page 105]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5877,7 +5933,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 105]
+Mrugalski, et al.       Expires November 5, 2016              [Page 106]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5933,7 +5989,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 106]
+Mrugalski, et al.       Expires November 5, 2016              [Page 107]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -5989,7 +6045,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 107]
+Mrugalski, et al.       Expires November 5, 2016              [Page 108]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6045,7 +6101,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 108]
+Mrugalski, et al.       Expires November 5, 2016              [Page 109]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6101,7 +6157,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 109]
+Mrugalski, et al.       Expires November 5, 2016              [Page 110]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6157,7 +6213,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 110]
+Mrugalski, et al.       Expires November 5, 2016              [Page 111]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6213,7 +6269,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 111]
+Mrugalski, et al.       Expires November 5, 2016              [Page 112]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6269,7 +6325,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 112]
+Mrugalski, et al.       Expires November 5, 2016              [Page 113]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6325,7 +6381,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 113]
+Mrugalski, et al.       Expires November 5, 2016              [Page 114]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6381,7 +6437,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 114]
+Mrugalski, et al.       Expires November 5, 2016              [Page 115]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6437,7 +6493,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 115]
+Mrugalski, et al.       Expires November 5, 2016              [Page 116]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6493,7 +6549,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 116]
+Mrugalski, et al.       Expires November 5, 2016              [Page 117]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6549,7 +6605,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 117]
+Mrugalski, et al.       Expires November 5, 2016              [Page 118]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6605,7 +6661,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 118]
+Mrugalski, et al.       Expires November 5, 2016              [Page 119]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6661,7 +6717,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 119]
+Mrugalski, et al.       Expires November 5, 2016              [Page 120]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6717,7 +6773,7 @@ Appendix A.  Changes since RFC3315
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 120]
+Mrugalski, et al.       Expires November 5, 2016              [Page 121]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6773,7 +6829,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 121]
+Mrugalski, et al.       Expires November 5, 2016              [Page 122]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6829,7 +6885,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 122]
+Mrugalski, et al.       Expires November 5, 2016              [Page 123]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6885,7 +6941,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 123]
+Mrugalski, et al.       Expires November 5, 2016              [Page 124]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6941,7 +6997,7 @@ Appendix B.  Changes since RFC3633
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 124]
+Mrugalski, et al.       Expires November 5, 2016              [Page 125]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -6997,7 +7053,7 @@ Appendix D.  Appearance of Options in the Options Field of DHCP Options
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 125]
+Mrugalski, et al.       Expires November 5, 2016              [Page 126]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -7053,7 +7109,7 @@ Authors' Addresses
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 126]
+Mrugalski, et al.       Expires November 5, 2016              [Page 127]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
@@ -7109,4 +7165,4 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 
 
-Mrugalski, et al.       Expires November 4, 2016              [Page 127]
+Mrugalski, et al.       Expires November 5, 2016              [Page 128]
