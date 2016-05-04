@@ -3172,6 +3172,14 @@
                 to the server for those addresses as described in <xref
                 target="RFC3315-18.1.7"/>.</t>
 
+                <t hangText="-">For each IAADDR, which does not have any
+                associated reachability information, in order avoid the
+                problems described in <xref target="RFC4943"></xref>, hosts
+                MUST NOT assume that any addresses are reachable on-link as a
+                result of receiving an IA_NA or IA_TA. Addresses obtained from
+                IA_NA or IA_TA MUST NOT be used to form an implicit prefix
+                with a length other than 128.</t>
+
                 <t hangText="-">For each IA_PD the requesting router assigns a
                 subnet from each of the delegated prefixes
                 to each of the links to which the associated interfaces are
@@ -6626,7 +6634,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.3315'?>
 
       <?rfc include='reference.RFC.4193'?>
-      
+
+      <?rfc include='reference.RFC.4943'?>
+
       <?rfc include='reference.RFC.6603'?>
 
       <?rfc include='reference.RFC.7341'?>
