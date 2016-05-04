@@ -3439,8 +3439,10 @@ Internet-Draft                RFC 3315 bis                      May 2016
       the leases from the other servers will be committed to the client
       but not used by the client.
 
-   The server includes a Reconfigure Accept option if the server wants
-   to require that the client accept Reconfigure messages.
+   The server includes a Reconfigure Accept option if the server is
+   configured to use reconfigure mechanism (see Section 17.2.11).
+   Sending this option back to the client may useful using server
+   selection process.
 
    The server produces the Reply message as though it had received a
    Request message, as described in Section 17.2.2.  The server
@@ -3464,8 +3466,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    The server constructs a Reply message by setting the "msg-type" field
    to REPLY, and copying the transaction ID from the Request message
    into the transaction-id field.
-
-
 
 
 
@@ -3513,15 +3513,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
    This facilitates the client being able to renew all of the bindings
    at the same time.
 
-   The server includes a Reconfigure Accept option if the server wants
-   to require that the client accept Reconfigure messages.
+   The server MAY include a Reconfigure Accept option.  New server
+   implementations are discouraged from sending Reconfigure Accept
+   option, as it does not convey any additional information.  If the
+   reconfigure mechanism is supported, the server is supposed to send
+   Authentication option with Reconfigure Key (see Section 19.4 for
+   details).  However, it is still allowed to send Reconfigure Accept
+   option to maintain backward compatibility with servers that implment
+   [RFC3315].
 
-   The server includes other options containing configuration
-   information to be returned to the client as described in
-   Section 17.2.
-
-   If the server finds that the client has included an IA in the Request
-   message for which the server already has a binding that associates
 
 
 
@@ -3530,6 +3530,12 @@ Mrugalski, et al.       Expires November 5, 2016               [Page 63]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   The server includes other options containing configuration
+   information to be returned to the client as described in
+   Section 17.2.
+
+   If the server finds that the client has included an IA in the Request
+   message for which the server already has a binding that associates
    the IA with the client, the server sends a new Reply message with
    existing bindings, possibly with updated lifetimes.  The server may
    update the bindings according to its local policies, but the server
@@ -3573,18 +3579,16 @@ Internet-Draft                RFC 3315 bis                      May 2016
    Identifier option containing the server's DUID, the Client Identifier
    option from the client message, and no other options.
 
-   For each IA in the Renew message from a client, the server locates
-   the client's binding and verifies that the information in the IA from
-   the client matches the information stored for that client.
-
-
-
 
 
 Mrugalski, et al.       Expires November 5, 2016               [Page 64]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+   For each IA in the Renew message from a client, the server locates
+   the client's binding and verifies that the information in the IA from
+   the client matches the information stored for that client.
 
    If the server finds the client entry for the IA, the server sends
    back the IA to the client with new lifetimes and, if applicable, T1/
@@ -3631,10 +3635,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
       Status Code option with the NoAddrsAvail or NoPrefixAvail status
       code and a status message for a user.
 
-   -  If the server does not support creation of new bindings for the
-      client sending a Renew message, or if this behavior is disabled
-      according to the server's policy or configuration information, the
-
 
 
 Mrugalski, et al.       Expires November 5, 2016               [Page 65]
@@ -3642,6 +3642,9 @@ Mrugalski, et al.       Expires November 5, 2016               [Page 65]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   -  If the server does not support creation of new bindings for the
+      client sending a Renew message, or if this behavior is disabled
+      according to the server's policy or configuration information, the
       server returns the IA option containing a Status Code option with
       the NoBinding status code and a status message for a user.
 
@@ -3686,9 +3689,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    server MAY choose not to include the IA Prefix option for this
    prefix.
 
-   If the server finds that the client entry for the IA and any of the
-   addresses or delegated prefixes are no longer appropriate for the
-   link to which the client's interface is attached according to the
 
 
 
@@ -3698,6 +3698,9 @@ Mrugalski, et al.       Expires November 5, 2016               [Page 66]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   If the server finds that the client entry for the IA and any of the
+   addresses or delegated prefixes are no longer appropriate for the
+   link to which the client's interface is attached according to the
    server's explicit configuration information, the server returns the
    address or delegated prefix to the client with lifetimes of 0.
 
@@ -3744,9 +3747,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
       server returns the IA option containing a Status Code option with
       the NoBinding status code and a status message for a user.
 
-   When the server creates new bindings for the IA, it is possible that
-   other servers also create bindings as a result of receiving the same
-
 
 
 Mrugalski, et al.       Expires November 5, 2016               [Page 67]
@@ -3754,6 +3754,8 @@ Mrugalski, et al.       Expires November 5, 2016               [Page 67]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   When the server creates new bindings for the IA, it is possible that
+   other servers also create bindings as a result of receiving the same
    Rebind message.  This is the same issue as in the Discussion under
    "Rapid Commit Option"; see Section 20.14.  Therefore, the server
    SHOULD only create new bindings during processing of a Rebind message
@@ -3799,8 +3801,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    Identification option in the Information-request message, the server
    copies that option to the Reply message.
 
-   The server includes options containing configuration information to
-   be returned to the client as described in Section 17.2.  The server
 
 
 
@@ -3810,6 +3810,8 @@ Mrugalski, et al.       Expires November 5, 2016               [Page 68]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   The server includes options containing configuration information to
+   be returned to the client as described in Section 17.2.  The server
    MAY include additional options that were not requested by the client
    in the Information-request message.
 
@@ -3854,8 +3856,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    A server may choose to retain a record of assigned leases and IAs
    after the lifetimes on the leases have expired to allow the server to
    reassign the previously assigned leases to a client.
-
-
 
 
 
@@ -3927,7 +3927,8 @@ Internet-Draft                RFC 3315 bis                      May 2016
    configured by the server administrator.
 
    The server includes a Reconfigure Accept option if the server wants
-   to require that the client accept Reconfigure messages.
+   to indicate it supports Reconfigure mechanism.  This information may
+   be used by the client during server selection process.
 
    The server includes options the server will return to the client in a
    subsequent Reply message.  The information in these options may be
@@ -3969,7 +3970,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    If the Solicit message was received directly by the server, the
    server unicasts the Advertise message directly to the client using
-   the address in the source address field from the IP datagram in which
 
 
 
@@ -3978,6 +3978,7 @@ Mrugalski, et al.       Expires November 5, 2016               [Page 71]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   the address in the source address field from the IP datagram in which
    the Solicit message was received.  The Advertise message MUST be
    unicast on the link from which the Solicit message was received.
 
@@ -4025,7 +4026,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    Because of the risk of denial of service attacks against DHCP
    clients, the use of a security mechanism is mandated in Reconfigure
-
 
 
 
@@ -6983,16 +6983,16 @@ Internet-Draft                RFC 3315 bis                      May 2016
    66.  Clarified MUST perform DAD, excepting exceptions listed in
         RFC4862 Section 5.4 (ticket #153).
 
+   67.  Removed the requirement for the server to send Reconfigure
+        Accept in Reply messages, also clarified why it's useful in
+        Advertise (ticket #154).
+
 Appendix B.  Changes since RFC3633
 
    1.  Incorporated RFC3633 errata (ids: 248, 1880, 2468, 2469, 2470,
        3736)
 
    2.  ...
-
-
-
-
 
 
 
