@@ -3418,9 +3418,16 @@
           target="RFC3315-22.20"></xref>) in the Solicit message, the servers
           discard the Solicit message.</t>
 
+          <t>If the server is permitted to respond to the client, the client
+          has not included a Rapid Commit option in the Solicit message or
+          the server has not been configured to respond with committed assignment
+          of leases and other resources, the server sends an Advertise
+          message to the client as described in <xref target="RFC3315-17.2.2"/>.
+          </t>
+
           <t>If the client has included a Rapid Commit option in the Solicit
           message and the server has been configured to respond with committed
-          lease assignments and other resources, the server responds to the
+          assignments of leases and other resources, the server responds to the
           Solicit with a Reply message. The server MUST commit the assignment
           of any addresses and delegated prefixes or other configuration
           information before sending a Reply message to a client. In this case
