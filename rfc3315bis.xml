@@ -3717,8 +3717,11 @@
           option with the lifetimes of 0. The Reply with lifetimes of 0
           constitutes an explicit notification to the client that the specific
           addresses and delegated prefixes are no longer valid and MUST NOT be
-          used by the client. In this situation, if the server does not send a
-          Reply message, it silently discards the Rebind message.</t>
+          used by the client. If the server chooses to not include any IAs
+          containing IA Address or IA Prefix options with lifetimes of 0 and
+          the server does not include any other IAs with leases and/or status
+          codes, the server does not send a Reply message. In this situation
+          the server silently discards the Rebind message.</t>
 
           <t>Otherwise, for each IA for which the server cannot find a client
           entry, the server has the following choices depending on the
