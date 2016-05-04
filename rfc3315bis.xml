@@ -3451,8 +3451,10 @@
               committed to the client but not used by the client.</t>
             </list></t>
 
-          <t>The server includes a Reconfigure Accept option if the server
-          wants to require that the client accept Reconfigure messages.</t>
+          <t>The server includes a Reconfigure Accept option if the
+          server is configured to use reconfigure mechanism (see <xref
+          target="reconfigure-transmission"/>). Sending this option
+          back to the client may useful using server selection process.</t>
 
           <t>The server produces the Reply message as though it had received a
           Request message, as described in <xref
@@ -3522,8 +3524,16 @@
           Reply. This facilitates the client being able to renew all of the
           bindings at the same time.</t>
 
-          <t>The server includes a Reconfigure Accept option if the server
-          wants to require that the client accept Reconfigure messages.</t>
+          <t>The server MAY include a Reconfigure Accept option. New
+          server implementations are discouraged from sending
+          Reconfigure Accept option, as it does not convey any
+          additional information. If the reconfigure mechanism is
+          supported, the server is supposed to send Authentication
+          option with Reconfigure Key (see <xref
+          target="reconfigure-protocol"/> for details). However, it is
+          still allowed to send Reconfigure Accept option to maintain
+          backward compatibility with servers that implment <xref
+          target="RFC3315"/>.</t>
 
           <t>The server includes other options containing configuration
           information to be returned to the client as described in <xref
@@ -3915,7 +3925,9 @@
           configured by the server administrator.</t>
 
           <t>The server includes a Reconfigure Accept option if the server
-          wants to require that the client accept Reconfigure messages.</t>
+          wants to indicate it supports Reconfigure mechanism. This
+          information may be used by the client during server
+          selection process.</t>
 
           <t>The server includes options the server will return to the client
           in a subsequent Reply message. The information in these options may
@@ -4373,7 +4385,7 @@
         <t>The Authentication option provides a framework for multiple
         authentication protocols. One such protocol, the Reconfigure key
         authentication protocol , is defined in <xref
-        target="RFC3315-21.5"></xref>. Other protocols defined in the future
+        target="reconfigure-protocol"></xref>. Other protocols defined in the future
         will be specified in separate documents.</t>
 
         <t>Any DHCP message MUST NOT include more than one Authentication
@@ -4411,7 +4423,7 @@
 
       <!-- ends: "21.3 from line 3198-->
 
-      <section anchor="RFC3315-21.5"
+      <section anchor="reconfigure-protocol"
                title="Reconfigure Key Authentication Protocol">
         <!-- 21.5, line 3446-->
 
@@ -6344,7 +6356,7 @@
       for the authentication protocol.</t>
 
       <t>The Reconfigure Key protocol described in <xref
-      target="RFC3315-21.5"></xref> provides protection against the use of a
+      target="reconfigure-protocol"></xref> provides protection against the use of a
       Reconfigure message by a malicious DHCP server to mount a denial of
       service or man-in-the-middle attack on a client. This protocol can be
       compromised by an attacker that can intercept the initial message in
@@ -6883,7 +6895,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           
           <t>Clarified MUST perform DAD, excepting exceptions listed in RFC4862 Section
           5.4 (ticket #153).</t>
-          
+
+          <t>Removed the requirement for the server to send Reconfigure Accept
+          in Reply messages, also clarified why it's useful in Advertise (ticket
+          #154).</t>
         </list></t>
     </section>
 
