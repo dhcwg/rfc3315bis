@@ -293,10 +293,10 @@
         <!-- 1.2, line 284-->
 
         <t>When a DHCP client does not need to have a DHCP server assign it IP
-        addresses, the client can obtain configuration information such as a
+        addresses or delegated prefixes, the client can obtain configuration information such as a
         list of available DNS servers <xref target="RFC3646"></xref> or NTP
         servers <xref target="RFC4075"></xref> through a single message and
-        reply exchanged with a DHCP server. To obtain configuration
+        reply exchange with a DHCP server. To obtain configuration
         information the client first sends an Information-request message to
         the All_DHCP_Relay_Agents_and_Servers multicast address. Servers
         respond with a Reply message containing the configuration information
@@ -304,27 +304,29 @@
 
         <t>This message exchange assumes that the client requires only
         configuration information and does not require the assignment of any
-        IPv6 addresses.</t>
+        IPv6 addresses or delegated prefixes.</t>
 
-        <t>When a server has IPv6 addresses and other configuration
+        <t>When a server has IPv6 addresses and/or delegated prefixes and
+        other configuration
         information committed to a client, the client and server may be able
         to complete the exchange using only two messages, instead of four
         messages as described in the next section. In this case, the client
         sends a Solicit message to the All_DHCP_Relay_Agents_and_Servers
-        requesting the assignment of addresses and other configuration
+        requesting the assignment of addresses and/or delegated prefixes and other configuration
         information. This message includes an indication that the client is
         willing to accept an immediate Reply message from the server. The
-        server that is willing to commit the assignment of addresses to the
-        client immediately responds with a Reply message. The configuration
-        information and the addresses in the Reply message are then
+        server that is willing to commit the assignment of addresses and/or
+        delegated prefixes to the client immediately responds with a Reply
+        message. The configuration information and the addresses and/or
+        delegated prefixes in the Reply message are then
         immediately available for use by the client.</t>
 
-        <t>Each address assigned to the client has associated preferred and
+        <t>Each address or delegated prefix assigned to the client has associated preferred and
         valid lifetimes specified by the server. To request an extension of
-        the lifetimes assigned to an address, the client sends a Renew message
+        the lifetimes assigned to an address or delegated prefix, the client sends a Renew message
         to the server. The server sends a Reply message to the client with the
-        new lifetimes, allowing the client to continue to use the address
-        without interruption.</t>
+        new lifetimes, allowing the client to continue to use the address or
+        delegated prefix without interruption.</t>
       </section>
 
       <!-- ends: "1.2 from line 284-->
@@ -333,22 +335,22 @@
                title="Client-server Exchanges Involving Four Messages">
         <!-- 1.3, line 323-->
 
-        <t>To request the assignment of one or more IPv6 addresses, a client
+        <t>To request the assignment of one or more IPv6 addresses and/or delegated prefixes, a client
         first locates a DHCP server and then requests the assignment of
-        addresses and other configuration information from the server. The
+        addresses and/or delegated prefixes and other configuration information from the server. The
         client sends a Solicit message to the
         All_DHCP_Relay_Agents_and_Servers address to find available DHCP
         servers. Any server that can meet the client's requirements responds
         with an Advertise message. The client then chooses one of the servers
         and sends a Request message to the server asking for confirmed
-        assignment of addresses and other configuration information. The
+        assignment of addresses and/or delegated prefixes and other configuration information. The
         server responds with a Reply message that contains the confirmed
-        addresses and configuration.</t>
+        addresses, delegated prefixes, and configuration.</t>
 
         <t>As described in the previous section, the client sends a Renew
         message to the server to extend the lifetimes associated with its
-        addresses, allowing the client to continue to use those addresses
-        without interruption.</t>
+        addresses and/or delegated prefixes, allowing the client to continue to use those addresses
+        and/or delegated prefixes without interruption.</t>
       </section>
 
       <!-- ends: "1.3 from line 323-->
@@ -2310,9 +2312,22 @@
     <section anchor="configuration-exchange"
              title="DHCP Configuration Exchanges">
       <t>A client initiates a message exchange with a server or servers to
-      acquire or update configuration information of interest. Before the
-      client can acquire configuration information it needs to locate
-      available servers. The client does it by sending the Solicit message
+      acquire or update configuration information of interest.</t>
+     
+      <t>A DHCP client that does not need to have a DHCP server assign it IP
+      addresses or delegated prefixes, can obtain configuration information
+      such as a list of available DNS servers <xref target="RFC3646"/> or
+      NTP servers <xref target="RFC4075"/> through a single message and
+      reply exchange with a DHCP server.  To obtain configuration
+      information the client first sends an Information-request message
+      (see <xref target="RFC3315-18.1.5"/>) to the All_DHCP_Relay_Agents_and_Servers
+      multicast address.  Servers respond with a Reply message containing
+      the configuration information for the client (see <xref target="RFC3315-18.2.5"/>).</t> 
+           
+      <t>To request the assignment of one or more IPv6 addresses or delegated
+      prefixes, a client first locates a DHCP server and then requests the
+      assignment of addresses and other configuration information from the
+      server. The client does it by sending the Solicit message
       (see <xref target="solicit-create-transmit"></xref>) to the
       All_DHCP_Relay_Agents_and_Servers multicast address and collecting
       Advertise messages from the servers which respond to the client's
