@@ -209,8 +209,8 @@
       IPv6 prefixes using DHCPv6. Through this mechanism, a delegating router
       can delegate prefixes to requesting routers.</t>
 
-      <t>DHCPv6 can also operate in mode, where only configuration options
-      (but no addresses or prefixes) are provided. That implies that the
+      <t>DHCPv6 can also provide only other configuration options
+      (i.e., no addresses or prefixes). That implies that the
       server doesn't have to track any state, and thus the mode is called
       stateless DHCPv6. Mechanisms necessary to support stateless DHCPv6 are
       much smaller than to support stateful DHCPv6.</t>
@@ -968,7 +968,7 @@
       <section title="Status Codes">
         <!-- 5.4, line 733-->
 
-        <t>DHCPv6 uses status codes to communicate the success or failure of
+        <t>DHCP uses status codes to communicate the success or failure of
         operations requested in messages from clients and servers, and to
         provide additional information about the specific cause of the failure
         of a message. The specific status codes are defined in <xref
@@ -1752,7 +1752,7 @@
       <section title="Assignment of Temporary Addresses">
         <t>A client may request the assignment of temporary addresses (see
         <xref target="RFC4941"></xref> for the definition of temporary
-        addresses). DHCPv6 handling of address assignment is no different for
+        addresses). DHCP handling of address assignment is no different for
         temporary addresses.</t>
 
         <t>Clients ask for temporary addresses and servers assign them.
@@ -1771,7 +1771,7 @@
         <t>The IAID number space for the IA_TA option IAID number space is
         separate from the IA_NA option IAID number space.</t>
 
-        <t>A DHCPv6 server implementation MAY generate temporary addresses
+        <t>A DHCP server implementation MAY generate temporary addresses
         referring to the algorithm defined in Section 3.2.1, <xref
         target="RFC4941"></xref>, with additional condition that the new
         address is not duplicated with any assigned addresses.</t>
@@ -1786,7 +1786,7 @@
         <t>One of the most important properties of temporary address is
         unlinkability of different actions over time. So, it is NOT
         RECOMMENDED for a client to renew expired temporary addresses, though
-        DHCPv6 provides such possibility (see <xref
+        DHCP provides such possibility (see <xref
         target="RFC3315-22.5"></xref>).</t>
       </section>
     </section>
@@ -1813,7 +1813,7 @@
 
       <section anchor="rate-limit" title="Rate Limiting">
         <t>In order to avoid prolonged message bursts that may be caused by
-        possible logic loops, a DHCPv6 client MUST limit the rate of DHCPv6
+        possible logic loops, a DHCP client MUST limit the rate of DHCP
         messages it transmits. One example is that a client obtains an
         address, but does not like the response; it reverts back to Solicit
         procedure, discovers the same (sole) server, requests an address and
@@ -1836,7 +1836,7 @@
         <t>For a device that has multiple interfaces, the limit MUST be
         enforced on a per interface basis.</t>
 
-        <t>Rate limiting of forwarded DHCPv6 messages and server-side messages
+        <t>Rate limiting of forwarded DHCP messages and server-side messages
         are out of scope of this specification.</t>
       </section>
 
@@ -1994,7 +1994,7 @@
 
       <!-- Applied text from Section 5 of RFC7283 -->
 
-      <t>A client or server MUST silently discard any received DHCPv6 messages
+      <t>A client or server MUST silently discard any received DHCP messages
       with an unknown message type.</t>
 
       <section title="Use of Transaction IDs">
@@ -4342,7 +4342,7 @@
             configured with a list of the relay agents to which messages will
             be returned. The selectors for the relay agents and servers will
             be the pairs of addresses defining relay agents and servers that
-            exchange DHCP messages on DHCPv6 UDP port 547.</t>
+            exchange DHCP messages on UDP port 547.</t>
 
             <t hangText="   Mode">Relay agents and servers use transport mode
             and ESP. The information in DHCP messages is not generally
@@ -4616,7 +4616,7 @@
             of this data depends on the definition of the option.</t>
           </list></t>
 
-        <t>DHCPv6 options are scoped by using encapsulation. Some options
+        <t>DHCP options are scoped by using encapsulation. Some options
         apply generally to the client, some are specific to an IA, and some
         are specific to the addresses within an IA. These latter two cases are
         discussed in <xref target="RFC3315-22.4"></xref> and <xref
@@ -6280,7 +6280,7 @@
       target="privacy"></xref>.</t>
 
       <t>The threat to DHCP is inherently an insider threat (assuming a
-      properly configured network where DHCPv6 ports are blocked on the
+      properly configured network where DHCP ports are blocked on the
       perimeter gateways of the enterprise). Regardless of the gateway
       configuration, however, the potential attacks by insiders and outsiders
       are the same.</t>
@@ -6388,8 +6388,8 @@
       trusts layer two authentication, DHCP authentication or IPsec may not be
       necessary. Because a requesting router and delegating routers must each
       have at least one assigned IPv6 address, the routers may be able to use
-      IPsec for authentication of DHCPv6 messages. The details of using IPsec
-      for DHCPv6 are under development.</t>
+      IPsec for authentication of DHCP messages. The details of using IPsec
+      for DHCP are under development.</t>
 
       <t>Networks configured with delegated prefixes should be configured to
       preclude intentional or inadvertent inappropriate advertisement of these
@@ -6444,7 +6444,7 @@
     <section title="IANA Considerations">
       <!-- 24, line 4595-->
 
-      <t>This document does not define any new DHCPv6 name spaces or
+      <t>This document does not define any new DHCP name spaces or
       definitions.</t>
 
       <t>IANA is requested to update the
@@ -6467,12 +6467,12 @@
     <!-- ends: "24 from line 4595-->
 
     <section anchor="obsolete" title="Obsoleted mechanisms">
-      <t>This specification of the DHCPv6 is mostly a corrected and cleaned up
-      version of the original spec <xref target="RFC3315"></xref> along with
+      <t>This specification is mostly a corrected and cleaned up version
+      of the original specification, <xref target="RFC3315"></xref>, along with
       numerous additions from later RFCs. However, there is a small number of
       mechanisms that didn't get much traction, were not widely deployed,
       underspecified or had other operational issues. Those mechanisms are now
-      considered deprecated. Legacy implementations MAY support it, but
+      considered deprecated. Legacy implementations MAY support them, but
       implementations conformant to this document MUST NOT rely on them.</t>
 
       <t>The following mechanism are now obsolete:</t>
