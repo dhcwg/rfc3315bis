@@ -154,6 +154,25 @@
       </address>
     </author>
 
+    <author fullname="Timothy Winters" initials="T" surname="Winters">
+      <organization abbrev="UNH-IOL">University of New Hampshire, Interoperability Lab (UNH-IOL)</organization>
+
+      <address>
+        <postal>
+   
+          <city>Durham, NH</city>
+
+          <region></region>
+
+          <code></code>
+
+          <country>USA</country>
+        </postal>
+
+        <email>twinters@iol.unh.edu</email>
+      </address>
+    </author>
+
     <date />
 
     <area>Internet</area>
