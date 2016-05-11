@@ -750,10 +750,11 @@
         required to terminate the use of a delegated prefix if the valid
         lifetime of the prefix expires.</t>
 
-        <t>This prefix delegation mechanism would be appropriate for use by an
+        <t>This prefix delegation mechanism is appropriate for use by an
         ISP to delegate a prefix to a subscriber, where the delegated prefix
         would possibly be subnetted and assigned to the links within the
-        subscriber's network.</t>
+        subscriber's network.  <xref target="RFC7084" /> and <xref
+        target="RFC7368" /> describe in detail such use.</t>
 
         <t><xref target="FigISPNetwork"></xref> illustrates a network
         architecture in which prefix delegation could be used.</t>
@@ -6707,6 +6708,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.3162'?>
 
       <?rfc include='reference.RFC.7084'?>
+      <?rfc include='reference.RFC.7368'?>
 
       <?rfc include='reference.RFC.3736'?>
 
