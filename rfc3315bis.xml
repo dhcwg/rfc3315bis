@@ -2399,11 +2399,11 @@
       message to this server as described in the <xref
       target="request-create-transmit"></xref>.</t>
 
-      <t>The client which is performing server discovery MAY include a Rapid
-      Commit option (see <xref target="RFC3315-22.14"></xref>) in a Solicit
-      message to indicate that it is prepared to perform Solicit-Reply message
+      <t>A client willing to perform the Solicit-Reply message
       exchange described in <xref
-      target="solicit-create-transmit"></xref>.</t>
+      target="solicit-create-transmit"></xref> includes a Rapid
+      Commit option (see <xref target="RFC3315-22.14"></xref>) in it's
+      Solicit message.</t>
 
       <t>The client may initiate the configuration exchange as part of the
       operating system configuration process, when requested to do so by the
