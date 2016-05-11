@@ -2486,7 +2486,12 @@
 
         <t>Upon receipt of a Reconfigure message from the server, a client
         responds with a Renew, Rebind or an Information-request message as
-        indicated by the Reconfigure Message option. The server sends IAs
+        indicated by the Reconfigure Message option.
+        The client SHOULD be suspicious of the Reconfigure message (they
+        may be faked), and it MUST NOT abandon any resources it might have
+        already obtained.
+        The client SHOULD treat the Reconfigure message as if the T1 timer
+        had expired.  The client will expect the server to send IAs
         and/or other configuration information to the client in a Reply
         message.</t>
 
