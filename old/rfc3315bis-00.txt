@@ -2414,12 +2414,19 @@ Internet-Draft                RFC 3315 bis                      May 2016
    described in Section 17.1.1 includes a Rapid Commit option (see
    Section 20.14) in it's Solicit message.
 
-   The client may initiate the configuration exchange as part of the
-   operating system configuration process, when requested to do so by
-   the application layer, when required by Stateless Address
-   Autoconfiguration (as defined in [RFC2462]) or as required to extend
-   the lifetime of address(es) and/or delegated prefix(es), using Renew
-   and Rebind messages.
+   The client has many reasons to initiate the configuration exchange:
+
+   1.    as part of the operating system configuration/bootstrap
+         process,
+
+   2.    when requested to do so by the application layer (through an
+         operating system specific API),
+
+   3.    when required by Stateless Address Autoconfiguration (as
+         defined in [RFC2462])
+
+   4.    or as required to extend the lifetime of address(es) and/or
+         delegated prefix(es), using Renew and Rebind messages.
 
    A server may initiate a message exchange with a client by sending a
    Reconfigure message to cause the client to send a Renew, Rebind or
@@ -2452,19 +2459,19 @@ Internet-Draft                RFC 3315 bis                      May 2016
    If the server responds with an Advertise mesage, the client initiates
    a configuration exchange as described in Section 17.1.2.
 
-   Requesting router and delegating router use the IA_PD Prefix option
-   to exchange information about prefix(es) in much the same way as IA
-   Address options are used for assigned addresses.  Typically, a single
-   DHCP session is used to exchange information about addresses and
-   prefixes, i.e. IA_NA and IA_PD options are carried in the same
-   message.
-
 
 
 Mrugalski, et al.       Expires November 12, 2016              [Page 44]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+   Requesting router and delegating router use the IA_PD Prefix option
+   to exchange information about prefix(es) in much the same way as IA
+   Address options are used for assigned addresses.  Typically, a single
+   DHCP session is used to exchange information about addresses and
+   prefixes, i.e. IA_NA and IA_PD options are carried in the same
+   message.
 
 17.1.  Client Behavior
 
@@ -2508,13 +2515,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    DISCUSSION:
 
-      Use of unicast may avoid delays due to the relaying of messages by
-      relay agents, as well as avoid overhead and duplicate responses by
-      servers due to the delivery of client messages to multiple
-      servers.  However, requiring the client to relay all DHCP messages
-      through a relay agent enables the inclusion of relay agent options
-
-
 
 
 Mrugalski, et al.       Expires November 12, 2016              [Page 45]
@@ -2522,6 +2522,11 @@ Mrugalski, et al.       Expires November 12, 2016              [Page 45]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+      Use of unicast may avoid delays due to the relaying of messages by
+      relay agents, as well as avoid overhead and duplicate responses by
+      servers due to the delivery of client messages to multiple
+      servers.  However, requiring the client to relay all DHCP messages
+      through a relay agent enables the inclusion of relay agent options
       in all messages sent by the client.  The server should enable the
       use of unicast only when relay agent options will not be used.
 
@@ -2565,11 +2570,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    if the client is willing to accept Reconfigure messages from the
    server.
 
-   The first Solicit message from the client on the interface MUST be
-   delayed by a random amount of time between 0 and SOL_MAX_DELAY.  In
-   the case of a Solicit message transmitted when DHCP is initiated by
-   IPv6 Neighbor Discovery, the delay gives the amount of time to wait
-   after IPv6 Neighbor Discovery causes the client to invoke the
 
 
 
@@ -2578,6 +2578,11 @@ Mrugalski, et al.       Expires November 12, 2016              [Page 46]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   The first Solicit message from the client on the interface MUST be
+   delayed by a random amount of time between 0 and SOL_MAX_DELAY.  In
+   the case of a Solicit message transmitted when DHCP is initiated by
+   IPv6 Neighbor Discovery, the delay gives the amount of time to wait
+   after IPv6 Neighbor Discovery causes the client to invoke the
    stateful address autoconfiguration protocol (see section 5.5.3 of
    [RFC4862]).  This random delay desynchronizes clients which start at
    the same time (for example, after a power outage).
@@ -2622,11 +2627,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    Also, the first RT MUST be selected to be strictly greater than IRT
    by choosing RAND to be strictly greater than 0.
 
-   A client MUST collect Advertise messages for the first RT seconds,
-   unless it receives an Advertise message with a preference value of
-   255.  The preference value is carried in the Preference option
-   (Section 20.8).  Any Advertise that does not include a Preference
-
 
 
 Mrugalski, et al.       Expires November 12, 2016              [Page 47]
@@ -2634,6 +2634,10 @@ Mrugalski, et al.       Expires November 12, 2016              [Page 47]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   A client MUST collect Advertise messages for the first RT seconds,
+   unless it receives an Advertise message with a preference value of
+   255.  The preference value is carried in the Preference option
+   (Section 20.8).  Any Advertise that does not include a Preference
    option is considered to have a preference value of 0.  If the client
    receives an Advertise message that includes a Preference option with
    a preference value of 255, the client immediately begins a client-
@@ -2679,10 +2683,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    to the server.  The client adds any other appropriate options,
    including one or more IA options.
 
-   The client MUST include an Option Request option (see Section 20.7)
-   to request the SOL_MAX_RT option (see Section 20.23) and any other
-   options the client is interested in receiving.  The client MAY
-
 
 
 Mrugalski, et al.       Expires November 12, 2016              [Page 48]
@@ -2690,6 +2690,9 @@ Mrugalski, et al.       Expires November 12, 2016              [Page 48]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   The client MUST include an Option Request option (see Section 20.7)
+   to request the SOL_MAX_RT option (see Section 20.23) and any other
+   options the client is interested in receiving.  The client MAY
    additionally include instances of those options that are identified
    in the Option Request option, with data values as hints to the server
    about parameter values the client would like to have returned.
@@ -2736,9 +2739,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    o  The client using a wireless technology changes access points.
 
-   In any situation when a client may have moved to a new link and the
-   client does not have any delegated prefixes obtained from the DHCP
-
 
 
 Mrugalski, et al.       Expires November 12, 2016              [Page 49]
@@ -2746,6 +2746,8 @@ Mrugalski, et al.       Expires November 12, 2016              [Page 49]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   In any situation when a client may have moved to a new link and the
+   client does not have any delegated prefixes obtained from the DHCP
    server from which it has obtained the addresses, the client SHOULD
    initiate a Confirm/Reply message exchange.  The client includes any
    IAs assigned to the interface that may have moved to a new link,
@@ -2791,8 +2793,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    continue to use any IP addresses, using the last known lifetimes for
    those addresses, and SHOULD continue to use any other previously
    obtained configuration parameters.
-
-
 
 
 

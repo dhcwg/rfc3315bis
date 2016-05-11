@@ -2396,11 +2396,17 @@
       Commit option (see <xref target="RFC3315-22.14"></xref>) in its
       Solicit message.</t>
 
-      <t>The client may initiate the configuration exchange as part of the
-      operating system configuration process, when requested to do so by the
-      application layer, when required by Stateless Address Autoconfiguration
-      (as defined in <xref target="RFC2462"/>) or as required to extend the lifetime of
-      address(es) and/or delegated prefix(es), using Renew and Rebind messages.</t>
+      <t>The client has many reasons to initiate the configuration exchange:
+      <list hangIndent="6" style="hanging">
+        <t hangText="1."> as part of the operating system configuration/bootstrap process,</t>
+        <t hangText="2."> when requested to do so by the application layer (through an
+        operating system specific API),</t>
+        <t hangText="3."> when required by Stateless Address Autoconfiguration (as defined
+        in <xref target="RFC2462"/>)</t>
+        <t hangText="4."> or as required to extend the lifetime of address(es) and/or
+        delegated prefix(es), using Renew and Rebind messages.</t>
+      </list>
+      </t>
 
       <t>A server may initiate a message exchange with a client by sending a
       Reconfigure message to cause the client to send a Renew, Rebind or
