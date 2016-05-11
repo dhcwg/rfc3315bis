@@ -1387,7 +1387,9 @@
       for any specific client or server - that is, the DUID used by a client
       or server SHOULD NOT change over time if at all possible; for example, a
       device's DUID should not change as a result of a change in the device's
-      network hardware.</t>
+      network hardware.  The stability of the DUID includes changes to virtual
+      interfaces, such as logical PPP (over Ethernet) interfaces that may
+      come and go in Customer Premise Equipment routers.</t>
 
       <t>The motivation for having more than one type of DUID is that the DUID
       must be globally unique, and must also be easy to generate. The sort of
