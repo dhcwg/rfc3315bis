@@ -231,7 +231,7 @@
       specified as part of the <xref target="RFC7084"/> and by <xref
       target="TR-187"/>.</t>
 
-      <t>And, DHCPv6 can be used to obtain just other configuration information
+      <t>DHCPv6 can also provide only other configuration options
       (i.e., no addresses or prefixes). That implies that the
       server doesn't have to track any state, and thus this mode is called
       stateless DHCPv6. Mechanisms necessary to support stateless DHCPv6 are
@@ -661,8 +661,8 @@
         (this is a two message exchange).</t>
 
       </section>
-      <!-- 1.3, line 323-->         
-       
+      <!-- 1.3, line 323-->
+
       <section title="Server-client Exchanges">
           <t>A server that has previously communicated with a client and negotiated
           for the client to listen for Reconfigure messages, may send the client
@@ -672,9 +672,9 @@
           expedite configuration changes to a client, such as the need to renumber
           a network (see <xref target="RFC6879"/>).
           </t>
-          
+
       </section>
-               
+
     </section>
 
     <section anchor="OpModes" title="Operational Models">
@@ -748,7 +748,7 @@
         provider to assign a prefix to a Customer Edge Router device acting as
         a router between the subscriber's internal network and the service
         provider's core network.</t>
-           
+
         <t>The design of this prefix delegation mechanism meets the
         requirements for prefix delegation in <xref
         target="RFC3769"></xref>.</t>
@@ -764,8 +764,8 @@
         packets and thus operating as routers as defined in
         <xref target="RFC2460"/>. Therefore, this document mostly replaces
         "requesting router" with client and "delegating router" with
-        server.</t>           
-           
+        server.</t>
+
         <t>The model of operation for prefix delegation is as follows. A
         server is provided prefixes to be delegated to
         clients. A client requests prefix(es) from the
@@ -1229,7 +1229,7 @@
         value 0xffffffff is taken to mean "infinity" when used as a lifetime
         (as in <xref target="RFC4861"></xref>) or a value for T1 or T2.</t>
 
-        <t>Setting the valid lifetime of an address or a 
+        <t>Setting the valid lifetime of an address or a
         delegated prefix to 0xffffffff ("infinity") amounts to a permanent
         address or delegation of the prefix to a client and should only be used in cases
         were permanent addresses are desired.</t>
@@ -1729,7 +1729,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -3274,7 +3274,7 @@
           indicating a failure, and the Advertise message will be discarded by
           the client. A client SHOULD only update its SOL_MAX_RT and INF_MAX_RT
           values if all received Advertise messages that contained the
-          corresponding option specified the same value, otherwise it should 
+          corresponding option specified the same value, otherwise it should
           use the default value (see <xref target="RFC3315-5.5"/>).</t>
 
           <!-- Change from RFC 7550 section 4.1/4.2 has been applied. 6/1/2015 -->
@@ -4601,7 +4601,7 @@
 
             <t hangText="   Mode">Relay agents and servers use transport mode
             and Encapsulating Security Payload (ESP).</t>
-             
+
             <t hangText="   Encryption and authentication algorithms">
             <vspace blankLines='0'/>This
             document requires combined mode algorithms for ESP authenticated
@@ -5264,7 +5264,7 @@
         <t>A client discards any addresses for which the preferred lifetime is
         greater than the valid lifetime.</t>
 
-        <t>As per <xref target="RFC3315-5.6"/>, the valid lifetime of an address 
+        <t>As per <xref target="RFC3315-5.6"/>, the valid lifetime of an address
         0xffffffff is taken to mean "infinity" and should used carefully.</t>
 
         <t>More than one IA Address option can appear in an IA_NA option or an
@@ -6384,8 +6384,8 @@
         <t>The values in the preferred and valid lifetimes are the number of
         seconds remaining for each lifetime.</t>
 
-        <t>As per <xref target="RFC3315-5.6"/>, the preferred and valid lifetime values of 
-        0xffffffff is taken to mean "infinity" and should be used carefully.</t> 
+        <t>As per <xref target="RFC3315-5.6"/>, the preferred and valid lifetime values of
+        0xffffffff is taken to mean "infinity" and should be used carefully.</t>
 
         <t>An IA Prefix option may appear only in an IA_PD option. More
         than one IA Prefix option can appear in a single IA_PD option.</t>
@@ -6791,7 +6791,7 @@
       http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
       page to add a reference to this document for definitions previously
       created by <xref target="RFC3315"/>, <xref target="RFC3633"/>,
-      <xref target="RFC4242"/> and <xref target="RFC7083"/>.</t>          
+      <xref target="RFC4242"/> and <xref target="RFC7083"/>.</t>
 
       <t>IANA is requested to add a column to the DHCPv6 Option table at
       http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
