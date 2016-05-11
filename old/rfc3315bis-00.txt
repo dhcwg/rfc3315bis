@@ -105,7 +105,7 @@ Table of Contents
    4.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .  10
      4.1.  IPv6 Terminology  . . . . . . . . . . . . . . . . . . . .  10
      4.2.  DHCP Terminology  . . . . . . . . . . . . . . . . . . . .  11
-   5.  Operational Models  . . . . . . . . . . . . . . . . . . . . .  14
+   5.  Operational Models  . . . . . . . . . . . . . . . . . . . . .  15
 
 
 
@@ -119,7 +119,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
      5.3.  DHCP for Prefix Delegation  . . . . . . . . . . . . . . .  16
      5.4.  DHCP for Customer Edge Routers  . . . . . . . . . . . . .  18
      5.5.  DHCP for Temporary Addresses  . . . . . . . . . . . . . .  18
-   6.  DHCP Constants  . . . . . . . . . . . . . . . . . . . . . . .  18
+   6.  DHCP Constants  . . . . . . . . . . . . . . . . . . . . . . .  19
      6.1.  Multicast Addresses . . . . . . . . . . . . . . . . . . .  19
      6.2.  UDP Ports . . . . . . . . . . . . . . . . . . . . . . . .  19
      6.3.  DHCP Message Types  . . . . . . . . . . . . . . . . . . .  19
@@ -301,7 +301,8 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    This document also provides a mechanism for automated delegation of
    IPv6 prefixes using DHCPv6.  Through this mechanism, a delegating
-   router can delegate prefixes to requesting routers.
+   router can delegate prefixes to requesting routers.  Use of this
+   mechanism is specified as part of the [RFC7084] and by [TR-187].
 
    DHCPv6 can also provide only other configuration options (i.e., no
    addresses or prefixes).  That implies that the server doesn't have to
@@ -329,7 +330,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    spread between large number of documents may be cumbersome.
    Furthermore, a significant operational experience has been gained
    over the years and certain small elements of the protocol have been
-   reworked.  This document provides a unified, corrected and cleaned up
 
 
 
@@ -338,6 +338,7 @@ Mrugalski, et al.       Expires November 12, 2016               [Page 6]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   reworked.  This document provides a unified, corrected and cleaned up
    definition of the DHCPv6 that also covers all erratas filled against
    older RFCs.  As such, it obsoletes a number of aforementioned RFCs.
    There is a small number of mechanisms that were obsoleted.  They are
@@ -385,7 +386,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    servers [RFC4075] through a single message and reply exchange with a
    DHCP server.  To obtain configuration information the client first
    sends an Information-request message to the
-   All_DHCP_Relay_Agents_and_Servers multicast address.  Servers respond
 
 
 
@@ -394,6 +394,7 @@ Mrugalski, et al.       Expires November 12, 2016               [Page 7]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   All_DHCP_Relay_Agents_and_Servers multicast address.  Servers respond
    with a Reply message containing the configuration information for the
    client.
 
@@ -441,7 +442,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    As described in the previous section, the client sends a Renew
    message to the server to extend the lifetimes associated with its
-   addresses and/or delegated prefixes, allowing the client to continue
 
 
 
@@ -450,6 +450,7 @@ Mrugalski, et al.       Expires November 12, 2016               [Page 8]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   addresses and/or delegated prefixes, allowing the client to continue
    to use those addresses and/or delegated prefixes without
    interruption.
 
@@ -496,8 +497,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
    support renumbering of addresses on the Internet.  In addition, the
    protocol interaction by which a node begins stateless or stateful
    autoconfiguration is specified.  DHCP is one vehicle to perform
-   stateful autoconfiguration.  Compatibility with stateless address
-   autoconfiguration is a design requirement of DHCP.
+
 
 
 
@@ -505,6 +505,9 @@ Mrugalski, et al.       Expires November 12, 2016               [Page 9]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+   stateful autoconfiguration.  Compatibility with stateless address
+   autoconfiguration is a design requirement of DHCP.
 
    IPv6 Neighbor Discovery [RFC4861] is the node discovery protocol in
    IPv6 which replaces and enhances functions of ARP [RFC0826].  To
@@ -550,10 +553,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
                              (or higher) layer "tunnels", such as
                              tunnels over IPv4 or IPv6 itself.
 
-   link-layer identifier     A link-layer identifier for an interface.
-                             Examples include IEEE 802 addresses for
-                             Ethernet or Token Ring network interfaces,
-                             and E.164 addresses for ISDN links.
+
 
 
 
@@ -561,6 +561,11 @@ Mrugalski, et al.       Expires November 12, 2016              [Page 10]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+   link-layer identifier     A link-layer identifier for an interface.
+                             Examples include IEEE 802 addresses for
+                             Ethernet or Token Ring network interfaces,
+                             and E.164 addresses for ISDN links.
 
    link-local address        An IPv6 address having a link-only scope,
                              indicated by having the prefix (FE80::/10),
@@ -604,12 +609,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
                              topology, prefix assignment and address
                              assignment policies.
 
-   binding                   A binding (or, client binding) is a group
-                             of server data records containing the
-                             information the server has about the
-                             addresses in an IA or configuration
-                             information explicitly assigned to the
-                             client.  Configuration information that has
+
 
 
 
@@ -618,6 +618,12 @@ Mrugalski, et al.       Expires November 12, 2016              [Page 11]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   binding                   A binding (or, client binding) is a group
+                             of server data records containing the
+                             information the server has about the
+                             addresses in an IA or configuration
+                             information explicitly assigned to the
+                             client.  Configuration information that has
                              been returned to a client through a policy
                              - for example, the information returned to
                              all clients on the same link - does not
@@ -659,13 +665,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
                              administrative domain from which a DHCP
                              authentication key was selected.
 
-   DHCP relay agent (or relay agent)  A node that acts as an
-                             intermediary to deliver DHCP messages
-                             between clients and servers.  In certain
-                             configurations there may be more than one
-                             relay agent between clients and servers, so
-                             a relay agent may send DHCP messages to
-                             another relay agent.
+
 
 
 
@@ -673,6 +673,14 @@ Mrugalski, et al.       Expires November 12, 2016              [Page 12]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+   DHCP relay agent (or relay agent)  A node that acts as an
+                             intermediary to deliver DHCP messages
+                             between clients and servers.  In certain
+                             configurations there may be more than one
+                             relay agent between clients and servers, so
+                             a relay agent may send DHCP messages to
+                             another relay agent.
 
    DHCP server (or server)   A node that responds to requests from
                              clients, and may or may not be on the same
@@ -714,14 +722,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    IA_NA                     Identity association for Non-temporary
                              Addresses: An IA that carries assigned
-                             addresses that are not temporary addresses
-                             (see "identity association for temporary
-                             addresses")
-
-   IA_TA                     Identity Association for Temporary
-                             Addresses: An IA that carries temporary
-                             addresses (see [RFC4941]).
-
 
 
 
@@ -729,6 +729,14 @@ Mrugalski, et al.       Expires November 12, 2016              [Page 13]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+                             addresses that are not temporary addresses
+                             (see "identity association for temporary
+                             addresses")
+
+   IA_TA                     Identity Association for Temporary
+                             Addresses: An IA that carries temporary
+                             addresses (see [RFC4941]).
 
    IA_PD                     Identity Association for Prefix Delegation:
                              A collection of prefixes assigned to the
@@ -768,6 +776,16 @@ Internet-Draft                RFC 3315 bis                      May 2016
                              other option, as described in Section 9 of
                              [RFC7227].
 
+
+
+
+
+
+Mrugalski, et al.       Expires November 12, 2016              [Page 14]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    transaction ID            An opaque value used to match responses
                              with replies initiated either by a client
                              or server.
@@ -778,14 +796,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    operational models.  The described models are not mutually exclusive
    and are sometimes used together.  For example, a device may start in
    stateful mode to obtain an address, and at a later time when an
-
-
-
-Mrugalski, et al.       Expires November 12, 2016              [Page 14]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
    application is started, request additional parameters using stateless
    mode.
 
@@ -824,6 +834,14 @@ Internet-Draft                RFC 3315 bis                      May 2016
    The model of operation for non-temporary address assignment is as
    follows.  The server is provided with IPv6 prefixes from which it may
    allocate addresses to clients, as well as any related network
+
+
+
+Mrugalski, et al.       Expires November 12, 2016              [Page 15]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    topology information as to which prefixes are present on which links.
    A client requests a non-temporary address to be assigned by the
    server.  The server allocates an address or addresses appropriate for
@@ -833,15 +851,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    Each address has an associated preferred and valid lifetime, which
    constitutes an agreement about the length of time over which the
    client is allowed to use the address.  A client can request an
-
-
-
-
-Mrugalski, et al.       Expires November 12, 2016              [Page 15]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
    extension of the lifetimes on an address and is required to terminate
    the use of an address if the valid lifetime of the address expires.
 
@@ -880,6 +889,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
    constitutes an agreement about the length of time over which the
    requesting router is allowed to use the prefix.  A requesting router
    can request an extension of the lifetimes on a delegated prefix and
+
+
+
+
+Mrugalski, et al.       Expires November 12, 2016              [Page 16]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    is required to terminate the use of a delegated prefix if the valid
    lifetime of the prefix expires.
 
@@ -891,11 +909,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    Figure 1 illustrates a network architecture in which prefix
    delegation could be used.
 
-
-
-Mrugalski, et al.       Expires November 12, 2016              [Page 16]
-
-Internet-Draft                RFC 3315 bis                      May 2016
 
 
                       ______________________        \
@@ -933,6 +946,14 @@ Internet-Draft                RFC 3315 bis                      May 2016
    prefixes to be used for assignment to customers at the time of each
    customer's first connection to the ISP service.  The prefix
    delegation process begins when the requesting router requests
+
+
+
+Mrugalski, et al.       Expires November 12, 2016              [Page 17]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    configuration information through DHCP.  The DHCP messages from the
    requesting router are received by the delegating router in the
    aggregation device.  When the delegating router receives the request,
@@ -946,13 +967,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    router subnets a single delegated /48 prefix into /64 prefixes and
    assigns one /64 prefix to each of the links in the subscriber
    network.
-
-
-
-Mrugalski, et al.       Expires November 12, 2016              [Page 17]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
 
    The prefix delegation options can be used in conjunction with other
    DHCP options carrying other configuration information to the
@@ -988,6 +1002,14 @@ Internet-Draft                RFC 3315 bis                      May 2016
    They were added to DHCP to provide complementary support when
    stateful address assignment is used.
 
+
+
+
+Mrugalski, et al.       Expires November 12, 2016              [Page 18]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    Temporary address assignment works mostly like non-temporary address
    assignment (see Section 5.2), however these addresses are generally
    intended to be used for a short period of time and not to have their
@@ -997,18 +1019,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    This section describes various program and networking constants used
    by DHCP.
-
-
-
-
-
-
-
-
-Mrugalski, et al.       Expires November 12, 2016              [Page 18]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
 
 6.1.  Multicast Addresses
 
@@ -1048,6 +1058,14 @@ Internet-Draft                RFC 3315 bis                      May 2016
                    it is available for DHCP service, in response to a
                    Solicit message received from a client.
 
+
+
+
+Mrugalski, et al.       Expires November 12, 2016              [Page 19]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
    REQUEST (3)     A client sends a Request message to request
                    configuration parameters, including IP addresses,
                    from a specific server.
@@ -1056,15 +1074,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
                    server to determine whether the addresses it was
                    assigned are still appropriate to the link to which
                    the client is connected.
-
-
-
-
-
-Mrugalski, et al.       Expires November 12, 2016              [Page 19]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
 
    RENEW (5)       A client sends a Renew message to the server that
                    originally provided the client's addresses and
@@ -1104,6 +1113,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
                    inform the client that the server has new or updated
                    configuration parameters, and that the client is to
                    initiate a Renew/Reply or Information-request/Reply
+
+
+
+
+Mrugalski, et al.       Expires November 12, 2016              [Page 20]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
+
                    transaction with the server in order to receive the
                    updated information.
 
@@ -1114,14 +1132,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    RELAY-FORW (12) A relay agent sends a Relay-forward message to relay
                    messages to servers, either directly or through
-
-
-
-Mrugalski, et al.       Expires November 12, 2016              [Page 20]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
                    another relay agent.  The received message, either a
                    client message or a Relay-forward message from
                    another relay agent, is encapsulated in an option in
@@ -1153,16 +1163,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    This section presents a table of values used to describe the message
    transmission behavior of clients and servers.
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6681,6 +6681,10 @@ Internet-Draft                RFC 3315 bis                      May 2016
               RFC 7550, DOI 10.17487/RFC7550, May 2015,
               <http://www.rfc-editor.org/info/rfc7550>.
 
+   [TR-187]   Broadband Forum, "TR-187 - IPv6 for PPP Broadband Access",
+              February 2013, <https://www.broadband-
+              forum.org/technical/download/TR-187_Issue-2.pdf>.
+
 Appendix A.  Changes since RFC3315
 
    1.   Incorporated RFC3315 errata (ids: 294, 1373, 2928, 1815, 3577,
@@ -6709,11 +6713,7 @@ Appendix A.  Changes since RFC3315
         suggested in section 3.1 of draft-ietf-dhc-dhcpv6-clarify-auth-
         01.  Ticket #87.
 
-   9.   Merged RFC7083, "Modification to Default Values of SOL_MAX_RT
-        and INF_MAX_RT", into this document.  Ticket #51.
 
-   10.  Incorporated RFC3315 errata (id 2471), into section 17.1.3.
-        Ticket #25.
 
 
 
@@ -6721,6 +6721,12 @@ Mrugalski, et al.       Expires November 12, 2016             [Page 120]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+   9.   Merged RFC7083, "Modification to Default Values of SOL_MAX_RT
+        and INF_MAX_RT", into this document.  Ticket #51.
+
+   10.  Incorporated RFC3315 errata (id 2471), into section 17.1.3.
+        Ticket #25.
 
    11.  Added text that relay agents MUST NOT modify the relayed message
         to section 20.1.2.  Ticket #57.
@@ -6764,12 +6770,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    21.  Clarify the server behavior process when a client violates
         Delayed Authentication Protocol, in Section 21.4.  Ticket #90.
 
-   22.  Updated titles of sections 19.4.2. and 19.4.4. to include Rebind
-        messages.
-
-   23.  Applied many of the review comments from a review done by Fred
-        Templin in August 2006.  Ticket #14.
-
 
 
 
@@ -6777,6 +6777,12 @@ Mrugalski, et al.       Expires November 12, 2016             [Page 121]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+   22.  Updated titles of sections 19.4.2. and 19.4.4. to include Rebind
+        messages.
+
+   23.  Applied many of the review comments from a review done by Fred
+        Templin in August 2006.  Ticket #14.
 
    24.  Reworded the first paragraph of Section 15 to relax the "SHOULD"
         requirement to drop the messages which contain the options not
@@ -6820,12 +6826,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    36.  Revised IANA Considerations based on ticket #117.
 
-   37.  Updated IAID description in the terminology with the
-        clarification that the IAID is unique among IAs of a specific
-        type, rather than globally unique among all IAs (ticket #94).
-
-   38.  Merged Section 12 from RFC3633 (ticket #107)
-
 
 
 
@@ -6833,6 +6833,12 @@ Mrugalski, et al.       Expires November 12, 2016             [Page 122]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+   37.  Updated IAID description in the terminology with the
+        clarification that the IAID is unique among IAs of a specific
+        type, rather than globally unique among all IAs (ticket #94).
+
+   38.  Merged Section 12 from RFC3633 (ticket #107)
 
    39.  Clarified behavior for unknown messages (RFC7283), ticket #58.
 
@@ -6877,12 +6883,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
         so server is not required to remember what it sent.  This
         resolves ticket #130.
 
-   52.  Removed references to lifetime hints from the client; only
-        IAPREFIX prefix-length hints are now allowed.  Servers will
-        ignore any lifetime hints; clients should set lifetime to 0.
-        This resolves ticket #148.  Also, removed T1/T2 hints from
-        clients to servers - while not explicitly discussed, seems to
-
 
 
 Mrugalski, et al.       Expires November 12, 2016             [Page 123]
@@ -6890,6 +6890,11 @@ Mrugalski, et al.       Expires November 12, 2016             [Page 123]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   52.  Removed references to lifetime hints from the client; only
+        IAPREFIX prefix-length hints are now allowed.  Servers will
+        ignore any lifetime hints; clients should set lifetime to 0.
+        This resolves ticket #148.  Also, removed T1/T2 hints from
+        clients to servers - while not explicitly discussed, seems to
         make sense?  And, fixed some of the message processing text to
         include PD, not just addresses (though I think Marcin will
         eventually replace much of this text?  Plus a few other minor
@@ -6934,17 +6939,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
    65.  Addressed minor addition to text as per ticket 131 and also
         ticket #61.
 
-   66.  Clarified MUST perform DAD, excepting exceptions listed in
-        RFC4862 Section 5.4 (ticket #153).
-
-
-
 
 
 Mrugalski, et al.       Expires November 12, 2016             [Page 124]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+   66.  Clarified MUST perform DAD, excepting exceptions listed in
+        RFC4862 Section 5.4 (ticket #153).
 
    67.  Removed the requirement for the server to send Reconfigure
         Accept in Reply messages, also clarified why it's useful in
@@ -6982,9 +6985,6 @@ Appendix C.  Appearance of Options in Message Types
 
    Only included in Information-request messages that are sent in
    response to a Reconfigure (see Section 17.1.6).
-
-
-
 
 
 
