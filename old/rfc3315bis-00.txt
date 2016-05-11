@@ -2446,11 +2446,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    the bindings it had obtained from the previous server, and which it
    is now trying to obtain from a new server.
 
-   If the client will accept a Reply message with committed leases
-   assignments and other resources in response to the Solicit message,
-   the client includes a Rapid Commit option (see Section 20.14) in the
-   Solicit message.
-
    Servers that can assign addresses or delegated prefixes to the IAs
    respond to the client with an Advertise message or Reply message if
    the client included a Rapid Commit option and the server is
@@ -2459,6 +2454,11 @@ Internet-Draft                RFC 3315 bis                      May 2016
    If the server responds with an Advertise mesage, the client initiates
    a configuration exchange as described in Section 17.1.2.
 
+   Requesting router and delegating router use the IA_PD Prefix option
+   to exchange information about prefix(es) in much the same way as IA
+   Address options are used for assigned addresses.  Typically, a single
+   DHCP session is used to exchange information about addresses and
+
 
 
 Mrugalski, et al.       Expires November 12, 2016              [Page 44]
@@ -2466,10 +2466,6 @@ Mrugalski, et al.       Expires November 12, 2016              [Page 44]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
-   Requesting router and delegating router use the IA_PD Prefix option
-   to exchange information about prefix(es) in much the same way as IA
-   Address options are used for assigned addresses.  Typically, a single
-   DHCP session is used to exchange information about addresses and
    prefixes, i.e. IA_NA and IA_PD options are carried in the same
    message.
 
@@ -2503,9 +2499,12 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    Upon receipt of a Reconfigure message from the server, a client
    responds with a Renew, Rebind or an Information-request message as
-   indicated by the Reconfigure Message option.  The server sends IAs
-   and/or other configuration information to the client in a Reply
-   message.
+   indicated by the Reconfigure Message option.  The client SHOULD be
+   suspicious of the Reconfigure message (they may be faked), and it
+   MUST NOT abandon any resources it might have already obtained.  The
+   client SHOULD treat the Reconfigure message as if the T1 timer had
+   expired.  The client will expect the server to send IAs and/or other
+   configuration information to the client in a Reply message.
 
    If the client has a source address of sufficient scope that can be
    used by the server as a return address, and the client has received a
@@ -2514,6 +2513,7 @@ Internet-Draft                RFC 3315 bis                      May 2016
    the server.
 
    DISCUSSION:
+
 
 
 
