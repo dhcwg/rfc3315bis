@@ -1952,6 +1952,9 @@
       types that do not support multicast), a client sends DHCP messages to
       the All_DHCP_Relay_Agents_and_Servers multicast address.</t>
 
+      <t>DHCP servers SHOULD NOT care if the layer-2 address used was
+      multicast or not, as long as the layer-3 address was correct.</t>
+
       <t>A client uses multicast to reach all servers or an individual server.
       An individual server is indicated by specifying that server's DUID in a
       Server Identifier option (see <xref target="RFC3315-22.3"></xref>) in
