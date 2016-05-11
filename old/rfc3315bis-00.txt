@@ -548,10 +548,10 @@ Internet-Draft                RFC 3315 bis                      May 2016
                              which nodes can communicate at the link
                              layer, i.e., the layer immediately below
                              IP.  Examples are Ethernet (simple or
-                             bridged); Token Ring; PPP links, X.25,
-                             Frame Relay, or ATM networks; and Internet
-                             (or higher) layer "tunnels", such as
-                             tunnels over IPv4 or IPv6 itself.
+                             bridged); Token Ring; PPP and PPPoE links,
+                             X.25, Frame Relay, or ATM networks; and
+                             Internet (or higher) layer "tunnels", such
+                             as tunnels over IPv4 or IPv6 itself.
 
 
 
@@ -901,10 +901,11 @@ Internet-Draft                RFC 3315 bis                      May 2016
    is required to terminate the use of a delegated prefix if the valid
    lifetime of the prefix expires.
 
-   This prefix delegation mechanism would be appropriate for use by an
-   ISP to delegate a prefix to a subscriber, where the delegated prefix
-   would possibly be subnetted and assigned to the links within the
-   subscriber's network.
+   This prefix delegation mechanism is appropriate for use by an ISP to
+   delegate a prefix to a subscriber, where the delegated prefix would
+   possibly be subnetted and assigned to the links within the
+   subscriber's network.  [RFC7084] and [RFC7368] describe in detail
+   such use.
 
    Figure 1 illustrates a network architecture in which prefix
    delegation could be used.
@@ -945,7 +946,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    In this example, the delegating router is configured with a set of
    prefixes to be used for assignment to customers at the time of each
    customer's first connection to the ISP service.  The prefix
-   delegation process begins when the requesting router requests
 
 
 
@@ -954,6 +954,7 @@ Mrugalski, et al.       Expires November 12, 2016              [Page 17]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
+   delegation process begins when the requesting router requests
    configuration information through DHCP.  The DHCP messages from the
    requesting router are received by the delegating router in the
    aggregation device.  When the delegating router receives the request,
@@ -1001,7 +1002,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
    64-bits of the address on the EUI-64 (see [RFC3041] and [RFC4941]).
    They were added to DHCP to provide complementary support when
    stateful address assignment is used.
-
 
 
 
@@ -6676,6 +6676,11 @@ Internet-Draft                RFC 3315 bis                      May 2016
               RFC 7341, DOI 10.17487/RFC7341, August 2014,
               <http://www.rfc-editor.org/info/rfc7341>.
 
+   [RFC7368]  Chown, T., Ed., Arkko, J., Brandt, A., Troan, O., and J.
+              Weil, "IPv6 Home Networking Architecture Principles",
+              RFC 7368, DOI 10.17487/RFC7368, October 2014,
+              <http://www.rfc-editor.org/info/rfc7368>.
+
    [RFC7550]  Troan, O., Volz, B., and M. Siodelski, "Issues and
               Recommendations with Multiple Stateful DHCPv6 Options",
               RFC 7550, DOI 10.17487/RFC7550, May 2015,
@@ -6709,11 +6714,6 @@ Appendix A.  Changes since RFC3315
         of unspecified address to express the client hints for Preferred
         and Valid lifetimes.  Ticket #45.
 
-   8.   Updated text in 21.4.2 of RFC3315 ("Message Validation") as
-        suggested in section 3.1 of draft-ietf-dhc-dhcpv6-clarify-auth-
-        01.  Ticket #87.
-
-
 
 
 
@@ -6721,6 +6721,10 @@ Mrugalski, et al.       Expires November 12, 2016             [Page 120]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+   8.   Updated text in 21.4.2 of RFC3315 ("Message Validation") as
+        suggested in section 3.1 of draft-ietf-dhc-dhcpv6-clarify-auth-
+        01.  Ticket #87.
 
    9.   Merged RFC7083, "Modification to Default Values of SOL_MAX_RT
         and INF_MAX_RT", into this document.  Ticket #51.
@@ -6767,16 +6771,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
         Considerations Section, which has already covered in a more
         abstracted way.  Ticket #55 & #56.
 
-   21.  Clarify the server behavior process when a client violates
-        Delayed Authentication Protocol, in Section 21.4.  Ticket #90.
-
-
 
 
 Mrugalski, et al.       Expires November 12, 2016             [Page 121]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+   21.  Clarify the server behavior process when a client violates
+        Delayed Authentication Protocol, in Section 21.4.  Ticket #90.
 
    22.  Updated titles of sections 19.4.2. and 19.4.4. to include Rebind
         messages.
@@ -6824,15 +6827,14 @@ Internet-Draft                RFC 3315 bis                      May 2016
    35.  Addressed ticket #115 - don't use DHCPv6 for DHCPv4
         configuration.
 
-   36.  Revised IANA Considerations based on ticket #117.
-
-
 
 
 Mrugalski, et al.       Expires November 12, 2016             [Page 122]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+   36.  Revised IANA Considerations based on ticket #117.
 
    37.  Updated IAID description in the terminology with the
         clarification that the IAID is unique among IAs of a specific
@@ -6880,8 +6882,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    51.  Updated server processing section to clarify that server unicast
         check can be based on current configuration of unicast setting
-        so server is not required to remember what it sent.  This
-        resolves ticket #130.
 
 
 
@@ -6889,6 +6889,9 @@ Mrugalski, et al.       Expires November 12, 2016             [Page 123]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+        so server is not required to remember what it sent.  This
+        resolves ticket #130.
 
    52.  Removed references to lifetime hints from the client; only
         IAPREFIX prefix-length hints are now allowed.  Servers will
@@ -6936,15 +6939,15 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    64.  Moved additional text from RFC3633 section 12.1 - ticket #102.
 
-   65.  Addressed minor addition to text as per ticket 131 and also
-        ticket #61.
-
 
 
 Mrugalski, et al.       Expires November 12, 2016             [Page 124]
 
 Internet-Draft                RFC 3315 bis                      May 2016
 
+
+   65.  Addressed minor addition to text as per ticket 131 and also
+        ticket #61.
 
    66.  Clarified MUST perform DAD, excepting exceptions listed in
         RFC4862 Section 5.4 (ticket #153).
@@ -6985,9 +6988,6 @@ Appendix C.  Appearance of Options in Message Types
 
    Only included in Information-request messages that are sent in
    response to a Reconfigure (see Section 17.1.6).
-
-
-
 
 
 
