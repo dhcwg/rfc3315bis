@@ -769,6 +769,18 @@
         <t><xref target="FigISPNetwork"></xref> illustrates a network
         architecture in which prefix delegation could be used.</t>
 
+      </section>
+
+      <section anchor="OpModes-CPE" title="DHCP for Customer Edge Routers">
+        <t>The DHCP requirements and network architecture for Customer Edge
+        Routers are described in <xref target="RFC7084"></xref>. This model of
+        operation combines address assignment (see <xref
+        target="OpModes-NA"></xref>) and prefix delegation (see <xref
+        target="OpModes-PD"></xref>). In general, this model assumes that a
+        single set of transactions between the client and server will assign
+        or extend the client's non-temporary addresses and delegated
+        prefixes.</t>
+
         <figure align="center" anchor="FigISPNetwork"
                 title="Prefix Delegation Network">
           <preamble></preamble>
@@ -842,17 +854,7 @@
         lifetime in those advertisements to be no later than the valid
         lifetime specified in the IA_PD Prefix option. A requesting router MAY
         use the preferred lifetime specified in the IA_PD Prefix option.</t>
-      </section>
 
-      <section anchor="OpModes-CPE" title="DHCP for Customer Edge Routers">
-        <t>The DHCP requirements and network architecture for Customer Edge
-        Routers are described in <xref target="RFC7084"></xref>. This model of
-        operation combines address assignment (see <xref
-        target="OpModes-NA"></xref>) and prefix delegation (see <xref
-        target="OpModes-PD"></xref>). In general, this model assumes that a
-        single set of transactions between the client and server will assign
-        or extend the client's non-temporary addresses and delegated
-        prefixes.</t>
       </section>
 
       <section anchor="OpModes-TA" title="DHCP for Temporary Addresses">
