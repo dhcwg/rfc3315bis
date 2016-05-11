@@ -2502,7 +2502,7 @@
       multicast address.  Servers respond with a Reply message containing
       the configuration information for the client (see <xref target="RFC3315-18.2.5"/>).</t>
 
-      <t>To request the assignment of one or more addresses or delegated
+      <t>To request the assignment of one or more IPv6 addresses or delegated
       prefixes, a client first locates a DHCP server and then requests the
       assignment of addresses/prefixes and other configuration information from the
       server. The client does this by sending the Solicit message
