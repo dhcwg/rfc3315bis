@@ -477,7 +477,7 @@
             <t hangText="link">A communication facility or medium over which
             nodes can communicate at the link layer, i.e., the layer
             immediately below IP. Examples are Ethernet (simple or bridged);
-            Token Ring; PPP links, X.25, Frame Relay, or ATM networks; and
+            Token Ring; PPP and PPPoE links, X.25, Frame Relay, or ATM networks; and
             Internet (or higher) layer "tunnels", such as tunnels over IPv4 or
             IPv6 itself.</t>
 
