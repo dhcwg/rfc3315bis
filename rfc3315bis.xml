@@ -896,7 +896,7 @@
             Note that in order for a relay agent to use this address, it must
             have an address of sufficient scope to be reachable by the
             servers. All servers within the site are members of this multicast
-            group.</t>
+            group on the interfaces which are within the site.</t>
           </list></t>
       </section>
 
