@@ -2553,11 +2553,6 @@
       the previous server, and which it is now trying to obtain from a new
       server.</t>
 
-      <t>If the client will accept a Reply message with committed lease
-      assignments and other resources in response to the Solicit message, the
-      client includes a Rapid Commit option (see <xref
-      target="RFC3315-22.14"></xref>) in the Solicit message.</t>
-
       <t>Servers that can assign addresses or delegated prefixes to the IAs
       respond to the client with an Advertise message or Reply message if the
       client included a Rapid Commit option and the server is configured to
