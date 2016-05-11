@@ -1855,8 +1855,12 @@
       describes how IPv6 is carried over a specific type of link (for link
       types that do not support multicast), a client sends DHCP messages to
       the All_DHCP_Relay_Agents_and_Servers.</t>
+      
       <t>DHCP servers SHOULD NOT care if the layer-2 address used was
       multicast or not, as long as the layer-3 address was correct.</t>
+      
+      <t>DHCP servers SHOULD examine the TTL as part of determining if the
+      client sending the message is on-link.  See <xref target="TTL" />.</t>
 
       <t>A client uses multicast to reach all servers or an individual server.
       An individual server is indicated by specifying that server's DUID in a
@@ -2026,16 +2030,18 @@
     <section title="Message Validation">
       <!-- 15, line 1345-->
 
-      <t>Clients and servers might get messages that contain options not
-      allowed to appear in the received message. For example, an IA option is
-      not allowed to appear in an Information-request message. Clients and
-      servers MAY choose either to extract information from such a message if
-      the information is of use to the recipient, or to ignore such message
-      completely and just drop it.</t>
+      <t>This section describes which options are valid in which kinds of
+      message types.  Should a client or servers receive messages which
+      contain known options which are invalid for the message, this section
+      explains how to process it.
+      For example, an IA option is not allowed to appear in an
+      Information-request message.</t>
+      
+      <t>Clients and servers MAY choose either to extract information from
+      such a message if the information is of use to the recipient, or to
+      ignore such message completely and just discard it.</t>
 
-      <t>If a server receives a message that contains options it should not
-      contain (such as an Information-request message with an IA option), is
-      missing options that it should contain, or is otherwise not valid, it
+      <t>If a server receives a message that it considers invalid, it
       MAY send a Reply (or Advertise as appropriate) with a Server Identifier
       option, a Client Identifier option if one was included in the message
       and a Status Code option with status UnSpecFail.</t>
@@ -2043,11 +2049,12 @@
       <t>Clients, relay agents and servers MUST NOT discard messages that
       contain unknown options (or instances of vendor options with unknown
       enterprise-numbers). These should be ignored as if they weren't
-      present.</t>
+      present.  This is critical to provide for later extension of the DHCP
+      protocol.</t>
 
       <t>A server MUST discard any Solicit, Confirm, Rebind or
-      Information-request messages it receives with a unicast destination
-      address.</t>
+      Information-request messages it receives with a layer-3 unicast
+      destination address.</t>
 
       <!-- Applied text from Section 5 of RFC7283 -->
 
