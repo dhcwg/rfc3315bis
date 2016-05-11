@@ -1860,7 +1860,7 @@
       multicast or not, as long as the layer-3 address was correct.</t>
       
       <t>DHCP servers SHOULD examine the TTL as part of determining if the
-      client sending the message is on-link.  See <xref target="TTL" />.</t>
+      client sending the message is on-link.  See <!-- xref target="TTL" /-->.</t>
 
       <t>A client uses multicast to reach all servers or an individual server.
       An individual server is indicated by specifying that server's DUID in a
