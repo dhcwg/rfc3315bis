@@ -2582,54 +2582,33 @@
               <t hangText="   MRD">0</t>
             </list></t>
 
-            <t>A client that wishes to use the Rapid Commit 2-message option
-            includes a Rapid Commit option in its Solicit message.
-            The client may receive a number of different replies from
-            different servers.  The client will make note of any Advertise
-            messages that it receives.  The client will discard any Reply
-            messages that do not contain the Rapid Commit option.
-            </t>
-            <t>Upon receipt of a valid Reply with the Rapid Commit option,
-            the client processes the message as described in
-            <xref target="RFC3315-18.1.8"></xref></t>
-            <t>At the end of the first RT period, if no suitable Reply
-            messages are received, but the client has valid Advertise
-            messages, then the the client processes the Advertise as
-            described in <xref target="RFC3315-17.1.3"></xref>.</t>
-
-          <t>If the client subsequently receives a valid Reply message that
-          includes a Rapid Commit option, it either:</t>
-
-          <t><list hangIndent="3" style="hanging">
-              <t hangText="-">processes the Reply message as described in
-              <xref target="RFC3315-18.1.8"></xref>, and discards any Reply
-              messages received in response to the Request message, or</t>
-
-              <t hangText="-">processes any Reply messages received in
-              response to the Request message and discards the Reply message
-              that includes the Rapid Commit option.</t>
-            </list></t>
-
-          <t>If the client is waiting for an Advertise message, the mechanism
+          <t>While the client is waiting for an Advertise message, the mechanism
           in <xref target="RFC3315-14"></xref> is modified as follows for use
-          in the transmission of Solicit messages. The message exchange is not
+          in the transmission of Solicit messages. </t>
+          <t>The message exchange is NOT
           terminated by the receipt of an Advertise before the first RT has
           elapsed. Rather, the client collects Advertise messages until the
-          first RT has elapsed. Also, the first RT MUST be selected to be
+          first RT has elapsed.
+          </t>
+          <t> The first RT MUST be selected to be
           strictly greater than IRT by choosing RAND to be strictly greater
           than 0.</t>
 
           <t>A client MUST collect Advertise messages for the first RT
           seconds, unless it receives an Advertise message with a preference
           value of 255. The preference value is carried in the Preference
-          option (<xref target="RFC3315-22.8"></xref>). Any Advertise that
+          option (<xref target="RFC3315-22.8"></xref>).
+          </t>
+          <t> Any Advertise that
           does not include a Preference option is considered to have a
           preference value of 0. If the client receives an Advertise message
           that includes a Preference option with a preference value of 255,
           the client immediately begins a client-initiated message exchange
           (as described in <xref target="request-create-transmit"></xref>) by
           sending a Request message to the server from which the Advertise
-          message was received. If the client receives an Advertise message
+          message was received. </t>
+
+          <t> If the client receives an Advertise message
           that does not include a Preference option with a preference value of
           255, the client continues to wait until the first RT elapses. If the
           first RT elapses and the client has received an Advertise message,
@@ -2650,6 +2629,36 @@
           configure the interface, it SHOULD restart the reconfiguration
           process after some external event, such as user input, system
           restart, or when the client is attached to a new link.</t>
+
+          <t>A client that wishes to use the Rapid Commit 2-message option
+          includes a Rapid Commit option in its Solicit message.
+          The client may receive a number of different responses from
+          different servers.  As above, the client will make note of any Advertise
+          messages that it receives.  The client will discard any Reply
+          messages that do not contain the Rapid Commit option.
+          </t>
+
+          <t>Upon receipt of a valid Reply with the Rapid Commit option,
+          the client processes the message as described in
+          <xref target="RFC3315-18.1.8"></xref></t>
+
+          <t>At the end of the first RT period, if no suitable Reply
+          messages are received, and the client has received valid Advertise
+          messages, then the the client processes the Advertise as
+          described in <xref target="RFC3315-17.1.3"></xref>.</t>
+
+          <t>If the client subsequently receives a valid Reply message that
+          includes a Rapid Commit option, it either:</t>
+
+          <t><list hangIndent="3" style="hanging">
+              <t hangText="-">processes the Reply message as described in
+              <xref target="RFC3315-18.1.8"></xref>, and discards any Reply
+              messages received in response to the Request message, or</t>
+
+              <t hangText="-">processes any Reply messages received in
+              response to the Request message and discards the Reply message
+              that includes the Rapid Commit option.</t>
+            </list></t>
 
           <!-- ends: "17.1.2 from line 1682-->
         </section>
