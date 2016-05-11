@@ -1719,6 +1719,33 @@
         DHCP client is running.</t>
       </section>
 
+      <section title="DUID Based on Universally Unique IDentifier (UUID),
+                      DUID-UUID">
+        <t>This type of DUID consists of sixteen octets containing a 128-bit
+        UUID. <xref target="RFC6355" /> details when to use this type, and
+        how to pick an appropriate source of the UUID.
+        </t>
+        <figure align="center" anchor="FigDUIDUUID" title="DUID-UUID format">
+          <preamble></preamble>
+
+          <artwork align="left"><![CDATA[
+          
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          DUID-Type (4)        |    UUID (128 bits)            |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               |
+   |                                                               |
+   |                                                               |
+   |                                -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                                |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+          ]]></artwork>
+
+          <postamble></postamble>
+        </figure>
+      </section>
+
       <!-- ends: "9.4 from line 1084-->
     </section>
 
