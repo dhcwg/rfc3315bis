@@ -776,7 +776,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
 
                    ______________________        \
                   /                      \        \
@@ -799,13 +799,13 @@
                       |   router)   |               |
                       +----+---+----+               |
                            |   |                    | Subscriber
-    ---+-------------+-----+   +-----+------        | Network 
+    ---+-------------+-----+   +-----+------        | Network
        |             |               |              |
   +----+-----+ +-----+----+     +----+-----+        |
   |Subscriber| |Subscriber|     |Subscriber|       /
   |    PC    | |    PC    |     |    PC    |      /
   +----------+ +----------+     +----------+     /
-            
+
         ]]></artwork>
 
           <postamble></postamble>
@@ -1201,7 +1201,7 @@
         <preamble></preamble>
 
         <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1212,7 +1212,7 @@
    .                           (variable)                          .
    |                                                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
         ]]></artwork>
 
         <postamble></postamble>
@@ -1254,7 +1254,7 @@
         <preamble></preamble>
 
         <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1276,7 +1276,7 @@
    .            options (variable number and length)   ....        .
    |                                                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
         ]]></artwork>
 
         <postamble></postamble>
@@ -1467,7 +1467,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1479,7 +1479,7 @@
    .             link-layer address (variable length)              .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -1535,7 +1535,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1547,7 +1547,7 @@
    .                       (variable length)                       .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -1572,13 +1572,13 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
    +---+---+---+---+---+---+---+---+
    | 0 | 2 | 0 | 0 | 0 |  9| 12|192|
    +---+---+---+---+---+---+---+---+
    |132|211| 3 | 0 | 9 | 18|
    +---+---+---+---+---+---+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -1610,7 +1610,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1620,7 +1620,7 @@
    .             link-layer address (variable length)              .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -1651,7 +1651,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1855,10 +1855,10 @@
       describes how IPv6 is carried over a specific type of link (for link
       types that do not support multicast), a client sends DHCP messages to
       the All_DHCP_Relay_Agents_and_Servers.</t>
-      
+
       <t>DHCP servers SHOULD NOT care if the layer-2 address used was
       multicast or not, as long as the layer-3 address was correct.</t>
-      
+
       <t>DHCP servers SHOULD examine the TTL as part of determining if the
       client sending the message is on-link.  See <!-- xref target="TTL" /-->.</t>
 
@@ -2036,7 +2036,7 @@
       explains how to process it.
       For example, an IA option is not allowed to appear in an
       Information-request message.</t>
-      
+
       <t>Clients and servers MAY choose either to extract information from
       such a message if the information is of use to the recipient, or to
       ignore such message completely and just discard it.</t>
@@ -2375,7 +2375,7 @@
              title="DHCP Configuration Exchanges">
       <t>A client initiates a message exchange with a server or servers to
       acquire or update configuration information of interest.</t>
-     
+
       <t>A DHCP client that does not need to have a DHCP server assign it IP
       addresses or delegated prefixes, can obtain configuration information
       such as a list of available DNS servers <xref target="RFC3646"/> or
@@ -2384,8 +2384,8 @@
       information the client first sends an Information-request message
       (see <xref target="RFC3315-18.1.5"/>) to the All_DHCP_Relay_Agents_and_Servers
       multicast address.  Servers respond with a Reply message containing
-      the configuration information for the client (see <xref target="RFC3315-18.2.5"/>).</t> 
-           
+      the configuration information for the client (see <xref target="RFC3315-18.2.5"/>).</t>
+
       <t>To request the assignment of one or more IPv6 addresses or delegated
       prefixes, a client first locates a DHCP server and then requests the
       assignment of addresses and other configuration information from the
@@ -2466,9 +2466,9 @@
         it only has addresses and Rebind if it has delegated prefixes (and
         addresses). It uses Information-request messages when it needs
         configuration information but no addresses and no prefixes.</t>
-        
+
         <!-- Ticket 160 text-->
-        
+
         <t>When a client requests multiple IA option types in a Solicit,
         Request, Renew, or Rebind, it is possible
         that the available server(s) may only be configured to offer a subset
@@ -3594,7 +3594,7 @@
           records the IA as a new client binding. The server MUST NOT include
           any addresses or delegated prefixes in the IA which the server does
           not assign to the client.</t>
-          
+
           <!-- Ticket #61 - copied text from "Receipt of Renew Message -->
           <t>The T1/T2 times set in each applicable IA option for a Reply MUST
           be the same values across all IAs. The server MUST determine the
@@ -4352,7 +4352,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
    msg-type:       RELAY-REPLY
    hop-count:      1
    link-address:   0
@@ -4363,7 +4363,7 @@
      link-address: address from link to which C is attached
      peer-address: C
      Relay Message option: <response from server>
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -4549,7 +4549,7 @@
             <preamble></preamble>
 
             <artwork align="left"><![CDATA[
-            
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4560,7 +4560,7 @@
    .                                               +-+-+-+-+-+-+-+-+
    |                                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
             ]]></artwork>
 
             <postamble></postamble>
@@ -4668,7 +4668,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4677,7 +4677,7 @@
    |                          option-data                          |
    |                      (option-len octets)                      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-          
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -4715,7 +4715,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
    0                   1                   2                   3
    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4726,7 +4726,7 @@
   .                        (variable length)                      .
   .                                                               .
   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -4755,7 +4755,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4766,7 +4766,7 @@
    .                        (variable length)                      .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -4801,7 +4801,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4817,7 +4817,7 @@
    .                         IA_NA-options                         .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -4929,7 +4929,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4941,7 +4941,7 @@
    .                         IA_TA-options                         .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5021,7 +5021,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5040,7 +5040,7 @@
    .                        IAaddr-options                         .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5108,7 +5108,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5118,7 +5118,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                              ...                              |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5158,7 +5158,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5166,7 +5166,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |  pref-value   |
    +-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5198,7 +5198,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5206,7 +5206,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |          elapsed-time         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5252,7 +5252,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5263,7 +5263,7 @@
    .                                                               .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5300,7 +5300,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5315,7 +5315,7 @@
    .                   authentication information                  .
    .                       (variable length)                       .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5359,7 +5359,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5370,7 +5370,7 @@
    |                                                               |
    |                                                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5417,7 +5417,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5429,7 +5429,7 @@
    .                        status-message                         .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5527,13 +5527,13 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |      OPTION_RAPID_COMMIT      |               0               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5587,7 +5587,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5597,7 +5597,7 @@
    .                          user-class-data                      .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5631,11 +5631,11 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
    |        user-class-len         |          opaque-data          |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5671,7 +5671,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5683,7 +5683,7 @@
    .                       vendor-class-data                       .
    .                             . . .                             .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5716,11 +5716,11 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
    |       vendor-class-len        |          opaque-data          |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5749,7 +5749,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5761,7 +5761,7 @@
    .                          option-data                          .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5798,7 +5798,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5808,7 +5808,7 @@
    .                          option-data                          .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5882,7 +5882,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5892,7 +5892,7 @@
    .                         interface-id                          .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5939,7 +5939,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5947,7 +5947,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |    msg-type   |
    +-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -5985,13 +5985,13 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |     OPTION_RECONF_ACCEPT      |               0               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -6019,7 +6019,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -6035,7 +6035,7 @@
    .                          IA_PD-options                        .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-              
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -6127,7 +6127,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-          
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -6149,7 +6149,7 @@
    .                       IAprefix-options                        .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-              
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -6228,7 +6228,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-            
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -6236,7 +6236,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                       SOL_MAX_RT value                        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -6296,7 +6296,7 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-            
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -6304,7 +6304,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                       INF_MAX_RT value                        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            
+
           ]]></artwork>
 
           <postamble></postamble>
@@ -6530,7 +6530,7 @@
       page to add a reference to this document for definitions previously
       created by <xref target="RFC3315"></xref>, <xref
       target="RFC3633"></xref>, and <xref target="RFC7083"></xref>.</t>
-      
+
             <t>IANA is requested to update the
       http://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml#authentication-protocol-id
       page to add an "Obsolete" annotation into the "DHCPv6 Delayed
@@ -6751,7 +6751,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.I-D.ietf-dhc-dhcpv6-privacy'?>
 
       <?rfc include='reference.I-D.ietf-dhc-anonymity-profile'?>
-      
+
       <reference anchor="TR-187"
                  target="https://www.broadband-forum.org/technical/download/TR-187_Issue-2.pdf">
         <front>
@@ -6763,7 +6763,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <date year="2013" month="February" />
         </front>
       </reference>
-      
+
     </references>
 
     <!-- Let's briefly document relevant changes against 3315 here -->
@@ -6981,13 +6981,13 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Merged sections 17, 18 and 19 into a single section describing
           client and server behaviors (ticket #142).</t>
-          
+
           <t>Added text about single session for multiple IA option types - ticket #160.</t>
-          
+
           <t>Moved additional text from RFC3633 section 12.1 - ticket #102.</t>
-          
+
           <t>Addressed minor addition to text as per ticket 131 and also ticket #61.</t>
-          
+
           <t>Clarified MUST perform DAD, excepting exceptions listed in RFC4862 Section
           5.4 (ticket #153).</t>
 
