@@ -640,6 +640,14 @@
             <t hangText="relaying">A DHCP relay agent relays DHCP messages
             between DHCP participants.</t>
 
+            <t hangText="retransmission">Another attempt to send the same
+            DHCP message by a client or server, as a result of not
+            receiving a valid response to the previously sent messages.
+            The retransmitted message is typically modified prior to sending,
+            as required by the DHCP specifications. In particular, the
+            client updates the value of the Elapsed Time option in the
+            retransmitted message.</t>
+
             <t hangText="top-level option">An option conveyed in a DHCP
             message directly, i.e. not encapsulated in any other option, as
             described in Section 9 of <xref target="RFC7227"></xref>.</t>
@@ -1906,6 +1914,18 @@
       successfully receives the appropriate response or responses from a
       server or servers, or when the message exchange is considered to have
       failed according to the retransmission mechanism described below.</t>
+
+      <t>The client MUST update an "elapsed-time" value within an Elapsed
+      Time option (see <xref target="RFC3315-22.9"/>) in the
+      retransmitted message. In some cases, the client may also need to modify
+      values in the IA Address or IA Prefix options, if a valid lifetime for
+      any of the client's leases expires before retransmission. Thus, whenever
+      this document refers to a "retransmission" of a client's message, it
+      refers to both modifying the original message and sending this new message
+      instance to the server. The retransmitting client MUST NOT resend the
+      original message to the server, i.e. the client MUST update all options
+      in the retransmitted message, for which such update is required by the
+      protocol (e.g. Elapsed Time option).</t>
 
       <t>The client retransmission behavior is controlled and described by the
       following variables: <list hangIndent="11" style="hanging">
@@ -6975,6 +6995,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Explicitly require Elapsed Time option to be placed in messages
           sent by a client (ticket #159).</t>
+
+          <t>Update section 14 - explained that Elapsed Time option (and possibly
+          other options) must be updated prior to resending the message. Also
+          included "retransmission" in the DHCP terminology - ticket #157.</t>
 
         </list></t>
     </section>
