@@ -159,6 +159,8 @@
 
       <address>
         <postal>
+
+          <street/>
    
           <city>Durham, NH</city>
 
@@ -2476,6 +2478,10 @@
           itself to the server. The client includes IA options for any IAs to
           which it wants the server to assign leases.</t>
 
+          <t>The client MUST include an Elapsed Time option (see
+          <xref target="RFC3315-22.9"/>) to indicate how long the client has
+          been trying to complete the current DHCP message exchange.</t>
+
           <t>The client MAY include addresses in the IA_NA and IA_TA options
           as hints to the server about the addresses for which the client has
           a preference.</t>
@@ -2621,6 +2627,10 @@
           itself to the server. The client adds any other appropriate options,
           including one or more IA options.</t>
 
+          <t>The client MUST include an Elapsed Time option (see
+          <xref target="RFC3315-22.9"/>) to indicate how long the client has
+          been trying to complete the current DHCP message exchange.</t>
+
           <t>The client MUST include an Option Request option (see <xref
           target="RFC3315-22.7"></xref>) to request the SOL_MAX_RT option (see
           <xref target="SOL_MAX_RT_option"></xref>) and any other options the
@@ -2705,7 +2715,13 @@
           "transaction-id" field.</t>
 
           <t>The client MUST include a Client Identifier option to identify
-          itself to the server. The client includes IA options for all of the
+          itself to the server.</t>
+
+          <t>The client MUST include an Elapsed Time option (see
+          <xref target="RFC3315-22.9"/>) to indicate how long the client has
+          been trying to complete the current DHCP message exchange.</t>
+
+          <t>The client includes IA options for all of the
           IAs assigned to the interface for which the Confirm message is being
           sent. The IA options include all of the addresses the client
           currently has associated with those IAs. The client SHOULD set the
@@ -2788,6 +2804,10 @@
           <t>The client MUST include a Client Identifier option to identify
           itself to the server. The client adds any appropriate options,
           including one or more IA options.</t>
+
+          <t>The client MUST include an Elapsed Time option (see
+          <xref target="RFC3315-22.9"/>) to indicate how long the client has
+          been trying to complete the current DHCP message exchange.</t>
 
           <t>For IAs to which leases have been assigned, the client includes a
           corresponding IA option containing an IA Address option for each
@@ -2907,6 +2927,10 @@
           client-specific options to the client, or the server may choose not
           to respond to the message at all.</t>
 
+          <t>The client MUST include an Elapsed Time option (see
+          <xref target="RFC3315-22.9"/>) to indicate how long the client has
+          been trying to complete the current DHCP message exchange.</t>
+
           <t>The client MUST include an Option Request option (see <xref
           target="RFC3315-22.7"></xref>) to request the INF_MAX_RT option (see
           <xref target="INF_MAX_RT_option"></xref>) and any other options the
@@ -2949,7 +2973,13 @@
           lease(s) in a Server Identifier option.</t>
 
           <t>The client MUST include a Client Identifier option to identify
-          itself to the server. The client includes options containing the IAs
+          itself to the server.</t>
+
+          <t>The client MUST include an Elapsed Time option (see
+          <xref target="RFC3315-22.9"/>) to indicate how long the client has
+          been trying to complete the current DHCP message exchange.</t>
+
+          <t>The client includes options containing the IAs
           for the leases it is releasing in the "options" field. The leases to
           be released MUST be included in the IAs. Any leases for the IAs the
           client wishes to continue to use MUST NOT be added to the IAs.</t>
@@ -3019,7 +3049,13 @@
           address(es) in a Server Identifier option.</t>
 
           <t>The client MUST include a Client Identifier option to identify
-          itself to the server. The client includes options containing the IAs
+          itself to the server.</t>
+
+          <t>The client MUST include an Elapsed Time option (see
+          <xref target="RFC3315-22.9"/>) to indicate how long the client has
+          been trying to complete the current DHCP message exchange.</t>
+
+          <t>The client includes options containing the IAs
           for the addresses it is declining in the "options" field. The
           addresses to be declined MUST be included in the IAs. Any addresses
           for the IAs the client wishes to continue to use should not be in
@@ -5146,7 +5182,7 @@
 
       <!-- ends: "22.8 from line 3945-->
 
-      <section title="Elapsed Time Option">
+      <section anchor="RFC3315-22.9" title="Elapsed Time Option">
         <!-- 22.9, line 3974-->
 
         <figure align="center" anchor="FigOption8"
@@ -6936,6 +6972,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Removed the requirement for the server to send Reconfigure Accept
           in Reply messages, also clarified why it's useful in Advertise (ticket
           #154).</t>
+
+          <t>Explicitly require Elapsed Time option to be placed in messages
+          sent by a client (ticket #159).</t>
+
         </list></t>
     </section>
 
