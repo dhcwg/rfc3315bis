@@ -1669,6 +1669,11 @@
       changes. If the client uses only one IAID, it can use a well-known
       value, e.g., zero.</t>
 
+      <t>If the client wishes to obtain a distinctly new address or prefix and 
+      deprecate the existing one, the client sends a Release message
+      to the server for the IAs using the original IAID.   Then the client creates
+      a new IAID, to be used in future Request messages to obtain new IAs.</t>
+
       <section anchor="RFC3315-10.1"
                title="Identity Associations for Address Assignment">
         <t>A client must associate at least one distinct IA with each of its
