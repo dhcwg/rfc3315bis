@@ -6862,7 +6862,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Incorporate everything of RFC 6644, except for Security
           Considerations Section, which has already covered in a more
-          abstracted way. Ticket #55 &amp; #56.</t>
+          abstracted way. Tickets #55 &amp; #56.</t>
 
           <t>Clarify the server behavior process when a client violates
           Delayed Authentication Protocol, in Section 21.4. Ticket #90.</t>
@@ -6877,7 +6877,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           requirement to drop the messages which contain the options not
           expected in the current message. Ticket #17.</t>
 
-          <t>Changed WG to DHC, added keywords</t>
+          <t>Changed WG to DHC on the first page header, added keywords.</t>
 
           <t>Loosened requirements for DUID-EN, so that DUID type can be used
           for virtual machines. Ticket #16.</t>
@@ -6919,7 +6919,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           clarification that the IAID is unique among IAs of a specific type,
           rather than globally unique among all IAs (ticket #94).</t>
 
-          <t>Merged Section 12 from RFC3633 (ticket #107)</t>
+          <t>Merged Section 12 from RFC3633 (ticket #107).</t>
 
           <t>Clarified behavior for unknown messages (RFC7283), ticket
           #58.</t>
@@ -6997,33 +6997,35 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Privacy considerations added (ticket #145).</t>
 
-          <t>Abstract updated (#133).</t>
+          <t>Abstract updated. Ticket #133.</t>
 
           <t>Removed references to the text that server was allowed to cache
-          its replies (#80).</t>
+          its replies. Ticket #80.</t>
 
           <t>Merged sections 17, 18 and 19 into a single section describing
-          client and server behaviors (ticket #142).</t>
+          client and server behaviors. Ticket #142.</t>
           
-          <t>Added text about single session for multiple IA option types - ticket #160.</t>
+          <t>Added text about single session for multiple IA option types.
+          Ticket #160.</t>
           
-          <t>Moved additional text from RFC3633 section 12.1 - ticket #102.</t>
+          <t>Moved additional text from RFC3633 section 12.1. Ticket #102.</t>
           
           <t>Addressed minor addition to text as per ticket 131 and also ticket #61.</t>
           
           <t>Clarified MUST perform DAD, excepting exceptions listed in RFC4862 Section
-          5.4 (ticket #153).</t>
+          5.4. Ticket #153.</t>
 
           <t>Removed the requirement for the server to send Reconfigure Accept
-          in Reply messages, also clarified why it's useful in Advertise (ticket
-          #154).</t>
+          in Reply messages, also clarified why it's useful in Advertise. Ticket
+          #154.</t>
 
           <t>Explicitly require Elapsed Time option to be placed in messages
-          sent by a client (ticket #159).</t>
+          sent by a client. Ticket #159.</t>
 
           <t>Update section 14 - explained that Elapsed Time option (and possibly
           other options) must be updated prior to resending the message. Also
-          included "retransmission" in the DHCP terminology - ticket #157.</t>
+          included "retransmission" in the DHCP terminology. Ticket #157.</t>
+
           <t>Added text explaining that the client should stop using an option
           if it's not being sent by the server. Ticket #150.</t>
 
