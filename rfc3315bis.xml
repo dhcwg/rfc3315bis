@@ -3307,6 +3307,26 @@
             detailed in the definition of each option in <xref
             target="RFC3315-22"></xref>.</t>
 
+            <t>When a client had received a configuration option in earlier
+            Reply, then sent Renew, Rebind or Information-Request and that
+            requested option does not appear in in the Reply any more, it MUST
+            stop using the received configuration information. In other words,
+            client should behave as if it never received this option at all and
+            return to whatever default state regarding that configuration
+            information was. If there is no viable way to stop using the
+            information, the values received/configured from the option MAY
+            persist if there are no other sources for that data and they have no
+            external impact. For example, a client that previously received
+            Client FQDN option and used it to set up its hostname is allowed to
+            continue using it if there is no reasonable way for a host to unset
+            its hostname and it has no external impact. As a counter example, a
+            client that used to receive an NTP server address from the DHCP
+            server and does not receive it any more, MUST stop using the
+            configured NTP server IPv6 address. The client SHOULD be open to
+            other sources of the same configuration information. This behavior
+            does not apply to any IA containers, as their processing is
+            described in detail in other parts of this document.</t>
+
             <t>If the Reply message contains any IAs, but the client finds no
             usable addresses and/or delegated prefixes in any of these IAs,
             the client may either try another server (perhaps restarting the
@@ -7004,6 +7024,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Update section 14 - explained that Elapsed Time option (and possibly
           other options) must be updated prior to resending the message. Also
           included "retransmission" in the DHCP terminology - ticket #157.</t>
+          <t>Added text explaining that the client should stop using an option
+          if it's not being sent by the server. Ticket #150.</t>
 
         </list></t>
     </section>
