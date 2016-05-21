@@ -2979,7 +2979,13 @@
               <t hangText="   MRC">0</t>
 
               <t hangText="   MRD">0</t>
-            </list></t>
+          </list></t>
+
+          <t><xref target="RFC4242"/> defines Information Refresh Time option
+          that allows servers to specify when clients should refresh their
+          configuration parameters received in Information-Request message.
+          </t>
+
         </section>
 
         <!-- ends: "18.1.5 from line 2215-->
@@ -6772,6 +6778,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
       <?rfc include='reference.RFC.4193'?>
 
+      <?rfc include='reference.RFC.4242'?>
+
       <?rfc include='reference.RFC.4943'?>
 
       <?rfc include='reference.RFC.6603'?>
@@ -7028,6 +7036,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Added text explaining that the client should stop using an option
           if it's not being sent by the server. Ticket #150.</t>
+
+          <t>Added reference to RFC4242 (Information Refresh Time
+          Option). Ticket #161.</t>
 
         </list></t>
     </section>
