@@ -3293,12 +3293,12 @@
                 When a requesting router subnets a delegated prefix, it must assign
                 additional bits to the prefix to generate unique, longer prefixes.
                 For example, if the requesting router in Figure 1 were delegated
-                3FFE:FFFF:0::/48, it might generate 3FFE:FFFF:0:1::/64 and
-                3FFE:FFFF:0:2::/64 for assignment to the two links in the subscriber
-                network.  If the requesting router were delegated 3FFE:FFFF:0::/48
-                and 3FFE:FFFF:5::/48, it might assign 3FFE:FFFF:0:1::/64 and
-                3FFE:FFFF:5:1::/64 to one of the links, and 3FFE:FFFF:0:2::/64 and
-                3FFE:FFFF:5:2::/64 for assignment to the other link.
+                2001:db8:0::/48, it might generate 2001:db8:0:1::/64 and
+                2001:db8:0:2::/64 for assignment to the two links in the subscriber
+                network.  If the requesting router were delegated 2001:db8:0::/48
+                and 2001:db8:5::/48, it might assign 2001:db8:0:1::/64 and
+                2001:db8:5:1::/64 to one of the links, and 2001:db8:0:2::/64 and
+                2001:db8:5:2::/64 for assignment to the other link.
                 <vspace blankLines='1'/>
                 If the requesting router assigns a delegated prefix to a link to
                 which the router is attached, and begins to send router
@@ -6522,18 +6522,18 @@
     <section anchor="privacy" title="Privacy Considerations">
       <t>This section focuses on the server considerations. For extended
       discussion about privacy considerations for the client, see <xref
-      target="I-D.ietf-dhc-dhcpv6-privacy"></xref>. It particular, Section 3
+      target="RFC7824"></xref>. It particular, Section 3
       of said document discuss various identifiers that could be misused to
       track the client. Section 4 discusses existing mechanisms that may have
       an impact on client's privacy. Finally, Section 5 discusses potential
       attack vectors. For recommendations how to address or mitigate those
-      issues, see <xref target="I-D.ietf-dhc-anonymity-profile"></xref>.</t>
+      issues, see <xref target="RFC7844"></xref>.</t>
 
       <t>This specification does not define any allocation strategies.
       Implementers are expected to develop their own algorithm for the server
       to choose a resource out of the available pool. Several possible
       allocation strategies are mentioned in Section 4.3 of <xref
-      target="I-D.ietf-dhc-dhcpv6-privacy"></xref>. Please keep in mind that
+      target="RFC7824"></xref>. Please keep in mind that
       this list is not exhaustive and there are certainly possible other
       strategies. Here are some observations for the implementer to
       consider.</t>
@@ -6788,13 +6788,14 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
       <?rfc include='reference.RFC.7550'?>
 
+      <?rfc include='reference.RFC.7824'?>
+
+      <?rfc include='reference.RFC.7844'?>
+
       <?rfc include='reference.I-D.ietf-dhc-topo-conf'?>
 
       <?rfc include='reference.I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue'?>
 
-      <?rfc include='reference.I-D.ietf-dhc-dhcpv6-privacy'?>
-
-      <?rfc include='reference.I-D.ietf-dhc-anonymity-profile'?>
     </references>
 
     <!-- Let's briefly document relevant changes against 3315 here -->

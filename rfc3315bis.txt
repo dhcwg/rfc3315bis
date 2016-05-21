@@ -3259,12 +3259,12 @@ Internet-Draft                RFC 3315 bis                      May 2016
       When a requesting router subnets a delegated prefix, it must
       assign additional bits to the prefix to generate unique, longer
       prefixes.  For example, if the requesting router in Figure 1 were
-      delegated 3FFE:FFFF:0::/48, it might generate 3FFE:FFFF:0:1::/64
-      and 3FFE:FFFF:0:2::/64 for assignment to the two links in the
+      delegated 2001:db8:0::/48, it might generate 2001:db8:0:1::/64 and
+      2001:db8:0:2::/64 for assignment to the two links in the
       subscriber network.  If the requesting router were delegated
-      3FFE:FFFF:0::/48 and 3FFE:FFFF:5::/48, it might assign
-      3FFE:FFFF:0:1::/64 and 3FFE:FFFF:5:1::/64 to one of the links, and
-      3FFE:FFFF:0:2::/64 and 3FFE:FFFF:5:2::/64 for assignment to the
+      2001:db8:0::/48 and 2001:db8:5::/48, it might assign
+      2001:db8:0:1::/64 and 2001:db8:5:1::/64 to one of the links, and
+      2001:db8:0:2::/64 and 2001:db8:5:2::/64 for assignment to the
       other link.
 
       If the requesting router assigns a delegated prefix to a link to
@@ -6464,20 +6464,20 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
    This section focuses on the server considerations.  For extended
    discussion about privacy considerations for the client, see
-   [I-D.ietf-dhc-dhcpv6-privacy].  It particular, Section 3 of said
-   document discuss various identifiers that could be misused to track
-   the client.  Section 4 discusses existing mechanisms that may have an
-   impact on client's privacy.  Finally, Section 5 discusses potential
-   attack vectors.  For recommendations how to address or mitigate those
-   issues, see [I-D.ietf-dhc-anonymity-profile].
+   [RFC7824].  It particular, Section 3 of said document discuss various
+   identifiers that could be misused to track the client.  Section 4
+   discusses existing mechanisms that may have an impact on client's
+   privacy.  Finally, Section 5 discusses potential attack vectors.  For
+   recommendations how to address or mitigate those issues, see
+   [RFC7844].
 
    This specification does not define any allocation strategies.
    Implementers are expected to develop their own algorithm for the
    server to choose a resource out of the available pool.  Several
    possible allocation strategies are mentioned in Section 4.3 of
-   [I-D.ietf-dhc-dhcpv6-privacy].  Please keep in mind that this list is
-   not exhaustive and there are certainly possible other strategies.
-   Here are some observations for the implementer to consider.
+   [RFC7824].  Please keep in mind that this list is not exhaustive and
+   there are certainly possible other strategies.  Here are some
+   observations for the implementer to consider.
 
    Assigning addresses using some kind of sequential algorithm
    (prefix::1, prefix::2, prefix::3,...) is fast, but greatly facilitate
@@ -6728,20 +6728,10 @@ Internet-Draft                RFC 3315 bis                      May 2016
 
 26.2.  Informative References
 
-   [I-D.ietf-dhc-anonymity-profile]
-              Huitema, C., Mrugalski, T., and S. Krishnan, "Anonymity
-              profile for DHCP clients", draft-ietf-dhc-anonymity-
-              profile-08 (work in progress), February 2016.
-
    [I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue]
               Cui, Y., Li, T., and C. Liu, "DHCPv6 Prefix Length Hint
               Issues", draft-ietf-dhc-dhcpv6-prefix-length-hint-issue-01
               (work in progress), April 2016.
-
-   [I-D.ietf-dhc-dhcpv6-privacy]
-              Krishnan, S., Mrugalski, T., and S. Jiang, "Privacy
-              considerations for DHCPv6", draft-ietf-dhc-
-              dhcpv6-privacy-05 (work in progress), February 2016.
 
    [I-D.ietf-dhc-topo-conf]
               Lemon, T. and T. Mrugalski, "Customizing DHCP
@@ -6770,14 +6760,6 @@ Internet-Draft                RFC 3315 bis                      May 2016
               RFC 3162, DOI 10.17487/RFC3162, August 2001,
               <http://www.rfc-editor.org/info/rfc3162>.
 
-
-
-
-Mrugalski, et al.       Expires November 22, 2016             [Page 121]
-
-Internet-Draft                RFC 3315 bis                      May 2016
-
-
    [RFC3315]  Droms, R., Ed., Bound, J., Volz, B., Lemon, T., Perkins,
               C., and M. Carney, "Dynamic Host Configuration Protocol
               for IPv6 (DHCPv6)", RFC 3315, DOI 10.17487/RFC3315, July
@@ -6787,6 +6769,14 @@ Internet-Draft                RFC 3315 bis                      May 2016
               Host Configuration Protocol (DHCP) version 6", RFC 3633,
               DOI 10.17487/RFC3633, December 2003,
               <http://www.rfc-editor.org/info/rfc3633>.
+
+
+
+
+Mrugalski, et al.       Expires November 22, 2016             [Page 121]
+
+Internet-Draft                RFC 3315 bis                      May 2016
+
 
    [RFC3736]  Droms, R., "Stateless Dynamic Host Configuration Protocol
               (DHCP) Service for IPv6", RFC 3736, DOI 10.17487/RFC3736,
@@ -6825,6 +6815,16 @@ Internet-Draft                RFC 3315 bis                      May 2016
               RFC 7341, DOI 10.17487/RFC7341, August 2014,
               <http://www.rfc-editor.org/info/rfc7341>.
 
+   [RFC7550]  Troan, O., Volz, B., and M. Siodelski, "Issues and
+              Recommendations with Multiple Stateful DHCPv6 Options",
+              RFC 7550, DOI 10.17487/RFC7550, May 2015,
+              <http://www.rfc-editor.org/info/rfc7550>.
+
+   [RFC7824]  Krishnan, S., Mrugalski, T., and S. Jiang, "Privacy
+              Considerations for DHCPv6", RFC 7824,
+              DOI 10.17487/RFC7824, May 2016,
+              <http://www.rfc-editor.org/info/rfc7824>.
+
 
 
 
@@ -6834,10 +6834,10 @@ Mrugalski, et al.       Expires November 22, 2016             [Page 122]
 Internet-Draft                RFC 3315 bis                      May 2016
 
 
-   [RFC7550]  Troan, O., Volz, B., and M. Siodelski, "Issues and
-              Recommendations with Multiple Stateful DHCPv6 Options",
-              RFC 7550, DOI 10.17487/RFC7550, May 2015,
-              <http://www.rfc-editor.org/info/rfc7550>.
+   [RFC7844]  Huitema, C., Mrugalski, T., and S. Krishnan, "Anonymity
+              Profiles for DHCP Clients", RFC 7844,
+              DOI 10.17487/RFC7844, May 2016,
+              <http://www.rfc-editor.org/info/rfc7844>.
 
 Appendix A.  Changes since RFC3315
 
