@@ -6448,6 +6448,9 @@
       attack on a client. The use of transaction IDs that are
       cryptographically sound and cannot easily be predicted will also reduce
       the probability that such an attack will be successful.</t>
+      
+      <t>Many of these rogue server attacks can be mitagated by making use of
+      the mechanism described in <xref target="RFC7610"/>.</t>
 
       <t>The threat specific to a DHCP server is an invalid client
       masquerading as a valid client. The motivation for this may be for theft
@@ -6468,11 +6471,6 @@
       DHCP messages to be important. DHCP is not used to exchange
       authentication or configuration information that must be kept secret
       from other networks nodes.</t>
-
-      <t>DHCP authentication provides for authentication of the identity of
-      DHCP clients and servers, and for the integrity of messages delivered
-      between DHCP clients and servers. DHCP authentication does not provide
-      any privacy for the contents of DHCP messages.</t>
 
       <t>Because of the opportunity for attack through the Reconfigure
       message, a DHCP client MUST discard any Reconfigure message that does
@@ -6502,15 +6500,12 @@
       service attack by repeated requests for delegated prefixes that exhaust
       the delegating router's available prefixes.</t>
 
-      <t>To guard against attacks through prefix delegation, requesting
-      routers and delegating routers SHOULD use DHCP authentication as
-      described in <xref target="RFC3315-21"></xref>. For point to point
-      links, where one trusts that there is no man in the middle, or one
-      trusts layer two authentication, DHCP authentication or IPsec may not be
-      necessary. Because a requesting router and delegating routers must each
+      <t>Because a requesting router and delegating routers must each
       have at least one assigned IPv6 address, the routers may be able to use
       IPsec for authentication of DHCP messages. The details of using IPsec
-      for DHCP are under development.</t>
+      for DHCP are under development. For point to point
+      links, where one trusts that there is no man in the middle, or one
+      trusts layer two authentication, IPsec may not be necessary. </t>
 
       <t>Networks configured with delegated prefixes should be configured to
       preclude intentional or inadvertent inappropriate advertisement of these
@@ -6787,6 +6782,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.7341'?>
 
       <?rfc include='reference.RFC.7550'?>
+      
+      <?rfc include='reference.RFC.7610'?>
 
       <?rfc include='reference.RFC.7824'?>
 
