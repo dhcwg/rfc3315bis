@@ -4056,12 +4056,16 @@
           <t>The server includes options the server will return to the client
           in a subsequent Reply message. The information in these options may
           be used by the client in the selection of a server if the client
-          receives more than one Advertise message. If the client has included
-          an Option Request option in the Solicit message, the server includes
+          receives more than one Advertise message. The server MUST include
           options in the Advertise message containing configuration parameters
-          for all of the options identified in the Option Request option that
-          the server has been configured to return to the client. The server
-          MAY return additional options to the client if it has been
+          for all of the options identified in the Option Request option in the Solicit message
+          that the server has been configured to return to the client.  If the 
+          Option Request option includes a container option the server MUST include all 
+          the options that are eligible to be encapsulated in the container. The Option 
+          Request option MAY be used to signal support for a feature even when that option is 
+          encapsulated as in the case of the Prefix Excluded option <xref target="RFC6603"/>. 
+          In this case, special processing is required by the server.  
+          The server MAY return additional options to the client if it has been
           configured to do so. The server must be aware of the recommendations
           on packet sizes and the use of fragmentation in section 5 of <xref
           target="RFC2460"></xref>.</t>
@@ -5181,9 +5185,21 @@
         inform the server about options the client wants the server to send to
         the client. A server MAY include an Option Request option in a
         Reconfigure message to indicate which options the client should
-        request from the server. If there is a need to request encapsulated
-        options, top-level Option Request option MUST be used for that
-        purpose. There is no need request IAADDR or IAPREFIX.</t>
+        request from the server. </t>
+
+        <t>The Option Request option MUST NOT include the
+        following options: Server Identifier, Client Identifier, IA_NA, IA_PD, IA_TA,
+        Option Request, Elapsed Time, Preference, Relay Message, Authentication, 
+        Server Unicast, Rapid Commit, User Class, Interface-Id, Reconfigure Message, and
+        Reconfigure Accept.  Other top-level Options MUST appear in the Option Request 
+        option or the will not be sent by the server.  Only container options MUST appear
+        in the Option Request, options encapsulated in the container MUST NOT by in the 
+        Option Request, see <xref target="RFC7598"/> as an example of container options.
+        The exception to this is the Option Request option MAY be used to signal support 
+        for a feature even when that option is encapsulated as in the case of the 
+        Prefix Excluded option <xref target="RFC6603"/>.
+        </t>
+        
       </section>
 
       <!-- ends: "22.7 from line 3912-->
@@ -6569,6 +6585,10 @@
       created by <xref target="RFC3315"></xref>, <xref
       target="RFC3633"></xref>, and <xref target="RFC7083"></xref>.</t>
 
+      <t>IANA is requested to add a column to DHCPv6 option 
+      http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
+      for which Options are allowed to appear in the ORO option.  See Section 20.7.</t>
+
             <t>IANA is requested to update the
       http://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml#authentication-protocol-id
       page to add an "Obsolete" annotation into the "DHCPv6 Delayed
@@ -6782,6 +6802,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.7341'?>
 
       <?rfc include='reference.RFC.7550'?>
+
+      <?rfc include='reference.RFC.7598'?>
       
       <?rfc include='reference.RFC.7610'?>
 
@@ -7037,6 +7059,12 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Added reference to RFC4242 (Information Refresh Time
           Option). Ticket #161.</t>
+    
+          <t>Updated ORO Option to list Options that MUST NOT be included. Also added to that IANA
+          Consider should keep track of which options are allowed in ORO. Ticket #81</t>
+
+          <t>Updated Creation and Transmission of Advertise message so that the only options
+          in the ORO will be included in the Advertise unless configured otherwise. Ticket #81</t>
 
         </list></t>
     </section>
