@@ -2958,7 +2958,8 @@
 
           <t>The client MUST include an Option Request option (see <xref
           target="RFC3315-22.7"></xref>) to request the INF_MAX_RT option (see
-          <xref target="INF_MAX_RT_option"></xref>) and any other options the
+          <xref target="INF_MAX_RT_option"></xref>), the Information
+          Refresh Time option <xref target="RFC4242"/>, and any other options the
           client is interested in receiving. The client MAY include options
           with data values as hints to the server about parameter values the
           client would like to have returned.</t>
@@ -2980,11 +2981,6 @@
 
               <t hangText="   MRD">0</t>
           </list></t>
-
-          <t><xref target="RFC4242"/> defines Information Refresh Time option
-          that allows servers to specify when clients should refresh their
-          configuration parameters received in Information-Request message.
-          </t>
 
         </section>
 
@@ -6404,6 +6400,17 @@
         which the client received INF_MAX_RT option.</t>
       </section>
 
+      <section anchor="RFC4242-3.4" title="Information Refresh Time Option">
+        <!-- 22.19, line 4440-->
+
+        <t>A client running in stateless mode requests this option. The server
+        includes this option in its response to specify an upper bound for how
+        long a client should wait before refreshing the information. Clients
+        that support stateless mode MUST support this option. This option is
+        listed here for completeteness.  For complete reference, see <xref
+        target="RFC4242"/>.</t>
+      </section>
+
       <!-- ends: merged section 5. from RFC7083 -->
     </section>
 
@@ -7061,11 +7068,13 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           Option). Ticket #161.</t>
     
           <t>Updated ORO Option to list Options that MUST NOT be included. Also added to that IANA
-          Consider should keep track of which options are allowed in ORO. Ticket #81</t>
+          Consider should keep track of which options are allowed in ORO. Ticket #81.</t>
 
           <t>Updated Creation and Transmission of Advertise message so that the only options
-          in the ORO will be included in the Advertise unless configured otherwise. Ticket #81</t>
+          in the ORO will be included in the Advertise unless configured otherwise. Ticket #81.</t>
 
+          <t>Information Refresh Time Option is now mandatory for clients that
+          support stateless mode. Added reference to RFC4242. Ticket #161.</t>
         </list></t>
     </section>
 
