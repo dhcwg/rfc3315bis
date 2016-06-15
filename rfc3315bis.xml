@@ -228,7 +228,9 @@
 
       <t>This document also provides a mechanism for automated delegation of
       IPv6 prefixes using DHCPv6. Through this mechanism, a delegating router
-      can delegate prefixes to requesting routers.</t>
+      can delegate prefixes to requesting routers.  Use of this mechanism is
+      specified as part of the <xref target="RFC7084" /> and by <xref
+      target="TR-187" />.</t>
 
       <t>DHCPv6 can also provide only other configuration options
       (i.e., no addresses or prefixes). That implies that the
@@ -6822,6 +6824,22 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
       <?rfc include='reference.I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue'?>
 
+      <?rfc include='reference.I-D.ietf-dhc-dhcpv6-privacy'?>
+
+      <?rfc include='reference.I-D.ietf-dhc-anonymity-profile'?>
+      
+      <reference anchor="TR-187"
+                 target="https://www.broadband-forum.org/technical/download/TR-187_Issue-2.pdf">
+        <front>
+          <title>TR-187 - IPv6 for PPP Broadband Access</title>
+          <author>
+            <organization>Broadband Forum</organization>
+          </author>
+
+          <date year="2013" month="February" />
+        </front>
+      </reference>
+      
     </references>
 
     <!-- Let's briefly document relevant changes against 3315 here -->
