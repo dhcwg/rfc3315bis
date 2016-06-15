@@ -2577,7 +2577,7 @@
               <t hangText="   MRD">0</t>
             </list></t>
 
-            <t>A client that wishes to use the Rapid Commit 2-message option
+            <t>A client that wishes to use the Rapid Commit 2-message exchange
             includes a Rapid Commit option in its Solicit message.
             The client may receive a number of different replies from
             different servers.  The client will make note of any Advertise
@@ -2589,7 +2589,7 @@
             <xref target="RFC3315-18.1.8"></xref></t>
             <t>At the end of the first RT period, if no suitable Reply
             messages are received, but the client has valid Advertise
-            messages, then the the client processes the Advertise as
+            messages, then the client processes the Advertise as
             described in <xref target="RFC3315-17.1.3"></xref>.</t>
 
           <t>If the client subsequently receives a valid Reply message that
