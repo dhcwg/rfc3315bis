@@ -2393,7 +2393,7 @@
       <t>A client willing to perform the Solicit-Reply message
       exchange described in <xref
       target="solicit-create-transmit"></xref> includes a Rapid
-      Commit option (see <xref target="RFC3315-22.14"></xref>) in it's
+      Commit option (see <xref target="RFC3315-22.14"></xref>) in its
       Solicit message.</t>
 
       <t>The client may initiate the configuration exchange as part of the
