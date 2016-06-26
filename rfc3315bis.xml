@@ -6609,9 +6609,9 @@
       created by <xref target="RFC3315"></xref>, <xref
       target="RFC3633"></xref>, and <xref target="RFC7083"></xref>.</t>
 
-      <t>IANA is requested to add a column to DHCPv6 option 
+      <t>IANA is requested to add a column to the DHCPv6 Option table at
       http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
-      for which Options are allowed to appear in the ORO option.  See Section 20.7.</t>
+      to indicate which Options are allowed to appear in the ORO option.  See Section 20.7.</t>
 
             <t>IANA is requested to update the
       http://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml#authentication-protocol-id
