@@ -1887,7 +1887,7 @@
                title="Choosing transmission time when T1 / T2 is 0">
         <t>In certain cases, T1 and/or T2 time may be set to zero. Currently
         there are three such cases: 1. a client received an IA_NA option with
-        a zero value; 2. a client received an IA_PD option with a zeroe value;
+        a zero value; 2. a client received an IA_PD option with a zero value;
         3. a client received an IA_TA option (which does not contain T1 and T2
         fields and are not generally renewed). Additional cases may appear in
         the future. This is an indication that the transmission times are left
@@ -2438,7 +2438,7 @@
       client included a Rapid Commit option and the server is configured to
       accept it.</t>
 
-      <t>If the server responds with an Advertise mesage, the client initiates
+      <t>If the server responds with an Advertise message, the client initiates
       a configuration exchange as described in <xref
       target="request-create-transmit"></xref>.</t>
 
@@ -3624,7 +3624,7 @@
 
           <t>The server examines all IAs in the message from the client.</t>
 
-          <t>For each IA_NA and IA_TA in the Request messsage the server
+          <t>For each IA_NA and IA_TA in the Request message the server
           checks if the prefixes on included IP addresses are appropriate for
           the link to which the client is connected. If any of the prefixes on
           the included IP addresses is not appropriate for the link to which
@@ -3666,7 +3666,7 @@
           option with Reconfigure Key (see <xref
           target="reconfigure-protocol"/> for details). However, it is
           still allowed to send Reconfigure Accept option to maintain
-          backward compatibility with servers that implment <xref
+          backward compatibility with servers that implement <xref
           target="RFC3315"/>.</t>
 
           <t>The server includes other options containing configuration
@@ -6489,7 +6489,7 @@
       cryptographically sound and cannot easily be predicted will also reduce
       the probability that such an attack will be successful.</t>
       
-      <t>Many of these rogue server attacks can be mitagated by making use of
+      <t>Many of these rogue server attacks can be mitigated by making use of
       the mechanism described in <xref target="RFC7610"/>.</t>
 
       <t>The threat specific to a DHCP server is an invalid client
@@ -6840,10 +6840,6 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
       <?rfc include='reference.I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue'?>
 
-      <?rfc include='reference.I-D.ietf-dhc-dhcpv6-privacy'?>
-
-      <?rfc include='reference.I-D.ietf-dhc-anonymity-profile'?>
-      
       <reference anchor="TR-187"
                  target="https://www.broadband-forum.org/technical/download/TR-187_Issue-2.pdf">
         <front>
@@ -6861,6 +6857,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
     <!-- Let's briefly document relevant changes against 3315 here -->
 
     <section title="Changes since RFC3315">
+         
+      <t>Note: This appendix should be removed by the RFC-Editor when preparing
+      the document for publication.</t>
+      
       <t><list style="numbers">
           <t>Incorporated RFC3315 errata (ids: 294, 1373, 2928, 1815, 3577,
           2509, 295).</t>
@@ -7115,11 +7115,14 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
     <!-- Let's briefly document relevant changes against 3633 here -->
 
     <section title="Changes since RFC3633">
+         
+      <t>Note: This appendix should be removed by the RFC-Editor when preparing
+      the document for publication.</t>
+      
       <t><list style="numbers">
           <t>Incorporated RFC3633 errata (ids: 248, 1880, 2468, 2469, 2470,
           3736)</t>
 
-          <t>...</t>
         </list></t>
     </section>
 
