@@ -916,8 +916,11 @@
 
         <t>DHCP defines the following message types. More detail on these
         message types can be found in <xref target="RFC3315-6"></xref> and
-        <xref target="RFC3315-7"></xref>. Message types not listed here are
-        reserved for future use. The numeric encoding for each message type is
+        <xref target="RFC3315-7"></xref>. Additional message types are
+	defined in <xref target="RFC5007"/>, <xref target="RFC5460"/>,
+	<xref target="RFC6977"/>, <xref target="RFC7341"/>, <xref
+	target="RFC7563"/>. Additional message types may be defined in
+	the future. The numeric encoding for each message type is
         shown in parentheses.</t>
 
         <t><list hangIndent="16" style="hanging">
@@ -4405,7 +4408,7 @@
 
         <t>For example, if client C sent a message that was relayed by relay
         agent A to relay agent B and then to the server, the server would send
-        the following Relay-Reply message to relay agent B:</t>
+        the following Relay-reply message to relay agent B:</t>
 
         <figure align="center" anchor="FigRelayExample"
                 title="Relay-reply Example">
@@ -4702,8 +4705,9 @@
 
       <t>This document describes the DHCP options defined as part of the base
       DHCP specification. Other options may be defined in the future in
-      separate documents. See <xref target="RFC7227"></xref> for guidelines
-      regarding new options definition.</t>
+      separate documents. See <xref target="RFC7227"/> for guidelines regarding
+      new options definition. See <xref target="iana"/> for additional
+      information about a registry maintained by IANA.</t>
 
       <t>Unless otherwise noted, each option may appear only in the options
       area of a DHCP message and may appear only once. If an option does
@@ -6597,7 +6601,7 @@
       https://mailarchive.ietf.org/arch/msg/dhcwg/iQKRFN2iRx4zqkyijBub9X-4Byg -->
     </section>
 
-    <section title="IANA Considerations">
+    <section anchor="iana" title="IANA Considerations">
       <!-- 24, line 4595-->
 
       <t>This document does not define any new DHCP name spaces or
@@ -6622,6 +6626,16 @@
       page to add an "Obsolete" annotation into the "Delayed Authentication"
       entity in the "Protocol Name Space Values" registry.</t>
 
+      <t>The publication of this document does not change the
+      assignment rules for new values for message types, option codes,
+      DUID types or status codes.</t>
+
+      <t>The list of assigned values used in DHCPv6 is available at
+      http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xml</t>
+
+      <t>Note to IANA: is this the right, long term link? I noticed
+      there are two similar ones ending with .xhtml and .xml. Please
+      update the link above if necessary.</t>
     </section>
 
     <!-- ends: "24 from line 4595-->
@@ -6798,42 +6812,33 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <!--Krawczyk, H., Bellare, M. and R. Canetti, "HMAC: Keyed-Hashingfor Message Authentication", RFC 2104, February 1997. -->
 
       <?rfc include='reference.RFC.2461'?>
-
-      <?rfc include='reference.RFC.3769'?>
-
-      <?rfc include='reference.RFC.3162'?>
-
-      <?rfc include='reference.RFC.7084'?>
-      <?rfc include='reference.RFC.7368'?>
-
-      <?rfc include='reference.RFC.3736'?>
-
-      <?rfc include='reference.RFC.3633'?>
-
       <?rfc include='reference.RFC.2462'?>
 
       <?rfc include='reference.RFC.3041'?>
-
+      <?rfc include='reference.RFC.3162'?>
       <?rfc include='reference.RFC.3315'?>
+      <?rfc include='reference.RFC.3633'?>
+      <?rfc include='reference.RFC.3736'?>
+      <?rfc include='reference.RFC.3769'?>
 
       <?rfc include='reference.RFC.4193'?>
-
       <?rfc include='reference.RFC.4242'?>
-
       <?rfc include='reference.RFC.4943'?>
 
+      <?rfc include='reference.RFC.5007'?>
+      <?rfc include='reference.RFC.5460'?>
+
       <?rfc include='reference.RFC.6603'?>
+      <?rfc include='reference.RFC.6977'?>
 
+      <?rfc include='reference.RFC.7084'?>
       <?rfc include='reference.RFC.7341'?>
-
+      <?rfc include='reference.RFC.7368'?>
       <?rfc include='reference.RFC.7550'?>
-
+      <?rfc include='reference.RFC.7563'?>
       <?rfc include='reference.RFC.7598'?>
-      
       <?rfc include='reference.RFC.7610'?>
-
       <?rfc include='reference.RFC.7824'?>
-
       <?rfc include='reference.RFC.7844'?>
 
       <?rfc include='reference.I-D.ietf-dhc-topo-conf'?>
