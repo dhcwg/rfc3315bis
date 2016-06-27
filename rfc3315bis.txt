@@ -7,7 +7,7 @@ Internet-Draft                                              M. Siodelski
 Obsoletes: 3315,3633,3736,7083,7550 (if                              ISC
            approved)                                             B. Volz
 Intended status: Standards Track                          A. Yourtchenko
-Expires: December 27, 2016                                         Cisco
+Expires: December 29, 2016                                         Cisco
                                                            M. Richardson
                                                                      SSW
                                                                 S. Jiang
@@ -16,7 +16,7 @@ Expires: December 27, 2016                                         Cisco
                                                                  Nominum
                                                               T. Winters
                                                                  UNH-IOL
-                                                           June 25, 2016
+                                                           June 27, 2016
 
 
        Dynamic Host Configuration Protocol for IPv6 (DHCPv6) bis
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Mrugalski, et al.       Expires December 27, 2016               [Page 1]
+Mrugalski, et al.       Expires December 29, 2016               [Page 1]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -63,7 +63,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 27, 2016.
+   This Internet-Draft will expire on December 29, 2016.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Mrugalski, et al.       Expires December 27, 2016               [Page 2]
+Mrugalski, et al.       Expires December 29, 2016               [Page 2]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -165,7 +165,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016               [Page 3]
+Mrugalski, et al.       Expires December 29, 2016               [Page 3]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -221,7 +221,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016               [Page 4]
+Mrugalski, et al.       Expires December 29, 2016               [Page 4]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -262,12 +262,12 @@ Internet-Draft                RFC 3315 bis                     June 2016
    23. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 118
    24. Obsoleted mechanisms  . . . . . . . . . . . . . . . . . . . . 118
    25. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . 119
-   26. References  . . . . . . . . . . . . . . . . . . . . . . . . . 119
+   26. References  . . . . . . . . . . . . . . . . . . . . . . . . . 120
      26.1.  Normative References . . . . . . . . . . . . . . . . . . 120
      26.2.  Informative References . . . . . . . . . . . . . . . . . 122
-   Appendix A.  Changes since RFC3315  . . . . . . . . . . . . . . . 124
+   Appendix A.  Changes since RFC3315  . . . . . . . . . . . . . . . 125
    Appendix B.  Changes since RFC3633  . . . . . . . . . . . . . . . 130
-   Appendix C.  Appearance of Options in Message Types . . . . . . . 130
+   Appendix C.  Appearance of Options in Message Types . . . . . . . 131
    Appendix D.  Appearance of Options in the Options Field of DHCP
                 Options  . . . . . . . . . . . . . . . . . . . . . . 131
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 132
@@ -277,7 +277,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016               [Page 5]
+Mrugalski, et al.       Expires December 29, 2016               [Page 5]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -333,7 +333,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016               [Page 6]
+Mrugalski, et al.       Expires December 29, 2016               [Page 6]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -389,7 +389,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016               [Page 7]
+Mrugalski, et al.       Expires December 29, 2016               [Page 7]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -445,7 +445,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016               [Page 8]
+Mrugalski, et al.       Expires December 29, 2016               [Page 8]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -501,7 +501,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016               [Page 9]
+Mrugalski, et al.       Expires December 29, 2016               [Page 9]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -557,7 +557,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 10]
+Mrugalski, et al.       Expires December 29, 2016              [Page 10]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -613,7 +613,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 11]
+Mrugalski, et al.       Expires December 29, 2016              [Page 11]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -669,7 +669,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 12]
+Mrugalski, et al.       Expires December 29, 2016              [Page 12]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -725,7 +725,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 13]
+Mrugalski, et al.       Expires December 29, 2016              [Page 13]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -781,7 +781,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 14]
+Mrugalski, et al.       Expires December 29, 2016              [Page 14]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -837,7 +837,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 15]
+Mrugalski, et al.       Expires December 29, 2016              [Page 15]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -893,7 +893,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 16]
+Mrugalski, et al.       Expires December 29, 2016              [Page 16]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -949,7 +949,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 17]
+Mrugalski, et al.       Expires December 29, 2016              [Page 17]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1005,7 +1005,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 18]
+Mrugalski, et al.       Expires December 29, 2016              [Page 18]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1061,7 +1061,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 19]
+Mrugalski, et al.       Expires December 29, 2016              [Page 19]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1082,9 +1082,11 @@ Internet-Draft                RFC 3315 bis                     June 2016
 6.3.  DHCP Message Types
 
    DHCP defines the following message types.  More detail on these
-   message types can be found in Section 7 and Section 8.  Message types
-   not listed here are reserved for future use.  The numeric encoding
-   for each message type is shown in parentheses.
+   message types can be found in Section 7 and Section 8.  Additional
+   message types are defined in [RFC5007], [RFC5460], [RFC6977],
+   [RFC7341], [RFC7563].  Additional message types may be defined in the
+   future.  The numeric encoding for each message type is shown in
+   parentheses.
 
    SOLICIT (1)     A client sends a Solicit message to locate servers.
 
@@ -1115,9 +1117,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-
-
-Mrugalski, et al.       Expires December 27, 2016              [Page 20]
+Mrugalski, et al.       Expires December 29, 2016              [Page 20]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1173,7 +1173,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 21]
+Mrugalski, et al.       Expires December 29, 2016              [Page 21]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1229,7 +1229,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 22]
+Mrugalski, et al.       Expires December 29, 2016              [Page 22]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1285,7 +1285,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 23]
+Mrugalski, et al.       Expires December 29, 2016              [Page 23]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1341,7 +1341,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 24]
+Mrugalski, et al.       Expires December 29, 2016              [Page 24]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1397,7 +1397,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 25]
+Mrugalski, et al.       Expires December 29, 2016              [Page 25]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1453,7 +1453,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 26]
+Mrugalski, et al.       Expires December 29, 2016              [Page 26]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1509,7 +1509,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 27]
+Mrugalski, et al.       Expires December 29, 2016              [Page 27]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1565,7 +1565,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 28]
+Mrugalski, et al.       Expires December 29, 2016              [Page 28]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1621,7 +1621,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 29]
+Mrugalski, et al.       Expires December 29, 2016              [Page 29]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1677,7 +1677,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 30]
+Mrugalski, et al.       Expires December 29, 2016              [Page 30]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1733,7 +1733,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 31]
+Mrugalski, et al.       Expires December 29, 2016              [Page 31]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1789,7 +1789,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 32]
+Mrugalski, et al.       Expires December 29, 2016              [Page 32]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1845,7 +1845,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 33]
+Mrugalski, et al.       Expires December 29, 2016              [Page 33]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1901,7 +1901,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 34]
+Mrugalski, et al.       Expires December 29, 2016              [Page 34]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -1957,7 +1957,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 35]
+Mrugalski, et al.       Expires December 29, 2016              [Page 35]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2013,7 +2013,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 36]
+Mrugalski, et al.       Expires December 29, 2016              [Page 36]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2069,7 +2069,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 37]
+Mrugalski, et al.       Expires December 29, 2016              [Page 37]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2125,7 +2125,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 38]
+Mrugalski, et al.       Expires December 29, 2016              [Page 38]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2181,7 +2181,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 39]
+Mrugalski, et al.       Expires December 29, 2016              [Page 39]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2237,7 +2237,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 40]
+Mrugalski, et al.       Expires December 29, 2016              [Page 40]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2293,7 +2293,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 41]
+Mrugalski, et al.       Expires December 29, 2016              [Page 41]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2349,7 +2349,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 42]
+Mrugalski, et al.       Expires December 29, 2016              [Page 42]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2405,7 +2405,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 43]
+Mrugalski, et al.       Expires December 29, 2016              [Page 43]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2461,7 +2461,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 44]
+Mrugalski, et al.       Expires December 29, 2016              [Page 44]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2517,7 +2517,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 45]
+Mrugalski, et al.       Expires December 29, 2016              [Page 45]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2573,7 +2573,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 46]
+Mrugalski, et al.       Expires December 29, 2016              [Page 46]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2629,7 +2629,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 47]
+Mrugalski, et al.       Expires December 29, 2016              [Page 47]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2685,7 +2685,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 48]
+Mrugalski, et al.       Expires December 29, 2016              [Page 48]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2741,7 +2741,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 49]
+Mrugalski, et al.       Expires December 29, 2016              [Page 49]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2797,7 +2797,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 50]
+Mrugalski, et al.       Expires December 29, 2016              [Page 50]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2853,7 +2853,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 51]
+Mrugalski, et al.       Expires December 29, 2016              [Page 51]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2909,7 +2909,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 52]
+Mrugalski, et al.       Expires December 29, 2016              [Page 52]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -2965,7 +2965,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 53]
+Mrugalski, et al.       Expires December 29, 2016              [Page 53]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3021,7 +3021,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 54]
+Mrugalski, et al.       Expires December 29, 2016              [Page 54]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3077,7 +3077,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 55]
+Mrugalski, et al.       Expires December 29, 2016              [Page 55]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3133,7 +3133,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 56]
+Mrugalski, et al.       Expires December 29, 2016              [Page 56]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3189,7 +3189,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 57]
+Mrugalski, et al.       Expires December 29, 2016              [Page 57]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3245,7 +3245,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 58]
+Mrugalski, et al.       Expires December 29, 2016              [Page 58]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3301,7 +3301,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 59]
+Mrugalski, et al.       Expires December 29, 2016              [Page 59]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3357,7 +3357,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 60]
+Mrugalski, et al.       Expires December 29, 2016              [Page 60]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3413,7 +3413,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 61]
+Mrugalski, et al.       Expires December 29, 2016              [Page 61]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3469,7 +3469,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 62]
+Mrugalski, et al.       Expires December 29, 2016              [Page 62]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3525,7 +3525,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 63]
+Mrugalski, et al.       Expires December 29, 2016              [Page 63]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3581,7 +3581,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 64]
+Mrugalski, et al.       Expires December 29, 2016              [Page 64]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3637,7 +3637,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 65]
+Mrugalski, et al.       Expires December 29, 2016              [Page 65]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3693,7 +3693,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 66]
+Mrugalski, et al.       Expires December 29, 2016              [Page 66]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3749,7 +3749,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 67]
+Mrugalski, et al.       Expires December 29, 2016              [Page 67]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3805,7 +3805,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 68]
+Mrugalski, et al.       Expires December 29, 2016              [Page 68]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3861,7 +3861,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 69]
+Mrugalski, et al.       Expires December 29, 2016              [Page 69]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3917,7 +3917,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 70]
+Mrugalski, et al.       Expires December 29, 2016              [Page 70]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -3973,7 +3973,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 71]
+Mrugalski, et al.       Expires December 29, 2016              [Page 71]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4029,7 +4029,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 72]
+Mrugalski, et al.       Expires December 29, 2016              [Page 72]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4085,7 +4085,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 73]
+Mrugalski, et al.       Expires December 29, 2016              [Page 73]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4141,7 +4141,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 74]
+Mrugalski, et al.       Expires December 29, 2016              [Page 74]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4197,7 +4197,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 75]
+Mrugalski, et al.       Expires December 29, 2016              [Page 75]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4253,7 +4253,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 76]
+Mrugalski, et al.       Expires December 29, 2016              [Page 76]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4309,7 +4309,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 77]
+Mrugalski, et al.       Expires December 29, 2016              [Page 77]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4365,7 +4365,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 78]
+Mrugalski, et al.       Expires December 29, 2016              [Page 78]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4421,7 +4421,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 79]
+Mrugalski, et al.       Expires December 29, 2016              [Page 79]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4431,7 +4431,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
    For example, if client C sent a message that was relayed by relay
    agent A to relay agent B and then to the server, the server would
-   send the following Relay-Reply message to relay agent B:
+   send the following Relay-reply message to relay agent B:
 
 
       msg-type:       RELAY-REPLY
@@ -4477,7 +4477,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 80]
+Mrugalski, et al.       Expires December 29, 2016              [Page 80]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4533,7 +4533,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 81]
+Mrugalski, et al.       Expires December 29, 2016              [Page 81]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4589,7 +4589,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 82]
+Mrugalski, et al.       Expires December 29, 2016              [Page 82]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4645,7 +4645,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 83]
+Mrugalski, et al.       Expires December 29, 2016              [Page 83]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4701,7 +4701,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 84]
+Mrugalski, et al.       Expires December 29, 2016              [Page 84]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4729,7 +4729,8 @@ Internet-Draft                RFC 3315 bis                     June 2016
    This document describes the DHCP options defined as part of the base
    DHCP specification.  Other options may be defined in the future in
    separate documents.  See [RFC7227] for guidelines regarding new
-   options definition.
+   options definition.  See Section 23 for additional information about
+   a registry maintained by IANA.
 
    Unless otherwise noted, each option may appear only in the options
    area of a DHCP message and may appear only once.  If an option does
@@ -4756,8 +4757,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-
-Mrugalski, et al.       Expires December 27, 2016              [Page 85]
+Mrugalski, et al.       Expires December 29, 2016              [Page 85]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4813,7 +4813,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 86]
+Mrugalski, et al.       Expires December 29, 2016              [Page 86]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4869,7 +4869,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 87]
+Mrugalski, et al.       Expires December 29, 2016              [Page 87]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4925,7 +4925,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 88]
+Mrugalski, et al.       Expires December 29, 2016              [Page 88]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -4981,7 +4981,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 89]
+Mrugalski, et al.       Expires December 29, 2016              [Page 89]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5037,7 +5037,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 90]
+Mrugalski, et al.       Expires December 29, 2016              [Page 90]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5093,7 +5093,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 91]
+Mrugalski, et al.       Expires December 29, 2016              [Page 91]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5149,7 +5149,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 92]
+Mrugalski, et al.       Expires December 29, 2016              [Page 92]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5205,7 +5205,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 93]
+Mrugalski, et al.       Expires December 29, 2016              [Page 93]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5261,7 +5261,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 94]
+Mrugalski, et al.       Expires December 29, 2016              [Page 94]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5317,7 +5317,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 95]
+Mrugalski, et al.       Expires December 29, 2016              [Page 95]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5373,7 +5373,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 96]
+Mrugalski, et al.       Expires December 29, 2016              [Page 96]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5429,7 +5429,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 97]
+Mrugalski, et al.       Expires December 29, 2016              [Page 97]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5485,7 +5485,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 98]
+Mrugalski, et al.       Expires December 29, 2016              [Page 98]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5541,7 +5541,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016              [Page 99]
+Mrugalski, et al.       Expires December 29, 2016              [Page 99]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5597,7 +5597,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 100]
+Mrugalski, et al.       Expires December 29, 2016             [Page 100]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5653,7 +5653,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 101]
+Mrugalski, et al.       Expires December 29, 2016             [Page 101]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5709,7 +5709,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 102]
+Mrugalski, et al.       Expires December 29, 2016             [Page 102]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5765,7 +5765,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 103]
+Mrugalski, et al.       Expires December 29, 2016             [Page 103]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5821,7 +5821,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 104]
+Mrugalski, et al.       Expires December 29, 2016             [Page 104]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5877,7 +5877,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 105]
+Mrugalski, et al.       Expires December 29, 2016             [Page 105]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5933,7 +5933,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 106]
+Mrugalski, et al.       Expires December 29, 2016             [Page 106]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -5989,7 +5989,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 107]
+Mrugalski, et al.       Expires December 29, 2016             [Page 107]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -6045,7 +6045,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 108]
+Mrugalski, et al.       Expires December 29, 2016             [Page 108]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -6101,7 +6101,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 109]
+Mrugalski, et al.       Expires December 29, 2016             [Page 109]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -6157,7 +6157,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 110]
+Mrugalski, et al.       Expires December 29, 2016             [Page 110]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -6213,7 +6213,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 111]
+Mrugalski, et al.       Expires December 29, 2016             [Page 111]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -6269,7 +6269,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 112]
+Mrugalski, et al.       Expires December 29, 2016             [Page 112]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -6325,7 +6325,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 113]
+Mrugalski, et al.       Expires December 29, 2016             [Page 113]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -6381,7 +6381,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 114]
+Mrugalski, et al.       Expires December 29, 2016             [Page 114]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -6437,7 +6437,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 115]
+Mrugalski, et al.       Expires December 29, 2016             [Page 115]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -6493,7 +6493,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 116]
+Mrugalski, et al.       Expires December 29, 2016             [Page 116]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -6549,7 +6549,7 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 117]
+Mrugalski, et al.       Expires December 29, 2016             [Page 117]
 
 Internet-Draft                RFC 3315 bis                     June 2016
 
@@ -6582,6 +6582,18 @@ Internet-Draft                RFC 3315 bis                     June 2016
    "Delayed Authentication" entity in the "Protocol Name Space Values"
    registry.
 
+   The publication of this document does not change the assignment rules
+   for new values for message types, option codes, DUID types or status
+   codes.
+
+   The list of assigned values used in DHCPv6 is available at
+   http://www.iana.org/assignments/dhcpv6-parameters/
+   dhcpv6-parameters.xml
+
+   Note to IANA: is this the right, long term link?  I noticed there are
+   two similar ones ending with .xhtml and .xml.  Please update the link
+   above if necessary.
+
 24.  Obsoleted mechanisms
 
    This specification is mostly a corrected and cleaned up version of
@@ -6589,6 +6601,15 @@ Internet-Draft                RFC 3315 bis                     June 2016
    from later RFCs.  However, there is a small number of mechanisms that
    didn't get much traction, were not widely deployed, underspecified or
    had other operational issues.  Those mechanisms are now considered
+
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 118]
+
+Internet-Draft                RFC 3315 bis                     June 2016
+
+
    deprecated.  Legacy implementations MAY support them, but
    implementations conformant to this document MUST NOT rely on them.
 
@@ -6602,14 +6623,6 @@ Internet-Draft                RFC 3315 bis                     June 2016
    lifetime values as hints.  This mechanism was not widely implemented
    and there were known misimplementations that sent remaining lifetimes
    rather than total lifetimes.  That in turn was sometimes
-
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 118]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
-
    misunderstood by the servers as a request for ever decreasing lease
    lifetimes, which caused issues when values started approaching zero.
 
@@ -6645,6 +6658,14 @@ Internet-Draft                RFC 3315 bis                     June 2016
    Mark Stapp, Matt Thomas, Sue Thomson, Tatuya Jinmei, Bernie Volz,
    Trevor Warwick, Phil Wells and Toshi Yamasaki.
 
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 119]
+
+Internet-Draft                RFC 3315 bis                     June 2016
+
+
    Thanks to Steve Deering and Bob Hinden, who have consistently taken
    the time to discuss the more complex parts of the IPv6
    specifications.
@@ -6654,17 +6675,6 @@ Internet-Draft                RFC 3315 bis                     June 2016
    Internet Draft.
 
 26.  References
-
-
-
-
-
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 119]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
 
 26.1.  Normative References
 
@@ -6704,6 +6714,14 @@ Internet-Draft                RFC 3315 bis                     June 2016
               (IPv6) Specification", RFC 2460, DOI 10.17487/RFC2460,
               December 1998, <http://www.rfc-editor.org/info/rfc2460>.
 
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 120]
+
+Internet-Draft                RFC 3315 bis                     June 2016
+
+
    [RFC2464]  Crawford, M., "Transmission of IPv6 Packets over Ethernet
               Networks", RFC 2464, DOI 10.17487/RFC2464, December 1998,
               <http://www.rfc-editor.org/info/rfc2464>.
@@ -6711,16 +6729,6 @@ Internet-Draft                RFC 3315 bis                     June 2016
    [RFC2526]  Johnson, D. and S. Deering, "Reserved IPv6 Subnet Anycast
               Addresses", RFC 2526, DOI 10.17487/RFC2526, March 1999,
               <http://www.rfc-editor.org/info/rfc2526>.
-
-
-
-
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 120]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
 
    [RFC3646]  Droms, R., Ed., "DNS Configuration options for Dynamic
               Host Configuration Protocol for IPv6 (DHCPv6)", RFC 3646,
@@ -6760,6 +6768,16 @@ Internet-Draft                RFC 3315 bis                     June 2016
               Specification", RFC 5905, DOI 10.17487/RFC5905, June 2010,
               <http://www.rfc-editor.org/info/rfc5905>.
 
+
+
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 121]
+
+Internet-Draft                RFC 3315 bis                     June 2016
+
+
    [RFC6221]  Miles, D., Ed., Ooghe, S., Dec, W., Krishnan, S., and A.
               Kavanagh, "Lightweight DHCPv6 Relay Agent", RFC 6221,
               DOI 10.17487/RFC6221, May 2011,
@@ -6769,14 +6787,6 @@ Internet-Draft                RFC 3315 bis                     June 2016
               DHCPv6 Unique Identifier (DUID-UUID)", RFC 6355,
               DOI 10.17487/RFC6355, August 2011,
               <http://www.rfc-editor.org/info/rfc6355>.
-
-
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 121]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
 
    [RFC6724]  Thaler, D., Ed., Draves, R., Matsumoto, A., and T. Chown,
               "Default Address Selection for Internet Protocol Version 6
@@ -6817,6 +6827,13 @@ Internet-Draft                RFC 3315 bis                     June 2016
               DOI 10.17487/RFC2461, December 1998,
               <http://www.rfc-editor.org/info/rfc2461>.
 
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 122]
+
+Internet-Draft                RFC 3315 bis                     June 2016
+
+
    [RFC2462]  Thomson, S. and T. Narten, "IPv6 Stateless Address
               Autoconfiguration", RFC 2462, DOI 10.17487/RFC2462,
               December 1998, <http://www.rfc-editor.org/info/rfc2462>.
@@ -6825,14 +6842,6 @@ Internet-Draft                RFC 3315 bis                     June 2016
               Stateless Address Autoconfiguration in IPv6", RFC 3041,
               DOI 10.17487/RFC3041, January 2001,
               <http://www.rfc-editor.org/info/rfc3041>.
-
-
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 122]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
 
    [RFC3162]  Aboba, B., Zorn, G., and D. Mitton, "RADIUS and IPv6",
               RFC 3162, DOI 10.17487/RFC3162, August 2001,
@@ -6870,25 +6879,35 @@ Internet-Draft                RFC 3315 bis                     June 2016
               RFC 4943, DOI 10.17487/RFC4943, September 2007,
               <http://www.rfc-editor.org/info/rfc4943>.
 
+   [RFC5007]  Brzozowski, J., Kinnear, K., Volz, B., and S. Zeng,
+              "DHCPv6 Leasequery", RFC 5007, DOI 10.17487/RFC5007,
+              September 2007, <http://www.rfc-editor.org/info/rfc5007>.
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 123]
+
+Internet-Draft                RFC 3315 bis                     June 2016
+
+
+   [RFC5460]  Stapp, M., "DHCPv6 Bulk Leasequery", RFC 5460,
+              DOI 10.17487/RFC5460, February 2009,
+              <http://www.rfc-editor.org/info/rfc5460>.
+
    [RFC6603]  Korhonen, J., Ed., Savolainen, T., Krishnan, S., and O.
               Troan, "Prefix Exclude Option for DHCPv6-based Prefix
               Delegation", RFC 6603, DOI 10.17487/RFC6603, May 2012,
               <http://www.rfc-editor.org/info/rfc6603>.
 
+   [RFC6977]  Boucadair, M. and X. Pougnard, "Triggering DHCPv6
+              Reconfiguration from Relay Agents", RFC 6977,
+              DOI 10.17487/RFC6977, July 2013,
+              <http://www.rfc-editor.org/info/rfc6977>.
+
    [RFC7084]  Singh, H., Beebee, W., Donley, C., and B. Stark, "Basic
               Requirements for IPv6 Customer Edge Routers", RFC 7084,
               DOI 10.17487/RFC7084, November 2013,
               <http://www.rfc-editor.org/info/rfc7084>.
-
-
-
-
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 123]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
 
    [RFC7341]  Sun, Q., Cui, Y., Siodelski, M., Krishnan, S., and I.
               Farrer, "DHCPv4-over-DHCPv6 (DHCP 4o6) Transport",
@@ -6905,11 +6924,27 @@ Internet-Draft                RFC 3315 bis                     June 2016
               RFC 7550, DOI 10.17487/RFC7550, May 2015,
               <http://www.rfc-editor.org/info/rfc7550>.
 
+   [RFC7563]  Pazhyannur, R., Speicher, S., Gundavelli, S., Korhonen,
+              J., and J. Kaippallimalil, "Extensions to the Proxy Mobile
+              IPv6 (PMIPv6) Access Network Identifier Option", RFC 7563,
+              DOI 10.17487/RFC7563, June 2015,
+              <http://www.rfc-editor.org/info/rfc7563>.
+
    [RFC7598]  Mrugalski, T., Troan, O., Farrer, I., Perreault, S., Dec,
               W., Bao, C., Yeh, L., and X. Deng, "DHCPv6 Options for
               Configuration of Softwire Address and Port-Mapped
               Clients", RFC 7598, DOI 10.17487/RFC7598, July 2015,
               <http://www.rfc-editor.org/info/rfc7598>.
+
+
+
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 124]
+
+Internet-Draft                RFC 3315 bis                     June 2016
+
 
    [RFC7610]  Gont, F., Liu, W., and G. Van de Velde, "DHCPv6-Shield:
               Protecting against Rogue DHCPv6 Servers", BCP 199,
@@ -6938,14 +6973,6 @@ Appendix A.  Changes since RFC3315
    1.   Incorporated RFC3315 errata (ids: 294, 1373, 2928, 1815, 3577,
         2509, 295).
 
-
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 124]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
-
    2.   Partially incorporated RFC3315 errata id 2472 (place other IA
         options if NoAddrsAvail is sent in Advertise).
 
@@ -6964,6 +6991,16 @@ Internet-Draft                RFC 3315 bis                     June 2016
    7.   Added text to section 22.6 "IA Address Option" about the usage
         of unspecified address to express the client hints for Preferred
         and Valid lifetimes.  Ticket #45.
+
+
+
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 125]
+
+Internet-Draft                RFC 3315 bis                     June 2016
+
 
    8.   Updated text in 21.4.2 of RFC3315 ("Message Validation") as
         suggested in section 3.1 of draft-ietf-dhc-dhcpv6-clarify-auth-
@@ -6993,15 +7030,6 @@ Internet-Draft                RFC 3315 bis                     June 2016
         to log such events (debug log message, event log, message pop-up
         etc.).  Ticket #50.
 
-
-
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 125]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
-
    15.  Clarified that: there should be no more than one instance of
         Vendor Class option with a given Enterprise Number; that one
         instance of Vendor Class can contain multiple encapsulated
@@ -7022,6 +7050,13 @@ Internet-Draft                RFC 3315 bis                     June 2016
    20.  Incorporate everything of RFC 6644, except for Security
         Considerations Section, which has already covered in a more
         abstracted way.  Tickets #55 & #56.
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 126]
+
+Internet-Draft                RFC 3315 bis                     June 2016
+
 
    21.  Clarify the server behavior process when a client violates
         Delayed Authentication Protocol, in Section 21.4.  Ticket #90.
@@ -7050,14 +7085,6 @@ Internet-Draft                RFC 3315 bis                     June 2016
    29.  Merged sections 1 (Ticket #96), 2 (Ticket #97), 3 (Ticket #98),
         4 (Ticket #99), 6 (Ticket #101), 8 (Ticket #103), 9 (Ticket
         #104), 10 (Ticket #105), 11 (Ticket #106), 13 (Ticket #108), 14
-
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 126]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
-
         (Ticket #109), 15 (Ticket #110), 16 (Ticket #111), 17 (Ticket
         #112) and 19 (Ticket #113) from RFC3633 (Prefix Delegation).
 
@@ -7079,6 +7106,13 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
    35.  Addressed ticket #115 - don't use DHCPv6 for DHCPv4
         configuration.
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 127]
+
+Internet-Draft                RFC 3315 bis                     June 2016
+
 
    36.  Revised IANA Considerations based on ticket #117.
 
@@ -7107,13 +7141,6 @@ Internet-Draft                RFC 3315 bis                     June 2016
    44.  Merged section 4.1 and 4.2 of RFC7550 (stateful-issues).  This
         addresses tickets #59 and #60.
 
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 127]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
-
    45.  Added normative reference to RFC7550 and to obsoleted list.
         Also added terse text of Abstract and section 1.0 to indicate
         what this document is about.
@@ -7135,6 +7162,14 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
    51.  Updated server processing section to clarify that server unicast
         check can be based on current configuration of unicast setting
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 128]
+
+Internet-Draft                RFC 3315 bis                     June 2016
+
+
         so server is not required to remember what it sent.  This
         resolves ticket #130.
 
@@ -7162,14 +7197,6 @@ Internet-Draft                RFC 3315 bis                     June 2016
         sections 18 and 19.  Also, introduced a term "lease" replacing
         "allocable resources".  This resolves ticket #146.
 
-
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 128]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
-
    57.  Reorganized text about Reply processing on the client side
         (ticket #140).
 
@@ -7191,6 +7218,13 @@ Internet-Draft                RFC 3315 bis                     June 2016
         Ticket #160.
 
    64.  Moved additional text from RFC3633 section 12.1.  Ticket #102.
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 129]
+
+Internet-Draft                RFC 3315 bis                     June 2016
+
 
    65.  Addressed minor addition to text as per ticket 131 and also
         ticket #61.
@@ -7216,16 +7250,6 @@ Internet-Draft                RFC 3315 bis                     June 2016
    71.  Added reference to RFC4242 (Information Refresh Time Option).
         Ticket #161.
 
-
-
-
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 129]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
-
    72.  Updated ORO Option to list Options that MUST NOT be included.
         Also added to that IANA Consider should keep track of which
         options are allowed in ORO.  Ticket #81.
@@ -7245,6 +7269,18 @@ Appendix B.  Changes since RFC3633
 
    1.  Incorporated RFC3633 errata (ids: 248, 1880, 2468, 2469, 2470,
        3736)
+
+
+
+
+
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 130]
+
+Internet-Draft                RFC 3315 bis                     June 2016
+
 
 Appendix C.  Appearance of Options in Message Types
 
@@ -7272,16 +7308,6 @@ Appendix C.  Appearance of Options in Message Types
    Only included in Information-request messages that are sent in
    response to a Reconfigure (see Section 17.1.6).
 
-
-
-
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 130]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
-
         Status  Rap. User  Vendor Vendor Inter. Recon. Recon. SOL_MAX_RT
          Code  Comm. Class Class  Spec.    ID    Msg.  Accept INF_MAX_RT
 Solicit          *     *     *      *                    *
@@ -7302,6 +7328,15 @@ Appendix D.  Appearance of Options in the Options Field of DHCP Options
 
    The following table indicates with a "*" where options can appear in
    the options field of other options:
+
+
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 131]
+
+Internet-Draft                RFC 3315 bis                     June 2016
+
 
                 Option  IA_NA/                        Relay  Relay
                 Field   IA_TA  IAADDR IA_PD  IAPREFIX Forw.  Reply
@@ -7331,13 +7366,6 @@ Appendix D.  Appearance of Options in the Options Field of DHCP Options
    Note: "Relay Forw" / "Relay Reply" options appear in the options
    field of the message but may only appear in these messages.
 
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 131]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
-
 Authors' Addresses
 
    Tomek Mrugalski (editor)
@@ -7356,6 +7384,14 @@ Authors' Addresses
    USA
 
    Email: msiodelski@gmail.com
+
+
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 132]
+
+Internet-Draft                RFC 3315 bis                     June 2016
 
 
    Bernie Volz
@@ -7386,14 +7422,6 @@ Authors' Addresses
    URI:   http://www.sandelman.ca/
 
 
-
-
-
-Mrugalski, et al.       Expires December 27, 2016             [Page 132]
-
-Internet-Draft                RFC 3315 bis                     June 2016
-
-
    Sheng Jiang
    Huawei Technologies Co., Ltd
    Q14, Huawei Campus, No.156 Beiqing Road
@@ -7410,6 +7438,16 @@ Internet-Draft                RFC 3315 bis                     June 2016
    USA
 
    Email: Ted.Lemon@nominum.com
+
+
+
+
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 133]
+
+Internet-Draft                RFC 3315 bis                     June 2016
 
 
    Timothy Winters
@@ -7445,4 +7483,22 @@ Internet-Draft                RFC 3315 bis                     June 2016
 
 
 
-Mrugalski, et al.       Expires December 27, 2016             [Page 133]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Mrugalski, et al.       Expires December 29, 2016             [Page 134]
