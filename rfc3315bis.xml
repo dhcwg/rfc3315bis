@@ -7,10 +7,10 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-05"
+<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-06"
      ipr="pre5378Trust200902" obsoletes="3315,3633,3736,7083,7550">
   <front>
-    <title abbrev="RFC 3315 bis">Dynamic Host Configuration Protocol for IPv6
+    <title abbrev="RFC3315 bis">Dynamic Host Configuration Protocol for IPv6
     (DHCPv6) bis</title>
 
     <author fullname="Tomek Mrugalski" initials="T." role="editor"
@@ -198,12 +198,12 @@
       either in place of or in addition to stateless address autoconfiguration
       (SLAAC).</t>
 
-      <t>This document updates the text from RFC 3315, the original DHCPv6
-      specification, and incorporates the stateless DHCPv6 extensions (RFC
-      3736) and prefix delegation (RFC 3633), clarifying the interactions
-      between these modes of operation (RFC 7550) and providing a mechanism
-      for throttling DHCPv6 clients when DHCPv6 service is not available (RFC
-      7083). As such, this document obsoletes RFC3315, RFC3633, RFC3736,
+      <t>This document updates the text from RFC3315, the original DHCPv6
+      specification, and incorporates the stateless DHCPv6 extensions (RFC3736)
+      and prefix delegation (RFC3633), clarifies the interactions
+      between these modes of operation (RFC7550), and provides a mechanism
+      for throttling DHCPv6 clients when DHCPv6 service is not available (RFC7083).
+      As such, this document obsoletes RFC3315, RFC3633, RFC3736,
       RFC7083, RFC7550.</t>
     </abstract>
   </front>
@@ -239,40 +239,41 @@
       much smaller than to support stateful DHCPv6.</t>
 
       <t>The remainder of this introduction summarizes relation to the
-      previous DHCPv6 standards <xref target="previous-dhcp6"></xref>,
-      clarifies the stance with regards to DHCPv4 <xref
-      target="dhcpv4"></xref>. More detailed description of the message
-      exchange mechanisms and example message flows in <xref
-      target="RFC3315-1.2"></xref> and <xref target="RFC3315-1.3"></xref> are
-      intended as illustrations of DHCP operation rather than an exhaustive
-      list of all possible client-server interactions. <xref
-      target="OpModes"></xref> provides an overview of common operational
-      models. <xref target="configuration-exchange"></xref> explains client
-      and server operation in detail.</t>
+      previous DHCPv6 standards in <xref target="previous-dhcp6"/>,
+      clarifies the stance with regards to DHCPv4 in <xref target="dhcpv4"/>,
+      and describes the message exchange mechanisms in <xref
+      target="RFC3315-1.2"/> and <xref target="RFC3315-1.3"/> to
+      illustrate DHCP operation rather than provide an exhaustive
+      list of all possible client-server interactions.</t>
+      
+      <t>In addition, <xref target="OpModes"/> provides an overview of common
+      operational models and <xref target="configuration-exchange"/> explains
+      client and server operation in detail.</t>
 
       <section anchor="previous-dhcp6"
                title="Relation to previous DHCPv6 standards">
         <t>The initial specification of DHCPv6 was defined in <xref
-        target="RFC3315"></xref> and a number of follow up extensions
+        target="RFC3315"></xref> and a number of follow up extensions were
         published over the years. Several notable extensions were published:
         prefix delegation <xref target="RFC3633"></xref>, stateless <xref
-        target="RFC3736"></xref>, update to SOL_MAX_RT and INF_MAX_RT option
-        values <xref target="RFC7083"></xref> and harmonization between
-        addresses and prefixes support <xref target="RFC7550"></xref>.
-        Understanding a protocol which definition is spread between large
-        number of documents may be cumbersome. Furthermore, a significant
+        target="RFC3736"></xref>, update to SOL_MAX_RT and INF_MAX_RT
+        values and definition of options for these values
+        <xref target="RFC7083"/>, and harmonization between address
+        assignment and prefix delegation support <xref target="RFC7550"/>.
+        Understanding a protocol whose definition is spread between a large
+        number of documents is cumbersome. Furthermore, significant
         operational experience has been gained over the years and certain
         small elements of the protocol have been reworked. This document
-        provides a unified, corrected and cleaned up definition of the DHCPv6
+        provides a unified, corrected, and cleaned up definition of DHCPv6
         that also covers all erratas filled against older RFCs. As such, it
-        obsoletes a number of aforementioned RFCs. There is a small number of
-        mechanisms that were obsoleted. They are listed in <xref
+        obsoletes a number of aforementioned RFCs. And, there are a small
+        number of mechanisms that were obsoleted, listed in <xref
         target="obsolete"></xref>.</t>
       </section>
 
       <section anchor="dhcpv4" title="Relation to DHCP in IPv4">
         <t>The operational models and relevant configuration information for
-        DHCPv4 <xref target="RFC2132"></xref><xref target="RFC2131"></xref>
+        DHCPv4 (<xref target="RFC2131"/> and <xref target="RFC2132"/>)
         and DHCPv6 are sufficiently different that integration between the two
         services is not included in this document. <xref
         target="RFC3315"></xref> suggested that future work might be to extend
@@ -533,13 +534,13 @@
 
             <t hangText="binding">A binding (or, client binding) is a group of
             server data records containing the information the server has
-            about the addresses in an IA or configuration information
+            about the addresses or delegated prefixes in an IA or configuration information
             explicitly assigned to the client. Configuration information that
             has been returned to a client through a policy - for example, the
             information returned to all clients on the same link - does not
             require a binding. A binding containing information about an IA is
             indexed by the tuple &lt;DUID, IA-type, IAID&gt; (where IA-type is
-            the type of address in the IA; for example, temporary). A binding
+            the type of lease in the IA; for example, temporary). A binding
             containing configuration information for a client is indexed by
             &lt;DUID&gt;.</t>
 
@@ -566,10 +567,6 @@
             <t hangText="DHCP domain">A set of links managed by DHCP and
             operated by a single administrative entity.</t>
 
-            <t hangText="DHCP realm">A name used to identify the DHCP
-            administrative domain from which a DHCP authentication key was
-            selected.</t>
-
             <t hangText="DHCP relay agent (or relay agent)">A node that acts
             as an intermediary to deliver DHCP messages between clients and
             servers. In certain configurations there may be more than one
@@ -590,7 +587,7 @@
             <t hangText="IA">Identity Association: A collection of leases
             assigned to a client. Each IA has an associated IAID. A client may
             have more than one IA assigned to it; for example, one for each of
-            its interfaces. Each IA holds one type of address; for example, an
+            its interfaces. Each IA holds one type of lease; for example, an
             identity association for temporary addresses (IA_TA) holds
             temporary addresses (see "identity association for temporary
             addresses") and identity association for prefix delegation (IA_PD)
@@ -607,8 +604,7 @@
 
             <t hangText="IA_NA">Identity association for Non-temporary
             Addresses: An IA that carries assigned addresses that are not
-            temporary addresses (see "identity association for temporary
-            addresses")</t>
+            temporary addresses (see "IA_TA").</t>
 
             <t hangText="IA_TA">Identity Association for Temporary Addresses:
             An IA that carries temporary addresses (see <xref
@@ -932,8 +928,8 @@
             Solicit message received from a client.</t>
 
             <t hangText="REQUEST (3)">A client sends a Request message to
-            request configuration parameters, including IP addresses, from a
-            specific server.</t>
+            request configuration parameters, including addresses and/or
+            delegated prefixes, from a specific server.</t>
 
             <t hangText="CONFIRM (4)">A client sends a Confirm message to any
             available server to determine whether the addresses it was
@@ -941,19 +937,19 @@
             connected.</t>
 
             <t hangText="RENEW (5)">A client sends a Renew message to the
-            server that originally provided the client's addresses and
-            configuration parameters to extend the lifetimes on the addresses
+            server that originally provided the client's leases and
+            configuration parameters to extend the lifetimes on the leases
             assigned to the client and to update other configuration
             parameters.</t>
 
             <t hangText="REBIND (6)">A client sends a Rebind message to any
-            available server to extend the lifetimes on the addresses assigned
+            available server to extend the lifetimes on the leases assigned
             to the client and to update other configuration parameters; this
             message is sent after a client receives no response to a Renew
             message.</t>
 
             <t hangText="REPLY (7)">A server sends a Reply message containing
-            assigned addresses and configuration parameters in response to a
+            assigned leases and configuration parameters in response to a
             Solicit, Request, Renew, Rebind message received from a client. A
             server sends a Reply message containing configuration parameters
             in response to an Information-request message. A server sends a
@@ -964,9 +960,9 @@
             message.</t>
 
             <t hangText="RELEASE (8)">A client sends a Release message to the
-            server that assigned addresses to the client to indicate that the
+            server that assigned leases to the client to indicate that the
             client will no longer use one or more of the assigned
-            addresses.</t>
+            leases.</t>
 
             <t hangText="DECLINE (9)">A client sends a Decline message to a
             server to indicate that the client has determined that one or more
@@ -981,7 +977,7 @@
 
             <t hangText="INFORMATION-REQUEST (11)">A client sends an
             Information-request message to a server to request configuration
-            parameters without the assignment of any IP addresses to the
+            parameters without the assignment of any leases to the
             client.</t>
 
             <t hangText="RELAY-FORW (12)">A relay agent sends a Relay-forward
@@ -1249,7 +1245,8 @@
     <section anchor="RFC3315-7" title="Relay Agent/Server Message Formats">
       <!-- 7, line 825-->
 
-      <t>Relay agents exchange messages with servers to relay messages between
+      <t>Relay agents exchange messages with other relay agents and servers
+      to relay messages between
       clients and servers that are not connected to the same link.</t>
 
       <t>All values in the message header and in options are in network byte
@@ -1668,7 +1665,8 @@
       associated configuration information.</t>
 
       <t>The IAID uniquely identifies the IA and must be chosen to be unique
-      among the IAIDs for that IA type on the client. The IAID is chosen by
+      among the IAIDs for that IA type on the client (i.e., IA_NA with IAID 0 is
+      unique from IA_TA with IAID 0). The IAID is chosen by
       the client. For any given use of an IA by the client, the IAID for that
       IA MUST be consistent across restarts of the DHCP client. The client may
       maintain consistency either by storing the IAID in non-volatile storage
@@ -1681,8 +1679,8 @@
 
       <t>If the client wishes to obtain a distinctly new address or prefix and
       deprecate the existing one, the client sends a Release message
-      to the server for the IAs using the original IAID.   Then the client creates
-      a new IAID, to be used in future Request messages to obtain new IAs.</t>
+      to the server for the IAs using the original IAID. Then the client creates
+      a new IAID, to be used in future messages to obtain leases for the new IA.</t>
 
       <section anchor="RFC3315-10.1"
                title="Identity Associations for Address Assignment">
@@ -1692,14 +1690,18 @@
         interface to obtain configuration information from a server for that
         interface. Each IA must be associated with exactly one interface.</t>
 
-        <t>The configuration information in an IA consists of one or more IPv6
-        addresses along with the times T1 and T2 for the IA. See <xref
-        target="RFC3315-22.4"></xref> for the representation of an IA in a
+        <t>The configuration information in an IA_NA consists of one or more IPv6
+        addresses along with the T1 and T2 times for the IA. See <xref
+        target="RFC3315-22.4"/> for the representation of an IA_NA in a
         DHCP message.</t>
+        
+        <t>The configuration information in an IA_TA consists of one or more IPv6
+        addresses. See <xref target="RFC3315-22.5"/> for the representation of an
+        IA_TA in a DHCP message.</t>        
 
         <t>Each address in an IA has a preferred lifetime and a valid
         lifetime, as defined in <xref target="RFC4862"></xref>. The lifetimes
-        are transmitted from the DHCP server to the client in the IA option.
+        are transmitted from the DHCP server to the client in the IA Address option.
         The lifetimes apply to the use of IPv6 addresses, as described in
         section 5.5.4 of <xref target="RFC4862"></xref>.</t>
       </section>
@@ -1715,9 +1717,15 @@
         prefix for that interface from the delegating router.</t>
 
         <t>The configuration information in an IA_PD consists of one or more
-        IPv6 prefixes along with the times T1 and T2 for the IA_PD. See <xref
+        IPv6 prefixes along with the T1 and T2 times for the IA_PD. See <xref
         target="IA_PD-option"></xref> for the representation of an IA_PD in a
         DHCP message.</t>
+        
+        <t>Each deleged prefix in an IA has a preferred lifetime and a valid
+        lifetime, as defined in <xref target="RFC4862"></xref>. The lifetimes
+        are transmitted from the DHCP server to the client in the IA Prefix option.
+        The lifetimes apply to the use of delegated prefixes, as described in
+        section 5.5.4 of <xref target="RFC4862"></xref>.</t>        
       </section>
     </section>
 
@@ -1812,10 +1820,7 @@
         Address Option (see <xref target="RFC3315-22.6"></xref>) with in the
         IA_TA option. It is RECOMMENDED to set short lifetimes, typically
         shorter than TEMP_VALID_LIFETIME and TEMP_PREFERRED_LIFETIME (see
-        Section 5, <xref target="RFC4941"></xref>.</t>
-
-        <t>The IAID number space for the IA_TA option IAID number space is
-        separate from the IA_NA option IAID number space.</t>
+        Section 5, <xref target="RFC4941"/>).</t>
 
         <t>A DHCP server implementation MAY generate temporary addresses
         referring to the algorithm defined in Section 3.2.1, <xref
@@ -1871,7 +1876,7 @@
         <t>A recommended method for implementing the rate limiting function is
         a token bucket, limiting the average rate of transmission to a certain
         number in a certain time. This method of bounding burstiness also
-        guarantees that the long-term transmission rate will not exceed.</t>
+        guarantees that the long-term transmission rate will not be exceeded.</t>
 
         <t><list hangIndent="11" style="hanging">
             <t hangText="   TRT">Transmission Rate Limit</t>
@@ -1901,8 +1906,8 @@
         time to avoid packet storms. In particular, it MUST NOT transmit
         immediately. If the client received multiple IA containers, it SHOULD
         pick renew and/or rebind transmission times so all IA containers are
-        handled in one exchange, if possible. Client MUST choose the
-        transmission times to not violate rate limiting restrictions, defined
+        handled in one exchange, if possible. The client MUST choose the
+        times to not violate rate limiting restrictions, defined
         in <xref target="rate-limit"></xref>.</t>
       </section>
     </section>
@@ -1933,13 +1938,13 @@
       <t>The client MUST update an "elapsed-time" value within an Elapsed
       Time option (see <xref target="RFC3315-22.9"/>) in the
       retransmitted message. In some cases, the client may also need to modify
-      values in the IA Address or IA Prefix options, if a valid lifetime for
+      values in the IA Address or IA Prefix options if a valid lifetime for
       any of the client's leases expires before retransmission. Thus, whenever
       this document refers to a "retransmission" of a client's message, it
       refers to both modifying the original message and sending this new message
       instance to the server. The retransmitting client MUST NOT resend the
       original message to the server, i.e. the client MUST update all options
-      in the retransmitted message, for which such update is required by the
+      in the retransmitted message for which such update is required by the
       protocol (e.g. Elapsed Time option).</t>
 
       <t>The client retransmission behavior is controlled and described by the
@@ -6666,23 +6671,23 @@
     <section title="Acknowledgments">
       <!-- 25, line 4764-->
 
-      <t>The following people are authors of the original RFC 3315: Ralph
+      <t>The following people are authors of the original RFC3315: Ralph
       Droms, Jim Bound, Bernie Volz, Ted Lemon, Charles Perkins, and Mike
-      Carney. The following people are authors of the original RFC 3633: Ole
+      Carney. The following people are authors of the original RFC3633: Ole
       Troan and Ralph Droms. This document is merely a refinement of their
       work and would not be possible without their original work.</t>
 
       <t>A number of additional people have contributed to identifying issues
-      with RFC 3315 and RFC 3633 and proposed resolutions to these issues as
+      with RFC3315 and RFC3633 and proposed resolutions to these issues as
       reflected in this document (in no particular order): Ole Troan, Robert
       Marks, Leaf Yeh, Tim Winters, Michelle Cotton, Pablo Armando, John
       Brzozowski, Suresh Krishnan, Hideshi Enokihara, Alexandru Petrescu,
       Yukiyo Akisada, Tatuya Jinmei, Fred Templin and Christian Huitema. With
       special thanks to Ralph Droms for answering many questions related to
-      the original RFC 3315 work.</t>
+      the original RFC3315 work.</t>
 
-      <t>The following acknowledgements are from the original RFC 3315 and RFC
-      3633:</t>
+      <t>The following acknowledgements are from the original RFC3315 and
+      RFC3633:</t>
 
       <t>Thanks to the DHC Working Group and the members of the IETF for their
       time and input into the specification. In particular, thanks also for
@@ -6934,7 +6939,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Replace "monotonic" with "strictly monotonic" in Section 21.3.
           Ticket #11.</t>
 
-          <t>Incorporate everything of RFC 6644, except for Security
+          <t>Incorporate everything of RFC6644, except for Security
           Considerations Section, which has already covered in a more
           abstracted way. Tickets #55 &amp; #56.</t>
 
