@@ -9,9 +9,6 @@
 <?rfc subcompact="no" ?>
 <rfc category="std" docName="draft-ietf-dhc-rfc3315bis-06"
      ipr="pre5378Trust200902" obsoletes="3315,3633,3736,7083,7550">
-  <front>
-    <title abbrev="RFC3315 bis">Dynamic Host Configuration Protocol for IPv6
-    (DHCPv6) bis</title>
 
     <author fullname="Tomek Mrugalski" initials="T." role="editor"
             surname="Mrugalski">
@@ -1309,8 +1306,8 @@
 
             <t hangText="   link-address">An address that will be used by the
             server to identify the link on which the client is located. This
-            is typically global, site-scoped or ULA <xref
-            target="RFC4193"></xref>, but see discussion in <xref
+            is typically a globally unique address or unique local address (ULA)
+            <xref target="RFC4193"/>, but see discussion in <xref
             target="relaying-from-client"></xref>.</t>
 
             <t hangText="   peer-address">The address of the client or relay
@@ -1942,10 +1939,7 @@
       any of the client's leases expires before retransmission. Thus, whenever
       this document refers to a "retransmission" of a client's message, it
       refers to both modifying the original message and sending this new message
-      instance to the server. The retransmitting client MUST NOT resend the
-      original message to the server, i.e. the client MUST update all options
-      in the retransmitted message for which such update is required by the
-      protocol (e.g. Elapsed Time option).</t>
+      instance to the server.</t>
 
       <t>The client retransmission behavior is controlled and described by the
       following variables: <list hangIndent="11" style="hanging">
