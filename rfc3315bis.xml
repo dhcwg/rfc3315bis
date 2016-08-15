@@ -9,6 +9,9 @@
 <?rfc subcompact="no" ?>
 <rfc category="std" docName="draft-ietf-dhc-rfc3315bis-06"
      ipr="pre5378Trust200902" obsoletes="3315,3633,3736,7083,7550">
+  <front>
+    <title abbrev="RFC 3315 bis">Dynamic Host Configuration Protocol for IPv6
+    (DHCPv6) bis</title>
 
     <author fullname="Tomek Mrugalski" initials="T." role="editor"
             surname="Mrugalski">
@@ -228,17 +231,7 @@
       Through this mechanism, a delegating router
       can delegate prefixes to requesting routers. Use of this mechanism is
       specified as part of the <xref target="RFC7084"/> and by <xref
-      target="TR-187"/>. While <xref target="RFC3633"/> assumed that the
-      DHCPv6 client is a router (hence use of "requesting router") and that
-      the DHCPv6 server was a router (hence use of "delegating router"),
-      DHCPv6 prefix delegation itself does not require that the client forward 
-      IPv6 packets not addressed to itself, and thus does not require that the
-      client (or server) be an IPv6 router as defined in <xref target="RFC2460"/>.
-      Also, in many cases (such as tethering or hosting virtual machines), hosts
-      are already forwarding IPv6 packets and thus operating as IPv6 routers
-      as defined in <xref target="RFC2460"/>. Therefore, this document
-      mostly replaces "requesting router" with client and "delegating
-      router" with server.</t>
+      target="TR-187"/>.</t>
 
       <t>DHCPv6 can also provide only other configuration options
       (i.e., no addresses or prefixes). That implies that the
@@ -640,7 +633,7 @@
             client and is requesting prefix(es) to be assigned. This document
             primarily uses the term "DHCP client" or "client" when
             discussing the "requesting router" functionality of prefix
-            delegation (see <xref target="intro-and-overview"/>.</t></t>
+            delegation (see <xref target="intro-and-overview"/>.</t>
 
             <t hangText="singleton option">An option that is allowed to appear
             only once. Most options are singletons.</t>
@@ -775,10 +768,18 @@
         <t><xref target="FigISPNetwork"></xref> illustrates a network
         architecture in which prefix delegation could be used.</t>
         
-        <t>As mentioned earlier in <xref target="intro-and-overview"/> and
-        in <xref target="draft-ietf-v6ops-host-addr-availability"/>, prefix
-        delegation is no longer restricted to requesting routers and
-        delegation routers.</t>
+        <t>While <xref target="RFC3633"/> assumed that the DHCPv6 client
+        is a router (hence use of "requesting router") and that the DHCPv6
+        server was a router (hence use of "delegating router"), DHCPv6
+        prefix delegation itself does not require that the client forward 
+        IPv6 packets not addressed to itself, and thus does not require
+        that the client (or server) be an IPv6 router as defined in
+        <xref target="RFC2460"/>. Also, in many cases (such as tethering
+        or hosting virtual machines), hosts are already forwarding IPv6
+        packets and thus operating as IPv6 routers as defined in
+        <xref target="RFC2460"/>. Therefore, this document mostly replaces
+        "requesting router" with client and "delegating router" with
+        server.</t>
 
       </section>
 
@@ -797,8 +798,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
-
                    ______________________        \
                   /                      \        \
                  |    ISP core network    |        \
@@ -826,7 +825,6 @@
   |Subscriber| |Subscriber|     |Subscriber|       /
   |    PC    | |    PC    |     |    PC    |      /
   +----------+ +----------+     +----------+     /
-
         ]]></artwork>
 
           <postamble></postamble>
@@ -5733,7 +5731,7 @@
 
       <!-- ends: "22.15 from line 4217-->
 
-      <section title="Vendor Class Option">
+      <section anchor="RFC3315-22.16" title="Vendor Class Option">
         <!-- 22.16, line 4276-->
 
         <t>This option is used by a client to identify the vendor that
@@ -5812,7 +5810,7 @@
 
       <!-- ends: "22.16 from line 4276-->
 
-      <section title="Vendor-specific Information Option">
+      <section anchor="RFC3315-22.17" title="Vendor-specific Information Option">
         <!-- 22.17, line 4325-->
 
         <t>This option is used by clients and servers to exchange
@@ -6816,6 +6814,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.I-D.ietf-dhc-topo-conf'?>
 
       <?rfc include='reference.I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue'?>
+      
+      <?rfc include='reference.I-D.ietf-v6ops-host-addr-availability'?>
 
       <reference anchor="TR-187"
                  target="https://www.broadband-forum.org/technical/download/TR-187_Issue-2.pdf">
