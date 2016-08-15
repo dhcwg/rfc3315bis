@@ -2809,7 +2809,7 @@
           <t>If the client receives no responses before the message
           transmission process terminates, as described in <xref
           target="RFC3315-14"></xref>, the client SHOULD continue to use any
-          IP addresses, using the last known lifetimes for those addresses,
+          leases, using the last known lifetimes for those leases,
           and SHOULD continue to use any other previously obtained
           configuration parameters.</t>
         </section>
@@ -2934,8 +2934,9 @@
           client initiates a Rebind/Reply message exchange with any available
           server.</t>
           
-          <t>A Rebind is also used to verify delegated prefix bindings as
-          described in <xref target="RFC3315-18.1.2"/>.</t>
+          <t>A Rebind is also used to verify delegated prefix bindings but
+          with different retransmission parameters as described in
+          <xref target="RFC3315-18.1.2"/>.</t>
 
           <t>The client constructs the Rebind message as described in <xref
           target="RFC3315-18.1.3"></xref> with the following differences:
