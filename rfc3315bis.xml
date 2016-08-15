@@ -206,7 +206,7 @@
   </front>
 
   <middle>
-    <section title="Introduction and Overview">
+    <section anchor="intro-and-overview" title="Introduction and Overview">
       <!-- 1, line 230-->
 
       <t>This document describes DHCP for IPv6 (DHCPv6), a client/server
@@ -224,10 +224,21 @@
       Address Autoconfiguration" <xref target="RFC4862"></xref>.</t>
 
       <t>This document also provides a mechanism for automated delegation of
-      IPv6 prefixes using DHCPv6. Through this mechanism, a delegating router
-      can delegate prefixes to requesting routers.  Use of this mechanism is
-      specified as part of the <xref target="RFC7084" /> and by <xref
-      target="TR-187" />.</t>
+      IPv6 prefixes using DHCPv6, originally specified in <xref target="RFC3633"/>.
+      Through this mechanism, a delegating router
+      can delegate prefixes to requesting routers. Use of this mechanism is
+      specified as part of the <xref target="RFC7084"/> and by <xref
+      target="TR-187"/>. While <xref target="RFC3633"/> assumed that the
+      DHCPv6 client is a router (hence use of "requesting router") and that
+      the DHCPv6 server was a router (hence use of "delegating router"),
+      DHCPv6 prefix delegation itself does not require that the client forward 
+      IPv6 packets not addressed to itself, and thus does not require that the
+      client (or server) be an IPv6 router as defined in <xref target="RFC2460"/>.
+      Also, in many cases (such as tethering or hosting virtual machines), hosts
+      are already forwarding IPv6 packets and thus operating as IPv6 routers
+      as defined in <xref target="RFC2460"/>. Therefore, this document
+      mostly replaces "requesting router" with client and "delegating
+      router" with server.</t>
 
       <t>DHCPv6 can also provide only other configuration options
       (i.e., no addresses or prefixes). That implies that the
@@ -549,7 +560,10 @@
             example.</t>
 
             <t hangText="delegating router">The router that acts as a DHCP
-            server, and is responding to the prefix request.</t>
+            server, and is responding to the prefix request. This document
+            primarily uses the term "DHCP server" or "server" when
+            discussing the "delegating router" functionality of prefix
+            delegation (see <xref target="intro-and-overview"/>.</t>
 
             <t hangText="DHCP">Dynamic Host Configuration Protocol for IPv6.
             The terms DHCPv4 and DHCPv6 are used only in contexts where it is
@@ -607,15 +621,11 @@
             An IA that carries temporary addresses (see <xref
             target="RFC4941"></xref>).</t>
 
-            <t hangText="IA_PD">Identity Association for Prefix Delegation: A
-            collection of prefixes assigned to the requesting router. Each
-            IA_PD has an associated IAID. A requesting router may have more
-            than one IA_PD assigned to it; for example, one for each of its
-            interfaces.</t>
+            <t hangText="IA_PD">Identity Association for Prefix Delegation: An
+            IA that carries delegated prefixes.</t>
 
-            <t hangText="lease">It is an address assigned by the DHCP server
-            to the client or a delegated prefix assigned by the delegating
-            router to the requesting router. Leases are carried in the IA
+            <t hangText="lease">An address or delegated prefix assigned
+            by the DHCP server to the client. Leases are carried in the IA
             Address or IA Prefix options within the IA_NA/IA_TA and IA_PD
             options respectively.</t>
 
@@ -627,7 +637,10 @@
             server used to provide security for Reconfigure messages.</t>
 
             <t hangText="requesting router">The router that acts as a DHCP
-            client and is requesting prefix(es) to be assigned.</t>
+            client and is requesting prefix(es) to be assigned. This document
+            primarily uses the term "DHCP client" or "client" when
+            discussing the "requesting router" functionality of prefix
+            delegation (see <xref target="intro-and-overview"/>.</t></t>
 
             <t hangText="singleton option">An option that is allowed to appear
             only once. Most options are singletons.</t>
@@ -720,7 +733,7 @@
       <section anchor="OpModes-PD" title="DHCP for Prefix Delegation">
         <t>The prefix delegation mechanism, originally described in <xref
         target="RFC3633"></xref>, is another stateful mode of operation and
-        intended for simple delegation of prefixes from a delegating router
+        was originally intended for simple delegation of prefixes from a delegating router
         (DHCP server) to requesting routers (DHCP clients). It is appropriate
         for situations in which the delegating router does not have knowledge
         about the topology of the networks to which the requesting router is
@@ -761,6 +774,11 @@
 
         <t><xref target="FigISPNetwork"></xref> illustrates a network
         architecture in which prefix delegation could be used.</t>
+        
+        <t>As mentioned earlier in <xref target="intro-and-overview"/> and
+        in <xref target="draft-ietf-v6ops-host-addr-availability"/>, prefix
+        delegation is no longer restricted to requesting routers and
+        delegation routers.</t>
 
       </section>
 
@@ -845,7 +863,7 @@
         which the router is attached, and begins to send router advertisements
         for the prefix on the link, the requesting router MUST set the valid
         lifetime in those advertisements to be no later than the valid
-        lifetime specified in the IA_PD Prefix option. A requesting router MAY
+        lifetime specified in the IA_PD Prefix option. A client MAY
         use the preferred lifetime specified in the IA_PD Prefix option.</t>
 
       </section>
@@ -1707,11 +1725,11 @@
                title="Identity Associations for Prefix Delegation">
         <t>An IA_PD is different from an IA for address assignment, in that it
         does not need to be associated with exactly one interface. One IA_PD
-        can be associated with the requesting router, with a set of interfaces
-        or with exactly one interface. A requesting router must create at
+        can be associated with the client, with a set of interfaces
+        or with exactly one interface. A client must create at
         least one distinct IA_PD. It may associate a distinct IA_PD with each
         of its downstream network interfaces and use that IA_PD to obtain a
-        prefix for that interface from the delegating router.</t>
+        prefix for that interface from the server.</t>
 
         <t>The configuration information in an IA_PD consists of one or more
         IPv6 prefixes along with the T1 and T2 times for the IA_PD. See <xref
@@ -1790,7 +1808,7 @@
       </section>
 
       <section title="Assignment of Prefixes for IA_PD">
-        <t>The mechanism through which the delegating router selects
+        <t>The mechanism through which the server selects
         prefix(es) for delegation is not specified in this document. Examples
         of ways in which the server might select prefix(es) for a client
         include: static assignment based on subscription to an ISP; dynamic
@@ -2347,18 +2365,18 @@
         in the same way as addresses are for address assignment, and mentioned
         above.</t>
 
-        <t>When a client (acting as requesting router) sends a DHCP message
+        <t>When a client sends a DHCP message
         for the purpose of prefix delegation, it SHOULD be sent on the
         interface associated with the upstream router (ISP network). The
         upstream interface is typically determined by configuration. This rule
         applies even in the case where a separate IA_PD is used for each
         downstream interface.</t>
 
-        <t>When a requesting router sends a DHCP message directly to a
-        delegating router using unicast (after receiving the Server Unicast
-        option from that delegating router), the source address SHOULD be an
+        <t>When a client sends a DHCP message directly to a
+        server using unicast (after receiving the Server Unicast
+        option from that server), the source address SHOULD be an
         address from the upstream interface and which is suitable for use by
-        the delegating router in responding to the requesting router.</t>
+        the server in responding to the client.</t>
       </section>
     </section>
 
@@ -2444,7 +2462,7 @@
       a configuration exchange as described in <xref
       target="request-create-transmit"></xref>.</t>
 
-      <t>Requesting router and delegating router use the IA_PD option
+      <t>The client and server use the IA_PD option
       to exchange information about prefix(es) in much the same way as IA_NA
       and IA_TA options are used for assigned addresses. Typically, a single
       DHCP session is used to exchange information about addresses and
@@ -2726,16 +2744,16 @@
           longer be appropriate for the link to which the client is attached.
           Examples of times when a client may have moved to a new link
           include: <list hangIndent="3" style="hanging">
-              <t hangText="o">The client reboots (and has no stable storage or
+              <t hangText="o">The client reboots (and has stable storage and
               persisted DHCP state).</t>
 
-              <t hangText="o">The client is physically connected to a wired
-              connection.</t>
+              <t hangText="o">The client is reconnected to a link on which
+              it has obtained leases.</t>
 
               <t hangText="o">The client returns from sleep mode.</t>
 
-              <t hangText="o">The client using a wireless technology changes
-              access points.</t>
+              <t hangText="o">The client changes access points (such as if
+              using a wireless technology).</t>
             </list></t>
 
           <t>In any situation when a client may have moved to a new link and
@@ -2750,10 +2768,12 @@
           client.</t>
 
           <t>If the client has any valid delegated prefixes obtained from the
-          DHCP server from which it has obtained the addresses, the client
-          initiates Rebind/Reply exchange as described in <xref
-          target="pd-bindings-verification"></xref> instead of sending the
-          Confirm message.</t>
+          DHCP server, the client MUST
+          initiate a Rebind/Reply message exchange as described in <xref
+          target="RFC3315-18.1.4"></xref>, with the exception that the
+          retransmission parameters should be set as for the Confirm message
+          as described below. The client includes IA_NAs, IA_TAs, and IA_PDs,
+          along with the associated leases, in its Rebind message.</t>
 
           <t>The client sets the "msg-type" field to CONFIRM. The client
           generates a transaction ID and inserts this value in the
@@ -2915,6 +2935,9 @@
           Renew message was sent starting at time T1 has not responded), the
           client initiates a Rebind/Reply message exchange with any available
           server.</t>
+          
+          <t>A Rebind is also used to verify delegated prefix bindings as
+          described in <xref target="RFC3315-18.1.2"/>.</t>
 
           <t>The client constructs the Rebind message as described in <xref
           target="RFC3315-18.1.3"></xref> with the following differences:
@@ -3301,31 +3324,31 @@
                 IA_NA or IA_TA MUST NOT be used to form an implicit prefix
                 with a length other than 128.</t>
 
-                <t hangText="-">For each IA_PD the requesting router assigns a
+                <t hangText="-">For each IA_PD the client assigns a
                 subnet from each of the delegated prefixes
                 to each of the links to which the associated interfaces are
-                attached, with the following exception: the requesting router MUST
+                attached, with the following exception: the client MUST
                 NOT assign any delegated prefixes or subnets from the delegated
                 prefix(es) to the link through which it received the DHCP message
-                from the delegating router (see <xref target="RFC6603"/>
+                from the server (see <xref target="RFC6603"/>
                 for exceptions).
                 <vspace blankLines='1'/>
-                When a requesting router subnets a delegated prefix, it must assign
+                When a client subnets a delegated prefix, it must assign
                 additional bits to the prefix to generate unique, longer prefixes.
-                For example, if the requesting router in Figure 1 were delegated
+                For example, if the client in <xref target="FigISPNetwork"/> were delegated
                 2001:db8:0::/48, it might generate 2001:db8:0:1::/64 and
                 2001:db8:0:2::/64 for assignment to the two links in the subscriber
-                network.  If the requesting router were delegated 2001:db8:0::/48
+                network.  If the client were delegated 2001:db8:0::/48
                 and 2001:db8:5::/48, it might assign 2001:db8:0:1::/64 and
                 2001:db8:5:1::/64 to one of the links, and 2001:db8:0:2::/64 and
                 2001:db8:5:2::/64 for assignment to the other link.
                 <vspace blankLines='1'/>
-                If the requesting router assigns a delegated prefix to a link to
+                If the client assigns a delegated prefix to a link to
                 which the router is attached, and begins to send router
-                advertisements for the prefix on the link, the requesting router MUST
+                advertisements for the prefix on the link, the client MUST
                 set the valid lifetime in those advertisements to be no later than
                 the valid lifetime specified in the IA_PD Prefix option.  A
-                requesting router MAY use the preferred lifetime specified in the
+                client MAY use the preferred lifetime specified in the
                 IA_PD Prefix option.</t>
               </list></t>
 
@@ -3468,30 +3491,6 @@
 
         <!-- ends: "19.4.1 from line 2871-->
 
-        <section anchor="pd-bindings-verification"
-                 title="Bindings Verification by Requesting Router">
-          <t>In some circumstances the requesting router may need verification
-          that the delegating router still has a valid binding for the
-          requesting router. Examples of times when a requesting router may
-          ask for such verification include:</t>
-
-          <t><list style="symbols">
-              <t>The requesting router reboots.</t>
-
-              <t>The requesting router's upstream link flaps.</t>
-
-              <t>The requesting router is physically (re)connected to a wired
-              connection.</t>
-            </list></t>
-
-          <t>If such verification is needed the requesting router MUST
-          initiate a Rebind/Reply message exchange as described in <xref
-          target="RFC3315-18.1.4"></xref>, with the exception that the
-          retransmission parameters should be set as for the Confirm message,
-          described in <xref target="RFC3315-18.1.2"></xref>. The requesting
-          router includes IA_NAs, IA_TAs, and IA_PDs, along with the
-          associated leases, in its Rebind message.</t>
-        </section>
       </section>
 
       <!-- ends: "18.1 from line 1953-->
@@ -4346,10 +4345,10 @@
           <t>A relay agent forwards messages containing Prefix Delegation
           options in the same way as described earlier in this section.</t>
 
-          <t>If a delegating router communicates with a requesting router
-          through a relay agent, the delegating router may need a protocol or
+          <t>If a server communicates with a client through a relay agent
+          about delegated prefixes, the server may need a protocol or
           other out-of-band communication to configure routing information for
-          delegated prefixes on any router through which the requesting router
+          delegated prefixes on any router through which the client
           may forward traffic.</t>
         </section>
 
@@ -5585,8 +5584,8 @@
 
           <c>6</c>
 
-          <c>Delegating router has no prefixes available to assign to the
-          IAPD(s).</c>
+          <c>Server has no prefixes available to assign to the
+          IA_PD(s).</c>
         </texttable>
       </section>
 
@@ -6126,16 +6125,16 @@
 
             <t hangText="   IAID">The unique identifier for this IA_PD; the
             IAID must be unique among the identifiers for all of this
-            requesting router's IA_PDs.</t>
+            client's IA_PDs.</t>
 
-            <t hangText="   T1">The time at which the requesting router should
-            contact the delegating router from which the prefixes in the IA_PD
+            <t hangText="   T1">The time at which the client should
+            contact the server from which the prefixes in the IA_PD
             were obtained to extend the lifetimes of the prefixes delegated to
             the IA_PD; T1 is a time duration relative to the current time
             expressed in units of seconds.</t>
 
-            <t hangText="   T2">The time at which the requesting router should
-            contact any available delegating router to extend the lifetimes of
+            <t hangText="   T2">The time at which the client should
+            contact any available server to extend the lifetimes of
             the prefixes assigned to the IA_PD; T2 is a time duration relative
             to the current time expressed in units of seconds.</t>
 
@@ -6157,41 +6156,41 @@
         <t>Note that an IA_PD has no explicit "lifetime" or "lease length" of
         its own. When the valid lifetimes of all of the prefixes in a IA_PD
         have expired, the IA_PD can be considered as having expired. T1 and T2
-        are included to give delegating routers explicit control over when a
-        requesting router should contact the delegating router about a
+        are included to give the server explicit control over when a
+        client should contact the server about a
         specific IA_PD.</t>
 
-        <t>In a message sent by a requesting router to a delegating router,
-        the T1 and T2 fields SHOULD be set to 0. The delegating router MUST
+        <t>In a message sent by a client to a server,
+        the T1 and T2 fields SHOULD be set to 0. The server MUST
         ignore any values in these fields in messages received from a
-        requesting router.</t>
+        client.</t>
 
-        <t>In a message sent by a delegating router to a requesting router,
-        the delegating router MUST use the values in the T1 and T2 fields for
+        <t>In a message sent by a server to a client,
+        the server MUST use the values in the T1 and T2 fields for
         the T1 and T2 parameters, unless those values in those fields are 0.
         The values in the T1 and T2 fields are the number of seconds until T1
         and T2.</t>
 
-        <t>The delegating router selects the T1 and T2 times to allow the
-        requesting router to extend the lifetimes of any prefixes in the IA_PD
-        before the lifetimes expire, even if the delegating router is
+        <t>The server selects the T1 and T2 times to allow the
+        client to extend the lifetimes of any prefixes in the IA_PD
+        before the lifetimes expire, even if the server is
         unavailable for some short period of time. Recommended values for T1
         and T2 are .5 and .8 times the shortest preferred lifetime of the
-        prefixes in the IA_PD that the delegating router is willing to extend,
+        prefixes in the IA_PD that the server is willing to extend,
         respectively. If the time at which the prefixes in an IA_PD are to be
-        renewed is to be left to the discretion of the requesting router, the
-        delegating router sets T1 and T2 to 0. The requesting router MUST
+        renewed is to be left to the discretion of the client, the
+        server sets T1 and T2 to 0. The client MUST
         follow the rules defined in <xref target="t1-t2-0"></xref>.</t>
 
-        <t>If a delegating router receives an IA_PD with T1 greater than T2,
-        and both T1 and T2 are greater than 0, the delegating router ignores
+        <t>If a server receives an IA_PD with T1 greater than T2,
+        and both T1 and T2 are greater than 0, the server ignores
         the invalid values of T1 and T2 and processes the IA_PD as though the
-        requesting router had set T1 and T2 to 0.</t>
+        client had set T1 and T2 to 0.</t>
 
-        <t>If a requesting router receives an IA_PD with T1 greater than T2,
-        and both T1 and T2 are greater than 0, the requesting router discards
+        <t>If a client receives an IA_PD with T1 greater than T2,
+        and both T1 and T2 are greater than 0, the client discards
         the IA_PD option and processes the remainder of the message as though
-        the requesting router had not included the IA_PD option.</t>
+        the client had not included the IA_PD option.</t>
       </section>
 
       <section anchor="IAPREFIX-option" title="IA Prefix Option">
@@ -6254,25 +6253,25 @@
             prefix.</t>
           </list></t>
 
-        <t>In a message sent by a requesting router to a delegating router,
+        <t>In a message sent by a client to a server,
         the preferred and valid lifetime fields SHOULD be set to 0. The server
         MUST ignore any received values in these lifetime fields.</t>
 
-        <t>A requesting router may set the IPv6 prefix field to zero and a
+        <t>A client may set the IPv6 prefix field to zero and a
         given value in the prefix-length field to indicate a preference for
         the size of the prefix to be delegated.</t>
 
-        <t>In a message sent by a delegating router the preferred and valid
+        <t>In a message sent by a server, the preferred and valid
         lifetimes should be set to the values of AdvPreferredLifetime and
         AdvValidLifetime as specified in section 6.2.1, "Router Configuration
         Variables" of <xref target="RFC2461"></xref>, unless administratively
         configured.</t>
 
-        <t>A requesting router discards any prefixes for which the preferred
-        lifetime is greater than the valid lifetime. A delegating router
-        ignores the lifetimes set by the requesting router if the preferred
+        <t>A client discards any prefixes for which the preferred
+        lifetime is greater than the valid lifetime. A server
+        ignores the lifetimes set by the client if the preferred
         lifetime is greater than the valid lifetime and ignores the values for
-        T1 and T2 set by the requesting router if those values are greater
+        T1 and T2 set by the client if those values are greater
         than the preferred lifetime.</t>
 
         <t>The values in the preferred and valid lifetimes are the number of
@@ -6537,13 +6536,6 @@
       Replayed messages can represent a DOS attack through exhaustion of
       processing resources, but not through mis-configuration or exhaustion of
       other resources such as assignable address and delegatable prefixes.</t>
-
-      <t>Because a requesting router and delegating routers must each
-      have at least one assigned IPv6 address, the routers may be able to use
-      IPsec for authentication of DHCP messages. The details of using IPsec
-      for DHCP are under development. For point to point
-      links, where one trusts that there is no man in the middle, or one
-      trusts layer two authentication, IPsec may not be necessary. </t>
 
       <t>Networks configured with delegated prefixes should be configured to
       preclude intentional or inadvertent inappropriate advertisement of these
