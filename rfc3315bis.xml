@@ -2851,8 +2851,9 @@
           in <xref target="t1-t2-0"></xref>.</t>
 
           <t>If the client is sending a Renew message in response to a
-          Reconfigure message from the server, the client copies IA options
-          from the Reconfigure message into the Renew message.</t>
+          Reconfigure message from the server and the server included IA
+          options, the client copies IA options from the Reconfigure message
+          into the Renew message.</t>
 
           <t>The client sets the "msg-type" field to RENEW. The client
           generates a transaction ID and inserts this value in the
@@ -2888,7 +2889,8 @@
           SHOULD NOT include IA Prefix option with the IPv6 prefix field set
           to 0 unless it is supplying a hint for the prefix length.</t>
 
-          <t>When the client is responding to a Reconfigure, the client copies
+          <t>When the client is responding to a Reconfigure and the server
+          included an Option Request option, the client copies
           the Option Request option from the Reconfigure message into the
           Renew message. Otherwise, the client includes Option Request option
           (see <xref target="RFC3315-22.7"></xref>) to request the SOL_MAX_RT
