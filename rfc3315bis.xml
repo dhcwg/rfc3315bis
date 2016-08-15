@@ -767,31 +767,6 @@
 
         <t><xref target="FigISPNetwork"></xref> illustrates a network
         architecture in which prefix delegation could be used.</t>
-        
-        <t>While <xref target="RFC3633"/> assumed that the DHCPv6 client
-        is a router (hence use of "requesting router") and that the DHCPv6
-        server was a router (hence use of "delegating router"), DHCPv6
-        prefix delegation itself does not require that the client forward 
-        IPv6 packets not addressed to itself, and thus does not require
-        that the client (or server) be an IPv6 router as defined in
-        <xref target="RFC2460"/>. Also, in many cases (such as tethering
-        or hosting virtual machines), hosts are already forwarding IPv6
-        packets and thus operating as IPv6 routers as defined in
-        <xref target="RFC2460"/>. Therefore, this document mostly replaces
-        "requesting router" with client and "delegating router" with
-        server.</t>
-
-      </section>
-
-      <section anchor="OpModes-CPE" title="DHCP for Customer Edge Routers">
-        <t>The DHCP requirements and network architecture for Customer Edge
-        Routers are described in <xref target="RFC7084"></xref>. This model of
-        operation combines address assignment (see <xref
-        target="OpModes-NA"></xref>) and prefix delegation (see <xref
-        target="OpModes-PD"></xref>). In general, this model assumes that a
-        single set of transactions between the client and server will assign
-        or extend the client's non-temporary addresses and delegated
-        prefixes.</t>
 
         <figure align="center" anchor="FigISPNetwork"
                 title="Prefix Delegation Network">
@@ -863,6 +838,31 @@
         lifetime in those advertisements to be no later than the valid
         lifetime specified in the IA_PD Prefix option. A client MAY
         use the preferred lifetime specified in the IA_PD Prefix option.</t>
+
+        <t>While <xref target="RFC3633"/> assumed that the DHCPv6 client
+        is a router (hence use of "requesting router") and that the DHCPv6
+        server was a router (hence use of "delegating router"), DHCPv6
+        prefix delegation itself does not require that the client forward 
+        IPv6 packets not addressed to itself, and thus does not require
+        that the client (or server) be an IPv6 router as defined in
+        <xref target="RFC2460"/>. Also, in many cases (such as tethering
+        or hosting virtual machines), hosts are already forwarding IPv6
+        packets and thus operating as IPv6 routers as defined in
+        <xref target="RFC2460"/>. Therefore, this document mostly replaces
+        "requesting router" with client and "delegating router" with
+        server.</t>
+
+      </section>
+
+      <section anchor="OpModes-CPE" title="DHCP for Customer Edge Routers">
+        <t>The DHCP requirements and network architecture for Customer Edge
+        Routers are described in <xref target="RFC7084"></xref>. This model of
+        operation combines address assignment (see <xref
+        target="OpModes-NA"></xref>) and prefix delegation (see <xref
+        target="OpModes-PD"></xref>). In general, this model assumes that a
+        single set of transactions between the client and server will assign
+        or extend the client's non-temporary addresses and delegated
+        prefixes.</t>
 
       </section>
 
