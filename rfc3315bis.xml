@@ -1793,27 +1793,13 @@
             agent.</t>
           </list></t>
 
-        <t>Any address assigned by a server that is based on an EUI-64
-        identifier MUST include an interface identifier with the "u"
-        (universal/local) and "g" (individual/group) bits of the interface
-        identifier set appropriately, as indicated in section 2.5.1 of <xref
-        target="RFC4291"></xref>.</t>
-
+        <t>By default, DHCPv6 server implementations SHOULD NOT generate
+        predictable IPv6 addresses (<xref target="RFC7721"/>).</t>
+        
         <t>A server MUST NOT assign an address that is otherwise reserved for
-        some other purpose. For example, a server MUST NOT assign reserved
-        anycast addresses, as defined in <xref target="RFC2526"></xref>, from
-        any subnet.</t>
-      </section>
-
-      <section title="Assignment of Prefixes for IA_PD">
-        <t>The mechanism through which the server selects
-        prefix(es) for delegation is not specified in this document. Examples
-        of ways in which the server might select prefix(es) for a client
-        include: static assignment based on subscription to an ISP; dynamic
-        assignment from a pool of available prefixes; selection based on an
-        external authority such as a RADIUS server using the
-        Framed-IPv6-Prefix option as described in <xref pageno="false"
-        target="RFC3162"></xref>.</t>
+        some other purpose. For example, a server MUST NOT assign addresses
+        that use a reserved IPv6 Interface Identifier (<xref target="RFC5453"/>,
+        <xref target="RFC7136"/>, <xref target="IANA-RESERVED-IID"/>).</t>
       </section>
 
       <section title="Assignment of Temporary Addresses">
@@ -1853,6 +1839,18 @@
         DHCP provides such possibility (see <xref
         target="RFC3315-22.5"></xref>).</t>
       </section>
+      
+      <section title="Assignment of Prefixes for IA_PD">
+        <t>The mechanism through which the server selects
+        prefix(es) for delegation is not specified in this document. Examples
+        of ways in which the server might select prefix(es) for a client
+        include: static assignment based on subscription to an ISP; dynamic
+        assignment from a pool of available prefixes; selection based on an
+        external authority such as a RADIUS server using the
+        Framed-IPv6-Prefix option as described in <xref pageno="false"
+        target="RFC3162"></xref>.</t>
+      </section>      
+      
     </section>
 
     <!-- ends: "12 from line 1217-->
@@ -6748,14 +6746,10 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.2132'?>
 
       <!-- Alexander, S. and R. Droms, "DHCP Options and BOOTP VendorExtensions", RFC 2132, March 1997. -->
-
+      
       <?rfc include='reference.RFC.6355'?>
 
       <?rfc include='reference.RFC.6724'?>
-
-      <?rfc include='reference.RFC.2526'?>
-
-      <!--  Johnson, D. and S. Deering, "Reserved IPv6 Subnet Anycast Addresses", RFC 2526, March 1999. -->
 
       <?rfc include='reference.RFC.7227'?>
 
@@ -6764,9 +6758,11 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.7083'?>
 
       <?rfc include='reference.RFC.7283'?>
+      
     </references>
 
     <references title="Informative References">
+
       <reference anchor="IANA-PEN">
         <front>
           <title>Private Enterprise Numbers registry
@@ -6779,6 +6775,21 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <date />
         </front>
       </reference>
+      
+       <reference anchor="IANA-RESERVED-IID">
+        <front>
+          <title>
+              Reserved IPv6 Interface Identifiers
+              http://www.iana.org/assignments/ipv6-interface-ids/ipv6-interface-ids.xml
+              </title>
+              
+          <author>
+            <organization>IANA</organization>
+          </author>
+
+          <date />
+        </front>
+      </reference>     
 
       <!--Krawczyk, H., Bellare, M. and R. Canetti, "HMAC: Keyed-Hashingfor Message Authentication", RFC 2104, February 1997. -->
 
@@ -6811,6 +6822,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.7610'?>
       <?rfc include='reference.RFC.7824'?>
       <?rfc include='reference.RFC.7844'?>
+      <?rfc include='reference.RFC.5453'?>
+      <?rfc include='reference.RFC.7136'?>    
+      <?rfc include='reference.RFC.7721'?>      
 
       <?rfc include='reference.I-D.ietf-dhc-topo-conf'?>
 
