@@ -239,7 +239,7 @@
       stateless DHCPv6. Mechanisms necessary to support stateless DHCPv6 are
       much smaller than to support stateful DHCPv6.</t>
 
-      <t>The remainder of this introduction summarizes relation to the
+      <t>The remainder of this introduction summarizes the relationship to the
       previous DHCPv6 standards in <xref target="previous-dhcp6"/>,
       clarifies the stance with regards to DHCPv4 in <xref target="dhcpv4"/>,
       and describes the message exchange mechanisms in <xref
@@ -531,8 +531,8 @@
             server data records containing the information the server has
             about the addresses or delegated prefixes in an IA or configuration information
             explicitly assigned to the client. Configuration information that
-            has been returned to a client through a policy - for example, the
-            information returned to all clients on the same link - does not
+            has been returned to a client through a policy, such as the
+            information returned to all clients on the same link, does not
             require a binding. A binding containing information about an IA is
             indexed by the tuple &lt;DUID, IA-type, IAID&gt; (where IA-type is
             the type of lease in the IA; for example, temporary). A binding
@@ -592,7 +592,7 @@
             holds delegated prefixes. Throughout this document, "IA" is used
             to refer to an identity association without identifying the type
             of a lease in the IA. At the time of writing this document, there
-            are 3 IA types defined: IA_NA, IA_TA and IA_PD. New IA types may
+            are three IA types defined: IA_NA, IA_TA and IA_PD. New IA types may
             be defined in the future.</t>
 
             <t hangText="IAID">Identity Association IDentifier: An identifier
@@ -1455,7 +1455,7 @@
         </t>
 -->
 
-        <t>Formats for the variable field of the DUID for the first 3 of the
+        <t>Formats for the variable field of the DUID for the first three of the
         above types are shown below. The fourth type, DUID-UUID <xref
         target="RFC6355"></xref>, can be used in situations where there is a
         UUID stored in a device's firmware settings.</t>
@@ -6425,7 +6425,7 @@
         includes this option in its response to specify an upper bound for how
         long a client should wait before refreshing the information. Clients
         that support stateless mode MUST support this option. This option is
-        listed here for completeteness.  For complete reference, see <xref
+        listed here for completeness.  For complete reference, see <xref
         target="RFC4242"/>.</t>
       </section>
 
