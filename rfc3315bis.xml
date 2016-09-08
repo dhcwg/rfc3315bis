@@ -226,16 +226,16 @@
       "stateful autoconfiguration protocol" referred to in "IPv6 Stateless
       Address Autoconfiguration" <xref target="RFC4862"></xref>.</t>
 
-      <t>This document also provides a mechanism for automated delegation of
+      <t>DHCPv6 also provides a mechanism for automated delegation of
       IPv6 prefixes using DHCPv6, originally specified in <xref target="RFC3633"/>.
       Through this mechanism, a delegating router
       can delegate prefixes to requesting routers. Use of this mechanism is
       specified as part of the <xref target="RFC7084"/> and by <xref
       target="TR-187"/>.</t>
 
-      <t>DHCPv6 can also provide only other configuration options
+      <t>And, DHCPv6 can be used to obtain just other configuration information
       (i.e., no addresses or prefixes). That implies that the
-      server doesn't have to track any state, and thus the mode is called
+      server doesn't have to track any state, and thus this mode is called
       stateless DHCPv6. Mechanisms necessary to support stateless DHCPv6 are
       much smaller than to support stateful DHCPv6.</t>
 
