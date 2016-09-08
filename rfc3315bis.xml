@@ -410,11 +410,10 @@
       IPv6. Related work in IPv6 that would best serve an implementer to study
       includes the IPv6 Specification <xref target="RFC2460"></xref>, the IPv6
       Addressing Architecture <xref target="RFC4291"></xref>, IPv6 Stateless
-      Address Autoconfiguration <xref target="RFC4862"></xref>, IPv6 Neighbor
-      Discovery Processing <xref target="RFC4861"></xref>, and Dynamic Updates
-      to DNS <xref target="RFC2136"></xref>. These specifications enable DHCP
-      to build upon the IPv6 work to provide both robust stateful
-      autoconfiguration and autoregistration of DNS Host Names.</t>
+      Address Autoconfiguration <xref target="RFC4862"></xref>, and IPv6 Neighbor
+      Discovery Processing <xref target="RFC4861"></xref>. These specifications
+      enable DHCP to build upon the IPv6 work to provide robust stateful
+      autoconfiguration.</t>
 
       <t>The IPv6 Addressing Architecture specification <xref
       target="RFC4291"></xref> defines the address scope that can be used in
@@ -442,11 +441,6 @@
       autoconfiguration, it is strongly recommended that implementers
       understand IPv6 Neighbor Discovery.</t>
 
-      <t>Dynamic Updates to DNS <xref target="RFC2136"></xref> is a
-      specification that supports the dynamic update of DNS records for both
-      IPv4 and IPv6. DHCP can use the dynamic updates to DNS to integrate
-      addresses and name space to not only support autoconfiguration, but also
-      autoregistration in IPv6.</t>
     </section>
 
     <!-- ends: "3 from line 360-->
@@ -6684,12 +6678,6 @@
       <?rfc include='reference.RFC.3646'?>
 
       <?rfc include='reference.RFC.4075'?>
-
-      <?rfc include='reference.RFC.2136'?>
-
-      <!-- Vixie, P., Ed., Thomson, S., Rekhter, Y. and J. Bound, "DynamicUpdates in the Domain Name System (DNS UPDATE)", RFC 2136, April
-
-1997. -->
 
       <?rfc include='reference.RFC.2119'?>
 
