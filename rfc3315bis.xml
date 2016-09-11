@@ -6644,11 +6644,18 @@
       <t>A number of additional people have contributed to identifying issues
       with RFC3315 and RFC3633 and proposed resolutions to these issues as
       reflected in this document (in no particular order): Ole Troan, Robert
-      Marks, Leaf Yeh, Tim Winters, Michelle Cotton, Pablo Armando, John
-      Brzozowski, Suresh Krishnan, Hideshi Enokihara, Alexandru Petrescu,
-      Yukiyo Akisada, Tatuya Jinmei, Fred Templin and Christian Huitema. With
-      special thanks to Ralph Droms for answering many questions related to
-      the original RFC3315 work.</t>
+      Marks, Leaf Yeh, Michelle Cotton, Pablo Armando, John Brzozowski,
+      Suresh Krishnan, Hideshi Enokihara, Alexandru Petrescu,
+      Yukiyo Akisada, Tatuya Jinmei, Fred Templin and Christian Huitema.</t>
+      
+      <t>We also thank the following, not otherwise acknowledged and in no
+      particular order, for their review comments: Jermey Reed, Francis Dupont,
+      Lorenzo Coilitti, Tianxiang Li, Ian Farrer, Yogendra Pal,
+      Shawn Routhier, and Michayla Newcombe.</t>
+      
+      <t>And, special thanks to Ralph Droms for answering many questions related
+      to the original RFC3315 and RFC3633 work and for being the document
+      shepherd.</t>
 
       <t>The following acknowledgments are from the original RFC3315 and
       RFC3633:</t>
