@@ -3619,8 +3619,8 @@
           <t>The server examines all IAs in the message from the client.</t>
 
           <t>For each IA_NA and IA_TA in the Request message the server
-          checks if the prefixes on included IP addresses are appropriate for
-          the link to which the client is connected. If any of the prefixes on
+          checks if the prefixes of included IP addresses are appropriate for
+          the link to which the client is connected. If any of the prefixes of
           the included IP addresses is not appropriate for the link to which
           the client is connected, the server MUST return the IA to the client
           with a Status Code option with the value NotOnLink. If the server
@@ -4102,7 +4102,7 @@
           <!-- Change from RFC 7550 section 4.1 has been applied. 6/1/2015 -->
 
           <t>If the server will not assign any addresses to an IA (IA_NA or
-          IA_IA) in subsequent Request from the client, the server MUST
+          IA_TA) in subsequent Request from the client, the server MUST
           include the IA in the Advertise message with no addresses in the IA
           and a Status Code option encapsulated in the IA containing status
           code NoAddrsAvail.</t>
@@ -4535,9 +4535,6 @@
         replay detection method (RDM) field specifies the type of replay
         detection used in the replay detection field.</t>
 
-        <t><xref target="RFC3315"></xref> has defined the delayed
-        authentication protocol. But it is obsoleted by this document, due to
-        lack of usage.</t>
       </section>
 
       <!-- ends: "21.2 from line 3172-->
