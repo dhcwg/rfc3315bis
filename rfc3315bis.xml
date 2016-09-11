@@ -644,7 +644,7 @@
             retransmitted message.</t>
 
             <t hangText="top-level option">An option conveyed in a DHCP
-            message directly, i.e. not encapsulated in any other option, as
+            message directly, i.e., not encapsulated in any other option, as
             described in Section 9 of <xref target="RFC7227"></xref>.</t>
 
             <t hangText="transaction ID">An opaque value used to match
@@ -1780,7 +1780,7 @@
             <t hangText="-">The DUID supplied by the client.</t>
 
             <t hangText="-">Other information in options supplied by the
-            client, e.g. IA Address options that include the client's requests
+            client, e.g., IA Address options that include the client's requests
             for specific addresses.</t>
 
             <t hangText="-">Other information in options supplied by the relay
@@ -2400,7 +2400,7 @@
       message to this server as described in the <xref
       target="request-create-transmit"></xref>.</t>
 
-      <t>A client willing to perform the Solicit-Reply message
+      <t>A client willing to perform the Solicit/Reply message
       exchange described in <xref
       target="solicit-create-transmit"></xref> includes a Rapid
       Commit option (see <xref target="RFC3315-22.14"></xref>) in its
@@ -2456,7 +2456,7 @@
       to exchange information about prefix(es) in much the same way as IA_NA
       and IA_TA options are used for assigned addresses. Typically, a single
       DHCP session is used to exchange information about addresses and
-      prefixes, i.e. IA_NA and IA_PD options are carried in the same
+      prefixes, i.e., IA_NA and IA_PD options are carried in the same
       message.</t>
 
       <section title="Client Behavior">
@@ -2909,7 +2909,7 @@
           reached. If the client is responding to a Reconfigure, the client
           ignores and discards the Reconfigure message. In this case, the
           client continues to operate as if Reconfigure message was not
-          received, i.e. it uses T1/T2 times associated with the client's
+          received, i.e., it uses T1/T2 times associated with the client's
           leases to determine when it should send Renew or Rebind to the
           server. If the terminated Renew exchange was not initiated as a
           result of receiving a Reconfigure message, the client begins a
@@ -3529,8 +3529,8 @@
         such as printing, and availability of new software.</t>
 
         <t>When a client receives a Reconfigure message from the server, the
-        client sends Renew, Rebind or Information-request message as indicated
-        by the as indicated by the Reconfigure Message option (as defined in
+        client initiates sending a Renew, Rebind or Information-request message
+        as indicated by msg-type in the Reconfigure Message option (as defined in
         <xref target="RFC3315-22.19"></xref>). The server sends IAs and/or
         other configuration information to the client in a Reply message. The
         server MAY include options containing the IAs and new values for other
@@ -3574,14 +3574,14 @@
           <t>DISCUSSION:</t>
 
           <t><list style="empty">
-              <t>When using the Solicit-Reply message exchange, the server
+              <t>When using the Solicit/Reply message exchange, the server
               commits the assignment of any leases before sending the Reply
               message. The client can assume it has been assigned the leases
               in the Reply message and does not need to send a Request message
               for those addresses.</t>
 
               <t>Typically, servers that are configured to use the
-              Solicit-Reply message exchange will be deployed so that only one
+              Solicit/Reply message exchange will be deployed so that only one
               server will respond to a Solicit message. If more than one
               server responds, the client will only use the leases from one of
               the servers, while the leases from the other servers will be
@@ -4263,7 +4263,7 @@
         target="RFC7283"></xref>) to be relayed, it constructs a new
         Relay-forward message. The <!-- Applied text from Section 4.1 of RFC7283 -->
         relay agent copies the source address from the header of the IP
-        datagram in which the message was received to the peer-address field
+        datagram in which the message was received into the peer-address field
         of the Relay-forward message. The relay agent copies the received DHCP
         message (excluding any IP or UDP headers) into a Relay Message option
         in the new message. The relay agent adds to the Relay-forward message
@@ -4282,7 +4282,7 @@
           client, the relay agent places a global or unique local <xref
           target="RFC4193"/> address with a prefix
           assigned to the link on which the client should be assigned
-          leases in the link-address field. If such an address is not
+          leases into the link-address field. If such an address is not
           available, the relay agent may fill in the link-address field
           with a link-local address from the interface the original message
           was received on. That is not recommended as it requires additional
@@ -5615,11 +5615,11 @@
           </list></t>
 
         <t>A client MAY include this option in a Solicit message if the client
-        is prepared to perform the Solicit-Reply message exchange described in
+        is prepared to perform the Solicit/Reply message exchange described in
         <xref target="solicit-create-transmit"></xref>.</t>
 
         <t>A server MUST include this option in a Reply message sent in
-        response to a Solicit message when completing the Solicit-Reply
+        response to a Solicit message when completing the Solicit/Reply
         message exchange.</t>
 
         <t>DISCUSSION:</t>
@@ -6540,7 +6540,7 @@
     <section anchor="privacy" title="Privacy Considerations">
       <t>This section focuses on the server considerations. For extended
       discussion about privacy considerations for the client, see <xref
-      target="RFC7824"></xref>. It particular, Section 3
+      target="RFC7824"></xref>. In particular, Section 3
       of said document discuss various identifiers that could be misused to
       track the client. Section 4 discusses existing mechanisms that may have
       an impact on client's privacy. Finally, Section 5 discusses potential
@@ -6650,7 +6650,7 @@
       special thanks to Ralph Droms for answering many questions related to
       the original RFC3315 work.</t>
 
-      <t>The following acknowledgements are from the original RFC3315 and
+      <t>The following acknowledgments are from the original RFC3315 and
       RFC3633:</t>
 
       <t>Thanks to the DHC Working Group and the members of the IETF for their
@@ -6936,7 +6936,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Clarified that IA may contain other resources than just address.
           Ticket #93.</t>
 
-          <t>Clarified that most options are singletons (i.e. can appear only
+          <t>Clarified that most options are singletons (i.e., can appear only
           once). Ticket #83.</t>
 
           <t>Merged sections 1 (Ticket #96), 2 (Ticket #97), 3 (Ticket #98), 4
@@ -6985,7 +6985,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           does not mean immediate transmission (ticket #71).</t>
 
           <t>Merged section 4.4. of RFC7550 (stateful-issues). This includes
-          new Renew and Rebind processing by the server, i.e. a client may
+          new Renew and Rebind processing by the server, i.e., a client may
           request allocation of new addresses/prefixes during Renew and
           Rebind. This addresses tickets #62 and #63.</t>
 
