@@ -830,8 +830,8 @@
         which the router is attached, and begins to send router advertisements
         for the prefix on the link, the requesting router MUST set the valid
         lifetime in those advertisements to be no later than the valid
-        lifetime specified in the IA_PD Prefix option. A client MAY
-        use the preferred lifetime specified in the IA_PD Prefix option.</t>
+        lifetime specified in the IA_PD option. A client MAY
+        use the preferred lifetime specified in the IA_PD option.</t>
 
         <t>While <xref target="RFC3633"/> assumed that the DHCPv6 client
         is a router (hence use of "requesting router") and that the DHCPv6
@@ -1810,7 +1810,7 @@
         client is attached.</t>
 
         <t>The lifetime of the assigned temporary address is set in the IA
-        Address Option (see <xref target="RFC3315-22.6"></xref>) with in the
+        Address option (see <xref target="RFC3315-22.6"></xref>) with in the
         IA_TA option. It is RECOMMENDED to set short lifetimes, typically
         shorter than TEMP_VALID_LIFETIME and TEMP_PREFERRED_LIFETIME (see
         Section 5, <xref target="RFC4941"/>).</t>
@@ -3340,9 +3340,9 @@
                 which the router is attached, and begins to send router
                 advertisements for the prefix on the link, the client MUST
                 set the valid lifetime in those advertisements to be no later than
-                the valid lifetime specified in the IA_PD Prefix option.  A
+                the valid lifetime specified in the IA_PD option.  A
                 client MAY use the preferred lifetime specified in the
-                IA_PD Prefix option.</t>
+                IA_PD option.</t>
               </list></t>
 
             <t>Management of the specific configuration information is
@@ -4911,7 +4911,7 @@
           </list></t>
 
         <t>The IA_NA-options field encapsulates those options that are
-        specific to this IA_NA. For example, all of the IA Address Options
+        specific to this IA_NA. For example, all of the IA Address options
         carrying the addresses associated with this IA_NA are in the
         IA_NA-options field.</t>
 
@@ -5023,7 +5023,7 @@
           </list></t>
 
         <t>The IA_TA-Options field encapsulates those options that are
-        specific to this IA_TA. For example, all of the IA Address Options
+        specific to this IA_TA. For example, all of the IA Address options
         carrying the addresses associated with this IA_TA are in the
         IA_TA-options field.</t>
 
@@ -5069,7 +5069,7 @@
       <section anchor="RFC3315-22.6" title="IA Address Option">
         <!-- 22.6, line 3840-->
 
-        <t>The IA Address option is used to specify IPv6 addresses associated
+        <t>The IA Address option is used to specify an IPv6 address associated
         with an IA_NA or an IA_TA. The IA Address option must be encapsulated
         in the Options field of an IA_NA or IA_TA option. The Options fields
         of the IA_NA or IA_TA option encapsulates those options that are
@@ -5147,7 +5147,7 @@
         0xffffffff ("infinity"), which amounts to a permanent assignment of an
         address to a client.</t>
 
-        <t>More than one IA Address Option can appear in an IA_NA option or an
+        <t>More than one IA Address option can appear in an IA_NA option or an
         IA_TA option.</t>
 
         <t>The status of any operations involving this IA Address is indicated
@@ -5908,32 +5908,32 @@
         option MAY contain multiple encapsulated options.</t>
 
         <t>A client that is interested in receiving a Vendor-specific
-        Information Option:</t>
+        Information option:</t>
 
         <t><list hangIndent="3" style="hanging">
             <t hangText="-">MUST specify the Vendor-specific Information
-            Option in an Option Request Option.</t>
+            option in an Option Request option.</t>
 
-            <t hangText="-">MAY specify an associated Vendor Class Option.</t>
+            <t hangText="-">MAY specify an associated Vendor Class option.</t>
 
-            <t hangText="-">MAY specify the Vendor-specific Information Option
+            <t hangText="-">MAY specify the Vendor-specific Information option
             with appropriate data.</t>
           </list></t>
 
-        <t>Severs only return the Vendor-specific Information Options if
-        specified in Option Request Options from clients and:</t>
+        <t>Severs only return the Vendor-specific Information options if
+        specified in Option Request options from clients and:</t>
 
         <t><list hangIndent="3" style="hanging">
             <t hangText="-">MAY use the Enterprise Numbers in the associated
-            Vendor Class Options to restrict the set of Enterprise Numbers in
-            the Vendor-specific Information Options returned.</t>
+            Vendor Class options to restrict the set of Enterprise Numbers in
+            the Vendor-specific Information options returned.</t>
 
             <t hangText="-">MAY return all configured Vendor-specific
-            Information Options.</t>
+            Information options.</t>
 
             <t hangText="-">MAY use other information in the packet or in its
             configuration to determine which set of Enterprise Numbers in the
-            Vendor-specific Information Options to return.</t>
+            Vendor-specific Information options to return.</t>
           </list></t>
       </section>
 
@@ -6140,7 +6140,7 @@
           </list></t>
 
         <t>The IA_PD-options field encapsulates those options that are
-        specific to this IA_PD. For example, all of the IA_PD Prefix Options
+        specific to this IA_PD. For example, all of the IA Prefix options
         carrying the prefixes associated with this IA_PD are in the
         IA_PD-options field.</t>
 
@@ -6191,8 +6191,8 @@
       </section>
 
       <section anchor="IAPREFIX-option" title="IA Prefix Option">
-        <t>The IA_PD Prefix option is used to specify IPv6 address prefixes
-        associated with an IA_PD. The IA_PD Prefix option must be encapsulated
+        <t>The IA Prefix option is used to specify an IPv6 prefix
+        associated with an IA_PD. The IA Prefix option must be encapsulated
         in the IA_PD-options field of an IA_PD option.</t>
 
         <figure align="center" anchor="FigOption26"
@@ -6278,10 +6278,10 @@
         prefix to 0xffffffff ("infinity"), which amounts to a permanent
         delegation of the prefix to a client.</t>
 
-        <t>An IA_PD Prefix option may appear only in an IA_PD option. More
-        than one IA_PD Prefix Option can appear in a single IA_PD option.</t>
+        <t>An IA Prefix option may appear only in an IA_PD option. More
+        than one IA Prefix option can appear in a single IA_PD option.</t>
 
-        <t>The status of any operations involving this IA_PD Prefix option is
+        <t>The status of any operations involving this IA Prefix option is
         indicated in a Status Code option in the IAprefix-options field.</t>
       </section>
 
@@ -6586,7 +6586,7 @@
 
       <t>IANA is requested to add a column to the DHCPv6 Option table at
       http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
-      to indicate which Options are allowed to appear in the ORO option.  See Section 20.7.</t>
+      to indicate which options are allowed to appear in the ORO option.  See Section 20.7.</t>
 
             <t>IANA is requested to update the
       http://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml#authentication-protocol-id
@@ -6916,8 +6916,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           <t>Changed REL_MAX_RC and DEC_MAX_RC defaults from 5 to 4 and added
           retry to parameter description. Ticket #84.</t>
 
-          <t>Clarify handling process for Vendor-specific Information Option
-          and Vendor Class Option. Ticket #20.</t>
+          <t>Clarify handling process for Vendor-specific Information option
+          and Vendor Class option. Ticket #20.</t>
 
           <t>Replace "monotonic" with "strictly monotonic" in Section 21.3.
           Ticket #11.</t>
@@ -7092,15 +7092,15 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
           if it's not being sent by the server. Ticket #150.</t>
 
           <t>Added reference to RFC4242 (Information Refresh Time
-          Option). Ticket #161.</t>
+          option). Ticket #161.</t>
     
-          <t>Updated ORO Option to list Options that MUST NOT be included. Also added to that IANA
+          <t>Updated Option Request option to list options that MUST NOT be included. Also added to that IANA
           Consider should keep track of which options are allowed in ORO. Ticket #81.</t>
 
           <t>Updated Creation and Transmission of Advertise message so that the only options
           in the ORO will be included in the Advertise unless configured otherwise. Ticket #81.</t>
 
-          <t>Information Refresh Time Option is now mandatory for clients that
+          <t>Information Refresh Time option is now mandatory for clients that
           support stateless mode. Added reference to RFC4242. Ticket #161.</t>
         </list></t>
     </section>
