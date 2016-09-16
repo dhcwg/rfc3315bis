@@ -611,17 +611,17 @@
             <t hangText="IA_PD">Identity Association for Prefix Delegation: An
             IA that carries delegated prefixes.</t>
 
-            <t hangText="lease">An address or delegated prefix assigned
-            by the DHCP server to the client. Leases are carried in the IA
-            Address or IA Prefix options within the IA_NA/IA_TA and IA_PD
-            options respectively.</t>
+            <t hangText="lease">"A contract by which the server grants the use
+            of an address or delegated prefix to the client for a specified
+            period of time.</t>
 
             <t hangText="message">A unit of data carried as the payload of a
             UDP datagram, exchanged among DHCP servers, relay agents and
             clients.</t>
 
             <t hangText="Reconfigure key">A key supplied to a client by a
-            server used to provide security for Reconfigure messages.</t>
+            server used to provide security for Reconfigure messages (see
+            <xref target=""RFC3315-5.3"/>).</t>
 
             <t hangText="requesting router">The router that acts as a DHCP
             client and is requesting prefix(es) to be assigned. This document
@@ -2693,8 +2693,8 @@
           parameter values the client would like to have returned.</t>
 
           <t>The client includes a Reconfigure Accept option (see <xref
-          target="RFC3315-22.20"></xref>) indicating whether or not the client
-          is willing to accept Reconfigure messages from the server.</t>
+          target="RFC3315-22.20"></xref>) if the client is willing to
+          accept Reconfigure messages from the server.</t>
 
           <t>The client transmits the message according to <xref
           target="RFC3315-14"></xref>, using the following parameters: <list
@@ -3349,25 +3349,32 @@
             detailed in the definition of each option in <xref
             target="RFC3315-22"></xref>.</t>
 
-            <t>When a client had received a configuration option in an earlier
-            Reply, then sent Renew, Rebind or Information-Request and that
-            requested option does not appear in in the Reply any more, it MUST
-            stop using the received configuration information. In other words,
-            the client should behave as if it never received this option at all
-            and return to the default state regarding that configuration
-            information. If there is no viable way to stop using the
-            information, the values received/configured from the option MAY
-            persist if there are no other sources for that data and they have no
-            external impact. For example, a client that previously received
-            Client FQDN option and used it to set up its hostname is allowed to
-            continue using it if there is no reasonable way for a host to unset
-            its hostname and it has no external impact. As a counter example, a
-            client that used to receive an NTP server address from the DHCP
-            server and does not receive it any more, MUST stop using the
-            configured NTP server IPv6 address. The client SHOULD be open to use
-            other sources of the same configuration information. This behavior
-            does not apply to any IA containers, as their processing is
-            described in detail in other parts of this document.</t>
+            <t>When a client receives a configuration option in an earlier
+            Reply, then sends a Renew, Rebind or Information-Request and
+            the requested option is not present in the Reply, the client
+            SHOULD stop using the previously received configuration
+            information.  In other words, the client should behave as if
+            it never received this configuration option and return to the
+            relevant default state.  If there is no viable way to stop using
+            the received configuration information, the values
+            received/configured from the option MAY persist if there are
+            no other sources for that data and they have no external impact.
+            For example, a client that previously received a Client FQDN
+            option and used it to set up its hostname is allowed to continue
+            using it if there is no reasonable way for a host to unset its
+            hostname and it has no external impact.  As a counter example,
+            a client that previously received an NTP server address from
+            the DHCP server and does not receive it any more, MUST stop
+            using the configured NTP server IPv6 address.  The client
+            SHOULD be open to other sources of the same configuration
+            information.  This behavior does not apply to any IA containers,
+            as their processing is described in detail in other parts of
+            this document.</t>
+            
+            <t>When a client receives a requested option that has an updated
+            value from what was previously received, the client SHOULD make
+            use of that updated value as soon as possible for its configuration
+            information.</t>
 
             <t>If the Reply message contains any IAs, but the client finds no
             usable addresses and/or delegated prefixes in any of these IAs,
@@ -4283,8 +4290,8 @@
           target="RFC4193"/> address with a prefix
           assigned to the link on which the client should be assigned
           leases into the link-address field. If such an address is not
-          available, the relay agent may fill in the link-address field
-          with a link-local address from the interface the original message
+          available, the relay agent may set the link-address field
+          to a link-local address from the interface the original message
           was received on. That is not recommended as it requires additional
           information to be provided in the server configuration. See Section
           3.2 of <xref target="I-D.ietf-dhc-topo-conf"></xref> for detailed
@@ -4300,7 +4307,7 @@
           client will be relayed, the relay agent MUST include an Interface-id
           option (see <xref target="RFC3315-22.18"></xref>) in the
           Relay-forward message. The server will include the Interface-id
-          option in its Relay-reply message. The relay agent fills in the
+          option in its Relay-reply message. The relay agent sets the
           link-address field as described in the previous paragraph regardless
           of whether the relay agent includes an Interface-id option in the
           Relay-forward message.</t>
@@ -4546,7 +4553,7 @@
         replay detection used in the Replay Detection field.</t>
 
         <t>If the RDM field contains 0x00, the replay detection field MUST be
-        set to the value of a strictly monotonically increasing counter. Using
+        set to the value of a strictly increasing counter. Using
         a counter value, such as the current time of day (for example, an
         NTP-format timestamp <xref target="RFC5905"></xref>), can reduce the
         danger of replay attacks. This method MUST be supported by all
