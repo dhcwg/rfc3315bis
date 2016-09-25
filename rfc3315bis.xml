@@ -261,10 +261,7 @@
         values and definition of options for these values
         <xref target="RFC7083"/>, and harmonization between address
         assignment and prefix delegation support <xref target="RFC7550"/>.
-        Understanding a protocol whose definition is spread between a large
-        number of documents is cumbersome. Furthermore, significant
-        operational experience has been gained over the years and certain
-        small elements of the protocol have been reworked. This document
+        This document
         provides a unified, corrected, and cleaned up definition of DHCPv6
         that also covers all erratas filled against older RFCs. As such, it
         obsoletes a number of aforementioned RFCs. And, there are a small
