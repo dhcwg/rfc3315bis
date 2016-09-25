@@ -352,6 +352,9 @@
         to the server. The server sends a Reply message to the client with the
         new lifetimes, allowing the client to continue to use the address or
         delegated prefix without interruption.</t>
+	      
+        <t>There are additional two message exchanges between the client and
+        server described later in this document.</t>
       </section>
 
       <!-- ends: "1.2 from line 284-->
@@ -371,12 +374,12 @@
         assignment of addresses and/or delegated prefixes and other configuration information. The
         server responds with a Reply message that contains the confirmed
         addresses, delegated prefixes, and configuration.</t>
+	      
+        <t>As described in the previous section, the client can also request an
+        extension of the lifetimes assigned to addresses or delegated prefixes
+        (this is a two message exchange).</t>
 
-        <t>As described in the previous section, the client sends a Renew
-        message to the server to extend the lifetimes associated with its
-        addresses and/or delegated prefixes, allowing the client to continue to use those addresses
-        and/or delegated prefixes without interruption.</t>
-      </section>
+       </section>
 
       <!-- ends: "1.3 from line 323-->
     </section>
@@ -547,7 +550,7 @@
             example.</t>
 
             <t hangText="delegating router">The router that acts as a DHCP
-            server, and is responding to the prefix request. This document
+            server, and responds to requests for delegated prefixes. This document
             primarily uses the term "DHCP server" or "server" when
             discussing the "delegating router" functionality of prefix
             delegation (see <xref target="intro-and-overview"/>.</t>
@@ -621,7 +624,7 @@
 
             <t hangText="Reconfigure key">A key supplied to a client by a
             server used to provide security for Reconfigure messages (see
-            <xref target=""RFC3315-5.3"/>).</t>
+            <xref target="RFC3315-5.3"/>).</t>
 
             <t hangText="requesting router">The router that acts as a DHCP
             client and is requesting prefix(es) to be assigned. This document
@@ -1006,6 +1009,13 @@
       </section>
 
       <!-- ends: "5.3 from line 634-->
+	    
+      <section title="DHCP Option Codes">
+
+        <t>DHCP makes extensive use of options in messages and some of these
+        are defined later in <xref target="RFC3315-22"/>. Additional options
+	are defined in other documents or may be defined in the future.</t>
+	</section>
 
       <section title="Status Codes">
         <!-- 5.4, line 733-->
@@ -1014,7 +1024,7 @@
         operations requested in messages from clients and servers, and to
         provide additional information about the specific cause of the failure
         of a message. The specific status codes are defined in <xref
-        target="RFC3315-22.12"></xref>.</t>
+        target="RFC3315-22.13"></xref>.</t>
 
         <t>If the Status Code option does not appear in a message in which the
         option could appear, the status of the message is assumed to be
@@ -1855,7 +1865,7 @@
       <t>Unless otherwise specified in this document, or in a document that
       describes how IPv6 is carried over a specific type of link (for link
       types that do not support multicast), a client sends DHCP messages to
-      the All_DHCP_Relay_Agents_and_Servers.</t>
+      the All_DHCP_Relay_Agents_and_Servers multicast address.</t>
 
       <t>A client uses multicast to reach all servers or an individual server.
       An individual server is indicated by specifying that server's DUID in a
@@ -1871,16 +1881,16 @@
         <t>In order to avoid prolonged message bursts that may be caused by
         possible logic loops, a DHCP client MUST limit the rate of DHCP
         messages it transmits. One example is that a client obtains an
-        address, but does not like the response; it reverts back to Solicit
+        address, but does not like the response; so it reverts back to Solicit
         procedure, discovers the same (sole) server, requests an address and
-        gets the same address as before (the server still has the lease that
-        was requested just previously). This loops can repeat infinitely if
+        gets the same address as before (as the server has this previously
+	requested lease assigned to this client). This loop can repeat infinitely if
         there is not a quit/stop mechanism. Therefore, a client must not
         initiate transmissions too frequently.</t>
 
         <t>A recommended method for implementing the rate limiting function is
         a token bucket, limiting the average rate of transmission to a certain
-        number in a certain time. This method of bounding burstiness also
+        number in a certain time interval. This method of bounding burstiness also
         guarantees that the long-term transmission rate will not be exceeded.</t>
 
         <t><list hangIndent="11" style="hanging">
@@ -2395,8 +2405,8 @@
       All_DHCP_Relay_Agents_and_Servers multicast address and collecting
       Advertise messages from the servers which respond to the client's
       message and selects a server from which it wants to obtain configuration
-      information. This process is referred to as server discovery or server
-      solicitation. When the client has selected the server it sends a Request
+      information. This process is referred to as server discovery. When
+      the client has selected the server it sends a Request
       message to this server as described in the <xref
       target="request-create-transmit"></xref>.</t>
 
@@ -2432,7 +2442,7 @@
       IAs. The client MUST NOT be using any of the addresses or delegated
       prefixes for which it tries to obtain the bindings by sending the
       Solicit message. In particular, if the client had some valid bindings
-      and has chosen to start the server solicitation process to obtain the
+      and has chosen to start the server discovery process to obtain the
       bindings from a different server, the client MUST stop using the
       addresses and delegated prefixes for the bindings it had obtained from
       the previous server, and which it is now trying to obtain from a new
@@ -2475,15 +2485,17 @@
 
         <!-- Ticket 160 text-->
 
-        <t>When a client requests multiple IA option types in a Solicit,
-        Request, Renew, or Rebind, it is possible
+        <t>When a client requests multiple IA option types or multiple
+        instances of the same IA types in a Solicit, Request, Renew, or
+        Rebind, it is possible
         that the available server(s) may only be configured to offer a subset
         of them. When possible, the client SHOULD use the best configuration
         available and continue to request the additional IAs in subsequent
         messages (<xref target="RFC7550"/>). This allows the client to maintain
         a single session and state machine. In practice, especially in the
         case of handling IA_NA and IA_PD requests (<xref target="RFC7084"/>),
-        this situation should be rare or a temporary operational error.
+        this situation should be rare or a result of a temporary operational
+        error.
         Thus, it is more likely for the client to get all configuration if
         it continues, in each subsequent configuration exchange, to request
         all the configuration information it is programmed to try to obtain,
@@ -3425,7 +3437,7 @@
           <section anchor="reply-confirm" title="Reply for Confirm">
             <t>When the client receives a NotOnLink status from the server in
             response to a Confirm message, the client performs DHCP server
-            solicitation, as described in <xref
+            discovery, as described in <xref
             target="configuration-exchange"></xref>, and client-initiated
             configuration, as described in <xref
             target="configuration-exchange"></xref>. If the client receives
@@ -6988,7 +7000,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 
           <t>Addressed tickets #123 and #126, and clarified that the client
           SHOULD abandon its bindings when restarts the server
-          solicitation.</t>
+          discovery.</t>
 
           <t>Clarified link-address field usage, ticket #73.</t>
 
