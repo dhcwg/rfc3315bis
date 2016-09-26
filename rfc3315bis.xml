@@ -263,7 +263,7 @@
         assignment and prefix delegation support <xref target="RFC7550"/>.
         This document
         provides a unified, corrected, and cleaned up definition of DHCPv6
-        that also covers all erratas filled against older RFCs. As such, it
+        that also covers all errata filled against older RFCs. As such, it
         obsoletes a number of aforementioned RFCs. And, there are a small
         number of mechanisms that were obsoleted, listed in <xref
         target="obsolete"></xref>.</t>
@@ -333,7 +333,7 @@
         information committed to a client, the client and server may be able
         to complete the exchange using only two messages, instead of four
         messages as described in the next section. In this case, the client
-        sends a Solicit message to the All_DHCP_Relay_Agents_and_Servers
+        sends a Solicit message to the All_DHCP_Relay_Agents_and_Servers multicast address
         requesting the assignment of addresses and/or delegated prefixes and other configuration
         information. This message includes an indication that the client is
         willing to accept an immediate Reply message from the server. The
@@ -364,7 +364,7 @@
         first locates a DHCP server and then requests the assignment of
         addresses and/or delegated prefixes and other configuration information from the server. The
         client sends a Solicit message to the
-        All_DHCP_Relay_Agents_and_Servers address to find available DHCP
+        All_DHCP_Relay_Agents_and_Servers multicast address to find available DHCP
         servers. Any server that can meet the client's requirements responds
         with an Advertise message. The client then chooses one of the servers
         and sends a Request message to the server asking for confirmed
@@ -1735,7 +1735,7 @@
         target="IA_PD-option"></xref> for the representation of an IA_PD in a
         DHCP message.</t>
         
-        <t>Each deleged prefix in an IA has a preferred lifetime and a valid
+        <t>Each delegated prefix in an IA has a preferred lifetime and a valid
         lifetime, as defined in <xref target="RFC4862"></xref>. The lifetimes
         are transmitted from the DHCP server to the client in the IA Prefix option.
         The lifetimes apply to the use of delegated prefixes, as described in
@@ -2333,7 +2333,7 @@
 
       <section title="Address Assignment">
         <t>When a client sends a DHCP message to the
-        All_DHCP_Relay_Agents_and_Servers address, it SHOULD send the message
+        All_DHCP_Relay_Agents_and_Servers multicast address, it SHOULD send the message
         through the interface for which configuration information is being
         requested. However, the client MAY send the message through another
         interface if the interface is a logical interface without direct link
@@ -5583,7 +5583,7 @@
           <c>5</c>
 
           <c>Sent by a server to a client to force the client to send messages
-          to the server using the All_DHCP_Relay_Agents_and_Servers
+          to the server using the All_DHCP_Relay_Agents_and_Servers multicast
           address.</c>
 
           <c>NoPrefixAvail</c>
@@ -6519,7 +6519,7 @@
 
       <t>The threat common to both the client and the server is the resource
       "denial of service" (DoS) attack. These attacks typically involve the
-      exhaustion of available assigned address or delegateable prefxies, or
+      exhaustion of available assigned address or delegateable prefixes, or
       the exhaustion of CPU or network
       bandwidth, and are present anytime there is a shared resource.</t>
 
