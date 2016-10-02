@@ -2051,7 +2051,7 @@
       missing options that it should contain, or is otherwise not valid, it
       MAY send a Reply (or Advertise as appropriate) with a Server Identifier
       option, a Client Identifier option if one was included in the message
-      and a Status Code option with status UnSpecFail.</t>
+      and a Status Code option with status UnspecFail.</t>
 
       <t>Clients, relay agents and servers MUST NOT discard messages that
       contain unknown options (or instances of vendor options with unknown
@@ -3561,8 +3561,8 @@
           policy for the server is that it may only respond to a client that
           is willing to accept a Reconfigure message, if the client does not
           include a Reconfigure Accept option (see <xref
-          target="RFC3315-22.20"></xref>) in the Solicit message, the servers
-          discard the Solicit message.</t>
+          target="RFC3315-22.20"></xref>) in the Solicit message, the server
+          discards the Solicit message.</t>
 
           <t>If the server is permitted to respond to the client, the client
           has not included a Rapid Commit option in the Solicit message or
@@ -4083,7 +4083,7 @@
           Option Request option includes a container option the server MUST include all 
           the options that are eligible to be encapsulated in the container. The Option 
           Request option MAY be used to signal support for a feature even when that option is 
-          encapsulated as in the case of the Prefix Excluded option <xref target="RFC6603"/>. 
+          encapsulated as in the case of the Prefix Exclude option <xref target="RFC6603"/>. 
           In this case, special processing is required by the server.  
           The server MAY return additional options to the client if it has been
           configured to do so. The server must be aware of the recommendations
@@ -5217,7 +5217,7 @@
         Option Request, see <xref target="RFC7598"/> as an example of container options.
         The exception to this is the Option Request option MAY be used to signal support 
         for a feature even when that option is encapsulated as in the case of the 
-        Prefix Excluded option <xref target="RFC6603"/>.
+        Prefix Exclude option <xref target="RFC6603"/>.
         </t>
         
       </section>
@@ -6640,6 +6640,12 @@
       issues when values started approaching zero. Clients now SHOULD set
       lifetimes to 0 in IA Address and IA Prefix options, and servers MUST
       ignore any requested lifetime value.</t>
+    
+      <t>T1/T2 hints sent by a client. These had similar issues to the
+      lifetime hints. Clients now SHOULD set the T1/T2 values to 0 in IA_NA and
+      IA_PD options, and servers MUST ignore any client supplied T1/T2
+      values.</t>
+
     </section>
 
     <section title="Acknowledgments">
