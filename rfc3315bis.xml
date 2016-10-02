@@ -475,9 +475,8 @@
             <t hangText="link">A communication facility or medium over which
             nodes can communicate at the link layer, i.e., the layer
             immediately below IP. Examples are Ethernet (simple or bridged);
-            Token Ring; PPP and PPPoE links, X.25, Frame Relay, or ATM networks; and
-            Internet (or higher) layer "tunnels", such as tunnels over IPv4 or
-            IPv6 itself.</t>
+            PPP and PPPoE links; and Internet (or higher) layer "tunnels",
+            such as tunnels over IPv4 or IPv6 itself.</t>
 
             <t hangText="link-layer identifier">A link-layer identifier for an
             interface. Examples include IEEE 802 addresses for Ethernet or
@@ -485,7 +484,7 @@
             links.</t>
 
             <t hangText="link-local address">An IPv6 address having a
-            link-only scope, indicated by having the prefix (FE80::/10), that
+            link-only scope, indicated by having the prefix (fe80::/10), that
             can be used to reach neighboring nodes attached to the same link.
             Every interface has a link-local address.</t>
 
