@@ -6550,7 +6550,7 @@
       <t>This section focuses on the server considerations. For extended
       discussion about privacy considerations for the client, see <xref
       target="RFC7824"></xref>. In particular, Section 3
-      of said document discuss various identifiers that could be misused to
+      of said document discusses various identifiers that could be misused to
       track the client. Section 4 discusses existing mechanisms that may have
       an impact on client's privacy. Finally, Section 5 discusses potential
       attack vectors. For recommendations how to address or mitigate those
@@ -6625,7 +6625,7 @@
       considered deprecated. Legacy implementations MAY support them, but
       implementations conformant to this document MUST NOT rely on them.</t>
 
-      <t>The following mechanism are now obsolete:</t>
+      <t>The following mechanisms are now obsolete:</t>
 
       <t>Delayed Authentication. This mechanism was underspecified and had
       significant operational burden. As a result, after 10 years its adoption
