@@ -690,11 +690,9 @@
         <t>This model of operation was the original motivation for DHCP and is
         the "stateful address autoconfiguration protocol" for IPv6 <xref
         target="RFC2462"></xref>. It is appropriate for situations where
-        stateless address autoconfiguration is not desired, because of network
-        policy, additional requirements (such as updating the DNS with forward
-        or reverse resource records), or client specific requirements (i.e.,
-        some prefixes are only available to some clients) which are not
-        possible using stateless address autoconfiguration.</t>
+        stateless address autoconfiguration alone is insufficient or
+        impractical, e.g., beacuse of network policy, additional requirments
+        such as dynamic updates to the DNS, or client-specific requirements.</t>
 
         <t>The model of operation for non-temporary address assignment is as
         follows. The server is provided with IPv6 prefixes from which it may
@@ -713,7 +711,7 @@
         expires.</t>
 
         <t>Typically clients request other configuration parameters, such as
-        the domain server addresses and search lists, when requesting
+        the DNS name server addresses and domain search lists, when requesting
         addresses.</t>
       </section>
 
@@ -1917,7 +1915,7 @@
         <t>When T1 and/or T2 times are set to zero, the client MUST choose a
         time to avoid packet storms. In particular, it MUST NOT transmit
         immediately. If the client received multiple IA containers, it SHOULD
-        pick renew and/or rebind transmission times so all IA containers are
+        pick T1 and/or T2 transmission times so all IA containers are
         handled in one exchange, if possible. The client MUST choose the
         times to not violate rate limiting restrictions, defined
         in <xref target="rate-limit"></xref>.</t>
@@ -3477,8 +3475,7 @@
               complete. Subsequent Reconfigure messages cause the client to
               initiate a new exchange.</t>
 
-              <t>How does this mechanism work in the face of duplicated or
-              retransmitted Reconfigure messages? Duplicate messages will be
+              <t>Duplicate messages will be
               ignored because the client will begin the exchange after the
               receipt of the first Reconfigure. Retransmitted messages will
               either trigger the exchange (if the first Reconfigure was not
