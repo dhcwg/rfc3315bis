@@ -209,7 +209,7 @@
   </front>
 
   <middle>
-    <section anchor="intro-and-overview" title="Introduction and Overview">
+    <section anchor="intro-and-overview" title="Introduction">
       <!-- 1, line 230-->
 
       <t>This document describes DHCP for IPv6 (DHCPv6), a client/server
@@ -240,28 +240,26 @@
       much smaller than to support stateful DHCPv6.</t>
 
       <t>The remainder of this introduction summarizes the relationship to the
-      previous DHCPv6 standards in <xref target="previous-dhcp6"/>,
-      clarifies the stance with regards to DHCPv4 in <xref target="dhcpv4"/>,
-      and describes the message exchange mechanisms in <xref
-      target="RFC3315-1.2"/> and <xref target="RFC3315-1.3"/> to
-      illustrate DHCP operation rather than provide an exhaustive
-      list of all possible client-server interactions.</t>
-      
-      <t>In addition, <xref target="OpModes"/> provides an overview of common
-      operational models and <xref target="configuration-exchange"/> explains
-      client and server operation in detail.</t>
+      previous DHCPv6 standards in <xref target="previous-dhcp6"/> and
+      clarifies the stance with regards to DHCPv4 in <xref target="dhcpv4"/>.
+      <xref target="Client-Server-Exchanges"/> describes the message exchange mechanisms
+      to illustrate DHCP operation rather than provide an exhaustive
+      list of all possible interactions and <xref target="OpModes"/>
+      provides an overview of common operational models.
+      <xref target="configuration-exchange"/> explains client and server operation
+      in detail.</t>
 
       <section anchor="previous-dhcp6"
                title="Relation to previous DHCPv6 standards">
         <t>The initial specification of DHCPv6 was defined in <xref
         target="RFC3315"></xref> and a number of follow up extensions were
-        published over the years. Several notable extensions were published:
-        prefix delegation <xref target="RFC3633"></xref>, stateless <xref
-        target="RFC3736"></xref>, update to SOL_MAX_RT and INF_MAX_RT
-        values and definition of options for these values
-        <xref target="RFC7083"/>, and harmonization between address
-        assignment and prefix delegation support <xref target="RFC7550"/>.
-        This document
+        published over the years:
+        IPv6 Prefix Options for Dynamic Host Configuration Protocol (DHCP) version 6
+	<xref target="RFC3633"></xref>, Stateless Dynamic Host Configuration Protocol
+	(DHCP) Service for IPv6s <xref target="RFC3736"></xref>, Modification to
+	Default Values of SOL_MAX_RT and INF_MAX_RT <xref target="RFC7083"/>, and
+	Issues and Recommendations with Multiple Stateful DHCPv6 Options
+	<xref target="RFC7550"/>. This document
         provides a unified, corrected, and cleaned up definition of DHCPv6
         that also covers all errata filled against older RFCs. As such, it
         obsoletes a number of aforementioned RFCs. And, there are a small
@@ -283,100 +281,6 @@
         provisioning of IPv4 address and configuration information across
         IPv6-only networks.</t>
       </section>
-
-      <section title="Protocols and Addressing">
-        <!-- 1.1, line 260-->
-
-        <t>Clients and servers exchange DHCP messages using UDP <xref
-        target="RFC0768"></xref>. The client uses a link-local address or
-        addresses determined through other mechanisms for transmitting and
-        receiving DHCP messages.</t>
-
-        <t>A DHCP client sends most messages using a reserved, link-scoped
-        multicast destination address so that the client need not be
-        configured with the address or addresses of DHCP servers.</t>
-
-        <t>To allow a DHCP client to send a message to a DHCP server that is
-        not attached to the same link, a DHCP relay agent on the client's link
-        will relay messages between the client and server. The operation of
-        the relay agent is transparent to the client and the discussion of
-        message exchanges in the remainder of this section will omit the
-        description of message relaying by relay agents.</t>
-
-        <t>Once the client has determined the address of a server, it may
-        under some circumstances send messages directly to the server using
-        unicast.</t>
-      </section>
-
-      <!-- ends: "1.1 from line 260-->
-
-      <section anchor="RFC3315-1.2"
-               title="Client-server Exchanges Involving Two Messages">
-        <!-- 1.2, line 284-->
-
-        <t>When a DHCP client does not need to have a DHCP server assign it IP
-        addresses or delegated prefixes, the client can obtain configuration information such as a
-        list of available DNS servers <xref target="RFC3646"></xref> or NTP
-        servers <xref target="RFC4075"></xref> through a single message and
-        reply exchange with a DHCP server. To obtain configuration
-        information the client first sends an Information-request message to
-        the All_DHCP_Relay_Agents_and_Servers multicast address. Servers
-        respond with a Reply message containing the configuration information
-        for the client.</t>
-
-        <t>This message exchange assumes that the client requires only
-        configuration information and does not require the assignment of any
-        IPv6 addresses or delegated prefixes.</t>
-
-        <t>When a server has IPv6 addresses and/or delegated prefixes and
-        other configuration
-        information committed to a client, the client and server may be able
-        to complete the exchange using only two messages, instead of four
-        messages as described in the next section. In this case, the client
-        sends a Solicit message to the All_DHCP_Relay_Agents_and_Servers multicast address
-        requesting the assignment of addresses and/or delegated prefixes and other configuration
-        information. This message includes an indication that the client is
-        willing to accept an immediate Reply message from the server. The
-        server that is willing to commit the assignment of addresses and/or
-        delegated prefixes to the client immediately responds with a Reply
-        message. The configuration information and the addresses and/or
-        delegated prefixes in the Reply message are then
-        immediately available for use by the client.</t>
-
-        <t>Each address or delegated prefix assigned to the client has associated preferred and
-        valid lifetimes specified by the server. To request an extension of
-        the lifetimes assigned to an address or delegated prefix, the client sends a Renew message
-        to the server. The server sends a Reply message to the client with the
-        new lifetimes, allowing the client to continue to use the address or
-        delegated prefix without interruption.</t>
-	      
-        <t>There are additional two message exchanges between the client and
-        server described later in this document.</t>
-      </section>
-
-      <!-- ends: "1.2 from line 284-->
-
-      <section anchor="RFC3315-1.3"
-               title="Client-server Exchanges Involving Four Messages">
-        <!-- 1.3, line 323-->
-
-        <t>To request the assignment of one or more IPv6 addresses and/or delegated prefixes, a client
-        first locates a DHCP server and then requests the assignment of
-        addresses and/or delegated prefixes and other configuration information from the server. The
-        client sends a Solicit message to the
-        All_DHCP_Relay_Agents_and_Servers multicast address to find available DHCP
-        servers. Any server that can meet the client's requirements responds
-        with an Advertise message. The client then chooses one of the servers
-        and sends a Request message to the server asking for confirmed
-        assignment of addresses and/or delegated prefixes and other configuration information. The
-        server responds with a Reply message that contains the confirmed
-        addresses, delegated prefixes, and configuration.</t>
-	      
-        <t>As described in the previous section, the client can also request an
-        extension of the lifetimes assigned to addresses or delegated prefixes
-        (this is a two message exchange).</t>
-
-       </section>
 
       <!-- ends: "1.3 from line 323-->
     </section>
@@ -656,6 +560,104 @@
 
     <!-- ends: "4 from line 402-->
 
+  <section anchor="Client-Server-Exchanges"
+	   title="Client-Server Exchanges">
+     <!-- 1.1, line 260-->
+
+     <t>Clients and servers exchange DHCP messages using UDP <xref
+     target="RFC0768"></xref>. The client uses a link-local address or
+     addresses determined through other mechanisms for transmitting and
+     receiving DHCP messages.</t>
+
+     <t>A DHCP client sends most messages using a reserved, link-scoped
+     multicast destination address so that the client need not be
+     configured with the address or addresses of DHCP servers.</t>
+
+     <t>To allow a DHCP client to send a message to a DHCP server that is
+     not attached to the same link, a DHCP relay agent on the client's link
+     will relay messages between the client and server. The operation of
+     the relay agent is transparent to the client and the discussion of
+     message exchanges in the remainder of this section will omit the
+     description of message relaying by relay agents.</t>
+
+     <t>Once the client has determined the address of a server, it may
+     under some circumstances send messages directly to the server using
+     unicast.</t>
+
+     <!-- ends: "1.1 from line 260-->
+
+      <section anchor="RFC3315-1.2"
+               title="Client-server Exchanges Involving Two Messages">
+        <!-- 1.2, line 284-->
+
+        <t>When a DHCP client does not need to have a DHCP server assign it IP
+        addresses or delegated prefixes, the client can obtain configuration information such as a
+        list of available DNS servers <xref target="RFC3646"></xref> or NTP
+        servers <xref target="RFC4075"></xref> through a single message and
+        reply exchange with a DHCP server. To obtain configuration
+        information the client first sends an Information-request message to
+        the All_DHCP_Relay_Agents_and_Servers multicast address. Servers
+        respond with a Reply message containing the configuration information
+        for the client.</t>
+
+        <t>This message exchange assumes that the client requires only
+        configuration information and does not require the assignment of any
+        IPv6 addresses or delegated prefixes.</t>
+
+        <t>When a server has IPv6 addresses and/or delegated prefixes and
+        other configuration
+        information committed to a client, the client and server may be able
+        to complete the exchange using only two messages, instead of four
+        messages as described in the next section. In this case, the client
+        sends a Solicit message to the All_DHCP_Relay_Agents_and_Servers multicast address
+        requesting the assignment of addresses and/or delegated prefixes and other configuration
+        information. This message includes an indication that the client is
+        willing to accept an immediate Reply message from the server. The
+        server that is willing to commit the assignment of addresses and/or
+        delegated prefixes to the client immediately responds with a Reply
+        message. The configuration information and the addresses and/or
+        delegated prefixes in the Reply message are then
+        immediately available for use by the client.</t>
+
+        <t>Each address or delegated prefix assigned to the client has associated preferred and
+        valid lifetimes specified by the server. To request an extension of
+        the lifetimes assigned to an address or delegated prefix, the client sends a Renew message
+        to the server. The server sends a Reply message to the client with the
+        new lifetimes, allowing the client to continue to use the address or
+        delegated prefix without interruption. If the server is unable to extend
+        the lifetime of an address or delegated prefix, it indicates this by
+	returning the address or delegated prefix with lifetimes of 0. At the same
+	time, the server may assign other addresses or delegated prefixes.</t>
+
+        <t>There are additional two message exchanges between the client and
+        server described later in this document.</t>
+      </section>
+
+      <!-- ends: "1.2 from line 284-->
+
+      <section anchor="RFC3315-1.3"
+               title="Client-server Exchanges Involving Four Messages">
+        <!-- 1.3, line 323-->
+
+        <t>To request the assignment of one or more IPv6 addresses and/or delegated prefixes, a client
+        first locates a DHCP server and then requests the assignment of
+        addresses and/or delegated prefixes and other configuration information from the server. The
+        client sends a Solicit message to the
+        All_DHCP_Relay_Agents_and_Servers multicast address to find available DHCP
+        servers. Any server that can meet the client's requirements responds
+        with an Advertise message. The client then chooses one of the servers
+        and sends a Request message to the server asking for confirmed
+        assignment of addresses and/or delegated prefixes and other configuration information. The
+        server responds with a Reply message that contains the confirmed
+        addresses, delegated prefixes, and configuration.</t>
+	      
+        <t>As described in the previous section, the client can also request an
+        extension of the lifetimes assigned to addresses or delegated prefixes
+        (this is a two message exchange).</t>
+
+       </section>
+    </section>
+	  
     <section anchor="OpModes" title="Operational Models">
       <t>This section describes some of the current most common DHCP
       operational models. The described models are not mutually exclusive and
@@ -6430,7 +6432,10 @@
 
       <t>This section discusses security considerations that are not related
       to privacy. For dedicated privacy discussion, see <xref
-      target="privacy"></xref>.</t>
+      target="privacy"></xref>. The work in progress
+      <xref target="I-D.ietf-dhc-sedhcpv6"/> document provides additional
+      analysis of the security issues and specifies a secure client and
+      server communication mechanism.</t>
 
       <t>The threat to DHCP is inherently an insider threat (assuming a
       properly configured network where DHCP ports are blocked on the
@@ -6525,9 +6530,6 @@
       preclude intentional or inadvertent inappropriate advertisement of these
       prefixes.</t>
 
-      <t>The work in progress <xref target="I-D.ietf-dhc-sedhcpv6"/> document
-      provides additional analysis of the security issues and specifies a
-      secure client and server communication mechanism.</t>
     </section>
 
     <!-- ends: "23 from line 4492-->
@@ -6595,9 +6597,6 @@
       <t>The list of assigned values used in DHCPv6 is available at
       http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xml</t>
 
-      <t>Note to IANA: is this the right, long term link? I noticed
-      there are two similar ones ending with .xhtml and .xml. Please
-      update the link above if necessary.</t>
     </section>
 
     <!-- ends: "24 from line 4595-->
@@ -6830,7 +6829,7 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       
       <?rfc include='reference.I-D.ietf-v6ops-host-addr-availability'?>
 	    
-     <?rfc include='reference.I-D.draft-ietf-dhc-sedhcpv6'?>	    
+      <?rfc include='reference.I-D.ietf-dhc-sedhcpv6'?>	    
 
       <reference anchor="TR-187"
                  target="https://www.broadband-forum.org/technical/download/TR-187_Issue-2.pdf">
@@ -7105,6 +7104,9 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
 	  <t>Removed the text that allowed a Reconfigure message to contain IA options,
 	  ORO option, and other options for server to indicate to client what to request
     	  in response to Reconfigure. Ticket #168.</t>
+	      
+	  <t>NOTE: Additional changes made from WGLC comments. This section will be replaced with
+	  new material to provide a list of changes. TODO (Bernie).</t>
         </list></t>
     </section>
 
