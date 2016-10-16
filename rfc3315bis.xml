@@ -533,7 +533,8 @@
             delegation (see <xref target="intro-and-overview"/>.</t>
 
             <t hangText="singleton option">An option that is allowed to appear
-            only once. Most options are singletons.</t>
+	    only once as a the top-level option or at any encapsulation level.
+	    Most options are singletons.</t>
 
             <t hangText="relaying">A DHCP relay agent relays DHCP messages
             between DHCP participants.</t>
@@ -2377,7 +2378,20 @@
     <section anchor="configuration-exchange"
              title="DHCP Configuration Exchanges">
       <t>A client initiates a message exchange with a server or servers to
-      acquire or update configuration information of interest.</t>
+      acquire or update configuration information of interest. A client has
+      many reasons to initiate the configuration exchange:
+      <list hangIndent="6" style="hanging">
+        <t hangText="1."> as part of the operating system configuration/bootstrap process,</t>
+        <t hangText="2."> when requested to do so by the application layer (through an
+        operating system specific API),</t>
+        <t hangText="3."> when required by Stateless Address Autoconfiguration (as defined
+        in <xref target="RFC2462"/> Section 5.2),</t>
+        <t hangText="4."> as required to extend the lifetime of address(es) and/or
+	delegated prefix(es), using Renew and Rebind messages,</t>
+        <t hangText="4."> or when requested to do so by server - upon the receipt of a
+        Reconfigure message.</t>
+      </list>
+      </t>
 
       <t>A DHCP client that does not need to have a DHCP server assign it IP
       addresses or delegated prefixes, can obtain configuration information
@@ -2407,23 +2421,6 @@
       target="solicit-create-transmit"></xref> includes a Rapid
       Commit option (see <xref target="RFC3315-22.14"></xref>) in its
       Solicit message.</t>
-
-      <t>The client has many reasons to initiate the configuration exchange:
-      <list hangIndent="6" style="hanging">
-        <t hangText="1."> as part of the operating system configuration/bootstrap process,</t>
-        <t hangText="2."> when requested to do so by the application layer (through an
-        operating system specific API),</t>
-        <t hangText="3."> when required by Stateless Address Autoconfiguration (as defined
-        in <xref target="RFC2462"/> Section 5.2)</t>
-        <t hangText="4."> or as required to extend the lifetime of address(es) and/or
-        delegated prefix(es), using Renew and Rebind messages.</t>
-      </list>
-      </t>
-
-      <t>A server may initiate a message exchange with a client by sending a
-      Reconfigure message to cause the client to send a Renew, Rebind or
-      Information-request message to refresh its configuration information as
-      soon as the Reconfigure message is received by the client.</t>
 
       <!-- The following paragraph has been moved from the 'DHCP Server Solicitation -->
 
@@ -2460,6 +2457,11 @@
       DHCP session is used to exchange information about addresses and
       prefixes, i.e., IA_NA and IA_PD options are carried in the same
       message.</t>
+	    
+     <t>A server may initiate a message exchange with a client by sending a
+      Reconfigure message to cause the client to send a Renew, Rebind or
+      Information-request message to refresh its configuration information as
+      soon as the Reconfigure message is received by the client.</t>
 
       <section title="Client Behavior">
         <!-- 18.1, line 1953-->
