@@ -2813,12 +2813,12 @@
         <section anchor="RFC3315-18.1.3"
                  title="Creation and Transmission of Renew Messages">
           <!-- 18.1.3, line 2100-->
-
+		
           <t>To extend the valid and preferred lifetimes for the leases
           assigned to the IAs and obtain new addresses or delegated prefixes
           for IAs, the client sends a Renew message to the server from which
           the leases were obtained, which includes IA options for the IAs
-          whose lease lifetimes are to be extended. The client includes IA
+	  whose lease lifetimes are to be extended. The client includes IA
           Address options within IA_NA and IA_TA options for the addresses
           assigned to the IAs. The client includes IA Prefix options within
           IA_PD options for the delegated prefixes assigned to the IAs. The
@@ -2839,6 +2839,11 @@
 
           <t>At time T1, the client initiates a Renew/Reply message exchange
           to extend the lifetimes on any leases in the IA.</t>
+		
+	  <t>A client MUST also initiate a Renew/Reply message exchange before
+	  time T1 if the client's link-local address used in previous
+	  interactions with the server is no longer valid and it is willing
+	  to receive Reconfigure messages.</t>
 
           <t>If T1 or T2 had been set to 0 by the server (for an IA_NA or
           IA_PD) or there are no T1 or T2 times (for an IA_TA) in a previous
@@ -4276,9 +4281,9 @@
           leases into the link-address field. If such an address is not
           available, the relay agent may set the link-address field
           to a link-local address from the interface the original message
-          was received on. That is not recommended as it requires additional
+          was received on. That is not recommended as it may require additional
           information to be provided in the server configuration. See Section
-          3.2 of <xref target="I-D.ietf-dhc-topo-conf"></xref> for detailed
+          3.2 of <xref target="I-D.ietf-dhc-topo-conf"></xref> for a detailed
           discussion.</t>
 
           <t>This address will be used by the server to determine the link
@@ -6519,6 +6524,10 @@
       <t>Networks configured with delegated prefixes should be configured to
       preclude intentional or inadvertent inappropriate advertisement of these
       prefixes.</t>
+
+      <t>The work in progress <xref target="I-D.ietf-dhc-sedhcpv6"/> document
+      provides additional analysis of the security issues and specifies a
+      secure client and server communication mechanism.</t>
     </section>
 
     <!-- ends: "23 from line 4492-->
@@ -6820,6 +6829,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue'?>
       
       <?rfc include='reference.I-D.ietf-v6ops-host-addr-availability'?>
+	    
+     <?rfc include='reference.I-D.draft-ietf-dhc-sedhcpv6'?>	    
 
       <reference anchor="TR-187"
                  target="https://www.broadband-forum.org/technical/download/TR-187_Issue-2.pdf">
