@@ -5522,7 +5522,7 @@
         Code option does not appear in a message in which the option could
         appear, the status of the message is assumed to be Success.</t>
 
-        <t>The status-codes values previously defined by <xref
+        <t>The status-code values previously defined by <xref
         target="RFC3315"></xref> and <xref target="RFC3633"></xref> are:</t>
 
         <texttable>
@@ -5580,6 +5580,9 @@
           <c>Server has no prefixes available to assign to the
           IA_PD(s).</c>
         </texttable>
+	      
+	<t>See <xref target="iana"/> for additional information about the
+	registry maintained by IANA with the complete list of status codes.</t>
       </section>
 
       <!-- ends: "22.13 from line 4134-->
@@ -6689,9 +6692,14 @@
 
   <back>
     <references title="Normative References">
-      <?rfc include='reference.RFC.3646'?>
 
-      <?rfc include='reference.RFC.4075'?>
+      <?rfc include='reference.RFC.0768'?>
+
+      <!-- Postel, J., "User Datagram Protocol", STD 6, RFC 768, August 1980. -->
+
+      <?rfc include='reference.RFC.1035'?>
+
+      <!-- Mockapetris, P., "Domain names - implementation andspecification", RFC 1035, November 1987. -->
 
       <?rfc include='reference.RFC.2119'?>
 
@@ -6701,63 +6709,21 @@
 
       <!--  Deering, S. and R. Hinden, "Internet Protocol, Version 6 (IPv6)Specification", RFC 2460, December 1998. -->
 
-      <?rfc include='reference.RFC.2464'?>
-
-      <!--  Crawford, M., "Transmission of IPv6 Packets over EthernetNetworks", RFC 2464, December 1998. -->
-
       <?rfc include='reference.RFC.4291'?>
 
-      <!--  Hinden, R. and S. Deering, "IP Version 6 AddressingArchitecture", RFC 4291, February 2006. -->
-
-      <?rfc include='reference.RFC.4301'?>
-
-      <!--  Kent, S. and R. Atkinson, "Security Architecture for the Internet Protocol", RFC 4301, December 2005. -->
-
-      <?rfc include='reference.RFC.5905'?>
-
-      <!--  Mills, D., "Network Time Protocol Version 4: Protocol and Algorithms Specification", RFC 5905, June 2010. -->
-
-      <?rfc include='reference.RFC.1035'?>
-
-      <!-- Mockapetris, P., "Domain names - implementation andspecification", RFC 1035, November 1987. -->
+      <!--  Hinden, R. and S. Deering, "IP Version 6 Addressing Architecture", RFC 4291, February 2006. -->
 
       <?rfc include='reference.RFC.4861'?>
 
       <!-- Narten, T., Nordmark, E. and W. Simpson, "Neighbor Discovery forIP Version 6 (IPv6)", RFC 4861, September 2007. -->
 
-      <?rfc include='reference.RFC.4941'?>
-
-      <!-- Narten, T. and R. Draves, "Privacy Extensions for StatelessAddress Autoconfiguration in IPv6", RFC 4941, . -->
-
-      <?rfc include='reference.RFC.0768'?>
-
-      <!-- Postel, J., "User Datagram Protocol", STD 6, RFC 768, August 1980. -->
-
-      <?rfc include='reference.RFC.0826'?>
-
-      <!-- Plummer, D.C., "Ethernet Address Resolution Protocol:  Orconverting network protocol addresses to 48.bit Ethernet addressfor
-
-transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
-
       <?rfc include='reference.RFC.4862'?>
 
       <!-- Thomson, S. and T. Narten, "IPv6 Stateless AddressAutoconfiguration", RFC 4862, September 2007. -->
 
-      <?rfc include='reference.RFC.2131'?>
-
-      <!-- Droms, R., "Dynamic Host Configuration Protocol", RFC 2131, March1997. -->
-
-      <?rfc include='reference.RFC.2132'?>
-
-      <!-- Alexander, S. and R. Droms, "DHCP Options and BOOTP VendorExtensions", RFC 2132, March 1997. -->
-      
-      <?rfc include='reference.RFC.6355'?>
-
-      <?rfc include='reference.RFC.6724'?>
-
-      <?rfc include='reference.RFC.7227'?>
-
       <?rfc include='reference.RFC.6221'?>
+
+      <?rfc include='reference.RFC.6355'?>
 
       <?rfc include='reference.RFC.7083'?>
 
@@ -6795,26 +6761,36 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
         </front>
       </reference>     
 
-      <!--Krawczyk, H., Bellare, M. and R. Canetti, "HMAC: Keyed-Hashingfor Message Authentication", RFC 2104, February 1997. -->
+      <?rfc include='reference.RFC.0826'?>	    
 
+      <?rfc include='reference.RFC.2131'?>
+      <?rfc include='reference.RFC.2132'?>
       <?rfc include='reference.RFC.2461'?>
       <?rfc include='reference.RFC.2462'?>
+      <?rfc include='reference.RFC.2464'?>
 
       <?rfc include='reference.RFC.3041'?>
       <?rfc include='reference.RFC.3162'?>
       <?rfc include='reference.RFC.3315'?>
       <?rfc include='reference.RFC.3633'?>
+      <?rfc include='reference.RFC.3646'?>
       <?rfc include='reference.RFC.3736'?>
       <?rfc include='reference.RFC.3769'?>
 
+      <?rfc include='reference.RFC.4075'?>
       <?rfc include='reference.RFC.4193'?>
       <?rfc include='reference.RFC.4242'?>
+      <?rfc include='reference.RFC.4301'?>
+      <?rfc include='reference.RFC.4941'?>
       <?rfc include='reference.RFC.4943'?>
 
       <?rfc include='reference.RFC.5007'?>
+      <?rfc include='reference.RFC.5453'?>
       <?rfc include='reference.RFC.5460'?>
+      <?rfc include='reference.RFC.5905'?>
 
       <?rfc include='reference.RFC.6603'?>
+      <?rfc include='reference.RFC.6724'?>
       <?rfc include='reference.RFC.6977'?>
 
       <?rfc include='reference.RFC.7084'?>
@@ -6826,8 +6802,8 @@ transmission on Ethernet hardware", STD 37, RFC 826, November1982. -->
       <?rfc include='reference.RFC.7610'?>
       <?rfc include='reference.RFC.7824'?>
       <?rfc include='reference.RFC.7844'?>
-      <?rfc include='reference.RFC.5453'?>
-      <?rfc include='reference.RFC.7136'?>    
+      <?rfc include='reference.RFC.7136'?>
+      <?rfc include='reference.RFC.7227'?>
       <?rfc include='reference.RFC.7721'?>      
 
       <?rfc include='reference.I-D.ietf-dhc-topo-conf'?>
