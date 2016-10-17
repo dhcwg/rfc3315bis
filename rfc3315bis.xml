@@ -1321,7 +1321,7 @@
             <t hangText="   hop-count">Number of relay agents that have
             relayed this message.</t>
 
-            <t hangText="   link-address">An address that will be used by the
+            <t hangText="   link-address">An address that may be used by the
             server to identify the link on which the client is located. This
             is typically a globally unique address or unique local address (ULA)
             <xref target="RFC4193"/>, but see discussion in <xref
@@ -1801,6 +1801,9 @@
         some other purpose. For example, a server MUST NOT assign addresses
         that use a reserved IPv6 Interface Identifier (<xref target="RFC5453"/>,
         <xref target="RFC7136"/>, <xref target="IANA-RESERVED-IID"/>).</t>
+	      
+	<t>See <xref target="I-D.ietf-dhc-topo-conf"></xref> for a more detailed
+        discussion on how servers determine a client's location on the network.</t>
       </section>
 
       <section title="Assignment of Temporary Addresses">
@@ -2032,8 +2035,10 @@
       <!-- New text from section 6 of RFC7083 -->
 
       <t>A client is not expected to listen for a response during the entire
-      period between transmission of Solicit or Information-request
-      messages.</t>
+      RT period and may turn off listening capabilities after a certain time
+      due to power consumption saving or other reasons. Of course, a
+      client MUST listen for a Reconfigure if it has negotiated for its use
+      with the server.</t>
     </section>
 
     <!-- ends: "14 from line 1258-->
@@ -2597,7 +2602,7 @@
             <t>A client that wishes to use the Rapid Commit 2-message exchange
             includes a Rapid Commit option in its Solicit message.
             The client may receive a number of different replies from
-            different servers.  The client will make note of any Advertise
+            different servers.  The client will make note of any valid Advertise
             messages that it receives.  The client will discard any Reply
             messages that do not contain the Rapid Commit option.
             </t>
@@ -2626,33 +2631,33 @@
           in <xref target="RFC3315-14"></xref> is modified as follows for use
           in the transmission of Solicit messages. The message exchange is not
           terminated by the receipt of an Advertise before the first RT has
-          elapsed. Rather, the client collects Advertise messages until the
+          elapsed. Rather, the client collects valid Advertise messages until the
           first RT has elapsed. Also, the first RT MUST be selected to be
           strictly greater than IRT by choosing RAND to be strictly greater
           than 0.</t>
 
-          <t>A client MUST collect Advertise messages for the first RT
-          seconds, unless it receives an Advertise message with a preference
+          <t>A client MUST collect valid Advertise messages for the first RT
+          seconds, unless it receives a valid Advertise message with a preference
           value of 255. The preference value is carried in the Preference
-          option (<xref target="RFC3315-22.8"></xref>). Any Advertise that
+          option (<xref target="RFC3315-22.8"></xref>). Any valid Advertise that
           does not include a Preference option is considered to have a
-          preference value of 0. If the client receives an Advertise message
+          preference value of 0. If the client receives a valid Advertise message
           that includes a Preference option with a preference value of 255,
           the client immediately begins a client-initiated message exchange
           (as described in <xref target="request-create-transmit"></xref>) by
           sending a Request message to the server from which the Advertise
-          message was received. If the client receives an Advertise message
+          message was received. If the client receives a valid Advertise message
           that does not include a Preference option with a preference value of
           255, the client continues to wait until the first RT elapses. If the
-          first RT elapses and the client has received an Advertise message,
+          first RT elapses and the client has received a valid Advertise message,
           the client SHOULD continue with a client-initiated message exchange
           by sending a Request message.</t>
 
-          <t>If the client does not receive any Advertise messages before the
+          <t>If the client does not receive any valid Advertise messages before the
           first RT has elapsed, it begins the retransmission mechanism
           described in <xref target="RFC3315-14"></xref>. The client
           terminates the retransmission process as soon as it receives any
-          Advertise message, and the client acts on the received Advertise
+          valid Advertise message, and the client acts on the received Advertise
           message without waiting for any additional Advertise messages.</t>
 
           <t>A DHCP client SHOULD choose MRC and MRD to be 0. If the DHCP
