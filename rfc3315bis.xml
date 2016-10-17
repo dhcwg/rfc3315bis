@@ -8,7 +8,7 @@
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
 <rfc category="std" docName="draft-ietf-dhc-rfc3315bis-06"
-     ipr="pre5378Trust200902" obsoletes="3315,3633,3736,7083,7550">
+     ipr="pre5378Trust200902" obsoletes="3315,3633,3736,4242,7083,7550">
   <front>
     <title abbrev="RFC 3315 bis">Dynamic Host Configuration Protocol for IPv6
     (DHCPv6) bis</title>
@@ -200,11 +200,13 @@
 
       <t>This document updates the text from RFC3315, the original DHCPv6
       specification, and incorporates the stateless DHCPv6 extensions (RFC3736)
-      and prefix delegation (RFC3633), clarifies the interactions
-      between these modes of operation (RFC7550), and provides a mechanism
+      and prefix delegation (RFC3633), an option to specify an upper
+      bound for how long a client should wait before refreshing information
+      (RFC4242), clarifies the interactions
+      between modes of operation (RFC7550), and provides a mechanism
       for throttling DHCPv6 clients when DHCPv6 service is not available (RFC7083).
-      As such, this document obsoletes RFC3315, RFC3633, RFC3736,
-      RFC7083, RFC7550.</t>
+      As such, this document obsoletes RFC3315, RFC3633, RFC3736, RFC4242,
+      RFC7083, and RFC7550.</t>
     </abstract>
   </front>
 
@@ -256,7 +258,9 @@
         published over the years:
         IPv6 Prefix Options for Dynamic Host Configuration Protocol (DHCP) version 6
 	<xref target="RFC3633"></xref>, Stateless Dynamic Host Configuration Protocol
-	(DHCP) Service for IPv6s <xref target="RFC3736"></xref>, Modification to
+	(DHCP) Service for IPv6s <xref target="RFC3736"></xref>, Information Refresh
+	Time Option for Dynamic Host Configuration Protocol for IPv6 (DHCPv6)
+	<xref target="RFC4242"/>, Modification to
 	Default Values of SOL_MAX_RT and INF_MAX_RT <xref target="RFC7083"/>, and
 	Issues and Recommendations with Multiple Stateful DHCPv6 Options
 	<xref target="RFC7550"/>. This document
@@ -1187,12 +1191,26 @@
           <c>32</c>
 
           <c>Max hop count in a Relay-forward message</c>
+		
+	  <c>IRT_DEFAULT</c>
+
+	  <c>86400 secs (24 hours)</c>
+
+	  <c>Default information refresh time</c>
+
+          <c>IRT_MINUMUM</c>
+	
+	  <c>600 secs</c>
+		
+		<c>Min information refresh time</c>
+		
         </texttable>
       </section>
 
       <!-- ends: "5.5 from line 743-->
 
-      <section title="Representation of time values and &quot;Infinity&quot; as a time value">
+      <section anchor="RFC3315-5.6"
+	       title="Representation of time values and &quot;Infinity&quot; as a time value">
         <t>All time values for lifetimes, T1 and T2 are unsigned integers. The
         value 0xffffffff is taken to mean "infinity" when used as a lifetime
         (as in <xref target="RFC4861"></xref>) or a value for T1 or T2.</t>
@@ -3649,8 +3667,8 @@
           status code NoPrefixAvail.</t>
 
           <t>The server MAY assign different addresses and/or delegated prefixes
-          to an IA than those included within the IA of the client’s Request
-          message.</t>
+          to an IA than those included within the IA of the client's Request
+	  message.</t>
 
           <t>For all IAs to which the server can assign addresses or delegated
           prefixes, the server includes the IAs with addresses (for IA_NA and
@@ -6286,6 +6304,91 @@
 
       <!-- ends: merged section 9. and 10. from RFC3633 -->
 
+      <!-- begin text from RFC4242 -->
+
+     <section anchor="RFC4242-Option" title="Information Refresh Time Option">
+	<t>This option is requested by clients and returend by servers to
+	specify an upper bound for how long a client should wait before
+	refreshing information retrieved
+        from a DHCP server. It is only used in Reply messages in response to
+        Information-Request messages. In other messages there will usually
+        be other information that indicates when the client should contact the
+	server, e.g., T1/T2 times and lifetimes.</t>
+
+        <t>The format of the Information Refresh Time option is:</t>
+
+        <figure align="center" anchor="FigOption32"
+                title="Information Refresh Time Option Format">
+          <preamble></preamble>
+
+          <artwork align="left"><![CDATA[
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |OPTION_INFORMATION_REFRESH_TIME|         option-len            |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                   information-refresh-time                    |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+          ]]></artwork>
+
+          <postamble></postamble>
+        </figure>
+
+        <t><list hangIndent="24" style="hanging">
+            <t hangText="   option-code">OPTION_INFORMATION_REFRESH_TIME (32).</t>
+
+            <t hangText="   option-len">4.</t>
+
+            <t hangText="   information-refresh-time">Time duration relative to
+             the current time, expressed in units of seconds.</t>
+          </list></t>
+
+        <!-- The following paragraphs have been adapted from RFC 4242 -->
+
+        <t>A DHCP client MUST request this option in the Option Request option
+        (see <xref target="RFC3315-22.7"/>) when sending Information-Request
+        messages. A client MUST NOT request this option in the ORO in any other
+        messages.</t>
+
+        <t>A server sending a Reply to an Information-Request message SHOULD
+        include this option if it is requested in the ORO of the Information-
+        Request. The option value MUST NOT be smaller than IRT_MINIMUM. This
+        option MUST only appear in the top-level option area of Reply messages.</t>
+
+        <t>If the Reply to an Information-Request message does not contain this
+        option, the client MUST behave as if the option with value IRT_DEFAULT
+        was provided.</t>
+
+        <t>A client MUST use the refresh time IRT_MINIMUM if it receives the
+        option with a value less than IRT_MINIMUM.</t>
+
+        <t>As per <xref target="RFC3315-5.6"/>, the value 0xffffffff is taken to
+        mean "infinity" and implies that the client should not refresh its
+        configuration data without some other trigger (such as detecting
+        movement to a new link).</t>
+
+        <t>If a client contacts the server to obtain new data or refresh some
+        existing data before the refresh time expires, then it SHOULD also
+        refresh all data covered by this option.</t>
+
+        <t>When the client detects that the refresh time has expired, it SHOULD
+        try to update its configuration data by sending an Information-
+        Request as specified in <xref target="RFC3315-18.1.5"/>, except that the
+        client MUST delay sending the first Information-Request by a random
+        amount of time between 0 and INF_MAX_DELAY.</t>
+
+        <t>A client MAY have a maximum value for the refresh time, where that
+        value is used whenever the client receives this option with a value
+        higher than the maximum.  This also means that the maximum value is
+        used when the received value is "infinity".  A maximum value might
+        make the client less vulnerable to attacks based on forged DHCP
+        messages.  Without a maximum value, a client may be made to use wrong
+        information for a possibly infinite period of time.  There may
+        however be reasons for having a very long refresh time, so it may be
+        useful for this maximum value to be configurable.</t>
+
+      </section>
+
       <!-- Merging section 4. from RFC7083 (SOL_MAX_RT option) -->
 
       <section anchor="SOL_MAX_RT_option" title="SOL_MAX_RT Option">
@@ -6419,17 +6522,6 @@
 
         <t>Updated INF_MAX_RT value applies only to the network interface on
         which the client received INF_MAX_RT option.</t>
-      </section>
-
-      <section anchor="RFC4242-3.4" title="Information Refresh Time Option">
-        <!-- 22.19, line 4440-->
-
-        <t>A client running in stateless mode requests this option. The server
-        includes this option in its response to specify an upper bound for how
-        long a client should wait before refreshing the information. Clients
-        that support stateless mode MUST support this option. This option is
-        listed here for completeness.  For complete reference, see <xref
-        target="RFC4242"/>.</t>
       </section>
 
       <!-- ends: merged section 5. from RFC7083 -->
