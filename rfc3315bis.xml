@@ -1820,7 +1820,7 @@
         client is attached.</t>
 
         <t>The lifetime of the assigned temporary address is set in the IA
-        Address option (see <xref target="RFC3315-22.6"></xref>) with in the
+        Address option (see <xref target="RFC3315-22.6"></xref>) encapsulated in the
         IA_TA option. It is RECOMMENDED to set short lifetimes, typically
         shorter than TEMP_VALID_LIFETIME and TEMP_PREFERRED_LIFETIME (see
         Section 5, <xref target="RFC4941"/>).</t>
@@ -3648,9 +3648,9 @@
           option in the Reply message with the Status Code option containing
           status code NoPrefixAvail.</t>
 
-          <t>The server MAY assign different addresses and/or delegated
-          prefixes to an IA than included in the IA within the Request message
-          sent by the client.</t>
+          <t>The server MAY assign different addresses and/or delegated prefixes
+          to an IA than those included within the IA of the client’s Request
+          message.</t>
 
           <t>For all IAs to which the server can assign addresses or delegated
           prefixes, the server includes the IAs with addresses (for IA_NA and
