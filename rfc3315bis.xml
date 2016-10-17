@@ -518,7 +518,7 @@
             <t hangText="IA_PD">Identity Association for Prefix Delegation: An
             IA that carries delegated prefixes.</t>
 
-            <t hangText="lease">"A contract by which the server grants the use
+            <t hangText="lease">A contract by which the server grants the use
             of an address or delegated prefix to the client for a specified
             period of time.</t>
 
@@ -1211,7 +1211,7 @@
 
       <section anchor="RFC3315-5.6"
 	       title="Representation of time values and &quot;Infinity&quot; as a time value">
-        <t>All time values for lifetimes, T1 and T2 are unsigned integers. The
+        <t>All time values for lifetimes, T1 and T2 are unsigned 32-bit integers. The
         value 0xffffffff is taken to mean "infinity" when used as a lifetime
         (as in <xref target="RFC4861"></xref>) or a value for T1 or T2.</t>
       </section>
@@ -2378,7 +2378,7 @@
 
       <section title="Prefix Delegation">
         <t>Delegated prefixes are not associated with a particular interface
-        in the same way as addresses are for address assignment, and mentioned
+        in the same way as addresses are for address assignment, as mentioned
         above.</t>
 
         <t>When a client sends a DHCP message
@@ -4089,7 +4089,7 @@
 
           <t>The server includes a Reconfigure Accept option if the server
           wants to indicate it supports Reconfigure mechanism. This
-          information may be used by the client during server
+          information may be used by the client during the server
           selection process.</t>
 
           <t>The server includes the options the server will return to the client
@@ -5937,7 +5937,7 @@
             with appropriate data.</t>
           </list></t>
 
-        <t>Severs only return the Vendor-specific Information options if
+        <t>Servers only return the Vendor-specific Information options if
         specified in Option Request options from clients and:</t>
 
         <t><list hangIndent="3" style="hanging">
