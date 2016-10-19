@@ -3199,8 +3199,8 @@
           <!-- Change from RFC 7550 section 4.1/4.2 has been applied. 6/1/2015 -->
 
           <t>The client MUST ignore any Advertise message that contains no
-          addresses (IAADDR options encapsulated in IA_NA or IA_TA options)
-          and no delegated prefixes (IAPREFIX options encapsulated in IA_PD
+          addresses (IA Address options encapsulated in IA_NA or IA_TA options)
+          and no delegated prefixes (IA Prefix options encapsulated in IA_PD
           options) with the exception that the client: <list hangIndent="3"
               style="hanging">
               <t hangText="-">MUST process an included SOL_MAX_RT option
@@ -3335,22 +3335,20 @@
                 to the server for those addresses as described in <xref
                 target="RFC3315-18.1.7"/>.</t>
 
-                <t hangText="-">For each IAADDR, which does not have any
+                <t hangText="-">For each assigned address, which does not have any
                 associated reachability information, in order to avoid the
-                problems described in <xref target="RFC4943"></xref>, hosts
+                problems described in <xref target="RFC4943"></xref>, the client
                 MUST NOT assume that any addresses are reachable on-link as a
                 result of receiving an IA_NA or IA_TA. Addresses obtained from
                 IA_NA or IA_TA MUST NOT be used to form an implicit prefix
                 with a length other than 128.</t>
 
-                <t hangText="-">For each IA_PD the client assigns a
-                subnet from each of the delegated prefixes
-                to each of the links to which the associated interfaces are
+                <t hangText="-">For each delegated prefix, the client assigns a
+                subnet to each of the links to which the associated interfaces are
                 attached, with the following exception: the client MUST
                 NOT assign any delegated prefixes or subnets from the delegated
                 prefix(es) to the link through which it received the DHCP message
-                from the server (see <xref target="RFC6603"/>
-                for exceptions).
+                from the server (see <xref target="RFC6603"/> for exceptions).
                 <vspace blankLines='1'/>
                 When a client subnets a delegated prefix, it must assign
                 additional bits to the prefix to generate unique, longer prefixes.
