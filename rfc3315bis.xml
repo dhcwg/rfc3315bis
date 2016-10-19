@@ -199,12 +199,12 @@
       (SLAAC).</t>
 
       <t>This document updates the text from RFC3315, the original DHCPv6
-      specification, and incorporates the stateless DHCPv6 extensions (RFC3736)
-      and prefix delegation (RFC3633), an option to specify an upper
+      specification, and incorporates prefix delegation (RFC3633),
+      stateless DHCPv6 (RFC3736), an option to specify an upper
       bound for how long a client should wait before refreshing information
-      (RFC4242), clarifies the interactions
-      between modes of operation (RFC7550), and provides a mechanism
-      for throttling DHCPv6 clients when DHCPv6 service is not available (RFC7083).
+      (RFC4242), a mechanism for throttling DHCPv6 clients when DHCPv6
+      service is not available (RFC7083), and clarifies the interactions
+      between modes of operation (RFC7550).
       As such, this document obsoletes RFC3315, RFC3633, RFC3736, RFC4242,
       RFC7083, and RFC7550.</t>
     </abstract>
