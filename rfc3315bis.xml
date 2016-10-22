@@ -605,10 +605,6 @@
         respond with a Reply message containing the configuration information
         for the client.</t>
 
-        <t>This message exchange assumes that the client requires only
-        configuration information and does not require the assignment of any
-        IPv6 addresses or delegated prefixes.</t>
-
         <t>When a server has IPv6 addresses and/or delegated prefixes and
         other configuration
         information committed to a client, the client and server may be able
@@ -4120,7 +4116,7 @@
           like to receive. If the server is not going to assign an address or
           delegated prefix received as a hint in the Solicit message, the
           server MUST NOT include this address or delegated prefix in the
-          Advertise message</t>
+          Advertise message.</t>
 
           <!-- This paragraph has been updated with the changes from section
                6 of RFC7083 -->
@@ -4907,7 +4903,7 @@
             <t hangText="   IAID">The unique identifier for this IA_NA; the
             IAID must be unique among the identifiers for all of this client's
             IA_NAs. The number space for IA_NA IAIDs is separate from the
-            number space for IA_TA IAIDs.</t>
+            number space for other IA option types (i.e., IA_TA and IA_PD).</t>
 
             <t hangText="   T1">The time at which the client contacts the
             server from which the addresses in the IA_NA were obtained to
@@ -4965,11 +4961,6 @@
         are to be renewed is to be left to the discretion of the client, the
         server sets T1 and T2 to 0. The client MUST follow the rules defined
         in <xref target="t1-t2-0"></xref>.</t>
-
-        <t>If a server receives an IA_NA with T1 greater than T2, and both T1
-        and T2 are greater than 0, the server ignores the invalid values of T1
-        and T2 and processes the IA_NA as though the client had set T1 and T2
-        to 0.</t>
 
         <t>If a client receives an IA_NA with T1 greater than T2, and both T1
         and T2 are greater than 0, the client discards the IA_NA option and
@@ -5030,7 +5021,7 @@
             <t hangText="   IAID">The unique identifier for this IA_TA; the
             IAID must be unique among the identifiers for all of this client's
             IA_TAs. The number space for IA_TA IAIDs is separate from the
-            number space for IA_NA IAIDs.</t>
+            number space for other IA option types (i.e., IA_NA and IA_PD).</t>
 
             <t hangText="   IA_TA-options">Options associated with this
             IA_TA.</t>
@@ -5127,7 +5118,10 @@
             <t hangText="   option-len">24 + length of IAaddr-options
             field.</t>
 
-            <t hangText="   IPv6 address">An IPv6 address.</t>
+            <t hangText="   IPv6 address">An IPv6 address. A client MUST NOT
+	    form an implicit prefix with a length other than 128 for this
+	    address. And, a client MUST NOT assume any length of prefix that
+	    matches this address is on-link (see <xref target="RFC7421"/>).</t>
 
             <t hangText="   preferred-lifetime">The preferred lifetime for the
             IPv6 address in the option, expressed in units of seconds.</t>
@@ -5152,10 +5146,7 @@
         are the number of seconds remaining in each lifetime.</t>
 
         <t>A client discards any addresses for which the preferred lifetime is
-        greater than the valid lifetime. A server ignores the lifetimes set by
-        the client if the preferred lifetime is greater than the valid
-        lifetime and ignores the values for T1 and T2 set by the client if
-        those values are greater than the preferred lifetime.</t>
+        greater than the valid lifetime.</t>
 
         <t>Care should be taken in setting the valid lifetime of an address to
         0xffffffff ("infinity"), which amounts to a permanent assignment of an
@@ -6137,7 +6128,8 @@
 
             <t hangText="   IAID">The unique identifier for this IA_PD; the
             IAID must be unique among the identifiers for all of this
-            client's IA_PDs.</t>
+            client's IA_PDs. The number space for IA_PD IAIDs is separate from
+            the number space for other IA option types (i.e., IA_NA and IA_TA).</t>
 
             <t hangText="   T1">The time at which the client should
             contact the server from which the prefixes in the IA_PD
@@ -6193,11 +6185,6 @@
         renewed is to be left to the discretion of the client, the
         server sets T1 and T2 to 0. The client MUST
         follow the rules defined in <xref target="t1-t2-0"></xref>.</t>
-
-        <t>If a server receives an IA_PD with T1 greater than T2,
-        and both T1 and T2 are greater than 0, the server ignores
-        the invalid values of T1 and T2 and processes the IA_PD as though the
-        client had set T1 and T2 to 0.</t>
 
         <t>If a client receives an IA_PD with T1 greater than T2,
         and both T1 and T2 are greater than 0, the client discards
@@ -6280,11 +6267,7 @@
         configured.</t>
 
         <t>A client discards any prefixes for which the preferred
-        lifetime is greater than the valid lifetime. A server
-        ignores the lifetimes set by the client if the preferred
-        lifetime is greater than the valid lifetime and ignores the values for
-        T1 and T2 set by the client if those values are greater
-        than the preferred lifetime.</t>
+        lifetime is greater than the valid lifetime.</t>
 
         <t>The values in the preferred and valid lifetimes are the number of
         seconds remaining for each lifetime.</t>
@@ -6886,6 +6869,7 @@
       <?rfc include='reference.RFC.7084'?>
       <?rfc include='reference.RFC.7341'?>
       <?rfc include='reference.RFC.7368'?>
+      <?rfc include='reference.RFC.7421'?>
       <?rfc include='reference.RFC.7550'?>
       <?rfc include='reference.RFC.7563'?>
       <?rfc include='reference.RFC.7598'?>
