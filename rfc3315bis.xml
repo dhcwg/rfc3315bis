@@ -1895,9 +1895,9 @@
         <t>In order to avoid prolonged message bursts that may be caused by
         possible logic loops, a DHCP client MUST limit the rate of DHCP
         messages it transmits. One example is that a client obtains an
-        address, but does not like the response; so it reverts back to Solicit
-        procedure, discovers the same (sole) server, requests an address and
-        gets the same address as before (as the server has this previously
+        address or delegated prefix, but does not like the response; so it reverts back to Solicit
+        procedure, discovers the same (sole) server, requests an address or delegated prefix and
+        gets the same address or delegated prefix as before (as the server has this previously
 	requested lease assigned to this client). This loop can repeat infinitely if
         there is not a quit/stop mechanism. Therefore, a client must not
         initiate transmissions too frequently.</t>
@@ -2424,7 +2424,7 @@
 
       <t>To request the assignment of one or more IPv6 addresses or delegated
       prefixes, a client first locates a DHCP server and then requests the
-      assignment of addresses and other configuration information from the
+      assignment of addresses/prefixes and other configuration information from the
       server. The client does this by sending the Solicit message
       (see <xref target="solicit-create-transmit"></xref>) to the
       All_DHCP_Relay_Agents_and_Servers multicast address and collecting
