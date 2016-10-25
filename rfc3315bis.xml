@@ -250,7 +250,7 @@
       <section anchor="previous-dhcp6"
                title="Relation to previous DHCPv6 standards">
         <t>The initial specification of DHCPv6 was defined in <xref
-        target="RFC3315"></xref> and a number of follow up extensions were
+        target="RFC3315"></xref> and a number of follow up documents were
         published over the years:
         IPv6 Prefix Options for Dynamic Host Configuration Protocol (DHCP) version 6
 	<xref target="RFC3633"></xref>, Stateless Dynamic Host Configuration Protocol
