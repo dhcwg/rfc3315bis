@@ -224,10 +224,6 @@
       options. DHCPv6 can be extended through the definition of new options to
       carry configuration information not specified in this document.</t>
 
-      <t>DHCPv6 is the "stateful address autoconfiguration protocol" and the
-      "stateful autoconfiguration protocol" referred to in "IPv6 Stateless
-      Address Autoconfiguration" <xref target="RFC4862"></xref>.</t>
-
       <t>DHCPv6 also provides a mechanism for automated delegation of
       IPv6 prefixes using DHCPv6, originally specified in <xref target="RFC3633"/>.
       Through this mechanism, a delegating router
