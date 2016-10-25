@@ -333,10 +333,7 @@
       target="RFC4862"></xref> specifies procedures by which a node may
       autoconfigure addresses based on router advertisements <xref
       target="RFC4861"></xref>, and the use of a valid lifetime to support
-      renumbering of addresses on the Internet. In addition, the protocol
-      interaction by which a node begins stateless or stateful
-      autoconfiguration is specified. DHCP is one vehicle to perform stateful
-      autoconfiguration. Compatibility with stateless address
+      renumbering of addresses on the Internet. Compatibility with stateless address
       autoconfiguration is a design requirement of DHCP.</t>
 
       <t>IPv6 Neighbor Discovery <xref target="RFC4861"></xref> is the node
