@@ -2470,17 +2470,24 @@
       a configuration exchange as described in <xref
       target="request-create-transmit"></xref>.</t>
 
-      <t>The client and server use the IA_PD option
+     <t>A server may initiate a message exchange with a client by sending a
+      Reconfigure message to cause the client to send a Renew, Rebind or
+      Information-request message to refresh its configuration information as
+     soon as the Reconfigure message is received by the client.</t>
+
+     <section title="A Single Exchange for multiple IA Options">
+     <t>The client and server use the IA_PD option
       to exchange information about prefix(es) in much the same way as IA_NA
       and IA_TA options are used for assigned addresses. Typically, a single
       DHCP session is used to exchange information about addresses and
       prefixes, i.e., IA_NA and IA_PD options are carried in the same
-      message.</t>
-	    
-     <t>A server may initiate a message exchange with a client by sending a
-      Reconfigure message to cause the client to send a Renew, Rebind or
-      Information-request message to refresh its configuration information as
-      soon as the Reconfigure message is received by the client.</t>
+     message.</t>
+     <t>Clients SHOULD use a single transaction for all of its IA
+     options. Servers SHOULD assign the same T1/T2 values to all IA
+     options configured for a client, so the client will generate a
+     single transaction when renewing its leases.  For a rationale of
+     this approach, see Section 4.2 of <xref target="RFC7550"/>.</t>
+     </section>
 
       <section title="Client Behavior">
         <!-- 18.1, line 1953-->
