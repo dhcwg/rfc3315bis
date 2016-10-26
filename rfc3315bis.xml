@@ -2593,8 +2593,8 @@
 
           <t>The first Solicit message from the client on the interface MUST
           be delayed by a random amount of time between 0 and SOL_MAX_DELAY.
-          In the case of a Solicit message transmitted when DHCP is initiated
-          by IPv6 Neighbor Discovery, the delay gives the amount of time to
+          In the case of a Solicit message transmitted when DHCP is
+          initiated,  the delay gives the amount of time to
           wait after IPv6 Neighbor Discovery causes the client to invoke the
           stateful address autoconfiguration protocol (see section 5.5.3 of
           <xref target="RFC2462"></xref>). This random delay desynchronizes
