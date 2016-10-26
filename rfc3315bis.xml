@@ -6436,6 +6436,12 @@
 
         <t>Updated SOL_MAX_RT value applies only to the network interface on
         which the client received SOL_MAX_RT option.</t>
+
+        <t>The requirement for the client to request SOL_MAX_RT serves
+        two purposes. First, it distinguishes between legacy and
+        modern clients. Second, it allows modern clients to take
+        advantage of the configurable SOL_MAX_RT values, even if the
+        server is a legacy one.</t>
       </section>
 
       <!-- ends: merged section 4. from RFC7083 -->
