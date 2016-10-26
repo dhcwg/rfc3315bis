@@ -6260,12 +6260,6 @@
         given value in the prefix-length field to indicate a preference for
         the size of the prefix to be delegated.</t>
 
-        <t>In a message sent by a server, the preferred and valid
-        lifetimes should be set to the values of AdvPreferredLifetime and
-        AdvValidLifetime as specified in section 6.2.1, "Router Configuration
-        Variables" of <xref target="RFC2461"></xref>, unless administratively
-        configured.</t>
-
         <t>A client discards any prefixes for which the preferred
         lifetime is greater than the valid lifetime.</t>
 
