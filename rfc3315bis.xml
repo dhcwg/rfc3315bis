@@ -6434,6 +6434,11 @@
         mechanism defined in <xref target="RFC3315-14"></xref> and <xref
         target="solicit-create-transmit"></xref>.</t>
 
+        <t>The purpose of this mechanism is to give network
+        administrator a way to avoid large DHCP traffic if all DHCP
+        servers become unavailable. Therefore this value is expected
+        to be retained for as long as practically possible.</t>
+
         <t>Updated SOL_MAX_RT value applies only to the network interface on
         which the client received SOL_MAX_RT option.</t>
 
