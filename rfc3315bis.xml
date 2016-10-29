@@ -4499,17 +4499,20 @@
             exchange DHCP messages on UDP port 547.</t>
 
             <t hangText="   Mode">Relay agents and servers use transport mode
-            and ESP. The information in DHCP messages is not generally
-            considered confidential, so encryption need not be used (i.e.,
-            NULL encryption can be used).</t>
+            and Encapsulating Security Payload (ESP).</t>
 
-            <t hangText="   Key management">Because the relay agents and
-            servers are used within an organization, public key schemes are
-            not necessary. Because the relay agents and servers must be
-            manually configured, manually configured key management may
-            suffice, but does not provide defense against replayed messages.
-            Accordingly, IKE with preshared secrets SHOULD be supported. IKE
-            with public keys MAY be supported.</t>
+            <t hangText="   Key management">Because both relay agents and
+            servers tend to be managed by a single organizational entity,
+            public key schemes may be optional.  Manually
+            configured key management may suffice, but
+            does not provide defense against replayed
+            messages.  Accordingly, IKE <xref target="RFC2409"/> / IKE2
+            <xref target="RFC7296"/> with preshared secrets SHOULD be
+            supported.  IKE/IKEv2 with public keys MAY be
+            supported.  Additional information on manual
+            vs automated key management and when one
+            should be used over the other can be found in
+            <xref target="RFC4107"/>.</t>
 
             <t hangText="   Security policy">DHCP messages between relay
             agents and servers should only be accepted from DHCP peers as
@@ -6848,6 +6851,7 @@
 
       <?rfc include='reference.RFC.2131'?>
       <?rfc include='reference.RFC.2132'?>
+      <?rfc include='reference.RFC.2409'?>
       <?rfc include='reference.RFC.2461'?>
       <?rfc include='reference.RFC.2462'?>
       <?rfc include='reference.RFC.2464'?>
@@ -6861,6 +6865,7 @@
       <?rfc include='reference.RFC.3769'?>
 
       <?rfc include='reference.RFC.4075'?>
+      <?rfc include='reference.RFC.4107'?>
       <?rfc include='reference.RFC.4193'?>
       <?rfc include='reference.RFC.4242'?>
       <?rfc include='reference.RFC.4301'?>
@@ -6877,6 +6882,7 @@
       <?rfc include='reference.RFC.6977'?>
 
       <?rfc include='reference.RFC.7084'?>
+      <?rfc include='reference.RFC.7296'?>
       <?rfc include='reference.RFC.7341'?>
       <?rfc include='reference.RFC.7368'?>
       <?rfc include='reference.RFC.7421'?>
@@ -6916,15 +6922,17 @@
 
     <section title="Changes since RFC3315">
          
-      <t>Note: This appendix should be removed by the RFC-Editor when preparing
-      the document for publication.</t>
+      <t>Note: This appendix needs to be updated (reworked) to provide a more
+      useful summary of the signficant changes between this and the original
+      documents. This is still a TODO issue!</t>
       
       <t><list style="numbers">
           <t>Incorporated RFC3315 errata (ids: 294, 1373, 2928, 1815, 3577,
           2509, 295).</t>
 
           <t>Partially incorporated RFC3315 errata id 2472 (place other IA
-          options if NoAddrsAvail is sent in Advertise).</t>
+          options if NoAddrsAvail is sent in Advertise), which is also covered
+          by <xref target="RFC7550"/>.</t>
 
           <t>Clarified section 21.4.1 of RFC3315 by defining length of "key
           ID" field and specifying that 'DHCP realm' is Domain Name encoded as
