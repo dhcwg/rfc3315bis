@@ -445,6 +445,9 @@
             information to be used by a node to configure its network
             subsystem and enable communication on a link or internetwork, for
             example.</t>
+		
+            <t hangText="container option">An option that encapsulates other
+            options (for example, the IA_NA may contain IAADDR options).</t>
 
             <t hangText="delegating router">The router that acts as a DHCP
             server, and responds to requests for delegated prefixes. This document
@@ -3406,11 +3409,10 @@
             <t>When the client receives a Reply message in response to a Renew
             or Rebind message, the client: <list style="hanging">
                 <t hangText="-">Sends a Request message if any of the IAs in
-                the Reply message contains the NoBinding status code. The
-                client places IA options in this message for only those IAs
-                for which the server returned the NoBinding status code in the
-                Reply message. The client continues to use other bindings for
-                which the server did not return an error.</t>
+                the Reply message contains the NoBinding status code to the
+                server that responded. The client places IA options in this
+                message for all IAs. The client continues to use other bindings
+                for which the server did not return an error.</t>
 
                 <t hangText="-">Sends a Renew/Rebind if any of the IAs are not
                 in the Reply message, but in this case the client MUST limit
@@ -3682,10 +3684,12 @@
           <t>The server MAY include a Reconfigure Accept option. New
           server implementations are discouraged from including the
           Reconfigure Accept option, as it does not convey any
-          additional information. If the reconfigure mechanism is
-          supported, the server is supposed to send Authentication
-          option with Reconfigure Key (see <xref
-          target="reconfigure-protocol"/> for details). However, it is
+          additional information. As use of the reconfiguration mechanism
+          requires some kind of authentication and if the default
+          Reconfigure Key Authentication Protocol (see <xref
+          target="reconfigure-protocol"/> for details) is being used,
+          the server sends the Authentication option with the
+          Reconfigure Key. However, the server is
           still allowed to send Reconfigure Accept option to maintain
           backward compatibility with servers that implement <xref
           target="RFC3315"/>.</t>
