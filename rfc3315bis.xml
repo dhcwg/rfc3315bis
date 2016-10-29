@@ -689,7 +689,7 @@
         the "stateful address autoconfiguration protocol" for IPv6 <xref
         target="RFC2462"></xref>. It is appropriate for situations where
         stateless address autoconfiguration alone is insufficient or
-        impractical, e.g., beacuse of network policy, additional requirments
+        impractical, e.g., because of network policy, additional requirements
         such as dynamic updates to the DNS, or client-specific requirements.</t>
 
         <t>The model of operation for non-temporary address assignment is as
@@ -6290,7 +6290,7 @@
       <!-- begin text from RFC4242 -->
 
      <section anchor="RFC4242-Option" title="Information Refresh Time Option">
-	<t>This option is requested by clients and returend by servers to
+	<t>This option is requested by clients and returned by servers to
 	specify an upper bound for how long a client should wait before
 	refreshing information retrieved
         from a DHCP server. It is only used in Reply messages in response to
@@ -6922,7 +6922,7 @@
     <section title="Changes since RFC3315">
          
       <t>Note: This appendix needs to be updated (reworked) to provide a more
-      useful summary of the signficant changes between this and the original
+      useful summary of the significant changes between this and the original
       documents. This is still a TODO issue!</t>
       
       <t><list style="numbers">
