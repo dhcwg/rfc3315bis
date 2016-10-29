@@ -763,33 +763,33 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-                   ______________________        \
-                  /                      \        \
-                 |    ISP core network    |        \
-                  \__________ ___________/          |
-                             |                      |
-                     +-------+-------+              |
-                     |  Aggregation  |              | ISP
-                     |    device     |              | network
-                     |  (delegating  |              |
-                     |    router)    |              |
-                     +-------+-------+              |
-                             |                     /
-                             |DSL to subscriber   /
-                             |premises           /
+                   ______________________         \
+                  /                      \         \
+                 |    ISP core network    |         \
+                  \__________ ___________/           |
+                             |                       |
+                     +-------+-------+               |
+                     |  Aggregation  |               | ISP
+                     |    device     |               | network
+                     |  (delegating  |               |
+                     |    router)    |               |
+                     +-------+-------+               |
+                             |                      /
+                             |Network link to      /
+                             |subscriber premises /
                              |
-                      +------+------+            \
-                      |     CPE     |             \
-                      | (requesting |              \
-                      |   router)   |               |
-                      +----+---+----+               |
-                           |   |                    | Subscriber
-    ---+-------------+-----+   +-----+------        | Network
-       |             |               |              |
-  +----+-----+ +-----+----+     +----+-----+        |
-  |Subscriber| |Subscriber|     |Subscriber|       /
-  |    PC    | |    PC    |     |    PC    |      /
-  +----------+ +----------+     +----------+     /
+                      +------+------+             \
+                      |     CPE     |              \
+                      | (requesting |               \
+                      |   router)   |                |
+                      +----+---+----+                |
+                           |   |                     | Subscriber
+    ---+-------------+-----+   +-----+------         | Network
+       |             |               |               |
+  +----+-----+ +-----+----+     +----+-----+         |
+  |Subscriber| |Subscriber|     |Subscriber|        /
+  |    PC    | |    PC    |     |    PC    |       /
+  +----------+ +----------+     +----------+      /
         ]]></artwork>
 
           <postamble></postamble>
@@ -5207,8 +5207,8 @@
             option requested by the client.</t>
           </list></t>
 
-        <t>A client MAY include an Option Request option in a Solicit,
-        Request, Renew, Rebind, Confirm or Information-request message to
+        <t>A client MUST include an Option Request option in a Solicit,
+        Request, Renew, Rebind, or Information-request message to
         inform the server about options the client wants the server to send to
         the client.</t>
 
