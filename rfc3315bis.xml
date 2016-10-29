@@ -1813,7 +1813,7 @@
         that use a reserved IPv6 Interface Identifier (<xref target="RFC5453"/>,
         <xref target="RFC7136"/>, <xref target="IANA-RESERVED-IID"/>).</t>
 	      
-	<t>See <xref target="I-D.ietf-dhc-topo-conf"></xref> for a more detailed
+	<t>See <xref target="RFC7969"></xref> for a more detailed
         discussion on how servers determine a client's location on the network.</t>
       </section>
 
@@ -4309,7 +4309,7 @@
           to a link-local address from the interface the original message
           was received on. That is not recommended as it may require additional
           information to be provided in the server configuration. See Section
-          3.2 of <xref target="I-D.ietf-dhc-topo-conf"></xref> for a detailed
+          3.2 of <xref target="RFC7969"></xref> for a detailed
           discussion.</t>
 
           <t>This address will be used by the server to determine the link
@@ -6894,9 +6894,8 @@
       <?rfc include='reference.RFC.7844'?>
       <?rfc include='reference.RFC.7136'?>
       <?rfc include='reference.RFC.7227'?>
-      <?rfc include='reference.RFC.7721'?>      
-
-      <?rfc include='reference.I-D.ietf-dhc-topo-conf'?>
+      <?rfc include='reference.RFC.7721'?>
+      <?rfc include='reference.RFC.7969'?>
 
       <?rfc include='reference.I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue'?>
       
