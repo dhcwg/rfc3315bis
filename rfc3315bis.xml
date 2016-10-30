@@ -3009,7 +3009,9 @@
           "transaction-id" field.</t>
 
           <t>The client SHOULD include a Client Identifier option to identify
-          itself to the server. If the client does not include a Client
+          itself to the server (see section 4.3.1 of <xref target="RFC7844"/> for
+          reasons why a client may not want to include this option). If the
+          client does not include a Client
           Identifier option, the server will not be able to return any
           client-specific options to the client, or the server may choose not
           to respond to the message at all.</t>
@@ -3446,15 +3448,13 @@
           </section>
 
           <section anchor="reply-confirm" title="Reply for Confirm">
-            <t>When the client receives a NotOnLink status from the server in
-            response to a Confirm message, the client performs DHCP server
-            discovery, as described in <xref
-            target="configuration-exchange"></xref>, and client-initiated
-            configuration, as described in <xref
-            target="configuration-exchange"></xref>. If the client receives
+            <t>If the client receives
             any Reply messages that indicate a success status (explicit or
             implicit), the client can use the addresses in the IA and ignore
-            any messages that indicate a NotOnLink status.</t>
+            any messages that indicate a NotOnLink status. When the client
+            only receives one or more Replies with the NotOnLink status in
+            response to a Confirm message, the client performs DHCP server
+            discovery as described in <xref target="configuration-exchange"/>.</t>
           </section>
         </section>
 
@@ -3607,7 +3607,7 @@
               commits the assignment of any leases before sending the Reply
               message. The client can assume it has been assigned the leases
               in the Reply message and does not need to send a Request message
-              for those addresses.</t>
+              for those leases.</t>
 
               <t>Typically, servers that are configured to use the
               Solicit/Reply message exchange will be deployed so that only one
@@ -3654,14 +3654,14 @@
           the client is connected, the server MUST return the IA to the client
           with a Status Code option with the value NotOnLink. If the server
           does not send the NotOnLink status code but it cannot assign any IP
-          addresses to an IA, the server MUST return the IA in the Reply
+          addresses to an IA, the server MUST return the IA option in the Reply
           message with no addresses in the IA and a Status Code option
-          containing status code NoAddrsAvail.</t>
+          containing status code NoAddrsAvail in the IA.</t>
 
           <t>For any IA_PD in the Request message, to which the server cannot
           assign any delegated prefixes, the server MUST return the IA_PD
-          option in the Reply message with the Status Code option containing
-          status code NoPrefixAvail.</t>
+          option in the Reply message with no prefixes in the IA_PD and with a
+          Status Code option containing status code NoPrefixAvail in the IA_PD.</t>
 
           <t>The server MAY assign different addresses and/or delegated prefixes
           to an IA than those included within the IA of the client's Request
