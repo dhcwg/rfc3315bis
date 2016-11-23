@@ -1400,10 +1400,16 @@
       for the representation of a DUID in a DHCP message.</t>
 
       <t>Clients and servers MUST treat DUIDs as opaque values and MUST only
-      compare DUIDs for equality. Clients and servers MUST NOT in any other
+      compare DUIDs for equality. Clients and servers SHOULD NOT in any other
       way interpret DUIDs. Clients and servers MUST NOT restrict DUIDs to the
       types defined in this document, as additional DUID types may be defined
-      in the future.</t>
+      in the future. It should be noted that an attempt to parse DUID to obtain
+      client's link local address is unreliable as there is not guarantee that
+      the client is still using the same link local address as when it generated
+      its DUID. Such an attempt will be more and more unreliable as more
+      clients adopt privacy measures, such are those defined in <xref
+      target="RFC7844"/>. It is better to rely on a mechanism defined in
+      <xref target="RFC6939"/>.</t>
 
       <t>The DUID is carried in an option because it may be variable length
       and because it is not required in all DHCP messages. The DUID is
@@ -1670,7 +1676,7 @@
 
         <t>DUID-LL is recommended for devices that have a
         permanently-connected network interface with a link-layer address, and
-        do not have nonvolatile, writable stable storage. DUID-LL MUST NOT be
+        do not have nonvolatile, writable stable storage. DUID-LL SHOULD NOT be
         used by DHCP clients or servers that cannot tell whether or not a
         network interface is permanently attached to the device on which the
         DHCP client is running.</t>
@@ -6881,6 +6887,7 @@
 
       <?rfc include='reference.RFC.6603'?>
       <?rfc include='reference.RFC.6724'?>
+      <?rfc include='reference.RFC.6939'?>
       <?rfc include='reference.RFC.6977'?>
 
       <?rfc include='reference.RFC.7084'?>
@@ -7184,7 +7191,15 @@
 	  <t>NOTE: Additional changes made from WGLC comments. This section will be replaced with
 	  new material to provide a list of changes. TODO (Bernie).</t>
 
-          <t>Reconfigure Accept is now SHOULD in Reply (review comment #130).</t>
+          <t>Reconfigure Accept is now SHOULD in Reply (review comment
+          #130).</t>
+
+          <t>Changed MUST NOT to SHOULD NOT in the text about interpreting
+          DUIDs, added explanatory text (review comment #206).</t>
+
+          <t>DUID-LL restriction is now SHOULD NOT (was MUST NOT) regarding
+          the text about clients and server be able to tell if the network
+          interfaces is permanently attached (review comment #207).</t>
         </list></t>
     </section>
 
