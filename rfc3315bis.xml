@@ -253,13 +253,13 @@
         target="RFC3315"></xref> and a number of follow up documents were
         published over the years:
         IPv6 Prefix Options for Dynamic Host Configuration Protocol (DHCP) version 6
-	<xref target="RFC3633"></xref>, Stateless Dynamic Host Configuration Protocol
-	(DHCP) Service for IPv6s <xref target="RFC3736"></xref>, Information Refresh
-	Time Option for Dynamic Host Configuration Protocol for IPv6 (DHCPv6)
-	<xref target="RFC4242"/>, Modification to
-	Default Values of SOL_MAX_RT and INF_MAX_RT <xref target="RFC7083"/>, and
-	Issues and Recommendations with Multiple Stateful DHCPv6 Options
-	<xref target="RFC7550"/>. This document
+        <xref target="RFC3633"></xref>, Stateless Dynamic Host Configuration Protocol
+        (DHCP) Service for IPv6s <xref target="RFC3736"></xref>, Information Refresh
+        Time Option for Dynamic Host Configuration Protocol for IPv6 (DHCPv6)
+        <xref target="RFC4242"/>, Modification to
+        Default Values of SOL_MAX_RT and INF_MAX_RT <xref target="RFC7083"/>, and
+        Issues and Recommendations with Multiple Stateful DHCPv6 Options
+        <xref target="RFC7550"/>. This document
         provides a unified, corrected, and cleaned up definition of DHCPv6
         that also covers all errata filled against older RFCs. As such, it
         obsoletes a number of aforementioned RFCs. And, there are a small
@@ -445,7 +445,7 @@
             information to be used by a node to configure its network
             subsystem and enable communication on a link or internetwork, for
             example.</t>
-		
+
             <t hangText="container option">An option that encapsulates other
             options (for example, the IA_NA may contain IAADDR options).</t>
 
@@ -533,8 +533,8 @@
             delegation (see <xref target="intro-and-overview"/>.</t>
 
             <t hangText="singleton option">An option that is allowed to appear
-	    only once as a the top-level option or at any encapsulation level.
-	    Most options are singletons.</t>
+            only once as a the top-level option or at any encapsulation level.
+            Most options are singletons.</t>
 
             <t hangText="relaying">A DHCP relay agent relays DHCP messages
             between DHCP participants.</t>
@@ -562,7 +562,7 @@
     <!-- ends: "4 from line 402-->
 
   <section anchor="Client-Server-Exchanges"
-	   title="Client-Server Exchanges">
+           title="Client-Server Exchanges">
      <!-- 1.1, line 260-->
 
      <t>Clients and servers exchange DHCP messages using UDP <xref
@@ -623,8 +623,8 @@
         new lifetimes, allowing the client to continue to use the address or
         delegated prefix without interruption. If the server is unable to extend
         the lifetime of an address or delegated prefix, it indicates this by
-	returning the address or delegated prefix with lifetimes of 0. At the same
-	time, the server may assign other addresses or delegated prefixes.</t>
+        returning the address or delegated prefix with lifetimes of 0. At the same
+        time, the server may assign other addresses or delegated prefixes.</t>
 
         <t>There are additional two message exchanges between the client and
         server described later in this document.</t>
@@ -647,14 +647,14 @@
         assignment of addresses and/or delegated prefixes and other configuration information. The
         server responds with a Reply message that contains the confirmed
         addresses, delegated prefixes, and configuration.</t>
-	      
+
         <t>As described in the previous section, the client can also request an
         extension of the lifetimes assigned to addresses or delegated prefixes
         (this is a two message exchange).</t>
 
        </section>
     </section>
-	  
+
     <section anchor="OpModes" title="Operational Models">
       <t>This section describes some of the current most common DHCP
       operational models. The described models are not mutually exclusive and
@@ -832,7 +832,7 @@
         <t>While <xref target="RFC3633"/> assumed that the DHCPv6 client
         is a router (hence use of "requesting router") and that the DHCPv6
         server was a router (hence use of "delegating router"), DHCPv6
-        prefix delegation itself does not require that the client forward 
+        prefix delegation itself does not require that the client forward
         IPv6 packets not addressed to itself, and thus does not require
         that the client (or server) be an IPv6 router as defined in
         <xref target="RFC2460"/>. Also, in many cases (such as tethering
@@ -916,10 +916,10 @@
         <t>DHCP defines the following message types. More detail on these
         message types can be found in <xref target="RFC3315-6"></xref> and
         <xref target="RFC3315-7"></xref>. Additional message types are
-	defined in <xref target="RFC5007"/>, <xref target="RFC5460"/>,
-	<xref target="RFC6977"/>, <xref target="RFC7341"/>, <xref
-	target="RFC7563"/>. Additional message types may be defined in
-	the future. The numeric encoding for each message type is
+        defined in <xref target="RFC5007"/>, <xref target="RFC5460"/>,
+        <xref target="RFC6977"/>, <xref target="RFC7341"/>, <xref
+        target="RFC7563"/>. Additional message types may be defined in
+        the future. The numeric encoding for each message type is
         shown in parentheses.</t>
 
         <t><list hangIndent="16" style="hanging">
@@ -1002,13 +1002,13 @@
       </section>
 
       <!-- ends: "5.3 from line 634-->
-	    
+
       <section title="DHCP Option Codes">
 
         <t>DHCP makes extensive use of options in messages and some of these
         are defined later in <xref target="RFC3315-22"/>. Additional options
-	are defined in other documents or may be defined in the future.</t>
-	</section>
+        are defined in other documents or may be defined in the future.</t>
+        </section>
 
       <section title="Status Codes">
         <!-- 5.4, line 733-->
@@ -1183,26 +1183,26 @@
           <c>32</c>
 
           <c>Max hop count in a Relay-forward message</c>
-		
-	  <c>IRT_DEFAULT</c>
 
-	  <c>86400 secs (24 hours)</c>
+          <c>IRT_DEFAULT</c>
 
-	  <c>Default information refresh time</c>
+          <c>86400 secs (24 hours)</c>
+
+          <c>Default information refresh time</c>
 
           <c>IRT_MINUMUM</c>
-	
-	  <c>600 secs</c>
-		
-		<c>Min information refresh time</c>
-		
+
+          <c>600 secs</c>
+
+                <c>Min information refresh time</c>
+
         </texttable>
       </section>
 
       <!-- ends: "5.5 from line 743-->
 
       <section anchor="RFC3315-5.6"
-	       title="Representation of time values and &quot;Infinity&quot; as a time value">
+               title="Representation of time values and &quot;Infinity&quot; as a time value">
         <t>All time values for lifetimes, T1 and T2 are unsigned 32-bit integers. The
         value 0xffffffff is taken to mean "infinity" when used as a lifetime
         (as in <xref target="RFC4861"></xref>) or a value for T1 or T2.</t>
@@ -1725,10 +1725,10 @@
         addresses along with the T1 and T2 times for the IA. See <xref
         target="RFC3315-22.4"/> for the representation of an IA_NA in a
         DHCP message.</t>
-        
+
         <t>The configuration information in an IA_TA consists of one or more IPv6
         addresses. See <xref target="RFC3315-22.5"/> for the representation of an
-        IA_TA in a DHCP message.</t>        
+        IA_TA in a DHCP message.</t>
 
         <t>Each address in an IA has a preferred lifetime and a valid
         lifetime, as defined in <xref target="RFC4862"></xref>. The lifetimes
@@ -1751,12 +1751,12 @@
         IPv6 prefixes along with the T1 and T2 times for the IA_PD. See <xref
         target="IA_PD-option"></xref> for the representation of an IA_PD in a
         DHCP message.</t>
-        
+
         <t>Each delegated prefix in an IA has a preferred lifetime and a valid
         lifetime, as defined in <xref target="RFC4862"></xref>. The lifetimes
         are transmitted from the DHCP server to the client in the IA Prefix option.
         The lifetimes apply to the use of delegated prefixes, as described in
-        section 5.5.4 of <xref target="RFC4862"></xref>.</t>        
+        section 5.5.4 of <xref target="RFC4862"></xref>.</t>
       </section>
     </section>
 
@@ -1814,13 +1814,13 @@
 
         <t>By default, DHCPv6 server implementations SHOULD NOT generate
         predictable IPv6 addresses (<xref target="RFC7721"/>).</t>
-        
+
         <t>A server MUST NOT assign an address that is otherwise reserved for
         some other purpose. For example, a server MUST NOT assign addresses
         that use a reserved IPv6 Interface Identifier (<xref target="RFC5453"/>,
         <xref target="RFC7136"/>, <xref target="IANA-RESERVED-IID"/>).</t>
-	      
-	<t>See <xref target="RFC7969"></xref> for a more detailed
+
+        <t>See <xref target="RFC7969"></xref> for a more detailed
         discussion on how servers determine a client's location on the network.</t>
       </section>
 
@@ -1861,7 +1861,7 @@
         DHCP provides such possibility (see <xref
         target="RFC3315-22.5"></xref>).</t>
       </section>
-      
+
       <section title="Assignment of Prefixes for IA_PD">
         <t>The mechanism through which the server selects
         prefix(es) for delegation is not specified in this document. Examples
@@ -1871,8 +1871,8 @@
         external authority such as a RADIUS server using the
         Framed-IPv6-Prefix option as described in <xref pageno="false"
         target="RFC3162"></xref>.</t>
-      </section>      
-      
+      </section>
+
     </section>
 
     <!-- ends: "12 from line 1217-->
@@ -1902,7 +1902,7 @@
         address or delegated prefix, but does not like the response; so it reverts back to Solicit
         procedure, discovers the same (sole) server, requests an address or delegated prefix and
         gets the same address or delegated prefix as before (as the server has this previously
-	requested lease assigned to this client). This loop can repeat infinitely if
+        requested lease assigned to this client). This loop can repeat infinitely if
         there is not a quit/stop mechanism. Therefore, a client must not
         initiate transmissions too frequently.</t>
 
@@ -2410,7 +2410,7 @@
         <t hangText="3."> when required by Stateless Address Autoconfiguration (as defined
         in <xref target="RFC2462"/> Section 5.2),</t>
         <t hangText="4."> as required to extend the lifetime of address(es) and/or
-	delegated prefix(es), using Renew and Rebind messages,</t>
+        delegated prefix(es), using Renew and Rebind messages,</t>
         <t hangText="4."> or when requested to do so by server - upon the receipt of a
         Reconfigure message.</t>
       </list>
@@ -2565,13 +2565,13 @@
           <t>The client MUST include an Elapsed Time option (see
           <xref target="RFC3315-22.9"/>) to indicate how long the client has
           been trying to complete the current DHCP message exchange.</t>
-          
+
           <t>The client uses IA_NA options to request the assignment of
           non-temporary addresses, IA_TA options to request the assignment of
           temporary addresses, and IA_PD options to request prefix delegation.
           Either IA_NA, IA_TA or IA_PD options, or a combination of all, can
           be included in DHCP messages. In addition, multiple instances of any
-          IA option type can be included.</t>          
+          IA option type can be included.</t>
 
           <t>The client MAY include addresses in IA Address options encapsulated
           within IA_NA and IA_TA options as hints to the server about the
@@ -2847,12 +2847,12 @@
         <section anchor="RFC3315-18.1.3"
                  title="Creation and Transmission of Renew Messages">
           <!-- 18.1.3, line 2100-->
-		
+
           <t>To extend the valid and preferred lifetimes for the leases
           assigned to the IAs and obtain new addresses or delegated prefixes
           for IAs, the client sends a Renew message to the server from which
           the leases were obtained, which includes IA options for the IAs
-	  whose lease lifetimes are to be extended. The client includes IA
+          whose lease lifetimes are to be extended. The client includes IA
           Address options within IA_NA and IA_TA options for the addresses
           assigned to the IAs. The client includes IA Prefix options within
           IA_PD options for the delegated prefixes assigned to the IAs. The
@@ -2873,11 +2873,11 @@
 
           <t>At time T1, the client initiates a Renew/Reply message exchange
           to extend the lifetimes on any leases in the IA.</t>
-		
-	  <t>A client MUST also initiate a Renew/Reply message exchange before
-	  time T1 if the client's link-local address used in previous
-	  interactions with the server is no longer valid and it is willing
-	  to receive Reconfigure messages.</t>
+
+          <t>A client MUST also initiate a Renew/Reply message exchange before
+          time T1 if the client's link-local address used in previous
+          interactions with the server is no longer valid and it is willing
+          to receive Reconfigure messages.</t>
 
           <t>If T1 or T2 had been set to 0 by the server (for an IA_NA or
           IA_PD) or there are no T1 or T2 times (for an IA_TA) in a previous
@@ -2960,7 +2960,7 @@
           Renew message was sent starting at time T1 has not responded), the
           client initiates a Rebind/Reply message exchange with any available
           server.</t>
-          
+
           <t>A Rebind is also used to verify delegated prefix bindings but
           with different retransmission parameters as described in
           <xref target="RFC3315-18.1.2"/>.</t>
@@ -3090,7 +3090,7 @@
           zero in a Router Advertisement message as described in Section
           5.5.3, (e) of <xref target="RFC4862"></xref> - also see L-13 in
           Section 4.3 of <xref target="RFC7084"></xref>.</t>
-          
+
           <t>The client MUST NOT use any of the addresses it is releasing as
           the source address in the Release message or in any subsequently
           transmitted message.</t>
@@ -3264,10 +3264,10 @@
           Solicit (with a Rapid Commit option), Request, Confirm, Renew,
           Rebind, or Information-request message, the client extracts the
           top-level Status Code option if present.</t>
-          
+
           <t>The client MUST process SOL_MAX_RT and INF_MAX_RT options in an
           Reply message, even if the message contains a Status Code option
-          indicating a failure.</t>            
+          indicating a failure.</t>
 
           <t>If the client receives a Reply message with a status code of
           UnspecFail, the server is indicating that it was unable to process
@@ -3403,7 +3403,7 @@
             information.  This behavior does not apply to any IA containers,
             as their processing is described in detail in other parts of
             this document.</t>
-            
+
             <t>When a client receives a requested option that has an updated
             value from what was previously received, the client SHOULD make
             use of that updated value as soon as possible for its configuration
@@ -3672,7 +3672,7 @@
 
           <t>The server MAY assign different addresses and/or delegated prefixes
           to an IA than those included within the IA of the client's Request
-	  message.</t>
+          message.</t>
 
           <t>For all IAs to which the server can assign addresses or delegated
           prefixes, the server includes the IAs with addresses (for IA_NA and
@@ -4103,12 +4103,12 @@
           receives more than one Advertise message. The server MUST include
           options in the Advertise message containing configuration parameters
           for all of the options identified in the Option Request option in the Solicit message
-          that the server has been configured to return to the client.  If the 
-          Option Request option includes a container option the server MUST include all 
-          the options that are eligible to be encapsulated in the container. The Option 
-          Request option MAY be used to signal support for a feature even when that option is 
-          encapsulated as in the case of the Prefix Exclude option <xref target="RFC6603"/>. 
-          In this case, special processing is required by the server.  
+          that the server has been configured to return to the client.  If the
+          Option Request option includes a container option the server MUST include all
+          the options that are eligible to be encapsulated in the container. The Option
+          Request option MAY be used to signal support for a feature even when that option is
+          encapsulated as in the case of the Prefix Exclude option <xref target="RFC6603"/>.
+          In this case, special processing is required by the server.
           The server MAY return additional options to the client if it has been
           configured to do so. The server must be aware of the recommendations
           on packet sizes and the use of fragmentation in section 5 of <xref
@@ -4473,7 +4473,7 @@
       servers and relay agents using IPsec, and protection against
       misconfiguration of a client caused by a Reconfigure message sent by a
       malicious DHCP server.</t>
-      
+
       <t>The delayed authentication protocol, defined in
       <xref target="RFC3315"></xref>, has been obsoleted by this document
       (see <xref target="obsolete"/>).</t>
@@ -5136,9 +5136,9 @@
             field.</t>
 
             <t hangText="   IPv6 address">An IPv6 address. A client MUST NOT
-	    form an implicit prefix with a length other than 128 for this
-	    address. And, a client MUST NOT assume any length of prefix that
-	    matches this address is on-link (see <xref target="RFC7421"/>).</t>
+            form an implicit prefix with a length other than 128 for this
+            address. And, a client MUST NOT assume any length of prefix that
+            matches this address is on-link (see <xref target="RFC7421"/>).</t>
 
             <t hangText="   preferred-lifetime">The preferred lifetime for the
             IPv6 address in the option, expressed in units of seconds.</t>
@@ -5223,17 +5223,17 @@
 
         <t>The Option Request option MUST NOT include the
         following options: Server Identifier, Client Identifier, IA_NA, IA_PD, IA_TA,
-        IA Address, IA Prefix, Option Request, Elapsed Time, Preference, Relay Message, Authentication, 
+        IA Address, IA Prefix, Option Request, Elapsed Time, Preference, Relay Message, Authentication,
         Server Unicast, Rapid Commit, User Class, Vendor Class, Interface-Id, Reconfigure Message, and
-        Reconfigure Accept.  Other top-level options MUST appear in the Option Request 
+        Reconfigure Accept.  Other top-level options MUST appear in the Option Request
         option or they will not be sent by the server.  Only container options MUST appear
-        in the Option Request, options encapsulated in the container MUST NOT be in the 
+        in the Option Request, options encapsulated in the container MUST NOT be in the
         Option Request, see <xref target="RFC7598"/> as an example of container options.
-        The exception to this is the Option Request option MAY be used to signal support 
-        for a feature even when that option is encapsulated as in the case of the 
+        The exception to this is the Option Request option MAY be used to signal support
+        for a feature even when that option is encapsulated as in the case of the
         Prefix Exclude option <xref target="RFC6603"/>.
         </t>
-        
+
       </section>
 
       <!-- ends: "22.7 from line 3912-->
@@ -5604,9 +5604,9 @@
           <c>Server has no prefixes available to assign to the
           IA_PD(s).</c>
         </texttable>
-	      
-	<t>See <xref target="iana"/> for additional information about the
-	registry maintained by IANA with the complete list of status codes.</t>
+
+        <t>See <xref target="iana"/> for additional information about the
+        registry maintained by IANA with the complete list of status codes.</t>
       </section>
 
       <!-- ends: "22.13 from line 4134-->
@@ -6282,7 +6282,7 @@
 
         <t>The values in the preferred and valid lifetimes are the number of
         seconds remaining for each lifetime.</t>
-        
+
         <t>Care should be taken in setting the valid lifetime or a delegated
         prefix to 0xffffffff ("infinity"), which amounts to a permanent
         delegation of the prefix to a client.</t>
@@ -6299,13 +6299,13 @@
       <!-- begin text from RFC4242 -->
 
      <section anchor="RFC4242-Option" title="Information Refresh Time Option">
-	<t>This option is requested by clients and returned by servers to
-	specify an upper bound for how long a client should wait before
-	refreshing information retrieved
+        <t>This option is requested by clients and returned by servers to
+        specify an upper bound for how long a client should wait before
+        refreshing information retrieved
         from a DHCP server. It is only used in Reply messages in response to
         Information-Request messages. In other messages there will usually
         be other information that indicates when the client should contact the
-	server, e.g., T1/T2 times and lifetimes.</t>
+        server, e.g., T1/T2 times and lifetimes.</t>
 
         <t>The format of the Information Refresh Time option is:</t>
 
@@ -6584,7 +6584,7 @@
       attack on a client. The use of transaction IDs that are
       cryptographically sound and cannot easily be predicted will also reduce
       the probability that such an attack will be successful.</t>
-      
+
       <t>Because of the opportunity for attack through the Reconfigure
       message, a DHCP client MUST discard any Reconfigure message that does
       not include authentication or that does not pass the validation process
@@ -6596,7 +6596,7 @@
       service or man-in-the-middle attack on a client. This protocol can be
       compromised by an attacker that can intercept the initial message in
       which the DHCP server sends the key "in plain text" to the client.</t>
-      
+
       <t>Many of these rogue server attacks can be mitigated by making use of
       the mechanism described in <xref target="RFC7610"/>.</t>
 
@@ -6728,7 +6728,7 @@
       issues when values started approaching zero. Clients now SHOULD set
       lifetimes to 0 in IA Address and IA Prefix options, and servers MUST
       ignore any requested lifetime value.</t>
-    
+
       <t>T1/T2 hints sent by a client. These had similar issues to the
       lifetime hints. Clients now SHOULD set the T1/T2 values to 0 in IA_NA and
       IA_PD options, and servers MUST ignore any client supplied T1/T2
@@ -6751,12 +6751,12 @@
       Marks, Leaf Yeh, Michelle Cotton, Pablo Armando, John Brzozowski,
       Suresh Krishnan, Hideshi Enokihara, Alexandru Petrescu,
       Yukiyo Akisada, Tatuya Jinmei, Fred Templin and Christian Huitema.</t>
-      
+
       <t>We also thank the following, not otherwise acknowledged and in no
       particular order, for their review comments: Jermey Reed, Francis Dupont,
       Lorenzo Coilitti, Tianxiang Li, Ian Farrer, Yogendra Pal,
       Shawn Routhier, and Michayla Newcombe.</t>
-      
+
       <t>And, special thanks to Ralph Droms for answering many questions related
       to the original RFC3315 and RFC3633 work and for being the document
       shepherd.</t>
@@ -6822,7 +6822,7 @@
       <?rfc include='reference.RFC.7083'?>
 
       <?rfc include='reference.RFC.7283'?>
-      
+
     </references>
 
     <references title="Informative References">
@@ -6839,23 +6839,23 @@
           <date />
         </front>
       </reference>
-      
+
        <reference anchor="IANA-RESERVED-IID">
         <front>
           <title>
               Reserved IPv6 Interface Identifiers
               http://www.iana.org/assignments/ipv6-interface-ids/ipv6-interface-ids.xml
               </title>
-              
+
           <author>
             <organization>IANA</organization>
           </author>
 
           <date />
         </front>
-      </reference>     
+      </reference>
 
-      <?rfc include='reference.RFC.0826'?>	    
+      <?rfc include='reference.RFC.0826'?>
 
       <?rfc include='reference.RFC.2131'?>
       <?rfc include='reference.RFC.2132'?>
@@ -6907,10 +6907,10 @@
       <?rfc include='reference.RFC.7969'?>
 
       <?rfc include='reference.I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue'?>
-      
+
       <?rfc include='reference.I-D.ietf-v6ops-host-addr-availability'?>
-	    
-      <?rfc include='reference.I-D.ietf-dhc-sedhcpv6'?>	    
+
+      <?rfc include='reference.I-D.ietf-dhc-sedhcpv6'?>
 
       <reference anchor="TR-187"
                  target="https://www.broadband-forum.org/technical/download/TR-187_Issue-2.pdf">
@@ -6923,17 +6923,17 @@
           <date year="2013" month="February" />
         </front>
       </reference>
-      
+
     </references>
 
     <!-- Let's briefly document relevant changes against 3315 here -->
 
     <section title="Changes since RFC3315">
-         
+
       <t>Note: This appendix needs to be updated (reworked) to provide a more
       useful summary of the significant changes between this and the original
       documents. This is still a TODO issue!</t>
-      
+
       <t><list style="numbers">
           <t>Incorporated RFC3315 errata (ids: 294, 1373, 2928, 1815, 3577,
           2509, 295).</t>
@@ -7174,7 +7174,7 @@
 
           <t>Added reference to RFC4242 (Information Refresh Time
           option). Ticket #161.</t>
-    
+
           <t>Updated Option Request option to list options that MUST NOT be included. Also added to that IANA
           Consider should keep track of which options are allowed in ORO. Ticket #81.</t>
 
@@ -7183,13 +7183,13 @@
 
           <t>Information Refresh Time option is now mandatory for clients that
           support stateless mode. Added reference to RFC4242. Ticket #161.</t>
-	      
-	  <t>Removed the text that allowed a Reconfigure message to contain IA options,
-	  ORO option, and other options for server to indicate to client what to request
-    	  in response to Reconfigure. Ticket #168.</t>
-	      
-	  <t>NOTE: Additional changes made from WGLC comments. This section will be replaced with
-	  new material to provide a list of changes. TODO (Bernie).</t>
+
+          <t>Removed the text that allowed a Reconfigure message to contain IA options,
+          ORO option, and other options for server to indicate to client what to request
+          in response to Reconfigure. Ticket #168.</t>
+
+          <t>NOTE: Additional changes made from WGLC comments. This section will be replaced with
+          new material to provide a list of changes. TODO (Bernie).</t>
 
           <t>Reconfigure Accept is now SHOULD in Reply (review comment
           #130).</t>
@@ -7206,10 +7206,10 @@
     <!-- Let's briefly document relevant changes against 3633 here -->
 
     <section title="Changes since RFC3633">
-         
+
       <t>Note: This appendix should be removed by the RFC-Editor when preparing
       the document for publication.</t>
-      
+
       <t><list style="numbers">
           <t>Incorporated RFC3633 errata (ids: 248, 1880, 2468, 2469, 2470,
           3736)</t>
