@@ -3682,18 +3682,17 @@
           Reply. This facilitates the client being able to renew all of the
           bindings at the same time.</t>
 
-          <t>The server MAY include a Reconfigure Accept option. New
-          server implementations are discouraged from including the
-          Reconfigure Accept option, as it does not convey any
-          additional information. As use of the reconfiguration mechanism
-          requires some kind of authentication and if the default
-          Reconfigure Key Authentication Protocol (see <xref
-          target="reconfigure-protocol"/> for details) is being used,
-          the server sends the Authentication option with the
-          Reconfigure Key. However, the server is
-          still allowed to send Reconfigure Accept option to maintain
-          backward compatibility with servers that implement <xref
-          target="RFC3315"/>.</t>
+          <t>The server SHOULD include a Reconfigure Accept option if the server
+          policy enables reconfigure mechanism and the client supports it.
+          Currently sending this option in Reply is technically redundant, as
+          the use of the reconfiguration mechanism requires an authentication
+          and currently the only defined one is Reconfigure Key Authentication
+          Protocol (see <xref target="reconfigure-protocol"/> for details) and
+          the presence or reconfigure key signals support for Reconfigure
+          acceptance. However, there may be better security mechanisms defined
+          in the future that would cause RKAP to not be used anymore. One of
+          such mechanisms currently worked on in mentioned in <xref
+          target="security"/>.</t>
 
           <t>The server includes other options containing configuration
           information to be returned to the client as described in <xref
@@ -7184,6 +7183,8 @@
 	      
 	  <t>NOTE: Additional changes made from WGLC comments. This section will be replaced with
 	  new material to provide a list of changes. TODO (Bernie).</t>
+
+          <t>Reconfigure Accept is now SHOULD in Reply (review comment #130).</t>
         </list></t>
     </section>
 
