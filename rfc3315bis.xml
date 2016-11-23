@@ -1779,11 +1779,12 @@
                 the one to which the interface, identified by the link-address
                 field in the message from the relay agent, is attached.
                 According to <xref target="RFC6221"></xref>, the server MUST
-                ignore any link-address field whose value is zero. The link
-                address field refers to the link-address field of the
-                Relay-Forward message, and the link-address fields in any
-                Relay-Forward messages that may be nested within the
-                Relay-Forward message.</t>
+                ignore any link-address field whose value is zero. The
+                link-address in this case may come from any of the
+                Relay-Forward messages encapsulated in the received
+                Relay-Forward, and in general the most encapsulated
+                (closest Relay-Forward to the client) has the most
+                useful value.</t>
 
                 <t hangText="*">If the server receives the message directly
                 from the client and the source address in the IP datagram in
