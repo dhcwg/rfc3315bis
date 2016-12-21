@@ -3368,7 +3368,7 @@
                 <t hangText="-">For each delegated prefix, the client assigns a
                 subnet to each of the links to which the associated interfaces are
                 attached, with the following exception: the client MUST
-                NOT assign any delegated prefixes or subnets from the delegated
+                NOT advertise any delegated prefixes or subnets from the delegated
                 prefix(es) to the link through which it received the DHCP message
                 from the server (see <xref target="RFC6603"/> for exceptions).
                 <vspace blankLines='1'/>
