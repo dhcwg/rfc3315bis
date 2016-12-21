@@ -4271,9 +4271,9 @@
     <section title="Relay Agent Behavior">
       <!-- 20, line 2950-->
 
-      <t>The relay agent MAY be configured to use a list of destination
-      addresses, which MAY include unicast addresses, the All_DHCP_Servers
-      multicast address, or other addresses selected by the network
+      <t>The relay agent SHOULD be configured to use a list of destination
+      addresses, which include unicast addresses. The list of destination addresses
+      MAY include the All_DHCP_Servers multicast address or other addresses selected by the network
       administrator. If the relay agent has not been explicitly configured, it
       MUST use the All_DHCP_Servers multicast address as the default.</t>
 
