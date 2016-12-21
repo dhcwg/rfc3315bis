@@ -726,25 +726,38 @@
         provider to assign a prefix to a Customer Edge Router device acting as
         a router between the subscriber's internal network and the service
         provider's core network.</t>
-
+           
         <t>The design of this prefix delegation mechanism meets the
         requirements for prefix delegation in <xref
         target="RFC3769"></xref>.</t>
 
+        <t>While <xref target="RFC3633"/> assumed that the DHCPv6 client
+        is a router (hence use of "requesting router") and that the DHCPv6
+        server was a router (hence use of "delegating router"), DHCPv6
+        prefix delegation itself does not require that the client forward
+        IPv6 packets not addressed to itself, and thus does not require
+        that the client (or server) be an IPv6 router as defined in
+        <xref target="RFC2460"/>. Also, in many cases (such as tethering
+        or hosting virtual machines), hosts are already forwarding IPv6
+        packets and thus operating as IPv6 routers as defined in
+        <xref target="RFC2460"/>. Therefore, this document mostly replaces
+        "requesting router" with client and "delegating router" with
+        server.</t>           
+           
         <t>The model of operation for prefix delegation is as follows. A
-        delegating router is provided IPv6 prefixes to be delegated to
-        requesting routers. A requesting router requests prefix(es) from the
-        delegating router, as described in <xref
-        target="configuration-exchange"></xref>. The delegating router chooses
+        server is provided IPv6 prefixes to be delegated to
+        clients. A client requests prefix(es) from the
+        server, as described in <xref
+        target="configuration-exchange"></xref>. The server chooses
         prefix(es) for delegation, and responds with prefix(es) to the
-        requesting router. The requesting router is then responsible for the
-        delegated prefix(es). For example, the requesting router might assign
+        client. The client is then responsible for the
+        delegated prefix(es). For example, the client might assign
         a subnet from a delegated prefix to one of its interfaces, and begin
         sending router advertisements for the prefix on that link.</t>
 
         <t>Each prefix has an associated valid and preferred lifetime, which
         constitutes an agreement about the length of time over which the
-        requesting router is allowed to use the prefix. A requesting router
+        client is allowed to use the prefix. A client
         can request an extension of the lifetimes on a delegated prefix and is
         required to terminate the use of a delegated prefix if the valid
         lifetime of the prefix expires.</t>
@@ -752,7 +765,7 @@
         <t>This prefix delegation mechanism is appropriate for use by an
         ISP to delegate a prefix to a subscriber, where the delegated prefix
         would possibly be subnetted and assigned to the links within the
-        subscriber's network.  <xref target="RFC7084" /> and <xref
+        subscriber's network. <xref target="RFC7084" /> and <xref
         target="RFC7368" /> describe in detail such use.</t>
 
         <t><xref target="FigISPNetwork"></xref> illustrates a network
@@ -795,52 +808,39 @@
           <postamble></postamble>
         </figure>
 
-        <t>In this example, the delegating router is configured with a set of
+        <t>In this example, the server (delegating router) is configured with a set of
         prefixes to be used for assignment to customers at the time of each
         customer's first connection to the ISP service. The prefix delegation
-        process begins when the requesting router requests configuration
-        information through DHCP. The DHCP messages from the requesting router
-        are received by the delegating router in the aggregation device. When
-        the delegating router receives the request, it selects an available
-        prefix or prefixes for delegation to the requesting router. The
-        delegating router then returns the prefix or prefixes to the
-        requesting router.</t>
+        process begins when the client (requesting router) requests configuration
+        information through DHCP. The DHCP messages from the client
+        are received by the server in the aggregation device. When
+        the server receives the request, it selects an available
+        prefix or prefixes for delegation to the client. The
+        server then returns the prefix or prefixes to the
+        client.</t>
 
-        <t>The requesting router subnets the delegated prefix and assigns the
+        <t>The client subnets the delegated prefix and assigns the
         longer prefixes to links in the subscriber's network. In a typical
         scenario based on the network shown in <xref
-        target="FigISPNetwork"></xref>, the requesting router subnets a single
+        target="FigISPNetwork"></xref>, the client subnets a single
         delegated /48 prefix into /64 prefixes and assigns one /64 prefix to
         each of the links in the subscriber network.</t>
 
         <t>The prefix delegation options can be used in conjunction with other
         DHCP options carrying other configuration information to the
-        requesting router. The requesting router may, in turn, provide DHCP
+        client. The client may, in turn, provide DHCP
         service to hosts attached to the internal network. For example, the
-        requesting router may obtain the addresses of DNS and NTP servers from
-        the ISP delegating router, and then pass that configuration
+        client may obtain the addresses of DNS and NTP servers from
+        the ISP server, and then pass that configuration
         information on to the subscriber hosts through a DHCP server in the
-        requesting router.</t>
+        client (requesting router).</t>
 
-        <t>If the requesting router assigns a delegated prefix to a link to
+        <t>If the client assigns a delegated prefix to a link to
         which the router is attached, and begins to send router advertisements
-        for the prefix on the link, the requesting router MUST set the valid
+        for the prefix on the link, the client MUST set the valid
         lifetime in those advertisements to be no later than the valid
         lifetime specified in the IA_PD option. A client MAY
         use the preferred lifetime specified in the IA_PD option.</t>
-
-        <t>While <xref target="RFC3633"/> assumed that the DHCPv6 client
-        is a router (hence use of "requesting router") and that the DHCPv6
-        server was a router (hence use of "delegating router"), DHCPv6
-        prefix delegation itself does not require that the client forward
-        IPv6 packets not addressed to itself, and thus does not require
-        that the client (or server) be an IPv6 router as defined in
-        <xref target="RFC2460"/>. Also, in many cases (such as tethering
-        or hosting virtual machines), hosts are already forwarding IPv6
-        packets and thus operating as IPv6 routers as defined in
-        <xref target="RFC2460"/>. Therefore, this document mostly replaces
-        "requesting router" with client and "delegating router" with
-        server.</t>
 
       </section>
 
