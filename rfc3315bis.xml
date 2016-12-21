@@ -3496,36 +3496,32 @@
           message. While the transaction is in progress, the client discards
           any Reconfigure messages it receives.</t>
 
-          <t>DISCUSSION:</t>
+          <t>The Reconfigure message acts as a trigger that signals the
+          client to complete a successful message exchange. Once the
+          client has received a Reconfigure, the client proceeds with the
+          message exchange (retransmitting the Renew, Rebind, or
+          Information-request message if necessary); the client MUST ignore
+          any additional Reconfigure messages until the exchange is
+          complete. Subsequent Reconfigure messages cause the client to
+          initiate a new exchange.</t>
 
-          <t><list style="empty">
-              <t>The Reconfigure message acts as a trigger that signals the
-              client to complete a successful message exchange. Once the
-              client has received a Reconfigure, the client proceeds with the
-              message exchange (retransmitting the Renew, Rebind, or
-              Information-request message if necessary); the client ignores
-              any additional Reconfigure messages until the exchange is
-              complete. Subsequent Reconfigure messages cause the client to
-              initiate a new exchange.</t>
+          <t>Duplicate messages will be
+          ignored because the client will begin the exchange after the
+          receipt of the first Reconfigure. Retransmitted messages will
+          either trigger the exchange (if the first Reconfigure was not
+          received by the client) or will be ignored. The server MAY
+          discontinue retransmission of Reconfigure messages to the client
+          once the server receives the Renew, Rebind or
+          Information-request message from the client.</t>
 
-              <t>Duplicate messages will be
-              ignored because the client will begin the exchange after the
-              receipt of the first Reconfigure. Retransmitted messages will
-              either trigger the exchange (if the first Reconfigure was not
-              received by the client) or will be ignored. The server can
-              discontinue retransmission of Reconfigure messages to the client
-              once the server receives the Renew, Rebind or
-              Information-request message from the client.</t>
-
-              <t>It might be possible for a duplicate or retransmitted
-              Reconfigure to be sufficiently delayed (and delivered out of
-              order) to arrive at the client after the exchange (initiated by
-              the original Reconfigure) has been completed. In this case, the
-              client would initiate a redundant exchange. The likelihood of
-              delayed and out of order delivery is small enough to be ignored.
-              The consequence of the redundant exchange is inefficiency rather
-              than incorrect operation.</t>
-            </list></t>
+          <t>It might be possible for a duplicate or retransmitted
+          Reconfigure to be sufficiently delayed (and delivered out of
+          order) to arrive at the client after the exchange (initiated by
+          the original Reconfigure) has been completed. In this case, the
+          client would initiate a redundant exchange. The likelihood of
+          delayed and out of order delivery is small enough to be ignored.
+          The consequence of the redundant exchange is inefficiency rather
+          than incorrect operation.</t>
         </section>
 
         <!-- ends: "19.4.1 from line 2871-->
