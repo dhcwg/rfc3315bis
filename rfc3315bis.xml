@@ -652,7 +652,20 @@
         extension of the lifetimes assigned to addresses or delegated prefixes
         (this is a two message exchange).</t>
 
-       </section>
+      </section>
+      <!-- 1.3, line 323-->         
+       
+      <section title="Server-client Exchanges">
+          <t>A server that has previously communicated with a client and negotiated
+          for the client to listen for Reconfigure messages, may send the client
+          a Reconfigure message to initiate the client to updates its configuration
+          by sending an Information-Request, Renew, or Rebind message. The client then
+          performs the earlier described two message exchange. This can be used to
+          expedite configuration changes to a client.
+          </t>
+          
+      </section>
+               
     </section>
 
     <section anchor="OpModes" title="Operational Models">
