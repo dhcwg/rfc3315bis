@@ -1846,7 +1846,7 @@
         <t>Clients ask for temporary addresses and servers assign them.
         Temporary addresses are carried in the Identity Association for
         Temporary Addresses (IA_TA) option (see <xref
-        target="RFC3315-22.5"></xref>). Each IA_TA option contains at most one
+        target="RFC3315-22.5"></xref>). Each IA_TA option contains at lease one
         temporary address for each of the prefixes on the link to which the
         client is attached.</t>
 
