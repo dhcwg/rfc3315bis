@@ -2468,7 +2468,7 @@
       prefixes for which it tries to obtain the bindings by sending the
       Solicit message. In particular, if the client had some valid bindings
       and has chosen to start the server discovery process to obtain the
-      bindings from a different server, the client MUST stop using the
+      same bindings from a different server, the client MUST stop using the
       addresses and delegated prefixes for the bindings it had obtained from
       the previous server, and which it is now trying to obtain from a new
       server.</t>
@@ -2551,17 +2551,14 @@
         server, the client SHOULD unicast any Request, Renew, Release and
         Decline messages to the server.</t>
 
-        <t>DISCUSSION:</t>
 
-        <t><list style="empty">
-            <t>Use of unicast may avoid delays due to the relaying of messages
+        <t>Use of unicast may avoid delays due to the relaying of messages
             by relay agents, as well as avoid overhead and duplicate responses
             by servers due to the delivery of client messages to multiple
             servers. However, requiring the client to relay all DHCP messages
             through a relay agent enables the inclusion of relay agent options
             in all messages sent by the client. The server should enable the
             use of unicast only when relay agent options will not be used.</t>
-          </list></t>
 
         <section anchor="solicit-create-transmit"
                  title="Creation and Transmission of Solicit Messages">
