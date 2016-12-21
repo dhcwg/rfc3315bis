@@ -699,7 +699,7 @@
       <section anchor="OpModes-NA"
                title="DHCP for Non-Temporary Address Assignment">
         <t>This model of operation was the original motivation for DHCP and is
-        the "stateful address autoconfiguration protocol" for IPv6 <xref
+        the "stateful address autoconfiguration protocol" for IPv6 which is discussed in <xref
         target="RFC2462"></xref>. It is appropriate for situations where
         stateless address autoconfiguration alone is insufficient or
         impractical, e.g., because of network policy, additional requirements
