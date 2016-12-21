@@ -280,6 +280,12 @@
         carry DHCPv4 messages using the DHCPv6 protocol for the dynamic
         provisioning of IPv4 address and configuration information across
         IPv6-only networks.</t>
+
+        <t>Merging DHCPv4 and DHCPv6 configuration is out of scope of
+        this document. <xref target="RFC4477"/> discusses some issues
+        and possible strategies for running DHCPv4 and DHCPv6 services
+        together. While this document is a bit dated, it provides a
+        good overview of the issues at hand.</t>
       </section>
 
       <!-- ends: "1.3 from line 323-->
@@ -6890,6 +6896,7 @@
       <?rfc include='reference.RFC.4193'?>
       <?rfc include='reference.RFC.4242'?>
       <?rfc include='reference.RFC.4301'?>
+      <?rfc include='reference.RFC.4477'?>
       <?rfc include='reference.RFC.4941'?>
       <?rfc include='reference.RFC.4943'?>
 
