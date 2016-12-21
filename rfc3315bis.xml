@@ -1567,7 +1567,7 @@
         computers, and also for devices such as printers, routers, and so on,
         that contain some form of writable non-volatile storage.</t>
 
-        <t>Despite our best efforts, it is possible that this algorithm for
+        <t>It is possible that this algorithm for
         generating a DUID could result in a client identifier collision. A
         DHCP client that generates a DUID-LLT using this mechanism MUST
         provide an administrative interface that replaces the existing DUID
