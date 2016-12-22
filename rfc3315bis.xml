@@ -191,7 +191,7 @@
 
     <abstract>
       <t>This document describes the Dynamic Host Configuration Protocol for
-      IPv6 (DHCPv6): an extensible mechanism for configuring hosts with
+      IPv6 (DHCPv6): an extensible mechanism for configuring nodes with
       network configuration parameters, IP addresses, and prefixes. Parameters
       can be provided statelessly, or in combination with stateful assignment
       of one or more IPv6 addresses and/or IPv6 prefixes. DHCPv6 can operate
@@ -842,7 +842,7 @@
         <t>The prefix delegation options can be used in conjunction with other
         DHCP options carrying other configuration information to the
         client. The client may, in turn, provide DHCP
-        service to hosts attached to the internal network. For example, the
+        service to nodes attached to the internal network. For example, the
         client may obtain the addresses of DNS and NTP servers from
         the ISP server, and then pass that configuration
         information on to the subscriber hosts through a DHCP server in the
@@ -1662,7 +1662,7 @@
         <t>This type of DUID consists of two octets containing the DUID type
         3, a two octet network hardware type code, followed by the link-layer
         address of any one network interface that is permanently connected to
-        the client or server device. For example, a host that has a network
+        the client or server device. For example, a node that has a network
         interface implemented in a chip that is unlikely to be removed and
         used elsewhere could use a DUID-LL. The hardware type MUST be a valid
         hardware type assigned by the IANA, as described in <xref
@@ -3415,7 +3415,7 @@
             no other sources for that data and they have no external impact.
             For example, a client that previously received a Client FQDN
             option and used it to set up its hostname is allowed to continue
-            using it if there is no reasonable way for a host to unset its
+            using it if there is no reasonable way for a node to unset its
             hostname and it has no external impact.  As a counter example,
             a client that previously received an NTP server address from
             the DHCP server and does not receive it any more, MUST stop
@@ -5809,7 +5809,7 @@
             target="IANA-PEN"></xref>.</t>
 
             <t hangText="   vendor-class-data">The hardware configuration of
-            the host on which the client is running.</t>
+            the node on which the client is running.</t>
           </list></t>
 
         <t>The vendor-class-data is composed of a series of separate items,
@@ -5894,7 +5894,7 @@
         of vendor-specific information allows enhanced operation, utilizing
         additional features in a vendor's DHCP implementation. A DHCP client
         that does not receive requested vendor-specific information will still
-        configure the host device's IPv6 stack to be functional.</t>
+        configure the node device's IPv6 stack to be functional.</t>
 
         <t>The encapsulated vendor-specific options field MUST be encoded as a
         sequence of code/length/value fields of identical format to the DHCP
