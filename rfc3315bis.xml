@@ -1219,6 +1219,17 @@
         <t>All time values for lifetimes, T1 and T2 are unsigned 32-bit integers. The
         value 0xffffffff is taken to mean "infinity" when used as a lifetime
         (as in <xref target="RFC4861"></xref>) or a value for T1 or T2.</t>
+
+        <t>Setting the valid lifetime of an address or a 
+        delegated prefix to 0xffffffff ("infinity") amounts to a permanent
+        address or delegation of the prefix to a client and should only be used in cases
+        were permenant addresses are desired.</t>
+
+        <t>Care should be taken in setting T1 or T2 to 0xffffffff
+        ("infinity"). A client will never attempt to extend the lifetimes of
+        any addresses in an IA with T1 set to 0xffffffff. A client will never
+        attempt to use a Rebind message to locate a different server to extend
+        the lifetimes of any addresses in an IA with T2 set to 0xffffffff.</t>
       </section>
 
       <!-- ends: "5.6 -->
@@ -4988,11 +4999,8 @@
         processes the remainder of the message as though the server had not
         included the invalid IA_NA option.</t>
 
-        <t>Care should be taken in setting T1 or T2 to 0xffffffff
-        ("infinity"). A client will never attempt to extend the lifetimes of
-        any addresses in an IA with T1 set to 0xffffffff. A client will never
-        attempt to use a Rebind message to locate a different server to extend
-        the lifetimes of any addresses in an IA with T2 set to 0xffffffff.</t>
+        <t>As per <xref target="RFC3315-5.6"/>, the value 0xffffffff is taken to
+        ("infinity") and should be used carefully. </t>
 
         <t>This option MAY appear in a Confirm message if the lifetimes on the
         non-temporary addresses in the associated IA have not expired.</t>
@@ -5171,9 +5179,8 @@
         <t>A client discards any addresses for which the preferred lifetime is
         greater than the valid lifetime.</t>
 
-        <t>Care should be taken in setting the valid lifetime of an address to
-        0xffffffff ("infinity"), which amounts to a permanent assignment of an
-        address to a client.</t>
+        <t>As per <xref target="RFC3315-5.6"/>, the valid lifetime of an address 
+        0xffffffff is taken to mean "infinity" and should used carefully.</t>
 
         <t>More than one IA Address option can appear in an IA_NA option or an
         IA_TA option.</t>
@@ -6289,9 +6296,8 @@
         <t>The values in the preferred and valid lifetimes are the number of
         seconds remaining for each lifetime.</t>
 
-        <t>Care should be taken in setting the valid lifetime or a delegated
-        prefix to 0xffffffff ("infinity"), which amounts to a permanent
-        delegation of the prefix to a client.</t>
+        <t>As per <xref target="RFC3315-5.6"/>, the preferred and valid lifetime values of 
+        0xffffffff is taken to mean "infinity" and should be used carefully.</t> 
 
         <t>An IA Prefix option may appear only in an IA_PD option. More
         than one IA Prefix option can appear in a single IA_PD option.</t>
