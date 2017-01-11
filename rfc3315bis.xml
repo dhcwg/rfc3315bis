@@ -6678,7 +6678,9 @@
       allocation strategies are mentioned in Section 4.3 of <xref
       target="RFC7824"></xref>. Please keep in mind that
       this list is not exhaustive and there are certainly other possible
-      strategies.</t>
+      strategies. Readers are also encouraged to read <xref
+      target="RFC7707"/>, in particular Section 4.1.2 that discusses
+      the problems with certain allocation strategies.</t>
 
       <!-- Christian's suggestion was also to include the following text:
 
@@ -6928,6 +6930,7 @@
       <?rfc include='reference.RFC.7844'?>
       <?rfc include='reference.RFC.7136'?>
       <?rfc include='reference.RFC.7227'?>
+      <?rfc include='reference.RFC.7707'?>
       <?rfc include='reference.RFC.7721'?>
       <?rfc include='reference.RFC.7969'?>
 
