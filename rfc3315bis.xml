@@ -5082,11 +5082,14 @@
         expired, the IA can be considered as having expired.</t>
 
         <t>An IA_TA option does not include values for T1 and T2. A client MAY
-        request that the lifetimes on temporary addresses be extended by
+        request that valid lifetime on temporary addresses be extended by
         including the addresses in a IA_TA option sent in a Renew or Rebind
         message to a server. For example, a client would request an extension
-        on the lifetime of a temporary address to allow an application to
-        continue to use an established TCP connection.</t>
+        on the valid lifetime of a temporary address to allow an application to
+        continue to use an established TCP connection. Extending only
+        valid, but not preferred lifetime means the address will end up
+        in deprecated state eventually. Existing connections could continue, but
+        no new ones would be created using that address.</t>
 
         <t>The client obtains new temporary addresses by sending an IA_TA
         option with a new IAID to a server. Requesting new temporary addresses
