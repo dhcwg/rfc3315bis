@@ -3568,7 +3568,7 @@
         containing the server's DUID and the Client Identifier option from the
         client message if one was present.</t>
 
-        <t>In most reply messages, the server includes options containing
+        <t>In most response messages, the server includes options containing
         configuration information for the client. The server must be aware of
         the recommendations on packet sizes and the use of fragmentation in
         section 5 of <xref target="RFC2460"></xref>. If the client included an
