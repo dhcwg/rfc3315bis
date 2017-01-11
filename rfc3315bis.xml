@@ -6326,7 +6326,10 @@
         from a DHCP server. It is only used in Reply messages in response to
         Information-Request messages. In other messages there will usually
         be other information that indicates when the client should contact the
-        server, e.g., T1/T2 times and lifetimes.</t>
+        server, e.g., T1/T2 times and lifetimes. This option is useful
+        when the configuration parameters change or during renumbering event as
+        clients running in the stateless mode will be able to update their
+        configuration.</t>
 
         <t>The format of the Information Refresh Time option is:</t>
 
