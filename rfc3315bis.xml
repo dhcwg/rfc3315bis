@@ -191,7 +191,7 @@
 
     <abstract>
       <t>This document describes the Dynamic Host Configuration Protocol for
-      IPv6 (DHCPv6): an extensible mechanism for configuring hosts with
+      IPv6 (DHCPv6): an extensible mechanism for configuring nodes with
       network configuration parameters, IP addresses, and prefixes. Parameters
       can be provided statelessly, or in combination with stateful assignment
       of one or more IPv6 addresses and/or IPv6 prefixes. DHCPv6 can operate
@@ -705,7 +705,7 @@
       <section anchor="OpModes-NA"
                title="DHCP for Non-Temporary Address Assignment">
         <t>This model of operation was the original motivation for DHCP and is
-        the "stateful address autoconfiguration protocol" for IPv6 <xref
+        the "stateful address autoconfiguration protocol" for IPv6 which is discussed in <xref
         target="RFC2462"></xref>. It is appropriate for situations where
         stateless address autoconfiguration alone is insufficient or
         impractical, e.g., because of network policy, additional requirements
@@ -848,7 +848,7 @@
         <t>The prefix delegation options can be used in conjunction with other
         DHCP options carrying other configuration information to the
         client. The client may, in turn, provide DHCP
-        service to hosts attached to the internal network. For example, the
+        service to nodes attached to the internal network. For example, the
         client may obtain the addresses of DNS and NTP servers from
         the ISP server, and then pass that configuration
         information on to the subscriber hosts through a DHCP server in the
@@ -1225,6 +1225,17 @@
         <t>All time values for lifetimes, T1 and T2 are unsigned 32-bit integers. The
         value 0xffffffff is taken to mean "infinity" when used as a lifetime
         (as in <xref target="RFC4861"></xref>) or a value for T1 or T2.</t>
+
+        <t>Setting the valid lifetime of an address or a 
+        delegated prefix to 0xffffffff ("infinity") amounts to a permanent
+        address or delegation of the prefix to a client and should only be used in cases
+        were permenant addresses are desired.</t>
+
+        <t>Care should be taken in setting T1 or T2 to 0xffffffff
+        ("infinity"). A client will never attempt to extend the lifetimes of
+        any addresses in an IA with T1 set to 0xffffffff. A client will never
+        attempt to use a Rebind message to locate a different server to extend
+        the lifetimes of any addresses in an IA with T2 set to 0xffffffff.</t>
       </section>
 
       <!-- ends: "5.6 -->
@@ -1573,7 +1584,7 @@
         computers, and also for devices such as printers, routers, and so on,
         that contain some form of writable non-volatile storage.</t>
 
-        <t>Despite our best efforts, it is possible that this algorithm for
+        <t>It is possible that this algorithm for
         generating a DUID could result in a client identifier collision. A
         DHCP client that generates a DUID-LLT using this mechanism MUST
         provide an administrative interface that replaces the existing DUID
@@ -1657,7 +1668,7 @@
         <t>This type of DUID consists of two octets containing the DUID type
         3, a two octet network hardware type code, followed by the link-layer
         address of any one network interface that is permanently connected to
-        the client or server device. For example, a host that has a network
+        the client or server device. For example, a node that has a network
         interface implemented in a chip that is unlikely to be removed and
         used elsewhere could use a DUID-LL. The hardware type MUST be a valid
         hardware type assigned by the IANA, as described in <xref
@@ -2474,7 +2485,7 @@
       prefixes for which it tries to obtain the bindings by sending the
       Solicit message. In particular, if the client had some valid bindings
       and has chosen to start the server discovery process to obtain the
-      bindings from a different server, the client MUST stop using the
+      same bindings from a different server, the client MUST stop using the
       addresses and delegated prefixes for the bindings it had obtained from
       the previous server, and which it is now trying to obtain from a new
       server.</t>
@@ -2557,17 +2568,14 @@
         server, the client SHOULD unicast any Request, Renew, Release and
         Decline messages to the server.</t>
 
-        <t>DISCUSSION:</t>
 
-        <t><list style="empty">
-            <t>Use of unicast may avoid delays due to the relaying of messages
+        <t>Use of unicast may avoid delays due to the relaying of messages
             by relay agents, as well as avoid overhead and duplicate responses
             by servers due to the delivery of client messages to multiple
             servers. However, requiring the client to relay all DHCP messages
             through a relay agent enables the inclusion of relay agent options
             in all messages sent by the client. The server should enable the
             use of unicast only when relay agent options will not be used.</t>
-          </list></t>
 
         <section anchor="solicit-create-transmit"
                  title="Creation and Transmission of Solicit Messages">
@@ -3413,7 +3421,7 @@
             no other sources for that data and they have no external impact.
             For example, a client that previously received a Client FQDN
             option and used it to set up its hostname is allowed to continue
-            using it if there is no reasonable way for a host to unset its
+            using it if there is no reasonable way for a node to unset its
             hostname and it has no external impact.  As a counter example,
             a client that previously received an NTP server address from
             the DHCP server and does not receive it any more, MUST stop
@@ -3505,36 +3513,32 @@
           message. While the transaction is in progress, the client discards
           any Reconfigure messages it receives.</t>
 
-          <t>DISCUSSION:</t>
+          <t>The Reconfigure message acts as a trigger that signals the
+          client to complete a successful message exchange. Once the
+          client has received a Reconfigure, the client proceeds with the
+          message exchange (retransmitting the Renew, Rebind, or
+          Information-request message if necessary); the client MUST ignore
+          any additional Reconfigure messages until the exchange is
+          complete. Subsequent Reconfigure messages cause the client to
+          initiate a new exchange.</t>
 
-          <t><list style="empty">
-              <t>The Reconfigure message acts as a trigger that signals the
-              client to complete a successful message exchange. Once the
-              client has received a Reconfigure, the client proceeds with the
-              message exchange (retransmitting the Renew, Rebind, or
-              Information-request message if necessary); the client ignores
-              any additional Reconfigure messages until the exchange is
-              complete. Subsequent Reconfigure messages cause the client to
-              initiate a new exchange.</t>
+          <t>Duplicate messages will be
+          ignored because the client will begin the exchange after the
+          receipt of the first Reconfigure. Retransmitted messages will
+          either trigger the exchange (if the first Reconfigure was not
+          received by the client) or will be ignored. The server MAY
+          discontinue retransmission of Reconfigure messages to the client
+          once the server receives the Renew, Rebind or
+          Information-request message from the client.</t>
 
-              <t>Duplicate messages will be
-              ignored because the client will begin the exchange after the
-              receipt of the first Reconfigure. Retransmitted messages will
-              either trigger the exchange (if the first Reconfigure was not
-              received by the client) or will be ignored. The server can
-              discontinue retransmission of Reconfigure messages to the client
-              once the server receives the Renew, Rebind or
-              Information-request message from the client.</t>
-
-              <t>It might be possible for a duplicate or retransmitted
-              Reconfigure to be sufficiently delayed (and delivered out of
-              order) to arrive at the client after the exchange (initiated by
-              the original Reconfigure) has been completed. In this case, the
-              client would initiate a redundant exchange. The likelihood of
-              delayed and out of order delivery is small enough to be ignored.
-              The consequence of the redundant exchange is inefficiency rather
-              than incorrect operation.</t>
-            </list></t>
+          <t>It might be possible for a duplicate or retransmitted
+          Reconfigure to be sufficiently delayed (and delivered out of
+          order) to arrive at the client after the exchange (initiated by
+          the original Reconfigure) has been completed. In this case, the
+          client would initiate a redundant exchange. The likelihood of
+          delayed and out of order delivery is small enough to be ignored.
+          The consequence of the redundant exchange is inefficiency rather
+          than incorrect operation.</t>
         </section>
 
         <!-- ends: "19.4.1 from line 2871-->
@@ -4284,9 +4288,9 @@
     <section title="Relay Agent Behavior">
       <!-- 20, line 2950-->
 
-      <t>The relay agent MAY be configured to use a list of destination
-      addresses, which MAY include unicast addresses, the All_DHCP_Servers
-      multicast address, or other addresses selected by the network
+      <t>The relay agent SHOULD be configured to use a list of destination
+      addresses, which include unicast addresses. The list of destination addresses
+      MAY include the All_DHCP_Servers multicast address or other addresses selected by the network
       administrator. If the relay agent has not been explicitly configured, it
       MUST use the All_DHCP_Servers multicast address as the default.</t>
 
@@ -5001,11 +5005,8 @@
         processes the remainder of the message as though the server had not
         included the invalid IA_NA option.</t>
 
-        <t>Care should be taken in setting T1 or T2 to 0xffffffff
-        ("infinity"). A client will never attempt to extend the lifetimes of
-        any addresses in an IA with T1 set to 0xffffffff. A client will never
-        attempt to use a Rebind message to locate a different server to extend
-        the lifetimes of any addresses in an IA with T2 set to 0xffffffff.</t>
+        <t>As per <xref target="RFC3315-5.6"/>, the value 0xffffffff is taken to
+        ("infinity") and should be used carefully. </t>
 
         <t>This option MAY appear in a Confirm message if the lifetimes on the
         non-temporary addresses in the associated IA have not expired.</t>
@@ -5184,9 +5185,8 @@
         <t>A client discards any addresses for which the preferred lifetime is
         greater than the valid lifetime.</t>
 
-        <t>Care should be taken in setting the valid lifetime of an address to
-        0xffffffff ("infinity"), which amounts to a permanent assignment of an
-        address to a client.</t>
+        <t>As per <xref target="RFC3315-5.6"/>, the valid lifetime of an address 
+        0xffffffff is taken to mean "infinity" and should used carefully.</t>
 
         <t>More than one IA Address option can appear in an IA_NA option or an
         IA_TA option.</t>
@@ -5815,7 +5815,7 @@
             target="IANA-PEN"></xref>.</t>
 
             <t hangText="   vendor-class-data">The hardware configuration of
-            the host on which the client is running.</t>
+            the node on which the client is running.</t>
           </list></t>
 
         <t>The vendor-class-data is composed of a series of separate items,
@@ -5900,7 +5900,7 @@
         of vendor-specific information allows enhanced operation, utilizing
         additional features in a vendor's DHCP implementation. A DHCP client
         that does not receive requested vendor-specific information will still
-        configure the host device's IPv6 stack to be functional.</t>
+        configure the node device's IPv6 stack to be functional.</t>
 
         <t>The encapsulated vendor-specific options field MUST be encoded as a
         sequence of code/length/value fields of identical format to the DHCP
@@ -6302,9 +6302,8 @@
         <t>The values in the preferred and valid lifetimes are the number of
         seconds remaining for each lifetime.</t>
 
-        <t>Care should be taken in setting the valid lifetime or a delegated
-        prefix to 0xffffffff ("infinity"), which amounts to a permanent
-        delegation of the prefix to a client.</t>
+        <t>As per <xref target="RFC3315-5.6"/>, the preferred and valid lifetime values of 
+        0xffffffff is taken to mean "infinity" and should be used carefully.</t> 
 
         <t>An IA Prefix option may appear only in an IA_PD option. More
         than one IA Prefix option can appear in a single IA_PD option.</t>
