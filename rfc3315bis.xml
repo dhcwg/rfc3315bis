@@ -4529,15 +4529,25 @@
 
             <t hangText="   Mode">Relay agents and servers use transport mode
             and Encapsulating Security Payload (ESP).</t>
+             
+            <t hangText="   Encryption and authentication algorithms">
+            <vspace blankLines='0'/>This
+            document requires combined mode algorithms for ESP authenticated
+            encryption, ESP encryption algorithms, and ESP authentication
+            algorithms as per section 2.1, 2.2, and 2.3 of <xref target="RFC7321"/>
+            respectively. Encryption is required as relay agents may
+            forward unencrypted client messages as well as include additional
+            sensitive information, such as vendor-specific information and
+            <xref target="RFC7839"/>.</t>
 
             <t hangText="   Key management">Because both relay agents and
             servers tend to be managed by a single organizational entity,
             public key schemes may be optional.  Manually
             configured key management may suffice, but
             does not provide defense against replayed
-            messages.  Accordingly, IKE <xref target="RFC2409"/> / IKE2
+            messages.  Accordingly, IKE2
             <xref target="RFC7296"/> with preshared secrets SHOULD be
-            supported.  IKE/IKEv2 with public keys MAY be
+            supported.  IKEv2 with public keys MAY be
             supported.  Additional information on manual
             vs automated key management and when one
             should be used over the other can be found in
@@ -6930,8 +6940,10 @@
       <?rfc include='reference.RFC.7844'?>
       <?rfc include='reference.RFC.7136'?>
       <?rfc include='reference.RFC.7227'?>
+      <?rfc include='reference.RFC.7321'?>
       <?rfc include='reference.RFC.7707'?>
       <?rfc include='reference.RFC.7721'?>
+      <?rfc include='reference.RFC.7839'?>
       <?rfc include='reference.RFC.7969'?>
 
       <?rfc include='reference.I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue'?>
