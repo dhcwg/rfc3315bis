@@ -6711,17 +6711,30 @@
       <t>This document does not define any new DHCP name spaces or
       definitions.</t>
 
+      <t>The publication of this document does not change the
+      assignment rules for new values for message types, option codes,
+      DUID types or status codes.</t>
+
+      <t>The list of assigned values used in DHCPv6 is available at
+      http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xml</t>
+
       <t>IANA is requested to update the
       http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
       page to add a reference to this document for definitions previously
-      created by <xref target="RFC3315"></xref>, <xref
-      target="RFC3633"></xref>, and <xref target="RFC7083"></xref>.</t>
+      created by <xref target="RFC3315"/>, <xref target="RFC3633"/>,
+      <xref target="RFC4242"/> and <xref target="RFC7083"/>.</t>          
 
       <t>IANA is requested to add a column to the DHCPv6 Option table at
       http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
       to indicate which options are allowed to appear in the ORO option.  See Section 20.7.</t>
 
-            <t>IANA is requested to update the
+      <t>IANA is requested to update the All_DHCP_Relay_Agents_and_Servers
+      (FF02::1:2) and All_DHCP_Servers (FF05::1:3)
+      table entries in the IPv6 multicast address space registry at
+      http://www.iana.org/assignments/ipv6-multicast-addresses/ipv6-multicast-addresses.xhtml
+      to reference this document instead of <xref target="RFC3315"/>.</t>
+
+      <t>IANA is requested to update the
       http://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml#authentication-protocol-id
       page to add an "Obsolete" annotation into the "DHCPv6 Delayed
       Authentication" entity in the "Authentication Suboption (value 8) -
@@ -6729,13 +6742,6 @@
       https://www.iana.org/assignments/auth-namespaces/auth-namespaces.xhtml
       page to add an "Obsolete" annotation into the "Delayed Authentication"
       entity in the "Protocol Name Space Values" registry.</t>
-
-      <t>The publication of this document does not change the
-      assignment rules for new values for message types, option codes,
-      DUID types or status codes.</t>
-
-      <t>The list of assigned values used in DHCPv6 is available at
-      http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xml</t>
 
     </section>
 
