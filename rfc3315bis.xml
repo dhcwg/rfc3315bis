@@ -667,7 +667,8 @@
           a Reconfigure message to initiate the client to updates its configuration
           by sending an Information-Request, Renew, or Rebind message. The client then
           performs the earlier described two message exchange. This can be used to
-          expedite configuration changes to a client.
+          expedite configuration changes to a client, such as the need to renumber
+          a network (see <xref target="RFC6879"/>).
           </t>
           
       </section>
