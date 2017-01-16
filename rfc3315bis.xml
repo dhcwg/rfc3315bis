@@ -2890,7 +2890,7 @@
           returning IA Address options (for IA_NA and IA_TA) and IA Prefix
           options (for IA_PD) with preferred and valid lifetimes set to 0.</t>
 
-          <t>The server controls the time at which the client contacts the
+          <t>The server controls the time at which the client should contact the
           server to extend the lifetimes on assigned leases through the T1 and
           T2 parameters assigned to an IA. However, as the client
           Renews/Rebinds all IAs from the server at the same time, the client
@@ -4953,13 +4953,13 @@
             IA_NAs. The number space for IA_NA IAIDs is separate from the
             number space for other IA option types (i.e., IA_TA and IA_PD).</t>
 
-            <t hangText="   T1">The time at which the client contacts the
+            <t hangText="   T1">The time at which the client should contactsthe
             server from which the addresses in the IA_NA were obtained to
             extend the lifetimes of the addresses assigned to the IA_NA; T1 is
             a time duration relative to the current time expressed in units of
             seconds.</t>
 
-            <t hangText="   T2">The time at which the client contacts any
+            <t hangText="   T2">The time at which the client should contact any
             available server to extend the lifetimes of the addresses assigned
             to the IA_NA; T2 is a time duration relative to the current time
             expressed in units of seconds.</t>
