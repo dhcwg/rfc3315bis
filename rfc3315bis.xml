@@ -276,10 +276,10 @@
         DHCPv6 to carry IPv4 address and configuration information. However,
         the current consensus of the IETF is that DHCPv4 should be used rather
         than DHCPv6 when conveying IPv4 configuration information to nodes.
-        <xref target="RFC7341"></xref> describes a transport mechanism to
-        carry DHCPv4 messages using the DHCPv6 protocol for the dynamic
-        provisioning of IPv4 address and configuration information across
-        IPv6-only networks.</t>
+        For IPv6-only networks, <xref target="RFC7341"></xref> describes a
+        transport mechanism to carry DHCPv4 messages using the DHCPv6 protocol
+        for the dynamic provisioning of IPv4 address and configuration
+        information.</t>
 
         <t>Merging DHCPv4 and DHCPv6 configuration is out of scope of
         this document. <xref target="RFC4477"/> discusses some issues
