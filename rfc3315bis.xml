@@ -6895,8 +6895,6 @@
 
       <?rfc include='reference.RFC.2131'?>
       <?rfc include='reference.RFC.2132'?>
-      <?rfc include='reference.RFC.2409'?>
-      <?rfc include='reference.RFC.2461'?>
       <?rfc include='reference.RFC.2462'?>
       <?rfc include='reference.RFC.2464'?>
 
@@ -6947,8 +6945,6 @@
       <?rfc include='reference.RFC.7969'?>
 
       <?rfc include='reference.I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue'?>
-
-      <?rfc include='reference.I-D.ietf-v6ops-host-addr-availability'?>
 
       <?rfc include='reference.I-D.ietf-dhc-sedhcpv6'?>
 
