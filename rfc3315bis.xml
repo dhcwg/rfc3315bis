@@ -607,7 +607,7 @@
         respond with a Reply message containing the configuration information
         for the client.</t>
 
-        <t>When a server has IPv6 addresses and/or delegated prefixes and
+        <t>When a server has addresses and/or delegated prefixes and
         other configuration
         information committed to a client, the client and server may be able
         to complete the exchange using only two messages, instead of four
@@ -642,7 +642,7 @@
                title="Client-server Exchanges Involving Four Messages">
         <!-- 1.3, line 323-->
 
-        <t>To request the assignment of one or more IPv6 addresses and/or delegated prefixes, a client
+        <t>To request the assignment of one or more addresses and/or delegated prefixes, a client
         first locates a DHCP server and then requests the assignment of
         addresses and/or delegated prefixes and other configuration information from the server. The
         client sends a Solicit message to the
@@ -713,7 +713,7 @@
         such as dynamic updates to the DNS, or client-specific requirements.</t>
 
         <t>The model of operation for non-temporary address assignment is as
-        follows. The server is provided with IPv6 prefixes from which it may
+        follows. The server is provided with prefixes from which it may
         allocate addresses to clients, as well as any related network topology
         information as to which prefixes are present on which links. A client
         requests a non-temporary address to be assigned by the server. The
@@ -751,21 +751,21 @@
         requirements for prefix delegation in <xref
         target="RFC3769"></xref>.</t>
 
-        <t>While <xref target="RFC3633"/> assumed that the DHCPv6 client
-        is a router (hence use of "requesting router") and that the DHCPv6
-        server was a router (hence use of "delegating router"), DHCPv6
+        <t>While <xref target="RFC3633"/> assumed that the DHCP client
+        is a router (hence use of "requesting router") and that the DHCP
+        server was a router (hence use of "delegating router"), DHCP
         prefix delegation itself does not require that the client forward
-        IPv6 packets not addressed to itself, and thus does not require
-        that the client (or server) be an IPv6 router as defined in
+        IP packets not addressed to itself, and thus does not require
+        that the client (or server) be a router as defined in
         <xref target="RFC2460"/>. Also, in many cases (such as tethering
-        or hosting virtual machines), hosts are already forwarding IPv6
-        packets and thus operating as IPv6 routers as defined in
+        or hosting virtual machines), hosts are already forwarding IP
+        packets and thus operating as routers as defined in
         <xref target="RFC2460"/>. Therefore, this document mostly replaces
         "requesting router" with client and "delegating router" with
         server.</t>           
            
         <t>The model of operation for prefix delegation is as follows. A
-        server is provided IPv6 prefixes to be delegated to
+        server is provided prefixes to be delegated to
         clients. A client requests prefix(es) from the
         server, as described in <xref
         target="configuration-exchange"></xref>. The server chooses
@@ -1764,7 +1764,7 @@
         <t>Each address in an IA has a preferred lifetime and a valid
         lifetime, as defined in <xref target="RFC4862"></xref>. The lifetimes
         are transmitted from the DHCP server to the client in the IA Address option.
-        The lifetimes apply to the use of IPv6 addresses, as described in
+        The lifetimes apply to the use of addresses, as described in
         section 5.5.4 of <xref target="RFC4862"></xref>.</t>
       </section>
 
@@ -1779,7 +1779,7 @@
         prefix for that interface from the server.</t>
 
         <t>The configuration information in an IA_PD consists of one or more
-        IPv6 prefixes along with the T1 and T2 times for the IA_PD. See <xref
+        prefixes along with the T1 and T2 times for the IA_PD. See <xref
         target="IA_PD-option"></xref> for the representation of an IA_PD in a
         DHCP message.</t>
 
@@ -1843,8 +1843,8 @@
             agent.</t>
           </list></t>
 
-        <t>By default, DHCPv6 server implementations SHOULD NOT generate
-        predictable IPv6 addresses (<xref target="RFC7721"/>).</t>
+        <t>By default, DHCP server implementations SHOULD NOT generate
+        predictable addresses (<xref target="RFC7721"/>).</t>
 
         <t>A server MUST NOT assign an address that is otherwise reserved for
         some other purpose. For example, a server MUST NOT assign addresses
@@ -2457,7 +2457,7 @@
       multicast address.  Servers respond with a Reply message containing
       the configuration information for the client (see <xref target="RFC3315-18.2.5"/>).</t>
 
-      <t>To request the assignment of one or more IPv6 addresses or delegated
+      <t>To request the assignment of one or more addresses or delegated
       prefixes, a client first locates a DHCP server and then requests the
       assignment of addresses/prefixes and other configuration information from the
       server. The client does this by sending the Solicit message
@@ -2479,7 +2479,7 @@
       <!-- The following paragraph has been moved from the 'DHCP Server Solicitation -->
 
       <t>The client is responsible for creating IAs and requesting that a
-      server assign IPv6 addresses and/or delegated prefixes to the IAs. The
+      server assign addresses and/or delegated prefixes to the IAs. The
       client first creates the IAs and assigns IAIDs to them. The client then
       transmits a Solicit message containing the IA options describing the
       IAs. The client MUST NOT be using any of the addresses or delegated
@@ -2941,10 +2941,10 @@
           but has been unable to obtain. In this case, if the client includes
           the IA_PD option to request prefix delegation, the client MAY
           include the IA Prefix option encapsulated within the IA_PD option,
-          with the IPv6 prefix field set to 0 and the "prefix-length" field
+          with the IPv6-prefix field set to 0 and the "prefix-length" field
           set to the desired length of the prefix to be delegated. The server
           MAY use this value as a hint for the prefix length. The client
-          SHOULD NOT include IA Prefix option with the IPv6 prefix field set
+          SHOULD NOT include IA Prefix option with the IPv6-prefix field set
           to 0 unless it is supplying a hint for the prefix length.</t>
 
           <t>The client includes Option Request option
@@ -3426,7 +3426,7 @@
             hostname and it has no external impact.  As a counter example,
             a client that previously received an NTP server address from
             the DHCP server and does not receive it any more, MUST stop
-            using the configured NTP server IPv6 address.  The client
+            using the configured NTP server address.  The client
             SHOULD be open to other sources of the same configuration
             information.  This behavior does not apply to any IA containers,
             as their processing is described in detail in other parts of
@@ -3679,9 +3679,9 @@
           <t>The server examines all IAs in the message from the client.</t>
 
           <t>For each IA_NA and IA_TA in the Request message the server
-          checks if the prefixes of included IP addresses are appropriate for
+          checks if the prefixes of included addresses are appropriate for
           the link to which the client is connected. If any of the prefixes of
-          the included IP addresses is not appropriate for the link to which
+          the included addresses is not appropriate for the link to which
           the client is connected, the server MUST return the IA to the client
           with a Status Code option with the value NotOnLink. If the server
           does not send the NotOnLink status code but it cannot assign any IP
@@ -4146,7 +4146,7 @@
           the server MAY use those addresses as hints about the addresses that
           the client would like to receive. If the client has included IA
           Prefix option in the IA_PD, the server MAY use the prefix contained
-          in the IPv6 prefix field and/or the prefix length contained in the
+          in the IPv6-prefix field and/or the prefix length contained in the
           "prefix-length" field as a hints about the prefixes the client would
           like to receive. If the server is not going to assign an address or
           delegated prefix received as a hint in the Solicit message, the
@@ -5125,7 +5125,7 @@
       <section anchor="RFC3315-22.6" title="IA Address Option">
         <!-- 22.6, line 3840-->
 
-        <t>The IA Address option is used to specify an IPv6 address associated
+        <t>The IA Address option is used to specify an address associated
         with an IA_NA or an IA_TA. The IA Address option must be encapsulated
         in the Options field of an IA_NA or IA_TA option. The Options fields
         of the IA_NA or IA_TA option encapsulates those options that are
@@ -5145,7 +5145,7 @@
    |          OPTION_IAADDR        |          option-len           |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                                                               |
-   |                         IPv6 address                          |
+   |                         IPv6-address                          |
    |                                                               |
    |                                                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5169,15 +5169,15 @@
             <t hangText="   option-len">24 + length of IAaddr-options
             field.</t>
 
-            <t hangText="   IPv6 address">An IPv6 address. A client MUST NOT
+            <t hangText="   IPv6-address">An IPv6 address. A client MUST NOT
             form an implicit prefix with a length other than 128 for this
             address. And, a client MUST NOT assume any length of prefix that
             matches this address is on-link (see <xref target="RFC7421"/>).</t>
 
             <t hangText="   preferred-lifetime">The preferred lifetime for the
-            IPv6 address in the option, expressed in units of seconds.</t>
+            address in the option, expressed in units of seconds.</t>
 
-            <t hangText="   valid-lifetime">The valid lifetime for the IPv6
+            <t hangText="   valid-lifetime">The valid lifetime for the
             address in the option, expressed in units of seconds.</t>
 
             <t hangText="   IAaddr-options">Options associated with this
@@ -5507,14 +5507,14 @@
 
             <t hangText="   option-len">16.</t>
 
-            <t hangText="   server-address">The IP address to which the client
+            <t hangText="   server-address">The address to which the client
             should send messages delivered using unicast.</t>
           </list></t>
 
-        <t>The server specifies the IPv6 address to which the client is to
+        <t>The server specifies the address to which the client is to
         send unicast messages in the server-address field. When a client
         receives this option, where permissible and appropriate, the client
-        sends messages directly to the server using the IPv6 address specified
+        sends messages directly to the server using the address specified
         in the server-address field of the option.</t>
 
         <t>When the server sends a Unicast option to the client, some messages
@@ -6243,7 +6243,7 @@
       </section>
 
       <section anchor="IAPREFIX-option" title="IA Prefix Option">
-        <t>The IA Prefix option is used to specify an IPv6 prefix
+        <t>The IA Prefix option is used to specify a prefix
         associated with an IA_PD. The IA Prefix option must be encapsulated
         in the IA_PD-options field of an IA_PD option.</t>
 
@@ -6263,7 +6263,7 @@
    |                        valid-lifetime                         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    | prefix-length |                                               |
-   +-+-+-+-+-+-+-+-+          IPv6 prefix                          |
+   +-+-+-+-+-+-+-+-+          IPv6-prefix                          |
    |                           (16 octets)                         |
    |                                                               |
    |                                                               |
@@ -6287,10 +6287,10 @@
             field.</t>
 
             <t hangText="   preferred-lifetime">The recommended preferred
-            lifetime for the IPv6 prefix in the option, expressed in units of
+            lifetime for the prefix in the option, expressed in units of
             seconds. A value of 0xFFFFFFFF represents infinity.</t>
 
-            <t hangText="   valid-lifetime">The valid lifetime for the IPv6
+            <t hangText="   valid-lifetime">The valid lifetime for the
             prefix in the option, expressed in units of seconds. A value of
             0xFFFFFFFF represents infinity.</t>
 
@@ -6306,7 +6306,7 @@
         the preferred and valid lifetime fields SHOULD be set to 0. The server
         MUST ignore any received values in these lifetime fields.</t>
 
-        <t>A client may set the IPv6 prefix field to zero and a
+        <t>A client may set the IPv6-prefix field to zero and a
         given value in the prefix-length field to indicate a preference for
         the size of the prefix to be delegated.</t>
 
