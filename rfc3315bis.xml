@@ -4953,7 +4953,7 @@
             IA_NAs. The number space for IA_NA IAIDs is separate from the
             number space for other IA option types (i.e., IA_TA and IA_PD).</t>
 
-            <t hangText="   T1">The time at which the client should contactsthe
+            <t hangText="   T1">The time at which the client should contact the
             server from which the addresses in the IA_NA were obtained to
             extend the lifetimes of the addresses assigned to the IA_NA; T1 is
             a time duration relative to the current time expressed in units of
