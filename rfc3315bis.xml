@@ -600,13 +600,13 @@
         <!-- 1.2, line 284-->
 
         <t>When a DHCP client does not need to have a DHCP server assign it IP
-        addresses or delegated prefixes, the client can obtain configuration information such as a
+        addresses or delegated prefixes, the client can obtain other configuration information such as a
         list of available DNS servers <xref target="RFC3646"></xref> or NTP
         servers <xref target="RFC4075"></xref> through a single message and
-        reply exchange with a DHCP server. To obtain configuration
+        reply exchange with a DHCP server. To obtain other configuration
         information the client first sends an Information-request message to
         the All_DHCP_Relay_Agents_and_Servers multicast address. Servers
-        respond with a Reply message containing the configuration information
+        respond with a Reply message containing the other configuration information
         for the client.</t>
 
         <t>When a server has addresses and/or delegated prefixes and
@@ -616,7 +616,7 @@
         messages as described in the next section. In this case, the client
         sends a Solicit message to the All_DHCP_Relay_Agents_and_Servers multicast address
         requesting the assignment of addresses and/or delegated prefixes and other configuration
-        information. This message includes an indication that the client is
+        information. This message includes an indication (the Rapid Commit option) that the client is
         willing to accept an immediate Reply message from the server. The
         server that is willing to commit the assignment of addresses and/or
         delegated prefixes to the client immediately responds with a Reply
