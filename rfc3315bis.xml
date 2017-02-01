@@ -6931,6 +6931,7 @@
 
       <?rfc include='reference.RFC.6603'?>
       <?rfc include='reference.RFC.6724'?>
+      <?rfc include='reference.RFC.6879'?>
       <?rfc include='reference.RFC.6939'?>
       <?rfc include='reference.RFC.6977'?>
 
