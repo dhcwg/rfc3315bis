@@ -3811,7 +3811,11 @@
           IA Prefix option for such an address or delegated prefix, the server
           SHOULD set T1 and T2 to the valid lifetime for the IA option unless
           the server also includes other addresses or delegated prefixes which
-          the server is able to extend for the IA`.</t>
+          the server is able to extend for the IA. Setting T1 and T2
+          to values equal to valid lifetime informs the client that the leases
+          associated with said IA will not be extended, so there is no
+          point in trying. Also, it avoids generating unnecessary
+          traffic as the remaining lifetime approaches 0.</t>
 
           <t>The server may choose to change the list of addresses or
           delegated prefixes and the lifetimes in IAs that are returned to the
