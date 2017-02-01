@@ -1732,7 +1732,7 @@
       addresses or delegated prefixes. Each IA consists of an IAID and
       associated configuration information.</t>
 
-      <t>The IAID uniquely identifies the IA and must be chosen to be unique
+      <t>The IAID uniquely identifies the IA and MUST be chosen to be unique
       among the IAIDs for that IA type on the client (i.e., IA_NA with IAID 0 is
       unique from IA_TA with IAID 0). The IAID is chosen by
       the client. For any given use of an IA by the client, the IAID for that
