@@ -1361,8 +1361,8 @@
         <t><list hangIndent="24" style="hanging">
             <t hangText="   msg-type">RELAY-FORW</t>
 
-            <t hangText="   hop-count">Number of relay agents that have
-            relayed this message.</t>
+            <t hangText="   hop-count">Number of relay agents that
+            have already relayed this message.</t>
 
             <t hangText="   link-address">An address that may be used by the
             server to identify the link on which the client is located. This
@@ -1376,7 +1376,11 @@
             <t hangText="   options">MUST include a "Relay Message option"
             (see <xref target="RFC3315-22.10"></xref>); MAY include other
             options added by the relay agent.</t>
-          </list></t>
+        </list></t>
+
+        <t>See <xref target="addr-assign-ia-na"/> for an explanation
+        how link-address is used.</t>
+
       </section>
 
       <!-- ends: "7.1 from line 868-->
@@ -1798,7 +1802,7 @@
     <section anchor="RFC3315-11" title="Assignment to an IA">
       <!-- 11, line 1159-->
 
-      <section title="Selecting Addresses for Assignment to an IA_NA">
+      <section anchor="addr-assign-ia-na" title="Selecting Addresses for Assignment to an IA_NA">
         <t>A server selects addresses to be assigned to an IA_NA according to
         the address assignment policies determined by the server administrator
         and the specific information the server determines about the client
