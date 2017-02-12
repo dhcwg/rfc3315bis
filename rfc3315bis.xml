@@ -3237,7 +3237,10 @@
           <t>The client MUST process SOL_MAX_RT and INF_MAX_RT options in an
           Advertise message, even if the message contains a Status Code option
           indicating a failure, and the Advertise message will be discarded by
-          the client.</t>
+          the client. A client SHOULD only update its SOL_MAX_RT and INF_MAX_RT
+          values if all received Advertise messages that contained the
+          corresponding option specified the same value, otherwise it should 
+          use the default value (see <xref target="RFC3315-5.5"/>).</t>
 
           <!-- Change from RFC 7550 section 4.1/4.2 has been applied. 6/1/2015 -->
 
