@@ -1850,7 +1850,10 @@
           </list></t>
 
         <t>By default, DHCP server implementations SHOULD NOT generate
-        predictable addresses (<xref target="RFC7721"/>).</t>
+        predictable addresses (<xref target="RFC7721"/>). Server
+        implementers are encouraged to review <xref target="RFC4941"/>,
+        <xref target="RFC7824"/>, and <xref target="RFC7707"/> as to
+        possible considerations for how to generate addresses.</t>
 
         <t>A server MUST NOT assign an address that is otherwise reserved for
         some other purpose. For example, a server MUST NOT assign addresses
@@ -6955,6 +6958,7 @@
       <?rfc include='reference.RFC.7563'?>
       <?rfc include='reference.RFC.7598'?>
       <?rfc include='reference.RFC.7610'?>
+      <?rfc include='reference.RFC.7707'?>
       <?rfc include='reference.RFC.7824'?>
       <?rfc include='reference.RFC.7844'?>
       <?rfc include='reference.RFC.7136'?>
