@@ -5702,18 +5702,21 @@
 
         <t><list style="empty">
             <t>Each server that responds with a Reply to a Solicit that
-            includes a Rapid Commit option will commit the assigned addresses
+            includes a Rapid Commit option will commit the leases
             in the Reply message to the client, and will not receive any
             confirmation that the client has received the Reply message.
             Therefore, if more than one server responds to a Solicit that
-            includes a Rapid Commit option, some servers will commit addresses
-            that are not actually used by the client.</t>
+            includes a Rapid Commit option, some servers will commit leases
+            that are not actually used by the client, which could result in
+            bad information in the DNS server if the DHCP server updates DNS
+            (<xref target="RFC4704"/>) or in response to leasequery requests
+            (<xref target="RFC5007"/>).</t>
 
-            <t>The problem of unused addresses can be minimized, for example,
+            <t>The problem of unused leases can be minimized, for example,
             by designing the DHCP service so that only one server responds to
-            the Solicit or by using relatively short lifetimes for assigned
-            addresses, or the DHCP client initiatively releases unused
-            addresses using the Release message.</t>
+            the Solicit or by using relatively short lifetimes for newly assigned
+            leases, or the DHCP client initiatively releases unused
+            leases by using the Release message.</t>
           </list></t>
       </section>
 
@@ -6935,6 +6938,7 @@
       <?rfc include='reference.RFC.4242'?>
       <?rfc include='reference.RFC.4301'?>
       <?rfc include='reference.RFC.4477'?>
+      <?rfc include='reference.RFC.4704'?>
       <?rfc include='reference.RFC.4941'?>
       <?rfc include='reference.RFC.4943'?>
 
