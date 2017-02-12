@@ -1440,12 +1440,12 @@
       compare DUIDs for equality. Clients and servers SHOULD NOT in any other
       way interpret DUIDs. Clients and servers MUST NOT restrict DUIDs to the
       types defined in this document, as additional DUID types may be defined
-      in the future. It should be noted that an attempt to parse DUID to obtain
-      client's link local address is unreliable as there is not guarantee that
-      the client is still using the same link local address as when it generated
-      its DUID. Such an attempt will be more and more unreliable as more
+      in the future. It should be noted that an attempt to parse a DUID to obtain
+      a client's link-layer address is unreliable as there is no guarantee that
+      the client is still using the same link-layer address as when it generated
+      its DUID. And, such an attempt will be more and more unreliable as more
       clients adopt privacy measures, such are those defined in <xref
-      target="RFC7844"/>. It is better to rely on a mechanism defined in
+      target="RFC7844"/>. It is recommended to rely on the mechanism defined in
       <xref target="RFC6939"/>.</t>
 
       <t>The DUID is carried in an option because it may be variable length
