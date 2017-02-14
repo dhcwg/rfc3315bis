@@ -6954,7 +6954,10 @@
       <?rfc include='reference.RFC.6977'?>
 
       <?rfc include='reference.RFC.7084'?>
+      <?rfc include='reference.RFC.7136'?>
+      <?rfc include='reference.RFC.7227'?>
       <?rfc include='reference.RFC.7296'?>
+      <?rfc include='reference.RFC.7321'?>
       <?rfc include='reference.RFC.7341'?>
       <?rfc include='reference.RFC.7368'?>
       <?rfc include='reference.RFC.7421'?>
@@ -6963,14 +6966,10 @@
       <?rfc include='reference.RFC.7598'?>
       <?rfc include='reference.RFC.7610'?>
       <?rfc include='reference.RFC.7707'?>
-      <?rfc include='reference.RFC.7824'?>
-      <?rfc include='reference.RFC.7844'?>
-      <?rfc include='reference.RFC.7136'?>
-      <?rfc include='reference.RFC.7227'?>
-      <?rfc include='reference.RFC.7321'?>
-      <?rfc include='reference.RFC.7707'?>
       <?rfc include='reference.RFC.7721'?>
+      <?rfc include='reference.RFC.7824'?>
       <?rfc include='reference.RFC.7839'?>
+      <?rfc include='reference.RFC.7844'?>
       <?rfc include='reference.RFC.7969'?>
 
       <?rfc include='reference.I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue'?>
