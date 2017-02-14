@@ -1232,7 +1232,7 @@
         <t>Setting the valid lifetime of an address or a 
         delegated prefix to 0xffffffff ("infinity") amounts to a permanent
         address or delegation of the prefix to a client and should only be used in cases
-        were permenant addresses are desired.</t>
+        were permanent addresses are desired.</t>
 
         <t>Care should be taken in setting T1 or T2 to 0xffffffff
         ("infinity"). A client will never attempt to extend the lifetimes of
@@ -6661,7 +6661,7 @@
 
       <t>The threat common to both the client and the server is the resource
       "denial of service" (DoS) attack. These attacks typically involve the
-      exhaustion of available assigned address or delegateable prefixes, or
+      exhaustion of available assigned address or delegatable prefixes, or
       the exhaustion of CPU or network bandwidth, and are present anytime
       there is a shared resource. Some forms of these exhaustion attacks can
       be partially mitigated by appropriate server policy, e.g., limiting
