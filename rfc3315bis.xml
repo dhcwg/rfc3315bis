@@ -2120,7 +2120,7 @@
 
       <t>Clients, relay agents and servers MUST NOT discard messages that
       contain unknown options (or instances of vendor options with unknown
-      enterprise-numbers). These should be ignored as if they weren't
+      enterprise-numbers). These options should be ignored as if they weren't
       present.</t>
 
       <t>A server MUST discard any Solicit, Confirm, Rebind or
