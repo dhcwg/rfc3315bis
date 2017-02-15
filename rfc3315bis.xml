@@ -297,7 +297,7 @@
       <!-- 2, line 343-->
 
       <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
       document are to be interpreted as described in <xref target="RFC2119"/> when they
       appear in ALL CAPS.  When these words are not in ALL CAPS (such as
       "should" or "Should"), they have their usual English meanings, and
