@@ -5038,9 +5038,6 @@
 
         <t>As per <xref target="RFC3315-5.6"/>, the value 0xffffffff is taken to
         ("infinity") and should be used carefully. </t>
-
-        <t>This option MAY appear in a Confirm message if the lifetimes on the
-        non-temporary addresses in the associated IA have not expired.</t>
       </section>
 
       <!-- ends: "22.4 from line 3649-->
@@ -5135,9 +5132,6 @@
         valid. After the lifetimes of the addresses in an IA_TA have expired,
         the IAID may be reused to identify a new IA_TA with new temporary
         addresses.</t>
-
-        <t>This option MAY appear in a Confirm message if the lifetimes on the
-        temporary addresses in the associated IA have not expired.</t>
       </section>
 
       <!-- ends: "22.5 from line 3761-->
