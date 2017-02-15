@@ -2639,9 +2639,14 @@
 
           <!-- 17.1.2, line 1682-->
 
-          <t>The first Solicit message from the client on the interface MUST
+          <t>The first Solicit message from the client on the interface SHOULD
           be delayed by a random amount of time between 0 and SOL_MAX_DELAY.
-          In the case of a Solicit message transmitted when DHCP is
+          This mechanism is essential for devices that are not battery powered,
+          as they may suffer from power failure. After recovering from a
+          power outage, many devices may start their transmission at the same
+          time. This is much less of a concern for battery powered devices.</t>
+
+          <t>In the case of a Solicit message transmitted when DHCP is
           initiated,  the delay gives the amount of time to
           wait after IPv6 Neighbor Discovery causes the client to invoke the
           stateful address autoconfiguration protocol (see section 5.5.3 of
