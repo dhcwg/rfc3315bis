@@ -1,4 +1,4 @@
-VERSION=00
+VERSION=07
 rfc3315bis-${VERSION}.txt: rfc3315bis.txt
 
 %.txt: %.xml
