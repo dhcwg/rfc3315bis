@@ -6843,7 +6843,10 @@
       Protocol identifier values" registry, and
       https://www.iana.org/assignments/auth-namespaces/auth-namespaces.xhtml
       page to add an "Obsolete" annotation into the "Delayed Authentication"
-      entity in the "Protocol Name Space Values" registry.</t>
+      entity in the "Protocol Name Space Values" registry. IANA is also
+      requested to update these pages to reference this document
+      instead of <xref target="RFC3315"/>.
+      </t>
 
     </section>
 
