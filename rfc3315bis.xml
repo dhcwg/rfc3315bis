@@ -3125,7 +3125,7 @@
           <t>The client MUST include an Option Request option (see <xref
           target="RFC3315-22.7"></xref>) to request the INF_MAX_RT option (see
           <xref target="INF_MAX_RT_option"></xref>), the Information
-          Refresh Time option <xref target="RFC4242"/>, and any other options the
+          Refresh Time option <xref target="RFC4242-Option"/>, and any other options the
           client is interested in receiving. The client MAY include options
           with data values as hints to the server about parameter values the
           client would like to have returned.</t>
@@ -3561,6 +3561,13 @@
             response to a Confirm message, the client performs DHCP server
             discovery as described in <xref target="configuration-exchange"/>.</t>
           </section>
+             
+          <section anchor="reply-confirm" title="Reply for Information-Request">
+            <t>Refer to <xref target="RFC4242-Option"/> for details on how the
+            Information Refresh Time option (whether or not present in the
+            Reply) should be handled by the client.</t>
+          </section>
+
         </section>
 
         <!-- ends: "18.1.8 from line 2345-->
