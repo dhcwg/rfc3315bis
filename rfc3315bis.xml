@@ -667,7 +667,7 @@
           <t>A server that has previously communicated with a client and negotiated
           for the client to listen for Reconfigure messages, may send the client
           a Reconfigure message to initiate the client to updates its configuration
-          by sending an Information-Request, Renew, or Rebind message. The client then
+          by sending an Information-request, Renew, or Rebind message. The client then
           performs the earlier described two message exchange. This can be used to
           expedite configuration changes to a client, such as the need to renumber
           a network (see <xref target="RFC6879"/>).
@@ -1958,9 +1958,6 @@
       <t>DHCP servers SHOULD NOT care if the layer-2 address used was
       multicast or not, as long as the layer-3 address was correct.</t>
 
-      <t>DHCP servers SHOULD examine the TTL as part of determining if the
-      client sending the message is on-link.  See <!-- xref target="TTL" /-->.</t>
-
       <t>A client uses multicast to reach all servers or an individual server.
       An individual server is indicated by specifying that server's DUID in a
       Server Identifier option (see <xref target="RFC3315-22.3"></xref>) in
@@ -2145,7 +2142,7 @@
       <!-- 15, line 1345-->
 
       <t>This section describes which options are valid in which kinds of
-      message types.  Should a client or servers receive messages which
+      message types.  Should a client or server receive messages which
       contain known options which are invalid for the message, this section
       explains how to process it.
       For example, an IA option is not allowed to appear in an
@@ -2509,7 +2506,7 @@
       multicast address.  Servers respond with a Reply message containing
       the configuration information for the client (see <xref target="RFC3315-18.2.5"/>).</t>
 
-      <t>To request the assignment of one or more IPv6 addresses or delegated
+      <t>To request the assignment of one or more addresses or delegated
       prefixes, a client first locates a DHCP server and then requests the
       assignment of addresses/prefixes and other configuration information from the
       server. The client does this by sending the Solicit message
@@ -3132,7 +3129,7 @@
           <t>The client MUST include an Option Request option (see <xref
           target="RFC3315-22.7"></xref>) to request the INF_MAX_RT option (see
           <xref target="INF_MAX_RT_option"></xref>), the Information
-          Refresh Time option <xref target="RFC4242-Option"/>, and any other options the
+          Refresh Time option (see <xref target="RFC4242-Option"/>), and any other options the
           client is interested in receiving. The client MAY include options
           with data values as hints to the server about parameter values the
           client would like to have returned.</t>
@@ -3488,7 +3485,7 @@
             target="RFC3315-22"></xref>.</t>
 
             <t>When a client receives a configuration option in an earlier
-            Reply, then sends a Renew, Rebind or Information-Request and
+            Reply, then sends a Renew, Rebind or Information-request and
             the requested option is not present in the Reply, the client
             SHOULD stop using the previously received configuration
             information.  In other words, the client should behave as if
@@ -3569,7 +3566,7 @@
             discovery as described in <xref target="configuration-exchange"/>.</t>
           </section>
              
-          <section anchor="reply-confirm" title="Reply for Information-Request">
+          <section anchor="reply-inforequest" title="Reply for Information-request">
             <t>Refer to <xref target="RFC4242-Option"/> for details on how the
             Information Refresh Time option (whether or not present in the
             Reply) should be handled by the client.</t>
@@ -6443,7 +6440,7 @@
         specify an upper bound for how long a client should wait before
         refreshing information retrieved
         from a DHCP server. It is only used in Reply messages in response to
-        Information-Request messages. In other messages there will usually
+        Information-request messages. In other messages there will usually
         be other information that indicates when the client should contact the
         server, e.g., T1/T2 times and lifetimes. This option is useful
         when the configuration parameters change or during renumbering event as
@@ -6481,7 +6478,7 @@
         <!-- The following paragraphs have been adapted from RFC 4242 -->
 
         <t>A DHCP client MUST request this option in the Option Request option
-        (see <xref target="RFC3315-22.7"/>) when sending Information-Request
+        (see <xref target="RFC3315-22.7"/>) when sending Information-request
         messages. A client MUST NOT request this option in the ORO in any other
         messages.</t>
 
@@ -6490,7 +6487,7 @@
         Request. The option value MUST NOT be smaller than IRT_MINIMUM. This
         option MUST only appear in the top-level option area of Reply messages.</t>
 
-        <t>If the Reply to an Information-Request message does not contain this
+        <t>If the Reply to an Information-request message does not contain this
         option, the client MUST behave as if the option with value IRT_DEFAULT
         was provided.</t>
 
@@ -6509,7 +6506,7 @@
         <t>When the client detects that the refresh time has expired, it SHOULD
         try to update its configuration data by sending an Information-
         Request as specified in <xref target="RFC3315-18.1.5"/>, except that the
-        client MUST delay sending the first Information-Request by a random
+        client MUST delay sending the first Information-request by a random
         amount of time between 0 and INF_MAX_DELAY.</t>
 
         <t>A client MAY have a maximum value for the refresh time, where that
