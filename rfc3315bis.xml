@@ -733,6 +733,9 @@
         <t>Typically clients request other configuration parameters, such as
         the DNS name server addresses and domain search lists, when requesting
         addresses.</t>
+           
+        <t>Clients can also request more than one address or set of
+         addresses (see <xref target="RFC3315-10"/>).</t>
       </section>
 
       <section anchor="OpModes-PD" title="DHCP for Prefix Delegation">
