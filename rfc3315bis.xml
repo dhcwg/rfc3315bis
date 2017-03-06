@@ -2001,23 +2001,27 @@
       </section>
 
       <section anchor="t1-t2-0"
-               title="Choosing transmission time when T1 / T2 is 0">
+               title="Client Behavior when T1 and/or T2 are 0">
         <t>In certain cases, T1 and/or T2 time may be set to zero. Currently
-        there are three such cases: 1. a client received an IA_NA option with
-        a zero value; 2. a client received an IA_PD option with a zero value;
-        3. a client received an IA_TA option (which does not contain T1 and T2
-        fields and are not generally renewed). Additional cases may appear in
-        the future. This is an indication that the transmission times are left
-        at the client's discretion. They are not completely discretionary,
-        though.</t>
+        there are three such cases:
+             
+      <list hangIndent="6" style="hanging">
+        <t hangText="1."> a client received an IA_NA option with a zero value,</t>
+        <t hangText="2."> a client received an IA_PD option with a zero value, and</t>
+        <t hangText="3."> a client received an IA_TA option (which does not
+        contain T1 and T2 fields and are not generally renewed).</t>
+      </list>
+        This is an indication that the renew and rebind times are left
+        at the client's discretion. However, they are not completely
+        discretionary.</t>
 
         <t>When T1 and/or T2 times are set to zero, the client MUST choose a
         time to avoid packet storms. In particular, it MUST NOT transmit
         immediately. If the client received multiple IA containers, it SHOULD
-        pick T1 and/or T2 transmission times so all IA containers are
-        handled in one exchange, if possible. The client MUST choose the
-        times to not violate rate limiting restrictions, defined
-        in <xref target="rate-limit"></xref>.</t>
+        pick renew and/or rebind transmission times so all IA containers are
+        handled in one exchange, if possible. The client MUST choose renew
+        and rebind times to not violate rate limiting restrictions, defined
+        in <xref target="rate-limit"/>.</t>
       </section>
     </section>
 
