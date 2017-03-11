@@ -4124,22 +4124,6 @@
           to eliminate the clients to request new leases in Rebind. See Section
           4.4 of <xref target="RFC7550"/> for detailed discussion.</t>
 
-          <t>However, one scenario that may ignore this recommendation and
-          create bindings during Rebing processing is a server recovery after
-          database being lost. In such scenario the clients got their leases
-          from a sole server that had crashed, its database couldn't be
-          recovered and a new replacement server is being deployed. That new
-          server will eventually get Rebinds with clients' addresses and
-          prefixes, but the server's database would not have any record of such
-          a lease. In this case the server MAY form a new lease, because it's
-          more of a lease recreation rather than a creation of completely new
-          lease. This allows gentler recovery as the clients wouldn't need to
-          change their addresses or prefixes. An alternative is to reject old
-          leases and assign new ones. This approach would work as well, but
-          would be more moticeable by clients as they would need to change their
-          addresses with all that it imples (e.g. drop connections, update DNS
-          etc.).</t>
-
           <t>The server constructs a Reply message by setting the "msg-type"
           field to REPLY and copying the transaction ID from the Rebind
           message into the "transaction-id" field.</t>
