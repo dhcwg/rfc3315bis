@@ -5362,7 +5362,7 @@
         greater than the valid lifetime.</t>
 
         <t>As per <xref target="RFC3315-5.6"/>, the valid lifetime of an address
-        0xffffffff is taken to mean "infinity" and should used carefully.</t>
+        0xffffffff is taken to mean "infinity" and should be used carefully.</t>
 
         <t>More than one IA Address option can appear in an IA_NA option or an
         IA_TA option.</t>
@@ -7107,9 +7107,9 @@
       Yukiyo Akisada, Tatuya Jinmei, Fred Templin and Christian Huitema.</t>
 
       <t>We also thank the following, not otherwise acknowledged and in no
-      particular order, for their review comments: Jermey Reed, Francis Dupont,
-      Lorenzo Colitti, Tianxiang Li, Ian Farrer, Yogendra Pal,
-      Shawn Routhier, and Michayla Newcombe.</t>
+      particular order, for their review comments: Jeremy Reed, Francis Dupont,
+      Lorenzo Colitti, Tianxiang Li, Ian Farrer, Yogendra Pal, Kim Kinnear,
+      Shawn Routhier, Tim Chown, and Michayla Newcombe.</t>
 
       <t>And, special thanks to Ralph Droms for answering many questions related
       to the original RFC3315 and RFC3633 work and for being the document
