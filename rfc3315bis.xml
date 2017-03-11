@@ -4765,7 +4765,7 @@
 
         <t>The Authentication option provides a framework for multiple
         authentication protocols. One such protocol, the Reconfigure key
-        authentication protocol , is defined in <xref
+        authentication protocol, is defined in <xref
         target="reconfigure-protocol"></xref>. Other protocols defined in the future
         will be specified in separate documents.</t>
 
@@ -7295,292 +7295,24 @@
 
     <!-- Let's briefly document relevant changes against 3315 here -->
 
-    <section title="Changes since RFC3315">
+    <section title="Summary of Changes">
 
-      <t>Note: This appendix needs to be updated (reworked) to provide a more
-      useful summary of the significant changes between this and the original
-      documents. This is still a TODO issue!</t>
+      <t>This appendix provides a summary of the significant changes made
+      to this updated DHCPv6 specification.</t>
 
       <t><list style="numbers">
-          <t>Incorporated RFC3315 errata (ids: 294, 1373, 2928, 1815, 3577,
-          2509, 295).</t>
-
-          <t>Partially incorporated RFC3315 errata id 2472 (place other IA
-          options if NoAddrsAvail is sent in Advertise), which is also covered
-          by <xref target="RFC7550"/>.</t>
-
-          <t>Clarified section 21.4.1 of RFC3315 by defining length of "key
-          ID" field and specifying that 'DHCP realm' is Domain Name encoded as
-          per section 8 of RFC3315. Ticket #43.</t>
-
-          <t>Added DUID-UUID and reference to RFC6355. Ticket #54.</t>
-
-          <t>Specified a minimum length for the DUID in section "9.1. DUID
-          Contents". Ticket #39.</t>
-
-          <t>Removed the use of term "sub-options" from section "19.1.1.
-          Creation and Transmission of Reconfigure Messages". Ticket #40.</t>
-
-          <t>Added text to section 22.6 "IA Address Option" about the usage of
-          unspecified address to express the client hints for Preferred and
-          Valid lifetimes. Ticket #45.</t>
-
-          <t>Updated text in 21.4.2 of RFC3315 ("Message Validation") as
-          suggested in section 3.1 of draft-ietf-dhc-dhcpv6-clarify-auth-01.
-          Ticket #87.</t>
-
-          <t>Merged RFC7083, "Modification to Default Values of SOL_MAX_RT and
-          INF_MAX_RT", into this document. Ticket #51.</t>
-
-          <t>Incorporated RFC3315 errata (id 2471), into section 17.1.3.
-          Ticket #25.</t>
-
-          <t>Added text that relay agents MUST NOT modify the relayed message
-          to section 20.1.2. Ticket #57.</t>
-
-          <t>Modified the text in section 21.4.4.5, Receiving Reply Messages,
-          to remove special treatment of a Reply validation failure (client
-          ignores message). Ticket #89.</t>
-
-          <t>Appendix C updated: Authentication option is no longer allowed in
-          Relay-forward and Relay-reply messages, ORO is no longer allowed in
-          Confirm, Release and Decline messages; Preference option is no
-          longer allowed in Reply messages (only in Advertise). Ticket
-          #10.</t>
-
-          <t>Removed "silently" from several instances of "silently ignores"
-          or "silently" discards. It is up to software vendor if and how to
-          log such events (debug log message, event log, message pop-up etc.).
-          Ticket #50.</t>
-
-          <t>Clarified that: there should be no more than one instance of
-          Vendor Class option with a given Enterprise Number; that one
-          instance of Vendor Class can contain multiple encapsulated options;
-          the same applies to Vendor Specific Information option. Ticket
-          #22.</t>
-
-          <t>Clarified relay agent definition. Ticket #12.</t>
-
-          <t>Changed REL_MAX_RC and DEC_MAX_RC defaults from 5 to 4 and added
-          retry to parameter description. Ticket #84.</t>
-
-          <t>Clarify handling process for Vendor-specific Information option
-          and Vendor Class option. Ticket #20.</t>
-
-          <t>Replace "monotonic" with "strictly monotonic" in Section 21.3.
-          Ticket #11.</t>
-
-          <t>Incorporate everything of RFC6644, except for Security
-          Considerations Section, which has already covered in a more
-          abstracted way. Tickets #55 &amp; #56.</t>
-
-          <t>Clarify the server behavior process when a client violates
-          Delayed Authentication Protocol, in Section 21.4. Ticket #90.</t>
-
-          <t>Updated titles of sections 19.4.2. and 19.4.4. to include Rebind
-          messages.</t>
-
-          <t>Applied many of the review comments from a review done by Fred
-          Templin in August 2006. Ticket #14.</t>
-
-          <t>Reworded the first paragraph of Section 15 to relax the "SHOULD"
-          requirement to drop the messages which contain the options not
-          expected in the current message. Ticket #17.</t>
-
-          <t>Changed WG to DHC on the first page header, added keywords.</t>
-
-          <t>Loosened requirements for DUID-EN, so that DUID type can be used
-          for virtual machines. Ticket #16.</t>
-
-          <t>Clarified that IA may contain other resources than just address.
-          Ticket #93.</t>
-
-          <t>Clarified that most options are singletons (i.e., can appear only
-          once). Ticket #83.</t>
-
-          <t>Merged sections 1 (Ticket #96), 2 (Ticket #97), 3 (Ticket #98), 4
-          (Ticket #99), 6 (Ticket #101), 8 (Ticket #103), 9 (Ticket #104), 10
-          (Ticket #105), 11 (Ticket #106), 13 (Ticket #108), 14 (Ticket #109),
-          15 (Ticket #110), 16 (Ticket #111), 17 (Ticket #112) and 19 (Ticket
-          #113) from RFC3633 (Prefix Delegation).</t>
-
-          <t>Clarified that encapsulated options must be requested using
-          top-level ORO (ticket #38).</t>
-
-          <t>Clarified that configuration for interface X should be requested
-          over interface X (ticket #48).</t>
-
-          <t>CONFIRM is now an optional message (MUST send Confirm eased to
-          SHOULD) (ticket #120).</t>
-
-          <t>Added reference to RFC7227: DHCPv6 Option Guidelines (ticket
-          #121).</t>
-
-          <t>Added new section 5 providing an overview of DHCPv6 operational
-          modes and removed two prefix delegation sections from section 1. See
-          tickets #53, #100, and #102.</t>
-
-          <t>Addressed ticket #115 - don't use DHCPv6 for DHCPv4
-          configuration.</t>
-
-          <t>Revised IANA Considerations based on ticket #117.</t>
-
-          <t>Updated IAID description in the terminology with the
-          clarification that the IAID is unique among IAs of a specific type,
-          rather than globally unique among all IAs (ticket #94).</t>
-
-          <t>Merged Section 12 from RFC3633 (ticket #107).</t>
-
-          <t>Clarified behavior for unknown messages (RFC7283), ticket
-          #58.</t>
-
-          <t>Addressed tickets #123 and #126, and clarified that the client
-          SHOULD abandon its bindings when restarts the server
-          discovery.</t>
-
-          <t>Clarified link-address field usage, ticket #73.</t>
-
-          <t>Clarified that retransmitting at client's discretion (t1,t2=0)
-          does not mean immediate transmission (ticket #71).</t>
-
-          <t>Merged section 4.4. of RFC7550 (stateful-issues). This includes
-          new Renew and Rebind processing by the server, i.e., a client may
-          request allocation of new addresses/prefixes during Renew and
-          Rebind. This addresses tickets #62 and #63.</t>
-
-          <t>Merged section 4.1 and 4.2 of RFC7550 (stateful-issues). This
-          addresses tickets #59 and #60.</t>
-
-          <t>Added normative reference to RFC7550 and to obsoleted list. Also
-          added terse text of Abstract and section 1.0 to indicate what this
-          document is about.</t>
-
-          <t>Merged section 4.6 of RFC7550 (stateful-issues). This addresses
-          ticket #85.</t>
-
-          <t>Clarified that the document assumes single provisioning domain.
-          This resolves ticket #66.</t>
-
-          <t>Removed the Delayed Auth Protocol. This resolves ticket #86.</t>
-
-          <t>Added text the text suggesting to not send all-zero
-          address/prefix unless the client wishes to hint the lifetimes and/or
-          prefix lengths. This resolves ticket #82.</t>
-
-          <t>Cleaned up Confirm text regarding rebooting client an stable
-          storage.</t>
-
-          <t>Updated server processing section to clarify that server unicast
-          check can be based on current configuration of unicast setting so
-          server is not required to remember what it sent. This resolves
-          ticket #130.</t>
-
-          <t>Removed references to lifetime hints from the client; only
-          IAPREFIX prefix-length hints are now allowed. Servers will ignore
-          any lifetime hints; clients should set lifetime to 0. This resolves
-          ticket #148. Also, removed T1/T2 hints from clients to servers -
-          while not explicitly discussed, seems to make sense? And, fixed some
-          of the message processing text to include PD, not just addresses
-          (though I think Marcin will eventually replace much of this text?
-          Plus a few other minor edits.</t>
-
-          <t>Clarified that the server may return different addresses in the
-          Reply than requested by the client in the Request message. Also
-          clarified that the server must not include addresses that it will
-          not assign. This resolves ticket #69.</t>
-
-          <t>Introduction updated, including relation to previous RFCs (ticket
-          #136).</t>
-
-          <t>Added section with deprecated mechanisms (ticket #149).</t>
-
-          <t>Combined text for prefix delegation and address assignment in
-          sections 18 and 19. Also, introduced a term "lease" replacing
-          "allocable resources". This resolves ticket #146.</t>
-
-          <t>Reorganized text about Reply processing on the client side
-          (ticket #140).</t>
-
-          <t>Revised the "Creation and Transmission of Release Messages"
-          section to clarify what a client must do before initiating a Release
-          (ticket #151).</t>
-
-          <t>Privacy considerations added (ticket #145).</t>
-
-          <t>Abstract updated. Ticket #133.</t>
-
-          <t>Removed references to the text that server was allowed to cache
-          its replies. Ticket #80.</t>
-
-          <t>Merged sections 17, 18 and 19 into a single section describing
-          client and server behaviors. Ticket #142.</t>
-
-          <t>Added text about single session for multiple IA option types.
-          Ticket #160.</t>
-
-          <t>Moved additional text from RFC3633 section 12.1. Ticket #102.</t>
-
-          <t>Addressed minor addition to text as per ticket 131 and also ticket #61.</t>
-
-          <t>Clarified MUST perform DAD, excepting exceptions listed in RFC4862 Section
-          5.4. Ticket #153.</t>
-
-          <t>Removed the requirement for the server to send Reconfigure Accept
-          in Reply messages, also clarified why it's useful in Advertise. Ticket
-          #154.</t>
-
-          <t>Explicitly require Elapsed Time option to be placed in messages
-          sent by a client. Ticket #159.</t>
-
-          <t>Update section 14 - explained that Elapsed Time option (and possibly
-          other options) must be updated prior to resending the message. Also
-          included "retransmission" in the DHCP terminology. Ticket #157.</t>
-
-          <t>Added text explaining that the client should stop using an option
-          if it's not being sent by the server. Ticket #150.</t>
-
-          <t>Added reference to RFC4242 (Information Refresh Time
-          option). Ticket #161.</t>
-
-          <t>Updated Option Request option to list options that MUST NOT be included. Also added to that IANA
-          Consider should keep track of which options are allowed in ORO. Ticket #81.</t>
-
-          <t>Updated Creation and Transmission of Advertise message so that the only options
-          in the ORO will be included in the Advertise unless configured otherwise. Ticket #81.</t>
-
-          <t>Information Refresh Time option is now mandatory for clients that
-          support stateless mode. Added reference to RFC4242. Ticket #161.</t>
-
-          <t>Removed the text that allowed a Reconfigure message to contain IA options,
-          ORO option, and other options for server to indicate to client what to request
-          in response to Reconfigure. Ticket #168.</t>
-
-          <t>NOTE: Additional changes made from WGLC comments. This section will be replaced with
-          new material to provide a list of changes. TODO (Bernie).</t>
-
-          <t>Reconfigure Accept is now SHOULD in Reply (review comment
-          #130).</t>
-
-          <t>Changed MUST NOT to SHOULD NOT in the text about interpreting
-          DUIDs, added explanatory text (review comment #206).</t>
-
-          <t>DUID-LL restriction is now SHOULD NOT (was MUST NOT) regarding
-          the text about clients and server be able to tell if the network
-          interfaces is permanently attached (review comment #207).</t>
-        </list></t>
-    </section>
-
-    <!-- Let's briefly document relevant changes against 3633 here -->
-
-    <section title="Changes since RFC3633">
-
-      <t>Note: This appendix should be removed by the RFC-Editor when preparing
-      the document for publication.</t>
-
-      <t><list style="numbers">
-          <t>Incorporated RFC3633 errata (ids: 248, 1880, 2468, 2469, 2470,
-          3736)</t>
-
+         <t>Merged material from RFC3315, RFC3633, RF3736, RFC4242, RFC7083, and
+         RFC7550 into a single comprehensive specification. This included
+         incorporating the errata for these docuemnts: for RFC3315 errata ids
+         294, 1373, 2928, 1815, 3577, 2509, 295 (note that errata id 2472 was
+         superseded by RFC7550); for RFC3633 errata ids 248, 1880, 2468, 2469, 2470,
+         3736.</t>
+           
+         <t>Obsoleted several mechanisms as discussed in <xref target="obsolete"/>.</t>
+           
+         <t>TBD - This list needs many additional entries. It will be completed
+         in a future version of this document.</t>
+         
         </list></t>
     </section>
 
@@ -7597,34 +7329,32 @@
         <artwork><![CDATA[
         Client Server IA_NA/                  Elap. Relay Auth. Server
           ID     ID   IA_TA IA_PD  ORO   Pref Time   Msg.       Unicast
-Solicit   *             *     *     *           *           *
-Advert.   *      *      *     *           *                 *
-Request   *      *      *     *     *           *           *
-Confirm   *             *                       *           *
-Renew     *      *      *     *     *           *           *
-Rebind    *             *     *     *           *           *
-Decline   *      *      *     *                 *           *
-Release   *      *      *     *                 *           *
+Solicit   *             *     *     *           *
+Advert.   *      *      *     *           *
+Request   *      *      *     *     *           *
+Confirm   *             *                       *
+Renew     *      *      *     *     *           *
+Rebind    *             *     *     *           *
+Decline   *      *      *     *                 *
+Release   *      *      *     *                 *
 Reply     *      *      *     *                             *     *
-Reconf.   *      *                  *                       *
+Reconf.   *      *
 Inform.   * (see note)              *           *           *
 R-forw.                                               *
 R-repl.                                               *
 ]]></artwork>
       </figure>
 
-      <t>NOTE:</t>
-
-      <t>Only included in Information-request messages that are sent in
-      response to a Reconfigure (see <xref
-      target="RFC3315-18.1.5"></xref>).</t>
+      <t>NOTE: Only included in Information-request messages that are sent in
+      response to a Reconfigure (see <xref target="RFC3315-18.1.5"/>).</t>
 
       <figure>
         <artwork><![CDATA[
-        Status  Rap. User  Vendor Vendor Inter. Recon. Recon. SOL_MAX_RT
-         Code  Comm. Class Class  Spec.    ID    Msg.  Accept INF_MAX_RT
+                                                              Info
+        Status  Rap. User  Vendor Vendor Inter. Recon. Recon. Refresh
+         Code  Comm. Class Class  Spec.    ID    Msg.  Accept Time
 Solicit          *     *     *      *                    *
-Advert.   *            *     *      *                    *        *
+Advert.   *            *     *      *                    *
 Request                *     *      *                    *
 Confirm                *     *      *
 Renew                  *     *      *                    *
@@ -7633,45 +7363,68 @@ Decline                *     *      *
 Release                *     *      *
 Reply     *      *     *     *      *                    *        *
 Reconf.                                           *
-Inform.                *     *      *                    *
+Inform.                *     *      *                    *        *
 R-forw.                *     *      *      *
 R-repl.                *     *      *      *
 ]]></artwork>
       </figure>
+         
+      <figure>
+        <artwork><![CDATA[
+        SOL_MAX_RT
+        INF_MAX_RT
+Solicit   *
+Advert.   *
+Request
+Confirm
+Renew
+Rebind
+Decline
+Release
+Reply     *
+Reconf.
+Inform.
+R-forw.
+R-repl.
+]]></artwork>
+      </figure>         
+
     </section>
 
     <!-- ** This should be an appendix tag but that does not yet seem to work! -->
 
     <section title="Appearance of Options in the Options Field of DHCP Options">
+
       <t>The following table indicates with a "*" where options can appear in
       the options field of other options:</t>
 
       <figure>
         <artwork><![CDATA[
-             Option  IA_NA/                        Relay  Relay
-             Field   IA_TA  IAADDR IA_PD  IAPREFIX Forw.  Reply
-Client ID      *
-Server ID      *
-IA_NA/IA_TA    *
-IAADDR                 *
-IA_PD          *
-IAPREFIX                             *
-ORO            *
-Preference     *
-Elapsed Time   *
-Relay Message                                        *      *
-Authentic.     *
-Server Uni.    *
-Status Code    *       *             *
-Rapid Comm.    *
-User Class     *
-Vendor Class   *
-Vendor Info.   *                                     *      *
-Interf. ID                                           *      *
-Reconf. MSG.   *
-Reconf. Accept *
-SOL_MAX_RT     *
-INF_MAX_RT     *
+                Option  IA_NA/                        Relay  Relay
+                Field   IA_TA  IAADDR IA_PD  IAPREFIX Forw.  Reply
+Client ID          *
+Server ID          *
+IA_NA/IA_TA        *
+IAADDR                     *
+IA_PD              *
+IAPREFIX                                 *
+ORO                *
+Preference         *
+Elapsed Time       *
+Relay Message                                            *      *
+Authentic.         *
+Server Uni.        *
+Status Code        *       *             *
+Rapid Comm.        *
+User Class         *
+Vendor Class       *
+Vendor Info.       *                                     *      *
+Interf. ID                                               *      *
+Reconf. MSG.       *
+Reconf. Accept     *
+Info Refresh Time  *
+SOL_MAX_RT         *
+INF_MAX_RT         *
 ]]></artwork>
       </figure>
 
