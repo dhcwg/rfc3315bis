@@ -14762,8 +14762,8 @@ INF_MAX_RT         *
 
       <figure>
         <artwork><![CDATA[
-        Client Server IA_NA/                  Elap. Relay Auth. Server
-          ID     ID   IA_TA IA_PD  ORO   Pref Time   Msg.       Unicast
+        Client Server IA_NA/                  Elap. Relay       Server
+          ID     ID   IA_TA IA_PD  ORO   Pref Time   Msg. Auth. Unicast
 Solicit   *             *     *     *           *
 Advert.   *      *      *     *           *
 Request   *      *      *     *     *           *
@@ -14787,7 +14787,7 @@ R-repl.                                               *
         <artwork><![CDATA[
                                                               Info
         Status  Rap. User  Vendor Vendor Inter. Recon. Recon. Refresh
-         Code  Comm. Class Class  Spec.    ID    Msg.  Accept Time
+         Code  Comm. Class Class  Spec.    ID    Msg.  Accept  Time
 Solicit          *     *     *      *                    *
 Advert.   *            *     *      *                    *
 Request                *     *      *                    *
@@ -14806,17 +14806,16 @@ R-repl.                *     *      *      *
          
       <figure>
         <artwork><![CDATA[
-        SOL_MAX_RT
-        INF_MAX_RT
-Solicit   *
-Advert.   *
+        SOL_MAX_RT  INF_MAX_RT
+Solicit    *
+Advert.                *
 Request
 Confirm
 Renew
 Rebind
 Decline
 Release
-Reply     *
+Reply      *           *
 Reconf.
 Inform.
 R-forw.
