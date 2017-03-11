@@ -293,7 +293,7 @@
 
     <!-- ends: "1 from line 230-->
 
-    <section title="Requirements">
+    <section anchor="requirements" title="Requirements">
       <!-- 2, line 343-->
 
       <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -315,7 +315,7 @@
 
     <!-- ends: "2 from line 343-->
 
-    <section title="Background">
+    <section anchor="background" title="Background">
       <!-- 3, line 360-->
 
       <t>The IPv6 Specification provides the base architecture and design of
@@ -354,7 +354,7 @@
 
     <!-- ends: "3 from line 360-->
 
-    <section title="Terminology">
+    <section anchor="terminology" title="Terminology">
       <!-- 4, line 402-->
 
       <t>This section defines terminology specific to IPv6 and DHCP used in
@@ -424,7 +424,7 @@
 
       <!-- ends: "4.1 from line 408-->
 
-      <section title="DHCP Terminology">
+      <section anchor="dhcp-terminology" title="DHCP Terminology">
         <!-- 4.2, line 478-->
 
         <t>Terminology specific to DHCP can be found below.</t>
@@ -539,6 +539,9 @@
             primarily uses the term "DHCP client" or "client" when
             discussing the "requesting router" functionality of prefix
             delegation (see <xref target="intro-and-overview"/>.</t>
+             
+            <t hangText="RKAP">The Reconfiguration Key Authentication
+            Protocol, see <xref target="reconfigure-protocol"/>.</t>             
 
             <t hangText="singleton option">An option that is allowed to appear
             only once as a the top-level option or at any encapsulation level.
@@ -896,7 +899,7 @@
       </section>
     </section>
 
-    <section title="DHCP Constants">
+    <section anchor="dhcp-constants" title="DHCP Constants">
       <!-- 5, line 597-->
 
       <t>This section describes various program and networking constants used
@@ -1219,7 +1222,7 @@
 
           <c>600 secs</c>
 
-                <c>Min information refresh time</c>
+          <c>Min information refresh time</c>
 
         </texttable>
       </section>
@@ -1947,7 +1950,7 @@
 
     <!-- ends: "12 from line 1217-->
 
-    <section title="Transmission of Messages by a Client">
+    <section anchor="RFC3315-13" title="Transmission of Messages by a Client">
       <!-- 13, line 1239-->
 
       <t>Unless otherwise specified in this document, or in a document that
@@ -2138,7 +2141,7 @@
 
     <!-- ends: "14 from line 1258-->
 
-    <section title="Message Validation">
+    <section anchor="RFC3315-15" title="Message Validation">
       <!-- 15, line 1345-->
 
       <t>This section describes which options are valid in which kinds of
@@ -2424,7 +2427,7 @@
 
     <!-- ends: "15 from line 1345-->
 
-    <section title="Client Source Address and Interface Selection">
+    <section anchor="RFC3315-16" title="Client Source Address and Interface Selection">
       <!-- 16, line 1605-->
 
       <t>Client's behavior is different depending on the purpose of the
@@ -4451,7 +4454,7 @@
 
     <!-- ends: "18 from line 1942-->
 
-    <section title="Relay Agent Behavior">
+    <section anchor="RFC3315-20" title="Relay Agent Behavior">
       <!-- 20, line 2950-->
 
       <t>The relay agent SHOULD be configured to use a list of destination
@@ -4863,7 +4866,7 @@
 
         <!-- ends: "21.5.1 from line 3470-->
 
-        <section title="Server considerations for Reconfigure Key protocol">
+        <section title="Server Considerations for Reconfigure Key Authentication Protocol">
           <!-- 21.5.2, line 3508-->
 
           <t>The server selects a Reconfigure Key for a client during the
@@ -4890,7 +4893,7 @@
 
         <!-- ends: "21.5.2 from line 3508-->
 
-        <section title="Client considerations for Reconfigure Key protocol">
+        <section title="Client Considerations for Reconfigure Key Authentication Protocol">
           <!-- 21.5.3, line 3532-->
 
           <t>The client will receive a Reconfigure Key from the server in the
@@ -7054,7 +7057,7 @@
 
     <!-- ends: "24 from line 4595-->
 
-    <section anchor="obsolete" title="Obsoleted mechanisms">
+    <section anchor="obsolete" title="Obsoleted Mechanisms">
       <t>This specification is mostly a corrected and cleaned up version
       of the original specification, <xref target="RFC3315"></xref>, along with
       numerous additions from later RFCs. However, there are a small number of
@@ -7268,19 +7271,112 @@
       to this updated DHCPv6 specification.</t>
 
       <t><list style="numbers">
-         <t>Merged material from RFC3315, RFC3633, RF3736, RFC4242, RFC7083, and
-         RFC7550 into a single comprehensive specification. This included
-         incorporating the errata for these docuemnts: for RFC3315 errata ids
-         294, 1373, 2928, 1815, 3577, 2509, 295 (note that errata id 2472 was
-         superseded by RFC7550); for RFC3633 errata ids 248, 1880, 2468, 2469, 2470,
-         3736.</t>
-           
-         <t>Obsoleted several mechanisms as discussed in <xref target="obsolete"/>.</t>
-           
-         <t>TBD - This list needs many additional entries. It will be completed
-         in a future version of this document.</t>
-         
-        </list></t>
+<t>The Introduction <xref target="intro-and-overview"/> was reorganized and
+updated. In particular, the client/server message exchanges were moved into
+a new (and expanded) section on their own (see 
+<xref target="Client-Server-Exchanges"/>). And, new sections were added to
+discuss the relation to previous DHCPv6 documents and also to DHCPv4.</t>
+
+<t>The Requirements <xref target="requirements"/> and Background
+<xref target="background"/> had very minor edits.</t>
+
+<t>The Terminology <xref target="terminology"/> had minor edits.</t>
+
+<t>The DHCP Terminology <xref target="dhcp-terminology"/> was expanded to
+incorporate definitions from RFC3633, add a few new definitions useful in a
+document that combined address and prefix delegation assigments, and improve
+some existing definitions.</t>
+
+<t>The Client-Server Exchanges <xref target="Client-Server-Exchanges"/> was
+added from material previously in the Introduction Section 1 of RFC3315 and
+was expanded.</t>
+
+<t>The Operational Models <xref target="OpModes"/> is new and provides
+information on the kinds of DHCP clients and how they operate.</t>
+
+<t>The DHCP Constants <xref target="dhcp-constants"/> was primarily updated
+to add constants from RFC4242 and RFC7083.</t>
+
+<t>The Client/Server Message Formats <xref target="RFC3315-6"/>, Relay
+Agent/Server Message Formats <xref target="RFC3315-7"/>, and Representation and
+Use of Domain Names <xref target="RFC3315-8"/> had only very minor changes.</t>
+
+<t>The DHCP Unique Identifier (DUID) <xref target="RFC3315-9"/> now discourages,
+rather than disallows, a server to parse the DUID, now includes some information
+on the DUID-UUID (RFC6355), and has other minor edits.</t>
+
+<t>The Identity Association <xref target="RFC3315-10"/> was expanded to better
+explain the concept and also included prefix delegation.</t>
+
+<t>The Assignment to an IA <xref target="RFC3315-11"/> incorporates material from
+two sections (11 and 12) of RFC3315 and also includes a section on
+prefix delegation.</t>
+
+<t>The Transmission of Messages by a Client <xref target="RFC3315-13"/> was
+expanded to include rate limiting by clients and how clients should handle T1
+or T2 values of 0.</t>
+
+<t>The Reliability of Client Initiated Message Exchanges <xref target="RFC3315-14"/>
+was expanded to clarify that the Elapsed Time option must be updated in
+retransmitted messages and that a client is not required to listen for DHCP
+traffic for the entire retransmission period.</t>
+
+<t>The Message Validation <xref target="RFC3315-15"/> had minor edits.</t>
+
+<t>The Client Source Address and Interface Selection <xref target="RFC3315-16"/>
+was expanded to include prefix delegation.</t>
+
+<t>The DHCP Configuration Exchanges <xref target="configuration-exchange"/>
+consolidates what used to be in the RFC3315 DHCP Server Solicitation Section
+17, DHCP Client-Initiated Configuration Exchange Section 18, and
+DHCP Server-Initiated Configuration Exchange Section 19. This material was
+reorganized and enhanced, and incorporates prefix delegation from RFC3633
+and other changes from RFC4242, RFC7083, and RFC7550.</t>
+
+<t>The Relay Agent Behavior <xref target="RFC3315-20"/> had minor edits.</t>
+
+<t>The Authentication of DHCP Messages <xref target="RFC3315-21"/> had
+significant changes: use of IPsec was updated to use encryption and the
+Delay Authentication Protocol was removed (see <xref target="obsolete"/>).
+Note that the Reconfigure Key Authentication Protocol is retained. In
+addition, the length of the "key ID" field was defined and the 'DHCP
+realm' was clarified to be a domain name encoded as per
+<xref target="RFC3315-8"/>.</t>
+
+<t>The DHCP Options <xref target="RFC3315-22"/> was expanded to incorporate
+the prefix delegation options from RFC3633, the Information Refresh Time
+option from RFC4242, and the SOL_MAX_RT and INF_MAX_RT options from RFC7083.
+In addition, some additional edits were made to clarify option handling,
+such as which options should not be in an Option Request option.</t>
+
+<t>The Security Considerations <xref target="security"/> were updated to
+expand the discussion of security threats and incorporate material from the
+incorporated documents, primarily RFC3633.</t>
+
+<t>The new Privacy Considerations <xref target="privacy"/> was added to
+consider privacy issues.</t>
+
+<t>The IANA Considerations <xref target="iana"/> was rewritten to reflect
+the changes requested for this document as other documents have already
+made the message, option, DUID, and status code assignments and
+this document does not add any new assignments.</t>
+
+<t>The new Obsoleted Mechanisms <xref target="obsolete"/> documents what
+this specification obsoletes.</t>
+
+<t>The Appearance of Options in Message Types <xref target="RFC3315-A"/>
+and Appearance of Options in the Options Field of DHCP
+<xref target="RFC3315-B"/> were updated to reflect the incorporated
+options from RFC3633, RFC4242, and RFC7083.</t>
+
+<t>Where appropriate, informational references have been added to
+provide further background and guidance throughout the document (as
+can be noted by the vast increase in references).</t>
+
+<t>General changes to other IPv6 specifications, such as removing
+the use of site-local unicast addresses and adding unique local addresses,
+were made to the document.</t>
+     </list></t>
     </section>
 
     <!-- ** This should be an appendix tag but that does not yet seem to work! -->
@@ -7288,7 +7384,7 @@
     <!-- tomek: I managed to get it work. The trick was to move section from <middle>
      to <back> -->
 
-    <section title="Appearance of Options in Message Types">
+    <section anchor="RFC3315-A" title="Appearance of Options in Message Types">
       <t>The following table indicates with a "*" the options are allowed in
       each DHCP message type:</t>
 
@@ -7359,7 +7455,8 @@ R-repl.
 
     <!-- ** This should be an appendix tag but that does not yet seem to work! -->
 
-    <section title="Appearance of Options in the Options Field of DHCP Options">
+    <section anchor="RFC3315-B"
+             title="Appearance of Options in the Options Field of DHCP Options">
 
       <t>The following table indicates with a "*" where options can appear in
       the options field of other options:</t>
