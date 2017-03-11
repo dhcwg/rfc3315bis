@@ -703,7 +703,7 @@
         <t>This is the simplest and most basic operation for DHCP and requires
         a client (and a server) to support only two messages -
         Information-request and Reply. Note that DHCP servers and relay agents
-        typically also need to support the Relay-Forw and Relay-Reply messages
+        typically also need to support the Relay-forward and Relay-reply messages
         to accommodate operation when clients and servers are not on the same
         link.</t>
       </section>
@@ -1857,9 +1857,9 @@
                 According to <xref target="RFC6221"></xref>, the server MUST
                 ignore any link-address field whose value is zero. The
                 link-address in this case may come from any of the
-                Relay-Forward messages encapsulated in the received
-                Relay-Forward, and in general the most encapsulated
-                (closest Relay-Forward to the client) has the most
+                Relay-forward messages encapsulated in the received
+                Relay-forward, and in general the most encapsulated
+                (closest Relay-forward to the client) has the most
                 useful value.</t>
 
                 <t hangText="*">If the server receives the message directly
@@ -7284,7 +7284,7 @@ discuss the relation to previous DHCPv6 documents and also to DHCPv4.</t>
 
 <t>The DHCP Terminology <xref target="dhcp-terminology"/> was expanded to
 incorporate definitions from RFC3633, add a few new definitions useful in a
-document that combined address and prefix delegation assigments, and improve
+document that combined address and prefix delegation assignments, and improve
 some existing definitions.</t>
 
 <t>The Client-Server Exchanges <xref target="Client-Server-Exchanges"/> was
@@ -7399,7 +7399,7 @@ the material cited was not added in the replacement RFC.</t>
 functionality and specifications. Readers of this specification should
 visit http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xml
 and https://datatracker.ietf.org/wg/dhc/ to learn of the RFCs that define 
-DHCPv6 messages, options,status-codes, and more.</t>
+DHCPv6 messages, options, status-codes, and more.</t>
      
      </list></t>
     </section>
