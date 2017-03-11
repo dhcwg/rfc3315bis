@@ -233,7 +233,7 @@
 
       <t>DHCPv6 can also provide only other configuration options
       (i.e., no addresses or prefixes). That implies that the
-      server doesn't have to track any state, and thus this mode is called
+      server does not have to track any state, and thus this mode is called
       stateless DHCPv6. Mechanisms necessary to support stateless DHCPv6 are
       much smaller than to support stateful DHCPv6.</t>
 
@@ -2159,7 +2159,7 @@
 
       <t>Clients, relay agents and servers MUST NOT discard messages that
       contain unknown options (or instances of vendor options with unknown
-      enterprise-numbers). These should be ignored as if they weren't
+      enterprise-numbers). These should be ignored as if they were not
       present.  This is critical to provide for later extension of the DHCP
       protocol.</t>
 
