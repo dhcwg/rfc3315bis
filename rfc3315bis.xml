@@ -7375,7 +7375,16 @@ can be noted by the vast increase in references).</t>
 
 <t>General changes to other IPv6 specifications, such as removing
 the use of site-local unicast addresses and adding unique local addresses,
-were made to the document.</t>
+were made to the document. Note that in a few places, older obsoleted RFCs
+(such as RFC2462 related to M and O bit handling) are still referenced as
+the material cited was not added in the replacement RFC.</t>
+   
+<t>It should be noted that this document does not refer to all DHCPv6
+functionality and specifications. Readers of this specification should
+visit http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xml
+and https://datatracker.ietf.org/wg/dhc/ to learn of the RFCs that define 
+DHCPv6 messages, options,status-codes, and more.</t>
+     
      </list></t>
     </section>
 
