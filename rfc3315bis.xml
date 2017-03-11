@@ -7331,7 +7331,23 @@ consolidates what used to be in the RFC3315 DHCP Server Solicitation Section
 17, DHCP Client-Initiated Configuration Exchange Section 18, and
 DHCP Server-Initiated Configuration Exchange Section 19. This material was
 reorganized and enhanced, and incorporates prefix delegation from RFC3633
-and other changes from RFC4242, RFC7083, and RFC7550.</t>
+and other changes from RFC4242, RFC7083, and RFC7550. A few changes of note:
+     <list>
+               <t>The Option Request option is no longer optional for some
+               messages (Solicit and Information-request) as RFC7083 requires
+               clients to request SOL_MAX_RT or INF_MAX_RT options.</t>
+               <t>The Reconfigure message should no longer contain
+               IA_NA/IA_PD, ORO, or other options to indicate to the
+               client what was reconfigured. The client should request
+               everything it needs in the response to the Reconfigure.</t>
+               <t>Lifetime and T1/T2 hints should not be sent by a client
+               (it should send 0 values in these fields) and any non-zero
+               values should be ignored by the server.</t>
+               <t>Clarified that a server may return different addresses
+               in the Reply than requested by a client in the Request message.
+               Also clarified that a server must not include addresses that it
+               will not assign.</t>
+     </list></t>
 
 <t>The Relay Agent Behavior <xref target="RFC3315-20"/> had minor edits.</t>
 
@@ -7339,8 +7355,8 @@ and other changes from RFC4242, RFC7083, and RFC7550.</t>
 significant changes: use of IPsec was updated to use encryption and the
 Delay Authentication Protocol was removed (see <xref target="obsolete"/>).
 Note that the Reconfigure Key Authentication Protocol is retained. In
-addition, the length of the "key ID" field was defined and the 'DHCP
-realm' was clarified to be a domain name encoded as per
+addition, the length of the "key ID" field was defined and the "DHCP
+realm" was clarified to be a domain name encoded as per
 <xref target="RFC3315-8"/>.</t>
 
 <t>The DHCP Options <xref target="RFC3315-22"/> was expanded to incorporate
