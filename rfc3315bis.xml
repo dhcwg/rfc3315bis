@@ -2566,10 +2566,83 @@
       a configuration exchange as described in <xref
       target="request-create-transmit"></xref>.</t>
 
-     <t>A server may initiate a message exchange with a client by sending a
+      <t>A server may initiate a message exchange with a client by sending a
       Reconfigure message to cause the client to send a Renew, Rebind or
       Information-request message to refresh its configuration information as
-     soon as the Reconfigure message is received by the client.</t>
+      soon as the Reconfigure message is received by the client.</t>
+
+      <t><xref target="FigMsgFlow"/> shows a timeline diagram of the
+      messages exchanged between a client and two servers for the
+      typical lifecycle of one or more leases. This is a combination
+      of the 4-message exchange (to select a server and assign the
+      lease(s) to the client) followed by two 2-message exchanges (to
+      extend the lifetime on the lease(s) and eventually release the
+      lease(s)).</t>
+
+      <figure align="center" anchor="FigMsgFlow"
+              title="Timeline diagram of the messages exchanged between
+                     a client and two servers for the typical lifecycle
+                     of one or more leases">
+
+        <artwork align="left"><![CDATA[
+             Server                          Server
+         (not selected)      Client        (selected)
+
+               v               v               v
+               |               |               |
+               |     Begins initialization     |
+               |               |               |
+  start of     | _____________/|\_____________ |
+  4-message    |/ Solicit      | Solicit      \|
+  exchange     |               |               |
+           Determines          |          Determines
+          configuration        |         configuration
+               |               |               |
+               |\              |  ____________/|
+               | \________     | /Advertise    |
+               | Advertise\    |/              |
+               |           \   |               |
+               |      Collects Advertises      |
+               |             \ |               |
+               |     Selects configuration     |
+               |               |               |
+               | _____________/|\_____________ |
+               |/ Request      |  Request     \|
+               |               |               |
+               |               |     Commits configuration
+               |               |               |
+  end of       |               | _____________/|
+  4-message    |               |/ Reply        |
+  exchange     |               |               |
+               |    Initialization complete    |
+               |               |               |
+               .               .               .
+               .               .               .
+               |   T1 (Renewal) Timer Expires  |
+               |               |               |
+  2-message    | _____________/|\_____________ |
+  exchange     |/ Renew        |  Renew       \|
+               |               |               |
+               |               | Commits extended lease(s)
+               |               |               |
+               |               | _____________/|
+               |               |/ Reply        |
+               .               .               .
+               .               .               .
+               |               |               |
+               |      Graceful shutdown        |
+               |               |               |
+  2-message    | _____________/|\_____________ |
+  exchange     |/ Release      |  Release     \|
+               |               |               |
+               |               |         Discards lease(s)
+               |               |               |
+               |               | _____________/|
+               |               |/ Reply        |
+               |               |               |
+               v               v               v
+        ]]></artwork>
+      </figure>
 
      <section title="A Single Exchange for multiple IA Options">
      <t>The client and server use the IA_PD option
