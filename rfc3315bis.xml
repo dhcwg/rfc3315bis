@@ -248,7 +248,7 @@
       in detail.</t>
 
       <section anchor="previous-dhcp6"
-               title="Relation to previous DHCPv6 standards">
+               title="Relation to Previous DHCPv6 standards">
         <t>The initial specification of DHCPv6 was defined in <xref
         target="RFC3315"></xref> and a number of follow up documents were
         published over the years:
@@ -264,7 +264,7 @@
         that also covers all errata filled against older RFCs. As such, it
         obsoletes a number of aforementioned RFCs. And, there are a small
         number of mechanisms that were obsoleted, listed in <xref
-        target="obsolete"></xref>.</t>
+        target="obsolete"></xref>. Also see <xref target="ChangeSummary"/>.</t>
       </section>
 
       <section anchor="dhcpv4" title="Relation to DHCP in IPv4">
@@ -1227,7 +1227,7 @@
       <!-- ends: "5.5 from line 743-->
 
       <section anchor="RFC3315-5.6"
-               title="Representation of time values and &quot;Infinity&quot; as a time value">
+               title="Representation of Time Values and &quot;Infinity&quot; as a Time Value">
         <t>All time values for lifetimes, T1 and T2 are unsigned 32-bit integers. The
         value 0xffffffff is taken to mean "infinity" when used as a lifetime
         (as in <xref target="RFC4861"></xref>) or a value for T1 or T2.</t>
@@ -2644,7 +2644,7 @@
         ]]></artwork>
       </figure>
 
-     <section title="A Single Exchange for multiple IA Options">
+     <section title="A Single Exchange for Multiple IA Options">
      <t>The client and server use the IA_PD option
       to exchange information about prefix(es) in much the same way as IA_NA
       and IA_TA options are used for assigned addresses. Typically, a single
@@ -14714,7 +14714,7 @@ INF_MAX_RT         *
 
     <!-- Let's briefly document relevant changes against 3315 here -->
 
-    <section title="Summary of Changes">
+    <section anchor="ChangeSummary" title="Summary of Changes">
 
       <t>This appendix provides a summary of the significant changes made
       to this updated DHCPv6 specification.</t>
