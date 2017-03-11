@@ -7088,11 +7088,13 @@
     <section title="Acknowledgments">
       <!-- 25, line 4764-->
 
-      <t>The following people are authors of the original RFC3315: Ralph
-      Droms, Jim Bound, Bernie Volz, Ted Lemon, Charles Perkins, and Mike
-      Carney. The following people are authors of the original RFC3633: Ole
-      Troan and Ralph Droms. This document is merely a refinement of their
-      work and would not be possible without their original work.</t>
+      <t>This document is merely a refinement of earlier work by the
+      original authors of RFC3315 (Ralph Droms, Jim Bound, Bernie Volz,
+      Ted Lemon, Charles Perkins, and Mike Carney) RFC3633 (Ole Troan
+      and Ralph Droms), RFC3736 (Ralph Droms), RFC4242 (Stig Venaas,
+      Tim Chown, and Bernie Volz), RFC7083 (Ralph Droms), and RFC7550
+      (Ole Troan, Bernie Volz, and Marcin Siodelski) and would not be
+      possible without their original work.</t>
 
       <t>A number of additional people have contributed to identifying issues
       with RFC3315 and RFC3633 and proposed resolutions to these issues as
@@ -7109,25 +7111,6 @@
       <t>And, special thanks to Ralph Droms for answering many questions related
       to the original RFC3315 and RFC3633 work and for being the document
       shepherd.</t>
-
-      <t>The following acknowledgments are from the original RFC3315 and
-      RFC3633:</t>
-
-      <t>Thanks to the DHC Working Group and the members of the IETF for their
-      time and input into the specification. In particular, thanks also for
-      the consistent input, ideas, and review by (in alphabetical order)
-      Bernard Aboba, Bill Arbaugh, Thirumalesh Bhat, Steve Bellovin, A. K.
-      Vijayabhaskar, Brian Carpenter, Matt Crawford, Steve Deering, Francis
-      Dupont, Dave Forster, Brian Haberman, Richard Hussong, Tatuya Jinmei,
-      Kim Kinnear, Fredrik Lindholm, Tony Lindstrom, Josh Littlefield, Gerald
-      Maguire, Jack McCann, Shin Miyakawa, Thomas Narten, Erik Nordmark, Jarno
-      Rajahalme, Yakov Rekhter, Pekka Savola, Mark Stapp, Matt Thomas, Sue
-      Thomson, Tatuya Jinmei, Bernie Volz, Trevor Warwick, Phil Wells and
-      Toshi Yamasaki.</t>
-
-      <t>Thanks to Steve Deering and Bob Hinden, who have consistently taken
-      the time to discuss the more complex parts of the IPv6
-      specifications.</t>
     </section>
 
     <!-- ends: "25 from line 4764-->
