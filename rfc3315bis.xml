@@ -532,23 +532,16 @@
 
             <t hangText="Reconfigure key">A key supplied to a client by a
             server used to provide security for Reconfigure messages (see
-            <xref target="RFC3315-5.3"/>).</t>
+            <xref target="RFC3315-5.3"/>).</t>           
+
+            <t hangText="relaying">A DHCP relay agent relays DHCP messages
+            between DHCP participants.</t>
 
             <t hangText="requesting router">The router that acts as a DHCP
             client and is requesting prefix(es) to be assigned. This document
             primarily uses the term "DHCP client" or "client" when
             discussing the "requesting router" functionality of prefix
             delegation (see <xref target="intro-and-overview"/>.</t>
-             
-            <t hangText="RKAP">The Reconfiguration Key Authentication
-            Protocol, see <xref target="reconfigure-protocol"/>.</t>             
-
-            <t hangText="singleton option">An option that is allowed to appear
-            only once as a the top-level option or at any encapsulation level.
-            Most options are singletons.</t>
-
-            <t hangText="relaying">A DHCP relay agent relays DHCP messages
-            between DHCP participants.</t>
 
             <t hangText="retransmission">Another attempt to send the same
             DHCP message by a client or server, as a result of not
@@ -557,7 +550,14 @@
             as required by the DHCP specifications. In particular, the
             client updates the value of the Elapsed Time option in the
             retransmitted message.</t>
- 
+             
+            <t hangText="RKAP">The Reconfiguration Key Authentication
+            Protocol, see <xref target="reconfigure-protocol"/>.</t>               
+
+            <t hangText="singleton option">An option that is allowed to appear
+            only once as a the top-level option or at any encapsulation level.
+            Most options are singletons.</t>
+
             <t hangText="T1">The time at which the client contacts the
             server from which the addresses in the IA_NA were obtained to 
             extend the lifetimes of the addresses assigned to the IA_NA.</t>
