@@ -525,6 +525,14 @@
             <t hangText="lease">A contract by which the server grants the use
             of an address or delegated prefix to the client for a specified
             period of time.</t>
+ 
+            <t hangText="T1">The time at which the client contacts the
+            server from which the addresses in the IA_NA were obtained to 
+            extend the lifetimes of the addresses assigned to the IA_NA.</t>
+
+            <t hangText="T2">The time at which the client contacts any
+            available server to extend the lifetimes of the addresses 
+            assigned to the IA_NA.</t>
 
             <t hangText="message">A unit of data carried as the payload of a
             UDP datagram, exchanged among DHCP servers, relay agents and
@@ -2438,9 +2446,11 @@
         All_DHCP_Relay_Agents_and_Servers multicast address, it SHOULD send the message
         through the interface for which configuration information is being
         requested. However, the client MAY send the message through another
-        interface if the interface is a logical interface without direct link
-        attachment or the client is certain that two interfaces are attached
-        to the same link. <!-- tomek: ok, this is a bit confusing. The intention is to say:
+        interface if the interface which configuration is being requested for 
+        is a logical interface without direct link attachment or the client is 
+        certain that two interfaces are attached to the same link. 
+
+        <!-- tomek: ok, this is a bit confusing. The intention is to say:
         - if you want to configure interface X, send you packets over X
         - you may send it over Y, if you're sure X and Y are connected to the same
           link
@@ -7283,9 +7293,9 @@ discuss the relation to previous DHCPv6 documents and also to DHCPv4.</t>
 <t>The Terminology <xref target="terminology"/> had minor edits.</t>
 
 <t>The DHCP Terminology <xref target="dhcp-terminology"/> was expanded to
-incorporate definitions from RFC3633, add a few new definitions useful in a
-document that combined address and prefix delegation assignments, and improve
-some existing definitions.</t>
+incorporate definitions from RFC3633, add T1/T2 definitions, 
+add a few new definitions useful in a document that combined address and prefix 
+delegation assignments, and improve some existing definitions.</t>
 
 <t>The Client-Server Exchanges <xref target="Client-Server-Exchanges"/> was
 added from material previously in the Introduction Section 1 of RFC3315 and
