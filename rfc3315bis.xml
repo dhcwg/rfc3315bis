@@ -525,14 +525,6 @@
             <t hangText="lease">A contract by which the server grants the use
             of an address or delegated prefix to the client for a specified
             period of time.</t>
- 
-            <t hangText="T1">The time at which the client contacts the
-            server from which the addresses in the IA_NA were obtained to 
-            extend the lifetimes of the addresses assigned to the IA_NA.</t>
-
-            <t hangText="T2">The time at which the client contacts any
-            available server to extend the lifetimes of the addresses 
-            assigned to the IA_NA.</t>
 
             <t hangText="message">A unit of data carried as the payload of a
             UDP datagram, exchanged among DHCP servers, relay agents and
@@ -565,6 +557,14 @@
             as required by the DHCP specifications. In particular, the
             client updates the value of the Elapsed Time option in the
             retransmitted message.</t>
+ 
+            <t hangText="T1">The time at which the client contacts the
+            server from which the addresses in the IA_NA were obtained to 
+            extend the lifetimes of the addresses assigned to the IA_NA.</t>
+
+            <t hangText="T2">The time at which the client contacts any
+            available server to extend the lifetimes of the addresses 
+            assigned to the IA_NA.</t>
 
             <t hangText="top-level option">An option conveyed in a DHCP
             message directly, i.e., not encapsulated in any other option, as
