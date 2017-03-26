@@ -7,7 +7,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-07"
+<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-08"
      ipr="pre5378Trust200902" obsoletes="3315,3633,3736,4242,7083,7550">
   <front>
     <title abbrev="DHCP for IPv6">Dynamic Host Configuration Protocol for IPv6
@@ -2381,7 +2381,7 @@
             <t hangText="-">the message does not include a Client Identifier
             option that contains the client's DUID.</t>
 
-            <t hangText="-">the message does not contain a Reconfigure Message
+            <t hangText="-">the message does not include a Reconfigure Message
             option.</t>
 
             <t hangText="-">the Reconfigure Message option msg-type is not a
@@ -2389,7 +2389,7 @@
 
             <t hangText="-">the message does not include DHCP authentication:
             <list hangIndent="3" style="hanging">
-                <t hangText="*">the message does not contain an authentication
+                <t hangText="*">the message does not include an Authentication
                 option.</t>
 
                 <t hangText="*">the message does not pass the authentication
