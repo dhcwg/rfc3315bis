@@ -4135,9 +4135,7 @@
           target="RFC3315-22.14"></xref>. Therefore, the server SHOULD only
           create new bindings during processing of a Rebind message if the
           server is configured to respond with a Reply message to a Solicit
-          message containing the Rapid Commit option. This restriction aims
-          to eliminate the clients to request new leases in Rebind. See Section
-          4.4 of <xref target="RFC7550"/> for detailed discussion.</t>
+          message containing the Rapid Commit option.</t>
 
           <t>The server constructs a Reply message by setting the "msg-type"
           field to REPLY and copying the transaction ID from the Rebind
