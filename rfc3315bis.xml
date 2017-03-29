@@ -4725,7 +4725,7 @@
             configured key management may suffice, but
             does not provide defense against replayed
             messages.  Accordingly, IKE2
-            <xref target="RFC7296"/> with preshared secrets SHOULD be
+            <xref target="RFC7296"/> with pre-shared secrets SHOULD be
             supported.  IKEv2 with public keys MAY be
             supported.  Additional information on manual
             vs automated key management and when one
@@ -4746,6 +4746,12 @@
             IPsec is less likely to be available for relay agents in low end
             devices primarily used in the home or small office markets.</t>
           </list></t>
+           
+        <t>
+        Note: As using IPsec with multicast has additional complexities (see
+        <xref target="RFC5374"/>), relay agents SHOULD be configured to forward
+        DHCP messages to unicast addresses.             
+        </t>
       </section>
 
       <!-- ends: "21.1 from line 3108-->
@@ -6834,7 +6840,7 @@
       configuration (for example, configuration of the DHCP server address) as
       well as the IPsec configuration.</t>
 
-      <t>However, the use of manually configured preshared keys for IPsec between
+      <t>However, the use of manually configured pre-shared keys for IPsec between
       relay agents and servers does not defend against replayed DHCP messages.
       Replayed messages can represent a DOS attack through exhaustion of
       processing resources, but not through mis-configuration or exhaustion of
@@ -7226,6 +7232,7 @@
       <?rfc include='reference.RFC.4943'?>
 
       <?rfc include='reference.RFC.5007'?>
+      <?rfc include='reference.RFC.5374'?>
       <?rfc include='reference.RFC.5453'?>
       <?rfc include='reference.RFC.5460'?>
       <?rfc include='reference.RFC.5905'?>
