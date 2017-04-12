@@ -2443,10 +2443,12 @@
       <t>Client's behavior is different depending on the purpose of the
       configuration.</t>
 
-      <section title="Address Assignment">
+      <section anchor="if-addr-sel-addr-assignment"
+               title="Address, Interface Selection for Address Assignment">
         <t>When a client sends a DHCP message to the
         All_DHCP_Relay_Agents_and_Servers multicast address, it SHOULD send the message
-        through the interface for which configuration information is being
+        through the interface for which configuration information
+        (including the addresses) is being
         requested. However, the client MAY send the message through another
         interface if the interface which configuration is being requested for 
         is a logical interface without direct link attachment or the client is 
@@ -2471,10 +2473,10 @@
         in responding to the client.</t>
       </section>
 
-      <section title="Prefix Delegation">
+      <section title="Address, Interface Selection for Prefix Delegation">
         <t>Delegated prefixes are not associated with a particular interface
         in the same way as addresses are for address assignment, as mentioned
-        above.</t>
+        in <xref target="if-addr-sel-addr-assignment"/> above.</t>
 
         <t>When a client sends a DHCP message
         for the purpose of prefix delegation, it SHOULD be sent on the
