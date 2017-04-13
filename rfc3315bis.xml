@@ -6768,7 +6768,7 @@
       to mount a "man in the middle" or denial of service attack. Communication
       between a server and a relay agent, and communication between relay agents,
       can be authenticated and encrypted through the use of IPsec, as
-      described in <xref target="ieft-dhc-relay-server-security"/>.</t>
+      described in <xref target="I-D.ietf-dhc-relay-server-security"/>.</t>
 
       <t>However, the use of manually configured pre-shared keys for IPsec between
       relay agents and servers does not defend against replayed DHCP messages.
@@ -7297,7 +7297,7 @@ and other changes from RFC4242, RFC7083, and RFC7550. A few changes of note:
 
 <t>The Authentication of DHCP Messages <xref target="RFC3315-21"/> had
 significant changes: IPsec materials were mostly removed and replaced
-with a reference to <xref target="ietf-dhc-relay-server-security"/>, and the
+with a reference to <xref target="I-D.ietf-dhc-relay-server-security"/>, and the
 Delay Authentication Protocol was removed (see <xref target="obsolete"/>).
 Note that the Reconfigure Key Authentication Protocol is retained. In
 addition, the length of the "key ID" field was defined and the "DHCP
