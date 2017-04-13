@@ -3044,12 +3044,7 @@
           whose lease lifetimes are to be extended. The client includes IA
           Address options within IA_NA and IA_TA options for the addresses
           assigned to the IAs. The client includes IA Prefix options within
-          IA_PD options for the delegated prefixes assigned to the IAs. The
-          server determines new lifetimes for the leases according to the
-          administrative configuration of the server. The server may also add
-          leases to the IAs. The server can remove leases from the IAs by
-          returning IA Address options (for IA_NA and IA_TA) and IA Prefix
-          options (for IA_PD) with preferred and valid lifetimes set to 0.</t>
+          IA_PD options for the delegated prefixes assigned to the IAs.</t>
 
           <t>The server controls the time at which the client should contact the
           server to extend the lifetimes on assigned leases through the T1 and
