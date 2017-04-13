@@ -3730,7 +3730,7 @@
         message it receives to announce the availability of the server to the
         client.</t>
 
-        <t>In most instances, the server will send a Reply in response to a
+        <t>In most cases, the server will send a Reply in response to a
         Request, Confirm, Renew, Rebind, Decline, Release, and Information-request
         messages sent by a client. The server will also send a Reply in
         response to a Solicit with a Rapid Commit option, when the server is
