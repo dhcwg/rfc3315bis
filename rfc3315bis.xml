@@ -2571,8 +2571,9 @@
       and has chosen to start the server discovery process to obtain the
       same bindings from a different server, the client MUST stop using the
       addresses and delegated prefixes for the bindings it had obtained from
-      the previous server, and which it is now trying to obtain from a new
-      server.</t>
+      the previous server (see <xref target="RFC3315-18.1.6"/> for more details
+      on what stop using means), and which it is now trying to obtain from a
+      new server.</t>
 
       <t>Servers that can assign addresses or delegated prefixes to the IAs
       respond to the client with an Advertise message or Reply message if the
@@ -2580,8 +2581,8 @@
       accept it.</t>
 
       <t>If the server responds with an Advertise message, the client initiates
-      a configuration exchange as described in <xref
-      target="request-create-transmit"></xref>.</t>
+      a configuration exchange as described in
+      <xref target="request-create-transmit"/>.</t>
 
       <t>A server may initiate a message exchange with a client by sending a
       Reconfigure message to cause the client to send a Renew, Rebind or
@@ -3241,7 +3242,8 @@
 
         <!-- ends: "18.1.5 from line 2215-->
 
-        <section title="Creation and Transmission of Release Messages">
+        <section anchor="RFC3315-18.1.6"
+                 title="Creation and Transmission of Release Messages">
           <!-- 18.1.6, line 2251-->
 
           <t>To release one or more leases, a client sends a Release message
