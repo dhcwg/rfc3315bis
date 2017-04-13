@@ -4673,8 +4673,8 @@
       <!-- 21, line 3092-->
 
       <t>Within this document, two security mechanisms are introduced for the
-      authentication of DHCP messages: security of messages sent between
-      servers and relay agents using IPsec, and protection against
+      authentication of DHCP messages: authentication (and encryption) of messages
+      sent between servers and relay agents using IPsec, and protection against
       misconfiguration of a client caused by a Reconfigure message sent by a
       malicious DHCP server.</t>
 
@@ -4686,74 +4686,10 @@
                title="Security of Messages Sent Between Servers and Relay Agents">
         <!-- 21.1, line 3108-->
 
-        <t>Relay agents and servers that exchange messages securely use the
-        IPsec mechanisms for IPv6 <xref target="RFC4301"></xref>. If a client
-        message is relayed through multiple relay agents, each of the relay
-        agents must have established independent, pairwise trust
-        relationships. That is, if messages from client C will be relayed by
-        relay agent A to relay agent B and then to the server, relay agents A
-        and B must be configured to use IPsec for the messages they exchange,
-        and relay agent B and the server must be configured to use IPsec for
-        the messages they exchange.</t>
-
-        <t>Relay agents and servers that support secure relay agent to server
-        or relay agent to relay agent communication use IPsec under the
-        following conditions: <list hangIndent="24" style="hanging">
-            <t hangText="   Selectors">Relay agents are manually configured
-            with the addresses of the relay agent or server to which DHCP
-            messages are to be forwarded. Each relay agent and server that
-            will be using IPsec for securing DHCP messages must also be
-            configured with a list of the relay agents to which messages will
-            be returned. The selectors for the relay agents and servers will
-            be the pairs of addresses defining relay agents and servers that
-            exchange DHCP messages on UDP port 547.</t>
-
-            <t hangText="   Mode">Relay agents and servers use transport mode
-            and Encapsulating Security Payload (ESP).</t>
-
-            <t hangText="   Encryption and authentication algorithms">
-            <vspace blankLines='0'/>This
-            document requires combined mode algorithms for ESP authenticated
-            encryption, ESP encryption algorithms, and ESP authentication
-            algorithms as per section 2.1, 2.2, and 2.3 of <xref target="RFC7321"/>
-            respectively. Encryption is required as relay agents may
-            forward unencrypted client messages as well as include additional
-            sensitive information, such as vendor-specific information and
-            <xref target="RFC7839"/>.</t>
-
-            <t hangText="   Key management">Because both relay agents and
-            servers tend to be managed by a single organizational entity,
-            public key schemes may be optional.  Manually
-            configured key management may suffice, but
-            does not provide defense against replayed
-            messages.  Accordingly, IKE2
-            <xref target="RFC7296"/> with pre-shared secrets SHOULD be
-            supported.  IKEv2 with public keys MAY be
-            supported.  Additional information on manual
-            vs automated key management and when one
-            should be used over the other can be found in
-            <xref target="RFC4107"/>.</t>
-
-            <t hangText="   Security policy">DHCP messages between relay
-            agents and servers should only be accepted from DHCP peers as
-            identified in the local configuration.</t>
-
-            <t hangText="   Authentication">Shared keys, indexed to the source
-            IP address of the received DHCP message, are adequate in this
-            application.</t>
-
-            <t hangText="   Availability">Appropriate IPsec implementations
-            are likely to be available for servers and for relay agents in
-            more featureful devices used in enterprise and core ISP networks.
-            IPsec is less likely to be available for relay agents in low end
-            devices primarily used in the home or small office markets.</t>
-          </list></t>
-           
-        <t>
-        Note: As using IPsec with multicast has additional complexities (see
-        <xref target="RFC5374"/>), relay agents SHOULD be configured to forward
-        DHCP messages to unicast addresses.             
+        <t>Relay agents and servers that exchange messages can use
+        IPsec as detailed in <xref target="I-D.ietf-dhc-relay-server-security"/>.
         </t>
+
       </section>
 
       <!-- ends: "21.1 from line 3108-->
@@ -6831,16 +6767,11 @@
       be partially mitigated by appropriate server policy, e.g., limiting
       the maximum number of leases any one client can get.</t>
 
-      <t>The messages exchanged between relay agents and
-      servers may be used to mount a "man in the middle" or denial of service
-      attack. Communication between a server and a relay agent, and communication
-      between relay agents, can be secured through the use of IPsec, as
-      described in <xref target="RFC3315-21.1"></xref>. The use of manual
-      configuration and installation of static keys are acceptable in this
-      instance because relay agents and the server will belong to the same
-      administrative domain and the relay agents will require other specific
-      configuration (for example, configuration of the DHCP server address) as
-      well as the IPsec configuration.</t>
+      <t>The messages exchanged between relay agents and servers may be used
+      to mount a "man in the middle" or denial of service attack. Communication
+      between a server and a relay agent, and communication between relay agents,
+      can be authenticated and encrypted through the use of IPsec, as
+      described in <xref target="ieft-dhc-relay-server-security"/>.</t>
 
       <t>However, the use of manually configured pre-shared keys for IPsec between
       relay agents and servers does not defend against replayed DHCP messages.
@@ -7224,10 +7155,8 @@
       <?rfc include='reference.RFC.3769'?>
 
       <?rfc include='reference.RFC.4075'?>
-      <?rfc include='reference.RFC.4107'?>
       <?rfc include='reference.RFC.4193'?>
       <?rfc include='reference.RFC.4242'?>
-      <?rfc include='reference.RFC.4301'?>
       <?rfc include='reference.RFC.4477'?>
       <?rfc include='reference.RFC.4704'?>
       <?rfc include='reference.RFC.4941'?>
@@ -7248,8 +7177,6 @@
       <?rfc include='reference.RFC.7084'?>
       <?rfc include='reference.RFC.7136'?>
       <?rfc include='reference.RFC.7227'?>
-      <?rfc include='reference.RFC.7296'?>
-      <?rfc include='reference.RFC.7321'?>
       <?rfc include='reference.RFC.7341'?>
       <?rfc include='reference.RFC.7368'?>
       <?rfc include='reference.RFC.7421'?>
@@ -7260,11 +7187,12 @@
       <?rfc include='reference.RFC.7707'?>
       <?rfc include='reference.RFC.7721'?>
       <?rfc include='reference.RFC.7824'?>
-      <?rfc include='reference.RFC.7839'?>
       <?rfc include='reference.RFC.7844'?>
       <?rfc include='reference.RFC.7969'?>
 
       <?rfc include='reference.I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue'?>
+         
+      <?rfc include='reference.I-D.ietf-dhc-relay-server-security'?>
 
       <?rfc include='reference.I-D.ietf-dhc-sedhcpv6'?>
 
@@ -7371,7 +7299,8 @@ and other changes from RFC4242, RFC7083, and RFC7550. A few changes of note:
 <t>The Relay Agent Behavior <xref target="RFC3315-20"/> had minor edits.</t>
 
 <t>The Authentication of DHCP Messages <xref target="RFC3315-21"/> had
-significant changes: use of IPsec was updated to use encryption and the
+significant changes: IPsec materials were mostly removed and replaced
+with a reference to <xref target="ietf-dhc-relay-server-security"/>, and the
 Delay Authentication Protocol was removed (see <xref target="obsolete"/>).
 Note that the Reconfigure Key Authentication Protocol is retained. In
 addition, the length of the "key ID" field was defined and the "DHCP
