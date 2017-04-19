@@ -748,7 +748,7 @@
         addresses.</t>
            
         <t>Clients can also request more than one address or set of
-         addresses (see <xref target="RFC3315-10"/>).</t>
+         addresses (see <xref target="multiple-addrs"/> and <xref target="RFC3315-10"/>).</t>
       </section>
 
       <section anchor="OpModes-PD" title="DHCP for Prefix Delegation">
@@ -906,6 +906,39 @@
         these addresses are generally intended to be used for a short period
         of time and not to have their lifetimes extended, though they can be
         if required.</t>
+      </section>
+
+      <section anchor="multiple-addrs" title="Multiple Addresses and Prefixes">
+        <t>The protocol allows a client to receive multiple
+        addresses. During typical operation, a client sends one instance
+        of IA_NA option and the server assigns at most one address from
+        each prefix assigned to the link the client is attached to. In
+        particular, the server can be configured to serve addresses out
+        of multiple prefixes for a given link. This is useful in cases
+        like a network renumbering event in progress. In a typical
+        deployment the server will grant one address per each IA_NA
+        option.</t>
+
+        <t>Client can explicitly request more addresses by sending more
+        IA_NA options. Client can send multiple IA_NA options in its
+        initial transmissions. Alternatively, it can send an extra
+        Request message with additional new IA_NA options.</t>
+
+        <t>The same principle also applies to Prefix Delegation. In
+        principle the protocol allows a delegating router acting as a
+        client to request new prefixes to be delegated by sending
+        additional IA_PD options. However, a typical operator usually
+        prefers to delegate a single, larger prefix. In most deployments
+        it recommended for the client to request larger prefix in its
+        initial transmissions rather than request additional prefixes
+        later on.</t>
+
+        <t>The exact behavior of the server (whether to grant additional
+        addresses and prefixes or not) is up to the server policy and is
+        outside of scope of this document.</t>
+
+        <t>For more information how the server distinguishes between IA
+        option instances, see <xref target="RFC3315-10"/>.</t>
       </section>
     </section>
 
