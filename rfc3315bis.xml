@@ -3768,6 +3768,11 @@
         <section title="Receipt of Solicit Messages">
           <!-- 17.2.1, line 1823-->
 
+          <t>See <xref target="use-multicast"/> for handling Solicit message
+          received via unicast. Unicast transmission of Solicit
+          is not allowed, regardless if Server Unicast option is
+          configured or not.</t>
+
           <t>The server determines the information about the client and its
           location as described in <xref target="RFC3315-11"></xref> and
           checks its administrative policy about responding to the client. If
@@ -3823,13 +3828,8 @@
         <section anchor="RFC3315-18.2.1" title="Receipt of Request Messages">
           <!-- 18.2.1, line 2477-->
 
-          <t>When the server receives a Request message via unicast from a
-          client to which the server has not sent a unicast option (or is not
-          currently configured to send a unicast option to the client), the
-          server discards the Request message and responds with a Reply
-          message containing a Status Code option with the value UseMulticast,
-          a Server Identifier option containing the server's DUID, the Client
-          Identifier option from the client message, and no other options.</t>
+          <t>See <xref target="use-multicast"/> for handling Request message
+          received via unicast.</t>
 
           <t>When the server receives a valid Request message, the server
           creates the bindings for that client according to the server's
@@ -3921,6 +3921,11 @@
         <section title="Receipt of Confirm Messages">
           <!-- 18.2.2, line 2527-->
 
+          <t>See <xref target="use-multicast"/> for handling Confirm
+          message received via unicast. Unicast transmission of Confirm
+          is not allowed, regardless if Server Unicast option is
+          configured or not.</t>
+
           <t>When the server receives a Confirm message, the server determines
           whether the addresses in the Confirm message are appropriate for the
           link to which the client is attached. If all of the addresses in the
@@ -3951,13 +3956,8 @@
         <section anchor="RFC3315-18.2.3" title="Receipt of Renew Messages">
           <!-- 18.2.3, line 2554-->
 
-          <t>When the server receives a Renew message via unicast from a
-          client to which the server has not sent a unicast option (or is not
-          currently configured to send a unicast option to the client), the
-          server discards the Renew message and responds with a Reply message
-          containing a Status Code option with the value UseMulticast, a
-          Server Identifier option containing the server's DUID, the Client
-          Identifier option from the client message, and no other options.</t>
+          <t>See <xref target="use-multicast"/> for handling Renew message
+          received via unicast.</t>
 
           <t>For each IA in the Renew message from a client, the server
           locates the client's binding and verifies that the information in
@@ -4051,11 +4051,10 @@
         <section anchor="RFC3315-18.2.4" title="Receipt of Rebind Messages">
           <!-- 18.2.4, line 2594-->
 
-          <t>When the server receives a Rebind message via unicast, the
-          server discards the Rebind message and responds with a Reply
-          message containing a Status Code option with the value UseMulticast,
-          a Server Identifier option containing the server's DUID, the Client
-          Identifier option from the client message, and no other options.</t>
+          <t>See <xref target="use-multicast"/> for handling Rebind message
+          received via unicast. Unicast transmission of Rebind
+          is not allowed, regardless if Server Unicast option is
+          configured or not.</t>
 
           <t>When the server receives a Rebind message that contains an IA
           option from a client, it locates the client's binding and verifies
@@ -4165,6 +4164,9 @@
                  title="Receipt of Information-request Messages">
           <!-- 18.2.5, line 2634-->
 
+          <t>See <xref target="use-multicast"/> for handling
+          Information-request message received via unicast.</t>
+
           <t>When the server receives an Information-request message, the
           client is requesting configuration information that does not include
           the assignment of any leases. The server determines all
@@ -4199,17 +4201,12 @@
         <section title="Receipt of Release Messages">
           <!-- 18.2.6, line 2663-->
 
+          <t>See <xref target="use-multicast"/> for handling Release message
+          received via unicast.</t>
+
           <t>The server constructs a Reply message by setting the "msg-type"
           field to REPLY, and copying the transaction ID from the Release
           message into the transaction-id field.</t>
-
-          <t>When the server receives a Release message via unicast from a
-          client to which the server has not sent a unicast option (or is not
-          currently configured to send a unicast option to the client), the
-          server discards the Release message and responds with a Reply
-          message containing a Status Code option with value UseMulticast, a
-          Server Identifier option containing the server's DUID, the Client
-          Identifier option from the client message, and no other options.</t>
 
           <t>Upon the receipt of a valid Release message, the server examines
           the IAs and the leases in the IAs for validity. If the IAs in the
@@ -4238,13 +4235,8 @@
         <section title="Receipt of Decline Messages">
           <!-- 18.2.7, line 2694-->
 
-          <t>When the server receives a Decline message via unicast from a
-          client to which the server has not sent a unicast option (or is not
-          currently configured to send a unicast option to the client), the
-          server discards the Decline message and responds with a Reply
-          message containing a Status Code option with the value UseMulticast,
-          a Server Identifier option containing the server's DUID, the Client
-          Identifier option from the client message, and no other options.</t>
+          <t>See <xref target="use-multicast"/> for handling Decline message
+          received via unicast.</t>
 
           <t>Upon the receipt of a valid Decline message, the server examines
           the IAs and the addresses in the IAs for validity. If the IAs in the
@@ -4456,6 +4448,30 @@
         </section>
 
         <!-- ends: "19.1.1 from line 2769-->
+      </section>
+
+      <section anchor="use-multicast" title="Reception of Unicast Messages">
+
+        <t>Unless otherwise stated in sections dedicated to specific
+        messages reception (see dedicated sections in
+        <xref target="RFC3315-18.2"/>), the server is not supposed to accept
+        unicast traffic when it is not explicitly configured to do
+        so. For some messages (Solicit, Rebind and Confirm) unicast
+        transmission is not allowed, even if Server Unicast option is
+        configured. For Request, Renew, Informaton-request, Release
+        and Decline messages, it is allowed only if Server Unicast
+        option is configured.</t>
+
+        <t>When the server receives a message via unicast from a client
+        to which the server has not sent a Server Unicast option (or is not
+        currently configured to send a Server Unicast option to the client),
+        the server discards that message and responds with an Advertise
+        (when responding to Solicit) or Reply (when responding to any
+        other messages) message containing a Status Code option with
+        value UseMulticast, a Server Identifier option containing the
+        server's DUID, the Client Identifier option from the client
+        message, and no other options.</t>
+
       </section>
 
       <!-- ends: "18.2 -->
