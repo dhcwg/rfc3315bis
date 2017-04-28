@@ -2079,8 +2079,8 @@
       client-initiated message exchanges described in <xref
       target="configuration-exchange"></xref>. If a DHCP client fails to
       receive an expected response from a server, the client must retransmit
-      its message. This section describes the retransmission strategy to be
-      used by clients in client-initiated message exchanges.</t>
+      its message according to the retransmission strategy described
+      in this section.</t>
 
       <t>Note that the procedure described in this section is slightly
       modified when used with the Solicit message. The modified procedure is
