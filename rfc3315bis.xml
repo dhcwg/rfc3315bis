@@ -990,8 +990,8 @@
         <xref target="RFC3315-7"></xref>. Additional message types are
         defined in <xref target="RFC5007"/>, <xref target="RFC5460"/>,
         <xref target="RFC6977"/>, <xref target="RFC7341"/>, <xref
-        target="RFC7563"/>. Additional message types may be defined in
-        the future. The numeric encoding for each message type is
+        target="RFC7563"/>, RFC8156. Additional
+        message types may be defined in the future. The numeric encoding for each message type is
         shown in parentheses.</t>
 
         <t><list hangIndent="16" style="hanging">
@@ -6946,7 +6946,7 @@
 <c>42</c><c>NEW_TZDB_TIMEZONE</c><c>Yes</c><c>Yes</c>
 <c>43</c><c>ERO</c><c>No</c><c>Yes</c>
 <c>44</c><c>LQ_QUERY</c><c>No</c><c>Yes</c>
-<c>45</c><c>CLIENT_DATA</c><c>NO</c><c>Yes</c>
+<c>45</c><c>CLIENT_DATA</c><c>No</c><c>Yes</c>
 <c>46</c><c>CLT_TIME</c><c>No</c><c>Yes</c>
 <c>47</c><c>LQ_RELAY_DATA</c><c>No</c><c>Yes</c>
 <c>48</c><c>LQ_CLIENT_LINK</c><c>No</c><c>Yes</c>
@@ -6990,7 +6990,7 @@
 <c>86</c><c>V6_PCP_SERVER</c><c>Yes</c><c>No</c>
 <c>87</c><c>DHCPV4_MSG</c><c>No</c><c>Yes</c>
 <c>88</c><c>DHCP4_O_DHCP6_SERVER</c><c>Yes</c><c>Yes</c>
-<c>89</c><c>S46_RULE</c><c>No</c><c>No - See RFC</c>
+<c>89</c><c>S46_RULE</c><c>No</c><c>No (3)</c>
 <c>90</c><c>S46_BR</c><c>No</c><c>No</c>
 <c>91</c><c>S46_DMR</c><c>No</c><c>Yes</c>
 <c>92</c><c>S46_V4V6BIND</c><c>No</c><c>Yes</c>
@@ -7015,20 +7015,46 @@
 <c>111</c><c>S46_PRIORITY</c><c>Yes</c><c>Yes</c>
 <c>112</c><c>MUD_URL_V6 (TEMPORARY)</c><c>No</c><c>Yes</c>
 <c>113</c><c>V6_PREFIX64</c><c>Yes</c><c>No</c>
-<c>114-132</c><c>Failover Options</c><c>No</c><c>See RFC</c>
+
+<c>114</c><c>F_BINDING_STATUS</c><c>No</c><c>(4)</c>
+<c>115</c><c>F_CONNECT_FLAGS</c><c>No</c><c>(4)</c>
+<c>116</c><c>F_DNS_REMOVAL_INFO</c><c>No</c><c>(4)</c>
+<c>117</c><c>F_DNS_HOST_NAME</c><c>No</c><c>(4)</c>
+<c>118</c><c>F_DNS_ZONE_NAME</c><c>No</c><c>(4)</c>
+<c>119</c><c>F_DNS_FLAGS</c><c>No</c><c>(4)</c>
+<c>120</c><c>F_EXPIRATION_TIME</c><c>No</c><c>(4)</c>
+<c>121</c><c>F_MAX_UNACKED_BNDUPD</c><c>No</c><c>(4)</c>
+<c>122</c><c>F_MCLT</c><c>No</c><c>(4)</c>
+<c>123</c><c>F_PARTNER_LIFETIME</c><c>No</c><c>(4)</c>
+<c>124</c><c>F_PARTNER_LIFETIME_SENT</c><c>No</c><c>(4)</c>
+<c>125</c><c>F_PARTNER_DOWN_TIME</c><c>No</c><c>(4)</c>
+<c>126</c><c>F_PARTNER_RAW_CLT_TIME</c><c>No</c><c>(4)</c>
+<c>127</c><c>F_PROTOCOL_VERSION</c><c>No</c><c>(4)</c>
+<c>128</c><c>F_KEEPALIVE_TIME</c><c>No</c><c>(4)</c>
+<c>129</c><c>F_RECONFIGURE_DATA</c><c>No</c><c>(4)</c>
+<c>130</c><c>F_RELATIONSHIP_NAME</c><c>No</c><c>(4)</c>
+<c>131</c><c>F_SERVER_FLAGS</c><c>No</c><c>(4)</c>
+<c>132</c><c>F_SERVER_STATE</c><c>No</c><c>(4)</c>
+<c>133</c><c>F_START_TIME_OF_STATE</c><c>No</c><c>(4)</c>
+<c>134</c><c>F_STATE_EXPIRATION_TIME</c><c>No</c><c>(4)</c>
+
 <c>143</c><c>IPv6_ADDRESS-ANDSF</c><c>Yes</c><c>Yes</c>
 </texttable>
 
 <t>Notes for <xref target="option_update_table"/>:
 <list hangIndent="6" style="hanging">
     <t hangText="(1)"> For the "Client ORO" column: a "Yes" for an option
-     means that the client includes this option number if it desires
+     means that the client includes this option code if it desires
      that configuration information; a "No" means that the option MUST
-     NOT be included (and servers SHOULD silently ignore that option
-     if it appears).</t>
+     NOT be included (and servers SHOULD silently ignore that option code
+     if it appears in ORO).</t>
 
     <t hangText="(2)"> For each enterprise-number, there MUST only be
     a single instance.</t>
+
+    <t hangText="(3)"> See RFC7598 for details.</t>
+
+    <t hangText="(4)"> See RFC8156 for details.</t>
 </list></t>
 
       <t>IANA is requested to update the All_DHCP_Relay_Agents_and_Servers
