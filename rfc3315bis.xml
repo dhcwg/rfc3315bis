@@ -3514,6 +3514,33 @@
           <t>The client MAY choose to report any status code or message from
           the Status Code option in the Reply message.</t>
 
+          <t>When a client receives a configuration option in an earlier
+          Reply, then sends a Renew, Rebind or Information-request and
+          the requested option is not present in the Reply, the client
+          SHOULD stop using the previously received configuration
+          information.  In other words, the client should behave as if
+          it never received this configuration option and return to the
+          relevant default state.  If there is no viable way to stop using
+          the received configuration information, the values
+          received/configured from the option MAY persist if there are
+          no other sources for that data and they have no external impact.
+          For example, a client that previously received a Client FQDN
+          option and used it to set up its hostname is allowed to continue
+          using it if there is no reasonable way for a node to unset its
+          hostname and it has no external impact.  As a counter example,
+          a client that previously received an NTP server address from
+          the DHCP server and does not receive it any more, MUST stop
+          using the configured NTP server address.  The client
+          SHOULD be open to other sources of the same configuration
+          information.  This behavior does not apply to any IA containers,
+          as their processing is described in detail in other parts of
+          this document.</t>
+
+          <t>When a client receives a requested option that has an updated
+          value from what was previously received, the client SHOULD make
+          use of that updated value as soon as possible for its configuration
+          information.</t>
+
           <section anchor="reply-solicit-request-renew-rebind"
                    title="Reply for Solicit (with Rapid Commit), Request, Renew or Rebind">
             <t>If the client receives a NotOnLink status from the server in
@@ -3604,33 +3631,6 @@
             <t>Management of the specific configuration information is
             detailed in the definition of each option in <xref
             target="RFC3315-22"></xref>.</t>
-
-            <t>When a client receives a configuration option in an earlier
-            Reply, then sends a Renew, Rebind or Information-request and
-            the requested option is not present in the Reply, the client
-            SHOULD stop using the previously received configuration
-            information.  In other words, the client should behave as if
-            it never received this configuration option and return to the
-            relevant default state.  If there is no viable way to stop using
-            the received configuration information, the values
-            received/configured from the option MAY persist if there are
-            no other sources for that data and they have no external impact.
-            For example, a client that previously received a Client FQDN
-            option and used it to set up its hostname is allowed to continue
-            using it if there is no reasonable way for a node to unset its
-            hostname and it has no external impact.  As a counter example,
-            a client that previously received an NTP server address from
-            the DHCP server and does not receive it any more, MUST stop
-            using the configured NTP server address.  The client
-            SHOULD be open to other sources of the same configuration
-            information.  This behavior does not apply to any IA containers,
-            as their processing is described in detail in other parts of
-            this document.</t>
-
-            <t>When a client receives a requested option that has an updated
-            value from what was previously received, the client SHOULD make
-            use of that updated value as soon as possible for its configuration
-            information.</t>
 
             <t>If the Reply message contains any IAs, but the client finds no
             usable addresses and/or delegated prefixes in any of these IAs,
