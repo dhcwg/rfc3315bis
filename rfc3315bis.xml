@@ -2987,7 +2987,7 @@
                  title="Creation and Transmission of Confirm Messages">
           <!-- 18.1.2, line 2037-->
           <t>The client uses a Confirm message when is has only addresses
-          (no deleted prefixes) assigned by a DHCP server to determine if it
+          (no delegated prefixes) assigned by a DHCP server to determine if it
           is still connected to the same link when the client detects a
           change in network information as described in <xref target="RFC3315-18.2.12"></xref>.</t>
 
