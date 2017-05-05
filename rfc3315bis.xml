@@ -987,12 +987,10 @@
 
         <t>DHCP defines the following message types. More detail on these
         message types can be found in <xref target="RFC3315-6"></xref> and
-        <xref target="RFC3315-7"></xref>. Additional message types are
-        defined in <xref target="RFC5007"/>, <xref target="RFC5460"/>,
-        <xref target="RFC6977"/>, <xref target="RFC7341"/>, <xref
-        target="RFC7563"/>, RFC8156. Additional
-        message types may be defined in the future. The numeric encoding for each message type is
-        shown in parentheses.</t>
+        <xref target="RFC3315-7"></xref>. Additional message types have been
+        defined and may be defined in the future - see
+        https://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml.
+        The numeric encoding for each message type is shown in parentheses.</t>
 
         <t><list hangIndent="16" style="hanging">
             <t hangText="SOLICIT (1)">A client sends a Solicit message to
@@ -2988,8 +2986,10 @@
         <section anchor="RFC3315-18.1.2"
                  title="Creation and Transmission of Confirm Messages">
           <!-- 18.1.2, line 2037-->
-          <t>If the client detects a change in network information as described in 
-          <xref target="RFC3315-18.2.12"></xref>.</t>
+          <t>The client uses a Confirm message when is has only addresses
+          (no deleted prefixes) assigned by a DHCP server to determine if it
+          is still connected to the same link when the client detects a
+          change in network information as described in <xref target="RFC3315-18.2.12"></xref>.</t>
 
           <t>The client sets the "msg-type" field to CONFIRM. The client
           generates a transaction ID and inserts this value in the
@@ -3480,7 +3480,7 @@
           <t>The client MAY choose to report any status code or message from
           the Status Code option in the Reply message.</t>
 
-          <t>When a client receives a configuration option in an earlier
+          <t>When a client received a configuration option in an earlier
           Reply, then sends a Renew, Rebind or Information-request and
           the requested option is not present in the Reply, the client
           SHOULD stop using the previously received configuration
@@ -4499,9 +4499,9 @@
         messages reception (see dedicated sections in
         <xref target="RFC3315-18.2"/>), the server is not supposed to accept
         unicast traffic when it is not explicitly configured to do
-        so. For some messages (Solicit, Rebind and Confirm) unicast
+        so. For some messages (Solicit, Rebind, and Confirm) unicast
         transmission is not allowed, even if Server Unicast option is
-        configured. For Request, Renew, Informaton-request, Release
+        configured. For Request, Renew, Informaton-request, Release,
         and Decline messages, it is allowed only if Server Unicast
         option is configured.</t>
 
@@ -7061,7 +7061,7 @@
     <t hangText="(2)"> For each enterprise-number, there MUST only be
     a single instance.</t>
 
-    <t hangText="(3)"> See RFC7598 for details.</t>
+    <t hangText="(3)"> See <xref target="RFC7598"/> for details.</t>
 
     <t hangText="(4)"> See RFC8156 for details.</t>
 </list></t>
@@ -7247,14 +7247,12 @@
       <?rfc include='reference.RFC.5007'?>
       <?rfc include='reference.RFC.5374'?>
       <?rfc include='reference.RFC.5453'?>
-      <?rfc include='reference.RFC.5460'?>
       <?rfc include='reference.RFC.5905'?>
 
       <?rfc include='reference.RFC.6603'?>
       <?rfc include='reference.RFC.6724'?>
       <?rfc include='reference.RFC.6879'?>
       <?rfc include='reference.RFC.6939'?>
-      <?rfc include='reference.RFC.6977'?>
 
       <?rfc include='reference.RFC.7084'?>
       <?rfc include='reference.RFC.7136'?>
@@ -7263,7 +7261,6 @@
       <?rfc include='reference.RFC.7368'?>
       <?rfc include='reference.RFC.7421'?>
       <?rfc include='reference.RFC.7550'?>
-      <?rfc include='reference.RFC.7563'?>
       <?rfc include='reference.RFC.7598'?>
       <?rfc include='reference.RFC.7610'?>
       <?rfc include='reference.RFC.7707'?>
