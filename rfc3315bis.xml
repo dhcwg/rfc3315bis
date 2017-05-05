@@ -7381,10 +7381,7 @@ and other changes from RFC4242, RFC7083, and RFC7550. A few changes of note:
 significant changes: IPsec materials were mostly removed and replaced
 with a reference to <xref target="I-D.ietf-dhc-relay-server-security"/>, and the
 Delay Authentication Protocol was removed (see <xref target="obsolete"/>).
-Note that the Reconfigure Key Authentication Protocol is retained. In
-addition, the length of the "key ID" field was defined and the "DHCP
-realm" was clarified to be a domain name encoded as per
-<xref target="RFC3315-8"/>.</t>
+Note that the Reconfigure Key Authentication Protocol is retained.</t>
 
 <t>The DHCP Options <xref target="RFC3315-22"/> was expanded to incorporate
 the prefix delegation options from RFC3633, the Information Refresh Time
