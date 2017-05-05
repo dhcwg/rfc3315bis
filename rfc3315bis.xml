@@ -2988,42 +2988,8 @@
         <section anchor="RFC3315-18.1.2"
                  title="Creation and Transmission of Confirm Messages">
           <!-- 18.1.2, line 2037-->
-
-          <t>Whenever a client may have moved to a new link, the
-          prefixes/addresses assigned to the interfaces on that link may no
-          longer be appropriate for the link to which the client is attached.
-          Examples of times when a client may have moved to a new link
-          include: <list hangIndent="3" style="hanging">
-              <t hangText="o">The client reboots (and has stable storage and
-              persisted DHCP state).</t>
-
-              <t hangText="o">The client is reconnected to a link on which
-              it has obtained leases.</t>
-
-              <t hangText="o">The client returns from sleep mode.</t>
-
-              <t hangText="o">The client changes access points (such as if
-              using a wireless technology).</t>
-            </list></t>
-
-          <t>In any situation when a client may have moved to a new link and
-          the client does not have any delegated prefixes obtained from the
-          DHCP server from which it has obtained the addresses, the client
-          SHOULD initiate a Confirm/Reply message exchange. The client
-          includes any IAs assigned to the interface that may have moved to a
-          new link, along with the addresses associated with those IAs, in its
-          Confirm message. Any responding servers will indicate whether those
-          addresses are appropriate for the link to which the client is
-          attached with the status in the Reply message it returns to the
-          client.</t>
-
-          <t>If the client has any valid delegated prefixes obtained from the
-          DHCP server, the client MUST
-          initiate a Rebind/Reply message exchange as described in <xref
-          target="RFC3315-18.1.4"></xref>, with the exception that the
-          retransmission parameters should be set as for the Confirm message
-          as described below. The client includes IA_NAs, IA_TAs, and IA_PDs,
-          along with the associated leases, in its Rebind message.</t>
+          <t>If the client detects a change in network information as described in 
+          <xref target="RFC3315-18.2.12"></xref>.</t>
 
           <t>The client sets the "msg-type" field to CONFIRM. The client
           generates a transaction ID and inserts this value in the
@@ -3743,9 +3709,52 @@
           The consequence of the redundant exchange is inefficiency rather
           than incorrect operation.</t>
         </section>
+        <section anchor="RFC3315-18.2.12" title="When a Client Needs to Refresh Network Information">
+          <t>Whenever a client may have moved to a new link, the
+          prefixes/addresses assigned to the interfaces on that link may no
+          longer be appropriate for the link to which the client is attached.
+          Examples of times when a client may have moved to a new link
+          include: <list hangIndent="3" style="hanging">
+              <t hangText="o">The client reboots (and has stable storage and
+              persisted DHCP state).</t>
+
+              <t hangText="o">The client is reconnected to a link on which
+              it has obtained leases.</t>
+
+              <t hangText="o">The client returns from sleep mode.</t>
+
+              <t hangText="o">The client changes access points (such as if
+              using a wireless technology).</t>
+
+              <t hangText="o">The client detects a change in link information 
+              (eg. change in default router)</t>
+            </list></t>
+
+          <t>In any situation when a client may have moved to a new link and
+          the client does not have any delegated prefixes obtained from the
+          DHCP server from which it has obtained the addresses, the client
+          SHOULD initiate a Confirm/Reply message exchange. The client
+          includes any IAs assigned to the interface that may have moved to a
+          new link, along with the addresses associated with those IAs, in its
+          Confirm message. Any responding servers will indicate whether those
+          addresses are appropriate for the link to which the client is
+          attached with the status in the Reply message it returns to the
+          client.</t>
+
+          <t>If the client has any valid delegated prefixes obtained from the
+          DHCP server, the client MUST
+          initiate a Rebind/Reply message exchange as described in <xref
+          target="RFC3315-18.1.4"></xref>, with the exception that the
+          retransmission parameters should be set as for the Confirm message
+          as described below. The client includes IA_NAs, IA_TAs, and IA_PDs,
+          along with the associated leases, in its Rebind message.</t>
+    
+          <t>If the client has obtained network information from Information Request, the
+          client MUST initiate a Information-Request/Reply message exchange.</t>
 
         <!-- ends: "19.4.1 from line 2871-->
 
+          </section>
       </section>
 
       <!-- ends: "18.1 from line 1953-->
