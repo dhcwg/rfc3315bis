@@ -3709,7 +3709,7 @@
           The consequence of the redundant exchange is inefficiency rather
           than incorrect operation.</t>
         </section>
-        <section anchor="RFC3315-18.2.12" title="When a Client Needs to Refresh Network Information">
+        <section anchor="RFC3315-18.2.12" title="Refreshing Configuration Information">
           <t>Whenever a client may have moved to a new link, the
           prefixes/addresses assigned to the interfaces on that link may no
           longer be appropriate for the link to which the client is attached.
@@ -3726,15 +3726,12 @@
               <t hangText="o">The client changes access points (such as if
               using a wireless technology).</t>
 
-              <t hangText="o">The client detects a change in link information 
-              (eg. change in default router)</t>
             </list></t>
 
-          <t>In any situation when a client may have moved to a new link and
-          the client does not have any delegated prefixes obtained from the
-          DHCP server from which it has obtained the addresses, the client
-          SHOULD initiate a Confirm/Reply message exchange. The client
-          includes any IAs assigned to the interface that may have moved to a
+          <t> When the client detects one of the above conditions and it has obtained
+          addresses and no delegated prefixes from a server, the client SHOULD initiate 
+          a Confirm/Reply message exchange.  The client includes any IAs assigned 
+          to the interface that may have moved to a
           new link, along with the addresses associated with those IAs, in its
           Confirm message. Any responding servers will indicate whether those
           addresses are appropriate for the link to which the client is
@@ -3751,6 +3748,14 @@
     
           <t>If the client has obtained network information from Information Request, the
           client MUST initiate a Information-Request/Reply message exchange.</t>
+
+          <t>If not associated with one of the above mentioned conditions, a client MAY 
+          initiate a Renew/Reply exchange (as if the T1 time expired) or an Information-
+          Request/Reply exchange if it detects a significant change regarding the prefixes
+          available on the link (when new are added or existing are deprecated) as is
+          may incidate a configuration change.  However, a client MUST rate limit such
+          attempts to avoid flooding a server with requests when there are link issues 
+          (for example, only doing one of these at most every 30 seconds).</t>
 
         <!-- ends: "19.4.1 from line 2871-->
 
@@ -7424,6 +7429,9 @@ functionality and specifications. Readers of this specification should
 visit http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xml
 and https://datatracker.ietf.org/wg/dhc/ to learn of the RFCs that define 
 DHCPv6 messages, options, status-codes, and more.</t>
+
+<t>Added Section for Refreshing Configuration Information, indicating use cases
+for when a client should try to refresh network information.</t>
      
      </list></t>
     </section>
