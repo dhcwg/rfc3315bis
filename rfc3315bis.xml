@@ -3748,11 +3748,14 @@
           along with the associated leases, in its Rebind message.</t>
     
           <t>If the client has obtained network information from Information Request, the
-          client MUST initiate a Information-Request/Reply message exchange.</t>
+          client MUST initiate a Information-Request/Reply message exchange as
+          described in <xref target="RFC3315-18.1.5"/>.</t>
 
           <t>If not associated with one of the above mentioned conditions, a client MAY 
-          initiate a Renew/Reply exchange (as if the T1 time expired) or an Information-
-          Request/Reply exchange if it detects a significant change regarding the prefixes
+          initiate a Renew/Reply exchange (as if the T1 time expired) as described in
+          <xref target="RFC3315-18.1.3"/> or an Information-Request/Reply exchange as
+          described in <xref target="RFC3315-18.1.5"/> if the client detects a
+          significant change regarding the prefixes
           available on the link (when new are added or existing are deprecated) as is
           may incidate a configuration change.  However, a client MUST rate limit such
           attempts to avoid flooding a server with requests when there are link issues 
