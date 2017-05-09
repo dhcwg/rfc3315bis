@@ -3709,6 +3709,7 @@
           The consequence of the redundant exchange is inefficiency rather
           than incorrect operation.</t>
         </section>
+
         <section anchor="RFC3315-18.2.12" title="Refreshing Configuration Information">
           <t>Whenever a client may have moved to a new link, the
           prefixes/addresses assigned to the interfaces on that link may no
@@ -7377,7 +7378,11 @@ and other changes from RFC4242, RFC7083, and RFC7550. A few changes of note:
                in the Reply than requested by a client in the Request message.
                Also clarified that a server must not include addresses that it
                will not assign.</t>
-     </list></t>
+     </list>
+
+Also, a Refreshing Configuration Information <xref target="RFC3315-18.2.12"/>
+was added indicating use cases for when a client should try to refresh network
+information.</t>
 
 <t>The Relay Agent Behavior <xref target="RFC3315-20"/> had minor edits.</t>
 
@@ -7428,10 +7433,6 @@ functionality and specifications. Readers of this specification should
 visit http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xml
 and https://datatracker.ietf.org/wg/dhc/ to learn of the RFCs that define 
 DHCPv6 messages, options, status-codes, and more.</t>
-
-<t>Added Section for Refreshing Configuration Information, indicating use cases
-for when a client should try to refresh network information.</t>
-     
      </list></t>
     </section>
 
