@@ -7,7 +7,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-08"
+<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-09"
      ipr="pre5378Trust200902" obsoletes="3315,3633,3736,4242,7083,7550">
   <front>
     <title abbrev="DHCP for IPv6">Dynamic Host Configuration Protocol for IPv6
@@ -955,12 +955,12 @@
         <t>DHCP makes use of the following multicast addresses:</t>
 
         <t><list hangIndent="16" style="hanging">
-            <t hangText="All_DHCP_Relay_Agents_and_Servers (FF02::1:2)">A
+            <t hangText="All_DHCP_Relay_Agents_and_Servers (ff02::1:2)">A
             link-scoped multicast address used by a client to communicate with
             neighboring (i.e., on-link) relay agents and servers. All servers
             and relay agents are members of this multicast group.</t>
 
-            <t hangText="All_DHCP_Servers (FF05::1:3)">A site-scoped multicast
+            <t hangText="All_DHCP_Servers (ff05::1:3)">A site-scoped multicast
             address used by a relay agent to communicate with servers, either
             because the relay agent wants to send messages to all servers or
             because it does not know the unicast addresses of the servers.
@@ -1505,7 +1505,7 @@
       network hardware.  The stability of the DUID includes changes to virtual
       interfaces, such as logical PPP (over Ethernet) interfaces that may
       come and go in Customer Premise Equipment routers. The client
-      may change its DUID as specific in <xref target="RFC7844"/>.</t>
+      may change its DUID as specified in <xref target="RFC7844"/>.</t>
 
       <t>The motivation for having more than one type of DUID is that the DUID
       must be globally unique, and must also be easy to generate. The sort of
@@ -4827,8 +4827,7 @@
         section.</t>
 
         <t>The Reconfigure Key protocol is used (initiated by the server) only
-        if the client and server are not using any other authentication
-        protocol and the client and server have negotiated to use Reconfigure
+        if the client and server have negotiated to use Reconfigure
         messages.</t>
 
         <section title="Use of the Authentication Option in the Reconfigure Key Authentication Protocol">
@@ -5441,8 +5440,8 @@
         Server Unicast, Rapid Commit, User Class, Vendor Class, Interface-Id, Reconfigure Message, and
         Reconfigure Accept.  Other top-level options MUST appear in the Option Request
         option or they will not be sent by the server.  Only container options MUST appear
-        in the Option Request, options encapsulated in the container MUST NOT be in the
-        Option Request, see <xref target="RFC7598"/> as an example of container options.
+        in the Option Request option, options encapsulated in the container MUST NOT be in the
+        Option Request option, see <xref target="RFC7598"/> as an example of container options.
         The exception to this is the Option Request option MAY be used to signal support
         for a feature even when that option is encapsulated as in the case of the
         Prefix Exclude option <xref target="RFC6603"/>. See <xref target="option_update_table"/>.
@@ -6671,12 +6670,6 @@
 
         <t>Updated SOL_MAX_RT value applies only to the network interface on
         which the client received SOL_MAX_RT option.</t>
-
-        <t>The requirement for the client to request SOL_MAX_RT serves
-        two purposes. First, it distinguishes between legacy and
-        modern clients. Second, it allows modern clients to take
-        advantage of the configurable SOL_MAX_RT values, even if the
-        server is a legacy one.</t>
       </section>
 
       <!-- ends: merged section 4. from RFC7083 -->
@@ -7076,7 +7069,7 @@
 </list></t>
 
       <t>IANA is requested to update the All_DHCP_Relay_Agents_and_Servers
-      (FF02::1:2) and All_DHCP_Servers (FF05::1:3)
+      (ff02::1:2) and All_DHCP_Servers (ff05::1:3)
       table entries in the IPv6 multicast address space registry at
       http://www.iana.org/assignments/ipv6-multicast-addresses/ipv6-multicast-addresses.xhtml
       to reference this document instead of <xref target="RFC3315"/>.</t>
