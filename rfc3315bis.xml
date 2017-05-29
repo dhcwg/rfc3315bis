@@ -6896,10 +6896,6 @@
       page to add a reference to this document for definitions previously
       created by <xref target="RFC3315"/>, <xref target="RFC3633"/>,
       <xref target="RFC4242"/> and <xref target="RFC7083"/>.</t>
-
-      <t>IANA is requested to add a column to the DHCPv6 Option table at
-      http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
-      to indicate which options are allowed to appear in the ORO option.  See Section 20.7.</t>
          
       <t>IANA is requested to add two columns to the DHCPv6 Option table at
       http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
@@ -7126,7 +7122,7 @@
 
       <t>This document is merely a refinement of earlier work by the
       authors of RFC3315 (Ralph Droms, Jim Bound, Bernie Volz,
-      Ted Lemon, Charles Perkins, and Mike Carney) RFC3633 (Ole Troan
+      Ted Lemon, Charles Perkins, and Mike Carney), RFC3633 (Ole Troan
       and Ralph Droms), RFC3736 (Ralph Droms), RFC4242 (Stig Venaas,
       Tim Chown, and Bernie Volz), RFC7083 (Ralph Droms), and RFC7550
       (Ole Troan, Bernie Volz, and Marcin Siodelski) and would not be
@@ -7454,15 +7450,16 @@ Rebind    *             *     *     *           *
 Decline   *      *      *     *                 *
 Release   *      *      *     *                 *
 Reply     *      *      *     *                             *     *
-Reconf.   *      *
-Inform.   * (see note)              *           *           *
+Reconf.   *      *                                          *
+Inform.   * (see note)              *           *
 R-forw.                                               *
 R-repl.                                               *
 ]]></artwork>
       </figure>
 
-      <t>NOTE: Only included in Information-request messages that are sent in
-      response to a Reconfigure (see <xref target="RFC3315-18.1.5"/>).</t>
+      <t>NOTE: Server ID option is only included in Information-request
+      messages that are sent in response to a Reconfigure
+      (see <xref target="RFC3315-18.1.5"/>).</t>
 
       <figure>
         <artwork><![CDATA[
@@ -7479,17 +7476,17 @@ Decline                *     *      *
 Release                *     *      *
 Reply     *      *     *     *      *                    *        *
 Reconf.                                           *
-Inform.                *     *      *                    *        *
-R-forw.                *     *      *      *
-R-repl.                *     *      *      *
+Inform.                *     *      *                    *
+R-forw.                             *      *
+R-repl.                             *      *
 ]]></artwork>
       </figure>
          
       <figure>
         <artwork><![CDATA[
         SOL_MAX_RT  INF_MAX_RT
-Solicit    *
-Advert.                *
+Solicit 
+Advert. 
 Request
 Confirm
 Renew
@@ -7511,13 +7508,15 @@ R-repl.
     <section anchor="RFC3315-B"
              title="Appearance of Options in the Options Field of DHCP Options">
 
-      <t>The following table indicates with a "*" where options can appear in
-      the options field of other options:</t>
+      <t>The following table indicates with a "*" where options defined in
+      this document can appear as top level options or encapsulated in other options
+      defined in this document. Other RFC's may define additional situations
+      where options defined in this document are encapsulated in other options.</t>
 
       <figure>
         <artwork><![CDATA[
-                Option  IA_NA/                        Relay-  Relay-
-                Field   IA_TA  IAADDR IA_PD  IAPREFIX Forw    Reply
+                Top-    IA_NA/                        Relay-  Relay-
+                Level   IA_TA  IAADDR IA_PD  IAPREFIX Forw    Reply
 Client ID          *
 Server ID          *
 IA_NA/IA_TA        *
@@ -7544,8 +7543,11 @@ INF_MAX_RT         *
 ]]></artwork>
       </figure>
 
-      <t>Note: "Relay-Forw" / "Relay-Reply" options appear in the options
-      field of the Relay-forward and Relay-reply messages.</t>
+      <t>Notes: Options asterisked in the "Top-Level" column appear in the
+      options field of client messages (see <xref target="RFC3315-6"/>. Options
+      asterisked in the "Relay-Forw" / "Relay-Reply" column appear in the
+      options field of the Relay-forward and Relay-reply messages.
+      (see <xref target="RFC3315-7"/>).</t>
     </section>
   </back>
 </rfc>
