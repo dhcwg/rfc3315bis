@@ -4056,8 +4056,7 @@
               IA_PD option with zero value in the "IPv6 prefix" field and
               non-zero value in the "prefix-length" field, the server MAY use
               the "prefix-length" value as a hint for the length of the
-              prefixes to be assigned (see <xref
-              target="I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue"></xref>
+              prefixes to be assigned (see <xref target="RFC8168"></xref>
               for further details on prefix length hints).</t>
 
               <t hangText="-">If the server is configured to create new
@@ -7266,7 +7265,7 @@
       <?rfc include='reference.RFC.7844'?>
       <?rfc include='reference.RFC.7969'?>
 
-      <?rfc include='reference.I-D.ietf-dhc-dhcpv6-prefix-length-hint-issue'?>
+      <?rfc include='reference.RFC.8168'?>
          
       <?rfc include='reference.I-D.ietf-dhc-relay-server-security'?>
 
