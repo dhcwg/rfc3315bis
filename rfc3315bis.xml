@@ -7534,7 +7534,7 @@ INF_MAX_RT         *
       <t>Notes: Options asterisked in the "Top-Level" column appear in the
       options field of client messages (see <xref target="RFC3315-6"/>). Options
       asterisked in the "Relay-Forw" / "Relay-Reply" column appear in the
-      options field of the Relay-forward and Relay-reply messages.
+      options field of the Relay-forward and Relay-reply messages
       (see <xref target="RFC3315-7"/>).</t>
     </section>
   </back>
