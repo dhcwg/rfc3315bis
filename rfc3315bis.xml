@@ -1492,7 +1492,7 @@
       a client's link-layer address is unreliable as there is no guarantee that
       the client is still using the same link-layer address as when it generated
       its DUID. And, such an attempt will be more and more unreliable as more
-      clients adopt privacy measures, such are those defined in <xref
+      clients adopt privacy measures, such as those defined in <xref
       target="RFC7844"/>. It is recommended to rely on the mechanism defined in
       <xref target="RFC6939"/>.</t>
 
@@ -1960,8 +1960,8 @@
 
         <t>A DHCP server implementation MAY generate temporary addresses
         referring to the algorithm defined in Section 3.2.1, <xref
-        target="RFC4941"></xref>, with additional condition that the new
-        address is not duplicated with any assigned addresses.</t>
+        target="RFC4941"></xref>, with the additional condition that any new
+        address is not the same as any assigned address.</t>
 
         <t>The server MAY update the DNS for a temporary address, as described
         in section 4 of <xref target="RFC4941"></xref>.</t>
@@ -1970,10 +1970,10 @@
         source address selection, according to Rule 7, <xref
         target="RFC6724"></xref>. However, this policy is overridable.</t>
 
-        <t>One of the most important properties of temporary address is
-        unlinkability of different actions over time. So, it is NOT
-        RECOMMENDED for a client to renew expired temporary addresses, though
-        DHCP provides such possibility (see <xref
+        <t>One of the most important properties of a temporary address is to
+        make it difficult to link the address to different actions over time.
+        So, it is NOT RECOMMENDED for a client to renew expired temporary
+        addresses, though DHCP provides for such a possibility (see <xref
         target="RFC3315-22.5"></xref>).</t>
       </section>
 
@@ -2048,10 +2048,10 @@
         there are three such cases:
              
       <list hangIndent="6" style="hanging">
-        <t hangText="1."> a client received an IA_NA option with a zero value,</t>
-        <t hangText="2."> a client received an IA_PD option with a zero value, and</t>
+        <t hangText="1."> a client received an IA_NA option with a zero value</t>
+        <t hangText="2."> a client received an IA_PD option with a zero value</t>
         <t hangText="3."> a client received an IA_TA option (which does not
-        contain T1 and T2 fields and are not generally renewed).</t>
+        contain T1 and T2 fields and are not generally renewed)</t>
       </list>
         This is an indication that the renew and rebind times are left
         at the client's discretion. However, they are not completely
@@ -4823,7 +4823,7 @@
               <t hangText="   RDM">0</t>
             </list></t>
 
-          <t>The format of the Authentication information for the Reconfigure
+          <t>The format of the authentication information for the Reconfigure
           Key Authentication Protocol is:</t>
 
           <figure align="center" anchor="FigRKAPAuthInfo"
@@ -4894,7 +4894,8 @@
         <section title="Client Considerations for Reconfigure Key Authentication Protocol">
           <!-- 21.5.3, line 3532-->
 
-          <t>The client will receive a Reconfigure Key from the server in the
+          <t>The client will receive a Reconfigure Key from the server in an
+          Authentication option in the
           initial Reply message from the server. The client records the
           Reconfigure Key for use in authenticating subsequent Reconfigure
           messages.</t>
@@ -5141,8 +5142,8 @@
 
         <t>Each IA_NA carries one "set" of non-temporary addresses;
         it is up to the server policy to determine how many addresses are
-        assigned, but typically at most one address from each prefix assigned
-        to the link the client is attached to.</t>
+        assigned, but typically at most one address is assigned from each
+        prefix assigned to the link to which the client is attached to.</t>
 
         <t>An IA_NA option may only appear in the options area of a DHCP
         message. A DHCP message may contain multiple IA_NA options (though
@@ -5258,7 +5259,7 @@
         expired, the IA can be considered as having expired.</t>
 
         <t>An IA_TA option does not include values for T1 and T2. A client MAY
-        request that valid lifetime on temporary addresses be extended by
+        request that the valid lifetime on temporary addresses be extended by
         including the addresses in a IA_TA option sent in a Renew or Rebind
         message to a server. For example, a client would request an extension
         on the valid lifetime of a temporary address to allow an application to
