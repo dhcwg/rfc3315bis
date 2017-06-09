@@ -1972,7 +1972,7 @@
 
         <t>One of the most important properties of a temporary address is to
         make it difficult to link the address to different actions over time.
-        So, it is NOT RECOMMENDED for a client to renew expired temporary
+        So, it is NOT RECOMMENDED for a client to renew temporary
         addresses, though DHCP provides for such a possibility (see <xref
         target="RFC3315-22.5"></xref>).</t>
       </section>
@@ -3738,7 +3738,7 @@
           described in <xref target="RFC3315-18.1.5"/> if the client detects a
           significant change regarding the prefixes
           available on the link (when new are added or existing are deprecated) as this
-          may incidate a configuration change.  However, a client MUST rate limit such
+          may indicate a configuration change.  However, a client MUST rate limit such
           attempts to avoid flooding a server with requests when there are link issues 
           (for example, only doing one of these at most every 30 seconds).</t>
 
@@ -3922,7 +3922,7 @@
           the presence of the reconfigure key signals support for Reconfigure
           acceptance. However, there may be better security mechanisms defined
           in the future that would cause RKAP to not be used anymore. One of
-          such mechanisms currently worked on is mentioned in <xref
+          such mechanisms being worked on is mentioned in <xref
           target="security"/>.</t>
 
           <t>The server includes other options containing configuration
@@ -6090,7 +6090,7 @@
         sequence of code/length/value fields of identical format to the DHCP
         options field. The sub-option codes are defined by the vendor identified
         in the enterprise-number field, and are not managed by IANA. Each of
-        the sub-optons is formatted as follows:</t>
+        the sub-options is formatted as follows:</t>
 
         <figure align="center" anchor="FigOption17Data"
                 title="Vendor-specific Options Format">
