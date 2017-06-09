@@ -7474,7 +7474,7 @@ R-repl.                             *      *
         <artwork><![CDATA[
         SOL_MAX_RT  INF_MAX_RT
 Solicit 
-Advert. 
+Advert.    *
 Request
 Confirm
 Renew
