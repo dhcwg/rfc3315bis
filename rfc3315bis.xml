@@ -5358,7 +5358,7 @@
         and valid lifetimes. The values in the preferred and valid lifetimes
         are the number of seconds remaining in each lifetime.</t>
 
-        <t>A client discards any addresses for which the preferred lifetime is
+        <t>The client MUST discard any addresses for which the preferred lifetime is
         greater than the valid lifetime.</t>
 
         <t>As per <xref target="RFC3315-5.6"/>, the valid lifetime of an address
@@ -5863,11 +5863,11 @@
             (<xref target="RFC4704"/>) or in response to leasequery requests
             (<xref target="RFC5007"/>).</t>
 
-            <t>The problem of unused leases can be minimized, for example,
-            by designing the DHCP service so that only one server responds to
-            the Solicit or by using relatively short lifetimes for newly assigned
-            leases, or the DHCP client initiatively releases unused
-            leases by using the Release message.</t>
+            <t>The problem of unused leases can be minimized by designing
+            the DHCP service so that only one server responds to the
+            Solicit, by using relatively short lifetimes for newly assigned
+            leases, or by having DHCP clients release unused leases using the 
+            Release message.</t>
           </list></t>
       </section>
 
@@ -6030,7 +6030,7 @@
 
         <t>Servers and clients MUST NOT include more than one instance of
         OPTION_VENDOR_CLASS with the same Enterprise Number. Each instance of
-        OPTION_VENDOR_CLASS can carry multiple sub-options.</t>
+        OPTION_VENDOR_CLASS can carry multiple vendor-class-data instances.</t>
       </section>
 
       <!-- ends: "22.16 from line 4276-->
@@ -6057,7 +6057,7 @@
    |                       enterprise-number                       |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    .                                                               .
-   .                          option-data                          .
+   .                        sub-option-data                        .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
@@ -6075,7 +6075,7 @@
             Enterprise Number as registered with IANA <xref
             target="IANA-PEN"></xref>.</t>
 
-            <t hangText="   option-data">An opaque object, interpreted by
+            <t hangText="   sub-option-data">Sub-options, interpreted by
             vendor-specific code on the clients and servers.</t>
           </list></t>
 
@@ -6086,11 +6086,11 @@
         that does not receive requested vendor-specific information will still
         configure the node device's IPv6 stack to be functional.</t>
 
-        <t>The encapsulated vendor-specific options field MUST be encoded as a
+        <t>The sub-option-data field MUST be encoded as a
         sequence of code/length/value fields of identical format to the DHCP
-        options field. The option codes are defined by the vendor identified
-        in the enterprise-number field and are not managed by IANA. Each of
-        the encapsulated options is formatted as follows:</t>
+        options field. The sub-option codes are defined by the vendor identified
+        in the enterprise-number field, and are not managed by IANA. Each of
+        the sub-optons is formatted as follows:</t>
 
         <figure align="center" anchor="FigOption17Data"
                 title="Vendor-specific Options Format">
@@ -6114,15 +6114,12 @@
         </figure>
 
         <t><list hangIndent="24" style="hanging">
-            <t hangText="   opt-code">The code for the encapsulated
-            option.</t>
+            <t hangText="   opt-code">The code for the sub-option.</t>
 
             <t hangText="   option-len">An unsigned integer giving the length
-            of the option-data field in this encapsulated option in
-            octets.</t>
+            of the option-data field in this sub-option in octets.</t>
 
-            <t hangText="   option-data">The data area for the encapsulated
-            option.</t>
+            <t hangText="   option-data">The data area for the sub-option.</t>
           </list></t>
 
         <t>Multiple instances of the Vendor-specific Information option may
@@ -6131,7 +6128,7 @@
         Enterprise Number in that option. Servers and clients MUST NOT send
         more than one instance of Vendor-specific Information option with the
         same Enterprise Number. Each instance of Vendor-specific Information
-        option MAY contain multiple encapsulated options.</t>
+        option MAY contain multiple sub-options.</t>
 
         <t>A client that is interested in receiving a Vendor-specific
         Information option:</t>
@@ -6391,7 +6388,7 @@
         client.</t>
 
         <t>In a message sent by a server to a client,
-        the server MUST use the values in the T1 and T2 fields for
+        the client MUST use the values in the T1 and T2 fields for
         the T1 and T2 parameters, unless those values in those fields are 0.
         The values in the T1 and T2 fields are the number of seconds until T1
         and T2.</t>
@@ -6481,7 +6478,7 @@
         given value in the prefix-length field to indicate a preference for
         the size of the prefix to be delegated.</t>
 
-        <t>A client discards any prefixes for which the preferred
+        <t>The client MUST discard any prefixes for which the preferred
         lifetime is greater than the valid lifetime.</t>
 
         <t>The values in the preferred and valid lifetimes are the number of
@@ -6839,7 +6836,7 @@
       <t>This section focuses on the server considerations. For extended
       discussion about privacy considerations for the client, see <xref
       target="RFC7824"></xref>. In particular, Section 3
-      of said document discusses various identifiers that could be misused to
+      of that document discusses various identifiers that could be misused to
       track the client. Section 4 discusses existing mechanisms that may have
       an impact on client's privacy. Finally, Section 5 discusses potential
       attack vectors. For recommendations how to address or mitigate those
@@ -7174,6 +7171,8 @@
       <?rfc include='reference.RFC.6355'?>
 
       <?rfc include='reference.RFC.7083'?>
+         
+      <?rfc include='reference.RFC.7227'?>         
 
       <?rfc include='reference.RFC.7283'?>
 
@@ -7243,7 +7242,6 @@
 
       <?rfc include='reference.RFC.7084'?>
       <?rfc include='reference.RFC.7136'?>
-      <?rfc include='reference.RFC.7227'?>
       <?rfc include='reference.RFC.7341'?>
       <?rfc include='reference.RFC.7368'?>
       <?rfc include='reference.RFC.7421'?>
