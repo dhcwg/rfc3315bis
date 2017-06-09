@@ -7451,7 +7451,7 @@ R-repl.                                               *
 
       <figure>
         <artwork><![CDATA[
-                                                              Info
+                                                               Info
         Status  Rap. User  Vendor Vendor Inter. Recon. Recon. Refresh
          Code  Comm. Class Class  Spec.    ID    Msg.  Accept  Time
 Solicit          *     *     *      *                    *
@@ -7497,7 +7497,7 @@ R-repl.
              title="Appearance of Options in the Options Field of DHCP Options">
 
       <t>The following table indicates with a "*" where options defined in
-      this document can appear as top level options or encapsulated in other options
+      this document can appear as top-level options or encapsulated in other options
       defined in this document. Other RFC's may define additional situations
       where options defined in this document are encapsulated in other options.</t>
 
@@ -7532,7 +7532,7 @@ INF_MAX_RT         *
       </figure>
 
       <t>Notes: Options asterisked in the "Top-Level" column appear in the
-      options field of client messages (see <xref target="RFC3315-6"/>. Options
+      options field of client messages (see <xref target="RFC3315-6"/>). Options
       asterisked in the "Relay-Forw" / "Relay-Reply" column appear in the
       options field of the Relay-forward and Relay-reply messages.
       (see <xref target="RFC3315-7"/>).</t>
