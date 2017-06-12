@@ -720,9 +720,8 @@
 
       <section anchor="OpModes-NA"
                title="DHCP for Non-Temporary Address Assignment">
-        <t>This model of operation was the original motivation for DHCP and is
-        the "stateful address autoconfiguration protocol" for IPv6 which is discussed in <xref
-        target="RFC2462"></xref>. It is appropriate for situations where
+        <t>This model of operation was the original motivation for DHCP.
+        It is appropriate for situations where
         stateless address autoconfiguration alone is insufficient or
         impractical, e.g., because of network policy, additional requirements
         such as dynamic updates to the DNS, or client-specific requirements.</t>
@@ -876,7 +875,7 @@
         <t>If the client assigns a delegated prefix to a link to
         which the router is attached, and begins to send router advertisements
         for the prefix on the link, the client MUST set the valid
-        lifetime in those advertisements to be no later than the valid
+        lifetime in those advertisements to be no larger than the valid
         lifetime specified in the IA_PD option. A client MAY
         use the preferred lifetime specified in the IA_PD option.</t>
 
@@ -2536,11 +2535,11 @@
         <t hangText="1."> as part of the operating system configuration/bootstrap process,</t>
         <t hangText="2."> when requested to do so by the application layer (through an
         operating system specific API),</t>
-        <t hangText="3."> when required by Stateless Address Autoconfiguration (as defined
-        in <xref target="RFC2462"/> Section 5.2),</t>
+        <t hangText="3."> when Router Advertisement indicates DHCPv6 is available for
+        address configuration (see <xref target="RFC4861"/> Section 4.2),</t>
         <t hangText="4."> as required to extend the lifetime of address(es) and/or
         delegated prefix(es), using Renew and Rebind messages,</t>
-        <t hangText="4."> or when requested to do so by a server - upon the receipt of a
+        <t hangText="5."> or when requested to do so by a server - upon the receipt of a
         Reconfigure message.</t>
       </list>
       </t>
@@ -2805,15 +2804,10 @@
           This mechanism is essential for devices that are not battery powered,
           as they may suffer from power failure. After recovering from a
           power outage, many devices may start their transmission at the same
-          time. This is much less of a concern for battery powered devices.</t>
-
-          <t>In the case of a Solicit message transmitted when DHCP is
-          initiated,  the delay gives the amount of time to
-          wait after IPv6 Neighbor Discovery causes the client to invoke the
-          stateful address autoconfiguration protocol (see section 5.5.3 of
-          <xref target="RFC2462"></xref>). This random delay desynchronizes
-          clients which start at the same time (for example, after recovery
-          from a power outage).</t>
+          time. This is much less of a concern for battery powered devices.
+          This random delay also helps descynronize clients which start DHCP
+          session by seeing it available in Router Advertisement messages
+          (see <xref target="RFC4861"/> Section 4.2).</t>
 
           <t>The client transmits the message according to <xref
           target="RFC3315-14"></xref>, using the following parameters: <list
@@ -3569,7 +3563,7 @@
                 If the client assigns a delegated prefix to a link to
                 which the router is attached, and begins to send router
                 advertisements for the prefix on the link, the client MUST
-                set the valid lifetime in those advertisements to be no later than
+                set the valid lifetime in those advertisements to be no larger than
                 the valid lifetime specified in the IA_PD option.  A
                 client MAY use the preferred lifetime specified in the
                 IA_PD option.</t>
@@ -7212,7 +7206,6 @@
 
       <?rfc include='reference.RFC.2131'?>
       <?rfc include='reference.RFC.2132'?>
-      <?rfc include='reference.RFC.2462'?>
       <?rfc include='reference.RFC.2464'?>
 
       <?rfc include='reference.RFC.3041'?>
