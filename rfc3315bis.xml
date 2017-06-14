@@ -1924,7 +1924,7 @@
           </list></t>
 
         <t>By default, DHCP server implementations SHOULD NOT generate
-        predictable addresses (<xref target="RFC7721"/>). Server
+        predictable addresses <xref target="RFC7721"/>. Server
         implementers are encouraged to review <xref target="RFC4941"/>,
         <xref target="RFC7824"/>, and <xref target="RFC7707"/> as to
         possible considerations for how to generate addresses.</t>
@@ -2710,9 +2710,9 @@
         that the available server(s) may only be configured to offer a subset
         of them. When possible, the client SHOULD use the best configuration
         available and continue to request the additional IAs in subsequent
-        messages (<xref target="RFC7550"/>). This allows the client to maintain
+        messages <xref target="RFC7550"/>. This allows the client to maintain
         a single session and state machine. In practice, especially in the
-        case of handling IA_NA and IA_PD requests (<xref target="RFC7084"/>),
+        case of handling IA_NA and IA_PD requests <xref target="RFC7084"/>,
         this situation should be rare or a result of a temporary operational
         error.
         Thus, it is more likely for the client to get all configuration if
@@ -2734,7 +2734,7 @@
 
         <t>If the client has a source address of sufficient scope that can be
         used by the server as a return address, and the client has received a
-        Server Unicast option (<xref target="RFC3315-22.12"></xref>) from the
+        Server Unicast option <xref target="RFC3315-22.12"></xref> from the
         server, the client SHOULD unicast any Request, Renew, Release and
         Decline messages to the server.</t>
 
@@ -2861,7 +2861,7 @@
           <t>A client MUST collect valid Advertise messages for the first RT
           seconds, unless it receives a valid Advertise message with a preference
           value of 255. The preference value is carried in the Preference
-          option (<xref target="RFC3315-22.8"></xref>). Any valid Advertise that
+          option (see <xref target="RFC3315-22.8"></xref>). Any valid Advertise that
           does not include a Preference option is considered to have a
           preference value of 0. If the client receives a valid Advertise message
           that includes a Preference option with a preference value of 255,
@@ -5854,8 +5854,8 @@
             includes a Rapid Commit option, some servers will commit leases
             that are not actually used by the client, which could result in
             bad information in the DNS server if the DHCP server updates DNS
-            (<xref target="RFC4704"/>) or in response to leasequery requests
-            (<xref target="RFC5007"/>).</t>
+            <xref target="RFC4704"/> or in response to leasequery requests
+            <xref target="RFC5007"/>.</t>
 
             <t>The problem of unused leases can be minimized by designing
             the DHCP service so that only one server responds to the
