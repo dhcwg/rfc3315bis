@@ -3775,9 +3775,9 @@
         Reconfigure messages, to cause DHCP clients to obtain new addresses,
         prefixes and other configuration information. For example, an
         administrator may use a server-initiated configuration exchange when
-        links in the DHCP domain are to be renumbered. Other examples include
-        changes in the location of directory servers, addition of new services
-        such as printing, and availability of new software.</t>
+        links in the DHCP domain are to be renumbered or when other
+        configuration options are updated, perhaps because servers
+        are moved, added, or removed.</t>
 
         <t>When a client receives a Reconfigure message from the server, the
         client initiates sending a Renew, Rebind or Information-request message
