@@ -2418,14 +2418,9 @@
             <t hangText="-">the Reconfigure Message option msg-type is not a
             valid value.</t>
 
-            <t hangText="-">the message does not include DHCP authentication:
-            <list hangIndent="3" style="hanging">
-                <t hangText="*">the message does not include an Authentication
-                option.</t>
-
-                <t hangText="*">the message does not pass the authentication
-                validation performed by the client.</t>
-              </list></t>
+            <t hangText="-">the message does not include authentication (such
+            as RKAP, see <xref target="reconfigure-protocol"/>) or fails
+            authentication validation.</t>
           </list></t>
       </section>
 
