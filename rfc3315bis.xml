@@ -1413,8 +1413,8 @@
 
             <t hangText="   link-address">An address that may be used by the
             server to identify the link on which the client is located. This
-            is typically a globally unique address or unique local address (ULA)
-            <xref target="RFC4193"/>, but see discussion in <xref
+            is typically a globally unique address (including unique
+            local address, <xref target="RFC4193"/>), but see discussion in <xref
             target="relaying-from-client"></xref>.</t>
 
             <t hangText="   peer-address">The address of the client or relay
@@ -4550,8 +4550,8 @@
           <!-- 20.1.1, line 2979-->
 
           <t>If the relay agent received the message to be relayed from a
-          client, the relay agent places a global or unique local <xref
-          target="RFC4193"/> address with a prefix
+          client, the relay agent places a global address (including unique
+          local address, <xref target="RFC4193"/>) with a prefix
           assigned to the link on which the client should be assigned
           leases into the link-address field. If such an address is not
           available, the relay agent may set the link-address field
@@ -4594,9 +4594,10 @@
           message incremented by 1.</t>
 
           <t>If the source address from the IP datagram header of the received
-          message is a global or unique local address, the relay
+          message is a global address (including unique local address,
+          <xref target="RFC4193"/>), the relay
           agent sets the link-address field to 0; otherwise the relay agent
-          sets the link-address field to a global or unique local address
+          sets the link-address field to a global address (including ULA)
           assigned to the interface on which the message was received, or
           includes an Interface-ID option to identify the interface on which
           the message was received.</t>
