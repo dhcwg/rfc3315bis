@@ -2530,7 +2530,8 @@
              title="DHCP Configuration Exchanges">
       <t>A client initiates a message exchange with a server or servers to
       acquire or update configuration information of interest. A client has
-      many reasons to initiate the configuration exchange:
+      many reasons to initiate the configuration exchange. Some of the
+      more common ones are:
       <list hangIndent="6" style="hanging">
         <t hangText="1."> as part of the operating system configuration/bootstrap process,</t>
         <t hangText="2."> when requested to do so by the application layer (through an
@@ -2543,6 +2544,20 @@
         Reconfigure message.</t>
       </list>
       </t>
+
+      <t>The client is responsible for creating IAs and requesting that a
+      server assign addresses and/or delegated prefixes to the IAs. The
+      client first creates the IAs and assigns IAIDs to them. The client then
+      transmits a Solicit message containing the IA options describing the
+      IAs. The client MUST NOT be using any of the addresses or delegated
+      prefixes for which it tries to obtain the bindings by sending the
+      Solicit message. In particular, if the client had some valid bindings
+      and has chosen to start the server discovery process to obtain the
+      same bindings from a different server, the client MUST stop using the
+      addresses and delegated prefixes for the bindings it had obtained from
+      the previous server (see <xref target="RFC3315-18.1.6"/> for more details
+      on what stop using means), and which it is now trying to obtain from a
+      new server.</t>
 
       <t>A DHCP client that does not need to have a DHCP server assign it IP
       addresses or delegated prefixes, can obtain configuration information
@@ -2572,20 +2587,6 @@
       target="solicit-create-transmit"></xref> includes a Rapid
       Commit option (see <xref target="RFC3315-22.14"></xref>) in its
       Solicit message.</t>
-
-      <t>The client is responsible for creating IAs and requesting that a
-      server assign addresses and/or delegated prefixes to the IAs. The
-      client first creates the IAs and assigns IAIDs to them. The client then
-      transmits a Solicit message containing the IA options describing the
-      IAs. The client MUST NOT be using any of the addresses or delegated
-      prefixes for which it tries to obtain the bindings by sending the
-      Solicit message. In particular, if the client had some valid bindings
-      and has chosen to start the server discovery process to obtain the
-      same bindings from a different server, the client MUST stop using the
-      addresses and delegated prefixes for the bindings it had obtained from
-      the previous server (see <xref target="RFC3315-18.1.6"/> for more details
-      on what stop using means), and which it is now trying to obtain from a
-      new server.</t>
 
       <t>Servers that can assign addresses or delegated prefixes to the IAs
       respond to the client with an Advertise message or Reply message if the
