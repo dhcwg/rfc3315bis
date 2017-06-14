@@ -7417,8 +7417,11 @@ DHCPv6 messages, options, status-codes, and more.</t>
      to <back> -->
 
     <section anchor="RFC3315-A" title="Appearance of Options in Message Types">
-      <t>The following table indicates with a "*" the options are allowed in
-      each DHCP message type:</t>
+      <t>The following tables indicates with a "*" the options are allowed in
+      each DHCP message type.</t>
+         
+      <t>These tables are informational and should they conflict with text
+      earlier in this document, that text should be considered authoritative.</t>
 
       <figure>
         <artwork><![CDATA[
@@ -7495,6 +7498,9 @@ R-repl.
       this document can appear as top-level options or encapsulated in other options
       defined in this document. Other RFC's may define additional situations
       where options defined in this document are encapsulated in other options.</t>
+         
+      <t>This table is informational and should it conflict with text earlier in
+      this document, that text should be considered authoritative.</t>
 
       <figure>
         <artwork><![CDATA[
