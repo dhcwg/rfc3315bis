@@ -4291,7 +4291,7 @@
         <!-- ends: "18.2.7 from line 2694-->
 
         <section anchor="RFC3315-17.2.2"
-                 title="Creation and Transmission of Advertise Messages">
+                 title="Creation of Advertise Messages">
           <!-- 17.2.2, line 1844-->
 
           <t>The server sets the "msg-type" field to ADVERTISE and copies the
@@ -4362,34 +4362,21 @@
           Status Code option encapsulated in the IA_PD containing status code
           NoPrefixAvail.</t>
 
-          <t>If the Solicit message was received directly by the server, the
-          server unicasts the Advertise message directly to the client using
-          the address in the source address field from the IP datagram in
-          which the Solicit message was received. The Advertise message MUST
-          be unicast on the link from which the Solicit message was
-          received.</t>
-
-          <t>If the Solicit message was received in a Relay-forward message,
-          the server constructs a Relay-reply message with the Advertise
-          message in the payload of a "relay-message" option. If the
-          Relay-forward messages included an Interface-id option, the server
-          copies that option to the Relay-reply message. The server unicasts
-          the Relay-reply message directly to the relay agent using the
-          address in the source address field from the IP datagram in which
-          the Relay-forward message was received.</t>
+          <t>Transmission of the Advertise message is described in the next
+          section.</t>
         </section>
 
         <!-- ends: "17.2.2 from line 1844-->
 
         <section anchor="RFC3315-18.2.8"
-                 title="Transmission of Reply Messages">
+                 title="Transmission of Advertise and Reply Messages">
           <!-- 18.2.8, line 2729-->
 
           <t>If the original message was received directly by the server, the
-          server unicasts the Reply message directly to the client using the
-          address in the source address field from the IP datagram in which
-          the original message was received. The Reply message MUST be unicast
-          through the interface on which the original message was
+          server unicasts the Advertise or Reply message directly to the client
+          using the address in the source address field from the IP datagram in which
+          the original message was received. The Advertise or Reply message MUST
+          be unicast through the interface on which the original message was
           received.</t>
 
           <t>If the original message was received in a Relay-forward message,
@@ -4400,7 +4387,8 @@
           the Relay-reply message. The server unicasts the Relay-reply message
           directly to the relay agent using the address in the source address
           field from the IP datagram in which the Relay-forward message was
-          received.</t>
+          received. See <xref target="RFC3315-20.3"/> for more details on the
+          construction of Relay-reply messages.</t>
         </section>
 
         <!-- ends: "18.2.8 from line 2729-->
