@@ -6612,8 +6612,8 @@
 
         <t>The DHCP server MAY include the SOL_MAX_RT option in any response
         it sends to a client that has included the SOL_MAX_RT option code in
-        an Option Request option. The SOL_MAX_RT option is sent in the main
-        body of the message to client, not as an encapsulated option in, e.g.,
+        an Option Request option. The SOL_MAX_RT option is sent as a top-level
+        option in the message to the client, not as an encapsulated option in, e.g.,
         an IA_NA, IA_TA, or IA_PD option.</t>
 
         <t>A DHCP client MUST ignore any SOL_MAX_RT option values that are
@@ -6672,7 +6672,7 @@
 
             <t hangText="   option-len">4.</t>
 
-            <t hangText="   SOL_MAX_RT value">Overriding value for INF_MAX_RT
+            <t hangText="   INF_MAX_RT value">Overriding value for INF_MAX_RT
             in seconds; MUST be in range: 60 &lt;= "value" &lt;= 86400 (1
             day).</t>
           </list></t>
@@ -6685,9 +6685,8 @@
 
         <t>The DHCP server MAY include the INF_MAX_RT option in any response
         it sends to a client that has included the INF_MAX_RT option code in
-        an Option Request option. The INF_MAX_RT option is sent in the main
-        body of the message to client, not as an encapsulated option in, e.g.,
-        an IA_NA, IA_TA, or IA_PD option.</t>
+        an Option Request option. The INF_MAX_RT option is a top-level
+        option in the message to the client.</t>
 
         <t>A DHCP client MUST ignore any INF_MAX_RT option values that are
         less than 60 or more than 86400.</t>
