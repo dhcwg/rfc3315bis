@@ -2471,8 +2471,8 @@
     <section anchor="RFC3315-16" title="Client Source Address and Interface Selection">
       <!-- 16, line 1605-->
 
-      <t>Client's behavior is different depending on the purpose of the
-      configuration.</t>
+      <t>Client's behavior regarding interface selection is different
+      depending on the purpose of the configuration.</t>
 
       <section anchor="if-addr-sel-addr-assignment"
                title="Address, Interface Selection for Address Assignment">
