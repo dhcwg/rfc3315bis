@@ -4330,9 +4330,7 @@
           encapsulated as in the case of the Prefix Exclude option <xref target="RFC6603"/>.
           In this case, special processing is required by the server.
           The server MAY return additional options to the client if it has been
-          configured to do so. The server must be aware of the recommendations
-          on packet sizes and the use of fragmentation in section 5 of <xref
-          target="RFC2460"></xref>.</t>
+          configured to do so.</t>
 
           <t>The server MUST include IA options in the Advertise message
           containing any addresses and/or delegated prefixes that would be
