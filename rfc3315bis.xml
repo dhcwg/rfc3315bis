@@ -876,8 +876,8 @@
         which the router is attached, and begins to send router advertisements
         for the prefix on the link, the client MUST set the valid
         lifetime in those advertisements to be no larger than the valid
-        lifetime specified in the IA_PD option. A client MAY
-        use the preferred lifetime specified in the IA_PD option.</t>
+        lifetime specified in the IAPREFIX option. A client MAY
+        use the preferred lifetime specified in the IAPREFIX option.</t>
 
       </section>
 
@@ -3560,9 +3560,9 @@
                 which the router is attached, and begins to send router
                 advertisements for the prefix on the link, the client MUST
                 set the valid lifetime in those advertisements to be no larger than
-                the valid lifetime specified in the IA_PD option.  A
+                the valid lifetime specified in the IAPREFIX option.  A
                 client MAY use the preferred lifetime specified in the
-                IA_PD option.</t>
+                IAPREFIX option.</t>
               </list></t>
 
             <t>Management of the specific configuration information is
