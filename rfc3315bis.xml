@@ -3100,10 +3100,9 @@
           client continues to operate as if Reconfigure message was not
           received, i.e., it uses T1/T2 times associated with the client's
           leases to determine when it should send Renew or Rebind to the
-          server. If the terminated Renew exchange was not initiated as a
-          result of receiving a Reconfigure message, the client begins a
-          Rebind message exchange (see <xref target="RFC3315-18.1.4"></xref>)
-          when the earliest time T2 is reached.</t>
+          server. The client begins a Rebind message exchange
+          (see <xref target="RFC3315-18.1.4"></xref>) when the
+          earliest time T2 is reached.</t>
         </section>
 
         <!-- ends: "18.1.3 from line 2100-->
