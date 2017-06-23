@@ -3469,8 +3469,7 @@
           using the configured NTP server address.  The client
           SHOULD be open to other sources of the same configuration
           information.  This behavior does not apply to any IA containers,
-          as their processing is described in detail in other parts of
-          this document.</t>
+          as their processing is described in detail in the next sectin.</t>
 
           <t>When a client receives a requested option that has an updated
           value from what was previously received, the client SHOULD make
