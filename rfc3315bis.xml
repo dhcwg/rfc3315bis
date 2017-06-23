@@ -3657,8 +3657,7 @@
           message exchange (retransmitting the Renew, Rebind, or
           Information-request message if necessary); the client MUST ignore
           any additional Reconfigure messages until the exchange is
-          complete. Subsequent Reconfigure messages cause the client to
-          initiate a new exchange.</t>
+          complete.</t>
 
           <t>Duplicate messages will be
           ignored because the client will begin the exchange after the
