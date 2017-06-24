@@ -1334,13 +1334,14 @@
       <t><list hangIndent="24" style="hanging">
           <t hangText="   msg-type">Identifies the DHCP message type; the
           available message types are listed in <xref
-          target="RFC3315-5.3"></xref>.</t>
+          target="RFC3315-5.3"></xref>. A one octet long field.</t>
 
           <t hangText="   transaction-id">The transaction ID for this message
-          exchange.</t>
+          exchange. A three octets long field.</t>
 
           <t hangText="   options">Options carried in this message; options
-          are described in <xref target="RFC3315-22"></xref>.</t>
+          are described in <xref target="RFC3315-22"></xref>. A variable length
+          field (4 octets less than the size of the message).</t>
         </list></t>
     </section>
 
@@ -1406,23 +1407,25 @@
         Relay-forward message.</t>
 
         <t><list hangIndent="24" style="hanging">
-            <t hangText="   msg-type">RELAY-FORW</t>
+            <t hangText="   msg-type">RELAY-FORW (12). A one octet long field.</t>
 
             <t hangText="   hop-count">Number of relay agents that
-            have already relayed this message.</t>
+            have already relayed this message. A one octet long field.</t>
 
             <t hangText="   link-address">An address that may be used by the
             server to identify the link on which the client is located. This
             is typically a globally unique address (including unique
             local address, <xref target="RFC4193"/>), but see discussion in <xref
-            target="relaying-from-client"></xref>.</t>
+            target="relaying-from-client"></xref>. A 16 octets long field</t>
 
             <t hangText="   peer-address">The address of the client or relay
-            agent from which the message to be relayed was received.</t>
+            agent from which the message to be relayed was received. A 16
+            octets long field.</t>
 
             <t hangText="   options">MUST include a "Relay Message option"
             (see <xref target="RFC3315-22.10"></xref>); MAY include other
-            options added by the relay agent.</t>
+            options added by the relay agent. A variable length field
+            (34 octets less than the size of the message).</t>
         </list></t>
 
         <t>See <xref target="addr-assign-ia-na"/> for an explanation
@@ -1439,20 +1442,21 @@
         Relay-reply message.</t>
 
         <t><list hangIndent="24" style="hanging">
-            <t hangText="   msg-type">RELAY-REPL</t>
+            <t hangText="   msg-type">RELAY-REPL (13). A one octet long field.</t>
 
             <t hangText="   hop-count">Copied from the Relay-forward
-            message</t>
+            message. A one octet long field.</t>
 
             <t hangText="   link-address">Copied from the Relay-forward
-            message</t>
+            message. A 16 octets long field.</t>
 
             <t hangText="   peer-address">Copied from the Relay-forward
-            message</t>
+            message. A 16 octets long field.</t>
 
             <t hangText="   options">MUST include a "Relay Message option";
             see <xref target="RFC3315-22.10"></xref>; MAY include other
-            options</t>
+            options. A variable length field (34 octets less than the
+            size of the message).</t>
           </list></t>
       </section>
 
@@ -1495,7 +1499,7 @@
       target="RFC7844"/>. It is recommended to rely on the mechanism defined in
       <xref target="RFC6939"/>.</t>
 
-      <t>The DUID is carried in an option because it may be variable length
+      <t>The DUID is carried in an option because it may be variable in length
       and because it is not required in all DHCP messages. The DUID is
       designed to be unique across all DHCP clients and servers, and stable
       for any specific client or server - that is, the DUID used by a client
@@ -1516,7 +1520,7 @@
       <section anchor="RFC3315-9.1" title="DUID Contents">
         <!-- 9.1, line 953-->
 
-        <t>A DUID consists of a two-octet type code represented in network
+        <t>A DUID consists of a two octets type code represented in network
         byte order, followed by a variable number of octets that make up the
         actual identifier. The length of the DUID (not including the type
         code) is at least 1 octet and at most 128 octets. The following types
@@ -1574,8 +1578,8 @@
       <section title="DUID Based on Link-layer Address Plus Time, DUID-LLT">
         <!-- 9.2, line 972-->
 
-        <t>This type of DUID consists of a two octet type field containing the
-        value 1, a two octet hardware type code, four octets containing a time
+        <t>This type of DUID consists of a two octets type field containing the
+        value 1, a two octets hardware type code, four octets containing a time
         value, followed by link-layer address of any one network interface
         that is connected to the DHCP device at the time that the DUID is
         generated. The time value is the time that the DUID is generated
@@ -1591,12 +1595,13 @@
         <figure align="center" anchor="FigDUIDLLT" title="DUID-LLT format">
           <preamble></preamble>
 
-          <artwork align="left"><![CDATA[
+          <artwork align="left">
+       <![CDATA[
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |               1               |    hardware type (16 bits)    |
+   |         DUID-Type (1)         |    hardware type (16 bits)    |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                        time (32 bits)                         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1651,7 +1656,7 @@
         <!-- 9.3, line 1038-->
 
         <t>This form of DUID is assigned by the vendor to the device. It
-        consists of the vendor's registered Private Enterprise Number as
+        consists of the four octet vendor's registered Private Enterprise Number as
         maintained by IANA <xref target="IANA-PEN"></xref> followed by a
         unique identifier assigned by the vendor. The following diagram
         summarizes the structure of a DUID-EN:</t>
@@ -1659,12 +1664,13 @@
         <figure align="center" anchor="FigDUIDEN" title="DUID-EN format">
           <preamble></preamble>
 
-          <artwork align="left"><![CDATA[
+          <artwork align="left">
+       <![CDATA[
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |               2               |       enterprise-number       |
+   |         DUID-Type (2)         |       enterprise-number       |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |   enterprise-number (contd)   |                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               |
@@ -1709,7 +1715,7 @@
           <postamble></postamble>
         </figure>
 
-        <t>This example includes the two-octet type of 2, the Enterprise
+        <t>This example includes the two octets type of 2, the Enterprise
         Number (9), followed by eight octets of identifier data
         (0x0CC084D303000912).</t>
       </section>
@@ -1720,7 +1726,7 @@
         <!-- 9.4, line 1084-->
 
         <t>This type of DUID consists of two octets containing the DUID type
-        3, a two octet network hardware type code, followed by the link-layer
+        3, a two octets network hardware type code, followed by the link-layer
         address of any one network interface that is permanently connected to
         the client or server device. For example, a node that has a network
         interface implemented in a chip that is unlikely to be removed and
@@ -1734,12 +1740,13 @@
         <figure align="center" anchor="FigDUIDLL" title="DUID-LL format">
           <preamble></preamble>
 
-          <artwork align="left"><![CDATA[
+          <artwork align="left">
+       <![CDATA[
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |               3               |    hardware type (16 bits)    |
+   |         DUID-Type (3)         |    hardware type (16 bits)    |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    .                                                               .
    .             link-layer address (variable length)              .
@@ -1768,7 +1775,7 @@
 
       <section title="DUID Based on Universally Unique IDentifier (UUID),
                       DUID-UUID">
-        <t>This type of DUID consists of sixteen octets containing a 128-bit
+        <t>This type of DUID consists of 16 octets containing a 128-bit
         UUID. <xref target="RFC6355" /> details when to use this type, and
         how to pick an appropriate source of the UUID.
         </t>
@@ -1780,7 +1787,7 @@
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |          DUID-Type (4)        |    UUID (128 bits)            |
+   |         DUID-Type (4)         |        UUID (128 bits)        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               |
    |                                                               |
    |                                                               |
@@ -3100,7 +3107,7 @@
           client continues to operate as if Reconfigure message was not
           received, i.e., it uses T1/T2 times associated with the client's
           leases to determine when it should send Renew or Rebind to the
-          server. The client begins a Rebind message exchange
+          server. server. The client begins a Rebind message exchange
           (see <xref target="RFC3315-18.1.4"></xref>) when the
           earliest time T2 is reached.</t>
         </section>
@@ -3469,7 +3476,7 @@
           using the configured NTP server address.  The client
           SHOULD be open to other sources of the same configuration
           information.  This behavior does not apply to any IA containers,
-          as their processing is described in detail in the next sectin.</t>
+          as their processing is described in detail the next section.</t>
 
           <t>When a client receives a requested option that has an updated
           value from what was previously received, the client SHOULD make
@@ -4823,16 +4830,19 @@
           </figure>
 
           <t><list hangIndent="20" style="hanging">
-              <t hangText="   Type">Type of data in Value field carried in
-              this option: <list hangIndent="8" style="hanging">
+              <t hangText="   Type">Type of data in the Value field carried in
+              this option:
+              <list hangIndent="8" style="hanging">
                   <t hangText="   1">Reconfigure Key value (used in Reply
                   message).</t>
 
                   <t hangText="   2">HMAC-MD5 digest of the message (used in
                   Reconfigure message).</t>
-                </list></t>
+                </list>
+              A one octet long field.</t>
 
-              <t hangText="   Value">Data as defined by the Type field.</t>
+              <t hangText="   Value">Data as defined by the Type field. A
+              16 octets long field.</t>
             </list></t>
         </section>
 
@@ -4945,13 +4955,16 @@
 
         <t><list hangIndent="24" style="hanging">
             <t hangText="   option-code">An unsigned integer identifying the
-            specific option type carried in this option.</t>
+            specific option type carried in this option. A two octets long
+            field.</t>
 
             <t hangText="   option-len">An unsigned integer giving the length
-            of the option-data field in this option in octets.</t>
+            of the option-data field in this option in octets. A two octets
+            long field.</t>
 
             <t hangText="   option-data">The data for the option; the format
-            of this data depends on the definition of the option.</t>
+            of this data depends on the definition of the option. A variable
+            length field (the length, in octets, is specified by option-len).</t>
           </list></t>
 
         <t>DHCP options are scoped by using encapsulation. Some options
@@ -4976,16 +4989,16 @@
 
           <artwork align="left"><![CDATA[
 
-   0                   1                   2                   3
-   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-  |        OPTION_CLIENTID        |          option-len           |
-  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-  .                                                               .
-  .                              DUID                             .
-  .                        (variable length)                      .
-  .                                                               .
-  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |        OPTION_CLIENTID        |          option-len           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   .                                                               .
+   .                              DUID                             .
+   .                        (variable length)                      .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
           ]]></artwork>
 
@@ -5092,21 +5105,23 @@
             <t hangText="   IAID">The unique identifier for this IA_NA; the
             IAID must be unique among the identifiers for all of this client's
             IA_NAs. The number space for IA_NA IAIDs is separate from the
-            number space for other IA option types (i.e., IA_TA and IA_PD).</t>
+            number space for other IA option types (i.e., IA_TA and IA_PD).
+            A four octets long field.</t>
 
             <t hangText="   T1">The time at which the client should contact the
             server from which the addresses in the IA_NA were obtained to
             extend the lifetimes of the addresses assigned to the IA_NA; T1 is
             a time duration relative to the current time expressed in units of
-            seconds.</t>
+            seconds. A four octets long field.</t>
 
             <t hangText="   T2">The time at which the client should contact any
             available server to extend the lifetimes of the addresses assigned
             to the IA_NA; T2 is a time duration relative to the current time
-            expressed in units of seconds.</t>
+            expressed in units of seconds. A four octets long field.</t>
 
             <t hangText="   IA_NA-options">Options associated with this
-            IA_NA.</t>
+            IA_NA. A variable length field (12 octets less than the
+            value in the option-len field).</t>
           </list></t>
 
         <t>The IA_NA-options field encapsulates those options that are
@@ -5206,10 +5221,12 @@
             <t hangText="   IAID">The unique identifier for this IA_TA; the
             IAID must be unique among the identifiers for all of this client's
             IA_TAs. The number space for IA_TA IAIDs is separate from the
-            number space for other IA option types (i.e., IA_NA and IA_PD).</t>
+            number space for other IA option types (i.e., IA_NA and IA_PD).
+            A four octets long field.</t>
 
             <t hangText="   IA_TA-options">Options associated with this
-            IA_TA.</t>
+            IA_TA. A variable length field (4 octets less than the
+            value in the option-len field).</t>
           </list></t>
 
         <t>The IA_TA-Options field encapsulates those options that are
@@ -5308,16 +5325,20 @@
             <t hangText="   IPv6-address">An IPv6 address. A client MUST NOT
             form an implicit prefix with a length other than 128 for this
             address. And, a client MUST NOT assume any length of prefix that
-            matches this address is on-link (see <xref target="RFC7421"/>).</t>
+            matches this address is on-link (see <xref target="RFC7421"/>).
+            A 16 octets long field.</t>
 
             <t hangText="   preferred-lifetime">The preferred lifetime for the
-            address in the option, expressed in units of seconds.</t>
+            address in the option, expressed in units of seconds. A four
+            octets long field.</t>
 
             <t hangText="   valid-lifetime">The valid lifetime for the
-            address in the option, expressed in units of seconds.</t>
+            address in the option, expressed in units of seconds. A four
+            octets long field.</t>
 
             <t hangText="   IAaddr-options">Options associated with this
-            address.</t>
+            address. A variable length field (24 octets less than the
+            value in the option-len field).</t>
           </list></t>
 
         <t>In a message sent by a client to a server, the preferred and valid
@@ -5382,7 +5403,8 @@
             <t hangText="   option-len">2 * number of requested options.</t>
 
             <t hangText="   requested-option-code-n">The option code for an
-            option requested by the client.</t>
+            option requested by the client. The length, in octets,
+            is specified by option-len.</t>
           </list></t>
 
         <t>A client MUST include an Option Request option in a Solicit,
@@ -5445,7 +5467,7 @@
             <t hangText="   option-len">1.</t>
 
             <t hangText="   pref-value">The preference value for the server in
-            this message.</t>
+            this message. A one octet long field.</t>
           </list></t>
 
         <t>A server MAY include a Preference option in an Advertise message to
@@ -5486,7 +5508,7 @@
 
             <t hangText="   elapsed-time">The amount of time since the client
             began its current DHCP transaction. This time is expressed in
-            hundredths of a second (10^-2 seconds).</t>
+            hundredths of a second (10^-2 seconds). A two octets long field.</t>
           </list></t>
 
         <t>A client MUST include an Elapsed Time option in messages to
@@ -5545,7 +5567,8 @@
             the received message, relayed verbatim to the next relay agent or
             server; in a Relay-reply message, the message to be copied and
             relayed to the relay agent or client whose address is in the
-            peer-address field of the Relay-reply message.</t>
+            peer-address field of the Relay-reply message. The
+            length, in octets, is specified by option-len.</t>
           </list></t>
       </section>
 
@@ -5595,20 +5618,21 @@
             information field.</t>
 
             <t hangText="   protocol">The authentication protocol used in this
-            authentication option.</t>
+            authentication option. A one octet long field.</t>
 
             <t hangText="   algorithm">The algorithm used in the
-            authentication protocol.</t>
+            authentication protocol. A one octet long field.</t>
 
             <t hangText="   RDM">The replay detection method used in this
-            authentication option.</t>
+            authentication option. A one octet long field.</t>
 
             <t hangText="   Replay detection">The replay detection information
-            for the RDM.</t>
+            for the RDM. A 64-bit (8 octets) long field</t>
 
             <t hangText="   authentication information">The authentication
             information, as specified by the protocol and algorithm used in
-            this authentication option.</t>
+            this authentication option. A variable length field (11 octets
+            less than the value in option-len).</t>
           </list></t>
       </section>
 
@@ -5648,8 +5672,9 @@
 
             <t hangText="   option-len">16.</t>
 
-            <t hangText="   server-address">The address to which the client
-            should send messages delivered using unicast.</t>
+            <t hangText="   server-address">The 128-bit address to
+            which the client should send messages delivered using
+            unicast.</t>
           </list></t>
 
         <t>The server specifies the address to which the client is to
@@ -5708,11 +5733,12 @@
             <t hangText="   option-len">2 + length of status-message.</t>
 
             <t hangText="   status-code">The numeric code for the status
-            encoded in this option.</t>
+            encoded in this option. A two octets long field.</t>
 
             <t hangText="   status-message">A UTF-8 encoded text string
             suitable for display to an end user, which MUST NOT be
-            null-terminated.</t>
+            null-terminated. A variable length field (2 octets
+            less than the value in option-len).</t>
           </list></t>
 
         <t>A Status Code option may appear in the options field of a DHCP
@@ -5882,7 +5908,7 @@
             <t hangText="   option-len">Length of user class data field.</t>
 
             <t hangText="   user-class-data">The user classes carried by the
-            client.</t>
+            client. The length, in octets, is specified by option-len.</t>
           </list></t>
 
         <t>The information contained in the data area of this option is
@@ -5970,10 +5996,11 @@
 
             <t hangText="   enterprise-number">The vendor's registered
             Enterprise Number as registered with IANA <xref
-            target="IANA-PEN"></xref>.</t>
+            target="IANA-PEN"></xref>. A four octets long field.</t>
 
             <t hangText="   vendor-class-data">The hardware configuration of
-            the node on which the client is running.</t>
+            the node on which the client is running. A variable length field
+            (4 octets less than the value in option-len).</t>
           </list></t>
 
         <t>The vendor-class-data is composed of a series of separate items,
@@ -6031,7 +6058,7 @@
    |                       enterprise-number                       |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    .                                                               .
-   .                        sub-option-data                        .
+   .                       vendor-option-data                      .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
@@ -6047,10 +6074,12 @@
 
             <t hangText="   enterprise-number">The vendor's registered
             Enterprise Number as registered with IANA <xref
-            target="IANA-PEN"></xref>.</t>
+            target="IANA-PEN"></xref>. A four octets long field.
+            </t>
 
-            <t hangText="   sub-option-data">Sub-options, interpreted by
-            vendor-specific code on the clients and servers.</t>
+            <t hangText="   vendor-option-data">Vendor options, interpreted by
+            vendor-specific code on the clients and servers. A variable
+            length field (4 octets less than the value in option-len).</t>
           </list></t>
 
         <t>The definition of the information carried in this option is vendor
@@ -6060,7 +6089,7 @@
         that does not receive requested vendor-specific information will still
         configure the node device's IPv6 stack to be functional.</t>
 
-        <t>The sub-option-data field MUST be encoded as a
+        <t>The vendor-option-data field MUST be encoded as a
         sequence of code/length/value fields of identical format to the DHCP
         options field. The sub-option codes are defined by the vendor identified
         in the enterprise-number field, and are not managed by IANA. Each of
@@ -6075,10 +6104,10 @@
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |          opt-code             |             option-len        |
+   |          sub-opt-code         |         sub-option-len        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    .                                                               .
-   .                          option-data                          .
+   .                        sub-option-data                        .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
@@ -6088,12 +6117,15 @@
         </figure>
 
         <t><list hangIndent="24" style="hanging">
-            <t hangText="   opt-code">The code for the sub-option.</t>
+            <t hangText="   sub-opt-code">The code for the sub-option. A
+            two octets long field.</t>
 
-            <t hangText="   option-len">An unsigned integer giving the length
-            of the option-data field in this sub-option in octets.</t>
+            <t hangText="   sub-option-len">An unsigned integer giving the length
+            of the sub-option-data field in this sub-option in octets. A two
+            octets long field.</t>
 
-            <t hangText="   option-data">The data area for the sub-option.</t>
+            <t hangText="   sub-option-data">The data area for the sub-option.
+            The length, in octets, is specified by sub-option-len.</t>
           </list></t>
 
         <t>Multiple instances of the Vendor-specific Information option may
@@ -6175,7 +6207,7 @@
 
             <t hangText="   interface-id">An opaque value of arbitrary length
             generated by the relay agent to identify one of the relay agent's
-            interfaces.</t>
+            interfaces. The length, in octets, is specified by option-len.</t>
           </list></t>
 
         <t>The server MUST copy the Interface-Id option from the Relay-forward
@@ -6229,7 +6261,7 @@
             <t hangText="   option-len">1.</t>
 
             <t hangText="   msg-type">5 for Renew message, 6 for Rebind, 11
-            for Information-request message.</t>
+            for Information-request message. A one octet long field.</t>
           </list></t>
 
         <t>The Reconfigure Message option can only appear in a Reconfigure
@@ -6320,21 +6352,24 @@
             <t hangText="   IAID">The unique identifier for this IA_PD; the
             IAID must be unique among the identifiers for all of this
             client's IA_PDs. The number space for IA_PD IAIDs is separate from
-            the number space for other IA option types (i.e., IA_NA and IA_TA).</t>
+            the number space for other IA option types (i.e., IA_NA and IA_TA).
+            A four octets long field.</t>
 
             <t hangText="   T1">The time at which the client should
             contact the server from which the prefixes in the IA_PD
             were obtained to extend the lifetimes of the prefixes delegated to
             the IA_PD; T1 is a time duration relative to the current time
-            expressed in units of seconds.</t>
+            expressed in units of seconds. A four octets long field.</t>
 
             <t hangText="   T2">The time at which the client should
             contact any available server to extend the lifetimes of
             the prefixes assigned to the IA_PD; T2 is a time duration relative
-            to the current time expressed in units of seconds.</t>
+            to the current time expressed in units of seconds.
+            A four octets long field.</t>
 
             <t hangText="   IA_PD-options">Options associated with this
-            IA_PD.</t>
+            IA_PD. A variable length field (12 octets less than the
+            value in the option-len field).</t>
           </list></t>
 
         <t>The IA_PD-options field encapsulates those options that are
@@ -6430,18 +6465,22 @@
 
             <t hangText="   preferred-lifetime">The recommended preferred
             lifetime for the prefix in the option, expressed in units of
-            seconds. A value of 0xFFFFFFFF represents infinity.</t>
+            seconds. A value of 0xFFFFFFFF represents infinity. A four
+            octets long field.</t>
 
             <t hangText="   valid-lifetime">The valid lifetime for the
             prefix in the option, expressed in units of seconds. A value of
-            0xFFFFFFFF represents infinity.</t>
+            0xFFFFFFFF represents infinity. A four octets long field.</t>
 
-            <t hangText="   prefix-length">Length for this prefix in bits.</t>
+            <t hangText="   prefix-length">Length for this prefix in bits.
+            A one octet long field.</t>
 
-            <t hangText="   IPv6-prefix">An IPv6 prefix.</t>
+            <t hangText="   IPv6-prefix">An IPv6 prefix. A 16 octets long
+            field.</t>
 
             <t hangText="   IAprefix-options">Options associated with this
-            prefix.</t>
+            prefix. A variable length field (25 octets less than the
+            value in the option-len field).</t>
           </list></t>
 
         <t>In a message sent by a client to a server,
@@ -6509,7 +6548,8 @@
             <t hangText="   option-len">4.</t>
 
             <t hangText="   information-refresh-time">Time duration relative to
-             the current time, expressed in units of seconds.</t>
+             the current time, expressed in units of seconds. A four octets
+             long field.</t>
           </list></t>
 
         <!-- The following paragraphs have been adapted from RFC 4242 -->
@@ -6597,7 +6637,7 @@
 
             <t hangText="   SOL_MAX_RT value">Overriding value for SOL_MAX_RT
             in seconds; MUST be in range: 60 &lt;= "value" &lt;= 86400 (1
-            day).</t>
+            day). A four octets long field.</t>
           </list></t>
 
         <!-- The following paragraphs have been merged from section 7 and 8
@@ -6671,7 +6711,7 @@
 
             <t hangText="   INF_MAX_RT value">Overriding value for INF_MAX_RT
             in seconds; MUST be in range: 60 &lt;= "value" &lt;= 86400 (1
-            day).</t>
+            day). A four octets long field.</t>
           </list></t>
 
         <!-- The following paragraphs have been merged from section 7 of RFC7083 -->
