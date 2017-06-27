@@ -872,12 +872,15 @@
         information on to the subscriber hosts through a DHCP server in the
         client (requesting router).</t>
 
-        <t>If the client assigns a delegated prefix to a link to
-        which the router is attached, and begins to send router advertisements
-        for the prefix on the link, the client MUST set the valid
-        lifetime in those advertisements to be no larger than the valid
-        lifetime specified in the IAPREFIX option. A client MAY
-        use the preferred lifetime specified in the IAPREFIX option.</t>
+        <t>If the client uses a delegated prefix to configure addresses on
+       interfaces on itself or other nodes behind it, the preferred and
+       valid lifetimes of those addresses MUST be no larger than the
+       remaining preferred and valid lifetimes, respectively, for the
+       delegated prefix at any time. In particular, if the delegated
+       prefix or a prefix derived from it is advertised for stateless
+       address autoconfiguration <xref target="RFC4862"/>, the advertised
+       preferred and valid lifetimes MUST NOT exceed the corresponding
+       remaining lifetimes of the delegated prefix.</t>
 
       </section>
 
@@ -3561,13 +3564,15 @@
                 2001:db8:5:1::/64 to one of the links, and 2001:db8:0:2::/64 and
                 2001:db8:5:2::/64 for assignment to the other link.
                 <vspace blankLines='1'/>
-                If the client assigns a delegated prefix to a link to
-                which the router is attached, and begins to send router
-                advertisements for the prefix on the link, the client MUST
-                set the valid lifetime in those advertisements to be no larger than
-                the valid lifetime specified in the IAPREFIX option.  A
-                client MAY use the preferred lifetime specified in the
-                IAPREFIX option.</t>
+                If the client uses a delegated prefix to configure addresses on
+                interfaces on itself or other nodes behind it, the preferred and
+                valid lifetimes of those addresses MUST be no larger than the
+                remaining preferred and valid lifetimes, respectively, for the
+                delegated prefix at any time.  In particular, if the delegated
+                prefix or a prefix derived from it is advertised for stateless
+                address autoconfiguration [RFC4862], the advertised valid and
+                preferred lifetimes MUST NOT exceed the corresponding remaining
+                lifetimes of the delegated prefix.</t>
               </list></t>
 
             <t>Management of the specific configuration information is
@@ -6463,7 +6468,7 @@
             <t hangText="   option-length">25 + length of IAprefix-options
             field.</t>
 
-            <t hangText="   preferred-lifetime">The recommended preferred
+            <t hangText="   preferred-lifetime">The preferred
             lifetime for the prefix in the option, expressed in units of
             seconds. A value of 0xFFFFFFFF represents infinity. A four
             octets long field.</t>
@@ -6495,7 +6500,9 @@
         lifetime is greater than the valid lifetime.</t>
 
         <t>The values in the preferred and valid lifetimes are the number of
-        seconds remaining for each lifetime.</t>
+        seconds remaining for each lifetime. See
+        <xref target="reply-solicit-request-renew-rebind"/> for more details
+        on how these values are used for delegated prefixes.</t>
 
         <t>As per <xref target="RFC3315-5.6"/>, the preferred and valid lifetime values of
         0xffffffff is taken to mean "infinity" and should be used carefully.</t>
