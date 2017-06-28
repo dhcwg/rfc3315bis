@@ -4575,7 +4575,8 @@
           message is a global address (including unique local address,
           <xref target="RFC4193"/>), the relay
           agent sets the link-address field to 0; otherwise the relay agent
-          sets the link-address field to a global address (including ULA)
+          sets the link-address field to a global address (including
+          unique local address)
           assigned to the interface on which the message was received, or
           includes an Interface-ID option to identify the interface on which
           the message was received.</t>
