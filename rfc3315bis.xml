@@ -2746,8 +2746,8 @@
 
 
         <t>Use of unicast may avoid delays due to the relaying of messages
-            by relay agents, as well as avoid overhead and duplicate responses
-            by servers due to the delivery of client messages to multiple
+            by relay agents, as well as avoid overhead on servers due to
+            the delivery of client messages to multiple
             servers. However, requiring the client to relay all DHCP messages
             through a relay agent enables the inclusion of relay agent options
             in all messages sent by the client. The server should enable the
