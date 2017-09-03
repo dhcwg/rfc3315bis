@@ -6855,22 +6855,21 @@
 
       <t>For wired networks where clients typically are connected to a switch
       port, snooping DHCP multicast (or unicast traffic) becomes difficult as
-      the switches limit the traffic delivered to a port. The client’s DHCP
+      the switches limit the traffic delivered to a port. The client's DHCP
       multicast packets (with destination address fe02::1:2) are only forwarded
-      to the DHCP server’s (or relay’s) switch port - not all ports. And the
-      server’s (or relay’s) unicast replies are only delivered to the target
-      client’s port - not all ports.</t>
+      to the DHCP server's (or relay's) switch port - not all ports. And the
+      server's (or relay's) unicast replies are only delivered to the target
+      client's port - not all ports.</t>
 
       <t>In public networks (such as a WiFi network in a coffee shop or airport),
       it is possible for others within radio range to snoop DHCP and other
       traffic. But in these environments, there is very little if anything that
       can be learned from the DHCP traffic itself (either from client to server,
       or server to client) if the privacy considerations (see <xref
-
       target="privacy"/>) are followed. For devices that do not follow the
       privacy considerations, there is also little that can be learned that
       would not be available from subsequent communications anyway (such as the
-      device’s mac-address). Or, that cannot be inferred by the bad actor
+      device's mac-address). Or, that cannot be inferred by the bad actor
       initiating a DHCP request itself (since all clients will typically receive
       similar configuration details). As mentioned above, one threat is that the
       RKAP key for a client can be learned (if the initial Solicit / Advertise /
@@ -7419,7 +7418,6 @@ and other changes from RFC4242, RFC7083, and RFC7550. A few changes of note:
                in the Reply than requested by a client in the Request message.
                Also clarified that a server must not include addresses that it
                will not assign.</t>
-               </t>
      </list>
 
 Also, a Refreshing Configuration Information <xref target="RFC3315-18.2.12"/>
