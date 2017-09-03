@@ -13,7 +13,7 @@
     <title abbrev="DHCP for IPv6">Dynamic Host Configuration Protocol for IPv6
     (DHCPv6) bis</title>
 
-    <author fullname="Tomek Mrugalski" initials="T." role="editor"
+    <author fullname="Tomek Mrugalski" initials="T."
             surname="Mrugalski">
       <organization abbrev="ISC">Internet Systems Consortium,
       Inc.</organization>
@@ -3727,13 +3727,13 @@
           (see <xref target="RFC3315-18.1.2"/>). The client includes IA_NAs, IA_TAs, and IA_PDs,
           along with the associated leases, in its Rebind message.</t>
     
-          <t>If the client has only obtained network information using Information Request/Reply
-          message exchanges, the client MUST initiate a Information-Request/Reply message exchange as
+          <t>If the client has only obtained network information using Information-request/Reply
+          message exchanges, the client MUST initiate a Information-request/Reply message exchange as
           described in <xref target="RFC3315-18.1.5"/>.</t>
 
           <t>If not associated with one of the above mentioned conditions, a client SHOULD 
           initiate a Renew/Reply exchange (as if the T1 time expired) as described in
-          <xref target="RFC3315-18.1.3"/> or an Information-Request/Reply exchange as
+          <xref target="RFC3315-18.1.3"/> or an Information-request/Reply exchange as
           described in <xref target="RFC3315-18.1.5"/> if the client detects a
           significant change regarding the prefixes
           available on the link (when new are added or existing are deprecated) as this
@@ -6567,7 +6567,7 @@
         messages. A client MUST NOT request this option in the ORO in any other
         messages.</t>
 
-        <t>A server sending a Reply to an Information-Request message SHOULD
+        <t>A server sending a Reply to an Information-request message SHOULD
         include this option if it is requested in the ORO of the Information-
         Request. The option value MUST NOT be smaller than IRT_MINIMUM. This
         option MUST only appear in the top-level option area of Reply messages.</t>
@@ -6726,7 +6726,7 @@
 
         <t>A DHCP client MUST include the INF_MAX_RT option code in any Option
         Request option (see <xref target="RFC3315-22.7"></xref>) it sends in
-        an Information-Request message.</t>
+        an Information-request message.</t>
 
         <t>The DHCP server MAY include the INF_MAX_RT option in any response
         it sends to a client that has included the INF_MAX_RT option code in
@@ -6756,36 +6756,31 @@
       <!-- 23, line 4492-->
 
       <t>This section discusses security considerations that are not related
-      to privacy. For dedicated privacy discussion, see <xref
-      target="privacy"></xref>. The work in progress
-      <xref target="I-D.ietf-dhc-sedhcpv6"/> document provides additional
-      analysis of the security issues and specifies a secure client and
-      server communication mechanism.</t>
+      to privacy.  For dedicated privacy discussion, see <xref
+      target="privacy"/>.</t>
 
       <t>The threat to DHCP is inherently an insider threat (assuming a
       properly configured network where DHCP ports are blocked on the
-      perimeter gateways of the enterprise). Regardless of the gateway
-      configuration, however, the potential attacks by insiders and outsiders
-      are the same.</t>
+      perimeter gateways of the enterprise).  Regardless of the gateway
+      configuration, however, the potential attacks by insiders and
+      outsiders are the same.</t>
 
       <t>One attack specific to a DHCP client is the establishment of a
       malicious server with the intent of providing incorrect configuration
-      information to the client. The motivation for doing so may be to mount a
-      "man in the middle" attack that causes the client to communicate with a
-      malicious server instead of a valid server for some service such as DNS
-      or NTP. The malicious server may also mount a denial of service attack
-      through misconfiguration of the client that causes all network
+      information to the client.  The motivation for doing so may be to mount
+      a "man in the middle" attack that causes the client to communicate with
+      a malicious server instead of a valid server for some service such as
+      DNS or NTP.  The malicious server may also mount a denial of service
+      attack through misconfiguration of the client that causes all network
       communication from the client to fail.</t>
-
-      <!-- Merged from the section 10 of RFC7083. -->
 
       <t>A malicious DHCP server might cause a client to set its SOL_MAX_RT
       and INF_MAX_RT parameters to an unreasonably high value with the
       SOL_MAX_RT and INF_MAX_RT options, which may cause an undue delay in a
       client completing its DHCP protocol transaction in the case no other
-      valid response is received. Assuming the client also receives a response
-      from a valid DHCP server, large values for SOL_MAX_RT and INF_MAX_RT
-      will not have any effect.</t>
+      valid response is received.  Assuming the client also receives a
+      response from a valid DHCP server, large values for SOL_MAX_RT and
+      INF_MAX_RT will not have any effect.</t>
 
       <t>There is another threat to DHCP clients from mistakenly or
       accidentally configured DHCP servers that answer DHCP client requests
@@ -6793,61 +6788,96 @@
 
       <t>A DHCP client may also be subject to attack through the receipt of a
       Reconfigure message from a malicious server that causes the client to
-      obtain incorrect configuration information from that server. Note that
-      although a client sends its response (Renew, Rebind, or Information-request
-      message) through a relay agent and, therefore, that response will only
-      be received by servers to which DHCP messages are relayed, a malicious
-      server could send a Reconfigure message to a client, followed (after an
-      appropriate delay) by a Reply message that would be accepted by the
-      client. Thus, a malicious server that is not on the network path between
-      the client and the server may still be able to mount a Reconfigure
-      attack on a client. The use of transaction IDs that are
-      cryptographically sound and cannot easily be predicted will also reduce
-      the probability that such an attack will be successful.</t>
+      obtain incorrect configuration information from that server.  Note that
+      although a client sends its response (Renew, Rebind, or
+      Information-request message) through a relay agent and, therefore, that
+      response will only be received by servers to which DHCP messages are
+      relayed, a malicious server could send a Reconfigure message to a client,
+      followed (after an appropriate delay) by a Reply message that would be
+      accepted by the client.  Thus, a malicious server that is not on the
+      network path between the client and the server may still be able to
+      mount a Reconfigure attack on a client.  The use of transaction IDs that
+      are cryptographically sound and cannot easily be predicted will also
+      reduce the probability that such an attack will be successful.</t>
 
-      <t>Because of the opportunity for attack through the Reconfigure
-      message, a DHCP client MUST discard any Reconfigure message that does
-      not include authentication or that does not pass the validation process
-      for the authentication protocol.</t>
+      <t>Because of the opportunity for attack through the Reconfigure message,
+      a DHCP client MUST discard any Reconfigure message that does not include
+      authentication or that does not pass the validation process for the
+      authentication protocol.</t>
 
-      <t>The Reconfigure Key protocol described in <xref
-      target="reconfigure-protocol"></xref> provides protection against the use of a
-      Reconfigure message by a malicious DHCP server to mount a denial of
-      service or man-in-the-middle attack on a client. This protocol can be
+      <t>The Reconfigure Key protocol described in
+      <xref target="reconfigure-protocol"/> provides protection against the use
+      of a Reconfigure message by a malicious DHCP server to mount a denial of
+      service or man-in-the-middle attack on a client.  This protocol can be
       compromised by an attacker that can intercept the initial message in
       which the DHCP server sends the key "in plain text" to the client.</t>
 
       <t>Many of these rogue server attacks can be mitigated by making use of
-      the mechanism described in <xref target="RFC7610"/>.</t>
+      the mechanism described in <xref target="RFC7610"/> and <xref
+      target="RFC7513"/>.</t>
 
-      <t>The threat specific to a DHCP server is an invalid client
-      masquerading as a valid client. The motivation for this may be for theft
-      of service, or to circumvent auditing for any number of nefarious
-      purposes.</t>
+      <t>The threat specific to a DHCP server is an invalid client masquerading
+      as a valid client.  The motivation for this may be for theft of service,
+      or to circumvent auditing for any number of nefarious purposes.</t>
 
       <t>The threat common to both the client and the server is the resource
-      "denial of service" (DoS) attack. These attacks typically involve the
-      exhaustion of available assigned address or delegatable prefixes, or
-      the exhaustion of CPU or network bandwidth, and are present anytime
-      there is a shared resource. Some forms of these exhaustion attacks can
-      be partially mitigated by appropriate server policy, e.g., limiting
-      the maximum number of leases any one client can get.</t>
+      "denial of service" (DoS) attack.  These attacks typically involve the
+      exhaustion of available assigned address or delegatable prefixes, or the
+      exhaustion of CPU or network bandwidth, and are present anytime there is
+      a shared resource.  Some forms of these exhaustion attacks can be
+      partially mitigated by appropriate server policy, e.g., limiting the
+      maximum number of leases any one client can get.</t>
 
-      <t>The messages exchanged between relay agents and servers may be used
-      to mount a "man in the middle" or denial of service attack. Communication
-      between a server and a relay agent, and communication between relay agents,
-      can be authenticated and encrypted through the use of IPsec, as
+      <t>The messages exchanged between relay agents and servers may be used to
+      mount a "man in the middle" or denial of service attack. Communication
+      between a server and a relay agent, and communication between relay
+      agents, can be authenticated and encrypted through the use of IPsec, as
       described in <xref target="I-D.ietf-dhc-relay-server-security"/>.</t>
 
-      <t>However, the use of manually configured pre-shared keys for IPsec between
-      relay agents and servers does not defend against replayed DHCP messages.
-      Replayed messages can represent a DOS attack through exhaustion of
-      processing resources, but not through mis-configuration or exhaustion of
-      other resources such as assignable address and delegatable prefixes.</t>
+      <t>However, the use of manually configured pre-shared keys for IPsec
+      between relay agents and servers does not defend against replayed DHCP
+      messages.  Replayed messages can represent a DOS attack through
+      exhaustion of processing resources, but not through mis-configuration or
+      exhaustion of other resources such as assignable address and delegatable
+      prefixes.</t>
 
       <t>Networks configured with delegated prefixes should be configured to
       preclude intentional or inadvertent inappropriate advertisement of these
       prefixes.</t>
+
+      <t>Various network environments also offer levels of security if deployed
+      as described below.</t>
+
+      <t>In enterprise and factory networks, use of <xref target="IEEE-802.1x"/>
+      authentication can prevent unknown or untrusted clients from connecting to
+      the network. However, this does not necessarily assure that the connected
+      client will be a good DHCP or network actor.</t>
+
+      <t>For wired networks where clients typically are connected to a switch
+      port, snooping DHCP multicast (or unicast traffic) becomes difficult as
+      the switches limit the traffic delivered to a port. The client’s DHCP
+      multicast packets (with destination address fe02::1:2) are only forwarded
+      to the DHCP server’s (or relay’s) switch port - not all ports. And the
+      server’s (or relay’s) unicast replies are only delivered to the target
+      client’s port - not all ports.</t>
+
+      <t>In public networks (such as a WiFi network in a coffee shop or airport),
+      it is possible for others within radio range to snoop DHCP and other
+      traffic. But in these environments, there is very little if anything that
+      can be learned from the DHCP traffic itself (either from client to server,
+      or server to client) if the privacy considerations (see <xref
+
+      target="privacy"/>) are followed. For devices that do not follow the
+      privacy considerations, there is also little that can be learned that
+      would not be available from subsequent communications anyway (such as the
+      device’s mac-address). Or, that cannot be inferred by the bad actor
+      initiating a DHCP request itself (since all clients will typically receive
+      similar configuration details). As mentioned above, one threat is that the
+      RKAP key for a client can be learned (if the initial Solicit / Advertise /
+      Request / Reply exchange is monitored) and trigger a premature
+      reconfiguration - but this is relatively easy to prevent by disallowing
+      direct client-to-client communication on these networks or using <xref
+      target="RFC7610"/> and <xref target="RFC7513"/>.</t>
 
     </section>
 
@@ -7265,6 +7295,7 @@
       <?rfc include='reference.RFC.7341'?>
       <?rfc include='reference.RFC.7368'?>
       <?rfc include='reference.RFC.7421'?>
+      <?rfc include='reference.RFC.7513'?>
       <?rfc include='reference.RFC.7550'?>
       <?rfc include='reference.RFC.7598'?>
       <?rfc include='reference.RFC.7610'?>
@@ -7278,8 +7309,6 @@
          
       <?rfc include='reference.I-D.ietf-dhc-relay-server-security'?>
 
-      <?rfc include='reference.I-D.ietf-dhc-sedhcpv6'?>
-
       <reference anchor="TR-187"
                  target="https://www.broadband-forum.org/technical/download/TR-187_Issue-2.pdf">
         <front>
@@ -7289,6 +7318,18 @@
           </author>
 
           <date year="2013" month="February" />
+        </front>
+      </reference>
+         
+      <reference anchor="IEEE-802.1x"
+                 target="http://ieeexplore.ieee.org/servlet/opac?punumber=5409757">
+        <front>
+          <title>802.1X-2010 - IEEE Standard for Local and metropolitan area networks--Port-Based Network Access Control</title>
+          <author>
+            <organization>IEEE</organization>
+          </author>
+
+          <date year="2010" month="February" />
         </front>
       </reference>
 
@@ -7371,13 +7412,14 @@ and other changes from RFC4242, RFC7083, and RFC7550. A few changes of note:
                IA_NA/IA_PD, ORO, or other options to indicate to the
                client what was reconfigured. The client should request
                everything it needs in the response to the Reconfigure.</t>
-               <t>Lifetime and T1/T2 hints should not be sent by a client
+               <t>The lifetime and T1/T2 hints should not be sent by a client
                (it should send 0 values in these fields) and any non-zero
                values should be ignored by the server.</t>
                <t>Clarified that a server may return different addresses
                in the Reply than requested by a client in the Request message.
                Also clarified that a server must not include addresses that it
                will not assign.</t>
+               </t>
      </list>
 
 Also, a Refreshing Configuration Information <xref target="RFC3315-18.2.12"/>
@@ -7529,8 +7571,8 @@ R-repl.
 
       <figure>
         <artwork><![CDATA[
-                Top-    IA_NA/                        Relay-  Relay-
-                Level   IA_TA  IAADDR IA_PD  IAPREFIX Forw    Reply
+                Top-    IA_NA/                        RELAY-  RELAY-
+                Level   IA_TA  IAADDR IA_PD  IAPREFIX FORW    REPLY
 Client ID          *
 Server ID          *
 IA_NA/IA_TA        *
@@ -7559,7 +7601,7 @@ INF_MAX_RT         *
 
       <t>Notes: Options asterisked in the "Top-Level" column appear in the
       options field of client messages (see <xref target="RFC3315-6"/>). Options
-      asterisked in the "Relay-Forw" / "Relay-Reply" column appear in the
+      asterisked in the "RELAY-FORW" / "RELAY-REPLY" column appear in the
       options field of the Relay-forward and Relay-reply messages
       (see <xref target="RFC3315-7"/>).</t>
     </section>
