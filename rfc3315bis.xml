@@ -4719,7 +4719,7 @@
         <!-- 21.1, line 3108-->
 
         <t>Relay agents and servers that exchange messages can use
-        IPsec as detailed in <xref target="I-D.ietf-dhc-relay-server-security"/>.
+        IPsec as detailed in <xref target="RFC8213"/>.
         </t>
 
       </section>
@@ -6832,7 +6832,7 @@
       mount a "man in the middle" or denial of service attack. Communication
       between a server and a relay agent, and communication between relay
       agents, can be authenticated and encrypted through the use of IPsec, as
-      described in <xref target="I-D.ietf-dhc-relay-server-security"/>.</t>
+      described in <xref target="RFC8213"/>.</t>
 
       <t>However, the use of manually configured pre-shared keys for IPsec
       between relay agents and servers does not defend against replayed DHCP
@@ -7305,8 +7305,7 @@
       <?rfc include='reference.RFC.7969'?>
 
       <?rfc include='reference.RFC.8168'?>
-         
-      <?rfc include='reference.I-D.ietf-dhc-relay-server-security'?>
+      <?rfc include='reference.RFC.8213'?>
 
       <reference anchor="TR-187"
                  target="https://www.broadband-forum.org/technical/download/TR-187_Issue-2.pdf">
