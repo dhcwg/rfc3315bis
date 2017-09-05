@@ -7427,7 +7427,7 @@ information.</t>
 
 <t>The Authentication of DHCP Messages <xref target="RFC3315-21"/> had
 significant changes: IPsec materials were mostly removed and replaced
-with a reference to <xref target="I-D.ietf-dhc-relay-server-security"/>, and the
+with a reference to <xref target="RFC8213"/>, and the
 Delay Authentication Protocol was removed (see <xref target="obsolete"/>).
 Note that the Reconfigure Key Authentication Protocol is retained.</t>
 
