@@ -123,7 +123,7 @@ represent the strong concurrence of a few individuals, with others
 being silent, or does the WG as a whole understand and agree with it?
 
   There is broad consensus in the dhc working group to publish this
-  document.  Thre was significant response to the initial working
+  document.  There was significant response to the initial working
   group last call.  While there was less discussion of subsequent
   working group last calls, the bulk of the revisions to the document
   were a result of the extensive discussion following the initial last
