@@ -54,13 +54,28 @@ Working Group Summary:
 
 Document Quality:
 
+  Section 1 summarizes the relationship of rfc3315bis to several RFCs
+  that define the current DHCPv6 specification.  Appendix A of
+  rfc3315bis lists the changes in the DHCPv6 specification relative to
+  RFC 3315.
+  
+  rfc3315bis has received significant review by the dhc Working Group
+  in two Working Group last calls.  Summaries of the issues raised
+  during the last calls is available at:
+
+     https://github.com/dhcwg/rfc3315bis/blob/master/wglc-issues-draft-ietf-dhc-rfc3315bis-05.pdf
+     https://github.com/dhcwg/rfc3315bis/blob/master/3315bis%20WGLC%20(draft-ietf-dhc-rfc3315bis-08)%20-%20June%202017%20-%20Sheet1.pdf
+
+  The Acknowledgments section cites individuals who contributed
+  thorough and helpful reviews.
+
   There are no implementations of DHCPv6 that include the changes to
   the protocol specified in rfc3315bis.  There are, of course, many
-  implementations of DHCPv6 based on RFC 3315 and subsequent RFCs.  At
-  least four vendors are interested in updating their implementations:
-  Cisco, Huawei, ISC and Nominum..
-
-  <need to add mentions of any particularly thorough or helpful reviews>
+  implementations of DHCPv6 based on RFC 3315 and subsequent RFCs.
+  rfc3315bis incorporates updates to the DHCPv6 specification based on
+  interop tests among several DHCPv6 implementations.  At least four
+  vendors are interested in updating their implementations: Cisco,
+  Huawei, ISC and Nominum.
 
 Personnel:
 
@@ -111,6 +126,15 @@ disclosures required for full conformance with the provisions of BCP
 78 and BCP 79 have already been filed. If not, explain why?
 
   <need to get confirmations from authors>
+
+N  T. Mrugalski, Ed.
+   M. Siodelski
+N  B. Volz
+   A. Yourtchenko
+N  M. Richardson
+   S. Jiang
+N  T. Lemon
+   T. Winters
 
 (8) Has an IPR disclosure been filed that references this document? If
 so, summarize any WG discussion and conclusion regarding the IPR
@@ -196,7 +220,10 @@ that allocations procedures for future registrations are defined, and
 a reasonable name for the new registry has been suggested (see RFC
 5226).
 
-  <Ralph to review IANA considerations section and add text here>
+  rfc3315bis does not define any new IANA registries.  It does request
+  changes to some existing IANA registries to recognize the
+  publication of rfc3315bis and to mark the deprecated "DHCPv6 Delayed
+  Authentication" as obsolete.  The 
 
 (18) List any new IANA registries that require Expert Review for
 future allocations. Provide any public guidance that the IESG would
