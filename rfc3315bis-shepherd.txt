@@ -130,11 +130,11 @@ disclosures required for full conformance with the provisions of BCP
 N  T. Mrugalski, Ed.
    M. Siodelski
 N  B. Volz
-   A. Yourtchenko
+N  A. Yourtchenko
 N  M. Richardson
    S. Jiang
 N  T. Lemon
-   T. Winters
+N  T. Winters
 
 (8) Has an IPR disclosure been filed that references this document? If
 so, summarize any WG discussion and conclusion regarding the IPR
@@ -223,7 +223,7 @@ a reasonable name for the new registry has been suggested (see RFC
   rfc3315bis does not define any new IANA registries.  It does request
   changes to some existing IANA registries to recognize the
   publication of rfc3315bis and to mark the deprecated "DHCPv6 Delayed
-  Authentication" as obsolete.  The 
+  Authentication" as obsolete.
 
 (18) List any new IANA registries that require Expert Review for
 future allocations. Provide any public guidance that the IESG would
