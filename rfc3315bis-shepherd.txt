@@ -128,7 +128,7 @@ disclosures required for full conformance with the provisions of BCP
   <need to get confirmations from authors>
 
 N  T. Mrugalski, Ed.
-   M. Siodelski
+N  M. Siodelski
 N  B. Volz
 N  A. Yourtchenko
 N  M. Richardson
