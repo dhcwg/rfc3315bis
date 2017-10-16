@@ -126,9 +126,8 @@ advance the document, detail those concerns here.
 disclosures required for full conformance with the provisions of BCP
 78 and BCP 79 have already been filed. If not, explain why?
 
-  All but one of the authors have replied that no IPR disclosures are
-  required, to their knowledge.  We are still waiting to hear from
-  Marcin Siodelski.
+  All authors have replied that no IPR disclosures are required,
+  to their knowledge.
 
 (8) Has an IPR disclosure been filed that references this document? If
 so, summarize any WG discussion and conclusion regarding the IPR
