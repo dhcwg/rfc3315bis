@@ -4,9 +4,10 @@ this the proper type of RFC? Is this type of RFC indicated in the
 title page header? 
 
   The requested publication status is Proposed Standard.  This
-  document is a refinement of RFC3315, and incorporates text from
-  RFC3633, RFC3736, RFC4242, RFC7083, and RFC7550 that is central to
-  the specification of DHCPv6.  While the original intent was to
+  document is a revision of the DHCPv6 specification, and incorporates
+  text from RFC3633, RFC3736, RFC4242, RFC7083, and RFC7550, all of
+  which are part of the core specification of DHCPv6.  While the
+  original intent of the dhc WG in producing this document was to
   publish rfc3315bis as Internet Standard, there are some minor
   protocol changes from previous RFCs in rfc3315bis, and no
   implementation experience with the protocol as specified in
@@ -44,10 +45,10 @@ Working Group Summary:
   Because there are some minor protocol changes from previous RFCs in
   rfc3315bis, and no implementation experience with the protocol as
   specified in rfc3315bis, the dhc Working Group requests that
-  rfc3315bis be publsihed as Proposed Standard.
+  rfc3315bis be published as Proposed Standard.
 
   There were no points or decisions about rfc3315bis that caused
-  controversy or for which consensus was determined to be particualrly
+  controversy or for which consensus was determined to be particularly
   rough.  The origin documents, RFC 3315 et al., were sufficiently
   well-written and have sufficient implementation and deployment
   experience to minimize the discussion about rfc3315bis.
@@ -125,16 +126,9 @@ advance the document, detail those concerns here.
 disclosures required for full conformance with the provisions of BCP
 78 and BCP 79 have already been filed. If not, explain why?
 
-  <need to get confirmations from authors>
-
-N  T. Mrugalski, Ed.
-N  M. Siodelski
-N  B. Volz
-N  A. Yourtchenko
-N  M. Richardson
-   S. Jiang
-N  T. Lemon
-N  T. Winters
+  All but one of the authors have replied that no IPR disclosures are
+  required, to their knowledge.  We are still waiting to hear from
+  Marcin Siodelski.
 
 (8) Has an IPR disclosure been filed that references this document? If
 so, summarize any WG discussion and conclusion regarding the IPR
@@ -196,7 +190,7 @@ normative references exist, what is the plan for their completion?
 3967)? If so, list these downward references to support the Area
 Director in the Last Call procedure.
 
-  No.
+  No downward normative references.
 
 (16) Will publication of this document change the status of any
 existing RFCs? Are those RFCs listed on the title page header, listed
