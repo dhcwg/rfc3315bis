@@ -388,9 +388,8 @@
             such as tunnels over IPv4 or IPv6 itself.</t>
 
             <t hangText="link-layer identifier">A link-layer identifier for an
-            interface. Examples include IEEE 802 addresses for Ethernet or
-            Token Ring network interfaces, and E.164 addresses for ISDN
-            links.</t>
+            interface. For example, IEEE 802 addresses for Ethernet or
+            Token Ring network interfaces.</t>
 
             <t hangText="link-local address">An IPv6 address having a
             link-only scope, indicated by having the prefix (fe80::/10), that
@@ -437,7 +436,8 @@
 
             <t hangText="binding">A binding (or, client binding) is a group of
             server data records containing the information the server has
-            about the addresses or delegated prefixes in an IA or configuration information
+            about the addresses or delegated prefixes in an IA (Identity
+            Association, see below) or configuration information
             explicitly assigned to the client. Configuration information that
             has been returned to a client through a policy, such as the
             information returned to all clients on the same link, does not
@@ -455,7 +455,7 @@
             example.</t>
 
             <t hangText="container option">An option that encapsulates other
-            options (for example, the IA_NA may contain IAADDR options).</t>
+            options (for example, the IA_NA option may contain IAADDR options).</t>
 
             <t hangText="delegating router">The router that acts as a DHCP
             server, and responds to requests for delegated prefixes. This document
@@ -494,7 +494,7 @@
             a DUID may be constructed.</t>
 
             <t hangText="IA">Identity Association: A collection of leases
-            assigned to a client. Each IA has an associated IAID. A client may
+            assigned to a client. Each IA has an associated IAID (see below). A client may
             have more than one IA assigned to it; for example, one for each of
             its interfaces. Each IA holds one type of lease; for example, an
             identity association for temporary addresses (IA_TA) holds
@@ -1589,9 +1589,9 @@
         represented in seconds since midnight (UTC), January 1, 2000, modulo
         2^32. The hardware type MUST be a valid hardware type assigned by the
         IANA as described in <xref target="RFC0826"></xref>. Both the time and
-        the hardware type are stored in network byte order. The link-layer
-        address is stored in canonical form, as described in <xref
-        target="RFC2464"></xref>.</t>
+        the hardware type are stored in network byte order. For Ethernet
+        hardware types, the link-layer address is stored in canonical form,
+        as described in <xref target="RFC2464"/>.</t>
 
         <t>The following diagram illustrates the format of a DUID-LLT:</t>
 
@@ -2741,7 +2741,7 @@
 
         <t>If the client has a source address of sufficient scope that can be
         used by the server as a return address, and the client has received a
-        Server Unicast option <xref target="RFC3315-22.12"></xref> from the
+        Server Unicast option (see <xref target="RFC3315-22.12"/>) from the
         server, the client SHOULD unicast any Request, Renew, Release and
         Decline messages to the server.</t>
 
@@ -2968,7 +2968,7 @@
         <section anchor="RFC3315-18.1.2"
                  title="Creation and Transmission of Confirm Messages">
           <!-- 18.1.2, line 2037-->
-          <t>The client uses a Confirm message when is has only addresses
+          <t>The client uses a Confirm message when it has only addresses
           (no delegated prefixes) assigned by a DHCP server to determine if it
           is still connected to the same link when the client detects a
           change in network information as described in <xref target="RFC3315-18.2.12"></xref>.</t>
@@ -3710,10 +3710,10 @@
 
             </list></t>
 
-          <t> When the client detects one of the above conditions and it has obtained
-          addresses and no delegated prefixes from a server, the client SHOULD initiate 
-          a Confirm/Reply message exchange.  The client includes any IAs assigned 
-          to the interface that may have moved to a
+          <t>When the client detects that it may have moved to a new link and it
+          has obtained addresses and no delegated prefixes from a server, the
+          client SHOULD initiate a Confirm/Reply message exchange. The client
+          includes any IAs assigned to the interface that may have moved to a
           new link, along with the addresses associated with those IAs, in its
           Confirm message. Any responding servers will indicate whether those
           addresses are appropriate for the link to which the client is
@@ -7096,7 +7096,7 @@
 
     <t hangText="(3)"> See <xref target="RFC7598"/> for details.</t>
 
-    <t hangText="(4)"> See RFC8156 for details.</t>
+    <t hangText="(4)"> See <xref target="RFC8156" for details.</t>
 </list></t>
 
       <t>IANA is requested to update the All_DHCP_Relay_Agents_and_Servers
@@ -7302,6 +7302,7 @@
       <?rfc include='reference.RFC.7844'?>
       <?rfc include='reference.RFC.7969'?>
 
+      <?rfc include='reference.RFC.8156'?>
       <?rfc include='reference.RFC.8168'?>
       <?rfc include='reference.RFC.8213'?>
 
