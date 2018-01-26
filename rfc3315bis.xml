@@ -7,7 +7,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-10"
+<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-11"
      ipr="pre5378Trust200902" obsoletes="3315,3633,3736,4242,7083,7550">
   <front>
     <title abbrev="DHCP for IPv6">Dynamic Host Configuration Protocol for IPv6
@@ -555,7 +555,7 @@
             Protocol, see <xref target="reconfigure-protocol"/>.</t>               
 
             <t hangText="singleton option">An option that is allowed to appear
-            only once as a the top-level option or at any encapsulation level.
+            only once as a top-level option or at any encapsulation level.
             Most options are singletons.</t>
 
             <t hangText="T1">The time at which the client contacts the
@@ -1025,7 +1025,7 @@
 
             <t hangText="REPLY (7)">A server sends a Reply message containing
             assigned leases and configuration parameters in response to a
-            Solicit, Request, Renew, Rebind message received from a client. A
+            Solicit, Request, Renew, or Rebind message received from a client. A
             server sends a Reply message containing configuration parameters
             in response to an Information-request message. A server sends a
             Reply message in response to a Confirm message confirming or
@@ -1840,7 +1840,7 @@
         network interfaces for which it is to request the assignment of IPv6
         addresses from a DHCP server. The client uses the IAs assigned to an
         interface to obtain configuration information from a server for that
-        interface. Each IA must be associated with exactly one interface.</t>
+        interface. Each such IA must be associated with exactly one interface.</t>
 
         <t>The configuration information in an IA_NA consists of one or more IPv6
         addresses along with the T1 and T2 times for the IA. See <xref
@@ -1863,7 +1863,8 @@
         <t>An IA_PD is different from an IA for address assignment, in that it
         does not need to be associated with exactly one interface. One IA_PD
         can be associated with the client, with a set of interfaces
-        or with exactly one interface. A client must create at
+        or with exactly one interface. A client configured to request
+        delegated prefixes MUST create at
         least one distinct IA_PD. It may associate a distinct IA_PD with each
         of its downstream network interfaces and use that IA_PD to obtain a
         prefix for that interface from the server.</t>
@@ -1934,7 +1935,7 @@
           </list></t>
 
         <t>By default, DHCP server implementations SHOULD NOT generate
-        predictable addresses <xref target="RFC7721"/>. Server
+        predictable addresses (see Section 4.7 of <xref target="RFC7721"/>). Server
         implementers are encouraged to review <xref target="RFC4941"/>,
         <xref target="RFC7824"/>, and <xref target="RFC7707"/> as to
         possible considerations for how to generate addresses.</t>
@@ -1957,9 +1958,9 @@
         <t>Clients ask for temporary addresses and servers assign them.
         Temporary addresses are carried in the Identity Association for
         Temporary Addresses (IA_TA) option (see <xref
-        target="RFC3315-22.5"></xref>). Each IA_TA option contains at lease one
-        temporary address for each of the prefixes on the link to which the
-        client is attached.</t>
+        target="RFC3315-22.5"></xref>). Each IA_TA option typically contains
+        at least one temporary address for each of the prefixes on the link
+        to which the client is attached.</t>
 
         <t>The lifetime of the assigned temporary address is set in the IA
         Address option (see <xref target="RFC3315-22.6"></xref>) encapsulated in the
@@ -3110,7 +3111,7 @@
           client continues to operate as if Reconfigure message was not
           received, i.e., it uses T1/T2 times associated with the client's
           leases to determine when it should send Renew or Rebind to the
-          server. server. The client begins a Rebind message exchange
+          server. The client begins a Rebind message exchange
           (see <xref target="RFC3315-18.1.4"></xref>) when the
           earliest time T2 is reached.</t>
         </section>
@@ -3587,9 +3588,9 @@
 
             <t>When the client receives a Reply message in response to a Renew
             or Rebind message, the client: <list style="hanging">
-                <t hangText="-">Sends a Request message if any of the IAs in
-                the Reply message contains the NoBinding status code to the
-                server that responded. The client places IA options in this
+                <t hangText="-">Sends a Request message to the server that
+                responded if any of the IAs in the Reply message contains the
+                NoBinding status code. The client places IA options in this
                 message for all IAs. The client continues to use other bindings
                 for which the server did not return an error.</t>
 
@@ -4891,7 +4892,8 @@
           messages.</t>
 
           <t>To authenticate a Reconfigure message, the client computes an
-          HMAC-MD5 over the DHCP Reconfigure message, using the Reconfigure
+          HMAC-MD5 over the Reconfigure message, with zeroes substituted
+          for the HMAC-MD5 field, using the Reconfigure
           Key received from the server. If this computed HMAC-MD5 matches the
           value in the Authentication option, the client accepts the
           Reconfigure message.</t>
@@ -6839,10 +6841,6 @@
       messages.  Replayed messages can represent a DOS attack through
       exhaustion of processing resources, but not through mis-configuration or
       exhaustion of other resources such as assignable address and delegatable
-      prefixes.</t>
-
-      <t>Networks configured with delegated prefixes should be configured to
-      preclude intentional or inadvertent inappropriate advertisement of these
       prefixes.</t>
 
       <t>Various network environments also offer levels of security if deployed
