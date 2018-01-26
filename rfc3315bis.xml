@@ -296,12 +296,11 @@
     <section anchor="requirements" title="Requirements">
       <!-- 2, line 343-->
 
-      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-      "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
-      document are to be interpreted as described in <xref target="RFC2119"/> when they
-      appear in ALL CAPS.  When these words are not in ALL CAPS (such as
-      "should" or "Should"), they have their usual English meanings, and
-      are not to be interpreted as <xref target="RFC2119"/> key words.</t>
+      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+      NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
+      "MAY", and "OPTIONAL" in this document are to be interpreted as
+      described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/>
+      when, and only when, they appear in all capitals, as shown here.</t>
 
       <t>This document also makes use of internal conceptual variables to
       describe protocol behavior and external variables that an implementation
@@ -7223,6 +7222,8 @@
       <?rfc include='reference.RFC.7227'?>         
 
       <?rfc include='reference.RFC.7283'?>
+         
+      <?rfc include='reference.RFC.8174'?>
 
     </references>
 
