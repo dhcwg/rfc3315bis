@@ -393,7 +393,7 @@
             <t hangText="link-local address">An IPv6 address having a
             link-only scope, indicated by having the prefix (fe80::/10), that
             can be used to reach neighboring nodes attached to the same link.
-            Every interface has a link-local address.</t>
+            Every IPv6 interface has a link-local address.</t>
 
             <t hangText="multicast address">An identifier for a set of
             interfaces (typically belonging to different nodes). A packet sent
@@ -468,9 +468,8 @@
 
             <t hangText="DHCP client (or client)">A node that initiates
             requests on a link to obtain configuration parameters from one or
-            more DHCP servers. Depending on the purpose of the client, it may
-            feature the requesting router functionality, if it supports prefix
-            delegation.</t>
+            more DHCP servers. The node may act as a requesting router (see
+            below) if it supports prefix delegation.</t>
 
             <t hangText="DHCP domain">A set of links managed by DHCP and
             operated by a single administrative entity.</t>
