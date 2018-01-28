@@ -434,9 +434,8 @@
             assignment policies.</t>
 
             <t hangText="binding">A binding (or, client binding) is a group of
-            server data records containing the information the server has
-            about the addresses or delegated prefixes in an IA (Identity
-            Association, see below) or configuration information
+            server data records containing the information the server has about
+            the addresses or delegated prefixes in an IA or configuration information
             explicitly assigned to the client. Configuration information that
             has been returned to a client through a policy, such as the
             information returned to all clients on the same link, does not
@@ -1463,7 +1462,7 @@
 
             <t hangText="   options">MUST include a Relay Message option;
             see <xref target="RFC3315-22.10"/>; MAY include other
-            options (such as the Interface-Id option
+            options, such as the Interface-Id option (see
             <xref target="RFC3315-22.18"/>). A variable length field (34
             octets less than the size of the message).</t>
           </list></t>
