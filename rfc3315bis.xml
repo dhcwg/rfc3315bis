@@ -6431,7 +6431,7 @@
         <t>If a client receives an IA_PD with T1 greater than T2,
         and both T1 and T2 are greater than 0, the client discards
         the IA_PD option and processes the remainder of the message as though
-        the client had not included the IA_PD option.</t>
+        the server had not included the IA_PD option.</t>
       </section>
 
       <section anchor="IAPREFIX-option" title="IA Prefix Option">
@@ -6931,16 +6931,16 @@
       DUID types or status codes.</t>
 
       <t>The list of assigned values used in DHCPv6 is available at
-      http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xml</t>
+      http://www.iana.org/assignments/dhcpv6-parameters/</t>
 
       <t>IANA is requested to update the
-      http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
+      http://www.iana.org/assignments/dhcpv6-parameters/
       page to add a reference to this document for definitions previously
       created by <xref target="RFC3315"/>, <xref target="RFC3633"/>,
       <xref target="RFC4242"/> and <xref target="RFC7083"/>.</t>
          
       <t>IANA is requested to add two columns to the DHCPv6 Option table at
-      http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
+      http://www.iana.org/assignments/dhcpv6-parameters/
       to indicate which options are allowed to appear in a client's ORO option
       (see <xref target="RFC3315-22.7"/>) and which options are singleton
       options (only allowed to appear once as a top-level or encapsulated
@@ -7102,6 +7102,11 @@
 
     <t hangText="(3)"> See <xref target="RFC7598"/> for details.</t>
 </list></t>
+         
+      <t>IANA is requested to correct the range of possible Status Codes
+      in the Status Codes table at http://www.iana.org/assignments/dhcpv6-parameters/
+      by replacing 23-255 (as Unassigned) with 23-65535 (the codes are
+      16-bit unsigned integers).</t>
 
       <t>IANA is requested to update the All_DHCP_Relay_Agents_and_Servers
       (ff02::1:2) and All_DHCP_Servers (ff05::1:3)
