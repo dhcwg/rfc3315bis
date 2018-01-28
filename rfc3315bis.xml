@@ -261,8 +261,8 @@
         Issues and Recommendations with Multiple Stateful DHCPv6 Options
         <xref target="RFC7550"/>. This document
         provides a unified, corrected, and cleaned up definition of DHCPv6
-        that also covers all errata filled against older RFCs. As such, it
-        obsoletes a number of aforementioned RFCs. And, there are a small
+        that also covers all errata filed against older RFCs. As such, it
+        obsoletes a number of the aforementioned RFCs. And, there are a small
         number of mechanisms that were obsoleted, listed in <xref
         target="obsolete"></xref>. Also see <xref target="ChangeSummary"/>.</t>
       </section>
@@ -319,7 +319,7 @@
 
       <t>The IPv6 Specification provides the base architecture and design of
       IPv6. Related work in IPv6 that would best serve an implementer to study
-      includes the IPv6 Specification <xref target="RFC2460"></xref>, the IPv6
+      includes the IPv6 Specification <xref target="RFC8200"></xref>, the IPv6
       Addressing Architecture <xref target="RFC4291"></xref>, IPv6 Stateless
       Address Autoconfiguration <xref target="RFC4862"></xref>, and IPv6 Neighbor
       Discovery Processing <xref target="RFC4861"></xref>. These specifications
@@ -363,7 +363,7 @@
         <!-- 4.1, line 408-->
 
         <t>IPv6 terminology relevant to this specification from the IPv6
-        Protocol <xref target="RFC2460"></xref>, IPv6 Addressing Architecture
+        Protocol <xref target="RFC8200"></xref>, IPv6 Addressing Architecture
         <xref target="RFC4291"></xref>, and IPv6 Stateless Address
         Autoconfiguration <xref target="RFC4862"></xref> is included
         below.</t>
@@ -444,7 +444,7 @@
             indexed by the tuple &lt;DUID, IA-type, IAID&gt; (where IA-type is
             the type of lease in the IA; for example, temporary). A binding
             containing configuration information for a client is indexed by
-            &lt;DUID&gt;.</t>
+            &lt;DUID&gt;. See below for definitions of DUID, IA, and IAID.</t>
 
             <t hangText="configuration parameter">An element of the
             configuration information set on the server and delivered to the
@@ -490,6 +490,11 @@
             participant; each DHCP client and server has exactly one DUID. See
             <xref target="RFC3315-9"></xref> for details of the ways in which
             a DUID may be constructed.</t>
+             
+            <t hangText="encapsulated option">A DHCPv6 option that is usually
+            only contained in another option. For example, the IAADDR option
+            is contained in IA_NA or IA_TA options. See Section 9 of
+            <xref target="RFC7227"/> for a more complete definition.</t>
 
             <t hangText="IA">Identity Association: A collection of leases
             assigned to a client. Each IA has an associated IAID (see below). A client may
@@ -679,7 +684,7 @@
           for the client to listen for Reconfigure messages, may send the client
           a Reconfigure message to initiate the client to update its configuration
           by sending an Information-request, Renew, or Rebind message. The client then
-          performs the earlier described two message exchange. This can be used to
+          performs the two message exchange as described earlier. This can be used to
           expedite configuration changes to a client, such as the need to renumber
           a network (see <xref target="RFC6879"/>).
           </t>
@@ -704,7 +709,7 @@
         not used for obtaining a lease, but a node (DHCP client) desires one
         or more DHCP "other configuration" parameters, such as a list of DNS
         recursive name servers or DNS domain search lists <xref
-        target="RFC3646"></xref>. Stateless may be used when a node initially
+        target="RFC3646"></xref>. Stateless DHCP may be used when a node initially
         boots or at any time the software on the node requires some missing or
         expired configuration information that is available via DHCP.</t>
 
@@ -767,20 +772,20 @@
         target="RFC3769"></xref>.</t>
 
         <t>While <xref target="RFC3633"/> assumed that the DHCP client
-        is a router (hence use of "requesting router") and that the DHCP
-        server was a router (hence use of "delegating router"), DHCP
+        is a router (hence the use of "requesting router") and that the DHCP
+        server was a router (hence the use of "delegating router"), DHCP
         prefix delegation itself does not require that the client forward
         IP packets not addressed to itself, and thus does not require
         that the client (or server) be a router as defined in
-        <xref target="RFC2460"/>. Also, in many cases (such as tethering
+        <xref target="RFC8200"/>. Also, in many cases (such as tethering
         or hosting virtual machines), hosts are already forwarding IP
         packets and thus operating as routers as defined in
-        <xref target="RFC2460"/>. Therefore, this document mostly replaces
+        <xref target="RFC8200"/>. Therefore, this document mostly replaces
         "requesting router" with client and "delegating router" with
         server.</t>
 
         <t>The model of operation for prefix delegation is as follows. A
-        server is provided prefixes to be delegated to
+        server is provisioned with prefixes to be delegated to
         clients. A client requests prefix(es) from the
         server, as described in <xref
         target="configuration-exchange"></xref>. The server chooses
@@ -897,8 +902,8 @@
       <section anchor="OpModes-TA" title="DHCP for Temporary Addresses">
         <t>Temporary addresses were originally introduced to avoid privacy
         concerns with stateless address autoconfiguration, which based 64-bits
-        of the address on the EUI-64 (see <xref target="RFC3041"></xref> and
-        <xref target="RFC4941"></xref>). They were added to DHCP to provide
+        of the address on the EUI-64 (see <xref target="RFC4941"/>. They
+        were added to DHCP to provide
         complementary support when stateful address assignment is used.</t>
 
         <t>Temporary address assignment works mostly like non-temporary
@@ -931,7 +936,7 @@
         to be delegated by sending additional IA_PD options. However, a
         typical operator usually prefers to delegate a single, larger
         prefix. In most deployments it recommended for the client to
-        request larger prefix in its initial transmissions rather than
+        request a larger prefix in its initial transmissions rather than
         request additional prefixes later on.</t>
 
         <t>The exact behavior of the server (whether to grant additional
@@ -1423,9 +1428,11 @@
             agent from which the message to be relayed was received. A 16
             octets long field.</t>
 
-            <t hangText="   options">MUST include a "Relay Message option"
-            (see <xref target="RFC3315-22.10"></xref>); MAY include other
-            options added by the relay agent. A variable length field
+            <t hangText="   options">MUST include a Relay Message option
+            (see <xref target="RFC3315-22.10"/>); MAY include other
+            options, such as the Interface-Id option (see
+            <xref target="RFC3315-22.18"/>), added by the relay agent. A
+            variable length field
             (34 octets less than the size of the message).</t>
         </list></t>
 
@@ -1454,10 +1461,11 @@
             <t hangText="   peer-address">Copied from the Relay-forward
             message. A 16 octets long field.</t>
 
-            <t hangText="   options">MUST include a "Relay Message option";
-            see <xref target="RFC3315-22.10"></xref>; MAY include other
-            options. A variable length field (34 octets less than the
-            size of the message).</t>
+            <t hangText="   options">MUST include a Relay Message option;
+            see <xref target="RFC3315-22.10"/>; MAY include other
+            options (such as the Interface-Id option
+            <xref target="RFC3315-22.18"/>). A variable length field (34
+            octets less than the size of the message).</t>
           </list></t>
       </section>
 
@@ -2515,7 +2523,8 @@
 
         <t>When a client sends a DHCP message
         for the purpose of prefix delegation, it SHOULD be sent on the
-        interface associated with the upstream router (ISP network). The
+        interface associated with the upstream router (typically, connected
+        to an ISP network). The
         upstream interface is typically determined by configuration. This rule
         applies even in the case where a separate IA_PD is used for each
         downstream interface.</t>
@@ -2715,7 +2724,7 @@
         that the available server(s) may only be configured to offer a subset
         of them. When possible, the client SHOULD use the best configuration
         available and continue to request the additional IAs in subsequent
-        messages <xref target="RFC7550"/>. This allows the client to maintain
+        messages. This allows the client to maintain
         a single session and state machine. In practice, especially in the
         case of handling IA_NA and IA_PD requests <xref target="RFC7084"/>,
         this situation should be rare or a result of a temporary operational
@@ -2810,7 +2819,7 @@
           as they may suffer from power failure. After recovering from a
           power outage, many devices may start their transmission at the same
           time. This is much less of a concern for battery powered devices.
-          This random delay also helps descynronize clients which start DHCP
+          This random delay also helps desynchronize clients which start DHCP
           session by seeing it available in Router Advertisement messages
           (see <xref target="RFC4861"/> Section 4.2).</t>
 
@@ -3771,7 +3780,7 @@
         <t>In most response messages, the server includes options containing
         configuration information for the client. The server must be aware of
         the recommendations on packet sizes and the use of fragmentation in
-        section 5 of <xref target="RFC2460"></xref>. If the client included an
+        section 5 of <xref target="RFC8200"/>. If the client included an
         Option Request option in its message, the server includes options in
         the response message containing configuration parameters for all of the
         options identified in the Option Request option that the server has
@@ -3801,7 +3810,7 @@
 
           <t>See <xref target="use-multicast"/> for handling Solicit message
           received via unicast. Unicast transmission of Solicit
-          is not allowed, regardless if Server Unicast option is
+          is not allowed, regardless of whether the Server Unicast option is
           configured or not.</t>
 
           <t>The server determines the information about the client and its
@@ -3954,8 +3963,8 @@
 
           <t>See <xref target="use-multicast"/> for handling Confirm
           message received via unicast. Unicast transmission of Confirm
-          is not allowed, regardless if Server Unicast option is
-          configured or not.</t>
+          is not allowed, regardless of whether the Server Unicast
+          option is configured or not.</t>
 
           <t>When the server receives a Confirm message, the server determines
           whether the addresses in the Confirm message are appropriate for the
@@ -4083,7 +4092,7 @@
 
           <t>See <xref target="use-multicast"/> for handling Rebind message
           received via unicast. Unicast transmission of Rebind
-          is not allowed, regardless if Server Unicast option is
+          is not allowed, regardless of whether the Server Unicast option is
           configured or not.</t>
 
           <t>When the server receives a Rebind message that contains an IA
@@ -4391,7 +4400,7 @@
           the server constructs a Relay-reply message with the Reply message
           in the payload of a Relay Message option (see <xref
           target="RFC3315-22.10"></xref>). If the Relay-forward messages
-          included an Interface-id option, the server copies that option to
+          included an Interface-Id option, the server copies that option to
           the Relay-reply message. The server unicasts the Relay-reply message
           directly to the relay agent using the address in the source address
           field from the IP datagram in which the Relay-forward message was
@@ -4413,7 +4422,7 @@
           <t>Because of the risk of denial of service attacks against DHCP
           clients, the use of a security mechanism is mandated in Reconfigure
           messages. The server MUST use DHCP authentication in the Reconfigure
-          message.</t>
+          message (see <xref target="reconfigure-protocol"/>).</t>
 
           <t>The server MUST include a Reconfigure Message option (defined in
           <xref target="RFC3315-22.19"></xref>) to select whether the client
@@ -4558,12 +4567,12 @@
 
           <t>If the relay agent cannot use the address in the link-address
           field to identify the interface through which the response to the
-          client will be relayed, the relay agent MUST include an Interface-id
-          option (see <xref target="RFC3315-22.18"></xref>) in the
-          Relay-forward message. The server will include the Interface-id
+          client will be relayed, the relay agent MUST include an Interface-Id
+          option (see <xref target="RFC3315-22.18"/>) in the
+          Relay-forward message. The server will include the Interface-Id
           option in its Relay-reply message. The relay agent sets the
           link-address field as described in the earlier paragraphs regardless
-          of whether the relay agent includes an Interface-id option in the
+          of whether the relay agent includes an Interface-Id option in the
           Relay-forward message.</t>
         </section>
 
@@ -4589,7 +4598,7 @@
           sets the link-address field to a global address (including
           unique local address)
           assigned to the interface on which the message was received, or
-          includes an Interface-ID option to identify the interface on which
+          includes an Interface-Id option to identify the interface on which
           the message was received.</t>
         </section>
 
@@ -4623,9 +4632,9 @@
         and relays it to the address contained in the peer-address field of
         the Relay-reply message. Relay agents MUST NOT modify the message.</t>
 
-        <t>If the Relay-reply message includes an Interface-id option, the
+        <t>If the Relay-reply message includes an Interface-Id option, the
         relay agent relays the message from the server to the client on the
-        link identified by the Interface-id option. Otherwise, if the
+        link identified by the Interface-Id option. Otherwise, if the
         link-address field is not set to zero, the relay agent relays the
         message on the link identified by the link-address field.</t>
 
@@ -5473,7 +5482,7 @@
             <t hangText="   option-len">1.</t>
 
             <t hangText="   pref-value">The preference value for the server in
-            this message. A one octet long field.</t>
+            this message. A one-octet unsigned integer.</t>
           </list></t>
 
         <t>A server MAY include a Preference option in an Advertise message to
@@ -6177,13 +6186,13 @@
       <section anchor="RFC3315-22.18" title="Interface-Id Option">
         <!-- 22.18, line 4396-->
 
-        <t>The relay agent MAY send the Interface-id option to identify the
+        <t>The relay agent MAY send the Interface-Id option to identify the
         interface on which the client message was received. If a relay agent
-        receives a Relay-reply message with an Interface-id option, the relay
+        receives a Relay-reply message with an Interface-Id option, the relay
         agent relays the message to the client through the interface
         identified by the option.</t>
 
-        <t>The format of the Interface ID option is:</t>
+        <t>The format of the Interface-Id option is:</t>
 
         <figure align="center" anchor="FigOption18"
                 title="Interface-ID Option Format">
@@ -6222,12 +6231,12 @@
         appear in any message except a Relay-forward or Relay-reply
         message.</t>
 
-        <t>Servers MAY use the Interface-ID for parameter assignment policies.
-        The Interface-ID SHOULD be considered an opaque value, with policies
-        based on exact match only; that is, the Interface-ID SHOULD NOT be
-        internally parsed by the server. The Interface-ID value for an
+        <t>Servers MAY use the interface-id for parameter assignment policies.
+        The interface-id SHOULD be considered an opaque value, with policies
+        based on exact match only; that is, the interface-id SHOULD NOT be
+        internally parsed by the server. The interface-id value for an
         interface SHOULD be stable and remain unchanged, for example, after
-        the relay agent is restarted; if the Interface-ID changes, a server
+        the relay agent is restarted; if the interface-id changes, a server
         will not be able to use it reliably in parameter assignment
         policies.</t>
       </section>
@@ -7077,7 +7086,7 @@
 <c>132</c><c>F_SERVER_STATE</c><c>No</c><c>(4)</c>
 <c>133</c><c>F_START_TIME_OF_STATE</c><c>No</c><c>(4)</c>
 <c>134</c><c>F_STATE_EXPIRATION_TIME</c><c>No</c><c>(4)</c>
-
+<c>135</c><c>RELAY_PORT</c><c>No</c><c>Yes</c>     
 <c>143</c><c>IPv6_ADDRESS-ANDSF</c><c>Yes</c><c>Yes</c>
 </texttable>
 
@@ -7094,7 +7103,7 @@
 
     <t hangText="(3)"> See <xref target="RFC7598"/> for details.</t>
 
-    <t hangText="(4)"> See <xref target="RFC8156" for details.</t>
+    <t hangText="(4)"> See <xref target="RFC8156"/> for details.</t>
 </list></t>
 
       <t>IANA is requested to update the All_DHCP_Relay_Agents_and_Servers
@@ -7196,10 +7205,6 @@
 
       <!--  Bradner, S., "Key words for use in RFCs to Indicate RequirementLevels", BCP 14, RFC 2119, March 1997. -->
 
-      <?rfc include='reference.RFC.2460'?>
-
-      <!--  Deering, S. and R. Hinden, "Internet Protocol, Version 6 (IPv6)Specification", RFC 2460, December 1998. -->
-
       <?rfc include='reference.RFC.4291'?>
 
       <!--  Hinden, R. and S. Deering, "IP Version 6 Addressing Architecture", RFC 4291, February 2006. -->
@@ -7213,16 +7218,13 @@
       <!-- Thomson, S. and T. Narten, "IPv6 Stateless AddressAutoconfiguration", RFC 4862, September 2007. -->
 
       <?rfc include='reference.RFC.6221'?>
-
       <?rfc include='reference.RFC.6355'?>
 
-      <?rfc include='reference.RFC.7083'?>
-         
-      <?rfc include='reference.RFC.7227'?>         
-
+      <?rfc include='reference.RFC.7227'?>
       <?rfc include='reference.RFC.7283'?>
          
       <?rfc include='reference.RFC.8174'?>
+      <?rfc include='reference.RFC.8200'?>
 
     </references>
 
@@ -7262,7 +7264,6 @@
       <?rfc include='reference.RFC.2132'?>
       <?rfc include='reference.RFC.2464'?>
 
-      <?rfc include='reference.RFC.3041'?>
       <?rfc include='reference.RFC.3162'?>
       <?rfc include='reference.RFC.3315'?>
       <?rfc include='reference.RFC.3633'?>
@@ -7287,6 +7288,7 @@
       <?rfc include='reference.RFC.6879'?>
       <?rfc include='reference.RFC.6939'?>
 
+      <?rfc include='reference.RFC.7083'?>
       <?rfc include='reference.RFC.7084'?>
       <?rfc include='reference.RFC.7136'?>
       <?rfc include='reference.RFC.7341'?>
