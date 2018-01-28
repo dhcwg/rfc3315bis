@@ -7064,28 +7064,27 @@
 <c>111</c><c>S46_PRIORITY</c><c>Yes</c><c>Yes</c>
 <c>112</c><c>MUD_URL_V6 (TEMPORARY)</c><c>No</c><c>Yes</c>
 <c>113</c><c>V6_PREFIX64</c><c>Yes</c><c>No</c>
-
-<c>114</c><c>F_BINDING_STATUS</c><c>No</c><c>(4)</c>
-<c>115</c><c>F_CONNECT_FLAGS</c><c>No</c><c>(4)</c>
-<c>116</c><c>F_DNS_REMOVAL_INFO</c><c>No</c><c>(4)</c>
-<c>117</c><c>F_DNS_HOST_NAME</c><c>No</c><c>(4)</c>
-<c>118</c><c>F_DNS_ZONE_NAME</c><c>No</c><c>(4)</c>
-<c>119</c><c>F_DNS_FLAGS</c><c>No</c><c>(4)</c>
-<c>120</c><c>F_EXPIRATION_TIME</c><c>No</c><c>(4)</c>
-<c>121</c><c>F_MAX_UNACKED_BNDUPD</c><c>No</c><c>(4)</c>
-<c>122</c><c>F_MCLT</c><c>No</c><c>(4)</c>
-<c>123</c><c>F_PARTNER_LIFETIME</c><c>No</c><c>(4)</c>
-<c>124</c><c>F_PARTNER_LIFETIME_SENT</c><c>No</c><c>(4)</c>
-<c>125</c><c>F_PARTNER_DOWN_TIME</c><c>No</c><c>(4)</c>
-<c>126</c><c>F_PARTNER_RAW_CLT_TIME</c><c>No</c><c>(4)</c>
-<c>127</c><c>F_PROTOCOL_VERSION</c><c>No</c><c>(4)</c>
-<c>128</c><c>F_KEEPALIVE_TIME</c><c>No</c><c>(4)</c>
-<c>129</c><c>F_RECONFIGURE_DATA</c><c>No</c><c>(4)</c>
-<c>130</c><c>F_RELATIONSHIP_NAME</c><c>No</c><c>(4)</c>
-<c>131</c><c>F_SERVER_FLAGS</c><c>No</c><c>(4)</c>
-<c>132</c><c>F_SERVER_STATE</c><c>No</c><c>(4)</c>
-<c>133</c><c>F_START_TIME_OF_STATE</c><c>No</c><c>(4)</c>
-<c>134</c><c>F_STATE_EXPIRATION_TIME</c><c>No</c><c>(4)</c>
+<c>114</c><c>F_BINDING_STATUS</c><c>No</c><c>Yes</c>
+<c>115</c><c>F_CONNECT_FLAGS</c><c>No</c><c>Yes</c>
+<c>116</c><c>F_DNS_REMOVAL_INFO</c><c>No</c><c>Yes</c>
+<c>117</c><c>F_DNS_HOST_NAME</c><c>No</c><c>Yes</c>
+<c>118</c><c>F_DNS_ZONE_NAME</c><c>No</c><c>Yes</c>
+<c>119</c><c>F_DNS_FLAGS</c><c>No</c><c>Yes</c>
+<c>120</c><c>F_EXPIRATION_TIME</c><c>No</c><c>Yes</c>
+<c>121</c><c>F_MAX_UNACKED_BNDUPD</c><c>No</c><c>Yes</c>
+<c>122</c><c>F_MCLT</c><c>No</c><c>Yes</c>
+<c>123</c><c>F_PARTNER_LIFETIME</c><c>No</c><c>Yes</c>
+<c>124</c><c>F_PARTNER_LIFETIME_SENT</c><c>No</c><c>Yes</c>
+<c>125</c><c>F_PARTNER_DOWN_TIME</c><c>No</c><c>Yes</c>
+<c>126</c><c>F_PARTNER_RAW_CLT_TIME</c><c>No</c><c>Yes</c>
+<c>127</c><c>F_PROTOCOL_VERSION</c><c>No</c><c>Yes</c>
+<c>128</c><c>F_KEEPALIVE_TIME</c><c>No</c><c>Yes</c>
+<c>129</c><c>F_RECONFIGURE_DATA</c><c>No</c><c>Yes</c>
+<c>130</c><c>F_RELATIONSHIP_NAME</c><c>No</c><c>Yes</c>
+<c>131</c><c>F_SERVER_FLAGS</c><c>No</c><c>Yes</c>
+<c>132</c><c>F_SERVER_STATE</c><c>No</c><c>Yes</c>
+<c>133</c><c>F_START_TIME_OF_STATE</c><c>No</c><c>Yes</c>
+<c>134</c><c>F_STATE_EXPIRATION_TIME</c><c>No</c><c>Yes</c>
 <c>135</c><c>RELAY_PORT</c><c>No</c><c>Yes</c>     
 <c>143</c><c>IPv6_ADDRESS-ANDSF</c><c>Yes</c><c>Yes</c>
 </texttable>
@@ -7102,8 +7101,6 @@
     a single instance.</t>
 
     <t hangText="(3)"> See <xref target="RFC7598"/> for details.</t>
-
-    <t hangText="(4)"> See <xref target="RFC8156"/> for details.</t>
 </list></t>
 
       <t>IANA is requested to update the All_DHCP_Relay_Agents_and_Servers
@@ -7304,7 +7301,6 @@
       <?rfc include='reference.RFC.7844'?>
       <?rfc include='reference.RFC.7969'?>
 
-      <?rfc include='reference.RFC.8156'?>
       <?rfc include='reference.RFC.8168'?>
       <?rfc include='reference.RFC.8213'?>
 
