@@ -3099,13 +3099,13 @@
           <t>The client transmits the message according to <xref
           target="RFC3315-14"></xref>, using the following parameters: <list
               hangIndent="11" style="hanging">
-              <t hangText="IRT">REN_TIMEOUT</t>
+              <t hangText="   IRT">REN_TIMEOUT</t>
 
-              <t hangText="MRT">REN_MAX_RT</t>
+              <t hangText="   MRT">REN_MAX_RT</t>
 
-              <t hangText="MRC">0</t>
+              <t hangText="   MRC">0</t>
 
-              <t hangText="MRD">Remaining time until earliest T2</t>
+              <t hangText="   MRD">Remaining time until earliest T2</t>
             </list></t>
 
           <t>The message exchange is terminated when earliest time T2 is
