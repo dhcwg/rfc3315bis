@@ -1116,7 +1116,8 @@
         <t>This section presents a table of values used to describe the
         message transmission behavior of clients and servers.</t>
 
-        <texttable title="Transmission and Retransmission Parameters">
+        <texttable anchor="Trans-Parameters-Table"
+                   title="Transmission and Retransmission Parameters">
           <ttcol>Parameter</ttcol>
 
           <ttcol>Default</ttcol>
@@ -1539,7 +1540,7 @@
         code) is at least 1 octet and at most 128 octets. The following types
         are currently defined:</t>
 
-        <texttable title="DUID Types">
+        <texttable anchor="DUID-Types-Table" title="DUID Types">
           <ttcol>Type</ttcol>
 
           <ttcol>Description</ttcol>
@@ -5729,7 +5730,7 @@
         <t>The status-code values previously defined by <xref
         target="RFC3315"></xref> and <xref target="RFC3633"></xref> are:</t>
 
-        <texttable title="Status Code Definitions">
+        <texttable anchor="Status-Code-Table" title="Status Code Definitions">
           <ttcol>Name</ttcol>
 
           <ttcol align="right">Code</ttcol>
@@ -7182,7 +7183,7 @@
         </front>
       </reference>
 
-       <reference anchor="IANA-RESERVED-IID">
+      <reference anchor="IANA-RESERVED-IID">
         <front>
           <title>
               Reserved IPv6 Interface Identifiers
@@ -7211,8 +7212,6 @@
           <date />
         </front>
       </reference>
-         
-         https://www.iana.org/assignments/arp-parameters/
 
       <?rfc include='reference.RFC.0826'?>
 
