@@ -267,7 +267,8 @@
         Issues and Recommendations with Multiple Stateful DHCPv6 Options
         <xref target="RFC7550"/>. This document
         provides a unified, corrected, and cleaned up definition of DHCPv6
-        that also covers all errata filed against older RFCs. As such, it
+        that also covers all errata filed against older RFCs (see
+        list in <xref target="ChangeSummary"/>). As such, it
         obsoletes a number of the aforementioned RFCs. And, there are a small
         number of mechanisms that were obsoleted, listed in <xref
         target="obsolete"></xref>. Also see <xref target="ChangeSummary"/>.</t>
@@ -1004,7 +1005,7 @@
         message types can be found in <xref target="RFC3315-6"></xref> and
         <xref target="RFC3315-7"></xref>. Additional message types have been
         defined and may be defined in the future - see
-        https://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml.
+        https://www.iana.org/assignments/dhcpv6-parameters.
         The numeric encoding for each message type is shown in parentheses.</t>
 
         <t><list hangIndent="16" style="hanging">
@@ -6872,7 +6873,7 @@
       http://www.iana.org/assignments/dhcpv6-parameters/</t>
 
       <t>IANA is requested to update the
-      http://www.iana.org/assignments/dhcpv6-parameters/
+      https://www.iana.org/assignments/dhcpv6-parameters
       page to add a reference to this document for definitions previously
       created by <xref target="RFC3315"/>, <xref target="RFC3633"/>,
       <xref target="RFC4242"/> and <xref target="RFC7083"/>.</t>
@@ -7173,7 +7174,8 @@
       <reference anchor="IANA-PEN">
         <front>
           <title>Private Enterprise Numbers registry
-          http://www.iana.org/assignments/enterprise-numbers</title>
+          https://www.iana.org/assignments/enterprise-numbers
+          </title>
 
           <author>
             <organization>IANA</organization>
@@ -7187,7 +7189,7 @@
         <front>
           <title>
               Reserved IPv6 Interface Identifiers
-              http://www.iana.org/assignments/ipv6-interface-ids/ipv6-interface-ids.xml
+              https://www.iana.org/assignments/ipv6-interface-ids
               </title>
 
           <author>
@@ -7416,6 +7418,11 @@ options from RFC3633, RFC4242, and RFC7083.</t>
 <t>Where appropriate, informational references have been added to
 provide further background and guidance throughout the document (as
 can be noted by the vast increase in references).</t>
+           
+<t>Changes were made to incorporate the following errata for <xref target="RFC3315"/>:
+Erratum IDs 294, 295, 1373, 1815, 2471, 2472, 2509, 2928, 3577;
+<xref target="RFC3633"/>: Erratum IDs 248, 1880, 2468, 2469, 2470, 3736; and
+<xref target="RFC3736"/>: Erratum ID 3796.</t>
 
 <t>General changes to other IPv6 specifications, such as removing
 the use of site-local unicast addresses and adding unique local addresses,
@@ -7425,7 +7432,7 @@ the material cited was not added in the replacement RFC.</t>
    
 <t>It should be noted that this document does not refer to all DHCPv6
 functionality and specifications. Readers of this specification should
-visit http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xml
+visit https://www.iana.org/assignments/dhcpv6-parameters
 and https://datatracker.ietf.org/wg/dhc/ to learn of the RFCs that define 
 DHCPv6 messages, options, status-codes, and more.</t>
      </list></t>
