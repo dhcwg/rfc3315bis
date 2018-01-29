@@ -7046,7 +7046,7 @@
 </list></t>
          
       <t>IANA is requested to correct the range of possible Status Codes
-      in the Status Codes table at http://www.iana.org/assignments/dhcpv6-parameters
+      in the Status Codes table at https://www.iana.org/assignments/dhcpv6-parameters
       by replacing 23-255 (as Unassigned) with 23-65535 (the codes are
       16-bit unsigned integers).</t>
 
