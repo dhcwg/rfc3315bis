@@ -215,9 +215,11 @@
       <!-- 1, line 230-->
 
       <t>This document describes DHCP for IPv6 (DHCPv6), a client/server
-      protocol that provides managed configuration of devices. Relay agent
-      functionality is also defined for enabling communication between clients
-      and servers that are not on the same link.</t>
+      protocol that provides managed configuration of devices. The basic
+      operation of DHCPv6 provides configuration for clients connected to
+      the same link as the server. Relay agent functionality is also
+      defined for enabling communication between clients and servers that
+      are not on the same link.</t>
 
       <t>DHCPv6 can provide a device with addresses assigned by a DHCPv6
       server and other configuration information, which are carried in
@@ -231,11 +233,13 @@
       specified as part of <xref target="RFC7084"/> and by <xref
       target="TR-187"/>.</t>
 
-      <t>DHCPv6 can also provide only other configuration options
+      <t>DHCPv6 can also deliver nothing but other configuration options
       (i.e., no addresses or prefixes). That implies that the
       server does not have to track any state, and thus this mode is called
       stateless DHCPv6. Mechanisms necessary to support stateless DHCPv6 are
-      much smaller than to support stateful DHCPv6.</t>
+      much smaller than to support stateful DHCPv6 (<xref target="RFC3736"/>
+      was written to document just those portions of DHCPv6 needed to support
+      DHCPv6 stateless operation).</t>
 
       <t>The remainder of this introduction summarizes the relationship to the
       previous DHCPv6 standards in <xref target="previous-dhcp6"/> and
@@ -700,8 +704,13 @@
       started, request additional parameters using stateless mode.</t>
 
       <t>This document assumes that the DHCP servers and the client,
-      communicating with the servers via specific interface, belong to a
+      communicating with the servers via a specific interface, belong to a
       single provisioning domain.</t>
+         
+      <t>DHCP may be extended to support additional stateful services that
+      may interact with one or more of the models described below. Such
+      interaction should be considered and documented as part of any future
+      protocol extension.</t>
 
       <section anchor="OpModes-Stateless" title="Stateless DHCP">
         <t>Stateless DHCP <xref target="RFC3736"></xref> is used when DHCP is
@@ -1107,7 +1116,7 @@
         <t>This section presents a table of values used to describe the
         message transmission behavior of clients and servers.</t>
 
-        <texttable>
+        <texttable title="Transmission and Retransmission Parameters">
           <ttcol>Parameter</ttcol>
 
           <ttcol>Default</ttcol>
@@ -1319,7 +1328,6 @@
         <preamble></preamble>
 
         <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1330,7 +1338,6 @@
    .                           (variable)                          .
    |                                                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
         ]]></artwork>
 
         <postamble></postamble>
@@ -1374,7 +1381,6 @@
         <preamble></preamble>
 
         <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1396,7 +1402,6 @@
    .            options (variable number and length)   ....        .
    |                                                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
         ]]></artwork>
 
         <postamble></postamble>
@@ -1513,7 +1518,7 @@
       for any specific client or server - that is, the DUID used by a client
       or server SHOULD NOT change over time if at all possible; for example, a
       device's DUID should not change as a result of a change in the device's
-      network hardware.  The stability of the DUID includes changes to virtual
+      network hardware. The stability of the DUID includes changes to virtual
       interfaces, such as logical PPP (over Ethernet) interfaces that may
       come and go in Customer Premise Equipment routers. The client
       may change its DUID as specified in <xref target="RFC7844"/>.</t>
@@ -1534,7 +1539,7 @@
         code) is at least 1 octet and at most 128 octets. The following types
         are currently defined:</t>
 
-        <texttable>
+        <texttable title="DUID Types">
           <ttcol>Type</ttcol>
 
           <ttcol>Description</ttcol>
@@ -1592,8 +1597,8 @@
         that is connected to the DHCP device at the time that the DUID is
         generated. The time value is the time that the DUID is generated
         represented in seconds since midnight (UTC), January 1, 2000, modulo
-        2^32. The hardware type MUST be a valid hardware type assigned by the
-        IANA as described in <xref target="RFC0826"></xref>. Both the time and
+        2^32. The hardware type MUST be a valid hardware type assigned by
+        IANA, see <xref target="IANA-HARDWARE-TYPES"/>. Both the time and
         the hardware type are stored in network byte order. For Ethernet
         hardware types, the link-layer address is stored in canonical form,
         as described in <xref target="RFC2464"/>.</t>
@@ -1605,7 +1610,6 @@
 
           <artwork align="left">
        <![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1617,7 +1621,6 @@
    .             link-layer address (variable length)              .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -1674,7 +1677,6 @@
 
           <artwork align="left">
        <![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1686,7 +1688,6 @@
    .                       (variable length)                       .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -1711,13 +1712,11 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
    +---+---+---+---+---+---+---+---+
    | 0 | 2 | 0 | 0 | 0 |  9| 12|192|
    +---+---+---+---+---+---+---+---+
    |132|211| 3 | 0 | 9 | 18|
    +---+---+---+---+---+---+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -1739,8 +1738,8 @@
         the client or server device. For example, a node that has a network
         interface implemented in a chip that is unlikely to be removed and
         used elsewhere could use a DUID-LL. The hardware type MUST be a valid
-        hardware type assigned by the IANA, as described in <xref
-        target="RFC0826"></xref>. The hardware type is stored in network byte
+        hardware type assigned by IANA, see <xref target="IANA-HARDWARE-TYPES"/>.
+        The hardware type is stored in network byte
         order. The link-layer address is stored in canonical form, as
         described in <xref target="RFC2464"></xref>. The following diagram
         illustrates the format of a DUID-LL:</t>
@@ -1750,7 +1749,6 @@
 
           <artwork align="left">
        <![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1760,7 +1758,6 @@
    .             link-layer address (variable length)              .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -1791,7 +1788,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4675,7 +4671,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
    msg-type:       RELAY-REPLY
    hop-count:      1
    link-address:   0
@@ -4686,7 +4681,6 @@
      link-address: address from link to which C is attached
      peer-address: C
      Relay Message option: <response from server>
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -4825,7 +4819,6 @@
             <preamble></preamble>
 
             <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4836,7 +4829,6 @@
    .                                               +-+-+-+-+-+-+-+-+
    |                                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
             ]]></artwork>
 
             <postamble></postamble>
@@ -4952,7 +4944,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -4961,7 +4952,6 @@
    |                          option-data                          |
    |                      (option-len octets)                      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5002,7 +4992,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5013,7 +5002,6 @@
    .                        (variable length)                      .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5042,7 +5030,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5053,7 +5040,6 @@
    .                        (variable length)                      .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5088,7 +5074,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5104,7 +5089,6 @@
    .                         IA_NA-options                         .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5209,7 +5193,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5221,7 +5204,6 @@
    .                         IA_TA-options                         .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5305,7 +5287,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5324,7 +5305,6 @@
    .                        IAaddr-options                         .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5395,7 +5375,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5405,7 +5384,6 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                              ...                              |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5461,7 +5439,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5469,7 +5446,6 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |  pref-value   |
    +-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5501,7 +5477,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5509,7 +5484,6 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |          elapsed-time         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5555,7 +5529,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5566,7 +5539,6 @@
    .                                                               .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5604,7 +5576,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5619,7 +5590,6 @@
    .                   authentication information                  .
    .                       (variable length)                       .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5664,7 +5634,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5675,7 +5644,6 @@
    |                                                               |
    |                                                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5723,7 +5691,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5735,7 +5702,6 @@
    .                        status-message                         .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5763,7 +5729,7 @@
         <t>The status-code values previously defined by <xref
         target="RFC3315"></xref> and <xref target="RFC3633"></xref> are:</t>
 
-        <texttable>
+        <texttable title="Status Code Definitions">
           <ttcol>Name</ttcol>
 
           <ttcol align="right">Code</ttcol>
@@ -5837,13 +5803,11 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |      OPTION_RAPID_COMMIT      |               0               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5900,7 +5864,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5910,7 +5873,6 @@
    .                          user-class-data                      .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5944,11 +5906,9 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
    |        user-class-len         |          opaque-data          |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -5984,7 +5944,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -5996,7 +5955,6 @@
    .                       vendor-class-data                       .
    .                             . . .                             .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -6030,11 +5988,9 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
    |       vendor-class-len        |          opaque-data          |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-...-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -6063,7 +6019,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -6075,7 +6030,6 @@
    .                       vendor-option-data                      .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -6114,7 +6068,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -6124,7 +6077,6 @@
    .                        sub-option-data                        .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -6198,7 +6150,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -6208,7 +6159,6 @@
    .                         interface-id                          .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -6255,7 +6205,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -6263,7 +6212,6 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |    msg-type   |
    +-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -6301,13 +6249,11 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |     OPTION_RECONF_ACCEPT      |               0               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -6335,7 +6281,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -6351,7 +6296,6 @@
    .                          IA_PD-options                        .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -6443,7 +6387,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -6465,7 +6408,6 @@
    .                       IAprefix-options                        .
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -6632,7 +6574,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -6640,7 +6581,6 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                       SOL_MAX_RT value                        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -6706,7 +6646,6 @@
           <preamble></preamble>
 
           <artwork align="left"><![CDATA[
-
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -6714,7 +6653,6 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                       INF_MAX_RT value                        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
           ]]></artwork>
 
           <postamble></postamble>
@@ -7003,8 +6941,8 @@
 <c>51</c><c>V6_LOST</c><c>Yes</c><c>Yes</c>
 <c>52</c><c>CAPWAP_AC_V6</c><c>Yes</c><c>Yes</c>
 <c>53</c><c>RELAY_ID</c><c>No</c><c>Yes</c>
-<c>54</c><c>OPTION-IPv6_Address-MoS</c><c>Yes</c><c>Yes</c>
-<c>55</c><c>OPTION-IPv6_FQDN-MoS</c><c>Yes</c><c>Yes</c>
+<c>54</c><c>IPv6_Address-MoS</c><c>Yes</c><c>Yes</c>
+<c>55</c><c>IPv6_FQDN-MoS</c><c>Yes</c><c>Yes</c>
 <c>56</c><c>NTP_SERVER</c><c>Yes</c><c>Yes</c>
 <c>57</c><c>V6_ACCESS_DOMAIN</c><c>Yes</c><c>Yes</c>
 <c>58</c><c>SIP_UA_CS_LIST</c><c>Yes</c><c>Yes</c>
@@ -7258,6 +7196,23 @@
           <date />
         </front>
       </reference>
+         
+      <reference anchor="IANA-HARDWARE-TYPES">
+        <front>
+          <title>
+              Hardware Types
+              https://www.iana.org/assignments/arp-parameters
+              </title>
+
+          <author>
+            <organization>IANA</organization>
+          </author>
+
+          <date />
+        </front>
+      </reference>
+         
+         https://www.iana.org/assignments/arp-parameters/
 
       <?rfc include='reference.RFC.0826'?>
 
