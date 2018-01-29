@@ -8,7 +8,7 @@
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
 <rfc category="std" docName="draft-ietf-dhc-rfc3315bis-11"
-     ipr="pre5378Trust200902" obsoletes="3315,3633,3736,4242,7083,7550">
+     ipr="pre5378Trust200902" obsoletes="3315,3633,3736,4242,7083,7283,7550">
   <front>
     <title abbrev="DHCP for IPv6">Dynamic Host Configuration Protocol for IPv6
     (DHCPv6) bis</title>
@@ -203,10 +203,11 @@
       stateless DHCPv6 (RFC3736), an option to specify an upper
       bound for how long a client should wait before refreshing information
       (RFC4242), a mechanism for throttling DHCPv6 clients when DHCPv6
-      service is not available (RFC7083), and clarifies the interactions
+      service is not available (RFC7083), incorporates relay agent handling
+      of unknown messages (RFC7283), and clarifies the interactions
       between modes of operation (RFC7550).
       As such, this document obsoletes RFC3315, RFC3633, RFC3736, RFC4242,
-      RFC7083, and RFC7550.</t>
+      RFC7083, RFC7283, and RFC7550.</t>
     </abstract>
   </front>
 
@@ -261,7 +262,8 @@
         (DHCP) Service for IPv6s <xref target="RFC3736"></xref>, Information Refresh
         Time Option for Dynamic Host Configuration Protocol for IPv6 (DHCPv6)
         <xref target="RFC4242"/>, Modification to
-        Default Values of SOL_MAX_RT and INF_MAX_RT <xref target="RFC7083"/>, and
+        Default Values of SOL_MAX_RT and INF_MAX_RT <xref target="RFC7083"/>,
+        Handling Unknown DHCPv6 Messages <xref target="RFC7283"/>, and
         Issues and Recommendations with Multiple Stateful DHCPv6 Options
         <xref target="RFC7550"/>. This document
         provides a unified, corrected, and cleaned up definition of DHCPv6
@@ -4523,10 +4525,11 @@
         <!-- 20.1, line 2964-->
 
         <t>A relay agent relays both messages from clients and Relay-forward
-        messages from other relay agents. When a relay agent receives a valid
-        message (for a definition of a valid message, see Section 4.1 of <xref
-        target="RFC7283"></xref>) to be relayed, it constructs a new
-        Relay-forward message. The <!-- Applied text from Section 4.1 of RFC7283 -->
+        messages from other relay agents. When a relay agent receives
+        <!-- Applied text from Section 4.1 of RFC7283 -->
+        a Relay-forward message, a recognized message type for which it is
+        not the intended target, or an unrecognized message type
+        (<xref target="RFC7283"/>), it constructs a new Relay-forward message. The
         relay agent copies the source address from the header of the IP
         datagram in which the message was received into the peer-address field
         of the Relay-forward message. The relay agent copies the received DHCP
@@ -7378,7 +7381,8 @@ Also, a Refreshing Configuration Information <xref target="RFC3315-18.2.12"/>
 was added indicating use cases for when a client should try to refresh network
 information.</t>
 
-<t>The Relay Agent Behavior <xref target="RFC3315-20"/> had minor edits.</t>
+<t>The Relay Agent Behavior <xref target="RFC3315-20"/> incorporates
+<xref target="RFC7283"/> and had minor edits.</t>
 
 <t>The Authentication of DHCP Messages <xref target="RFC3315-21"/> had
 significant changes: IPsec materials were mostly removed and replaced
