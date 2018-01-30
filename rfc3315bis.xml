@@ -1266,15 +1266,11 @@
           <c>Max Reconfigure attempts</c>
 
           <c>HOP_COUNT_LIMIT</c>
-
           <c>8</c>
-
           <c>Max hop count in a Relay-forward message</c>
 
           <c>IRT_DEFAULT</c>
-
           <c>86400 secs (24 hours)</c>
-
           <c>Default information refresh time</c>
 
           <c>IRT_MINIMUM</c>
@@ -1282,6 +1278,12 @@
           <c>600 secs</c>
 
           <c>Min information refresh time</c>
+
+          <c>MAX_WAIT_TIME</c>
+
+          <c>60 secs</c>
+
+          <c>Maximum required time to wait for a response</c>
 
         </texttable>
       </section>
@@ -2188,12 +2190,12 @@
       message until it receives a response.</t>
 
       <!-- New text from section 6 of RFC7083 -->
-
       <t>A client is not expected to listen for a response during the entire
-      RT period and may turn off listening capabilities after a certain time
-      due to power consumption saving or other reasons. Of course, a
-      client MUST listen for a Reconfigure if it has negotiated for its use
-      with the server.</t>
+      RT period and may turn off listening capabilities after waiting at least
+      the shorter of RT and MAX_WAIT_TIME due to power consumption saving or
+      other reasons. Of course, a client MUST listen for a Reconfigure if it
+      has negotiated for its use with the server.</t>
+
     </section>
 
     <!-- ends: "14 from line 1258-->
