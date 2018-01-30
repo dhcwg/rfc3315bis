@@ -1267,7 +1267,7 @@
 
           <c>HOP_COUNT_LIMIT</c>
 
-          <c>32</c>
+          <c>8</c>
 
           <c>Max hop count in a Relay-forward message</c>
 
@@ -4510,7 +4510,7 @@
 
       <t>If the relay agent relays messages to the All_DHCP_Servers multicast
       address or other multicast addresses, it sets the Hop Limit field to
-      32.</t>
+      8.</t>
 
       <!-- Applied text from Section 4.2 of RFC7283 -->
 
