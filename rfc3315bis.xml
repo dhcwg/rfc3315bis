@@ -2033,7 +2033,7 @@
       <section anchor="rate-limit" title="Rate Limiting">
         <t>In order to avoid prolonged message bursts that may be caused by
         possible logic loops, a DHCP client MUST limit the rate of DHCP
-        messages it transmits. One example is that a client obtains an
+        messages it transmits or retransmits. One example is that a client obtains an
         address or delegated prefix, but does not like the response; so it reverts back to Solicit
         procedure, discovers the same (sole) server, requests an address or delegated prefix and
         gets the same address or delegated prefix as before (as the server has this previously
