@@ -678,7 +678,7 @@
         server responds with a Reply message that contains the confirmed
         addresses, delegated prefixes, and configuration.</t>
 
-        <t>As described in the previous section, the client can also request an
+        <t>As described in the previous section, the client can request an
         extension of the lifetimes assigned to addresses or delegated prefixes
         (this is a two message exchange).</t>
 
