@@ -2525,7 +2525,7 @@
         <t>When a client sends a DHCP message
         for the purpose of prefix delegation, it SHOULD be sent on the
         interface associated with the upstream router (typically, connected
-        to an ISP network). The
+        to an ISP network); see <xref target="RFC7084"/>. The
         upstream interface is typically determined by configuration. This rule
         applies even in the case where a separate IA_PD is used for each
         downstream interface.</t>
@@ -3376,18 +3376,16 @@
           selects one or more Advertise messages based upon the following
           criteria. <list hangIndent="3" style="hanging">
               <t hangText="-">Those Advertise messages with the highest server
-              preference value are preferred over all other Advertise
-              messages.</t>
+              preference value SHOULD be preferred over all other Advertise
+              messages. The client MAY choose a less-preferred server if
+              that server has a better set of advertised parameters, such as
+              the available set of IAs, as well as the set of other
+              configuration options advertised.</t>
 
               <t hangText="-">Within a group of Advertise messages with the
               same server preference value, a client MAY select those servers
               whose Advertise messages advertise information of interest to
               the client.</t>
-
-              <t hangText="-">The client MAY choose a less-preferred server if
-              that server has a better set of advertised parameters, such as
-              the available set of IAs, as well as the set of other
-              configuration options advertised.</t>
           </list></t>
 
           <!-- The new paragraph to introduce the requirement stated in first
@@ -4819,11 +4817,11 @@
         replay detection used in the Replay Detection field.</t>
 
         <t>If the RDM field contains 0x00, the replay detection field MUST be
-        set to the value of a strictly monotonically increasing counter. Using
-        a counter value, such as the current time of day (for example, an
-        NTP-format timestamp <xref target="RFC5905"></xref>), can reduce the
-        danger of replay attacks. This method MUST be supported by all
-        protocols.</t>
+        set to the value of a strictly monotonically increasing 64-bit unsigned
+        integer (modulo 2^64). Using this technique can reduce the danger
+        of replay attacks. This method MUST be supported by all protocols.
+        One choice might be to use the 64-bit NTP Timestamp format
+        <xref target="RFC5905"/>).</t>
       </section>
 
       <!-- ends: "21.3 from line 3198-->
@@ -5899,9 +5897,8 @@
 
             <t>The problem of unused leases can be minimized by designing
             the DHCP service so that only one server responds to the
-            Solicit, by using relatively short lifetimes for newly assigned
-            leases, or by having DHCP clients release unused leases using the 
-            Release message.</t>
+            Solicit or by using relatively short lifetimes for newly assigned
+            leases.</t>
           </list></t>
       </section>
 
