@@ -7126,10 +7126,10 @@
       https://www.iana.org/assignments/service-names-port-numbers as
       follows:
       <list hangIndent="12" style="hanging">
-        <t hangText="546/udp -">Add a reference to this document.</t>
-        <t hangText="547/udp -">Add a reference to this document.</t>
-        <t hangText="547/tcp -">Add a reference to <xref target="RF5460"/>.</t>
-        <t hangText="647/tcp -">Add a reference to <xref target="RF8156"/>.</t>
+        <t hangText="   546/udp -">Add a reference to this document.</t>
+        <t hangText="   547/udp -">Add a reference to this document.</t>
+        <t hangText="   547/tcp -">Add a reference to <xref target="RFC5460"/>.</t>
+        <t hangText="   647/tcp -">Add a reference to <xref target="RFC8156"/>.</t>
       </list></t>
     </section>
 
@@ -7330,6 +7330,7 @@
       <?rfc include='reference.RFC.7844'?>
       <?rfc include='reference.RFC.7969'?>
 
+      <?rfc include='reference.RFC.8156'?>
       <?rfc include='reference.RFC.8168'?>
       <?rfc include='reference.RFC.8213'?>
 
