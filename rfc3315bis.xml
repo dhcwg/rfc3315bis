@@ -7119,8 +7119,18 @@
       <t>IANA is requested to add a reference to this document for the
       RDM value of 0 to the "RDM Name Space Values" registry at
       https://www.iana.org/assignments/auth-namespaces.
-      </t>         
-
+      </t>
+         
+      <t>IANA is requested to update the "Service Name and Transport
+      Protocol Port Number Registry" at
+      https://www.iana.org/assignments/service-names-port-numbers as
+      follows:
+      <list hangIndent="12" style="hanging">
+        <t hangText="546/udp -">Add a reference to this document.</t>
+        <t hangText="547/udp -">Add a reference to this document.</t>
+        <t hangText="547/tcp -">Add a reference to <xref target="RF5460"/>.</t>
+        <t hangText="647/tcp -">Add a reference to <xref target="RF8156"/>.</t>
+      </list></t>
     </section>
 
     <!-- ends: "24 from line 4595-->
@@ -7295,6 +7305,7 @@
 
       <?rfc include='reference.RFC.5007'?>
       <?rfc include='reference.RFC.5453'?>
+      <?rfc include='reference.RFC.5460'?>
       <?rfc include='reference.RFC.5905'?>
 
       <?rfc include='reference.RFC.6422'?>
