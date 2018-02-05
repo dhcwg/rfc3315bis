@@ -5204,6 +5204,9 @@
         values in the T1 and T2 fields for the T1 and T2 parameters, unless
         those values in those fields are 0. The values in the T1 and T2 fields
         are the number of seconds until T1 and T2.</t>
+           
+        <t>As per <xref target="RFC3315-5.6"/>, the value 0xffffffff is taken to
+        mean ("infinity") and should be used carefully.</t>
 
         <t>The server selects the T1 and T2 times to allow the client to
         extend the lifetimes of any addresses in the IA_NA before the
@@ -5221,9 +5224,6 @@
         and T2 are greater than 0, the client discards the IA_NA option and
         processes the remainder of the message as though the server had not
         included the invalid IA_NA option.</t>
-
-        <t>As per <xref target="RFC3315-5.6"/>, the value 0xffffffff is taken to
-        ("infinity") and should be used carefully. </t>
       </section>
 
       <!-- ends: "22.4 from line 3649-->
