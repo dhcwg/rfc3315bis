@@ -2703,7 +2703,7 @@
       generate a single transaction when renewing or rebinding its leases.
       However, because some servers may not yet conform to this requirement,
       a client MUST be prepared to select appropriate T1/T2 parameters as
-      described in section <xref target="RFC3315-18.1.3"/>.</t>
+      described in <xref target="RFC3315-18.1.3"/>.</t>
           
      </section>
 
@@ -3793,15 +3793,15 @@
         use the received message to construct the proper Relay-reply
         message to allow the response to the received message to be
         relayed through the same relay agents (in reverse order) as
-        the original client message; see <xref target=""RFC3315-20.3"/>
+        the original client message; see <xref target="RFC3315-20.3"/>
         for more details.
         The server may also need to record this information with each
         client in case it is needed to send
         a Reconfigure message at a later time unless the server has been
         configured with addresses that can be used to send Reconfigure
         messages directly to the client (see
-        <xref target=""reconfigure-transmission"/>). Note that servers
-        that support leasequery (<xref target="RFC5007"/>) also need
+        <xref target="reconfigure-transmission"/>). Note that servers
+        that support leasequery <xref target="RFC5007"/> also need
         to record this information.</t>
 
         <t>The server MAY initiate a configuration exchange, by sending
