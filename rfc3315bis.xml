@@ -3942,14 +3942,21 @@
           matches a previous transmission. The server MUST NOT cache its
           responses.</t>
 
-          <!-- Explanation:
-          <t>The reason why cached replies are bad is because their lifetimes
-          are out of sync. If the client retransmits its REQUEST for 20
-          seconds and finally gets the cached answer, its notion of the lease
-          expiration moment would be 20 seconds later than the server's.
-          So the server could think the lease has expired and reassign it,
-          while the client would believe its lease is still valid for
-          another 20 seconds. </t> -->
+          <t>DISCUSSION:</t>
+
+          <t>The reason why cached replies are bad is because
+          lifetimes need to get updated (either decrease the timers by
+          the amount of time elapsed since the original transmission
+          or keep the lifetime values, but update the lease
+          information in the server's database to keep the last
+          transmission time correct). Also, if the message uses any
+          security protection (like RDM described in <xref
+          target="replay"/>, its value must be updated. Additionally,
+          any digests must be updated. Given all of the above, the
+          retransmission is far more complex than simply sending the
+          same buffer as before and it is easy to miss some fo those
+          steps.</t>
+
         </section>
 
         <!-- ends: "18.2.1 from line 2477-->
@@ -4810,7 +4817,7 @@
 
       <!-- ends: "21.2 from line 3172-->
 
-      <section title="Replay Detection">
+      <section anchor="replay" title="Replay Detection">
         <!-- 21.3, line 3198-->
 
         <t>The Replay Detection Method (RDM) field determines the type of
