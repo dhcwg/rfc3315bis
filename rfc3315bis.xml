@@ -2690,17 +2690,21 @@
       </figure>
 
      <section title="A Single Exchange for Multiple IA Options">
-     <t>The client and server use the IA_PD option
-      to exchange information about prefix(es) in much the same way as IA_NA
-      and IA_TA options are used for assigned addresses. Typically, a single
-      DHCP session is used to exchange information about addresses and
-      prefixes, i.e., IA_NA and IA_PD options are carried in the same
-     message.</t>
-     <t>Clients SHOULD use a single transaction for all of its IA
-     options. Servers SHOULD assign the same T1/T2 values to all IA
-     options configured for a client, so the client will generate a
-     single transaction when renewing its leases.  For a rationale of
-     this approach, see Section 4.2 of <xref target="RFC7550"/>.</t>
+         
+      <t>This document assumes that a client SHOULD use a single transaction
+      for all of IA options required on an interface as this simplifies
+      the client implementation and reduces the potential number of
+      transactions required (for the background for this design
+      choice, refer to Section 4 of <xref target="RFC7550"/>). To facility
+      a client's use of a single transaction for all IA options, servers
+      MUST return the same T1/T2 values for all IA options in a Reply
+      (see <xref target="RFC3315-18.2.1"/>, <xref target="RFC3315-18.2.3"/>,
+      and <xref target="RFC3315-18.2.4"/>), so that the client will
+      generate a single transaction when renewing or rebinding its leases.
+      However, because some servers may not yet conform to this requirement,
+      a client MUST be prepared to select appropriate T1/T2 parameters as
+      described in section <xref target="RFC3315-18.1.3"/>.</t>
+          
      </section>
 
       <section title="Client Behavior">
@@ -3039,12 +3043,12 @@
 
           <t>The server controls the time at which the client should contact the
           server to extend the lifetimes on assigned leases through the T1 and
-          T2 parameters assigned to an IA. However, as the client
-          Renews/Rebinds all IAs from the server at the same time, the client
-          MUST select a T1 and T2 time from all IA options, which will
-          guarantee that the client will send Renew/Rebind messages not later
-          than at the T1/T2 times associated with any of the client's bindings
-          (earliest T1/T2).</t>
+          T2 values assigned to an IA. However, as the client SHOULD
+          renew/rebind all IAs from the server at the same time, the client
+          MUST select T1 and T2 parameters from all IA options that will
+          guarantee the client initiates transmissions of Renew/Rebind
+          messages not later than at the T1/T2 times associated with any of
+          the client's bindings (earliest T1/T2).</t>
 
           <t>At time T1, the client initiates a Renew/Reply message exchange
           to extend the lifetimes on any leases in the IA.</t>
@@ -3783,6 +3787,22 @@
         been configured to return to the client. The server MAY return
         additional options to the client if it has been configured to do
         so.</t>
+           
+        <t>Any message sent from a client may arrive at the server
+        encapsulated in one or more Relay-forward messages. The server MUST
+        use the received message to construct the proper Relay-reply
+        message to allow the response to the received message to be
+        relayed through the same relay agents (in reverse order) as
+        the original client message; see <xref target=""RFC3315-20.3"/>
+        for more details.
+        The server may also need to record this information with each
+        client in case it is needed to send
+        a Reconfigure message at a later time unless the server has been
+        configured with addresses that can be used to send Reconfigure
+        messages directly to the client (see
+        <xref target=""reconfigure-transmission"/>). Note that servers
+        that support leasequery (<xref target="RFC5007"/>) also need
+        to record this information.</t>
 
         <t>The server MAY initiate a configuration exchange, by sending
         Reconfigure messages, to cause DHCP clients to obtain new addresses,
