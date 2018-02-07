@@ -6785,14 +6785,19 @@
       <!-- 23, line 4492-->
 
       <t>This section discusses security considerations that are not related
-      to privacy.  For dedicated privacy discussion, see <xref
+      to privacy. For dedicated privacy discussion, see <xref
       target="privacy"/>.</t>
 
       <t>The threat to DHCP is inherently an insider threat (assuming a
       properly configured network where DHCP ports are blocked on the
-      perimeter gateways of the enterprise).  Regardless of the gateway
+      perimeter gateways of the enterprise). Regardless of the gateway
       configuration, however, the potential attacks by insiders and
       outsiders are the same.</t>
+         
+      <t>DHCP lacks end-to-end encryption between clients and servers, thus
+      hijacking, tampering, and eavesdropping attacks are all possible
+      as a result. Some network environments (discussed below) can be
+      secured through various means to minimize these attacks.</t>
 
       <t>One attack specific to a DHCP client is the establishment of a
       malicious server with the intent of providing incorrect configuration
@@ -6871,14 +6876,15 @@
       prefixes.</t>
 
       <t>Various network environments also offer levels of security if deployed
-      as described below.</t>
+      as described below.         
+      <list hangIndent="3" style="hanging">
 
-      <t>In enterprise and factory networks, use of <xref target="IEEE-802.1x"/>
+      <t hangText="-">In enterprise and factory networks, use of <xref target="IEEE-802.1x"/>
       authentication can prevent unknown or untrusted clients from connecting to
       the network. However, this does not necessarily assure that the connected
       client will be a good DHCP or network actor.</t>
 
-      <t>For wired networks where clients typically are connected to a switch
+      <t hangText="-">For wired networks where clients typically are connected to a switch
       port, snooping DHCP multicast (or unicast traffic) becomes difficult as
       the switches limit the traffic delivered to a port. The client's DHCP
       multicast packets (with destination address fe02::1:2) are only forwarded
@@ -6886,7 +6892,7 @@
       server's (or relay's) unicast replies are only delivered to the target
       client's port - not all ports.</t>
 
-      <t>In public networks (such as a WiFi network in a coffee shop or airport),
+      <t hangText="-">In public networks (such as a WiFi network in a coffee shop or airport),
       it is possible for others within radio range to snoop DHCP and other
       traffic. But in these environments, there is very little if anything that
       can be learned from the DHCP traffic itself (either from client to server,
@@ -6902,6 +6908,8 @@
       reconfiguration - but this is relatively easy to prevent by disallowing
       direct client-to-client communication on these networks or using <xref
       target="RFC7610"/> and <xref target="RFC7513"/>.</t>
+           
+           </list></t>
 
     </section>
 
