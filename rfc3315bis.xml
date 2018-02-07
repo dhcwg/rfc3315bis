@@ -3605,7 +3605,7 @@
                 in the Reply message, but as this likely indicates the server
                 that responded does not support that IA type, sending immediately
                 is unlikely to produce a different result. Therefore, the client
-                MUST rate limit its transmissions (see <xref target="rate-limit"/)
+                MUST rate limit its transmissions (see <xref target="rate-limit"/>)
                 and MAY just wait for the normal retransmission time (as if the
                 Reply message had not been received). The client continues to use
                 other bindings for which the server did return information.</t>
@@ -3969,16 +3969,15 @@
           <t>DISCUSSION:</t>
 
           <t>The reason why cached replies are bad is because
-          lifetimes need to get updated (either decrease the timers by
+          lifetimes need to be updated (either decrease the timers by
           the amount of time elapsed since the original transmission
-          or keep the lifetime values, but update the lease
-          information in the server's database to keep the last
-          transmission time correct). Also, if the message uses any
+          or keep the lifetime values and update the lease
+          information in the server's database). Also, if the message uses any
           security protection (like RDM described in <xref
-          target="replay"/>, its value must be updated. Additionally,
-          any digests must be updated. Given all of the above, the
-          retransmission is far more complex than simply sending the
-          same buffer as before and it is easy to miss some fo those
+          target="replay"/>), its value must be updated. Additionally,
+          any digests must be updated. Given all of the above, caching
+          replies is far more complex than simply sending the
+          same buffer as before and it is easy to miss some of those
           steps.</t>
 
         </section>
