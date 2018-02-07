@@ -3602,9 +3602,13 @@
                 for which the server did not return an error.</t>
 
                 <t hangText="-">Sends a Renew/Rebind if any of the IAs are not
-                in the Reply message, but in this case the client MUST limit
-                the rate at which it sends these messages, to avoid the
-                Renew/Rebind storm.</t>
+                in the Reply message, but as this likely indicates the server
+                that responded does not support that IA type, sending immediately
+                is unlikely to produce a different result. Therefore, the client
+                MUST rate limit its transmissions (see <xref target="rate-limit"/)
+                and MAY just wait for the normal retransmission time (as if the
+                Reply message had not been received). The client continues to use
+                other bindings for which the server did return information.</t>
 
                 <t hangText="-">Otherwise accepts the information in the
                 IA.</t>
@@ -4465,8 +4469,8 @@
           relay agent that will relay the message to the client. The server
           may obtain the address of the client (and the appropriate relay
           agent, if required) through the information the server has about
-          clients that have been in contact with the server, or through some
-          external agent.</t>
+          clients that have been in contact with the server (see
+          <xref target="RFC3315-18.2"/>), or through some external agent.</t>
 
           <t>To reconfigure more than one client, the server unicasts a
           separate message to each client. The server may initiate the
