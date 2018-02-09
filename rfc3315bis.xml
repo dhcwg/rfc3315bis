@@ -4566,7 +4566,7 @@
         any other options it is configured to include.</t>
 
         <t><xref target="RFC6221"></xref> defines a Lightweight DHCPv6 Relay
-        Agent (LDRA) that allows Relay Agent Information to be inserted by an
+        Agent (LDRA) that allows relay agent information to be inserted by an
         access node that performs a link-layer bridging (i.e., non-routing)
         function.</t>
 
@@ -4733,10 +4733,10 @@
 
       <section anchor="relay-srv-interacton"
                title="Interaction between Relay Agents and Servers">
-        <t>Each time a packet is relayed by a Relay Agent towards a server, a
+        <t>Each time a packet is relayed by a relay agent towards a server, a
         new encapsulation level is added around the packet. Each relay is
         allowed to insert additional options on the encapsulation level it
-        added, but must not change anything in the packet being encapsulated. If
+        added, but MUST NOT change anything in the packet being encapsulated. If
         there are multiple relays between a client and a server, multiple
         encapsulations are used. Although it makes packet processing slightly
         more complex, it has a big advantage of having clear indication which
@@ -4749,30 +4749,30 @@
         can be added for several reasons. First, relays can provide additional
         information about the client. That source of information is usually more
         trusted by a server administrator as it comes from the network
-        infrastructure rather then the client himself and cannot be easily
+        infrastructure rather then the client and cannot be easily
         spoofed. These options can be used by the server to determine its
         allocation policy.</t>
 
-        <t>Second, relay may need some information to send a response back to
+        <t>Second, a relay may need some information to send a response back to
         the client. Relay agents are expected to be stateless (not retain any
-        state after a packet has been processed). Relay agent may include an
+        state after a packet has been processed). A relay agent may include an
         option, send it to the server and ask the server to echo the option back
         in the response. This option will be then used by the relay agent to
         send the response back. The client will never see this option. See
-        <xref target="RFC4994" /> for details.</t>
+        <xref target="RFC4994"/> for details.</t>
 
         <t>Third, sometimes a relay is the best device to provide values for
         certain options. A relay can insert an option to the client packet being
         forward to the server and ask the server to pass that option back to the
         client. The client will receive that option. It should be noted that the
-        server is ultimate authority here and depending on its configuration, it
+        server is the ultimate authority here and depending on its configuration, it
         may send the option back to the client or not. See
-        <xref target="RFC6422" /> for details.</t>
+        <xref target="RFC6422"/> for details.</t>
 
-        <t>Servers may want to retain the relay information after the packet
+        <t>Servers may need to retain the relay information after the packet
         processing is completed for various reasons. One is a bulk leasequery
         mechanism that may ask for all addresses and/or prefixes that were
-        assigned via specific relay. Second reason is reconfigure mechanism. The
+        assigned via specific relay. A second is for the reconfigure mechanism. The
         server may chose to not send the Reconfigure message directly to the
         client, but rather send it via relays. This particular behavior is
         considered an implementation detail and is out of scope for this
@@ -5750,12 +5750,12 @@
         in the server-address field of the option.</t>
 
         <t>When the server sends a Unicast option to the client, some messages
-        from the client will not be relayed by Relay Agents, and will not
-        include Relay Agent options from the Relay Agents. Therefore, a server
-        should only send a Unicast option to a client when Relay Agents are
-        not sending Relay Agent options. A DHCP server rejects any messages
+        from the client will not be relayed by relay agents, and will not
+        include relay agent options from the relay agents. Therefore, a server
+        should only send a Unicast option to a client when relay agents are
+        not sending relay agent options. A DHCP server rejects any messages
         sent inappropriately using unicast to ensure that messages are relayed
-        by Relay Agents when Relay Agent options are in use.</t>
+        by relay agents when relay agent options are in use.</t>
 
         <t>Details about when the client may send messages to the server using
         unicast are in <xref target="configuration-exchange"></xref>.</t>
