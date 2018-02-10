@@ -596,7 +596,8 @@
      <!-- 1.1, line 260-->
 
      <t>Clients and servers exchange DHCP messages using UDP <xref
-     target="RFC0768"></xref>. The client uses a link-local address or
+     target="RFC0768"/> BCP 145 <xref target="RFC8085"/>. The
+     client uses a link-local address or
      addresses determined through other mechanisms for transmitting and
      receiving DHCP messages.</t>
 
@@ -1117,7 +1118,10 @@
         <!-- 5.5, line 743-->
 
         <t>This section presents a table of values used to describe the
-        message transmission behavior of clients and servers.</t>
+        message transmission behavior of clients and servers. Some of
+        the values are adjusted by a randomization factor and backoffs
+        (see <xref target="RFC3315-14"/>) and transmissions may also
+        be influenced by rate limiting (see <xref target="rate-limit"/>).</t>
 
         <texttable anchor="Trans-Parameters-Table"
                    title="Transmission and Retransmission Parameters">
@@ -4485,13 +4489,14 @@
           specified in the original Reconfigure message) from the client as
           satisfying the Reconfigure message request.</t>
 
-          <t>If the server does not receive a Renew, Rebind, or
-          Information-request message from the client in REC_TIMEOUT
-          milliseconds, the server retransmits the Reconfigure message,
-          doubles the REC_TIMEOUT value and waits again. The server continues
-          this process until REC_MAX_RC unsuccessful attempts have been made,
-          at which point the server SHOULD abort the reconfigure process for
-          that client.</t>
+          <t>When transmitting the Reconfigure message, the server sets
+          the retransmission time (RT) to REC_TIMEOUT. If the server does
+          not receive a Renew, Rebind, or Information-request message from
+          the client before the RT elapses, the server retransmits the
+          Reconfigure message, doubles the RT value, and waits again.
+          The server continues this process until REC_MAX_RC unsuccessful
+          attempts have been made, at which point the server SHOULD abort
+          the reconfigure process for that client.</t>
 
           <t>Default and initial values for REC_TIMEOUT and REC_MAX_RC are
           documented in <xref target="RFC3315-5.5"></xref>.</t>
@@ -7270,6 +7275,7 @@
       <?rfc include='reference.RFC.7227'?>
       <?rfc include='reference.RFC.7283'?>
          
+      <?rfc include='reference.RFC.8085'?>
       <?rfc include='reference.RFC.8174'?>
       <?rfc include='reference.RFC.8200'?>
 
