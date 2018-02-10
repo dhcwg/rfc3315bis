@@ -2696,9 +2696,9 @@
      <section title="A Single Exchange for Multiple IA Options">
          
       <t>This document assumes that a client SHOULD use a single transaction
-      for all of IA options required on an interface as this simplifies
+      for all of the IA options required on an interface as this simplifies
       the client implementation and reduces the potential number of
-      transactions required (for the background for this design
+      transactions required (for the background on this design
       choice, refer to Section 4 of <xref target="RFC7550"/>). To facility
       a client's use of a single transaction for all IA options, servers
       MUST return the same T1/T2 values for all IA options in a Reply
@@ -4777,7 +4777,7 @@
         <t>Servers may need to retain the relay information after the packet
         processing is completed for various reasons. One is a bulk leasequery
         mechanism that may ask for all addresses and/or prefixes that were
-        assigned via specific relay. A second is for the reconfigure mechanism. The
+        assigned via a specific relay. A second is for the reconfigure mechanism. The
         server may chose to not send the Reconfigure message directly to the
         client, but rather send it via relays. This particular behavior is
         considered an implementation detail and is out of scope for this
@@ -5241,7 +5241,7 @@
         are the number of seconds until T1 and T2.</t>
            
         <t>As per <xref target="RFC3315-5.6"/>, the value 0xffffffff is taken to
-        mean ("infinity") and should be used carefully.</t>
+        mean "infinity" and should be used carefully.</t>
 
         <t>The server selects the T1 and T2 times to allow the client to
         extend the lifetimes of any addresses in the IA_NA before the
