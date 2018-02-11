@@ -5324,6 +5324,7 @@
 
         <t>The IA_NA-options field encapsulates those options that are
         specific to this IA_NA. For example, all of the IA Address options
+        (see <xref target="RFC3315-22.6"/>)
         carrying the addresses associated with this IA_NA are in the
         IA_NA-options field.</t>
 
@@ -5337,7 +5338,8 @@
         each must have a unique IAID).</t>
 
         <t>The status of any operations involving this IA_NA is indicated in a
-        Status Code option in the IA_NA-options field.</t>
+        Status Code option (see <xref target="RFC3315-22.13"/>)
+        in the IA_NA-options field.</t>
 
         <t>Note that an IA_NA has no explicit "lifetime" or "lease length" of
         its own. When the valid lifetimes of all of the addresses in an IA_NA
@@ -5427,6 +5429,7 @@
 
         <t>The IA_TA-Options field encapsulates those options that are
         specific to this IA_TA. For example, all of the IA Address options
+        (see <xref target="RFC3315-22.6"/>)
         carrying the addresses associated with this IA_TA are in the
         IA_TA-options field.</t>
 
@@ -5439,7 +5442,8 @@
         each must have a unique IAID).</t>
 
         <t>The status of any operations involving this IA_TA is indicated in a
-        Status Code option in the IA_TA-options field.</t>
+        Status Code option (see <xref target="RFC3315-22.13"/>)
+        in the IA_TA-options field.</t>
 
         <t>Note that an IA has no explicit "lifetime" or "lease length" of its
         own. When the valid lifetimes of all of the addresses in an IA_TA have
@@ -5477,7 +5481,8 @@
 
         <t>The IA Address option is used to specify an address associated
         with an IA_NA or an IA_TA. The IA Address option must be encapsulated
-        in the Options field of an IA_NA or IA_TA option. The IAaddr-options fields
+        in the Options field of an IA_NA (see <xref target="RFC3315-22.4"/>)
+        or IA_TA (see <xref target="RFC3315-22.5"/>) option. The IAaddr-options fields
         encapsulates those options that are specific to this address.</t>
 
         <t>The format of the IA Address option is:</t>
@@ -5607,10 +5612,27 @@
         <xref target="option_update_table"/> for details.</t>
 
         <t>The Option Request option MUST NOT include the
-        following options: Server Identifier, Client Identifier, IA_NA, IA_PD, IA_TA,
-        IA Address, IA Prefix, Option Request, Elapsed Time, Preference, Relay Message, Authentication,
-        Server Unicast, Rapid Commit, User Class, Vendor Class, Interface-Id, Reconfigure Message, and
-        Reconfigure Accept.  Other top-level options MUST appear in the Option Request
+        following options:
+        Client Identifier (see <xref target="RFC3315-22.2"/>),
+        Server Identifier (see <xref target="RFC3315-22.3"/>),
+        IA_NA (see <xref target="RFC3315-22.4"/>),
+        IA_TA (see <xref target="RFC3315-22.5"/>),
+        IA_PD (see <xref target="IA_PD-option"/>),
+        IA Address ((see <xref target="RFC3315-22.6"/>),
+        IA Prefix (see <xref target="IAPREFIX-option"/>),
+        Option Request,
+        Elapsed Time (see <xref target="RFC4242-Option"/>),
+        Preference (see <xref target="RFC3315-22.8"/>),
+        Relay Message (see <xref target="RFC3315-22.9"/>),
+        Authentication (see <xref target="RFC3315-22.11"/>),
+        Server Unicast (see <xref target="RFC3315-22.12"/>),
+        Rapid Commit (see <xref target="RFC3315-22.14"/>),
+        User Class (see <xref target="RFC3315-22.15"/>),
+        Vendor Class (see <xref target="RFC3315-22.16"/>),
+        Interface-Id (see <xref target="RFC3315-22.17"/>),
+        Reconfigure Message (see <xref target="RFC3315-22.19"/>), and
+        Reconfigure Accept (see <xref target="RFC3315-22.20"/>).
+        Other top-level options MUST appear in the Option Request
         option or they will not be sent by the server. Only top-level options MAY
         appear in the Option Request option. Options encapsulated in a container
         option SHOULD NOT appear in an Option Request option; see <xref target="RFC7598"/>
@@ -5706,7 +5728,7 @@
         elapsed-time field is set to 0 in the first message in the message
         exchange. Servers and Relay Agents use the data value in this option
         as input to policy controlling how a server responds to a client
-        message. For example, the elapsed time option allows a secondary DHCP
+        message. For example, the Elapsed Time option allows a secondary DHCP
         server to respond to a request when a primary server has not answered
         in a reasonable time. The elapsed time value is an unsigned, 16 bit
         integer. The client uses the value 0xffff to represent any elapsed
@@ -5808,14 +5830,14 @@
             authentication protocol. A one octet long field.</t>
 
             <t hangText="   RDM">The replay detection method used in this
-            authentication option. A one octet long field.</t>
+            Authentication option. A one octet long field.</t>
 
             <t hangText="   Replay detection">The replay detection information
             for the RDM. A 64-bit (8 octets) long field</t>
 
             <t hangText="   authentication information">The authentication
             information, as specified by the protocol and algorithm used in
-            this authentication option. A variable length field (11 octets
+            this Authentication option. A variable length field (11 octets
             less than the value in option-len).</t>
           </list></t>
            
@@ -6053,7 +6075,7 @@
 
       <!-- ends: "22.14 from line 4172-->
 
-      <section title="User Class Option">
+      <section anchor="RFC3315-22.15" title="User Class Option">
         <!-- 22.15, line 4217-->
 
         <t>The User Class option is used by a client to identify the type or
@@ -6099,7 +6121,7 @@
         department. The user class information carried in this option MUST be
         configurable on the client.</t>
 
-        <t>The data area of the user class option MUST contain one or more
+        <t>The data area of the User Class option MUST contain one or more
         instances of user class data. Each instance of the user class data is
         formatted as follows:</t>
 
@@ -6311,7 +6333,8 @@
             <t hangText="-">MUST specify the Vendor-specific Information
             option in an Option Request option.</t>
 
-            <t hangText="-">MAY specify an associated Vendor Class option.</t>
+            <t hangText="-">MAY specify an associated Vendor Class option
+            (see <xref target="RFC3315-22.16"/>).</t>
 
             <t hangText="-">MAY specify the Vendor-specific Information option
             with appropriate data.</t>
@@ -6534,6 +6557,7 @@
 
         <t>The IA_PD-options field encapsulates those options that are
         specific to this IA_PD. For example, all of the IA Prefix options
+        (see <xref target="IAPREFIX-option"/>)
         carrying the prefixes associated with this IA_PD are in the
         IA_PD-options field.</t>
 
@@ -6542,7 +6566,8 @@
         each must have a unique IAID).</t>
 
         <t>The status of any operations involving this IA_PD is indicated in a
-        Status Code option in the IA_PD-options field.</t>
+        Status Code option (see <xref target="RFC3315-22.13"/>)
+        in the IA_PD-options field.</t>
 
         <t>Note that an IA_PD has no explicit "lifetime" or "lease length" of
         its own. When the valid lifetimes of all of the prefixes in a IA_PD
@@ -6582,7 +6607,8 @@
       <section anchor="IAPREFIX-option" title="IA Prefix Option">
         <t>The IA Prefix option is used to specify a prefix
         associated with an IA_PD. The IA Prefix option must be encapsulated
-        in the IA_PD-options field of an IA_PD option.</t>
+        in the IA_PD-options field of an IA_PD option
+        (see <xref target="IA_PD-option"/>).</t>
 
         <figure align="center" anchor="FigOption26"
                 title="IA Prefix Option Format">
@@ -6664,7 +6690,8 @@
         than one IA Prefix option can appear in a single IA_PD option.</t>
 
         <t>The status of any operations involving this IA Prefix option is
-        indicated in a Status Code option in the IAprefix-options field.</t>
+        indicated in a Status Code option (see <xref target="RFC3315-22.3"/>)
+        in the IAprefix-options field.</t>
       </section>
 
       <!-- ends: merged section 9. and 10. from RFC3633 -->
@@ -6809,8 +6836,7 @@
         <t>The DHCP server MAY include the SOL_MAX_RT option in any response
         it sends to a client that has included the SOL_MAX_RT option code in
         an Option Request option. The SOL_MAX_RT option is sent as a top-level
-        option in the message to the client, not as an encapsulated option in, e.g.,
-        an IA_NA, IA_TA, or IA_PD option.</t>
+        option in the message to the client.</t>
 
         <t>A DHCP client MUST ignore any SOL_MAX_RT option values that are
         less than 60 or more than 86400.</t>
