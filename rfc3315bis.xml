@@ -460,8 +460,8 @@
             example.</t>
 
             <t hangText="container option">An option that encapsulates other
-            options (for example, the IA_NA option (see <xref target="RFC3315-22.4"/>)
-            may contain IA Address options (see <xref target="RFC3315-22.6"/>).</t>
+            options (for example, the IA_NA option, see <xref target="RFC3315-22.4"/>,
+            may contain IA Address options, see <xref target="RFC3315-22.6"/>).</t>
 
             <t hangText="delegating router">The router that acts as a DHCP
             server, and responds to requests for delegated prefixes. This document
@@ -510,8 +510,7 @@
             its interfaces. Each IA holds one type of lease; for example, an
             identity association for temporary addresses (IA_TA) holds temporary
             addresses and identity association for prefix delegation (IA_PD)
-            (see <xref target="IA_PD-option"/>) holds delegated prefixes.
-            Throughout this document, "IA" is used
+            holds delegated prefixes. Throughout this document, "IA" is used
             to refer to an identity association without identifying the type
             of a lease in the IA. At the time of writing this document, there
             are three IA types defined: IA_NA, IA_TA and IA_PD. New IA types may
@@ -528,14 +527,17 @@
 
             <t hangText="IA_NA">Identity association for Non-temporary
             Addresses: An IA that carries assigned addresses that are not
-            temporary addresses (see "IA_TA").</t>
+            temporary addresses (see "IA_TA"). See <xref target="RFC3315-22.4"/>
+            for details on the IA_NA option.</t>
 
             <t hangText="IA_TA">Identity Association for Temporary Addresses:
             An IA that carries temporary addresses (see <xref
-            target="RFC4941"/>).</t>
+            target="RFC4941"/>). See <xref target="RFC3315-22.5"/>
+            for details on the IA_TA option.</t>
 
             <t hangText="IA_PD">Identity Association for Prefix Delegation: An
-            IA that carries delegated prefixes.</t>
+            IA that carries delegated prefixes. See <xref target="IA_PD-option"/>
+            for details on the IA_PD option.</t>
 
             <t hangText="lease">A contract by which the server grants the use
             of an address or delegated prefix to the client for a specified
@@ -941,7 +943,7 @@
         of multiple prefixes for a given link. This is useful in cases
         such as when a network renumbering event is in progress. In a typical
         deployment the server will grant one address per each IA_NA
-        option (see xref target="RFC3315-22.4"/>).</t>
+        option (see <xref target="RFC3315-22.4"/>).</t>
 
         <t>A client can explicitly request multiple addresses by sending
         multiple IA_NA options (and/or IA_TA options
@@ -1115,7 +1117,7 @@
         of a message. The specific status codes are defined in <xref
         target="RFC3315-22.13"/>.</t>
 
-        <t>If the Status Code option (see xref target="RFC3315-22.13/>) does
+        <t>If the Status Code option (see <xref target="RFC3315-22.13/>) does
         not appear in a message in which the
         option could appear, the status of the message is assumed to be
         Success.</t>
@@ -1485,8 +1487,8 @@
             <t hangText="   peer-address">Copied from the Relay-forward
             message. A 16 octets long field.</t>
 
-            <t hangText="   options">MUST include a Relay Message option;
-            see <xref target="RFC3315-22.10"/>; MAY include other
+            <t hangText="   options">MUST include a Relay Message option
+            (see <xref target="RFC3315-22.10"/>); MAY include other
             options, such as the Interface-Id option (see
             <xref target="RFC3315-22.18"/>). A variable length field (34
             octets less than the size of the message).</t>
@@ -3687,7 +3689,7 @@
                    title="Reply for Release and Decline">
             <t>When the client receives a valid Reply message in response to a
             Release message, the client considers the Release event completed,
-            regardless of the Status Code option(s)
+            regardless of the Status Code option
             (see <xref target="RFC3315-22.13"/>) returned by the server.</t>
 
             <t>When the client receives a valid Reply message in response to a
