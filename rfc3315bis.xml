@@ -6707,12 +6707,13 @@
 
         <t>A DHCP client MUST request this option in the Option Request option
         (see <xref target="RFC3315-22.7"/>) when sending Information-request
-        messages. A client MUST NOT request this option in the ORO in any other
-        messages.</t>
+        messages. A client MUST NOT request this option in the Option Request
+        option in any other messages.</t>
 
         <t>A server sending a Reply to an Information-request message SHOULD
-        include this option if it is requested in the ORO of the Information-
-        Request. The option value MUST NOT be smaller than IRT_MINIMUM. This
+        include this option if it is requested in the Option Request option
+        of the Information-Request. The option value MUST NOT be smaller
+        than IRT_MINIMUM. This
         option MUST only appear in the top-level option area of Reply messages.</t>
 
         <t>If the Reply to an Information-request message does not contain this
@@ -7079,7 +7080,8 @@
          
       <t>IANA is requested to add two columns to the DHCPv6 Option table at
       https://www.iana.org/assignments/dhcpv6-parameters
-      to indicate which options are allowed to appear in a client's ORO option
+      to indicate which options are allowed to appear in a client's Option
+      Request option
       (see <xref target="RFC3315-22.7"/>) and which options are singleton
       options (only allowed to appear once as a top-level or encapsulated
       option - see Section 16 of <xref target="RFC7227"/>).
@@ -7230,10 +7232,11 @@
 <t>Notes for <xref target="option_update_table"/>:
 <list hangIndent="6" style="hanging">
     <t hangText="(1)"> For the "Client ORO" column: a "Yes" for an option
-     means that the client includes this option code if it desires
-     that configuration information; a "No" means that the option MUST
-     NOT be included (and servers SHOULD silently ignore that option code
-     if it appears in ORO).</t>
+     means that the client includes this option code in the Option Request
+     option (see <xref target="RFC3315-22.7"/>) if it desires that
+     configuration information; a "No" means that
+     the option MUST NOT be included (and servers SHOULD silently ignore
+     that option code if it appears in a client's Option Request option).</t>
 
     <t hangText="(2)"> For each enterprise-number, there MUST only be
     a single instance.</t>
