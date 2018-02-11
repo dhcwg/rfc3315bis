@@ -255,11 +255,11 @@
       <section anchor="previous-dhcp6"
                title="Relation to Previous DHCPv6 standards">
         <t>The initial specification of DHCPv6 was defined in <xref
-        target="RFC3315"></xref> and a number of follow up documents were
+        target="RFC3315"/> and a number of follow up documents were
         published over the years:
         IPv6 Prefix Options for Dynamic Host Configuration Protocol (DHCP) version 6
-        <xref target="RFC3633"></xref>, Stateless Dynamic Host Configuration Protocol
-        (DHCP) Service for IPv6s <xref target="RFC3736"></xref>, Information Refresh
+        <xref target="RFC3633"/>, Stateless Dynamic Host Configuration Protocol
+        (DHCP) Service for IPv6s <xref target="RFC3736"/>, Information Refresh
         Time Option for Dynamic Host Configuration Protocol for IPv6 (DHCPv6)
         <xref target="RFC4242"/>, Modification to
         Default Values of SOL_MAX_RT and INF_MAX_RT <xref target="RFC7083"/>,
@@ -271,7 +271,7 @@
         list in <xref target="ChangeSummary"/>). As such, it
         obsoletes a number of the aforementioned RFCs. And, there are a small
         number of mechanisms that were obsoleted, listed in <xref
-        target="obsolete"></xref>. Also see <xref target="ChangeSummary"/>.</t>
+        target="obsolete"/>. Also see <xref target="ChangeSummary"/>.</t>
       </section>
 
       <section anchor="dhcpv4" title="Relation to DHCP in IPv4">
@@ -279,11 +279,11 @@
         DHCPv4 (<xref target="RFC2131"/> and <xref target="RFC2132"/>)
         and DHCPv6 are sufficiently different that integration between the two
         services is not included in this document. <xref
-        target="RFC3315"></xref> suggested that future work might be to extend
+        target="RFC3315"/> suggested that future work might be to extend
         DHCPv6 to carry IPv4 address and configuration information. However,
         the current consensus of the IETF is that DHCPv4 should be used rather
         than DHCPv6 when conveying IPv4 configuration information to nodes.
-        For IPv6-only networks, <xref target="RFC7341"></xref> describes a
+        For IPv6-only networks, <xref target="RFC7341"/> describes a
         transport mechanism to carry DHCPv4 messages using the DHCPv6 protocol
         for the dynamic provisioning of IPv4 address and configuration
         information.</t>
@@ -326,15 +326,15 @@
 
       <t>The IPv6 Specification provides the base architecture and design of
       IPv6. Related work in IPv6 that would best serve an implementer to study
-      includes the IPv6 Specification <xref target="RFC8200"></xref>, the IPv6
-      Addressing Architecture <xref target="RFC4291"></xref>, IPv6 Stateless
-      Address Autoconfiguration <xref target="RFC4862"></xref>, and IPv6 Neighbor
-      Discovery Processing <xref target="RFC4861"></xref>. These specifications
+      includes the IPv6 Specification <xref target="RFC8200"/>, the IPv6
+      Addressing Architecture <xref target="RFC4291"/>, IPv6 Stateless
+      Address Autoconfiguration <xref target="RFC4862"/>, and IPv6 Neighbor
+      Discovery Processing <xref target="RFC4861"/>. These specifications
       enable DHCP to build upon the IPv6 work to provide robust stateful
       autoconfiguration.</t>
 
       <t>The IPv6 Addressing Architecture specification <xref
-      target="RFC4291"></xref> defines the address scope that can be used in
+      target="RFC4291"/> defines the address scope that can be used in
       an IPv6 implementation, and the various configuration architecture
       guidelines for network designers of the IPv6 address space. Two
       advantages of IPv6 are that support for multicast is required and nodes
@@ -344,15 +344,15 @@
       servers or relay agents on its link.</t>
 
       <t>IPv6 Stateless Address Autoconfiguration <xref
-      target="RFC4862"></xref> specifies procedures by which a node may
+      target="RFC4862"/> specifies procedures by which a node may
       autoconfigure addresses based on router advertisements <xref
-      target="RFC4861"></xref>, and the use of a valid lifetime to support
+      target="RFC4861"/>, and the use of a valid lifetime to support
       renumbering of addresses on the Internet. Compatibility with stateless address
       autoconfiguration is a design requirement of DHCP.</t>
 
-      <t>IPv6 Neighbor Discovery <xref target="RFC4861"></xref> is the node
+      <t>IPv6 Neighbor Discovery <xref target="RFC4861"/> is the node
       discovery protocol in IPv6 which replaces and enhances functions of ARP
-      <xref target="RFC0826"></xref>. To understand IPv6 and stateless address
+      <xref target="RFC0826"/>. To understand IPv6 and stateless address
       autoconfiguration, it is strongly recommended that implementers
       understand IPv6 Neighbor Discovery.</t>
 
@@ -370,9 +370,9 @@
         <!-- 4.1, line 408-->
 
         <t>IPv6 terminology relevant to this specification from the IPv6
-        Protocol <xref target="RFC8200"></xref>, IPv6 Addressing Architecture
-        <xref target="RFC4291"></xref>, and IPv6 Stateless Address
-        Autoconfiguration <xref target="RFC4862"></xref> is included
+        Protocol <xref target="RFC8200"/>, IPv6 Addressing Architecture
+        <xref target="RFC4291"/>, and IPv6 Stateless Address
+        Autoconfiguration <xref target="RFC4862"/> is included
         below.</t>
 
         <t><list hangIndent="26" style="hanging">
@@ -461,7 +461,7 @@
 
             <t hangText="container option">An option that encapsulates other
             options (for example, the IA_NA option (see <xref target="RFC3315-22.4"/>)
-            may contain IA Address options (see <xref target="RFC3315-22.6").</t>
+            may contain IA Address options (see <xref target="RFC3315-22.6"/>).</t>
 
             <t hangText="delegating router">The router that acts as a DHCP
             server, and responds to requests for delegated prefixes. This document
@@ -495,7 +495,7 @@
 
             <t hangText="DUID">A DHCP Unique IDentifier for a DHCP
             participant; each DHCP client and server has exactly one DUID. See
-            <xref target="RFC3315-9"></xref> for details of the ways in which
+            <xref target="RFC3315-9"/> for details of the ways in which
             a DUID may be constructed.</t>
              
             <t hangText="encapsulated option">A DHCPv6 option that is usually
@@ -532,7 +532,7 @@
 
             <t hangText="IA_TA">Identity Association for Temporary Addresses:
             An IA that carries temporary addresses (see <xref
-            target="RFC4941"></xref>).</t>
+            target="RFC4941"/>).</t>
 
             <t hangText="IA_PD">Identity Association for Prefix Delegation: An
             IA that carries delegated prefixes.</t>
@@ -585,7 +585,7 @@
 
             <t hangText="top-level option">An option conveyed in a DHCP
             message directly, i.e., not encapsulated in any other option, as
-            described in Section 9 of <xref target="RFC7227"></xref>.</t>
+            described in Section 9 of <xref target="RFC7227"/>.</t>
 
             <t hangText="transaction ID">An opaque value used to match
             responses with replies initiated either by a client or server.</t>
@@ -630,8 +630,8 @@
 
         <t>When a DHCP client does not need to have a DHCP server assign it IP
         addresses or delegated prefixes, the client can obtain other configuration information such as a
-        list of available DNS servers <xref target="RFC3646"></xref> or NTP
-        servers <xref target="RFC4075"></xref> through a single message and
+        list of available DNS servers <xref target="RFC3646"/> or NTP
+        servers <xref target="RFC4075"/> through a single message and
         reply exchange with a DHCP server. To obtain other configuration
         information the client first sends an Information-request message to
         the All_DHCP_Relay_Agents_and_Servers multicast address. Servers
@@ -724,11 +724,11 @@
       protocol extension.</t>
 
       <section anchor="OpModes-Stateless" title="Stateless DHCP">
-        <t>Stateless DHCP <xref target="RFC3736"></xref> is used when DHCP is
+        <t>Stateless DHCP <xref target="RFC3736"/> is used when DHCP is
         not used for obtaining a lease, but a node (DHCP client) desires one
         or more DHCP "other configuration" parameters, such as a list of DNS
         recursive name servers or DNS domain search lists <xref
-        target="RFC3646"></xref>. Stateless DHCP may be used when a node initially
+        target="RFC3646"/>. Stateless DHCP may be used when a node initially
         boots or at any time the software on the node requires some missing or
         expired configuration information that is available via DHCP.</t>
 
@@ -774,7 +774,7 @@
 
       <section anchor="OpModes-PD" title="DHCP for Prefix Delegation">
         <t>The prefix delegation mechanism, originally described in <xref
-        target="RFC3633"></xref>, is another stateful mode of operation and
+        target="RFC3633"/>, is another stateful mode of operation and
         was originally intended for simple delegation of prefixes from a delegating router
         (DHCP server) to requesting routers (DHCP clients). It is appropriate
         for situations in which the delegating router does not have knowledge
@@ -788,7 +788,7 @@
 
         <t>The design of this prefix delegation mechanism meets the
         requirements for prefix delegation in <xref
-        target="RFC3769"></xref>.</t>
+        target="RFC3769"/>.</t>
 
         <t>While <xref target="RFC3633"/> assumed that the DHCP client
         is a router (hence the use of "requesting router") and that the DHCP
@@ -807,7 +807,7 @@
         server is provisioned with prefixes to be delegated to
         clients. A client requests prefix(es) from the
         server, as described in <xref
-        target="configuration-exchange"></xref>. The server chooses
+        target="configuration-exchange"/>. The server chooses
         prefix(es) for delegation, and responds with prefix(es) to the
         client. The client is then responsible for the
         delegated prefix(es). For example, the client might assign
@@ -827,7 +827,7 @@
         subscriber's network. <xref target="RFC7084" /> and <xref
         target="RFC7368" /> describe in detail such use.</t>
 
-        <t><xref target="FigISPNetwork"></xref> illustrates a network
+        <t><xref target="FigISPNetwork"/> illustrates a network
         architecture in which prefix delegation could be used.</t>
 
         <figure align="center" anchor="FigISPNetwork"
@@ -881,7 +881,7 @@
         <t>The client subnets the delegated prefix and assigns the
         longer prefixes to links in the subscriber's network. In a typical
         scenario based on the network shown in <xref
-        target="FigISPNetwork"></xref>, the client subnets a single
+        target="FigISPNetwork"/>, the client subnets a single
         delegated /48 prefix into /64 prefixes and assigns one /64 prefix to
         each of the links in the subscriber network.</t>
 
@@ -908,10 +908,10 @@
 
       <section anchor="OpModes-CPE" title="DHCP for Customer Edge Routers">
         <t>The DHCP requirements and network architecture for Customer Edge
-        Routers are described in <xref target="RFC7084"></xref>. This model of
+        Routers are described in <xref target="RFC7084"/>. This model of
         operation combines address assignment (see <xref
-        target="OpModes-NA"></xref>) and prefix delegation (see <xref
-        target="OpModes-PD"></xref>). In general, this model assumes that a
+        target="OpModes-NA"/>) and prefix delegation (see <xref
+        target="OpModes-PD"/>). In general, this model assumes that a
         single set of transactions between the client and server will assign
         or extend the client's non-temporary addresses and delegated
         prefixes.</t>
@@ -926,7 +926,7 @@
         complementary support when stateful address assignment is used.</t>
 
         <t>Temporary address assignment works mostly like non-temporary
-        address assignment (see <xref target="OpModes-NA"></xref>), however
+        address assignment (see <xref target="OpModes-NA"/>), however
         these addresses are generally intended to be used for a short period
         of time and not to have their lifetimes extended, though they can be
         if required.</t>
@@ -1012,8 +1012,8 @@
         <!-- 5.3, line 634-->
 
         <t>DHCP defines the following message types. More detail on these
-        message types can be found in <xref target="RFC3315-6"></xref> and
-        <xref target="RFC3315-7"></xref>. Additional message types have been
+        message types can be found in <xref target="RFC3315-6"/> and
+        <xref target="RFC3315-7"/>. Additional message types have been
         defined and may be defined in the future - see
         https://www.iana.org/assignments/dhcpv6-parameters.
         The numeric encoding for each message type is shown in parentheses.</t>
@@ -1113,7 +1113,7 @@
         operations requested in messages from clients and servers, and to
         provide additional information about the specific cause of the failure
         of a message. The specific status codes are defined in <xref
-        target="RFC3315-22.13"></xref>.</t>
+        target="RFC3315-22.13"/>.</t>
 
         <t>If the Status Code option (see xref target="RFC3315-22.13/>) does
         not appear in a message in which the
@@ -1308,7 +1308,7 @@
                title="Representation of Time Values and &quot;Infinity&quot; as a Time Value">
         <t>All time values for lifetimes, T1 and T2 are unsigned 32-bit integers. The
         value 0xffffffff is taken to mean "infinity" when used as a lifetime
-        (as in <xref target="RFC4861"></xref>) or a value for T1 or T2.</t>
+        (as in <xref target="RFC4861"/>) or a value for T1 or T2.</t>
 
         <t>Setting the valid lifetime of an address or a
         delegated prefix to 0xffffffff ("infinity") amounts to a permanent
@@ -1366,13 +1366,13 @@
       <t><list hangIndent="24" style="hanging">
           <t hangText="   msg-type">Identifies the DHCP message type; the
           available message types are listed in <xref
-          target="RFC3315-5.3"></xref>. A one octet long field.</t>
+          target="RFC3315-5.3"/>. A one octet long field.</t>
 
           <t hangText="   transaction-id">The transaction ID for this message
           exchange. A three octets long field.</t>
 
           <t hangText="   options">Options carried in this message; options
-          are described in <xref target="RFC3315-22"></xref>. A variable length
+          are described in <xref target="RFC3315-22"/>. A variable length
           field (4 octets less than the size of the message).</t>
         </list></t>
     </section>
@@ -1446,7 +1446,7 @@
             server to identify the link on which the client is located. This
             is typically a globally unique address (including unique
             local address, <xref target="RFC4193"/>), but see discussion in <xref
-            target="relaying-from-client"></xref>. A 16 octets long field</t>
+            target="relaying-from-client"/>. A 16 octets long field</t>
 
             <t hangText="   peer-address">The address of the client or relay
             agent from which the message to be relayed was received. A 16
@@ -1503,9 +1503,9 @@
 
       <t>So that domain names may be encoded uniformly, a domain name or a
       list of domain names is encoded using the technique described in section
-      3.1 of <xref target="RFC1035"></xref>. A domain name, or list of domain
+      3.1 of <xref target="RFC1035"/>. A domain name, or list of domain
       names, in DHCP MUST NOT be stored in compressed form, as described in
-      section 4.1.4 of <xref target="RFC1035"></xref>.</t>
+      section 4.1.4 of <xref target="RFC1035"/>.</t>
     </section>
 
     <!-- ends: "8 from line 912-->
@@ -1517,7 +1517,7 @@
       identify clients for the selection of configuration parameters and in
       the association of IAs with clients. DHCP clients use DUIDs to identify
       a server in messages where a server needs to be identified. See <xref
-      target="RFC3315-22.2"></xref> and <xref target="RFC3315-22.3"></xref>
+      target="RFC3315-22.2"/> and <xref target="RFC3315-22.3"/>
       for the representation of a DUID in a DHCP message.</t>
 
       <t>Clients and servers MUST treat DUIDs as opaque values and MUST only
@@ -1579,7 +1579,7 @@
           <c>4</c>
 
           <c>Universally Unique IDentifier (UUID) - see <xref
-          target="RFC6355"></xref></c>
+          target="RFC6355"/></c>
         </texttable>
 
         <!-- Alternative, but multiple spaces are ignored
@@ -1602,7 +1602,7 @@
 
         <t>Formats for the variable field of the DUID for the first three of the
         above types are shown below. The fourth type, DUID-UUID <xref
-        target="RFC6355"></xref>, can be used in situations where there is a
+        target="RFC6355"/>, can be used in situations where there is a
         UUID stored in a device's firmware settings.</t>
       </section>
 
@@ -1688,7 +1688,7 @@
 
         <t>This form of DUID is assigned by the vendor to the device. It
         consists of the four octet vendor's registered Private Enterprise Number as
-        maintained by IANA <xref target="IANA-PEN"></xref> followed by a
+        maintained by IANA <xref target="IANA-PEN"/> followed by a
         unique identifier assigned by the vendor. The following diagram
         summarizes the structure of a DUID-EN:</t>
 
@@ -1722,7 +1722,7 @@
         time in case of virtual machines. The generated DUID SHOULD be
         recorded in non-erasable storage. The enterprise-number is the
         vendor's registered Private Enterprise Number as maintained by IANA
-        <xref target="IANA-PEN"></xref>. The enterprise-number is stored as an
+        <xref target="IANA-PEN"/>. The enterprise-number is stored as an
         unsigned 32 bit number.</t>
 
         <t>An example DUID of this type might look like this:</t>
@@ -1761,7 +1761,7 @@
         hardware type assigned by IANA, see <xref target="IANA-HARDWARE-TYPES"/>.
         The hardware type is stored in network byte
         order. The link-layer address is stored in canonical form, as
-        described in <xref target="RFC2464"></xref>. The following diagram
+        described in <xref target="RFC2464"/>. The following diagram
         illustrates the format of a DUID-LL:</t>
 
         <figure align="center" anchor="FigDUIDLL" title="DUID-LL format">
@@ -1873,11 +1873,11 @@
         IA_TA in a DHCP message.</t>
 
         <t>Each address in an IA has a preferred lifetime and a valid
-        lifetime, as defined in <xref target="RFC4862"></xref>. The lifetimes
+        lifetime, as defined in <xref target="RFC4862"/>. The lifetimes
         are transmitted from the DHCP server to the client in the IA Address
         option (see <xref target="RFC3315-22.6"/>).
         The lifetimes apply to the use of addresses, as described in
-        section 5.5.4 of <xref target="RFC4862"></xref>.</t>
+        section 5.5.4 of <xref target="RFC4862"/>.</t>
       </section>
 
       <section anchor="RFC3315-10.2"
@@ -1893,15 +1893,15 @@
 
         <t>The configuration information in an IA_PD option consists of one or more
         prefixes along with the T1 and T2 times for the IA_PD. See <xref
-        target="IA_PD-option"></xref> for the representation of an IA_PD in a
+        target="IA_PD-option"/> for the representation of an IA_PD in a
         DHCP message.</t>
 
         <t>Each delegated prefix in an IA has a preferred lifetime and a valid
-        lifetime, as defined in <xref target="RFC4862"></xref>. The lifetimes
+        lifetime, as defined in <xref target="RFC4862"/>. The lifetimes
         are transmitted from the DHCP server to the client in the IA Prefix option
         (see <xref target="IAPREFIX-option"/>).
         The lifetimes apply to the use of delegated prefixes, as described in
-        section 5.5.4 of <xref target="RFC4862"></xref>.</t>
+        section 5.5.4 of <xref target="RFC4862"/>.</t>
       </section>
     </section>
 
@@ -1929,7 +1929,7 @@
                 forwarding relay agent, then the client is on the same link as
                 the one to which the interface, identified by the link-address
                 field in the message from the relay agent, is attached.
-                According to <xref target="RFC6221"></xref>, the server MUST
+                According to <xref target="RFC6221"/>, the server MUST
                 ignore any link-address field whose value is zero. The
                 link-address in this case may come from any of the
                 Relay-forward messages encapsulated in the received
@@ -1968,20 +1968,20 @@
         that use a reserved IPv6 Interface Identifier (<xref target="RFC5453"/>,
         <xref target="RFC7136"/>, <xref target="IANA-RESERVED-IID"/>).</t>
 
-        <t>See <xref target="RFC7969"></xref> for a more detailed
+        <t>See <xref target="RFC7969"/> for a more detailed
         discussion on how servers determine a client's location on the network.</t>
       </section>
 
       <section title="Assignment of Temporary Addresses">
         <t>A client may request the assignment of temporary addresses (see
-        <xref target="RFC4941"></xref> for the definition of temporary
+        <xref target="RFC4941"/> for the definition of temporary
         addresses). DHCP handling of address assignment is no different for
         temporary addresses.</t>
 
         <t>Clients ask for temporary addresses and servers assign them.
         Temporary addresses are carried in the Identity Association for
         Temporary Addresses (IA_TA) option (see <xref
-        target="RFC3315-22.5"></xref>). Each IA_TA option typically contains
+        target="RFC3315-22.5"/>). Each IA_TA option typically contains
         at least one temporary address for each of the prefixes on the link
         to which the client is attached.</t>
 
@@ -1993,21 +1993,21 @@
 
         <t>A DHCP server implementation MAY generate temporary addresses
         referring to the algorithm defined in Section 3.2.1, <xref
-        target="RFC4941"></xref>, with the additional condition that any new
+        target="RFC4941"/>, with the additional condition that any new
         address is not the same as any assigned address.</t>
 
         <t>The server MAY update the DNS for a temporary address, as described
-        in section 4 of <xref target="RFC4941"></xref>.</t>
+        in section 4 of <xref target="RFC4941"/>.</t>
 
         <t>On the clients, by default, temporary addresses are preferred in
         source address selection, according to Rule 7, <xref
-        target="RFC6724"></xref>. However, this policy is overridable.</t>
+        target="RFC6724"/>. However, this policy is overridable.</t>
 
         <t>One of the most important properties of a temporary address is to
         make it difficult to link the address to different actions over time.
         So, it is NOT RECOMMENDED for a client to renew temporary
         addresses, though DHCP provides for such a possibility (see <xref
-        target="RFC3315-22.5"></xref>).</t>
+        target="RFC3315-22.5"/>).</t>
       </section>
 
       <section title="Assignment of Prefixes for IA_PD">
@@ -2037,13 +2037,13 @@
 
       <t>A client uses multicast to reach all servers or an individual server.
       An individual server is indicated by specifying that server's DUID in a
-      Server Identifier option (see <xref target="RFC3315-22.3"></xref>) in
+      Server Identifier option (see <xref target="RFC3315-22.3"/>) in
       the client's message (all servers will receive this message but only the
       indicated server will respond). All servers are indicated by not
       supplying this option.</t>
 
       <t>A client may send some messages directly to a server using unicast,
-      as described in <xref target="RFC3315-22.12"></xref>.</t>
+      as described in <xref target="RFC3315-22.12"/>.</t>
 
       <section anchor="rate-limit" title="Rate Limiting">
         <t>In order to avoid prolonged message bursts that may be caused by
@@ -2107,14 +2107,14 @@
 
       <t>DHCP clients are responsible for reliable delivery of messages in the
       client-initiated message exchanges described in <xref
-      target="configuration-exchange"></xref>. If a DHCP client fails to
+      target="configuration-exchange"/>. If a DHCP client fails to
       receive an expected response from a server, the client must retransmit
       its message according to the retransmission strategy described
       in this section.</t>
 
       <t>Note that the procedure described in this section is slightly
       modified when used with the Solicit message. The modified procedure is
-      described in <xref target="solicit-create-transmit"></xref>.</t>
+      described in <xref target="solicit-create-transmit"/>.</t>
 
       <t>The client begins the message exchange by transmitting a message to
       the server. The message exchange terminates when either the client
@@ -2603,19 +2603,19 @@
       prefixes, a client first locates a DHCP server and then requests the
       assignment of addresses/prefixes and other configuration information from the
       server. The client does this by sending the Solicit message
-      (see <xref target="solicit-create-transmit"></xref>) to the
+      (see <xref target="solicit-create-transmit"/>) to the
       All_DHCP_Relay_Agents_and_Servers multicast address and collecting
       Advertise messages from the servers which respond to the client's
       message and selects a server from which it wants to obtain configuration
       information. This process is referred to as server discovery. When
       the client has selected the server it sends a Request
       message to this server as described in <xref
-      target="request-create-transmit"></xref>.</t>
+      target="request-create-transmit"/>.</t>
 
       <t>A client willing to perform the Solicit/Reply message
       exchange described in <xref
-      target="solicit-create-transmit"></xref> includes a Rapid
-      Commit option (see <xref target="RFC3315-22.14"></xref>) in its
+      target="solicit-create-transmit"/> includes a Rapid
+      Commit option (see <xref target="RFC3315-22.14"/>) in its
       Solicit message.</t>
 
       <t>Servers that can assign addresses or delegated prefixes to the IAs
@@ -2815,15 +2815,15 @@
           <xref target="RFC3315-18.1.3"/> for more on prefix length hints.</t>
 
           <t>The client MUST include an Option Request option (see <xref
-          target="RFC3315-22.7"></xref>) to request the SOL_MAX_RT option (see
-          <xref target="SOL_MAX_RT_option"></xref>) and any other options the
+          target="RFC3315-22.7"/>) to request the SOL_MAX_RT option (see
+          <xref target="SOL_MAX_RT_option"/>) and any other options the
           client is interested in receiving. The client MAY additionally
           include instances of those options that are identified in the Option
           Request option, with data values as hints to the server about
           parameter values the client would like to have returned.</t>
 
           <t>The client includes a Reconfigure Accept option (see <xref
-          target="RFC3315-22.20"></xref>) if the client is willing to accept
+          target="RFC3315-22.20"/>) if the client is willing to accept
           Reconfigure messages from the server.</t>
 
           <t>The client MUST NOT include any other options in the Solicit
@@ -2845,7 +2845,7 @@
           (see <xref target="RFC4861"/> Section 4.2).</t>
 
           <t>The client transmits the message according to <xref
-          target="RFC3315-14"></xref>, using the following parameters: <list
+          target="RFC3315-14"/>, using the following parameters: <list
               hangIndent="11" style="hanging">
               <t hangText="   IRT">SOL_TIMEOUT</t>
 
@@ -2865,18 +2865,18 @@
             </t>
             <t>Upon receipt of a valid Reply with the Rapid Commit option,
             the client processes the message as described in
-            <xref target="RFC3315-18.1.8"></xref></t>
+            <xref target="RFC3315-18.1.8"/></t>
             <t>At the end of the first RT period, if no suitable Reply
             messages are received, but the client has valid Advertise
             messages, then the client processes the Advertise as
-            described in <xref target="RFC3315-17.1.3"></xref>.</t>
+            described in <xref target="RFC3315-17.1.3"/>.</t>
 
           <t>If the client subsequently receives a valid Reply message that
           includes a Rapid Commit option, it either:</t>
 
           <t><list hangIndent="3" style="hanging">
               <t hangText="-">processes the Reply message as described in
-              <xref target="RFC3315-18.1.8"></xref>, and discards any Reply
+              <xref target="RFC3315-18.1.8"/>, and discards any Reply
               messages received in response to the Request message, or</t>
 
               <t hangText="-">processes any Reply messages received in
@@ -2885,7 +2885,7 @@
             </list></t>
 
           <t>If the client is waiting for an Advertise message, the mechanism
-          in <xref target="RFC3315-14"></xref> is modified as follows for use
+          in <xref target="RFC3315-14"/> is modified as follows for use
           in the transmission of Solicit messages. The message exchange is not
           terminated by the receipt of an Advertise before the first RT has
           elapsed. Rather, the client collects valid Advertise messages until the
@@ -2896,12 +2896,12 @@
           <t>A client MUST collect valid Advertise messages for the first RT
           seconds, unless it receives a valid Advertise message with a preference
           value of 255. The preference value is carried in the Preference
-          option (see <xref target="RFC3315-22.8"></xref>). Any valid Advertise that
+          option (see <xref target="RFC3315-22.8"/>). Any valid Advertise that
           does not include a Preference option is considered to have a
           preference value of 0. If the client receives a valid Advertise message
           that includes a Preference option with a preference value of 255,
           the client immediately begins a client-initiated message exchange
-          (as described in <xref target="request-create-transmit"></xref>) by
+          (as described in <xref target="request-create-transmit"/>) by
           sending a Request message to the server from which the Advertise
           message was received. If the client receives a valid Advertise message
           that does not include a Preference option with a preference value of
@@ -2912,7 +2912,7 @@
 
           <t>If the client does not receive any valid Advertise messages before the
           first RT has elapsed, it begins the retransmission mechanism
-          described in <xref target="RFC3315-14"></xref>. The client
+          described in <xref target="RFC3315-14"/>. The client
           terminates the retransmission process as soon as it receives any
           valid Advertise message, and the client acts on the received Advertise
           message without waiting for any additional Advertise messages.</t>
@@ -2953,19 +2953,19 @@
           been trying to complete the current DHCP message exchange.</t>
 
           <t>The client MUST include an Option Request option (see <xref
-          target="RFC3315-22.7"></xref>) to request the SOL_MAX_RT option (see
-          <xref target="SOL_MAX_RT_option"></xref>) and any other options the
+          target="RFC3315-22.7"/>) to request the SOL_MAX_RT option (see
+          <xref target="SOL_MAX_RT_option"/>) and any other options the
           client is interested in receiving. The client MAY additionally
           include instances of those options that are identified in the Option
           Request option, with data values as hints to the server about
           parameter values the client would like to have returned.</t>
 
           <t>The client includes a Reconfigure Accept option (see <xref
-          target="RFC3315-22.20"></xref>) if the client is willing to
+          target="RFC3315-22.20"/>) if the client is willing to
           accept Reconfigure messages from the server.</t>
 
           <t>The client transmits the message according to <xref
-          target="RFC3315-14"></xref>, using the following parameters: <list
+          target="RFC3315-14"/>, using the following parameters: <list
               hangIndent="11" style="hanging">
               <t hangText="   IRT">REQ_TIMEOUT</t>
 
@@ -2984,7 +2984,7 @@
               Advertise message.</t>
 
               <t hangText="-">Initiate the server discovery process described
-              in <xref target="configuration-exchange"></xref>.</t>
+              in <xref target="configuration-exchange"/>.</t>
 
               <t hangText="-">Terminate the configuration process and report
               failure.</t>
@@ -2999,7 +2999,7 @@
           <t>The client uses a Confirm message when it has only addresses
           (no delegated prefixes) assigned by a DHCP server to determine if it
           is still connected to the same link when the client detects a
-          change in network information as described in <xref target="RFC3315-18.2.12"></xref>.</t>
+          change in network information as described in <xref target="RFC3315-18.2.12"/>.</t>
 
           <t>The client sets the "msg-type" field to CONFIRM. The client
           generates a transaction ID and inserts this value in the
@@ -3023,7 +3023,7 @@
           <t>The first Confirm message from the client on the interface MUST
           be delayed by a random amount of time between 0 and CNF_MAX_DELAY.
           The client transmits the message according to <xref
-          target="RFC3315-14"></xref>, using the following parameters: <list
+          target="RFC3315-14"/>, using the following parameters: <list
               hangIndent="11" style="hanging">
               <t hangText="   IRT">CNF_TIMEOUT</t>
 
@@ -3036,7 +3036,7 @@
 
           <t>If the client receives no responses before the message
           transmission process terminates, as described in <xref
-          target="RFC3315-14"></xref>, the client SHOULD continue to use any
+          target="RFC3315-14"/>, the client SHOULD continue to use any
           leases, using the last known lifetimes for those leases,
           and SHOULD continue to use any other previously obtained
           configuration parameters.</t>
@@ -3078,7 +3078,7 @@
           IA_PD) or there are no T1 or T2 times (for an IA_TA) in a previous
           Reply, the client may send a Renew or Rebind message, respectively,
           at the client's discretion. The client MUST follow the rules defined
-          in <xref target="t1-t2-0"></xref>.</t>
+          in <xref target="t1-t2-0"/>.</t>
 
           <t>The client sets the "msg-type" field to RENEW. The client
           generates a transaction ID and inserts this value in the
@@ -3115,14 +3115,14 @@
           to 0 unless it is supplying a hint for the prefix length.</t>
 
           <t>The client includes Option Request option
-          (see <xref target="RFC3315-22.7"></xref>) to request the SOL_MAX_RT
-          option (see <xref target="SOL_MAX_RT_option"></xref>) and any other
+          (see <xref target="RFC3315-22.7"/>) to request the SOL_MAX_RT
+          option (see <xref target="SOL_MAX_RT_option"/>) and any other
           options the client is interested in receiving. The client MAY
           include options with data values as hints to the server about
           parameter values the client would like to have returned.</t>
 
           <t>The client transmits the message according to <xref
-          target="RFC3315-14"></xref>, using the following parameters: <list
+          target="RFC3315-14"/>, using the following parameters: <list
               hangIndent="11" style="hanging">
               <t hangText="   IRT">REN_TIMEOUT</t>
 
@@ -3140,7 +3140,7 @@
           received, i.e., it uses T1/T2 times associated with the client's
           leases to determine when it should send Renew or Rebind to the
           server. The client begins a Rebind message exchange
-          (see <xref target="RFC3315-18.1.4"></xref>) when the
+          (see <xref target="RFC3315-18.1.4"/>) when the
           earliest time T2 is reached.</t>
         </section>
 
@@ -3160,7 +3160,7 @@
           <xref target="RFC3315-18.1.2"/>.</t>
 
           <t>The client constructs the Rebind message as described in <xref
-          target="RFC3315-18.1.3"></xref> with the following differences:
+          target="RFC3315-18.1.3"/> with the following differences:
           <list style="hanging">
               <t hangText="-">The client sets the "msg-type" field to
               REBIND.</t>
@@ -3170,7 +3170,7 @@
             </list></t>
 
           <t>The client transmits the message according to <xref
-          target="RFC3315-14"></xref>, using the following parameters: <list
+          target="RFC3315-14"/>, using the following parameters: <list
               hangIndent="11" style="hanging">
               <t hangText="   IRT">REB_TIMEOUT</t>
 
@@ -3222,8 +3222,8 @@
           been trying to complete the current DHCP message exchange.</t>
 
           <t>The client MUST include an Option Request option (see <xref
-          target="RFC3315-22.7"></xref>) to request the INF_MAX_RT option (see
-          <xref target="INF_MAX_RT_option"></xref>), the Information
+          target="RFC3315-22.7"/>) to request the INF_MAX_RT option (see
+          <xref target="INF_MAX_RT_option"/>), the Information
           Refresh Time option (see <xref target="RFC4242-Option"/>), and any other options the
           client is interested in receiving. The client MAY include options
           with data values as hints to the server about parameter values the
@@ -3236,7 +3236,7 @@
           <t>The first Information-request message from the client on the
           interface MUST be delayed by a random amount of time between 0 and
           INF_MAX_DELAY. The client transmits the message according to <xref
-          target="RFC3315-14"></xref>, using the following parameters: <list
+          target="RFC3315-14"/>, using the following parameters: <list
               hangIndent="11" style="hanging">
               <t hangText="   IRT">INF_TIMEOUT</t>
 
@@ -3283,8 +3283,8 @@
           interface. For a delegated prefix, this means the prefix MUST have
           been advertised with a Preferred Lifetime and a Valid Lifetime of
           zero in a Router Advertisement message as described in (e) of Section
-          5.5.3 of <xref target="RFC4862"></xref> - also see L-13 in
-          Section 4.3 of <xref target="RFC7084"></xref>.</t>
+          5.5.3 of <xref target="RFC4862"/> - also see L-13 in
+          Section 4.3 of <xref target="RFC7084"/>.</t>
 
           <t>The client MUST NOT use any of the addresses it is releasing as
           the source address in the Release message or in any subsequently
@@ -3298,7 +3298,7 @@
           to terminate the retransmission procedure early.</t>
 
           <t>The client transmits the message according to <xref
-          target="RFC3315-14"></xref>, using the following parameters: <list
+          target="RFC3315-14"/>, using the following parameters: <list
               hangIndent="11" style="hanging">
               <t hangText="   IRT">REL_TIMEOUT</t>
 
@@ -3359,7 +3359,7 @@
           transmitted message.</t>
 
           <t>The client transmits the message according to <xref
-          target="RFC3315-14"></xref>, using the following parameters: <list
+          target="RFC3315-14"/>, using the following parameters: <list
               hangIndent="11" style="hanging">
               <t hangText="   IRT">DEC_TIMEOUT</t>
 
@@ -3472,7 +3472,7 @@
           the desired operation, the client MUST limit the rate at which it
           retransmits the message and limit the duration of the time during
           which it retransmits the message (see <xref
-          target="rate-limit"></xref>).</t>
+          target="rate-limit"/>).</t>
 
           <t>If the client receives a Reply message with a status code of
           UseMulticast, the client records the receipt of the message and
@@ -3519,7 +3519,7 @@
             response to a Solicit (with a Rapid Commit option) or a Request,
             the client can either re-issue the message without specifying any
             addresses or restart the DHCP server discovery process (see <xref
-            target="configuration-exchange"></xref>).</t>
+            target="configuration-exchange"/>).</t>
 
             <t>If the Reply was received in response to a Solicit (with a
             Rapid Commit option), Request, Renew, or Rebind message, the
@@ -3568,7 +3568,7 @@
 
                 <t hangText="-">For each assigned address, which does not have any
                 associated reachability information, in order to avoid the
-                problems described in <xref target="RFC4943"></xref>, the client
+                problems described in <xref target="RFC4943"/>, the client
                 MUST NOT assume that any addresses are reachable on-link as a
                 result of receiving an IA_NA or IA_TA. Addresses obtained from
                 IA_NA or IA_TA MUST NOT be used to form an implicit prefix
@@ -3601,7 +3601,7 @@
 
             <t>Management of the specific configuration information is
             detailed in the definition of each option in <xref
-            target="RFC3315-22"></xref>.</t>
+            target="RFC3315-22"/>.</t>
 
             <t>If the Reply message contains any IAs, but the client finds no
             usable addresses and/or delegated prefixes in any of these IAs,
@@ -3632,7 +3632,7 @@
 
             <t>Whenever a client restarts the DHCP server discovery process or
             selects an alternate server, as described in <xref
-            target="RFC3315-17.1.3"></xref>, the client SHOULD stop using all
+            target="RFC3315-17.1.3"/>, the client SHOULD stop using all
             the addresses and delegated prefixes for which it has bindings and
             try to obtain all required leases from the new server. This
             facilitates the client using a single state machine for all
@@ -3686,7 +3686,7 @@
           <t>Upon receipt of a valid Reconfigure message, the client responds
           with either a Renew message, a Rebind message, or an
           Information-request message as indicated by the Reconfigure Message
-          option (as defined in <xref target="RFC3315-22.19"></xref>). The
+          option (as defined in <xref target="RFC3315-22.19"/>). The
           client ignores the transaction-id field in the received Reconfigure
           message. While the transaction is in progress, the client discards
           any Reconfigure messages it receives.</t>
@@ -3750,7 +3750,7 @@
           <t>If the client has any valid delegated prefixes obtained from the
           DHCP server, the client MUST
           initiate a Rebind/Reply message exchange as described in <xref
-          target="RFC3315-18.1.4"></xref>, with the exception that the
+          target="RFC3315-18.1.4"/>, with the exception that the
           retransmission parameters should be set as for the Confirm message
           (see <xref target="RFC3315-18.1.2"/>). The client includes IA_NAs, IA_TAs, and IA_PDs,
           along with the associated leases, in its Rebind message.</t>
@@ -3835,7 +3835,7 @@
         <t>When a client receives a Reconfigure message from the server, the
         client initiates sending a Renew, Rebind or Information-request message
         as indicated by msg-type in the Reconfigure Message option (as defined in
-        <xref target="RFC3315-22.19"></xref>). The server sends IAs and/or
+        <xref target="RFC3315-22.19"/>). The server sends IAs and/or
         other configuration information to the client in a Reply message. The
         server MAY include options containing the IAs and new values for other
         configuration parameters in the Reply message, even if those IAs and
@@ -3850,14 +3850,14 @@
           configured or not.</t>
 
           <t>The server determines the information about the client and its
-          location as described in <xref target="RFC3315-11"></xref> and
+          location as described in <xref target="RFC3315-11"/> and
           checks its administrative policy about responding to the client. If
           the server is not permitted to respond to the client, the server
           discards the Solicit message. For example, if the administrative
           policy for the server is that it may only respond to a client that
           is willing to accept a Reconfigure message, if the client does not
           include a Reconfigure Accept option (see <xref
-          target="RFC3315-22.20"></xref>) in the Solicit message, the server
+          target="RFC3315-22.20"/>) in the Solicit message, the server
           discards the Solicit message.</t>
 
           <t>If the server is permitted to respond to the client, the client
@@ -3872,8 +3872,8 @@
           assignments of leases and other resources, the server responds to the
           Solicit with a Reply message. The server produces the Reply message
           as though it had received a Request message, as described in <xref
-          target="RFC3315-18.2.1"></xref>. The server transmits the Reply
-          message as described in <xref target="RFC3315-18.2.8"></xref>.
+          target="RFC3315-18.2.1"/>. The server transmits the Reply
+          message as described in <xref target="RFC3315-18.2.8"/>.
           The server MUST commit the assignment
           of any addresses and delegated prefixes or other configuration
           information before sending a Reply message to a client. In this case
@@ -3970,7 +3970,7 @@
 
           <t>The server includes other options containing configuration
           information to be returned to the client as described in <xref
-          target="RFC3315-18.2"></xref>.</t>
+          target="RFC3315-18.2"/>.</t>
 
           <t>If the server finds that the client has included an IA in the
           Request message for which the server already has a binding that
@@ -4086,7 +4086,7 @@
               IA_PD option with zero value in the "IPv6 prefix" field and
               non-zero value in the "prefix-length" field, the server MAY use
               the "prefix-length" value as a hint for the length of the
-              prefixes to be assigned (see <xref target="RFC8168"></xref>
+              prefixes to be assigned (see <xref target="RFC8168"/>
               for further details on prefix length hints).</t>
 
               <t hangText="-">If the server is configured to create new
@@ -4114,7 +4114,7 @@
 
           <t>The server includes other options containing configuration
           information to be returned to the client as described in <xref
-          target="RFC3315-18.2"></xref>.</t>
+          target="RFC3315-18.2"/>.</t>
 
           <t>The server MAY include options containing the IAs and values for
           other configuration parameters, even if those parameters were not
@@ -4225,7 +4225,7 @@
 
           <t>The server includes other options containing configuration
           information to be returned to the client as described in <xref
-          target="RFC3315-18.2"></xref>.</t>
+          target="RFC3315-18.2"/>.</t>
 
           <t>The server MAY include options containing the IAs and values for
           other configuration parameters, even if those IAs and parameters
@@ -4264,7 +4264,7 @@
 
           <t>The server includes options containing configuration information
           to be returned to the client as described in <xref
-          target="RFC3315-18.2"></xref>. The server MAY include additional
+          target="RFC3315-18.2"/>. The server MAY include additional
           options that were not requested by the client in the
           Information-request message.</t>
 
@@ -4441,7 +4441,7 @@
           <t>If the original message was received in a Relay-forward message,
           the server constructs a Relay-reply message with the Reply message
           in the payload of a Relay Message option (see <xref
-          target="RFC3315-22.10"></xref>). If the Relay-forward messages
+          target="RFC3315-22.10"/>). If the Relay-forward messages
           included an Interface-Id option, the server copies that option to
           the Relay-reply message. The server unicasts the Relay-reply message
           directly to the relay agent using the address in the source address
@@ -4467,7 +4467,7 @@
           message (see <xref target="reconfigure-protocol"/>).</t>
 
           <t>The server MUST include a Reconfigure Message option (defined in
-          <xref target="RFC3315-22.19"></xref>) to select whether the client
+          <xref target="RFC3315-22.19"/>) to select whether the client
           responds with a Renew message, a Rebind message, or an
           Information-request message.</t>
 
@@ -4480,7 +4480,7 @@
           DHCP client. If the server does not have an address to which it can
           send the Reconfigure message directly to the client, the server uses
           a Relay-reply message (as described in <xref
-          target="RFC3315-20.3"></xref>) to send the Reconfigure message to a
+          target="RFC3315-20.3"/>) to send the Reconfigure message to a
           relay agent that will relay the message to the client. The server
           may obtain the address of the client (and the appropriate relay
           agent, if required) through the information the server has about
@@ -4511,7 +4511,7 @@
           the reconfigure process for that client.</t>
 
           <t>Default and initial values for REC_TIMEOUT and REC_MAX_RC are
-          documented in <xref target="RFC3315-5.5"></xref>.</t>
+          documented in <xref target="RFC3315-5.5"/>.</t>
         </section>
 
         <!-- ends: "19.1.1 from line 2769-->
@@ -4564,7 +4564,7 @@
       <t>If the relay agent receives a message other than Relay-forward and
       Relay-reply and the relay agent does not recognize its message type, it
       MUST forward them as described in <xref
-      target="relaying-from-client"></xref>.</t>
+      target="relaying-from-client"/>.</t>
 
       <section title="Relaying a Client Message or a Relay-forward Message">
         <!-- 20.1, line 2964-->
@@ -4582,7 +4582,7 @@
         in the new message. The relay agent adds to the Relay-forward message
         any other options it is configured to include.</t>
 
-        <t><xref target="RFC6221"></xref> defines a Lightweight DHCPv6 Relay
+        <t><xref target="RFC6221"/> defines a Lightweight DHCPv6 Relay
         Agent (LDRA) that allows relay agent information to be inserted by an
         access node that performs a link-layer bridging (i.e., non-routing)
         function.</t>
@@ -4600,7 +4600,7 @@
           to a link-local address from the interface the original message
           was received on. That is not recommended as it may require additional
           information to be provided in the server configuration. See Section
-          3.2 of <xref target="RFC7969"></xref> for a detailed
+          3.2 of <xref target="RFC7969"/> for a detailed
           discussion.</t>
 
           <t>This address will be used by the server to determine the link
@@ -4810,7 +4810,7 @@
       malicious DHCP server.</t>
 
       <t>The delayed authentication protocol, defined in
-      <xref target="RFC3315"></xref>, has been obsoleted by this document
+      <xref target="RFC3315"/>, has been obsoleted by this document
       (see <xref target="obsolete"/>).</t>
 
       <section anchor="RFC3315-21.1"
@@ -4829,7 +4829,7 @@
         <!-- 21.2, line 3172-->
 
         <t>Authentication of DHCP messages is accomplished through the use of
-        the Authentication option (see <xref target="RFC3315-22.11"></xref>).
+        the Authentication option (see <xref target="RFC3315-22.11"/>).
         The authentication information carried in the Authentication option
         can be used to reliably identify the source of a DHCP message and to
         confirm that the contents of the DHCP message have not been tampered
@@ -4838,7 +4838,7 @@
         <t>The Authentication option provides a framework for multiple
         authentication protocols. One such protocol, the Reconfigure key
         authentication protocol, is defined in <xref
-        target="reconfigure-protocol"></xref>. Other protocols defined in the future
+        target="reconfigure-protocol"/>. Other protocols defined in the future
         will be specified in separate documents.</t>
 
         <t>Any DHCP message MUST NOT include more than one Authentication
@@ -5008,7 +5008,7 @@
 
       <t>Options are used to carry additional information and parameters in
       DHCP messages. Every option shares a common base format, as described in
-      <xref target="RFC3315-22.1"></xref>. All values in options are
+      <xref target="RFC3315-22.1"/>. All values in options are
       represented in network byte order.</t>
 
       <t>This document describes the DHCP options defined as part of the base
@@ -5024,13 +5024,13 @@
 
       <t>Options that are allowed to appear only once are called singleton
       options. The only non-singleton options defined in this document are
-      IA_NA (see <xref target="RFC3315-22.4"></xref>), IA_TA (see <xref
-      target="RFC3315-22.5"></xref>), Vendor Class (see <xref target="RFC3315-22.16"/>),
+      IA_NA (see <xref target="RFC3315-22.4"/>), IA_TA (see <xref
+      target="RFC3315-22.5"/>), Vendor Class (see <xref target="RFC3315-22.16"/>),
       Vendor-specific Information (see <xref target="RFC3315-22.17"/>),
       and IA_PD (see <xref
-      target="IA_PD-option"></xref>) options. Also, IA Address (see <xref
-      target="RFC3315-22.6"></xref>) and IA Prefix (see <xref
-      target="IAPREFIX-option"></xref>) may appear in their respective IA
+      target="IA_PD-option"/>) options. Also, IA Address (see <xref
+      target="RFC3315-22.6"/>) and IA Prefix (see <xref
+      target="IAPREFIX-option"/>) may appear in their respective IA
       options more than once.</t>
 
       <section anchor="RFC3315-22.1" title="Format of DHCP Options">
@@ -5072,8 +5072,8 @@
         <t>DHCP options are scoped by using encapsulation. Some options
         apply generally to the client, some are specific to an IA, and some
         are specific to the addresses within an IA. These latter two cases are
-        discussed in <xref target="RFC3315-22.4"></xref> and <xref
-        target="RFC3315-22.6"></xref>.</t>
+        discussed in <xref target="RFC3315-22.4"/> and <xref
+        target="RFC3315-22.6"/>.</t>
       </section>
 
       <!-- ends: "22.1 from line 3566-->
@@ -5082,7 +5082,7 @@
         <!-- 22.2, line 3597-->
 
         <t>The Client Identifier option is used to carry a DUID (see <xref
-        target="RFC3315-9"></xref>) identifying a client between a client and
+        target="RFC3315-9"/>) identifying a client between a client and
         a server. The format of the Client Identifier option is:</t>
 
         <figure align="center" anchor="FigOption1"
@@ -5120,7 +5120,7 @@
         <!-- 22.3, line 3623-->
 
         <t>The Server Identifier option is used to carry a DUID (see <xref
-        target="RFC3315-9"></xref>) identifying a server between a client and
+        target="RFC3315-9"/>) identifying a server between a client and
         a server. The format of the Server Identifier option is:</t>
 
         <figure align="center" anchor="FigOption2"
@@ -5163,7 +5163,7 @@
         IA_NA, and the non-temporary addresses associated with the IA_NA.</t>
 
         <t>Addresses appearing in an IA_NA option are not temporary addresses
-        (see <xref target="RFC3315-22.5"></xref>).</t>
+        (see <xref target="RFC3315-22.5"/>).</t>
 
         <t>The format of the IA_NA option is:</t>
 
@@ -5265,7 +5265,7 @@
         are also 0xffffffff. If the time at which the addresses in an IA_NA
         are to be renewed is to be left to the discretion of the client, the
         server sets T1 and T2 to 0. The client MUST follow the rules defined
-        in <xref target="t1-t2-0"></xref>.</t>
+        in <xref target="t1-t2-0"/>.</t>
 
         <t>If a client receives an IA_NA with T1 greater than T2, and both T1
         and T2 are greater than 0, the client discards the IA_NA option and
@@ -5283,7 +5283,7 @@
         is used to carry an IA_TA, the parameters associated with the IA_TA
         and the addresses associated with the IA_TA. All of the addresses in
         this option are used by the client as temporary addresses, as defined
-        in <xref target="RFC4941"></xref>. The format of the IA_TA option
+        in <xref target="RFC4941"/>. The format of the IA_TA option
         is:</t>
 
         <figure align="center" anchor="FigOption4"
@@ -5356,7 +5356,7 @@
         <t>The client obtains new temporary addresses by sending an IA_TA
         option with a new IAID to a server. Requesting new temporary addresses
         from the server is the equivalent of generating new temporary
-        addresses as described in <xref target="RFC4941"></xref>. The server
+        addresses as described in <xref target="RFC4941"/>. The server
         will generate new temporary addresses and return them to the client.
         The client should request new temporary addresses before the lifetimes
         on the previously assigned addresses expire.</t>
@@ -5456,7 +5456,7 @@
 
         <t>The status of any operations involving this IA Address is indicated
         in a Status Code option in the IAaddr-options field, as specified in
-        <xref target="RFC3315-22.13"></xref>.</t>
+        <xref target="RFC3315-22.13"/>.</t>
       </section>
 
       <!-- ends: "22.6 from line 3840-->
@@ -5560,7 +5560,7 @@
 
         <t>A server MAY include a Preference option in an Advertise message to
         control the selection of a server by the client. See <xref
-        target="RFC3315-17.1.3"></xref> for the use of the Preference option
+        target="RFC3315-17.1.3"/> for the use of the Preference option
         by the client and the interpretation of Preference option data
         value.</t>
       </section>
@@ -5664,8 +5664,8 @@
         <t>The Authentication option carries authentication information to
         authenticate the identity and contents of DHCP messages. The use of
         the Authentication option is described in <xref
-        target="RFC3315-21"></xref>. The delayed authentication protocol,
-        defined in <xref target="RFC3315"></xref>, has been obsoleted by this
+        target="RFC3315-21"/>. The delayed authentication protocol,
+        defined in <xref target="RFC3315"/>, has been obsoleted by this
         document, due to lack of usage. The format of the Authentication
         option is:</t>
 
@@ -5775,7 +5775,7 @@
         by relay agents when relay agent options are in use.</t>
 
         <t>Details about when the client may send messages to the server using
-        unicast are in <xref target="configuration-exchange"></xref>.</t>
+        unicast are in <xref target="configuration-exchange"/>.</t>
       </section>
 
       <!-- ends: "22.12 from line 4089-->
@@ -5828,7 +5828,7 @@
         appear, the status of the message is assumed to be Success.</t>
 
         <t>The status-code values previously defined by <xref
-        target="RFC3315"></xref> and <xref target="RFC3633"></xref> are:</t>
+        target="RFC3315"/> and <xref target="RFC3633"/> are:</t>
 
         <texttable anchor="Status-Code-Table" title="Status Code Definitions">
           <ttcol>Name</ttcol>
@@ -5922,7 +5922,7 @@
 
         <t>A client MAY include this option in a Solicit message if the client
         is prepared to perform the Solicit/Reply message exchange described in
-        <xref target="solicit-create-transmit"></xref>.</t>
+        <xref target="solicit-create-transmit"/>.</t>
 
         <t>A server MUST include this option in a Reply message sent in
         response to a Solicit message when completing the Solicit/Reply
@@ -6068,7 +6068,7 @@
 
             <t hangText="   enterprise-number">The vendor's registered
             Enterprise Number as registered with IANA <xref
-            target="IANA-PEN"></xref>. A four octets long field.</t>
+            target="IANA-PEN"/>. A four octets long field.</t>
 
             <t hangText="   vendor-class-data">The hardware configuration of
             the node on which the client is running. A variable length field
@@ -6142,7 +6142,7 @@
 
             <t hangText="   enterprise-number">The vendor's registered
             Enterprise Number as registered with IANA <xref
-            target="IANA-PEN"></xref>. A four octets long field.
+            target="IANA-PEN"/>. A four octets long field.
             </t>
 
             <t hangText="   vendor-option-data">Vendor options, interpreted by
@@ -6469,7 +6469,7 @@
         respectively. If the time at which the prefixes in an IA_PD are to be
         renewed is to be left to the discretion of the client, the
         server sets T1 and T2 to 0. The client MUST
-        follow the rules defined in <xref target="t1-t2-0"></xref>.</t>
+        follow the rules defined in <xref target="t1-t2-0"/>.</t>
 
         <t>If a client receives an IA_PD with T1 greater than T2,
         and both T1 and T2 are greater than 0, the client discards
@@ -6662,7 +6662,7 @@
         <t>A DHCP server sends the SOL_MAX_RT option to a client to override
         the default value of SOL_MAX_RT. The value of SOL_MAX_RT in the option
         replaces the default value defined in <xref
-        target="RFC3315-5.5"></xref>. One use for the SOL_MAX_RT option is to
+        target="RFC3315-5.5"/>. One use for the SOL_MAX_RT option is to
         set a longer value for SOL_MAX_RT, which reduces the Solicit traffic
         from a client that has not received a response to its Solicit
         messages.</t>
@@ -6700,7 +6700,7 @@
              of RFC7083 -->
 
         <t>A DHCP client MUST include the SOL_MAX_RT option code in any Option
-        Request option (see <xref target="RFC3315-22.7"></xref>) it sends in a
+        Request option (see <xref target="RFC3315-22.7"/>) it sends in a
         Solicit message.</t>
 
         <t>The DHCP server MAY include the SOL_MAX_RT option in any response
@@ -6716,8 +6716,8 @@
         that has a valid value for SOL_MAX_RT, the client MUST set its
         internal SOL_MAX_RT parameter to the value contained in the SOL_MAX_RT
         option. This value of SOL_MAX_RT is then used by the retransmission
-        mechanism defined in <xref target="RFC3315-14"></xref> and <xref
-        target="solicit-create-transmit"></xref>.</t>
+        mechanism defined in <xref target="RFC3315-14"/> and <xref
+        target="solicit-create-transmit"/>.</t>
 
         <t>The purpose of this mechanism is to give network
         administrator a way to avoid large DHCP traffic if all DHCP
@@ -6734,7 +6734,7 @@
         <t>A DHCP server sends the INF_MAX_RT option to a client to override
         the default value of INF_MAX_RT. The value of INF_MAX_RT in the option
         replaces the default value defined in <xref
-        target="RFC3315-5.5"></xref>. One use for the INF_MAX_RT option is to
+        target="RFC3315-5.5"/>. One use for the INF_MAX_RT option is to
         set a longer value for INF_MAX_RT, which reduces the
         Information-request traffic from a client that has not received a
         response to its Information-request messages.</t>
@@ -6771,7 +6771,7 @@
         <!-- The following paragraphs have been merged from section 7 of RFC7083 -->
 
         <t>A DHCP client MUST include the INF_MAX_RT option code in any Option
-        Request option (see <xref target="RFC3315-22.7"></xref>) it sends in
+        Request option (see <xref target="RFC3315-22.7"/>) it sends in
         an Information-request message.</t>
 
         <t>The DHCP server MAY include the INF_MAX_RT option in any response
@@ -6786,8 +6786,8 @@
         that has a valid value for INF_MAX_RT, the client MUST set its
         internal INF_MAX_RT parameter to the value contained in the INF_MAX_RT
         option. This value of INF_MAX_RT is then used by the retransmission
-        mechanism defined in <xref target="RFC3315-14"></xref> and <xref
-        target="RFC3315-18.1.5"></xref>.</t>
+        mechanism defined in <xref target="RFC3315-14"/> and <xref
+        target="RFC3315-18.1.5"/>.</t>
 
         <t>Updated INF_MAX_RT value applies only to the network interface on
         which the client received INF_MAX_RT option.</t>
@@ -6935,18 +6935,18 @@
     <section anchor="privacy" title="Privacy Considerations">
       <t>This section focuses on the server considerations. For extended
       discussion about privacy considerations for the client, see <xref
-      target="RFC7824"></xref>. In particular, Section 3
+      target="RFC7824"/>. In particular, Section 3
       of that document discusses various identifiers that could be misused to
       track the client. Section 4 discusses existing mechanisms that may have
       an impact on client's privacy. Finally, Section 5 discusses potential
       attack vectors. For recommendations how to address or mitigate those
-      issues, see <xref target="RFC7844"></xref>.</t>
+      issues, see <xref target="RFC7844"/>.</t>
 
       <t>This specification does not define any allocation strategies.
       Implementers are expected to develop their own algorithm for the server
       to choose a resource out of the available pool. Several possible
       allocation strategies are mentioned in Section 4.3 of <xref
-      target="RFC7824"></xref>. Please keep in mind that
+      target="RFC7824"/>. Please keep in mind that
       this list is not exhaustive and there are certainly other possible
       strategies. Readers are also encouraged to read <xref
       target="RFC7707"/>, in particular Section 4.1.2 that discusses
@@ -7192,7 +7192,7 @@
 
     <section anchor="obsolete" title="Obsoleted Mechanisms">
       <t>This specification is mostly a corrected and cleaned up version
-      of the original specification, <xref target="RFC3315"></xref>, along with
+      of the original specification, <xref target="RFC3315"/>, along with
       numerous additions from later RFCs. However, there are a small number of
       mechanisms that were not widely deployed, were
       underspecified or had other operational issues. Those mechanisms are now
@@ -7598,7 +7598,7 @@ R-repl.                                               *
 ]]></artwork>
       </figure>
 
-      <t>NOTE: Server ID option (see <xref target="RFC3315-22.3/>) is only included in
+      <t>NOTE: Server ID option (see <xref target="RFC3315-22.3"/>) is only included in
       Information-request messages that are sent in response to a Reconfigure
       (see <xref target="RFC3315-18.1.5"/>).</t>
 
