@@ -460,7 +460,8 @@
             example.</t>
 
             <t hangText="container option">An option that encapsulates other
-            options (for example, the IA_NA option may contain IAADDR options).</t>
+            options (for example, the IA_NA option (see <xref target="RFC3315-22.4"/>)
+            may contain IA Address options (see <xref target="RFC3315-22.6").</t>
 
             <t hangText="delegating router">The router that acts as a DHCP
             server, and responds to requests for delegated prefixes. This document
@@ -498,21 +499,26 @@
             a DUID may be constructed.</t>
              
             <t hangText="encapsulated option">A DHCPv6 option that is usually
-            only contained in another option. For example, the IAADDR option
-            is contained in IA_NA or IA_TA options. See Section 9 of
+            only contained in another option. For example, the IA Address option
+            is contained in IA_NA or IA_TA options (see <xref target="RFC3315-22.5"/>).
+            See Section 9 of
             <xref target="RFC7227"/> for a more complete definition.</t>
 
             <t hangText="IA">Identity Association: A collection of leases
             assigned to a client. Each IA has an associated IAID (see below). A client may
             have more than one IA assigned to it; for example, one for each of
             its interfaces. Each IA holds one type of lease; for example, an
-            identity association for temporary addresses (IA_TA) holds
-            temporary addresses (see "identity association for temporary
-            addresses") and identity association for prefix delegation (IA_PD)
-            holds delegated prefixes. Throughout this document, "IA" is used
+            identity association for temporary addresses (IA_TA) holds temporary
+            addresses and identity association for prefix delegation (IA_PD)
+            (see <xref target="IA_PD-option"/>) holds delegated prefixes.
+            Throughout this document, "IA" is used
             to refer to an identity association without identifying the type
             of a lease in the IA. At the time of writing this document, there
             are three IA types defined: IA_NA, IA_TA and IA_PD. New IA types may
+            be defined in the future.</t>
+             
+            <t hangText="IA option(s)">At the time of writing this document,
+            one or more IA_NA, IA_TA, and/or IA_PD options. New IA types may
             be defined in the future.</t>
 
             <t hangText="IAID">Identity Association IDentifier: An identifier
@@ -639,7 +645,8 @@
         messages as described in the next section. In this case, the client
         sends a Solicit message to the All_DHCP_Relay_Agents_and_Servers multicast address
         requesting the assignment of addresses and/or delegated prefixes and other configuration
-        information. This message includes an indication (the Rapid Commit option) that the client is
+        information. This message includes an indication (the Rapid Commit option,
+        see <xref target="RFC3315-22.14"/>) that the client is
         willing to accept an immediate Reply message from the server. The
         server that is willing to commit the assignment of addresses and/or
         delegated prefixes to the client immediately responds with a Reply
@@ -934,10 +941,11 @@
         of multiple prefixes for a given link. This is useful in cases
         such as when a network renumbering event is in progress. In a typical
         deployment the server will grant one address per each IA_NA
-        option.</t>
+        option (see xref target="RFC3315-22.4"/>).</t>
 
         <t>A client can explicitly request multiple addresses by sending
-        multiple IA_NA (and/or IA_TA) options. A client can send multiple
+        multiple IA_NA options (and/or IA_TA options
+        (see <xref target="RFC3315-22.5"/>). A client can send multiple
         IA_NA (and/or IA_TA) options in its initial transmissions.
         Alternatively, it can send an extra Request message
         with additional new IA_NA (and/or IA_TA) options (or include them
@@ -945,7 +953,8 @@
 
         <t>The same principle also applies to Prefix Delegation. In
         principle the protocol allows a client to request new prefixes
-        to be delegated by sending additional IA_PD options. However, a
+        to be delegated by sending additional IA_PD options
+        (see <xref target="IA_PD-option"/>). However, a
         typical operator usually prefers to delegate a single, larger
         prefix. In most deployments it recommended for the client to
         request a larger prefix in its initial transmissions rather than
@@ -1106,7 +1115,8 @@
         of a message. The specific status codes are defined in <xref
         target="RFC3315-22.13"></xref>.</t>
 
-        <t>If the Status Code option does not appear in a message in which the
+        <t>If the Status Code option (see xref target="RFC3315-22.13/>) does
+        not appear in a message in which the
         option could appear, the status of the message is assumed to be
         Success.</t>
       </section>
@@ -1853,18 +1863,19 @@
         interface to obtain configuration information from a server for that
         interface. Each such IA must be associated with exactly one interface.</t>
 
-        <t>The configuration information in an IA_NA consists of one or more IPv6
-        addresses along with the T1 and T2 times for the IA. See <xref
+        <t>The configuration information in an IA_NA option consists of one or
+        more IPv6 addresses along with the T1 and T2 times for the IA. See <xref
         target="RFC3315-22.4"/> for the representation of an IA_NA in a
         DHCP message.</t>
 
-        <t>The configuration information in an IA_TA consists of one or more IPv6
+        <t>The configuration information in an IA_TA option consists of one or more IPv6
         addresses. See <xref target="RFC3315-22.5"/> for the representation of an
         IA_TA in a DHCP message.</t>
 
         <t>Each address in an IA has a preferred lifetime and a valid
         lifetime, as defined in <xref target="RFC4862"></xref>. The lifetimes
-        are transmitted from the DHCP server to the client in the IA Address option.
+        are transmitted from the DHCP server to the client in the IA Address
+        option (see <xref target="RFC3315-22.6"/>).
         The lifetimes apply to the use of addresses, as described in
         section 5.5.4 of <xref target="RFC4862"></xref>.</t>
       </section>
@@ -1880,14 +1891,15 @@
         of its downstream network interfaces and use that IA_PD to obtain a
         prefix for that interface from the server.</t>
 
-        <t>The configuration information in an IA_PD consists of one or more
+        <t>The configuration information in an IA_PD option consists of one or more
         prefixes along with the T1 and T2 times for the IA_PD. See <xref
         target="IA_PD-option"></xref> for the representation of an IA_PD in a
         DHCP message.</t>
 
         <t>Each delegated prefix in an IA has a preferred lifetime and a valid
         lifetime, as defined in <xref target="RFC4862"></xref>. The lifetimes
-        are transmitted from the DHCP server to the client in the IA Prefix option.
+        are transmitted from the DHCP server to the client in the IA Prefix option
+        (see <xref target="IAPREFIX-option"/>).
         The lifetimes apply to the use of delegated prefixes, as described in
         section 5.5.4 of <xref target="RFC4862"></xref>.</t>
       </section>
@@ -1938,8 +1950,8 @@
             <t hangText="-">The DUID supplied by the client.</t>
 
             <t hangText="-">Other information in options supplied by the
-            client, e.g., IA Address options that include the client's requests
-            for specific addresses.</t>
+            client, e.g., IA Address options (see <xref target="RFC3315-22.6"/>)
+            that include the client's requests for specific addresses.</t>
 
             <t hangText="-">Other information in options supplied by the relay
             agent.</t>
@@ -1974,7 +1986,7 @@
         to which the client is attached.</t>
 
         <t>The lifetime of the assigned temporary address is set in the IA
-        Address option (see <xref target="RFC3315-22.6"></xref>) encapsulated in the
+        Address option (see <xref target="RFC3315-22.6"/>) encapsulated in the
         IA_TA option. It is RECOMMENDED to set short lifetimes, typically
         shorter than TEMP_VALID_LIFETIME and TEMP_PREFERRED_LIFETIME (see
         Section 5, <xref target="RFC4941"/>).</t>
@@ -2005,8 +2017,7 @@
         include: static assignment based on subscription to an ISP; dynamic
         assignment from a pool of available prefixes; selection based on an
         external authority such as a RADIUS server using the
-        Framed-IPv6-Prefix option as described in <xref pageno="false"
-        target="RFC3162"></xref>.</t>
+        Framed-IPv6-Prefix option as described in <xref target="RFC3162"/>.</t>
       </section>
 
     </section>
@@ -2069,9 +2080,9 @@
         there are three such cases:
              
       <list hangIndent="6" style="hanging">
-        <t hangText="1."> a client received an IA_NA option with a zero value</t>
-        <t hangText="2."> a client received an IA_PD option with a zero value</t>
-        <t hangText="3."> a client received an IA_TA option (which does not
+        <t hangText="1."> a client received an IA_NA option (see <xref target="RFC3315-22.4"/>) with a zero value</t>
+        <t hangText="2."> a client received an IA_PD option (see <xref target="IA_PD-option"/>) with a zero value</t>
+        <t hangText="3."> a client received an IA_TA option (see <xref target="RFC3315-22.5"/>) (which does not
         contain T1 and T2 fields and are not generally renewed)</t>
       </list>
         This is an indication that the renew and rebind times are left
@@ -2114,7 +2125,8 @@
       <t>The client MUST update an "elapsed-time" value within an Elapsed
       Time option (see <xref target="RFC3315-22.9"/>) in the
       retransmitted message. In some cases, the client may also need to modify
-      values in the IA Address or IA Prefix options if a valid lifetime for
+      values in IA Address (see <xref target="RFC3315-22.6"/> or
+      IA Prefix options (see <xref target="IAPREFIX-option"/>) if a valid lifetime for
       any of the client's leases expires before retransmission. Thus, whenever
       this document refers to a "retransmission" of a client's message, it
       refers to both modifying the original message and sending this new message
@@ -7586,8 +7598,8 @@ R-repl.                                               *
 ]]></artwork>
       </figure>
 
-      <t>NOTE: Server ID option is only included in Information-request
-      messages that are sent in response to a Reconfigure
+      <t>NOTE: Server ID option (see <xref target="RFC3315-22.3/>) is only included in
+      Information-request messages that are sent in response to a Reconfigure
       (see <xref target="RFC3315-18.1.5"/>).</t>
 
       <figure>
