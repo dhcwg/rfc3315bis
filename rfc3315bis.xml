@@ -2091,8 +2091,8 @@
 
         <t>When T1 and/or T2 times are set to zero, the client MUST choose a
         time to avoid packet storms. In particular, it MUST NOT transmit
-        immediately. If the client received multiple IA containers, it SHOULD
-        pick renew and/or rebind transmission times so all IA containers are
+        immediately. If the client received multiple IA options, it SHOULD
+        pick renew and/or rebind transmission times so all IA options are
         handled in one exchange, if possible. The client MUST choose renew
         and rebind times to not violate rate limiting restrictions, defined
         in <xref target="rate-limit"/>.</t>
@@ -2232,8 +2232,10 @@
 
       <t>If a server receives a message that it considers invalid, it
       MAY send a Reply (or Advertise as appropriate) with a Server Identifier
-      option, a Client Identifier option if one was included in the message
-      and a Status Code option with status UnspecFail.</t>
+      option (see <xref target="RFC3315-22.3"/>), a Client Identifier option
+      (see <xref target="RFC3315-22.2"/>) if one was included in the message
+      and a Status Code option (see <xref target="RFC3315-22.13"/>) with
+      status UnspecFail.</t>
 
       <t>Clients, relay agents and servers MUST NOT discard messages that
       contain unknown options (or instances of vendor options with unknown
@@ -2283,10 +2285,10 @@
         <t>Clients MUST discard any received Advertise message that meets any
         of the following conditions: <list hangIndent="3" style="hanging">
             <t hangText="-">the message does not include a Server Identifier
-            option.</t>
+            option (see <xref target="RFC3315-22.3"/>).</t>
 
             <t hangText="-">the message does not include a Client Identifier
-            option.</t>
+            option (see <xref target="RFC3315-22.2"/>).</t>
 
             <t hangText="-">the contents of the Client Identifier option does
             not match the client's DUID.</t>
@@ -2309,13 +2311,13 @@
         <t>Servers MUST discard any received Request message that meets any of
         the following conditions: <list hangIndent="3" style="hanging">
             <t hangText="-">the message does not include a Server Identifier
-            option.</t>
+            option (see <xref target="RFC3315-22.3"/>).</t>
 
             <t hangText="-">the contents of the Server Identifier option do
             not match the server's DUID.</t>
 
             <t hangText="-">the message does not include a Client Identifier
-            option.</t>
+            option (see <xref target="RFC3315-22.2"/>).</t>
           </list></t>
       </section>
 
@@ -2327,8 +2329,9 @@
         <t>Clients MUST discard any received Confirm messages.</t>
 
         <t>Servers MUST discard any received Confirm messages that do not
-        include a Client Identifier option or that do include a Server
-        Identifier option.</t>
+        include a Client Identifier option (see <xref target="RFC3315-22.2"/>) 
+        or that do include a Server Identifier option (see
+        <xref target="RFC3315-22.3"/>).</t>
       </section>
 
       <!-- ends: "15.5 from line 1436-->
@@ -2341,13 +2344,13 @@
         <t>Servers MUST discard any received Renew message that meets any of
         the following conditions: <list hangIndent="3" style="hanging">
             <t hangText="-">the message does not include a Server Identifier
-            option.</t>
+            option (see <xref target="RFC3315-22.3"/>).</t>
 
             <t hangText="-">the contents of the Server Identifier option does
             not match the server's identifier.</t>
 
             <t hangText="-">the message does not include a Client Identifier
-            option.</t>
+            option (see <xref target="RFC3315-22.2"/>).</t>
           </list></t>
       </section>
 
@@ -2359,8 +2362,9 @@
         <t>Clients MUST discard any received Rebind messages.</t>
 
         <t>Servers MUST discard any received Rebind messages that do not
-        include a Client Identifier option or that do include a Server
-        Identifier option.</t>
+        include a Client Identifier option (see <xref target="RFC3315-22.2"/>)
+        or that do include a Server Identifier option (see
+        <xref target="RFC3315-22.3"/>).</t>
       </section>
 
       <!-- ends: "15.7 from line 1465-->
@@ -2373,13 +2377,13 @@
         <t>Servers MUST discard any received Decline message that meets any of
         the following conditions: <list hangIndent="3" style="hanging">
             <t hangText="-">the message does not include a Server Identifier
-            option.</t>
+            option (see <xref target="RFC3315-22.3"/>).</t>
 
             <t hangText="-">the contents of the Server Identifier option does
             not match the server's identifier.</t>
 
             <t hangText="-">the message does not include a Client Identifier
-            option.</t>
+            option (see <xref target="RFC3315-22.2"/>).</t>
           </list></t>
       </section>
 
@@ -2393,13 +2397,13 @@
         <t>Servers MUST discard any received Release message that meets any of
         the following conditions: <list hangIndent="3" style="hanging">
             <t hangText="-">the message does not include a Server Identifier
-            option.</t>
+            option (see <xref target="RFC3315-22.3"/>).</t>
 
             <t hangText="-">the contents of the Server Identifier option does
             not match the server's identifier.</t>
 
             <t hangText="-">the message does not include a Client Identifier
-            option.</t>
+            option (see <xref target="RFC3315-22.2"/>).</t>
           </list></t>
       </section>
 
@@ -2411,13 +2415,14 @@
         <t>Clients MUST discard any received Reply message that meets any of
         the following conditions: <list hangIndent="3" style="hanging">
             <t hangText="-">the message does not include a Server Identifier
-            option.</t>
+            option (see <xref target="RFC3315-22.3"/>).</t>
 
             <t hangText="-">the "transaction-id" field in the message does not
             match the value used in the original message.</t>
           </list></t>
 
-        <t>If the client included a Client Identifier option in the original
+        <t>If the client included a Client Identifier option (see <xref
+        target="RFC3315-22.2"/>)in the original
         message, the Reply message MUST include a Client Identifier option and
         the contents of the Client Identifier option MUST match the DUID of
         the client; OR, if the client did not include a Client Identifier
@@ -2441,13 +2446,14 @@
             <t hangText="-">the message was not unicast to the client.</t>
 
             <t hangText="-">the message does not include a Server Identifier
-            option.</t>
+            option (see <xref target="RFC3315-22.3"/>).</t>
 
             <t hangText="-">the message does not include a Client Identifier
-            option that contains the client's DUID.</t>
+            option (see <xref target="RFC3315-22.2"/>) that contains the
+            client's DUID.</t>
 
             <t hangText="-">the message does not include a Reconfigure Message
-            option.</t>
+            option (see <xref target="RFC3315-22.19"/>).</t>
 
             <t hangText="-">the Reconfigure Message option msg-type is not a
             valid value.</t>
@@ -2469,7 +2475,8 @@
         meets any of the following conditions: <list hangIndent="3"
             style="hanging">
             <t hangText="-">The message includes a Server Identifier option
-            and the DUID in the option does not match the server's DUID.</t>
+            (see <xref target="RFC3315-22.3"/>) and the DUID in the option
+            does not match the server's DUID.</t>
 
             <t hangText="-">The message includes an IA option.</t>
           </list></t>
@@ -2526,7 +2533,8 @@
         address in the header of the IPv6 datagram. --></t>
 
         <t>When a client sends a DHCP message directly to a server using
-        unicast (after receiving the Server Unicast option from that server),
+        unicast (after receiving the Server Unicast option, see
+        <xref target="RFC3315-22.12"/>, from that server),
         the source address in the header of the IPv6 datagram MUST be an
         address assigned to the interface for which the client is interested
         in obtaining configuration and which is suitable for use by the server
@@ -2548,7 +2556,8 @@
 
         <t>When a client sends a DHCP message directly to a
         server using unicast (after receiving the Server Unicast
-        option from that server), the source address SHOULD be an
+        option, see <xref target="RFC3315-22.12"/>, from that server), the
+        source address SHOULD be an
         address from the upstream interface and which is suitable for use by
         the server in responding to the client.</t>
       </section>
@@ -2758,7 +2767,7 @@
 
         <t>Upon receipt of a Reconfigure message from the server, a client
         responds with a Renew, Rebind or an Information-request message as
-        indicated by the Reconfigure Message option.
+        indicated by the Reconfigure Message option (see <xref target="RFC3315-22.19"/>).
         The client SHOULD be suspicious of the Reconfigure message (they
         may be faked), and it MUST NOT abandon any resources it might have
         already obtained.
@@ -2790,7 +2799,8 @@
           generates a transaction ID and inserts this value in the
           "transaction-id" field.</t>
 
-          <t>The client MUST include a Client Identifier option to identify
+          <t>The client MUST include a Client Identifier option (see
+          <xref target="RFC3315-22.2"/>) to identify
           itself to the server. The client includes IA options for any IAs to
           which it wants the server to assign leases.</t>
 
@@ -2798,18 +2808,22 @@
           <xref target="RFC3315-22.9"/>) to indicate how long the client has
           been trying to complete the current DHCP message exchange.</t>
 
-          <t>The client uses IA_NA options to request the assignment of
-          non-temporary addresses, IA_TA options to request the assignment of
-          temporary addresses, and IA_PD options to request prefix delegation.
+          <t>The client uses IA_NA options (see <xref target="RFC3315-22.4"/>)
+          to request the assignment of non-temporary addresses, IA_TA options
+          (see <xref target="RFC3315-22.5"/>) to request the assignment of
+          temporary addresses, and IA_PD options (see
+          <xref target="IA_PD-option"/>) to request prefix delegation.
           Either IA_NA, IA_TA or IA_PD options, or a combination of all, can
           be included in DHCP messages. In addition, multiple instances of any
           IA option type can be included.</t>
 
-          <t>The client MAY include addresses in IA Address options encapsulated
+          <t>The client MAY include addresses in IA Address options (see
+          <xref target="RFC3315-22.6"/>) encapsulated
           within IA_NA and IA_TA options as hints to the server about the
           addresses for which the client has a preference.</t>
 
-          <t>The client MAY include values in IA Prefix options
+          <t>The client MAY include values in IA Prefix options (see
+          <xref target="IAPREFIX-option"/>)
           encapsulated within IA_PD options as hints for the delegated prefix
           and/or prefix length for which the client has a preference. See
           <xref target="RFC3315-18.1.3"/> for more on prefix length hints.</t>
@@ -2857,7 +2871,8 @@
             </list></t>
 
             <t>A client that wishes to use the Rapid Commit 2-message exchange
-            includes a Rapid Commit option in its Solicit message.
+            includes a Rapid Commit option (see <xref target="RFC3315-22.14"/>)
+            in its Solicit message.
             The client may receive a number of different replies from
             different servers.  The client will make note of any valid Advertise
             messages that it receives.  The client will discard any Reply
@@ -2942,9 +2957,10 @@
           the "transaction-id" field.</t>
 
           <t>The client MUST include the identifier of the destination server in a
-          Server Identifier option.</t>
+          Server Identifier option (see <xref target="RFC3315-22.3"/>).</t>
 
-          <t>The client MUST include a Client Identifier option to identify
+          <t>The client MUST include a Client Identifier option (see
+          <xref target="RFC3315-22.2"/>) to identify
           itself to the server. The client adds any other appropriate options,
           including one or more IA options.</t>
 
@@ -3005,8 +3021,8 @@
           generates a transaction ID and inserts this value in the
           "transaction-id" field.</t>
 
-          <t>The client MUST include a Client Identifier option to identify
-          itself to the server.</t>
+          <t>The client MUST include a Client Identifier option (see
+          <xref target="RFC3315-22.2"/>) to identify itself to the server.</t>
 
           <t>The client MUST include an Elapsed Time option (see
           <xref target="RFC3315-22.9"/>) to indicate how long the client has
@@ -3016,8 +3032,10 @@
           IAs assigned to the interface for which the Confirm message is being
           sent. The IA options include all of the addresses the client
           currently has associated with those IAs. The client SHOULD set the
-          T1 and T2 fields in any IA_NA options and the preferred-lifetime and
-          valid-lifetime fields in the IA Address options to 0, as the server
+          T1 and T2 fields in any IA_NA options (see
+          <xref target="RFC3315-22.4"/>) and the preferred-lifetime and
+          valid-lifetime fields in the IA Address options (see
+          <xref target="RFC3315-22.6"/>) to 0, as the server
           will ignore these fields.</t>
 
           <t>The first Confirm message from the client on the interface MUST
@@ -3053,9 +3071,13 @@
           for IAs, the client sends a Renew message to the server from which
           the leases were obtained, which includes IA options for the IAs
           whose lease lifetimes are to be extended. The client includes IA
-          Address options within IA_NA and IA_TA options for the addresses
-          assigned to the IAs. The client includes IA Prefix options within
-          IA_PD options for the delegated prefixes assigned to the IAs.</t>
+          Address options (see <xref target="RFC3315-22.6"/>) within IA_NA
+          (see <xref target="RFC3315-22.4"/>) and IA_TA
+          (see <xref target="RFC3315-22.5"/>) options for the addresses
+          assigned to the IAs. The client includes IA Prefix options
+          (see <xref target="IAPREFIX-option"/>) within IA_PD options for
+          (see <xref target="IA_PD-option"/>) the delegated prefixes assigned
+          to the IAs.</t>
 
           <t>The server controls the time at which the client should contact the
           server to extend the lifetimes on assigned leases through the T1 and
@@ -3084,11 +3106,13 @@
           generates a transaction ID and inserts this value in the
           "transaction-id" field.</t>
 
-          <t>The client MUST include a Server Identifier option in the Renew
+          <t>The client MUST include a Server Identifier option
+          (see <xref target="RFC3315-22.3"/>) in the Renew
           message, identifying the server with which the client most recently
           communicated.</t>
 
-          <t>The client MUST include a Client Identifier option to identify
+          <t>The client MUST include a Client Identifier option
+          (see <xref target="RFC3315-22.2"/>) to identify
           itself to the server. The client adds any appropriate options,
           including one or more IA options.</t>
 
@@ -3166,7 +3190,8 @@
               REBIND.</t>
 
               <t hangText="-">The client does not include the Server
-              Identifier option in the Rebind message.</t>
+              Identifier option (see <xref target="RFC3315-22.2"/>) in
+              the Rebind message.</t>
             </list></t>
 
           <t>The client transmits the message according to <xref
@@ -3209,7 +3234,8 @@
           client generates a transaction ID and inserts this value in the
           "transaction-id" field.</t>
 
-          <t>The client SHOULD include a Client Identifier option to identify
+          <t>The client SHOULD include a Client Identifier option
+          (see <xref target="RFC3315-22.2"/>) to identify
           itself to the server (see section 4.3.1 of <xref target="RFC7844"/> for
           reasons why a client may not want to include this option). If the
           client does not include a Client
@@ -3230,7 +3256,8 @@
           client would like to have returned.</t>
 
           <t>When responding to a Reconfigure, the client includes a Server
-          Identifier option with the identifier from the Reconfigure message
+          Identifier option (see <xref target="RFC3315-22.3"/>) with the
+          identifier from the Reconfigure message
           to which the client is responding.</t>
 
           <t>The first Information-request message from the client on the
@@ -3263,9 +3290,11 @@
           "transaction-id" field.</t>
 
           <t>The client places the identifier of the server that allocated the
-          lease(s) in a Server Identifier option.</t>
+          lease(s) in a Server Identifier option
+           (see <xref target="RFC3315-22.3"/>).</t>
 
-          <t>The client MUST include a Client Identifier option to identify
+          <t>The client MUST include a Client Identifier option
+          (see <xref target="RFC3315-22.2"/>) to identify
           itself to the server.</t>
 
           <t>The client MUST include an Elapsed Time option (see
@@ -3332,16 +3361,19 @@
           suspect.</t>
 
           <t>The Decline message is not used in prefix delegation and thus the
-          client MUST NOT include IA_PD options in the Decline message.</t>
+          client MUST NOT include IA_PD options
+          (see <xref target="IA_PD-Option"/>) in the Decline message.</t>
 
           <t>The client sets the "msg-type" field to DECLINE. The client
           generates a transaction ID and places this value in the
           "transaction-id" field.</t>
 
           <t>The client places the identifier of the server that allocated the
-          address(es) in a Server Identifier option.</t>
+          address(es) in a Server Identifier option
+          (see <xref target="RFC3315-22.3"/>).</t>
 
-          <t>The client MUST include a Client Identifier option to identify
+          <t>The client MUST include a Client Identifier option
+          (see <xref target="RFC3315-22.2"/>) to identify
           itself to the server.</t>
 
           <t>The client MUST include an Elapsed Time option (see
@@ -3422,9 +3454,12 @@
           that a chosen server does not respond, the client chooses the next
           server according to the criteria given above.</t>
 
-          <t>The client MUST process SOL_MAX_RT and INF_MAX_RT options in an
+          <t>The client MUST process any SOL_MAX_RT option
+          (see <xref target="SOL_MAX_RT_option"/>)
+          and INF_MAX_RT option (see <xref target="INF_MAX_RT_option"/>) present in an
           Advertise message, even if the message contains a Status Code option
-          indicating a failure, and the Advertise message will be discarded by
+          (see <xref target="RFC3315-22.13"/>) indicating a failure, and the
+          Advertise message will be discarded by
           the client. A client SHOULD only update its SOL_MAX_RT and INF_MAX_RT
           values if all received Advertise messages that contained the
           corresponding option specified the same value, otherwise it should
@@ -3433,9 +3468,13 @@
           <!-- Change from RFC 7550 section 4.1/4.2 has been applied. 6/1/2015 -->
 
           <t>The client MUST ignore any Advertise message that contains no
-          addresses (IA Address options encapsulated in IA_NA or IA_TA options)
-          and no delegated prefixes (IA Prefix options encapsulated in IA_PD
-          options) with the exception that the client: <list hangIndent="3"
+          addresses (IA Address options, see <xref target="RFC3315-22.6"/>
+          encapsulated in IA_NA, see <xref target="RFC3315-22.4"/>, or IA_TA,
+          see <xref target="RFC3315-22.5"/> options)
+          and no delegated prefixes (IA Prefix options,
+          see <xref target="IAPREFIX-option"/>, encapsulated in IA_PD
+          options, see <xref target="IA_PD-option"/>) with the exception
+          that the client: <list hangIndent="3"
               style="hanging">
               <t hangText="-">MUST process an included SOL_MAX_RT option
               and</t>
@@ -3457,11 +3496,14 @@
           <!-- 18.1.8, line 2345-->
 
           <t>Upon the receipt of a valid Reply message in response to a
-          Solicit (with a Rapid Commit option), Request, Confirm, Renew,
-          Rebind, or Information-request message, the client extracts the
-          top-level Status Code option if present.</t>
+          Solicit with a Rapid Commit option (see <xref target="RFC3315-22.14"/>),
+          Request, Confirm, Renew, Rebind, or Information-request message,
+          the client extracts the top-level Status Code option
+          (see <xref target="RFC3315-22.13"/>) if present.</t>
 
-          <t>The client MUST process SOL_MAX_RT and INF_MAX_RT options in a
+          <t>The client MUST process any SOL_MAX_RT option
+          (see <xref target="SOL_MAX_RT_option"/>) and INF_MAX_RT option
+          (see <xref target="INF_MAX_RT_option"/>) present in a
           Reply message, even if the message contains a Status Code option
           indicating a failure.</t>
 
@@ -3498,14 +3540,15 @@
           received/configured from the option MAY persist if there are
           no other sources for that data and they have no external impact.
           For example, a client that previously received a Client FQDN
-          option and used it to set up its hostname is allowed to continue
+          option (see <xref target="RFC4704"/>) and used it to set up
+          its hostname is allowed to continue
           using it if there is no reasonable way for a node to unset its
           hostname and it has no external impact.  As a counter example,
           a client that previously received an NTP server address from
           the DHCP server and does not receive it any more, MUST stop
           using the configured NTP server address.  The client
           SHOULD be open to other sources of the same configuration
-          information.  This behavior does not apply to any IA containers,
+          information.  This behavior does not apply to any IA options,
           as their processing is described in detail in the next section.</t>
 
           <t>When a client receives a requested option that has an updated
@@ -3516,7 +3559,8 @@
           <section anchor="reply-solicit-request-renew-rebind"
                    title="Reply for Solicit (with Rapid Commit), Request, Renew or Rebind">
             <t>If the client receives a NotOnLink status from the server in
-            response to a Solicit (with a Rapid Commit option) or a Request,
+            response to a Solicit (with a Rapid Commit option,
+            see <xref target="RFC3315-22.14"/>) or a Request,
             the client can either re-issue the message without specifying any
             addresses or restart the DHCP server discovery process (see <xref
             target="configuration-exchange"/>).</t>
@@ -3643,8 +3687,8 @@
                    title="Reply for Release and Decline">
             <t>When the client receives a valid Reply message in response to a
             Release message, the client considers the Release event completed,
-            regardless of the Status Code option(s) returned by the
-            server.</t>
+            regardless of the Status Code option(s)
+            (see <xref target="RFC3315-22.13"/>) returned by the server.</t>
 
             <t>When the client receives a valid Reply message in response to a
             Decline message, the client considers the Decline event completed,
@@ -3686,7 +3730,7 @@
           <t>Upon receipt of a valid Reconfigure message, the client responds
           with either a Renew message, a Rebind message, or an
           Information-request message as indicated by the Reconfigure Message
-          option (as defined in <xref target="RFC3315-22.19"/>). The
+          option (see <xref target="RFC3315-22.19"/>). The
           client ignores the transaction-id field in the received Reconfigure
           message. While the transaction is in progress, the client discards
           any Reconfigure messages it receives.</t>
@@ -3790,18 +3834,22 @@
         <t>In most cases, the server will send a Reply in response to a
         Request, Confirm, Renew, Rebind, Decline, Release, and Information-request
         messages sent by a client. The server will also send a Reply in
-        response to a Solicit with a Rapid Commit option, when the server is
+        response to a Solicit with a Rapid Commit option
+        (see <xref target="RFC3315-22.14"/>), when the server is
         configured to respond with committed lease assignments.</t>
 
-        <t>These Advertise and Reply messages MUST always contain the Server Identifier option
-        containing the server's DUID and the Client Identifier option from the
+        <t>These Advertise and Reply messages MUST always contain the
+        Server Identifier option (see <xref target="RFC3315-22.3"/>) containing
+        the server's DUID and the Client Identifier option
+        (see <xref target="RFC3315-22.2"/>) from the
         client message if one was present.</t>
 
         <t>In most response messages, the server includes options containing
         configuration information for the client. The server must be aware of
         the recommendations on packet sizes and the use of fragmentation in
         section 5 of <xref target="RFC8200"/>. If the client included an
-        Option Request option in its message, the server includes options in
+        Option Request option (see <xref target="RFC3315-22.7"/>) in its
+        message, the server includes options in
         the response message containing configuration parameters for all of the
         options identified in the Option Request option that the server has
         been configured to return to the client. The server MAY return
@@ -3834,7 +3882,7 @@
 
         <t>When a client receives a Reconfigure message from the server, the
         client initiates sending a Renew, Rebind or Information-request message
-        as indicated by msg-type in the Reconfigure Message option (as defined in
+        as indicated by msg-type in the Reconfigure Message option (see
         <xref target="RFC3315-22.19"/>). The server sends IAs and/or
         other configuration information to the client in a Reply message. The
         server MAY include options containing the IAs and new values for other
@@ -3846,8 +3894,8 @@
 
           <t>See <xref target="use-multicast"/> for handling Solicit message
           received via unicast. Unicast transmission of Solicit
-          is not allowed, regardless of whether the Server Unicast option is
-          configured or not.</t>
+          is not allowed, regardless of whether the Server Unicast option
+          (see <xref target="RFC3315-22.12"/>) is configured or not.</t>
 
           <t>The server determines the information about the client and its
           location as described in <xref target="RFC3315-11"/> and
@@ -3861,7 +3909,8 @@
           discards the Solicit message.</t>
 
           <t>If the server is permitted to respond to the client, the client
-          has not included a Rapid Commit option in the Solicit message or
+          has not included a Rapid Commit option
+          (see <xref target="RFC3315-22.14"/>) in the Solicit message or
           the server has not been configured to respond with committed assignment
           of leases and other resources, the server sends an Advertise
           message to the client as described in <xref target="RFC3315-17.2.2"/>.
@@ -3916,24 +3965,30 @@
           field to REPLY, and copying the transaction ID from the Request
           message into the transaction-id field.</t>
 
-          <t>The server MUST include a Server Identifier option containing the
-          server's DUID and the Client Identifier option from the Request
+          <t>The server MUST include a Server Identifier option
+          (see <xref target="RFC3315-22.3"/>) containing the
+          server's DUID and the Client Identifier option
+          (see <xref target="RFC3315-22.2"/>) from the Request
           message in the Reply message.</t>
 
           <t>The server examines all IAs in the message from the client.</t>
 
-          <t>For each IA_NA and IA_TA in the Request message the server
+          <t>For each IA_NA option (see <xref target="RFC3315-22.4"/>) and
+          IA_TA option (see <xref target="RFC3315-22.5"/>) in the Request
+          message the server
           checks if the prefixes of included addresses are appropriate for
           the link to which the client is connected. If any of the prefixes of
           the included addresses is not appropriate for the link to which
           the client is connected, the server MUST return the IA to the client
-          with a Status Code option with the value NotOnLink. If the server
+          with a Status Code option (see <xref target="RFC3315-22.13"/>)
+          with the value NotOnLink. If the server
           does not send the NotOnLink status code but it cannot assign any IP
           addresses to an IA, the server MUST return the IA option in the Reply
           message with no addresses in the IA and a Status Code option
           containing status code NoAddrsAvail in the IA.</t>
 
-          <t>For any IA_PD in the Request message, to which the server cannot
+          <t>For any IA_PD option (see <xref target="IA_PD-option"/>) in the
+          Request message, to which the server cannot
           assign any delegated prefixes, the server MUST return the IA_PD
           option in the Reply message with no prefixes in the IA_PD and with a
           Status Code option containing status code NoPrefixAvail in the IA_PD.</t>
@@ -3956,17 +4011,16 @@
           Reply. This facilitates the client being able to renew all of the
           bindings at the same time.</t>
 
-          <t>The server SHOULD include a Reconfigure Accept option if the server
+          <t>The server SHOULD include a Reconfigure Accept option
+          (see <xref target="RFC3315-22.20"/>) if the server
           policy enables reconfigure mechanism and the client supports it.
-          Currently sending this option in Reply is technically redundant, as
+          Currently sending this option in a Reply is technically redundant, as
           the use of the reconfiguration mechanism requires authentication
           and currently the only defined one is the Reconfigure Key Authentication
           Protocol (see <xref target="reconfigure-protocol"/>) and
           the presence of the reconfigure key signals support for Reconfigure
           acceptance. However, there may be better security mechanisms defined
-          in the future that would cause RKAP to not be used anymore. One of
-          such mechanisms being worked on is mentioned in <xref
-          target="security"/>.</t>
+          in the future that would cause RKAP to not be used anymore.</t>
 
           <t>The server includes other options containing configuration
           information to be returned to the client as described in <xref
@@ -3989,7 +4043,7 @@
           the amount of time elapsed since the original transmission
           or keep the lifetime values and update the lease
           information in the server's database). Also, if the message uses any
-          security protection (like RDM described in <xref
+          security protection (such as RDM described in <xref
           target="replay"/>), its value must be updated. Additionally,
           any digests must be updated. Given all of the above, caching
           replies is far more complex than simply sending the
@@ -4006,7 +4060,7 @@
           <t>See <xref target="use-multicast"/> for handling Confirm
           message received via unicast. Unicast transmission of Confirm
           is not allowed, regardless of whether the Server Unicast
-          option is configured or not.</t>
+          option (see <xref target="RFC3315-22.12"/>) is configured or not.</t>
 
           <t>When the server receives a Confirm message, the server determines
           whether the addresses in the Confirm message are appropriate for the
@@ -4021,16 +4075,19 @@
 
           <t>The server ignores the T1 and T2 fields in the IA options and the
           preferred-lifetime and valid-lifetime fields in the IA Address
-          options.</t>
+          options (see <xref target="RFC3315-22.6"/>).</t>
 
           <t>The server constructs a Reply message by setting the "msg-type"
           field to REPLY, and copying the transaction ID from the Confirm
           message into the transaction-id field.</t>
 
-          <t>The server MUST include a Server Identifier option containing the
-          server's DUID and the Client Identifier option from the Confirm
+          <t>The server MUST include a Server Identifier option
+          (see <xref target="RFC3315-22.3"/>) containing the
+          server's DUID and the Client Identifier option
+          (see <xref target="RFC3315-22.2"/>) from the Confirm
           message in the Reply message. The server includes a Status Code
-          option indicating the status of the Confirm message.</t>
+          option (see <xref target="RFC3315-22.13"/>) indicating the
+          status of the Confirm message.</t>
         </section>
 
         <!-- ends: "18.2.2 from line 2527-->
@@ -4050,8 +4107,9 @@
           back the IA to the client with new lifetimes and, if applicable,
           T1/T2 times. If the server is unable to extend the lifetimes of an
           address or delegated prefix in the IA, the server MAY choose not to
-          include the IA Address or IA Prefix option for this address or
-          delegated prefix. If the server chooses to include the IA Address or
+          include the IA Address option (see <xref target="RFC3315-22.6"/>) for
+          that address or IA Prefix option (see <xref target="IAPREFIX-option"/>)
+          for that delegated prefix. If the server chooses to include the IA Address or
           IA Prefix option for such an address or delegated prefix, the server
           SHOULD set T1 and T2 to the valid lifetime for the IA option unless
           the server also includes other addresses or delegated prefixes which
@@ -4083,7 +4141,8 @@
               addresses or delegated prefixes with lifetimes and, if
               applicable, T1/T2 times and other information requested by the
               client. If the client included the IA Prefix option within the
-              IA_PD option with zero value in the "IPv6 prefix" field and
+              IA_PD option (see <xref target="IA_PD-option"/>)
+              with zero value in the "IPv6 prefix" field and
               non-zero value in the "prefix-length" field, the server MAY use
               the "prefix-length" value as a hint for the length of the
               prefixes to be assigned (see <xref target="RFC8168"/>
@@ -4092,7 +4151,8 @@
               <t hangText="-">If the server is configured to create new
               bindings as a result of processing Renew messages, but the
               server will not assign any leases to an IA, the server returns
-              the IA option containing a Status Code option with the
+              the IA option containing a Status Code option
+              (see <xref target="RFC3315-22.13"/>) with the
               NoAddrsAvail or NoPrefixAvail status code and a status message
               for a user.</t>
 
@@ -4108,8 +4168,10 @@
           field to REPLY and copying the transaction ID from the Renew message
           into the "transaction-id" field.</t>
 
-          <t>The server MUST include a Server Identifier option containing the
-          server's DUID and the Client Identifier option from the Renew
+          <t>The server MUST include a Server Identifier option
+          (see <xref target="RFC3315-22.3"/>) containing the
+          server's DUID and the Client Identifier option
+          (see <xref target="RFC3315-22.2"/>) from the Renew
           message in the Reply message.</t>
 
           <t>The server includes other options containing configuration
@@ -4134,8 +4196,8 @@
 
           <t>See <xref target="use-multicast"/> for handling Rebind message
           received via unicast. Unicast transmission of Rebind
-          is not allowed, regardless of whether the Server Unicast option is
-          configured or not.</t>
+          is not allowed, regardless of whether the Server Unicast option
+          (see <xref target="RFC3315-22.12"/>) is configured or not.</t>
 
           <t>When the server receives a Rebind message that contains an IA
           option from a client, it locates the client's binding and verifies
@@ -4149,10 +4211,11 @@
           server SHOULD send back the IA to the client with new lifetimes and,
           if applicable, T1/T2 times. If the server is unable to extend the
           lifetimes of an address in the IA, the server MAY choose not to
-          include the IA Address option for this address. If the server is
+          include the IA Address option (see <xref target="RFC3315-22.6"/>)
+          for this address. If the server is
           unable to extend the lifetimes of a delegated prefix in the IA, the
-          server MAY choose not to include the IA Prefix option for this
-          prefix.</t>
+          server MAY choose not to include the IA Prefix option
+          (see <xref target="IAPREFIX-option"/>) for this prefix.</t>
 
           <t>If the server finds that the client entry for the IA and any of
           the addresses or delegated prefixes are no longer appropriate for
@@ -4185,7 +4248,8 @@
           server's policy and configuration information: <list style="hanging">
               <t hangText="-">If the server is configured to create new
               bindings as a result of processing Rebind messages (also see the
-              note about the Rapid Commit option below), the server SHOULD
+              note about the Rapid Commit option
+              (see <xref target="RFC3315-22.14"/>) below), the server SHOULD
               create a binding and return the IA with allocated leases with
               lifetimes and, if applicable, T1/T2 times and other information
               requested by the client. The server MUST NOT return any
@@ -4195,7 +4259,8 @@
               <t hangText="-">If the server is configured to create new
               bindings as a result of processing Rebind messages, but the
               server will not assign any leases to an IA, the server returns
-              the IA option containing a Status Code option with the
+              the IA option containing a Status Code option
+              (see <xref target="RFC3315-22.13"/>) with the
               NoAddrsAvail or NoPrefixAvail status code and a status message
               for a user.</t>
 
@@ -4219,8 +4284,10 @@
           field to REPLY and copying the transaction ID from the Rebind
           message into the "transaction-id" field.</t>
 
-          <t>The server MUST include a Server Identifier option containing the
-          server's DUID and the Client Identifier option from the Rebind
+          <t>The server MUST include a Server Identifier option
+          (see <xref target="RFC3315-22.3"/>) containing the
+          server's DUID and the Client Identifier option
+          (see <xref target="RFC3315-22.2"/>) from the Rebind
           message in the Reply message.</t>
 
           <t>The server includes other options containing configuration
@@ -4257,9 +4324,11 @@
           field to REPLY, and copying the transaction ID from the
           Information-request message into the transaction-id field.</t>
 
-          <t>The server MUST include a Server Identifier option containing the
+          <t>The server MUST include a Server Identifier option
+          (see <xref target="RFC3315-22.3"/>) containing the
           server's DUID in the Reply message. If the client included a Client
-          Identification option in the Information-request message, the server
+          Identifier option (see <xref target="RFC3315-22.2"/>) in the
+          Information-request message, the server
           copies that option to the Reply message.</t>
 
           <t>The server includes options containing configuration information
@@ -4297,9 +4366,11 @@
           to the IA, although it may choose to log an error.</t>
 
           <t>After all the leases have been processed, the server generates a
-          Reply message and includes a Status Code option with value Success,
-          a Server Identifier option with the server's DUID, and a Client
-          Identifier option with the client's DUID. For each IA in the Release
+          Reply message and includes a Status Code option
+          (see <xref target="RFC3315-22.13"/>) with value Success,
+          a Server Identifier option (see <xref target="RFC3315-22.3"/>)
+          with the server's DUID, and a Client Identifier option (see
+          <xref target="RFC3315-22.2"/>) with the client's DUID. For each IA in the Release
           message for which the server has no binding information, the server
           adds an IA option using the IAID from the Release message, and
           includes a Status Code option with the value NoBinding in the IA
@@ -4337,9 +4408,12 @@
           <t>After all the addresses have been processed, the server generates
           a Reply message by setting the "msg-type" field to REPLY, and
           copying the transaction ID from the Decline message into the
-          transaction-id field. The client includes a Status Code option with
-          the value Success, a Server Identifier option with the server's
-          DUID, and a Client Identifier option with the client's DUID. For
+          transaction-id field. The client includes a Status Code option
+          (see <xref target="RFC3315-22.13"/>) with
+          the value Success, a Server Identifier option
+          (see <xref target="RFC3315-22.3"/>) with the server's
+          DUID, and a Client Identifier option
+          (see <xref target="RFC3315-22.2"/>) with the client's DUID. For
           each IA in the Decline message for which the server has no binding
           information, the server adds an IA option using the IAID from the
           Decline message and includes a Status Code option with the value
@@ -4356,17 +4430,21 @@
           <t>The server sets the "msg-type" field to ADVERTISE and copies the
           contents of the transaction-id field from the Solicit message
           received from the client to the Advertise message. The server
-          includes its server identifier in a Server Identifier option and
-          copies the Client Identifier option from the Solicit message into
+          includes its server identifier in a Server Identifier option
+          (see <xref target="RFC3315-22.3"/>) and
+          copies the Client Identifier option
+          (see <xref target="RFC3315-22.2"/>) from the Solicit message into
           the Advertise message.</t>
 
-          <t>The server MAY add a Preference option to carry the preference
+          <t>The server MAY add a Preference option
+          (see <xref target="RFC3315-22.8"/>) to carry the preference
           value for the Advertise message. The server implementation SHOULD
           allow the setting of a server preference value by the administrator.
           The server preference value MUST default to zero unless otherwise
           configured by the server administrator.</t>
 
-          <t>The server includes a Reconfigure Accept option if the server
+          <t>The server includes a Reconfigure Accept option
+          (see <xref target="RFC3315-22.20"/>) if the server
           wants to indicate it supports Reconfigure mechanism. This
           information may be used by the client during the server
           selection process.</t>
@@ -4376,7 +4454,8 @@
           be used by the client in the selection of a server if the client
           receives more than one Advertise message. The server MUST include
           options in the Advertise message containing configuration parameters
-          for all of the options identified in the Option Request option in the Solicit message
+          for all of the options identified in the Option Request option
+          (see <xref target="RFC3315-22.7"/>) in the Solicit message
           that the server has been configured to return to the client.  If the
           Option Request option includes a container option the server MUST include all
           the options that are eligible to be encapsulated in the container. The Option
@@ -4389,10 +4468,12 @@
           <t>The server MUST include IA options in the Advertise message
           containing any addresses and/or delegated prefixes that would be
           assigned to IAs contained in the Solicit message from the client. If
-          the client has included addresses in the IA in the Solicit message,
+          the client has included addresses in the IA Address options
+          (see <xref target="RFC3315-22.6"/>) in the Solicit message,
           the server MAY use those addresses as hints about the addresses that
           the client would like to receive. If the client has included IA
-          Prefix option in the IA_PD, the server MAY use the prefix contained
+          Prefix options (see <xref target="IAPREFIX-option"/>),
+          the server MAY use the prefix contained
           in the IPv6-prefix field and/or the prefix length contained in the
           "prefix-length" field as a hints about the prefixes the client would
           like to receive. If the server is not going to assign an address or
@@ -4409,17 +4490,20 @@
 
           <!-- Change from RFC 7550 section 4.1 has been applied. 6/1/2015 -->
 
-          <t>If the server will not assign any addresses to an IA (IA_NA or
-          IA_TA) in subsequent Request from the client, the server MUST
-          include the IA in the Advertise message with no addresses in the IA
-          and a Status Code option encapsulated in the IA containing status
-          code NoAddrsAvail.</t>
+          <t>If the server will not assign any addresses to an IA_NA option
+          (see <xref target="RFC3315-22.4"/>) or IA_TA option
+          (see <xref target="RFC3315-22.5"/>) in subsequent Request from
+          the client, the server MUST
+          include the IA option in the Advertise message with no addresses in that IA
+          and a Status Code option (see <xref target="RFC3315-22.13"/>)
+          encapsulated in the IA option containing status code NoAddrsAvail.</t>
 
-          <t>If the server will not assign any prefixes to an IA_PD in
+          <t>If the server will not assign any prefixes to an IA_PD option
+          (see <xref target="IA_PD-option"/>) in
           subsequent Request from the client, the server MUST include the
-          IA_PD in the Advertise message with no prefixes in the IA and a
-          Status Code option encapsulated in the IA_PD containing status code
-          NoPrefixAvail.</t>
+          IA_PD option in the Advertise message with no prefixes in the IA_PD
+          option and a Status Code option encapsulated in the IA_PD containing
+          status code NoPrefixAvail.</t>
 
           <t>Transmission of the Advertise message is described in the next
           section.</t>
@@ -4442,7 +4526,8 @@
           the server constructs a Relay-reply message with the Reply message
           in the payload of a Relay Message option (see <xref
           target="RFC3315-22.10"/>). If the Relay-forward messages
-          included an Interface-Id option, the server copies that option to
+          included an Interface-Id option (see <xref target="RFC3315-22.18"/>),
+          the server copies that option to
           the Relay-reply message. The server unicasts the Relay-reply message
           directly to the relay agent using the address in the source address
           field from the IP datagram in which the Relay-forward message was
@@ -4458,7 +4543,9 @@
 
           <t>The server sets the "msg-type" field to RECONFIGURE. The server
           sets the transaction-id field to 0. The server includes a Server
-          Identifier option containing its DUID and a Client Identifier option
+          Identifier option (see <xref target="RFC3315-22.3"/>)
+          containing its DUID and a Client Identifier option
+          (see <xref target="RFC3315-22.2"/>)
           containing the client's DUID in the Reconfigure message.</t>
 
           <t>Because of the risk of denial of service attacks against DHCP
@@ -4466,7 +4553,7 @@
           messages. The server MUST use DHCP authentication in the Reconfigure
           message (see <xref target="reconfigure-protocol"/>).</t>
 
-          <t>The server MUST include a Reconfigure Message option (defined in
+          <t>The server MUST include a Reconfigure Message option (see
           <xref target="RFC3315-22.19"/>) to select whether the client
           responds with a Renew message, a Rebind message, or an
           Information-request message.</t>
@@ -4524,7 +4611,8 @@
         <xref target="RFC3315-18.2"/>), the server is not supposed to accept
         unicast traffic when it is not explicitly configured to do
         so. For some messages (Solicit, Rebind, and Confirm) unicast
-        transmission is not allowed, even if Server Unicast option is
+        transmission is not allowed, even if Server Unicast option
+        (see <xref target="RFC3315-22.12"/>) is
         configured. For Request, Renew, Informaton-request, Release,
         and Decline messages, it is allowed only if Server Unicast
         option is configured.</t>
@@ -4534,9 +4622,12 @@
         currently configured to send a Server Unicast option to the client),
         the server discards that message and responds with an Advertise
         (when responding to Solicit) or Reply (when responding to any
-        other messages) message containing a Status Code option with
-        value UseMulticast, a Server Identifier option containing the
-        server's DUID, the Client Identifier option from the client
+        other messages) message containing a Status Code option
+        (see <xref target="RFC3315-22.13"/>) with
+        value UseMulticast, a Server Identifier option
+        (see <xref target="RFC3315-22.3"/>) containing the
+        server's DUID, the Client Identifier option
+        (see <xref target="RFC3315-22.2"/>) from the client
         message (if any), and no other options.</t>
 
       </section>
