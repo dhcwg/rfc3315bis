@@ -7641,7 +7641,9 @@ was added indicating use cases for when a client should try to refresh network
 information.</t>
 
 <t>The Relay Agent Behavior <xref target="RFC3315-20"/> incorporates
-<xref target="RFC7283"/> and had minor edits.</t>
+<xref target="RFC7283"/> and had minor edits. A new section,
+Interaction between Relay Agents and Servers
+<xref="relay-srv-interacton"/> was added.
 
 <t>The Authentication of DHCP Messages <xref target="RFC3315-21"/> had
 significant changes: IPsec materials were mostly removed and replaced
