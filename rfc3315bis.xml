@@ -946,8 +946,8 @@
         option (see <xref target="RFC3315-22.4"/>).</t>
 
         <t>A client can explicitly request multiple addresses by sending
-        multiple IA_NA options (and/or IA_TA options
-        (see <xref target="RFC3315-22.5"/>). A client can send multiple
+        multiple IA_NA options (and/or IA_TA options,
+        see <xref target="RFC3315-22.5"/>). A client can send multiple
         IA_NA (and/or IA_TA) options in its initial transmissions.
         Alternatively, it can send an extra Request message
         with additional new IA_NA (and/or IA_TA) options (or include them
@@ -1888,7 +1888,7 @@
         does not need to be associated with exactly one interface. One IA_PD
         can be associated with the client, with a set of interfaces
         or with exactly one interface. A client configured to request
-        delegated prefixes MUST create at
+        delegated prefixes must create at
         least one distinct IA_PD. It may associate a distinct IA_PD with each
         of its downstream network interfaces and use that IA_PD to obtain a
         prefix for that interface from the server.</t>
@@ -2127,7 +2127,7 @@
       <t>The client MUST update an "elapsed-time" value within an Elapsed
       Time option (see <xref target="RFC3315-22.9"/>) in the
       retransmitted message. In some cases, the client may also need to modify
-      values in IA Address (see <xref target="RFC3315-22.6"/> or
+      values in IA Address (see <xref target="RFC3315-22.6"/>) or
       IA Prefix options (see <xref target="IAPREFIX-option"/>) if a valid lifetime for
       any of the client's leases expires before retransmission. Thus, whenever
       this document refers to a "retransmission" of a client's message, it
@@ -3077,9 +3077,9 @@
           (see <xref target="RFC3315-22.4"/>) and IA_TA
           (see <xref target="RFC3315-22.5"/>) options for the addresses
           assigned to the IAs. The client includes IA Prefix options
-          (see <xref target="IAPREFIX-option"/>) within IA_PD options for
-          (see <xref target="IA_PD-option"/>) the delegated prefixes assigned
-          to the IAs.</t>
+          (see <xref target="IAPREFIX-option"/>) within IA_PD options
+          (see <xref target="IA_PD-option"/>) for the delegated prefixes
+          assigned to the IAs.</t>
 
           <t>The server controls the time at which the client should contact the
           server to extend the lifetimes on assigned leases through the T1 and
@@ -3364,7 +3364,7 @@
 
           <t>The Decline message is not used in prefix delegation and thus the
           client MUST NOT include IA_PD options
-          (see <xref target="IA_PD-Option"/>) in the Decline message.</t>
+          (see <xref target="IA_PD-option"/>) in the Decline message.</t>
 
           <t>The client sets the "msg-type" field to DECLINE. The client
           generates a transaction ID and places this value in the
@@ -3472,7 +3472,7 @@
           <t>The client MUST ignore any Advertise message that contains no
           addresses (IA Address options, see <xref target="RFC3315-22.6"/>
           encapsulated in IA_NA, see <xref target="RFC3315-22.4"/>, or IA_TA,
-          see <xref target="RFC3315-22.5"/> options)
+          see <xref target="RFC3315-22.5"/>, options)
           and no delegated prefixes (IA Prefix options,
           see <xref target="IAPREFIX-option"/>, encapsulated in IA_PD
           options, see <xref target="IA_PD-option"/>) with the exception
@@ -4492,18 +4492,16 @@
 
           <!-- Change from RFC 7550 section 4.1 has been applied. 6/1/2015 -->
 
-          <t>If the server will not assign any addresses to an IA_NA option
-          (see <xref target="RFC3315-22.4"/>) or IA_TA option
-          (see <xref target="RFC3315-22.5"/>) in subsequent Request from
-          the client, the server MUST
+          <t>If the server will not assign any addresses to an IA_NA or IA_TA
+          in subsequent Request from  the client, the server MUST
           include the IA option in the Advertise message with no addresses in that IA
           and a Status Code option (see <xref target="RFC3315-22.13"/>)
           encapsulated in the IA option containing status code NoAddrsAvail.</t>
 
-          <t>If the server will not assign any prefixes to an IA_PD option
-          (see <xref target="IA_PD-option"/>) in
+          <t>If the server will not assign any prefixes to an IA_PD in
           subsequent Request from the client, the server MUST include the
-          IA_PD option in the Advertise message with no prefixes in the IA_PD
+          IA_PD option (see <xref target="IA_PD-option"/>)
+          in the Advertise message with no prefixes in the IA_PD
           option and a Status Code option encapsulated in the IA_PD containing
           status code NoPrefixAvail.</t>
 
@@ -5060,7 +5058,7 @@
           Request/Reply, Solicit/Reply or Information-request/Reply message
           exchange. The server records the Reconfigure Key and transmits that
           key to the client in an Authentication option
-          (see <xref target="RFC3315-22.11"/> in the Reply message.</t>
+          (see <xref target="RFC3315-22.11"/>) in the Reply message.</t>
 
           <t>The Reconfigure Key is 128 bits long, and MUST be a
           cryptographically strong random or pseudo-random number that cannot
@@ -5084,7 +5082,7 @@
           <!-- 21.5.3, line 3532-->
 
           <t>The client will receive a Reconfigure Key from the server in an
-          Authentication option (see <xref target="RFC3315-22.11"/> in the
+          Authentication option (see <xref target="RFC3315-22.11"/>) in the
           initial Reply message from the server. The client records the
           Reconfigure Key for use in authenticating subsequent Reconfigure
           messages.</t>
@@ -5618,7 +5616,7 @@
         IA_NA (see <xref target="RFC3315-22.4"/>),
         IA_TA (see <xref target="RFC3315-22.5"/>),
         IA_PD (see <xref target="IA_PD-option"/>),
-        IA Address ((see <xref target="RFC3315-22.6"/>),
+        IA Address (see <xref target="RFC3315-22.6"/>),
         IA Prefix (see <xref target="IAPREFIX-option"/>),
         Option Request,
         Elapsed Time (see <xref target="RFC4242-Option"/>),
@@ -6748,7 +6746,7 @@
 
         <t>A server sending a Reply to an Information-request message SHOULD
         include this option if it is requested in the Option Request option
-        of the Information-Request. The option value MUST NOT be smaller
+        of the Information-request. The option value MUST NOT be smaller
         than IRT_MINIMUM. This
         option MUST only appear in the top-level option area of Reply messages.</t>
 
@@ -7583,7 +7581,8 @@ was expanded.</t>
 information on the kinds of DHCP clients and how they operate.</t>
 
 <t>The DHCP Constants <xref target="dhcp-constants"/> was primarily updated
-to add constants from RFC4242 and RFC7083.</t>
+to add constants from RFC4242 and RFC7083. Note that the HOP_COUNT_LIMIT
+was reduced from 32 to 8.</t>
 
 <t>The Client/Server Message Formats <xref target="RFC3315-6"/>, Relay
 Agent/Server Message Formats <xref target="RFC3315-7"/>, and Representation and
