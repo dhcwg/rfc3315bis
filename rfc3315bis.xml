@@ -2578,7 +2578,7 @@
         <t hangText="2."> when requested to do so by the application layer (through an
         operating system specific API),</t>
         <t hangText="3."> when Router Advertisement indicates DHCPv6 is available for
-        address configuration (see <xref target="RFC4861"/> Section 4.2),</t>
+        address configuration (see Section 4.2 of <xref target="RFC4861"/>),</t>
         <t hangText="4."> as required to extend the lifetime of address(es) and/or
         delegated prefix(es), using Renew and Rebind messages,</t>
         <t hangText="5."> or when requested to do so by a server - upon the receipt of a
@@ -2852,13 +2852,11 @@
 
           <t>The first Solicit message from the client on the interface SHOULD
           be delayed by a random amount of time between 0 and SOL_MAX_DELAY.
-          This mechanism is essential for devices that are not battery powered,
-          as they may suffer from power failure. After recovering from a
-          power outage, many devices may start their transmission at the same
-          time. This is much less of a concern for battery powered devices.
-          This random delay also helps desynchronize clients which start DHCP
-          session by seeing it available in Router Advertisement messages
-          (see <xref target="RFC4861"/> Section 4.2).</t>
+          This random delay helps desynchronize clients which start a DHCP
+          session at the same time, such as after recovery from a power
+          failure or after a router outage after seeing that DHCP is
+          available in Router Advertisement messages (see Section 4.2 of
+          <xref target="RFC4861"/>).</t>
 
           <t>The client transmits the message according to <xref
           target="RFC3315-14"/>, using the following parameters: <list
