@@ -2148,6 +2148,12 @@
 
           <t hangText="   RAND">Randomization factor</t>
         </list></t>
+         
+      <t>Specific values for each of these parameters relevant to the
+      various messages are given in the sub-sections of
+      <xref target="Client-Behavior"/> using values defined in
+      <xref target="Trans-Parameters-Table"/> in <xref target="RFC3315-5.5"/>.
+      The algorithm for RAND is common across all message transmissions.</t>
 
       <t>With each message transmission or retransmission, the client sets RT
       according to the rules given below. If RT expires before the message
@@ -2734,7 +2740,7 @@
           
      </section>
 
-      <section title="Client Behavior">
+      <section anchor="Client-Behavior" title="Client Behavior">
         <!-- 18.1, line 1953-->
 
         <t>A client uses the Solicit message to discover DHCP servers
