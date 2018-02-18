@@ -5306,18 +5306,19 @@
             IAID must be unique among the identifiers for all of this client's
             IA_NAs. The number space for IA_NA IAIDs is separate from the
             number space for other IA option types (i.e., IA_TA and IA_PD).
-            A four octets long field.</t>
+            A four octets long field containing an unsigned integer.</t>
 
             <t hangText="   T1">The time at which the client should contact the
             server from which the addresses in the IA_NA were obtained to
             extend the lifetimes of the addresses assigned to the IA_NA; T1 is
             a time duration relative to the current time expressed in units of
-            seconds. A four octets long field.</t>
+            seconds. A four octets long field containing an unsigned integer.</t>
 
             <t hangText="   T2">The time at which the client should contact any
             available server to extend the lifetimes of the addresses assigned
             to the IA_NA; T2 is a time duration relative to the current time
-            expressed in units of seconds. A four octets long field.</t>
+            expressed in units of seconds. A four octets long field containing
+            an unsigned integer.</t>
 
             <t hangText="   IA_NA-options">Options associated with this
             IA_NA. A variable length field (12 octets less than the
@@ -5422,7 +5423,7 @@
             IAID must be unique among the identifiers for all of this client's
             IA_TAs. The number space for IA_TA IAIDs is separate from the
             number space for other IA option types (i.e., IA_NA and IA_PD).
-            A four octets long field.</t>
+            A four octets long field containing an unsigned integer.</t>
 
             <t hangText="   IA_TA-options">Options associated with this
             IA_TA. A variable length field (4 octets less than the
@@ -5531,11 +5532,11 @@
 
             <t hangText="   preferred-lifetime">The preferred lifetime for the
             address in the option, expressed in units of seconds. A four
-            octets long field.</t>
+            octets long field containing an unsigned integer.</t>
 
             <t hangText="   valid-lifetime">The valid lifetime for the
             address in the option, expressed in units of seconds. A four
-            octets long field.</t>
+            octets long field containing an unsigned integer.</t>
 
             <t hangText="   IAaddr-options">Options associated with this
             address. A variable length field (24 octets less than the
@@ -5601,9 +5602,9 @@
 
             <t hangText="   option-len">2 * number of requested options.</t>
 
-            <t hangText="   requested-option-code-n">The option code for an
-            option requested by the client. The length, in octets,
-            is specified by option-len.</t>
+            <t hangText="   requested-option-code-n">The option-code for
+            an option requested by the client. Each option-code is a two
+            octets long field containing an unsigned integer.</t>
           </list></t>
 
         <t>A client MUST include an Option Request option in a Solicit,
@@ -5720,7 +5721,8 @@
 
             <t hangText="   elapsed-time">The amount of time since the client
             began its current DHCP transaction. This time is expressed in
-            hundredths of a second (10^-2 seconds). A two octets long field.</t>
+            hundredths of a second (10^-2 seconds). A two octets long field
+            containing an unsigned integer.</t>
           </list></t>
 
         <t>A client MUST include an Elapsed Time option in messages to
@@ -5826,13 +5828,13 @@
             information field.</t>
 
             <t hangText="   protocol">The authentication protocol used in this
-            authentication option. A one octet long field.</t>
+            authentication option. A one-octet unsigned integer.</t>
 
             <t hangText="   algorithm">The algorithm used in the
-            authentication protocol. A one octet long field.</t>
+            authentication protocol. A one-octet unsigned integer.</t>
 
             <t hangText="   RDM">The replay detection method used in this
-            Authentication option. A one octet long field.</t>
+            Authentication option. A one-octet unsigned integer.</t>
 
             <t hangText="   Replay detection">The replay detection information
             for the RDM. A 64-bit (8 octets) long field</t>
@@ -5940,7 +5942,8 @@
             <t hangText="   option-len">2 + length of status-message.</t>
 
             <t hangText="   status-code">The numeric code for the status
-            encoded in this option. A two octets long field.</t>
+            encoded in this option. A two octets long field containing
+            an unsigned integer.</t>
 
             <t hangText="   status-message">A UTF-8 encoded text string
             suitable for display to an end user, which MUST NOT be
@@ -6194,7 +6197,8 @@
 
             <t hangText="   enterprise-number">The vendor's registered
             Enterprise Number as registered with IANA <xref
-            target="IANA-PEN"/>. A four octets long field.</t>
+            target="IANA-PEN"/>. A four octets long field containing
+            an unsigned integer.</t>
 
             <t hangText="   vendor-class-data">The hardware configuration of
             the node on which the client is running. A variable length field
@@ -6268,8 +6272,8 @@
 
             <t hangText="   enterprise-number">The vendor's registered
             Enterprise Number as registered with IANA <xref
-            target="IANA-PEN"/>. A four octets long field.
-            </t>
+            target="IANA-PEN"/>. A four octets long field containing
+            an unsigned integer.</t>
 
             <t hangText="   vendor-option-data">Vendor options, interpreted by
             vendor-specific code on the clients and servers. A variable
@@ -6450,7 +6454,7 @@
             <t hangText="   option-len">1.</t>
 
             <t hangText="   msg-type">5 for Renew message, 6 for Rebind, 11
-            for Information-request message. A one octet long field.</t>
+            for Information-request message. A one-octet unsigned integer.</t>
           </list></t>
 
         <t>The Reconfigure Message option can only appear in a Reconfigure
@@ -6538,19 +6542,20 @@
             IAID must be unique among the identifiers for all of this
             client's IA_PDs. The number space for IA_PD IAIDs is separate from
             the number space for other IA option types (i.e., IA_NA and IA_TA).
-            A four octets long field.</t>
+            A four octets long field containing an unsigned integer.</t>
 
             <t hangText="   T1">The time at which the client should
             contact the server from which the prefixes in the IA_PD
             were obtained to extend the lifetimes of the prefixes delegated to
             the IA_PD; T1 is a time duration relative to the current time
-            expressed in units of seconds. A four octets long field.</t>
+            expressed in units of seconds. A four octets long field containing
+            an unsigned integer.</t>
 
             <t hangText="   T2">The time at which the client should
             contact any available server to extend the lifetimes of
             the prefixes assigned to the IA_PD; T2 is a time duration relative
             to the current time expressed in units of seconds.
-            A four octets long field.</t>
+            A four octets long field containing an unsigned integer.</t>
 
             <t hangText="   IA_PD-options">Options associated with this
             IA_PD. A variable length field (12 octets less than the
@@ -6652,14 +6657,15 @@
             <t hangText="   preferred-lifetime">The preferred
             lifetime for the prefix in the option, expressed in units of
             seconds. A value of 0xFFFFFFFF represents infinity. A four
-            octets long field.</t>
+            octets long field containing an unsigned integer.</t>
 
             <t hangText="   valid-lifetime">The valid lifetime for the
             prefix in the option, expressed in units of seconds. A value of
-            0xFFFFFFFF represents infinity. A four octets long field.</t>
+            0xFFFFFFFF represents infinity. A four octets long field
+            containing an unsigned integer.</t>
 
             <t hangText="   prefix-length">Length for this prefix in bits.
-            A one octet long field.</t>
+            A one-octet unsigned integer.</t>
 
             <t hangText="   IPv6-prefix">An IPv6 prefix. A 16 octets long
             field.</t>
@@ -6738,7 +6744,7 @@
 
             <t hangText="   information-refresh-time">Time duration relative to
              the current time, expressed in units of seconds. A four octets
-             long field.</t>
+             long field containing an unsigned integer.</t>
           </list></t>
 
         <!-- The following paragraphs have been adapted from RFC 4242 -->
@@ -6825,7 +6831,7 @@
 
             <t hangText="   SOL_MAX_RT value">Overriding value for SOL_MAX_RT
             in seconds; MUST be in range: 60 &lt;= "value" &lt;= 86400 (1
-            day). A four octets long field.</t>
+            day). A four octets long field containing an unsigned integer.</t>
           </list></t>
 
         <!-- The following paragraphs have been merged from section 7 and 8
@@ -6896,7 +6902,7 @@
 
             <t hangText="   INF_MAX_RT value">Overriding value for INF_MAX_RT
             in seconds; MUST be in range: 60 &lt;= "value" &lt;= 86400 (1
-            day). A four octets long field.</t>
+            day). A four octets long field containing an unsigned integer.</t>
           </list></t>
 
         <!-- The following paragraphs have been merged from section 7 of RFC7083 -->
