@@ -6656,12 +6656,13 @@
 
             <t hangText="   preferred-lifetime">The preferred
             lifetime for the prefix in the option, expressed in units of
-            seconds. A value of 0xFFFFFFFF represents infinity. A four
+            seconds. A value of 0xFFFFFFFF represents "infinity"
+            (see <xref target="RFC3315-5.6"/>. A four
             octets long field containing an unsigned integer.</t>
 
             <t hangText="   valid-lifetime">The valid lifetime for the
             prefix in the option, expressed in units of seconds. A value of
-            0xFFFFFFFF represents infinity. A four octets long field
+            0xFFFFFFFF represents "infinity". A four octets long field
             containing an unsigned integer.</t>
 
             <t hangText="   prefix-length">Length for this prefix in bits.
@@ -6679,9 +6680,13 @@
         the preferred and valid lifetime fields SHOULD be set to 0. The server
         MUST ignore any received values in these lifetime fields.</t>
 
-        <t>A client may set the IPv6-prefix field to zero and a
-        given value in the prefix-length field to indicate a preference for
-        the size of the prefix to be delegated.</t>
+        <t>The client SHOULD NOT send an IA Prefix option with 0 in the
+        prefix-length field (and an unspecified value (::) in the
+        IPv6-prefix field). A client MAY send a non-zero value in the
+        prefix-length field and the unspecified value (::) in the
+        IPv6-prefix field to indicate a preference for the size of the
+        prefix to be delegated. See <xref target="RFC8168"/> for
+        further details on prefix length hints.</t>
 
         <t>The client MUST discard any prefixes for which the preferred
         lifetime is greater than the valid lifetime.</t>
@@ -7384,7 +7389,7 @@
       particular order, for their review comments: Jeremy Reed, Francis Dupont,
       Tatuya Jinmei, Lorenzo Colitti, Tianxiang Li, Ian Farrer, Yogendra Pal,
       Kim Kinnear, Shawn Routhier, Tim Chown, Michayla Newcombe, Alissa Cooper,
-      Allison Mankin, Adam Roach, Kyle Rose, Elwyn Davies, Eric Roscorla,
+      Allison Mankin, Adam Roach, Kyle Rose, Elwyn Davies, Eric Rescorla,
       Ben Campbell, Warren Kumari, and Kathleen Moriarty.</t>
 
       <t>And, special thanks to Ralph Droms for answering many questions related
