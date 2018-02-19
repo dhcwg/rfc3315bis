@@ -631,7 +631,8 @@
         <!-- 1.2, line 284-->
 
         <t>When a DHCP client does not need to have a DHCP server assign it IP
-        addresses or delegated prefixes, the client can obtain other configuration information such as a
+        addresses or delegated prefixes, the client can obtain other
+        configuration information such as a
         list of available DNS servers <xref target="RFC3646"/> or NTP
         servers <xref target="RFC4075"/> through a single message and
         reply exchange with a DHCP server. To obtain other configuration
@@ -639,12 +640,21 @@
         the All_DHCP_Relay_Agents_and_Servers multicast address. Servers
         respond with a Reply message containing the other configuration information
         for the client.</t>
+           
+        <t>A client may also request the server to expedite address assignment
+        and/or prefix delegation by using a two message
+        exchange instead of the normal four message exchange as discussed
+        in the next section. Expedited assignment can be requested by the
+        client, and servers may or may not honor the request (see
+        <xref target="RFC3315-17.2.1"/> and <xref target="RFC3315-22.14"/>
+        for more details and why servers may not honor this request).
+        Clients may request this expedited service in environments where it
+        is likely that there is only one server available on a link and no
+        expectation that a second server would become available, or when
+        completing the configuration process as quickly as possible is a
+        priority.</t>
 
-        <t>When a server has addresses and/or delegated prefixes and
-        other configuration
-        information committed to a client, the client and server may be able
-        to complete the exchange using only two messages, instead of four
-        messages as described in the next section. In this case, the client
+        <t>To request the expedited two message exchange, the client
         sends a Solicit message to the All_DHCP_Relay_Agents_and_Servers multicast address
         requesting the assignment of addresses and/or delegated prefixes and other configuration
         information. This message includes an indication (the Rapid Commit option,
@@ -3895,7 +3905,7 @@
         configuration parameters in the Reply message, even if those IAs and
         parameters were not requested in the client's message.</t>
 
-        <section title="Receipt of Solicit Messages">
+        <section anchor="RFC3315-17.2.1" title="Receipt of Solicit Messages">
           <!-- 17.2.1, line 1823-->
 
           <t>See <xref target="use-multicast"/> for handling Solicit message
@@ -4971,6 +4981,20 @@
         of replay attacks. This method MUST be supported by all protocols.
         One choice might be to use the 64-bit NTP Timestamp format
         <xref target="RFC5905"/>).</t>
+
+        <t>A client that receives a message with RDM field set to 0x00 MUST
+        compare its replay detection field with the previous value sent by
+        that same server (based on the Server Identifier option, see
+        <xref target="RFC3315-22.3"/>). If this is the first time a client
+        processes an Authentication option sent by a server, the client
+        MUST record the replay detection value, but otherwise skip the
+        replay detection check.</t>
+
+        <t>Servers that support the reconfigure mechanism MUST ensure the
+        replay detection value is retained between restarts. Failing to do so
+        may cause clients to refuse Reconfigure messages sent by the server,
+        effectively rendering the reconfigure mechanism useless.</t>
+
       </section>
 
       <!-- ends: "21.3 from line 3198-->
