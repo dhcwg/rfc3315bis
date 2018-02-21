@@ -575,15 +575,25 @@
             only once as a top-level option or at any encapsulation level.
             Most options are singletons.</t>
 
-            <t hangText="T1">The time at which the client contacts the
-            server from which the addresses in the IA_NA or prefixes in
-            the IA_PD were obtained to extend the lifetimes of the
-            addresses assigned to the IA_NA or prefixes delegated to the
-            IA_PD.</t>
+            <t hangText="T1">The time interval after which the client is
+            expected to contact the server that did the assignment to extend
+            (renew) the lifetimes of the addresses assigned (IA_NA option) or
+            the prefixes delegated (IA_PD) to the client. T1 is expressed as
+            absolute value in the message (in seconds), is conveyed within IA
+            containers (currently IA_NA and IA_PD) and is interpreted as time
+            interval since the packet reception. The value stored in T1 field in
+            IA options is referred to as T1 value. The actual time when the
+            timer expires is referred to as T1 time.</t>
 
-            <t hangText="T2">The time at which the client contacts any
-            available server to extend the lifetimes of the addresses 
-            assigned to the IA_NA or prefixes delegated to the IA_PD.</t>
+            <t hangText="T2">The time interval after which the client is
+            expected to contact any available server to extend (rebind) the
+            lifetimes of the addresses assigned (IA_NA option) or the prefixes
+            delegated (IA_PD) to the client. T2 is expressed as absolute value
+            in the message (in seconds), is conveyed within IA containers
+            (currently IA_NA and IA_PD) and is interpreted as time interval
+            since the packet reception. The value stored in T2 field IA options
+            is referred to as T2 value. The actual time when the timer expires
+            is referred to as T2 time.</t>
 
             <t hangText="top-level option">An option conveyed in a DHCP
             message directly, i.e., not encapsulated in any other option, as
@@ -1318,9 +1328,10 @@
 
       <section anchor="RFC3315-5.6"
                title="Representation of Time Values and &quot;Infinity&quot; as a Time Value">
-        <t>All time values for lifetimes, T1 and T2 are unsigned 32-bit integers. The
-        value 0xffffffff is taken to mean "infinity" when used as a lifetime
-        (as in <xref target="RFC4861"/>) or a value for T1 or T2.</t>
+        <t>All time values for lifetimes, T1 and T2 are unsigned 32-bit integers
+        and are expressed in seconds. The value 0xffffffff is taken to mean
+        "infinity" when used as a lifetime (as in <xref target="RFC4861"/>) or a
+        value for T1 or T2.</t>
 
         <t>Setting the valid lifetime of an address or a
         delegated prefix to 0xffffffff ("infinity") amounts to a permanent
@@ -1876,7 +1887,7 @@
         interface. Each such IA must be associated with exactly one interface.</t>
 
         <t>The configuration information in an IA_NA option consists of one or
-        more IPv6 addresses along with the T1 and T2 times for the IA. See <xref
+        more IPv6 addresses along with the T1 and T2 values for the IA. See <xref
         target="RFC3315-22.4"/> for the representation of an IA_NA in a
         DHCP message.</t>
 
@@ -1904,7 +1915,7 @@
         prefix for that interface from the server.</t>
 
         <t>The configuration information in an IA_PD option consists of one or more
-        prefixes along with the T1 and T2 times for the IA_PD. See <xref
+        prefixes along with the T1 and T2 value for the IA_PD. See <xref
         target="IA_PD-option"/> for the representation of an IA_PD in a
         DHCP message.</t>
 
@@ -2088,7 +2099,7 @@
 
       <section anchor="t1-t2-0"
                title="Client Behavior when T1 and/or T2 are 0">
-        <t>In certain cases, T1 and/or T2 time may be set to zero. Currently
+        <t>In certain cases, T1 and/or T2 values may be set to zero. Currently
         there are three such cases:
              
       <list hangIndent="6" style="hanging">
@@ -2101,7 +2112,7 @@
         at the client's discretion. However, they are not completely
         discretionary.</t>
 
-        <t>When T1 and/or T2 times are set to zero, the client MUST choose a
+        <t>When T1 and/or T2 values are set to zero, the client MUST choose a
         time to avoid packet storms. In particular, it MUST NOT transmit
         immediately. If the client received multiple IA options, it SHOULD
         pick renew and/or rebind transmission times so all IA options are
@@ -3585,8 +3596,9 @@
             Rapid Commit option), Request, Renew, or Rebind message, the
             client updates the information it has recorded about IAs from the
             IA options contained in the Reply message: <list style="hanging">
-                <t hangText="-">Record T1 and T2 times, if appropriate for the
-                IA type.</t>
+                <t hangText="-">Calculate T1 and T2 times (based on T1 and T2
+                values sent in the packet and the packet reception time), if
+                appropriate for the IA type.</t>
 
                 <t hangText="-">Add any new leases in the IA option to the IA
                 as recorded by the client.</t>
@@ -4127,7 +4139,7 @@
           that address or IA Prefix option (see <xref target="IAPREFIX-option"/>)
           for that delegated prefix. If the server chooses to include the IA Address or
           IA Prefix option for such an address or delegated prefix, the server
-          SHOULD set T1 and T2 to the valid lifetime for the IA option unless
+          SHOULD set T1 and T2 values to the valid lifetime for the IA option unless
           the server also includes other addresses or delegated prefixes which
           the server is able to extend for the IA. Setting T1 and T2
           to values equal to valid lifetime informs the client that the leases
@@ -4198,9 +4210,9 @@
           other configuration parameters, even if those parameters were not
           requested in the Renew message.</t>
 
-          <t>The T1/T2 times set in each applicable IA option for a Reply MUST
-          be the same values across all IAs. The server MUST determine the
-          T1/T2 times across all of the applicable client's bindings in the
+          <t>The T1/T2 values set in each applicable IA option for a Reply MUST
+          be the same across all IAs. The server MUST determine the
+          T1/T2 values across all of the applicable client's bindings in the
           Reply. This facilitates the client being able to renew all of the
           bindings at the same time.</t>
         </section>
@@ -4225,7 +4237,7 @@
           appropriate for the link to which the client's interface is attached
           according to the server's explicit configuration information, the
           server SHOULD send back the IA to the client with new lifetimes and,
-          if applicable, T1/T2 times. If the server is unable to extend the
+          if applicable, T1/T2 values. If the server is unable to extend the
           lifetimes of an address in the IA, the server MAY choose not to
           include the IA Address option (see <xref target="RFC3315-22.6"/>)
           for this address. If the server is
@@ -4267,7 +4279,7 @@
               note about the Rapid Commit option
               (see <xref target="RFC3315-22.14"/>) below), the server SHOULD
               create a binding and return the IA with allocated leases with
-              lifetimes and, if applicable, T1/T2 times and other information
+              lifetimes and, if applicable, T1/T2 values and other information
               requested by the client. The server MUST NOT return any
               addresses or delegated prefixes in the IA which the server does
               not assign to the client.</t>
@@ -4314,11 +4326,16 @@
           other configuration parameters, even if those IAs and parameters
           were not requested in the Rebind message.</t>
 
-          <t>The T1/T2 times set in each applicable IA option for a Reply MUST
-          be the same values across all IAs. The server MUST determine the
-          T1/T2 times across all of the applicable client's bindings in the
+          <t>The T1 values set in each applicable IA option for a Reply MUST be
+          the same values across all IAs. The T2 values set in each applicable
+          IA option for a Reply MUST be the same values across all IAs. The
+          server MUST determine the T1 values across all of the applicable
+          client's bindings in the Reply. The server MUST determine the T2
+          values across all of the applicable client's bindings in the
           Reply. This facilitates the client being able to renew all of the
           bindings at the same time.</t>
+          <!-- a bit longer text, but the old text could easily be
+               misinterpreted as T1 being set to the same value as T2 -->
         </section>
 
         <!-- ends: "18.2.4 from line 2594-->
@@ -5332,13 +5349,13 @@
             number space for other IA option types (i.e., IA_TA and IA_PD).
             A four octets long field containing an unsigned integer.</t>
 
-            <t hangText="   T1">The time at which the client should contact the
+            <t hangText="   T1">The time interval after which the client should contact the
             server from which the addresses in the IA_NA were obtained to
             extend the lifetimes of the addresses assigned to the IA_NA; T1 is
             a time duration relative to the current time expressed in units of
             seconds. A four octets long field containing an unsigned integer.</t>
 
-            <t hangText="   T2">The time at which the client should contact any
+            <t hangText="   T2">The time interval after which the client should contact any
             available server to extend the lifetimes of the addresses assigned
             to the IA_NA; T2 is a time duration relative to the current time
             expressed in units of seconds. A four octets long field containing
@@ -5381,12 +5398,13 @@
         <t>In a message sent by a server to a client, the client MUST use the
         values in the T1 and T2 fields for the T1 and T2 parameters, unless
         those values in those fields are 0. The values in the T1 and T2 fields
-        are the number of seconds until T1 and T2.</t>
+        are the number of seconds until T1 and T2 and are calculated since
+        reception of the message.</t>
            
         <t>As per <xref target="RFC3315-5.6"/>, the value 0xffffffff is taken to
         mean "infinity" and should be used carefully.</t>
 
-        <t>The server selects the T1 and T2 times to allow the client to
+        <t>The server selects the T1 and T2 values to allow the client to
         extend the lifetimes of any addresses in the IA_NA before the
         lifetimes expire, even if the server is unavailable for some short
         period of time. Recommended values for T1 and T2 are .5 and .8 times
@@ -5395,7 +5413,7 @@
         lifetime is 0xffffffff ("infinity"), the recommended T1 and T2 values
         are also 0xffffffff. If the time at which the addresses in an IA_NA
         are to be renewed is to be left to the discretion of the client, the
-        server sets T1 and T2 to 0. The client MUST follow the rules defined
+        server sets T1 and T2 values to 0. The client MUST follow the rules defined
         in <xref target="t1-t2-0"/>.</t>
 
         <t>If a client receives an IA_NA with T1 greater than T2, and both T1
@@ -6568,17 +6586,17 @@
             the number space for other IA option types (i.e., IA_NA and IA_TA).
             A four octets long field containing an unsigned integer.</t>
 
-            <t hangText="   T1">The time at which the client should
+            <t hangText="   T1">The time interval after which the client should
             contact the server from which the prefixes in the IA_PD
             were obtained to extend the lifetimes of the prefixes delegated to
-            the IA_PD; T1 is a time duration relative to the current time
-            expressed in units of seconds. A four octets long field containing
+            the IA_PD; T1 is a time duration relative to the message reception
+            time expressed in units of seconds. A four octets long field containing
             an unsigned integer.</t>
 
-            <t hangText="   T2">The time at which the client should
+            <t hangText="   T2">The time interval after which the client should
             contact any available server to extend the lifetimes of
             the prefixes assigned to the IA_PD; T2 is a time duration relative
-            to the current time expressed in units of seconds.
+            to the message reception time expressed in units of seconds.
             A four octets long field containing an unsigned integer.</t>
 
             <t hangText="   IA_PD-options">Options associated with this
@@ -6603,7 +6621,7 @@
         <t>Note that an IA_PD has no explicit "lifetime" or "lease length" of
         its own. When the valid lifetimes of all of the prefixes in a IA_PD
         have expired, the IA_PD can be considered as having expired. T1 and T2
-        are included to give the server explicit control over when a
+        fields are included to give the server explicit control over when a
         client should contact the server about a
         specific IA_PD.</t>
 
@@ -6614,7 +6632,7 @@
 
         <t>In a message sent by a server to a client,
         the client MUST use the values in the T1 and T2 fields for
-        the T1 and T2 parameters, unless those values in those fields are 0.
+        the T1 and T2 timers, unless those values in those fields are 0.
         The values in the T1 and T2 fields are the number of seconds until T1
         and T2.</t>
 
