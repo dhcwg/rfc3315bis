@@ -577,8 +577,8 @@
 
             <t hangText="T1">The time interval after which the client is
             expected to contact the server that did the assignment to extend
-            (renew) the lifetimes of the addresses assigned (via IA_NA option(s)) or
-            the prefixes delegated (via IA_PD option(s)) to the client. T1 is expressed as
+            (renew) the lifetimes of the addresses assigned (via IA_NA option(s)) and/or
+            prefixes delegated (via IA_PD option(s)) to the client. T1 is expressed as
             an absolute value in messages (in seconds), is conveyed within IA
             containers (currently the IA_NA and IA_PD options), and is interpreted as a time
             interval since the packet's reception. The value stored in the T1 field in
@@ -587,7 +587,7 @@
 
             <t hangText="T2">The time interval after which the client is
             expected to contact any available server to extend (rebind) the
-            lifetimes of the addresses assigned (via IA_NA option(s)) and/or the prefixes
+            lifetimes of the addresses assigned (via IA_NA option(s)) and/or prefixes
             delegated (via IA_PD option(s)) to the client. T2 is expressed as an absolute value
             in messages (in seconds), is conveyed within IA containers
             (currently the IA_NA and IA_PD options), and is interpreted as a time interval
