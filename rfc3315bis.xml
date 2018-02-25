@@ -7018,6 +7018,12 @@
       valid response is received.  Assuming the client also receives a
       response from a valid DHCP server, large values for SOL_MAX_RT and
       INF_MAX_RT will not have any effect.</t>
+         
+      <t>A malicious server can also send a Server Unicast option (see
+      <xref target="RFC3315-22.12"/>) to a client in an Advertise
+      message, thus potentially causing the client to bypass relays and
+      communicate only with the malicious server for subsequent Request
+      and Renew messages.</t>
 
       <t>There is another threat to DHCP clients from mistakenly or
       accidentally configured DHCP servers that answer DHCP client requests
