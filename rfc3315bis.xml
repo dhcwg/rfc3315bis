@@ -7,8 +7,9 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-11"
-     ipr="pre5378Trust200902" obsoletes="3315,3633,3736,4242,7083,7283,7550">
+<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-12"
+     ipr="pre5378Trust200902"
+     obsoletes="3315, 3633, 3736, 4242, 7083, 7283, 7550">
   <front>
     <title abbrev="DHCP for IPv6">Dynamic Host Configuration Protocol for IPv6
     (DHCPv6) bis</title>
@@ -1328,7 +1329,7 @@
 
       <section anchor="RFC3315-5.6"
                title="Representation of Time Values and &quot;Infinity&quot; as a Time Value">
-        <t>All time values for lifetimes, T1 and T2 are unsigned 32-bit integers
+        <t>All time values for lifetimes, T1, and T2 are unsigned 32-bit integers
         and are expressed in seconds. The value 0xffffffff is taken to mean
         "infinity" when used as a lifetime (as in <xref target="RFC4861"/>) or a
         value for T1 or T2.</t>
@@ -5671,6 +5672,7 @@
         Relay Message (see <xref target="RFC3315-22.9"/>),
         Authentication (see <xref target="RFC3315-22.11"/>),
         Server Unicast (see <xref target="RFC3315-22.12"/>),
+        Status Code (see <xref target="RFC3315-22.13"/>),
         Rapid Commit (see <xref target="RFC3315-22.14"/>),
         User Class (see <xref target="RFC3315-22.15"/>),
         Vendor Class (see <xref target="RFC3315-22.16"/>),
@@ -7201,7 +7203,7 @@
 <c>8</c><c>ELAPSED_TIME</c><c>No</c><c>Yes</c>
 <c>9</c><c>RELAY_MSG</c><c>No</c><c>Yes</c>
 <c>11</c><c>AUTH</c><c>No</c><c>Yes</c>
-<c>12</c><c>UNICAST</c><c>Yes</c><c>Yes</c>
+<c>12</c><c>UNICAST</c><c>No</c><c>Yes</c>
 <c>13</c><c>STATUS_CODE</c><c>No</c><c>Yes</c>
 <c>14</c><c>RAPID_COMMIT</c><c>No</c><c>Yes</c>
 <c>15</c><c>USER_CLASS</c><c>No</c><c>Yes</c>
