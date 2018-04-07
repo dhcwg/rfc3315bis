@@ -7,7 +7,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-12"
+<rfc category="std" docName="draft-ietf-dhc-rfc3315bis-13"
      ipr="pre5378Trust200902"
      obsoletes="3315, 3633, 3736, 4242, 7083, 7283, 7550">
   <front>
@@ -2750,7 +2750,7 @@
       for all of the IA options required on an interface as this simplifies
       the client implementation and reduces the potential number of
       transactions required (for the background on this design
-      choice, refer to Section 4 of <xref target="RFC7550"/>). To facility
+      choice, refer to Section 4 of <xref target="RFC7550"/>). To facilitate
       a client's use of a single transaction for all IA options, servers
       MUST return the same T1/T2 values for all IA options in a Reply
       (see <xref target="RFC3315-18.2.1"/>, <xref target="RFC3315-18.2.3"/>,
@@ -4908,7 +4908,7 @@
         options. See <xref target="RFC4994"/> for details.</t>
 
         <t>Third, sometimes a relay is the best device to provide values for
-        certain options. A relay can insert an option to the client packet being
+        certain options. A relay can insert an option into the packet being
         forwarded to the server and ask the server to pass that option back to the
         client. The client will receive that option. It should be noted that the
         server is the ultimate authority here and depending on its configuration, it
@@ -4996,11 +4996,11 @@
         <t>If the RDM field contains 0x00, the replay detection field MUST be
         set to the value of a strictly monotonically increasing 64-bit unsigned
         integer (modulo 2^64). Using this technique can reduce the danger
-        of replay attacks. This method MUST be supported by all protocols.
-        One choice might be to use the 64-bit NTP Timestamp format
-        <xref target="RFC5905"/>).</t>
+        of replay attacks. This method MUST be supported by all Authentication
+        option protocols. One choice might be to use the 64-bit NTP Timestamp
+        format <xref target="RFC5905"/>).</t>
 
-        <t>A client that receives a message with RDM field set to 0x00 MUST
+        <t>A client that receives a message with the RDM field set to 0x00 MUST
         compare its replay detection field with the previous value sent by
         that same server (based on the Server Identifier option, see
         <xref target="RFC3315-22.3"/>). If this is the first time a client
@@ -7486,6 +7486,7 @@
       <?rfc include='reference.RFC.8085'?>
       <?rfc include='reference.RFC.8174'?>
       <?rfc include='reference.RFC.8200'?>
+      <?rfc include='reference.RFC.8213'?>
 
     </references>
 
@@ -7586,7 +7587,6 @@
 
       <?rfc include='reference.RFC.8156'?>
       <?rfc include='reference.RFC.8168'?>
-      <?rfc include='reference.RFC.8213'?>
 
       <reference anchor="TR-187"
                  target="https://www.broadband-forum.org/technical/download/TR-187_Issue-2.pdf">
